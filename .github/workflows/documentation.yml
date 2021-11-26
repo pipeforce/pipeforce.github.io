@@ -39,7 +39,7 @@ jobs:
       - name: Release to GitHub Pages
         env:
           USE_SSH: true
-          GIT_USER: git
+          GIT_USER: pipeforce
         run: |
           git config --global user.email "devop@logabit.com"
           git config --global user.name "pipeforce"
