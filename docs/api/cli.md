@@ -6,7 +6,7 @@ It allows to execute commands and pipelines, store and read data to and from the
 
 See the Downloads section on how to install this tool: *[Downloads](/docs/downloads)*
 
-The tutorial [Setup local workspace + CLI](tutorial/setup-workspace) shows, how to install and work with the CLI.
+The tutorial [Setup local workspace + CLI](../docs/tutorials/beginner/intro.md) shows, how to install and work with the CLI.
 
 We also recommend you to install Visual Studio Code since it works nicely together with the CLI.
 
