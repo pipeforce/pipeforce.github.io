@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Getting Started
 
-Welcome to our Documentation!
+Welcome to our Documentation! TEST
 
 Let's discover **Docusaurus in less than 5 minutes**.
 
