@@ -74,25 +74,15 @@ const config = {
           {to: '/blog', label: 'News', position: 'left'},
           {
             position: 'right',
-            href: 'https://www.youtube.com/channel/UC4jw8P1UdTCcj_rUoZsdIbg',
-            label: 'YouTube',
-          },
-          {
-            position: 'right',
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://logabit.atlassian.net/servicedesk/customer/portals',
             label: 'Support',
-          },
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
           },
         ],
       },
       announcementBar: {
         id: 'support_us',
         content:
-          'We offer Developer Jobs! <a target="_blank" rel="noopener noreferrer" href="#">Apply now!</a>',
+          'We are hiring Developers. <a target="_blank" rel="noopener noreferrer" href="#">Apply now!</a>',
         backgroundColor: '#fafbfc',
         textColor: '#091E42',
         isCloseable: false,
@@ -132,11 +122,7 @@ const config = {
               {
                 label: 'News',
                 to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
+              }
             ],
           },
         ],
