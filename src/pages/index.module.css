@@ -10,10 +10,20 @@
   overflow: hidden;
 }
 
-.message {
-  font-size: 60px;
-  font-weight: 300;
-  line-height: normal;
+@media screen and (max-width: 500px) {
+  .message {
+    font-size: 35pt;
+    font-weight: 300;
+    line-height: normal;
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .message {
+    font-size: 45pt;
+    font-weight: 300;
+    line-height: normal;
+  }
 }
 
 .message b {
