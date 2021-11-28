@@ -28,11 +28,18 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 }
 
 a {
-  color: rgb(25, 99, 211);
+  color: rgb(42, 109, 210);
 }
 
 a:hover {
-  color: rgb(25, 99, 211);
+  color: rgb(42, 109, 210);
+}
+
+article hr {
+  height:1px;
+  border-width:0;
+  color:#ccc;
+  background-color:#ccc;
 }
 
 article img {
@@ -52,7 +59,8 @@ article img {
 }
 
 .table-of-contents__link--active {
-  font-weight: bold;
+  color: rgb(42, 109, 210);
+  font-weight: 600;
 }
 
 

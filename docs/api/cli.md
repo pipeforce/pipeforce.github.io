@@ -1,14 +1,12 @@
 # CLI
 
-The PI Command Line Interface (short “CLI” or “pi tool”) is a local command line tool which allows remote control PIPEFORCE from the command line.
+The **Command Line Interface** (short “CLI” or “pi tool”) is a local command line tool, which allows remote control PIPEFORCE from the command line.
 
-It allows to execute commands and pipelines, store and read data to and from the server and helps to setup a local development environment quickly.
+It makes it handy to automate local tasks by executing commands and pipelines and helps in local development.
 
-See the Downloads section on how to install this tool: *[Downloads](/docs/downloads)*
+See the *[Downloads](/docs/downloads)* section on how to install this tool.
 
 The tutorial [Setup local workspace + CLI](../docs/tutorials/beginner/intro.md) shows, how to install and work with the CLI.
-
-We also recommend you to install Visual Studio Code since it works nicely together with the CLI.
 
 ## Call structure
 ----------

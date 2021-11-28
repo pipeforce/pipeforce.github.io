@@ -1,48 +1,104 @@
 # Commands
-Last update: 19/11/2021 14:41:24
 
+Reference documentation of all built-in [Commands](../guides/command).  
 
-## apidoc.*
+Generated: **28/11/2021**  
+Number of built-in commands: **202**  
+Download pipeline and commands schema: **[pipeline-schema.json](./assets/pipeline-schema.txt)**  
+Also see: **[Pipeline Guide](../guides/pipeline)** | **[Command Guide](../guides/command)**  
 
-This command group is to return latest the OpenAPI documentation.
+Example usage of chained commands in a pipeline with [PEL](../guides/pel) to access the body:  
+```yaml  
+pipeline:  
+  - datetime:  
+      format: "dd/MM/yyyy"  
+  - log:  
+      message: "The current date is: #{body}"  
+```  
 
-### apidoc.commands
-
+## apidoc.commands
+----------   
 Returns the OpenAPI documentation of commands.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.commands)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - apidoc.commands:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
 
-### apidoc.pel.utils
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=apidoc.pel.utils)
+**URL example:**  
+```yaml  
+http://host/api/v3/command/apidoc.commands?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command apidoc.commands output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## apidoc.pel.utils
+----------   
 Returns the OpenAPI documentation of PEL utils.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.pel.utils)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - apidoc.pel.utils:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/apidoc.pel.utils?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command apidoc.pel.utils output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## assert
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=assert)
+----------   
 Evaluates a given PEL conditions and throws an error in case a condition is invalid.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=assert)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -54,15 +110,42 @@ Name | Type | Required | Default | Description
 `message` | String | false | null | An optional message to be used in case of invalid condition. Can be a PE.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - assert:  
+      true: <value>  
+      false: <value>  
+      body.equals: <value>  
+      equals: <value>  
+      value: <value>  
+      message: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/assert?true=<value>&false=<value>&body.equals=<value>&equals=<value>&value=<value>&message=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command assert true=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.assert
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.assert)
+----------   
 Applies asserts for a given workflow in the workflow service.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.assert)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -73,15 +156,41 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | true | null | The id of the process instance the task to check belongs to.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.assert:  
+      hasPassed: <value>  
+      hasNotPassed: <value>  
+      processFinished: <value>  
+      throwException: <value>  
+      processInstanceId: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.assert?hasPassed=<value>&hasNotPassed=<value>&processFinished=<value>&throwException=<value>&processInstanceId=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.assert hasPassed=<value> hasNotPassed=<value> processFinished=<value> throwException=<value> processInstanceId=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## barcode.create
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=barcode.create)
+----------   
 Creates a barcode from a dynamic format.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=barcode.create)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -92,15 +201,41 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - barcode.create:  
+      text: <value>  
+      width: <value>  
+      height: <value>  
+      format: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/barcode.create?text=<value>&width=<value>&height=<value>&format=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command barcode.create text=<value> width=<value> height=<value> format=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## barcode.read
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=barcode.read)
+----------   
 Reads a barcode from a dynamic PNG format. Detects the barcode type automatically. By default returns the text extracted from the barcode in the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=barcode.read)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -108,15 +243,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - barcode.read:  
+      input: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/barcode.read?input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command barcode.read input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## bean
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=bean)
+----------   
 Executes a method on a Spring bean. Is only available for support users.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=bean)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -125,25 +283,72 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - bean:  
+      name: <value>  
+      method: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/bean?name=<value>&method=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command bean name=<value> method=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## body.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=body.delete)
+----------   
 Sets the value in the body to null. Deletes any existing value in the body. 
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=body.delete)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** *None*
 
 
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - body.delete:  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/body.delete  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command body.delete   
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## body.filter
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=body.filter)
+----------   
 DEPRECATED. Converts the input body to JSON and then filters the input body and removes any properties not matching the given filter. Throws exception if input body cannot be converted to JSON.Does nothing, if input body is null or empty. If the first level of the body is a list, appliesthe filter to each element inside the list. This command can be used for example to filter outsensitive information or to shrink a big result set for performance reasons.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=body.filter)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -151,30 +356,75 @@ Name | Type | Required | Default | Description
 `removeKey` | Boolean | false | false | Can only be applied, if the result is a list and contains elements with a single property each. For example: [{name: foo}, {name: bar}]. If set to true, removes the key from the property and converts the result to a simple list like: [foo, bar]. If the result is not a list or elements in the list contain more than one property, this param is ignored.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - body.filter:  
+      properties: <value>  
+      removeKey: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command body.filter properties=<value> removeKey=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## cache.clear
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=cache.clear)
+----------   
 Clears the underlying central cache and removes any entry those time to live has been expired. Can also be used to remove a single entry from the cache.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.clear)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | false | null | The key to load the value from the cache to remove. If empty or null, all entries in the cache will be inspected and those time to live has been expired will be removed.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - cache.clear:  
+      key: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/cache.clear?key=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command cache.clear key=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## cache.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=cache.get)
+----------   
 Reads a value with given key from the cache and writes it into the output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -184,47 +434,116 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - cache.get:  
+      key: <value>  
+      remove: <value>  
+      exit: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/cache.get?key=<value>&remove=<value>&exit=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command cache.get key=<value> remove=<value> exit=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## cache.info
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=cache.info)
+----------   
 Returns information about the current state of the cache. Available for system and support users only.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.info)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | false | null | Returns the info for a given cache entry. If null or empty, the overall cache info is returned.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - cache.info:  
+      key: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/cache.info?key=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command cache.info key=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## cache.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=cache.list)
+----------   
 Lists ALL entries of the cache. Use with care!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - cache.list:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/cache.list?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command cache.list output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## cache.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=cache.put)
+----------   
 Saves the given value under given key into a central cache.
 If no value param is given, uses the body as cache value.
 The max time to live of each entry is 120 min. The min time to live is 5 min. Default is 5 min.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.put)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -233,15 +552,39 @@ Name | Type | Required | Default | Description
 `value` | String | false | null | The value for the cache entry. If not set, null is used.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - cache.put:  
+      timeToLive: <value>  
+      key: <value>  
+      value: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/cache.put?timeToLive=<value>&key=<value>&value=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command cache.put timeToLive=<value> key=<value> value=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## call
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=call)
+----------   
 Calls a script and returns with the result in the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=call)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -250,25 +593,72 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - call:  
+      uri: <value>  
+      args: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/call?uri=<value>&args=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command call uri=<value> args=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## capture
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=capture)
+----------   
 DEPREACTED (Use the cache.* commands instead). Captures the last pipe message and adds it into a list in the header under key {@link #HEADER_CAPTURED}. This is primarily for testing purposes but also can be used to create a snapshot of a certain pipeline state.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=capture)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** *None*
 
 
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - capture:  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/capture  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command capture   
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pipe.schema
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pipe.schema)
+----------   
 Returns the JSON schema for all built-in pipes.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -276,30 +666,75 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipe.schema:  
+      pipe: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipe.schema?pipe=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipe.schema pipe=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pipe.schema.v7
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pipe.schema.v7)
+----------   
 Returns the V7 compliant JSON schema for all built-in pipes.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema.v7)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipe.schema.v7:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipe.schema.v7?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipe.schema.v7 output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## config.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=config.get)
+----------   
 Returns all admin config settings for a given group from the backend as a JSON in this format: {configKey:{value:someValue, canOverwrite:true|false}}. The attribute canOverwrite is only available if param includePermission is set.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=config.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -309,15 +744,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - config.get:  
+      group: <value>  
+      key: <value>  
+      includePermission: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/config.get?group=<value>&key=<value>&includePermission=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command config.get group=<value> key=<value> includePermission=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## content.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=content.get)
+----------   
 Reads content from provided uri and puts the result back to body.
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=content.get)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -325,15 +785,194 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - content.get:  
+      uri: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/content.get?uri=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command content.get uri=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## credentials.delete
+----------   
+Deletes a credentials entry.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.delete)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | true | null | The name of the credentials entry to delete.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - credentials.delete:  
+      name: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/credentials.delete?name=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command credentials.delete name=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## credentials.get
+----------   
+Lists the metadata of all available credentials entries.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.get)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of a single credentials to return. If null or empty, all credentials will be returned.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - credentials.get:  
+      name: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/credentials.get?name=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command credentials.get name=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## credentials.list
+----------   
+Lists the metadata of all available credentials entries.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.list)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - credentials.list:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/credentials.list?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command credentials.list output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## credentials.put
+----------   
+Creates a new credentials entry.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.put)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`format` | String | true | null | The format of the secret to store. One of: secretText, bearer, header, usernamePassword.
+`name` | String | true | null | The unique name of the credentials.
+`secret` | String | true | null | The secret part of the credentials (for example the username:password or Bearer TOKEN).
+`timeToLive` | String | false | null | The time to live in minutes. After this time, the credentials will be deleted.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - credentials.put:  
+      format: <value>  
+      name: <value>  
+      secret: <value>  
+      timeToLive: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/credentials.put?format=<value>&name=<value>&secret=<value>&timeToLive=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command credentials.put format=<value> name=<value> secret=<value> timeToLive=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## data.mapping
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=data.mapping)
+----------   
 Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.mapping)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -342,15 +981,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - data.mapping:  
+      rules: <value>  
+      input: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/data.mapping?rules=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command data.mapping rules=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## data.transform
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=data.transform)
+----------   
 This data transformer converts the input to an output format by applying the given template. By default the current message is provided as model inside the template context so you can access body, vars or headers similar to the default PEL approach.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.transform)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -363,15 +1026,43 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - data.transform:  
+      iterate: <value>  
+      groupBy: <value>  
+      engine: <value>  
+      modelName: <value>  
+      template: <value>  
+      input: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/data.transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command data.transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## datetime
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=datetime)
+----------   
 Returns the current time at server side.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=datetime)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -379,30 +1070,75 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - datetime:  
+      format: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/datetime?format=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command datetime format=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## datetime.zones
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=datetime.zones)
+----------   
 Returns all official IANA time-zone names supported by this PIPEFORCE instance: http://www.iana.org/time-zones
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=datetime.zones)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - datetime.zones:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/datetime.zones?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command datetime.zones output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## decrypt
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=decrypt)
+----------   
 Decrypts the data in the body using the defined encryption parameter. Puts the encrypted data back to the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=decrypt)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -411,15 +1147,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - decrypt:  
+      password: <value>  
+      input: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/decrypt?password=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command decrypt password=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## delivery.attachment.add
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=delivery.attachment.add)
+----------   
 Adds a single attachment to an existing PIPEFORCE Secure Delivery. Note: Attachments can be added to deliveries only in state DRAFT.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.attachment.add)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -430,15 +1190,41 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.attachment.add:  
+      deliveryUuid: <value>  
+      name: <value>  
+      mimeType: <value>  
+      length: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.attachment.add?deliveryUuid=<value>&name=<value>&mimeType=<value>&length=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.attachment.add deliveryUuid=<value> name=<value> mimeType=<value> length=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## delivery.create
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=delivery.create)
+----------   
 Creates a new PIPEFORCE Secure Delivery and sets it in the target
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.create)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -452,30 +1238,81 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.create:  
+      subject: <value>  
+      message: <value>  
+      privacyLevel: <value>  
+      recipients: <value>  
+      deleteAfter: <value>  
+      attachments: <value>  
+      notifySender: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.create?subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.create subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## delivery.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=delivery.delete)
+----------   
 Deletes a given delivery.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `deliveryUuid` | String | true | null | The uuid of the delivery to delete.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.delete:  
+      deliveryUuid: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.delete?deliveryUuid=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.delete deliveryUuid=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## delivery.finalize
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=delivery.finalize)
+----------   
 Finalizes an existing delivery. After finalized, only recipients can be added but message and attachments of delivery can not be changed any longer.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.finalize)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -483,15 +1320,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.finalize:  
+      deliveryUuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.finalize?deliveryUuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.finalize deliveryUuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## delivery.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=delivery.get)
+----------   
 Returns an existing delivery.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -499,15 +1359,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.get:  
+      deliveryUuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.get?deliveryUuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.get deliveryUuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## delivery.recipient.add
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=delivery.recipient.add)
+----------   
 Adds recipients to an existing PIPEFORCE Secure Delivery. Note: Recipients can be added to deliveries only in state DRAFT or FINALIZED.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.recipient.add)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -517,15 +1400,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.recipient.add:  
+      deliveryUuid: <value>  
+      email: <value>  
+      locale: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.recipient.add?deliveryUuid=<value>&email=<value>&locale=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.recipient.add deliveryUuid=<value> email=<value> locale=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## delivery.send
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=delivery.send)
+----------   
 Sends a given PIPEFORCE Secure Delivery. If delivery is in status DRAFT it will be converted to FINALIZED before send.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.send)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -534,15 +1442,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.send:  
+      deliveryUuid: <value>  
+      recipients: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.send?deliveryUuid=<value>&recipients=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.send deliveryUuid=<value> recipients=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## delivery.update
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=delivery.update)
+----------   
 Updates an existing PIPEFORCE Secure Delivery.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.update)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -557,33 +1489,85 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.update:  
+      deliveryUuid: <value>  
+      subject: <value>  
+      message: <value>  
+      privacyLevel: <value>  
+      recipients: <value>  
+      deleteAfter: <value>  
+      attachments: <value>  
+      notifySender: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## doc.api.pelutils
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=doc.api.pelutils)
+----------   
 Returns the api doc for the available PEL utils.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=doc.api.pelutils)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - doc.api.pelutils:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/doc.api.pelutils?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command doc.api.pelutils output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## docusign
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=docusign)
+----------   
 Requests a signature of the given document in the body 
 via email (remote signing) using DocuSign. See here: 
 https://developers.docusign.com/esign-rest-api/code-examples/code-example-request-a-signature-via-email
 Expects the to be signed document in the body with json.file encoding.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=docusign)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -597,15 +1581,44 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - docusign:  
+      signerEmail: <value>  
+      signerName: <value>  
+      ccEmail: <value>  
+      ccName: <value>  
+      subject: <value>  
+      accessToken: <value>  
+      accountId: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/docusign?signerEmail=<value>&signerName=<value>&ccEmail=<value>&ccName=<value>&subject=<value>&accessToken=<value>&accountId=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command docusign signerEmail=<value> signerName=<value> ccEmail=<value> ccName=<value> subject=<value> accessToken=<value> accountId=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## document.understand
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=document.understand)
+----------   
 Returns metadata for a given unstructured document like an invoice PDF for example. Expects the document to be in the body by default. Returns the result as JSON in the body (replacing any existing value in the body).
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=document.understand)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -616,15 +1629,41 @@ Name | Type | Required | Default | Description
 `filter` | String | false | null | A PEL as filter to be applied to the output data before it is returned by this command. If null or empty, no filter is applied.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - document.understand:  
+      input: <value>  
+      output: <value>  
+      apiKey: <value>  
+      restUrl: <value>  
+      filter: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/document.understand?input=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command document.understand input=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.archive.save
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.archive.save)
+----------   
 Saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. Verifies the integrity of the archive on write. Returns the final archive file name into the output target.
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.archive.save)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -633,15 +1672,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.archive.save:  
+      path: <value>  
+      namingPattern: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.archive.save path=<value> namingPattern=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.copy
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.copy)
+----------   
 Copies a folder or file on Drive.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.copy)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -649,30 +1712,75 @@ Name | Type | Required | Default | Description
 `to` | String | true | null | The target folder to copy the resource into.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.copy:  
+      path: <value>  
+      to: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.copy?path=<value>&to=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.copy path=<value> to=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.delete)
+----------   
 Deletes a file or folder on Drive. If resource doesnt exist, nothing happens.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the resource to be deleted. If it is a folder, it will be deleted recursively.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.delete:  
+      path: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.delete?path=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.delete path=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.exists
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.exists)
+----------   
 Checks whether a resource in Drive exists. Puts the string true or false in the message body depending whether the resource exists.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.exists)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -680,15 +1788,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.exists:  
+      path: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.exists?path=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.exists path=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.list)
+----------   
 Lists all resources from drive folder.
 
-Expected Input Body: JsonNode  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -696,15 +1827,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.list:  
+      path: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.list?path=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.list path=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.mkdir
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.mkdir)
+----------   
 Creates a new dir on Drive if it not already exists.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.mkdir)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -712,15 +1866,38 @@ Name | Type | Required | Default | Description
 `recurse` | String | false | false | If set to true, any non existing folder in the path will be created.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.mkdir:  
+      path: <value>  
+      recurse: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.mkdir?path=<value>&recurse=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.mkdir path=<value> recurse=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.move
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.move)
+----------   
 Moves a folder or file on Drive from one location into another.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.move)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -728,15 +1905,38 @@ Name | Type | Required | Default | Description
 `to` | String | true | null | The target folder to move the resource into.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.move:  
+      path: <value>  
+      to: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.move?path=<value>&to=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.move path=<value> to=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.read
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.read)
+----------   
 Reads a file from drive and puts its content as a pipeline resource into the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.read)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -745,15 +1945,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.read:  
+      path: <value>  
+      append: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.read?path=<value>&append=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.read path=<value> append=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.save
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.save)
+----------   
 Saves the content of the body to one or more files in Drive. The content of the body can be a single pipeline resource or a pipeline resource collection. 
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.save)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -762,15 +1986,39 @@ Name | Type | Required | Default | Description
 `cleanupBody` | String | false | true | If true, deletes the content from the body after the content was saved to drive (default).
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.save:  
+      path: <value>  
+      namingStrategy: <value>  
+      cleanupBody: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanupBody=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.share
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.share)
+----------   
 Shares a folder in Drive given by path to users given by recipients.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.share)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -787,15 +2035,47 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.share:  
+      to: <value>  
+      type: <value>  
+      path: <value>  
+      permission: <value>  
+      subject: <value>  
+      message: <value>  
+      model: <value>  
+      expires: <value>  
+      password: <value>  
+      invite: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.share?to=<value>&type=<value>&path=<value>&permission=<value>&subject=<value>&message=<value>&model=<value>&expires=<value>&password=<value>&invite=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.share to=<value> type=<value> path=<value> permission=<value> subject=<value> message=<value> model=<value> expires=<value> password=<value> invite=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.tag
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.tag)
+----------   
 Adds or removes a WebDAV tag to a resource on drive.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.tag)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -805,15 +2085,40 @@ Name | Type | Required | Default | Description
 `remove` | Boolean | false | null | If true (or any non empty/null value), removes the given tag.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.tag:  
+      path: <value>  
+      tagname: <value>  
+      tagvalue: <value>  
+      remove: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.tag?path=<value>&tagname=<value>&tagvalue=<value>&remove=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.tag path=<value> tagname=<value> tagvalue=<value> remove=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## drive.upload.chunked
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=drive.upload.chunked)
+----------   
 Supports chunked uploads of large files into the Drive endpoint. Expects an object in the body which can be converted to an input stream as the chunk data to be uploaded.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.upload.chunked)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -823,15 +2128,40 @@ Name | Type | Required | Default | Description
 `index` | Integer | false | null | The index of the chunk. Mandatory for the upload action.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.upload.chunked:  
+      action: <value>  
+      uuid: <value>  
+      path: <value>  
+      index: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.upload.chunked?action=<value>&uuid=<value>&path=<value>&index=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.upload.chunked action=<value> uuid=<value> path=<value> index=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## encrypt
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=encrypt)
+----------   
 Encrypts the data in the body using the defined encryption parameter and puts the encrypted datain the output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=encrypt)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -839,30 +2169,75 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - encrypt:  
+      password: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/encrypt?password=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command encrypt password=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## eval
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=eval)
+----------   
 Executes a given pipeline expression with the message as context.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=eval)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `expr` | String | true | null | The pipeline expression to be executed.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - eval:  
+      expr: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/eval?expr=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command eval expr=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## event.listen
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=event.listen)
+----------   
 Listening for events works like this: Add this command at the very first in your pipeline, define the event key you want to listen for and an optional filter expression. Then save this pipeline into the property store. This causes the system to automatically register this pipeline and execute it whenever an event with given key and matching filter is fired. Note: Only one event.listen command per pipeline is allowed and it needs to be the very first command in the pipeline. In the body of the pipeline the event object is provided and can be used for filtering for example.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=event.listen)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -870,30 +2245,75 @@ Name | Type | Required | Default | Description
 `filter` | String | false | null | An optional PEL to execute the pipeline only in case the filter applies.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - event.listen:  
+      key: <value>  
+      filter: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/event.listen?key=<value>&filter=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command event.listen key=<value> filter=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## event.mapping.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=event.mapping.get)
+----------   
 Returns all event key to pipeline key mappings.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=event.mapping.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - event.mapping.get:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/event.mapping.get?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command event.mapping.get output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## event.send
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=event.send)
+----------   
 Sends a new event to inform listeners in pipelines.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=event.send)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -903,15 +2323,40 @@ Name | Type | Required | Default | Description
 `async` | String | false | true | Send the event in ASYNC mode? Note: ASYNC is faster but lacks transaction capability. If false, message is send in SYNC. Slower but can use the current authentication and transaction context.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - event.send:  
+      key: <value>  
+      traceId: <value>  
+      payload: <value>  
+      async: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/event.send?key=<value>&traceId=<value>&payload=<value>&async=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command event.send key=<value> traceId=<value> payload=<value> async=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## foreach
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=foreach)
+----------   
 Repeats the subsequent pipeline commands for each entry in a given list. By default the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=foreach)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -921,40 +2366,110 @@ Name | Type | Required | Default | Description
 `end` | String | false | null | Signals the end of a for each loop.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - foreach:  
+      in: <value>  
+      item: <value>  
+      loopName: <value>  
+      end: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/foreach?in=<value>&item=<value>&loopName=<value>&end=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command foreach in=<value> item=<value> loopName=<value> end=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## header.set
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=header.set)
+----------   
 DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=header.set)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** *None*
 
 
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - header.set:  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/header.set  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command header.set   
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## htmlunit.website.form.find
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=htmlunit.website.form.find)
+----------   
 Searches for a form on the page and sets is as vars.form model in PEL. If param 'select' is given, uses this PEL to find the form object. Otherwise tries to detect the form automatically by searching the page and using the first form found. Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.find)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - htmlunit.website.form.find:  
+      select: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/htmlunit.website.form.find?select=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command htmlunit.website.form.find select=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## htmlunit.website.form.input
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=htmlunit.website.form.input)
+----------   
 Searches for an input element with given name and sets the given value on it. Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.input)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -962,60 +2477,149 @@ Name | Type | Required | Default | Description
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - htmlunit.website.form.input:  
+      value: <value>  
+      select: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/htmlunit.website.form.input?value=<value>&select=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command htmlunit.website.form.input value=<value> select=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## htmlunit.website.form.submit
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=htmlunit.website.form.submit)
+----------   
 Searches for a submit button and clicks it. Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.submit)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - htmlunit.website.form.submit:  
+      select: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/htmlunit.website.form.submit?select=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command htmlunit.website.form.submit select=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## htmlunit.website.link.click
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=htmlunit.website.link.click)
+----------   
 Searches for a link on current page and clicks it. Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.link.click)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - htmlunit.website.link.click:  
+      select: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/htmlunit.website.link.click?select=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command htmlunit.website.link.click select=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## htmlunit.website.open
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=htmlunit.website.open)
+----------   
 Opens a website and sets it as 'vars.page' in PEL. Additionally sets the current browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.open)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | true | null | The url of the web page to open.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - htmlunit.website.open:  
+      url: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/htmlunit.website.open?url=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command htmlunit.website.open url=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## htmlunit.website.scrap
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=htmlunit.website.scrap)
+----------   
 Scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.scrap)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1023,140 +2627,310 @@ Name | Type | Required | Default | Description
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - htmlunit.website.scrap:  
+      xpath: <value>  
+      select: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/htmlunit.website.scrap?xpath=<value>&select=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command htmlunit.website.scrap xpath=<value> select=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## http.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=http.delete)
+----------   
 Executes a DELETE HTTP call to the given url.Returns the result from the server in the message body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
-`username` | String | false | null | The username for basic authentication. If this value is not null, BASIC auth is tried.
-`password` | String | false | null | The password for basic authentication. If this value is not null, BASIC auth is tried.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
-`bearer` | String | false | null | The secret to be send as header: Authorization: Bearer secret. If this param is set username and password is ignored and token authentication with Bearer is used instead.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - http.delete:  
+      url: <value>  
+      headers: <value>  
+      body: <value>  
+      input: <value>  
+      output: <value>  
+      credentials: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/http.delete?url=<value>&headers=<value>&body=<value>&input=<value>&output=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command http.delete url=<value> headers=<value> body=<value> input=<value> output=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## http.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=http.get)
+----------   
 Executes a GET HTTP call to the given url.Returns the result from the server in the message body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
-`username` | String | false | null | The username for basic authentication. If this value is not null, BASIC auth is tried.
-`password` | String | false | null | The password for basic authentication. If this value is not null, BASIC auth is tried.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
-`bearer` | String | false | null | The secret to be send as header: Authorization: Bearer secret. If this param is set username and password is ignored and token authentication with Bearer is used instead.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - http.get:  
+      url: <value>  
+      headers: <value>  
+      body: <value>  
+      input: <value>  
+      output: <value>  
+      credentials: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/http.get?url=<value>&headers=<value>&body=<value>&input=<value>&output=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command http.get url=<value> headers=<value> body=<value> input=<value> output=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## http.patch
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=http.patch)
+----------   
 Executes a PATCH HTTP call to the given url.Returns the result from the server in the message body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.patch)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
-`username` | String | false | null | The username for basic authentication. If this value is not null, BASIC auth is tried.
-`password` | String | false | null | The password for basic authentication. If this value is not null, BASIC auth is tried.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
-`bearer` | String | false | null | The secret to be send as header: Authorization: Bearer secret. If this param is set username and password is ignored and token authentication with Bearer is used instead.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - http.patch:  
+      url: <value>  
+      headers: <value>  
+      body: <value>  
+      input: <value>  
+      output: <value>  
+      credentials: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/http.patch?url=<value>&headers=<value>&body=<value>&input=<value>&output=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command http.patch url=<value> headers=<value> body=<value> input=<value> output=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## http.post
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=http.post)
+----------   
 Executes a POST HTTP call to the given url.Returns the result from the server in the message body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.post)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
-`username` | String | false | null | The username for basic authentication. If this value is not null, BASIC auth is tried.
-`password` | String | false | null | The password for basic authentication. If this value is not null, BASIC auth is tried.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
-`bearer` | String | false | null | The secret to be send as header: Authorization: Bearer secret. If this param is set username and password is ignored and token authentication with Bearer is used instead.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - http.post:  
+      url: <value>  
+      headers: <value>  
+      body: <value>  
+      input: <value>  
+      output: <value>  
+      credentials: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/http.post?url=<value>&headers=<value>&body=<value>&input=<value>&output=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command http.post url=<value> headers=<value> body=<value> input=<value> output=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## http.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=http.put)
+----------   
 Executes a PUT HTTP call to the given url.Returns the result from the server in the message body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.put)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
-`username` | String | false | null | The username for basic authentication. If this value is not null, BASIC auth is tried.
-`password` | String | false | null | The password for basic authentication. If this value is not null, BASIC auth is tried.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
-`bearer` | String | false | null | The secret to be send as header: Authorization: Bearer secret. If this param is set username and password is ignored and token authentication with Bearer is used instead.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - http.put:  
+      url: <value>  
+      headers: <value>  
+      body: <value>  
+      input: <value>  
+      output: <value>  
+      credentials: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/http.put?url=<value>&headers=<value>&body=<value>&input=<value>&output=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command http.put url=<value> headers=<value> body=<value> input=<value> output=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.token.refresh
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.token.refresh)
+----------   
 Enrich headers with accessToken obtained from authorization server using refreshToken.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.refresh)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `refreshToken` | String | true | null | The refresh token.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.token.refresh:  
+      refreshToken: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.token.refresh?refreshToken=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.token.refresh refreshToken=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.apitoken
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.apitoken)
+----------   
 Obtains the apitoken in exchange for user credentials provided and writes into the output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.apitoken)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1165,25 +2939,72 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.apitoken:  
+      username: <value>  
+      password: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.apitoken?username=<value>&password=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.apitoken username=<value> password=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.authinfo
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.authinfo)
+----------   
 Adds header 'authUserId' - name of an user authenticated as a sender of the pipe message.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.authinfo)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** *None*
 
 
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.authinfo:  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.authinfo  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.authinfo   
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.authorize
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.authorize)
+----------   
 Authorizes pipeline execution and overwrites any existing authentication by this new, successful authentication. Additionally puts the successful authentication token on an internal stack. See iam.logout to pop from stack.Subsequent commands will be executed only if authorization was successful. Tries each existing parameter for authentication in this order. If multiple params are given, first existing one is used from this list: accessToken, refreshToken, basic, username+password. Throws exception and exits pipeline execution on first not matching login try.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.authorize)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1194,15 +3015,41 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password to be used for authentication.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.authorize:  
+      accessToken: <value>  
+      refreshToken: <value>  
+      basic: <value>  
+      username: <value>  
+      password: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.authorize?accessToken=<value>&refreshToken=<value>&basic=<value>&username=<value>&password=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.authorize accessToken=<value> refreshToken=<value> basic=<value> username=<value> password=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.bruteforce.release
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.bruteforce.release)
+----------   
 Releases any bruteforce lock for the given user. If user is not locked, nothing happens.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.release)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1211,15 +3058,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.bruteforce.release:  
+      username: <value>  
+      uuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.bruteforce.release?username=<value>&uuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.bruteforce.release username=<value> uuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.bruteforce.status
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.bruteforce.status)
+----------   
 Returns the bruteforce status for a single user
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.status)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1228,15 +3099,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.bruteforce.status:  
+      username: <value>  
+      uuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.bruteforce.status?username=<value>&uuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.bruteforce.status username=<value> uuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.group.add.roles
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.group.add.roles)
+----------   
 Adds roles to a given group. Roles must exist beforehand.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.add.roles)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1246,15 +3141,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.group.add.roles:  
+      groupUuid: <value>  
+      roleNames: <value>  
+      groupName: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.group.add.roles?groupUuid=<value>&roleNames=<value>&groupName=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.group.add.roles groupUuid=<value> roleNames=<value> groupName=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.group.create
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.group.create)
+----------   
 Creates a new group and puts its uuid in the body under key groupUuid. Throws exception if group already exists.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.create)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1264,15 +3184,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.group.create:  
+      name: <value>  
+      roleNames: <value>  
+      attributes: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.group.create?name=<value>&roleNames=<value>&attributes=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.group.create name=<value> roleNames=<value> attributes=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.group.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.group.delete)
+----------   
 Deletes the group with given uuid.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1280,15 +3225,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.group.delete:  
+      uuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.group.delete?uuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.group.delete uuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.group.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.group.list)
+----------   
 Lists all groups. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1300,15 +3268,42 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.group.list:  
+      filter: <value>  
+      sortByName: <value>  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.group.list?filter=<value>&sortByName=<value>&max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.group.list filter=<value> sortByName=<value> max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.group.list.names
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.group.list.names)
+----------   
 Lists all group names. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list.names)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1318,15 +3313,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.group.list.names:  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.group.list.names?max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.group.list.names max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.group.members
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.group.members)
+----------   
 Lists all users which are member of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.members)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1338,15 +3358,42 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.group.members:  
+      name: <value>  
+      uuid: <value>  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.group.members?name=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.group.members name=<value> uuid=<value> max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.group.roles
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.group.roles)
+----------   
 Lists all effective role names, the given group is assigned to.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.roles)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1358,30 +3405,79 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.group.roles:  
+      groupName: <value>  
+      uuid: <value>  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.group.roles?groupName=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.group.roles groupName=<value> uuid=<value> max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.realm.create
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.realm.create)
+----------   
 Creates a new realm. Sets the uuid in the body under key realmUuid. Throws exception if realm already exists. Expects a JSON in the body of this structure: https://www.keycloak.org/docs-api/11.0/rest-api/index.html#_realmrepresentation
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.realm.create)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.realm.create:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.realm.create?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.realm.create output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.role.add.composites
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.role.add.composites)
+----------   
 Adds existing composite roles to an existing role.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.add.composites)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1390,15 +3486,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.role.add.composites:  
+      roleName: <value>  
+      composites: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.role.add.composites?roleName=<value>&composites=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.role.add.composites roleName=<value> composites=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.role.create
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.role.create)
+----------   
 Creates a new role and puts its role uuid in the body under key roleUuid. Throws exception if role already exists.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.create)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1408,15 +3528,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.role.create:  
+      name: <value>  
+      composites: <value>  
+      attributes: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.role.create?name=<value>&composites=<value>&attributes=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.role.create name=<value> composites=<value> attributes=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.role.members
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.role.members)
+----------   
 Lists all users which are member of the given role. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.members)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1427,30 +3572,78 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.role.members:  
+      roleName: <value>  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.role.members?roleName=<value>&max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.role.members roleName=<value> max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.run.as
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.run.as)
+----------   
 Executes the subsequent pipeline as different user if following two conditions are met. 1. currently logged-in user has permission CAN_RUN_AS_SOURCE 2. requested user has permission CAN_RUN_AS_TARGET 
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.run.as)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `username` | String | true | null | The username, subsequent pipe commands must be executed as. This user must has RUN_AS_SOURCE role assigned.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.run.as:  
+      username: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.run.as?username=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.run.as username=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.search
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.search)
+----------   
 Searches for specific entity in the IAM service matching the given filter. Returns the JSON representation of the given type as JSON array. See here for the representation types: https://www.keycloak.org/docs-api/11.0/rest-api/ .For example the type 'USER' would return a list of 'UserRepresentation'.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.search)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1461,30 +3654,78 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.search:  
+      type: <value>  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.search?type=<value>&max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.search type=<value> max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.token.logout
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.token.logout)
+----------   
 Logs out keycloak session associated with refreshToken and removes any refresh and access tokens from headers.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.logout)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `refreshToken` | String | true | null | The refresh token.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.token.logout:  
+      refreshToken: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.token.logout?refreshToken=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.token.logout refreshToken=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.user.add.groups
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.user.add.groups)
+----------   
 Adds groups to a user by group id or name and returns the group ids added.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.groups)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1494,15 +3735,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.user.add.groups:  
+      uuid: <value>  
+      groupNames: <value>  
+      groupIds: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.user.add.groups?uuid=<value>&groupNames=<value>&groupIds=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.user.add.groups uuid=<value> groupNames=<value> groupIds=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.user.add.roles
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.user.add.roles)
+----------   
 Adds roles to a given user. Roles must exist beforehand.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.roles)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1512,15 +3778,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.user.add.roles:  
+      userUuid: <value>  
+      username: <value>  
+      roleNames: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.user.add.roles?userUuid=<value>&username=<value>&roleNames=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.user.add.roles userUuid=<value> username=<value> roleNames=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.user.create
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.user.create)
+----------   
 Creates a new user and returns its uuid in the body. Throws exception if user already exists.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.create)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1535,15 +3826,45 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.user.create:  
+      name: <value>  
+      email: <value>  
+      firstName: <value>  
+      lastName: <value>  
+      groupNames: <value>  
+      roleNames: <value>  
+      password: <value>  
+      attributes: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.user.create?name=<value>&email=<value>&firstName=<value>&lastName=<value>&groupNames=<value>&roleNames=<value>&password=<value>&attributes=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.user.create name=<value> email=<value> firstName=<value> lastName=<value> groupNames=<value> roleNames=<value> password=<value> attributes=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.user.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.user.delete)
+----------   
 Deletes the user with given uuid.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1551,15 +3872,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.user.delete:  
+      uuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.user.delete?uuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.user.delete uuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.user.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.user.get)
+----------   
 Looks up a user returns it in the body if exists. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1568,15 +3912,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.user.get:  
+      username: <value>  
+      uuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.user.get?username=<value>&uuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.user.get username=<value> uuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.user.groups
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.user.groups)
+----------   
 Lists all groups, the given user is member of. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.groups)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1588,15 +3956,42 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.user.groups:  
+      username: <value>  
+      uuid: <value>  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.user.groups?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.user.groups username=<value> uuid=<value> max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.user.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.user.list)
+----------   
 Lists all users. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1606,15 +4001,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.user.list:  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.user.list?max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.user.list max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## iam.user.roles
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=iam.user.roles)
+----------   
 Lists all effective role names, the given user is member of.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.roles)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1626,15 +4046,42 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.user.roles:  
+      username: <value>  
+      uuid: <value>  
+      max: <value>  
+      offset: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.user.roles?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.user.roles username=<value> uuid=<value> max=<value> offset=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## if
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=if)
+----------   
 Executes the subsequent pipeline only if given condition evaluates to true. By default the full pipeline until the end will be executed. To skip the pipes inside the if definition place the pipe if?end where the if should end.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=if)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1643,15 +4090,39 @@ Name | Type | Required | Default | Description
 `else` | String | false | null | Defines the else part of the if statement. If value of if evaluates to false, the section right after this else statement is executed until the if?end statement or the end of the pipeline. 
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - if:  
+      true: <value>  
+      end: <value>  
+      else: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/if?true=<value>&end=<value>&else=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command if true=<value> end=<value> else=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## job
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=job)
+----------   
 Schedules any subsequent pipes of the current pipeline and executes it at the scheduled times.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=job)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1659,15 +4130,38 @@ Name | Type | Required | Default | Description
 `stop` | String | false | null | If this param is set, all other params are ignored. It contains the uuid of the job to be canceled.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - job:  
+      cron: <value>  
+      stop: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/job?cron=<value>&stop=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command job cron=<value> stop=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## jpa.query
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=jpa.query)
+----------   
 Executes a JPA query and returns the result as JSON in the body. NOTE: This pipe is primarily meant for support to monitor the system. Its not accessible by default accounts! This can change at any time without notice!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=jpa.query)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1675,15 +4169,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - jpa.query:  
+      query: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/jpa.query?query=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command jpa.query query=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## log
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=log)
+----------   
 Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=log)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1691,15 +4208,38 @@ Name | Type | Required | Default | Description
 `level` | String | false | INFO | The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - log:  
+      message: <value>  
+      level: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/log?message=<value>&level=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command log message=<value> level=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## log.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=log.list)
+----------   
 Logs the given number of log lines from specified service.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1709,15 +4249,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - log.list:  
+      service: <value>  
+      lines: <value>  
+      format: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/log.list?service=<value>&lines=<value>&format=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command log.list service=<value> lines=<value> format=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## log.list.email
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=log.list.email)
+----------   
 Returns the email audit log properties. Only available for developers, system or support users.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.list.email)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1727,15 +4292,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - log.list.email:  
+      auditId: <value>  
+      createdAfter: <value>  
+      createdBefore: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/log.list.email?auditId=<value>&createdAfter=<value>&createdBefore=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command log.list.email auditId=<value> createdAfter=<value> createdBefore=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## log.list.environment
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=log.list.environment)
+----------   
 Logs the current environment properties. Only available for developers, system or support users.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.list.environment)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1743,15 +4333,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - log.list.environment:  
+      interpolate: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/log.list.environment?interpolate=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command log.list.environment interpolate=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## mail.dump
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=mail.dump)
+----------   
 Fetches new emails from given mail inbox and uploads them into a drive folder.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=mail.dump)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1766,15 +4379,45 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - mail.dump:  
+      protocol: <value>  
+      host: <value>  
+      port: <value>  
+      inboxUsername: <value>  
+      inboxPassword: <value>  
+      driveUsername: <value>  
+      drivePassword: <value>  
+      path: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/mail.dump?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&driveUsername=<value>&drivePassword=<value>&path=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command mail.dump protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> driveUsername=<value> drivePassword=<value> path=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## mail.fetch
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=mail.fetch)
+----------   
 Fetches new emails from given mail inbox and returns them as JSON in the output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=mail.fetch)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1786,17 +4429,43 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - mail.fetch:  
+      protocol: <value>  
+      host: <value>  
+      port: <value>  
+      inboxUsername: <value>  
+      inboxPassword: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## mail.send
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=mail.send)
-Alias: pipe.command.mail
-
+----------   
 Sends the given message as email. The message's subject and body will be used for in the email accordingly.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=mail.send)
 
+**Alias:** pipe.command.mail   
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1810,12 +4479,37 @@ Name | Type | Required | Default | Description
 `attachments` | String | false | null | Can be a comma separated list of URI Strings (e.g.: uri:drive:file1, uri:property:global/file2, uri:drive:file1, uri:classpath:pipeforce/file3). Also can point via PEL to a content object or a content collection. If the PEL points to an object differently to an uri or content object, serializes the value to string and attaches this as a text file.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - mail.send:  
+      to: <value>  
+      from: <value>  
+      fromName: <value>  
+      subject: <value>  
+      model: <value>  
+      message: <value>  
+      replyTo: <value>  
+      attachments: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&subject=<value>&model=<value>&message=<value>&replyTo=<value>&attachments=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> model=<value> message=<value> replyTo=<value> attachments=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## mail.verify
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=mail.verify)
-Alias: pipe.command.email.verify
-
+----------   
  Protects any subsequent pipe commands: Pipeline is only executed 
  in case the caller has verified that he is the owner of given 
  email address. To do so, a magic link (verification link) is sent 
@@ -1831,9 +4525,12 @@ Alias: pipe.command.email.verify
  clicks after 10min on the link, no more entry in it. Execution fails. 
  User has to re-request the link.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=mail.verify)
 
+**Alias:** pipe.command.email.verify   
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1843,45 +4540,114 @@ Name | Type | Required | Default | Description
 `challenge` | String | false | null | The challenge which will become part of the link in the email when redirecting back.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - mail.verify:  
+      email: <value>  
+      email.whitelist: <value>  
+      email.blacklist: <value>  
+      challenge: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/mail.verify?email=<value>&email.whitelist=<value>&email.blacklist=<value>&challenge=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command mail.verify email=<value> email.whitelist=<value> email.blacklist=<value> challenge=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## map
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=map)
+----------   
 DEPRECATED. Use the set command instead. Maps, calculates and converts data from fields of the input message to fields of the output message.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=map)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `reverse` | Boolean | false | false | Reverses the left and right expressions. This is a workaround if for some reason the left sidefor example may not contain special characters.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - map:  
+      reverse: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/map?reverse=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command map reverse=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## memory.info
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=memory.info)
+----------   
 Shows the current system info like memory consumption. Available for system and support users only.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=memory.info)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - memory.info:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/memory.info?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command memory.info output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## microsoft.teams.send
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=microsoft.teams.send)
+----------   
 Sends a message to a Microsoft Teams channel.Note: This command needs an additional license + plugin. This is here only for documentation purposes. Ask support@pipeforce.io for more information.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=microsoft.teams.send)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1889,15 +4655,38 @@ Name | Type | Required | Default | Description
 `message` | String | true | null | The text message to be send to Teams.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - microsoft.teams.send:  
+      url: <value>  
+      message: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command microsoft.teams.send url=<value> message=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pdf.create
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pdf.create)
+----------   
 Creates a new PDF with blank pages.
 
-Expected Input Body: JsonNode  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.create)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1906,15 +4695,78 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.create:  
+      pages: <value>  
+      format: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.create?pages=<value>&format=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.create pages=<value> format=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## pdf.merge
+----------   
+Takes collection of pdfs that is expected in the body (as pipeline resource) and converts it into single pdf document.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.merge)
+
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of resulting document content.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.merge:  
+      name: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.merge?name=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.merge name=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pdf.stamp
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pdf.stamp)
+----------   
 Writes both text or images to a pdf file under a specific layer. It expects the word pdf file as a pipeline resource in the body and transforms the result back also as a pipeline resource in the body.
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.stamp)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1932,30 +4784,85 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.stamp:  
+      text: <value>  
+      textSize: <value>  
+      textColor: <value>  
+      image: <value>  
+      pages: <value>  
+      position: <value>  
+      layer: <value>  
+      opacity: <value>  
+      degree: <value>  
+      margin: <value>  
+      lineNo: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.stamp?text=<value>&textSize=<value>&textColor=<value>&image=<value>&pages=<value>&position=<value>&layer=<value>&opacity=<value>&degree=<value>&margin=<value>&lineNo=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.stamp text=<value> textSize=<value> textColor=<value> image=<value> pages=<value> position=<value> layer=<value> opacity=<value> degree=<value> margin=<value> lineNo=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pipeline.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pipeline.delete)
+----------   
 Deletes a persisted pipeline.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The exact name of the pipeline to delete.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipeline.delete:  
+      name: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipeline.delete?name=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipeline.delete name=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pipeline.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pipeline.get)
+----------   
 Returns all persisted pipelines matching the given name.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1963,15 +4870,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipeline.get:  
+      name: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipeline.get?name=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipeline.get name=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pipeline.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pipeline.put)
+----------   
 Persists a new pipeline to the system or updates an existing one. The pipeline yaml is expected in the body. Can be null. Returns the updated property in the output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.put)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -1979,30 +4909,75 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipeline.put:  
+      name: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipeline.put?name=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipeline.put name=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pipeline.run
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pipeline.run)
+----------   
 DEPRECATED. Use pipeline.start instead.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.run)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the pipeline to load and execute.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipeline.run:  
+      name: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipeline.run?name=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipeline.run name=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## pipeline.start
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=pipeline.start)
+----------   
 Loads and executes the persisted pipeline and returns its result in the output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.start)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2011,15 +4986,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipeline.start:  
+      key: <value>  
+      vars: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipeline.start?key=<value>&vars=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipeline.start key=<value> vars=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.app.config
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.app.config)
+----------   
 Returns all config resources from apps the current user has access to (role CAN_APP_ is assigned) as a list into the output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.app.config)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2027,15 +5026,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.app.config:  
+      appNames: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.app.config?appNames=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.app.config appNames=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.attachment.chunk.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.attachment.chunk.get)
+----------   
 Returns the chunk (content) of an attachment in the output. Returns empty body if chunk was not found.
 
-Expected Input Body: Void  
-Expected Output Body: Byte[]  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.get)
 
+**Input body type:** ``Void``  
+**Output body type:** ``Byte[]``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2045,15 +5067,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.chunk.get:  
+      key: <value>  
+      name: <value>  
+      index: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.chunk.get?key=<value>&name=<value>&index=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.chunk.get key=<value> name=<value> index=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.attachment.chunk.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.attachment.chunk.put)
+----------   
 Adds a chunk of data to the given attachment.
 
-Expected Input Body: Void  
-Expected Output Body: Byte[]  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.put)
 
+**Input body type:** ``Void``  
+**Output body type:** ``Byte[]``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2063,15 +5110,40 @@ Name | Type | Required | Default | Description
 `content` | String | false | null | The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.chunk.put:  
+      key: <value>  
+      name: <value>  
+      index: <value>  
+      content: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.chunk.put?key=<value>&name=<value>&index=<value>&content=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.chunk.put key=<value> name=<value> index=<value> content=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.attachment.content
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.attachment.content)
+----------   
 Returns the content of an property attachment as a byte stream content object into the output.
 
-Expected Input Body: Void  
-Expected Output Body: Byte[]  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.content)
 
+**Input body type:** ``Void``  
+**Output body type:** ``Byte[]``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2080,15 +5152,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.content:  
+      key: <value>  
+      name: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.content?key=<value>&name=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.content key=<value> name=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.attachment.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.attachment.delete)
+----------   
 Removes an attachment and its content from a property.
 
-Expected Input Body: Void  
-Expected Output Body: Void  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.delete)
 
+**Input body type:** ``Void``  
+**Output body type:** ``Void``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2096,15 +5192,38 @@ Name | Type | Required | Default | Description
 `name` | String | true | null | The name of the attachment to be deleted.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.delete:  
+      key: <value>  
+      name: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.delete?key=<value>&name=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.delete key=<value> name=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.attachment.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.attachment.get)
+----------   
 Returns an attachment of a property (without content).
 
-Expected Input Body: Void  
-Expected Output Body: Byte[]  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.get)
 
+**Input body type:** ``Void``  
+**Output body type:** ``Byte[]``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2113,15 +5232,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.get:  
+      key: <value>  
+      name: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.get?key=<value>&name=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.get key=<value> name=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.attachment.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.attachment.list)
+----------   
 Lists all attachments of a given property. The content is not part of this list. Use property.attachment.chunk.get in order to retrieve the content data.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2129,15 +5272,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.list:  
+      key: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.list?key=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.list key=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.attachment.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.attachment.put)
+----------   
 Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as a single chunk to the attachment and will replace any existing chunks. If no content is in body, chunks will not change at all if they exist.
 
-Expected Input Body: Byte[]  
-Expected Output Body: Void  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put)
 
+**Input body type:** ``Byte[]``  
+**Output body type:** ``Void``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2147,15 +5313,40 @@ Name | Type | Required | Default | Description
 `contentType` | String | false | null | The content type to be used for this attachment.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.put:  
+      key: <value>  
+      name: <value>  
+      content: <value>  
+      contentType: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.put?key=<value>&name=<value>&content=<value>&contentType=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.put key=<value> name=<value> content=<value> contentType=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.attachment.put.uri
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.attachment.put.uri)
+----------   
 Sets property attachment to be symlink to resource referenced by uri.
 
-Expected Input Body: Void  
-Expected Output Body: Byte[]  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put.uri)
 
+**Input body type:** ``Void``  
+**Output body type:** ``Byte[]``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2164,15 +5355,39 @@ Name | Type | Required | Default | Description
 `uri` | String | true | null | The uri of resource to point symlink to.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.put.uri:  
+      key: <value>  
+      name: <value>  
+      uri: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.put.uri?key=<value>&name=<value>&uri=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.put.uri key=<value> name=<value> uri=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.copy
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.copy)
+----------   
 Copies a property from one key to another. If target property already exists, overwrites it. NOTE: Doesnt copy the attachments.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.copy)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2180,15 +5395,38 @@ Name | Type | Required | Default | Description
 `to` | String | true | null | The target key to copy the property to. If a property with this key already exists, it will be overwritten.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.copy:  
+      key: <value>  
+      to: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.copy?key=<value>&to=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.copy key=<value> to=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.exists
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.exists)
+----------   
 Checks whether a given property exists and returns the boolean result in the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.exists)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2196,15 +5434,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.exists:  
+      key: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.exists?key=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.exists key=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.import
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.import)
+----------   
 Imports properties given as JSON document in the body into the property store.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.import)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2212,15 +5473,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.import:  
+      strategy: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.import?strategy=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.import strategy=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.keys.children
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.keys.children)
+----------   
 Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.keys.children)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2228,15 +5512,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.keys.children:  
+      pattern: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.keys.children?pattern=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.keys.children pattern=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.keys
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.keys)
+----------   
 Returns all property keys for a given pattern.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.keys)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2244,15 +5551,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.keys:  
+      pattern: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.keys?pattern=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.keys pattern=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.list)
+----------   
 Lists all properties from the store.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2261,15 +5591,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.list:  
+      pattern: <value>  
+      filter: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.list pattern=<value> filter=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.move
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.move)
+----------   
 Moves a property from one key to another.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.move)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2277,15 +5631,38 @@ Name | Type | Required | Default | Description
 `to` | String | true | null | The target key to move the property to. If a property with this key already exists, an exception is thrown.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.move:  
+      key: <value>  
+      to: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.move?key=<value>&to=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.move key=<value> to=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.put)
+----------   
 Saves the value of a property. The property schema must exist in advance.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.put)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2293,30 +5670,75 @@ Name | Type | Required | Default | Description
 `value` | String | false | null | The value of the property. May be null or empty.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.put:  
+      key: <value>  
+      value: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.put?key=<value>&value=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.put key=<value> value=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.schema.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.schema.delete)
+----------   
 Deletes an existing property schema and its assigned value.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The path key of the property to delete. If property with this key doesnt exist, nothing happens.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.schema.delete:  
+      key: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.schema.delete?key=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.schema.delete key=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.schema.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.schema.put)
+----------   
 Creates or updates a property schema. This command is intended for provisioning, admin and service tasks. Also consider property.put instead. Returns a result JSON indicating the result of the command which usually is one of: create, update or skip.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.put)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2331,15 +5753,45 @@ Name | Type | Required | Default | Description
 `tags` | String | false | null | The initial tags to add to this property. Can be a comma separated list of name value pairs, like this name1:value1, name2:value2.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.schema.put:  
+      key: <value>  
+      defaultValue: <value>  
+      value: <value>  
+      type: <value>  
+      ttl: <value>  
+      evalValue: <value>  
+      existStrategy: <value>  
+      attachments: <value>  
+      tags: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.send.delivery
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.send.delivery)
+----------   
 Sends specified property including attachments as pipeforce delivery.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.send.delivery)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2353,15 +5805,44 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.send.delivery:  
+      key: <value>  
+      message: <value>  
+      privacyLevel: <value>  
+      model: <value>  
+      subject: <value>  
+      includeProperty: <value>  
+      recipients: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.send.delivery?key=<value>&message=<value>&privacyLevel=<value>&model=<value>&subject=<value>&includeProperty=<value>&recipients=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.send.delivery key=<value> message=<value> privacyLevel=<value> model=<value> subject=<value> includeProperty=<value> recipients=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.tag.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.tag.list)
+----------   
 Returns all tags for a given property in the body as JSON: {name1:value1, name2:value2}.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2369,15 +5850,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.tag.list:  
+      key: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.tag.list?key=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.tag.list key=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.tag.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.tag.put)
+----------   
 Adds a tag to an existing property. Overwrites any existing one.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.put)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2387,15 +5891,40 @@ Name | Type | Required | Default | Description
 `value` | String | false | null | The value of a single tag to add. Only used in case tag name is not null.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.tag.put:  
+      key: <value>  
+      tags: <value>  
+      name: <value>  
+      value: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.tag.put?key=<value>&tags=<value>&name=<value>&value=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.tag.put key=<value> tags=<value> name=<value> value=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.value.expression
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.value.expression)
+----------   
 Executes the given expression on persisted properties and returns the matching ones. This type of search for properties is very powerful since it allows to search on any schemaless structures. But be aware it is low performing on a huge amount of properties.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.expression)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2406,15 +5935,41 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.value.expression:  
+      select: <value>  
+      from: <value>  
+      where: <value>  
+      aggregate: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.value.expression?select=<value>&from=<value>&where=<value>&aggregate=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## property.value.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=property.value.get)
+----------   
 Returns the value of a given property.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2422,15 +5977,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.value.get:  
+      key: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.value.get?key=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.value.get key=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## provision
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=provision)
+----------   
 Executes a specific provision script targeted for a namespace.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=provision)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2438,15 +6016,38 @@ Name | Type | Required | Default | Description
 `path` | String | false | null | Path of the provision script to call. If not specified, uses default path: main.pipe.yaml
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - provision:  
+      module: <value>  
+      path: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/provision?module=<value>&path=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command provision module=<value> path=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## publicform.definition
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=publicform.definition)
+----------   
 Composes full public form definition structure.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=publicform.definition)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2454,15 +6055,38 @@ Name | Type | Required | Default | Description
 `id` | String | true | null | The public form id.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - publicform.definition:  
+      id: <value>  
+      id: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/publicform.definition?id=<value>&id=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command publicform.definition id=<value> id=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## publicform.submit
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=publicform.submit)
+----------   
 Stores submitted public form data and attachments. All Form definitions are searched for matching id. Additionally form needs to be marked with 'public: true' property.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=publicform.submit)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2470,15 +6094,38 @@ Name | Type | Required | Default | Description
 `id` | String | true | null | The public form id.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - publicform.submit:  
+      value: <value>  
+      id: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/publicform.submit?value=<value>&id=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command publicform.submit value=<value> id=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## resource
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=resource)
+----------   
 Loads a resource depending on its resource protocol like classpath:, property: or alike.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=resource)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2487,70 +6134,220 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - resource:  
+      path: <value>  
+      uri: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/resource?path=<value>&uri=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command resource path=<value> uri=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## resource.save
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=resource.save)
+----------   
 Expects a resource base64 encoded in the body and saves it as a resource to hub.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=resource.save)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path to save the resource to.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - resource.save:  
+      path: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/resource.save?path=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command resource.save path=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## rpa.website.close
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=rpa.website.close)
+----------   
 Closes website and releases all used resources.Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.close)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** *None*
 
 
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - rpa.website.close:  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/rpa.website.close  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command rpa.website.close   
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## rpa.website.open
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=rpa.website.open)
+----------   
 Opens a website and sets its browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.open)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | true | null | The url of the web page to open.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - rpa.website.open:  
+      url: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/rpa.website.open?url=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command rpa.website.open url=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## rpa.website.scrap
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=rpa.website.scrap)
+----------   
 Scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.scrap)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `xpath` | String | true | null | Executes the given xpath expression on the current page and puts the result in the body. In case the xpath returns more than one results, adds an array to the body. Otherwise the body only contains the single result value.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - rpa.website.scrap:  
+      xpath: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/rpa.website.scrap?xpath=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command rpa.website.scrap xpath=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## schema.pipeline
+----------   
+Returns the V7 compliant JSON schema for all built-in pipes.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=schema.pipeline)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - schema.pipeline:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/schema.pipeline?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command schema.pipeline output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## script.run
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=script.run)
+----------   
 Executes a given script at server side and returns the output of the script in the output. Note: The script must define a function called command(). Optionally, the function argument pi can be used to access the current message (pi.message) or the logger (pi.log).
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=script.run)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2560,60 +6357,151 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - script.run:  
+      script: <value>  
+      path: <value>  
+      language: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command script.run script=<value> path=<value> language=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## server.info
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=server.info)
+----------   
 Returns information about the current server. For example the version it is running under. Returns a flat JSON with these keys: status, namespace, domain, edition, stage, tag, build, version, versionMajor, versionMinor, versionBugfix
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=server.info)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - server.info:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/server.info?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command server.info output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## service.start
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=service.start)
+----------   
 Starts a service defined in services config.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.start)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the service to start. 
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.start:  
+      name: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.start?name=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.start name=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## service.stop
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=service.stop)
+----------   
 Stops one the service.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.stop)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the service. 
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.stop:  
+      name: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.stop?name=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.stop name=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## set.body
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=set.body)
+----------   
 Sets a value in the body. Overwrites any existing value in the body. The value to be set can be a constant or an expression.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=set.body)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2621,15 +6509,38 @@ Name | Type | Required | Default | Description
 `format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - set.body:  
+      value: <value>  
+      format: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/set.body?value=<value>&format=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command set.body value=<value> format=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## set
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=set)
+----------   
 Sets a value in the pipe message. The value to be set can be a constant or an expression.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=set)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2640,15 +6551,41 @@ Name | Type | Required | Default | Description
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - set:  
+      value: <value>  
+      to: <value>  
+      mapping: <value>  
+      output: <value>  
+      input: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/set?value=<value>&to=<value>&mapping=<value>&output=<value>&input=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command set value=<value> to=<value> mapping=<value> output=<value> input=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## set.var
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=set.var)
+----------   
 Sets a value in the vars scope. Overwrites any existing var in the vars scope. The value to be set can be a constant or an expression.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=set.var)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2657,15 +6594,39 @@ Name | Type | Required | Default | Description
 `format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - set.var:  
+      key: <value>  
+      value: <value>  
+      format: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/set.var?key=<value>&value=<value>&format=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command set.var key=<value> value=<value> format=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## sftp.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=sftp.delete)
+----------   
 Deletes a file or folder on the SFTP server.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2674,18 +6635,47 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password
 `host` | String | false | null | The host
 `port` | String | false | null | The port
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sftp.delete:  
+      path: <value>  
+      username: <value>  
+      password: <value>  
+      host: <value>  
+      port: <value>  
+      credentials: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&credentials=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> credentials=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## sftp.download
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=sftp.download)
+----------   
 Downloads a file from a SFTP server. The file is written as content object to output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.download)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2694,18 +6684,47 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password
 `host` | String | false | null | The host
 `port` | String | false | null | The port
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sftp.download:  
+      path: <value>  
+      username: <value>  
+      password: <value>  
+      host: <value>  
+      port: <value>  
+      credentials: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&credentials=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> credentials=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## sftp.list
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=sftp.list)
+----------   
 Lists all files of a given folder. The result is written to output.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.list)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2714,18 +6733,47 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password
 `host` | String | false | null | The host
 `port` | String | false | null | The port
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sftp.list:  
+      path: <value>  
+      username: <value>  
+      password: <value>  
+      host: <value>  
+      port: <value>  
+      credentials: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sftp.list?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&credentials=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sftp.list path=<value> username=<value> password=<value> host=<value> port=<value> credentials=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## sftp.mkdir
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=sftp.mkdir)
+----------   
 Creates a new directory on the SFTP server.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.mkdir)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2734,18 +6782,47 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password
 `host` | String | false | null | The host
 `port` | String | false | null | The port
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sftp.mkdir:  
+      path: <value>  
+      username: <value>  
+      password: <value>  
+      host: <value>  
+      port: <value>  
+      credentials: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&credentials=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> credentials=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## sftp.rename
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=sftp.rename)
+----------   
 Renames a file or folder on the SFTP server.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.rename)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2755,18 +6832,48 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password
 `host` | String | false | null | The host
 `port` | String | false | null | The port
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sftp.rename:  
+      fromPath: <value>  
+      toPath: <value>  
+      username: <value>  
+      password: <value>  
+      host: <value>  
+      port: <value>  
+      credentials: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=<value>&password=<value>&host=<value>&port=<value>&credentials=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> credentials=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## sftp.upload
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=sftp.upload)
+----------   
 Uploads a file to a SFTP server. The file is expected to be in the input.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.upload)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2775,18 +6882,47 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password
 `host` | String | false | null | The host
 `port` | String | false | null | The port
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sftp.upload:  
+      path: <value>  
+      username: <value>  
+      password: <value>  
+      host: <value>  
+      port: <value>  
+      credentials: <value>  
+      input: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&credentials=<value>&input=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> credentials=<value> input=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## slack.send
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=slack.send)
+----------   
 Sends a text message via webhook url to Slack. Also see: https://api.slack.com/messaging/webhooks
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=slack.send)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2794,15 +6930,38 @@ Name | Type | Required | Default | Description
 `text` | String | true | null | The text message to be send to Slack.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - slack.send:  
+      url: <value>  
+      text: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/slack.send?url=<value>&text=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command slack.send url=<value> text=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## sql.query
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=sql.query)
+----------   
 Executes a (read-only) SQL query and returns the result as JSON in the body. NOTE: This command is primarily meant for developers and admins to monitor the system. It should not be used in production workflows! It can change at any time without notice!
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=sql.query)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2814,30 +6973,79 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sql.query:  
+      query: <value>  
+      datasource: <value>  
+      columnName: <value>  
+      dataField: <value>  
+      columnField: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sql.query?query=<value>&datasource=<value>&columnName=<value>&dataField=<value>&columnField=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sql.query query=<value> datasource=<value> columnName=<value> dataField=<value> columnField=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## switch
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=switch)
+----------   
 Evaluates each switch statement. Takes the value part of the first match and writes it to the given output. If no output is given, writes it to the body. Any param key will be the selection expression which needs to evaluate to a boolean true or false and any value will be the selected value.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=switch)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - switch:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/switch?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command switch output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## theme
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=theme)
+----------   
 Returns the resources for a given theme in the body and enrich headers with appropriate Content-type. Caches the resources.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=theme)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2846,15 +7054,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - theme:  
+      clearCache: <value>  
+      resource: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/theme?clearCache=<value>&resource=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command theme clearCache=<value> resource=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## transform
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=transform)
+----------   
 This transformer converts the input to an output format by applying the given template engine. By default the current message is provided as model inside the template context so you can access body, vars or headers similar to the default PEL approach.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2867,15 +7099,43 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform:  
+      iterate: <value>  
+      groupBy: <value>  
+      engine: <value>  
+      modelName: <value>  
+      template: <value>  
+      input: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## transform.ftl
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=transform.ftl)
+----------   
 This transformer uses the FreeMarker template engine for its transformation. It expects the template to be in the body or in the template param, transforms it and puts the result  to the output (as a content object).
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.ftl)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2884,30 +7144,76 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.ftl:  
+      model: <value>  
+      template: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.ftl?model=<value>&template=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.ftl model=<value> template=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## transform.html2docx
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=transform.html2docx)
+----------   
 Takes html text that is expected in the body, (as pipeline resource) and converts it back to docx document and then writes to output.
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.html2docx)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.html2docx:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.html2docx?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.html2docx output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## transform.pdf2png
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=transform.pdf2png)
+----------   
 Takes pdf that is expected in the body, (as pipeline resource) and converts it back to body (as pipeline resource) as a collection of png images.
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.pdf2png)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2915,15 +7221,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.pdf2png:  
+      dpi: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.pdf2png?dpi=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.pdf2png dpi=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## transform.png2pdf
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=transform.png2pdf)
+----------   
 Takes collection of pngs that is expected in the body (as pipeline resource) and converts it back to body (as pipeline resource) to pdf document.
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.png2pdf)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2931,17 +7260,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.png2pdf:  
+      dpi: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.png2pdf?dpi=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.png2pdf dpi=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## transform.word2pdf
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=transform.word2pdf)
+----------   
 DEPRECATED. Use microsoft.word.export.pdf instead. Takes a word file (.docx) that is expected in the 
 body and converts
 it to pdf and stores it back into the body.
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.word2pdf)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2949,15 +7301,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.word2pdf:  
+      path: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.word2pdf?path=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.word2pdf path=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## transform.wordtemplate
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=transform.wordtemplate)
+----------   
 Transforms velocity template expressions in word files. It expects the template to be in the body or in thetemplate param, transforms it and puts the result back to the body as byte array content.
 
-Expected Input Body: Raw  
-Expected Output Body: Raw  
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.wordtemplate)
 
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2966,15 +7341,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.wordtemplate:  
+      model: <value>  
+      template: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.wordtemplate?model=<value>&template=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.wordtemplate model=<value> template=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## translate
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=translate)
+----------   
 Translates the given text to the given target language. Expects the input by default in the body and writes the result by default back to the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=translate)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -2986,30 +7385,79 @@ Name | Type | Required | Default | Description
 `filter` | String | false | null | A PEL as filter to be applied to the output data before it is returned by this command. If null or empty, no filter is applied.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - translate:  
+      text: <value>  
+      targetLanguage: <value>  
+      output: <value>  
+      apiKey: <value>  
+      restUrl: <value>  
+      filter: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/translate?text=<value>&targetLanguage=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command translate text=<value> targetLanguage=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## unzip
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=unzip)
+----------   
 Unzips a given zipped content from the body and puts the uncompressed content into the output. Note: Currently only files in the root level of the zip are supported.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=unzip)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - unzip:  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/unzip?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command unzip output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## validate.json
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=validate.json)
+----------   
 Validates the JSON body of the message against a given JSON schema. See https://json-schema.org/. 
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=validate.json)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3018,30 +7466,76 @@ Name | Type | Required | Default | Description
 `path` | String | false | null | A pipe expression pointing to the JSON inside the pipe message validation is required for. If missing, null or empty, the body is used by default.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - validate.json:  
+      schema: <value>  
+      version: <value>  
+      path: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/validate.json?schema=<value>&version=<value>&path=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command validate.json schema=<value> version=<value> path=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## webhook.delete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=webhook.delete)
+----------   
 Deletes an existing webhook. If no such webhook exists, nothing happens.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.delete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | Id of the webhook to delete.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - webhook.delete:  
+      uuid: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/webhook.delete?uuid=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command webhook.delete uuid=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## webhook.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=webhook.get)
+----------   
 Returns all persisted webhooks as a list.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3049,15 +7543,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - webhook.get:  
+      uuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/webhook.get?uuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command webhook.get uuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## webhook.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=webhook.put)
+----------   
 Creates a new webhook or updates an existing one and returns its metadata.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.put)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3067,30 +7584,77 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - webhook.put:  
+      eventKey: <value>  
+      pipeline: <value>  
+      uuid: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## webhook.receive
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=webhook.receive)
+----------   
 Runs a webhook identified by its uuid.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | The uuid of the webhook.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - webhook.receive:  
+      uuid: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/webhook.receive?uuid=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command webhook.receive uuid=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## webhook.send
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=webhook.send)
+----------   
 Sends a webhook message to an external system. Returns a JSON in the body like {result:STATUS} whereasSTATUS is the response string sent back by the webhook target system. Usually this is 'ok' if everything was OK. Consult the documentation of the webhook target system about the STATUS codes.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.send)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3099,15 +7663,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - webhook.send:  
+      url: <value>  
+      message: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/webhook.send?url=<value>&message=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command webhook.send url=<value> message=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.deploy
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.deploy)
+----------   
 Deploys a given BPMN from the body or a given property into the underlying workflow engine.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deploy)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3117,15 +7705,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.deploy:  
+      name: <value>  
+      appId: <value>  
+      propertyKey: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKey=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.deployment.find
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.deployment.find)
+----------   
 Finds all deployments from the workflow engine matching given parameters and puts them into the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: Deployment  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deployment.find)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``Deployment``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3134,17 +7747,41 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.deployment.find:  
+      name: <value>  
+      id: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.deployment.find?name=<value>&id=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.deployment.find name=<value> id=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.event
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.event)
+----------   
 Sends an event message to a message endpoint inside 
 a given workflow. As payload of the event message, 
 the current pipe message will be used as input.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.event)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3154,15 +7791,40 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.event:  
+      processInstanceId: <value>  
+      businessKey: <value>  
+      messageName: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=<value>&messageName=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.find.processinstances
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.find.processinstances)
+----------   
 Returns all process instances matching the given criteria.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.find.processinstances)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3170,15 +7832,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.find.processinstances:  
+      processInstanceBusinessKey: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.find.processinstances?processInstanceBusinessKey=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.find.processinstances processInstanceBusinessKey=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.history.tasks
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.history.tasks)
+----------   
 Returns all finished tasks matching the given criteria.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.history.tasks)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3190,15 +7875,42 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.history.tasks:  
+      dueBefore: <value>  
+      assignee: <value>  
+      includeVariables: <value>  
+      processInstanceId: <value>  
+      processInstanceBusinessKey: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.history.tasks?dueBefore=<value>&assignee=<value>&includeVariables=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.history.tasks dueBefore=<value> assignee=<value> includeVariables=<value> processInstanceId=<value> processInstanceBusinessKey=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.member.message
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.member.message)
+----------   
 Sends a message to the given workflow member. In case the workflow member is not already added to the workflow model, adds a new entry to a given workflow model, which is usually a data model (JSON) with a single member structure like this: workflowModel.members[someUserId] whereas in this level user, taskUrl and shareUrl will be added if required.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.member.message)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3212,15 +7924,44 @@ Name | Type | Required | Default | Description
 `model` | String | false | null | The model to be used in the invite message template.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.member.message:  
+      workflowModel: <value>  
+      userId: <value>  
+      username: <value>  
+      resourcePath: <value>  
+      taskUrl: <value>  
+      subject: <value>  
+      message: <value>  
+      model: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.member.message?workflowModel=<value>&userId=<value>&username=<value>&resourcePath=<value>&taskUrl=<value>&subject=<value>&message=<value>&model=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.member.message workflowModel=<value> userId=<value> username=<value> resourcePath=<value> taskUrl=<value> subject=<value> message=<value> model=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.model.attachment.get
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.model.attachment.get)
+----------   
 Returns property.attachment.content from process model property attachment.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.get)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3228,15 +7969,38 @@ Name | Type | Required | Default | Description
 `fileName` | String | true | null | The attachment name.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.model.attachment.get:  
+      processInstanceId: <value>  
+      fileName: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.model.attachment.get?processInstanceId=<value>&fileName=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.model.attachment.get processInstanceId=<value> fileName=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.model.attachment.put
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.model.attachment.put)
+----------   
 Does property.attachment.put to process model property attachment. 
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.put)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3244,15 +8008,38 @@ Name | Type | Required | Default | Description
 `fileName` | String | true | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.model.attachment.put:  
+      processInstanceId: <value>  
+      fileName: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<value>&fileName=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.model
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.model)
+----------   
 Utility command to easier workflow model handling.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3260,15 +8047,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.model:  
+      mappings: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.model?mappings=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.model mappings=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.tasks.open
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.tasks.open)
+----------   
 Returns all open tasks grouped by assignee. Returned parameters are dynamically and depend on the underlying workflow engine. Default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3279,15 +8089,41 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.tasks.open:  
+      dueBefore: <value>  
+      assignee: <value>  
+      processInstanceId: <value>  
+      processInstanceBusinessKey: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.tasks.open?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.tasks.open dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.tasks.open.reminder
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.tasks.open.reminder)
+----------   
 Sends a reminder email to each assignee having open tasks matching given criteria.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open.reminder)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3298,19 +8134,45 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.tasks.open.reminder:  
+      dueBefore: <value>  
+      assignee: <value>  
+      processInstanceId: <value>  
+      processInstanceBusinessKey: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.tasks.open.reminder?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.tasks.open.reminder dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.start
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.start)
+----------   
 Starts a new instance of a process in the workflow engine. 
 The given pipe message will be serialized to JSON and
 put as variable <code>pipeJson</code> into context of the 
 process (process variables).
 Returns the input message unchanged.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.start)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3322,15 +8184,42 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.start:  
+      key: <value>  
+      businessKey: <value>  
+      variables: <value>  
+      workflowModelInstanceKey: <value>  
+      workflowStartedBy: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.start?key=<value>&businessKey=<value>&variables=<value>&workflowModelInstanceKey=<value>&workflowStartedBy=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.start key=<value> businessKey=<value> variables=<value> workflowModelInstanceKey=<value> workflowStartedBy=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.task.complete
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.task.complete)
+----------   
 Completes a given workflow task and puts any resulting variable from the task in the body.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.task.complete)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3339,15 +8228,39 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.task.complete:  
+      taskId: <value>  
+      variables: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.task.complete?taskId=<value>&variables=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.task.complete taskId=<value> variables=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.tasks
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.tasks)
+----------   
 Returns all tasks for a given workflow. Returned parameters are dynamically and depend on the underlying workflow engine. Default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3358,15 +8271,41 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.tasks:  
+      dueBefore: <value>  
+      assignee: <value>  
+      processInstanceId: <value>  
+      processInstanceBusinessKey: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.tasks?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.tasks dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.undeploy
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.undeploy)
+----------   
 Undeploys a given BPMN from workflow engine.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.undeploy)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3374,15 +8313,38 @@ Name | Type | Required | Default | Description
 `onError` | String | false | EXIT | What to do if an error happened in this command?
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.undeploy:  
+      name: <value>  
+      onError: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.undeploy?name=<value>&onError=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.undeploy name=<value> onError=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## workflow.users
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=workflow.users)
+----------   
 Returns all users eligible to participate in given workflow.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.users)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3390,15 +8352,38 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.users:  
+      processDefinitionId: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.users?processDefinitionId=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.users processDefinitionId=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 
 ## zip
-[(Show in UI)]
-(https://enterprise.pipeforce.org/#/pipeform?command=zip)
+----------   
 Compresses a given content in the body and puts the compressed data into the output. If content is a content collection, puts all entries in the resulting zip file. Note: Currently a nested content collection is currently not supported! Any content entry must be at the root level.
 
-Expected Input Body: JsonNode  
-Expected Output Body: JsonNode  
+[Try online.](https://try.pipeforce.org/#/commandform?command=zip)
 
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
@@ -3407,4 +8392,27 @@ Name | Type | Required | Default | Description
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - zip:  
+      name: <value>  
+      level: <value>  
+      output: <value>  
+  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/zip?name=<value>&level=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command zip name=<value> level=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
 

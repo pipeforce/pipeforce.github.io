@@ -7,9 +7,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'PIPEFORCE',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Platform for Workflow Automation and Integration',
   url: 'https://pipeforce.github.io',
   baseUrl: '/',
+  // TODO Change this to 'throw', once in production:
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -24,14 +25,12 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
+          editUrl: 'https://github.com/pipeforce/pipeforce.github.io/edit/master/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/main/website/blog/',
+            'https://github.com/pipeforce/pipeforce.github.io/edit/master/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
