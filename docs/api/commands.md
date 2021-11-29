@@ -2,7 +2,7 @@
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
-Generated: **28/11/2021**  
+Generated: **29/11/2021**  
 Number of built-in commands: **202**  
 Download pipeline and commands schema: **[pipeline-schema.json](./assets/pipeline-schema.txt)**  
 Also see: **[Pipeline Guide](../guides/pipeline)** | **[Command Guide](../guides/command)**  
@@ -36,7 +36,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - apidoc.commands:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -73,7 +72,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - apidoc.pel.utils:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -120,7 +118,6 @@ pipeline:
       equals: <value>  
       value: <value>  
       message: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -165,7 +162,6 @@ pipeline:
       processFinished: <value>  
       throwException: <value>  
       processInstanceId: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -210,7 +206,6 @@ pipeline:
       height: <value>  
       format: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -249,7 +244,6 @@ pipeline:
   - barcode.read:  
       input: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -290,7 +284,6 @@ pipeline:
       name: <value>  
       method: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -323,7 +316,6 @@ Sets the value in the body to null. Deletes any existing value in the body.
 ```yaml  
 pipeline:  
   - body.delete:  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -362,7 +354,6 @@ pipeline:
   - body.filter:  
       properties: <value>  
       removeKey: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -399,7 +390,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - cache.clear:  
       key: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -442,7 +432,6 @@ pipeline:
       remove: <value>  
       exit: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -479,7 +468,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - cache.info:  
       key: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -516,7 +504,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - cache.list:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -559,7 +546,6 @@ pipeline:
       timeToLive: <value>  
       key: <value>  
       value: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -600,7 +586,6 @@ pipeline:
       uri: <value>  
       args: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -633,7 +618,6 @@ DEPREACTED (Use the cache.* commands instead). Captures the last pipe message an
 ```yaml  
 pipeline:  
   - capture:  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -672,7 +656,6 @@ pipeline:
   - pipe.schema:  
       pipe: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -709,7 +692,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - pipe.schema.v7:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -752,7 +734,6 @@ pipeline:
       key: <value>  
       includePermission: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -791,7 +772,6 @@ pipeline:
   - content.get:  
       uri: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -828,7 +808,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - credentials.delete:  
       name: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -867,7 +846,6 @@ pipeline:
   - credentials.get:  
       name: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -904,7 +882,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - credentials.list:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -947,7 +924,6 @@ pipeline:
       name: <value>  
       secret: <value>  
       timeToLive: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -988,7 +964,6 @@ pipeline:
       rules: <value>  
       input: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1037,7 +1012,6 @@ pipeline:
       template: <value>  
       input: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1076,7 +1050,6 @@ pipeline:
   - datetime:  
       format: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1113,7 +1086,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - datetime.zones:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1154,7 +1126,6 @@ pipeline:
       password: <value>  
       input: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1199,7 +1170,6 @@ pipeline:
       mimeType: <value>  
       length: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1250,7 +1220,6 @@ pipeline:
       attachments: <value>  
       notifySender: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1287,7 +1256,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - delivery.delete:  
       deliveryUuid: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1326,7 +1294,6 @@ pipeline:
   - delivery.finalize:  
       deliveryUuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1365,7 +1332,6 @@ pipeline:
   - delivery.get:  
       deliveryUuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1408,7 +1374,6 @@ pipeline:
       email: <value>  
       locale: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1449,7 +1414,6 @@ pipeline:
       deliveryUuid: <value>  
       recipients: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1502,7 +1466,6 @@ pipeline:
       attachments: <value>  
       notifySender: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1539,7 +1502,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - doc.api.pelutils:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1593,7 +1555,6 @@ pipeline:
       accessToken: <value>  
       accountId: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1638,7 +1599,6 @@ pipeline:
       apiKey: <value>  
       restUrl: <value>  
       filter: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1679,7 +1639,6 @@ pipeline:
       path: <value>  
       namingPattern: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1718,7 +1677,6 @@ pipeline:
   - drive.copy:  
       path: <value>  
       to: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1755,7 +1713,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - drive.delete:  
       path: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1794,7 +1751,6 @@ pipeline:
   - drive.exists:  
       path: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1833,7 +1789,6 @@ pipeline:
   - drive.list:  
       path: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1872,7 +1827,6 @@ pipeline:
   - drive.mkdir:  
       path: <value>  
       recurse: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1911,7 +1865,6 @@ pipeline:
   - drive.move:  
       path: <value>  
       to: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1952,7 +1905,6 @@ pipeline:
       path: <value>  
       append: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -1993,7 +1945,6 @@ pipeline:
       path: <value>  
       namingStrategy: <value>  
       cleanupBody: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2050,7 +2001,6 @@ pipeline:
       password: <value>  
       invite: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2093,7 +2043,6 @@ pipeline:
       tagname: <value>  
       tagvalue: <value>  
       remove: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2136,7 +2085,6 @@ pipeline:
       uuid: <value>  
       path: <value>  
       index: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2175,7 +2123,6 @@ pipeline:
   - encrypt:  
       password: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2212,7 +2159,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - eval:  
       expr: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2251,7 +2197,6 @@ pipeline:
   - event.listen:  
       key: <value>  
       filter: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2288,7 +2233,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - event.mapping.get:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2331,7 +2275,6 @@ pipeline:
       traceId: <value>  
       payload: <value>  
       async: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2374,7 +2317,6 @@ pipeline:
       item: <value>  
       loopName: <value>  
       end: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2407,7 +2349,6 @@ DEPRECATED. Use the set command instead. Sets any parameter value as header. For
 ```yaml  
 pipeline:  
   - header.set:  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2444,7 +2385,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - htmlunit.website.form.find:  
       select: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2483,7 +2423,6 @@ pipeline:
   - htmlunit.website.form.input:  
       value: <value>  
       select: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2520,7 +2459,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - htmlunit.website.form.submit:  
       select: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2557,7 +2495,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - htmlunit.website.link.click:  
       select: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2594,7 +2531,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - htmlunit.website.open:  
       url: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2633,7 +2569,6 @@ pipeline:
   - htmlunit.website.scrap:  
       xpath: <value>  
       select: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2680,7 +2615,6 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2727,7 +2661,6 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2774,7 +2707,6 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2821,7 +2753,6 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2868,7 +2799,6 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2905,7 +2835,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - iam.token.refresh:  
       refreshToken: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2946,7 +2875,6 @@ pipeline:
       username: <value>  
       password: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -2979,7 +2907,6 @@ Adds header 'authUserId' - name of an user authenticated as a sender of the pipe
 ```yaml  
 pipeline:  
   - iam.authinfo:  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3024,7 +2951,6 @@ pipeline:
       basic: <value>  
       username: <value>  
       password: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3065,7 +2991,6 @@ pipeline:
       username: <value>  
       uuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3106,7 +3031,6 @@ pipeline:
       username: <value>  
       uuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3149,7 +3073,6 @@ pipeline:
       roleNames: <value>  
       groupName: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3192,7 +3115,6 @@ pipeline:
       roleNames: <value>  
       attributes: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3231,7 +3153,6 @@ pipeline:
   - iam.group.delete:  
       uuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3278,7 +3199,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3321,7 +3241,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3368,7 +3287,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3415,7 +3333,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3452,7 +3369,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - iam.realm.create:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3493,7 +3409,6 @@ pipeline:
       roleName: <value>  
       composites: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3536,7 +3451,6 @@ pipeline:
       composites: <value>  
       attributes: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3581,7 +3495,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3618,7 +3531,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - iam.run.as:  
       username: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3663,7 +3575,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3700,7 +3611,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - iam.token.logout:  
       refreshToken: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3743,7 +3653,6 @@ pipeline:
       groupNames: <value>  
       groupIds: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3786,7 +3695,6 @@ pipeline:
       username: <value>  
       roleNames: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3839,7 +3747,6 @@ pipeline:
       password: <value>  
       attributes: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3878,7 +3785,6 @@ pipeline:
   - iam.user.delete:  
       uuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3919,7 +3825,6 @@ pipeline:
       username: <value>  
       uuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -3966,7 +3871,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4009,7 +3913,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4056,7 +3959,6 @@ pipeline:
       offset: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4097,7 +3999,6 @@ pipeline:
       true: <value>  
       end: <value>  
       else: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4136,7 +4037,6 @@ pipeline:
   - job:  
       cron: <value>  
       stop: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4175,7 +4075,6 @@ pipeline:
   - jpa.query:  
       query: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4214,7 +4113,6 @@ pipeline:
   - log:  
       message: <value>  
       level: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4257,7 +4155,6 @@ pipeline:
       lines: <value>  
       format: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4300,7 +4197,6 @@ pipeline:
       createdAfter: <value>  
       createdBefore: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4339,7 +4235,6 @@ pipeline:
   - log.list.environment:  
       interpolate: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4392,7 +4287,6 @@ pipeline:
       drivePassword: <value>  
       path: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4439,7 +4333,6 @@ pipeline:
       inboxUsername: <value>  
       inboxPassword: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4491,7 +4384,6 @@ pipeline:
       message: <value>  
       replyTo: <value>  
       attachments: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4548,7 +4440,6 @@ pipeline:
       email.whitelist: <value>  
       email.blacklist: <value>  
       challenge: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4585,7 +4476,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - map:  
       reverse: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4622,7 +4512,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - memory.info:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4661,7 +4550,6 @@ pipeline:
   - microsoft.teams.send:  
       url: <value>  
       message: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4702,7 +4590,6 @@ pipeline:
       pages: <value>  
       format: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4741,7 +4628,6 @@ pipeline:
   - pdf.merge:  
       name: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4800,7 +4686,6 @@ pipeline:
       margin: <value>  
       lineNo: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4837,7 +4722,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - pipeline.delete:  
       name: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4876,7 +4760,6 @@ pipeline:
   - pipeline.get:  
       name: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4915,7 +4798,6 @@ pipeline:
   - pipeline.put:  
       name: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4952,7 +4834,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - pipeline.run:  
       name: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -4993,7 +4874,6 @@ pipeline:
       key: <value>  
       vars: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5032,7 +4912,6 @@ pipeline:
   - property.app.config:  
       appNames: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5075,7 +4954,6 @@ pipeline:
       name: <value>  
       index: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5118,7 +4996,6 @@ pipeline:
       name: <value>  
       index: <value>  
       content: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5159,7 +5036,6 @@ pipeline:
       key: <value>  
       name: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5198,7 +5074,6 @@ pipeline:
   - property.attachment.delete:  
       key: <value>  
       name: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5239,7 +5114,6 @@ pipeline:
       key: <value>  
       name: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5278,7 +5152,6 @@ pipeline:
   - property.attachment.list:  
       key: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5321,7 +5194,6 @@ pipeline:
       name: <value>  
       content: <value>  
       contentType: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5362,7 +5234,6 @@ pipeline:
       key: <value>  
       name: <value>  
       uri: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5401,7 +5272,6 @@ pipeline:
   - property.copy:  
       key: <value>  
       to: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5440,7 +5310,6 @@ pipeline:
   - property.exists:  
       key: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5479,7 +5348,6 @@ pipeline:
   - property.import:  
       strategy: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5518,7 +5386,6 @@ pipeline:
   - property.keys.children:  
       pattern: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5557,7 +5424,6 @@ pipeline:
   - property.keys:  
       pattern: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5598,7 +5464,6 @@ pipeline:
       pattern: <value>  
       filter: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5637,7 +5502,6 @@ pipeline:
   - property.move:  
       key: <value>  
       to: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5676,7 +5540,6 @@ pipeline:
   - property.put:  
       key: <value>  
       value: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5713,7 +5576,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.schema.delete:  
       key: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5766,7 +5628,6 @@ pipeline:
       existStrategy: <value>  
       attachments: <value>  
       tags: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5817,7 +5678,6 @@ pipeline:
       includeProperty: <value>  
       recipients: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5856,7 +5716,6 @@ pipeline:
   - property.tag.list:  
       key: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5899,7 +5758,6 @@ pipeline:
       tags: <value>  
       name: <value>  
       value: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5944,7 +5802,6 @@ pipeline:
       where: <value>  
       aggregate: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -5983,7 +5840,6 @@ pipeline:
   - property.value.get:  
       key: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6022,7 +5878,6 @@ pipeline:
   - provision:  
       module: <value>  
       path: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6061,7 +5916,6 @@ pipeline:
   - publicform.definition:  
       id: <value>  
       id: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6100,7 +5954,6 @@ pipeline:
   - publicform.submit:  
       value: <value>  
       id: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6141,7 +5994,6 @@ pipeline:
       path: <value>  
       uri: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6178,7 +6030,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - resource.save:  
       path: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6211,7 +6062,6 @@ Closes website and releases all used resources.Note: The pipe is BETA and not in
 ```yaml  
 pipeline:  
   - rpa.website.close:  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6248,7 +6098,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - rpa.website.open:  
       url: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6285,7 +6134,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - rpa.website.scrap:  
       xpath: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6322,7 +6170,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - schema.pipeline:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6365,7 +6212,6 @@ pipeline:
       path: <value>  
       language: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6402,7 +6248,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - server.info:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6439,7 +6284,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - service.start:  
       name: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6476,7 +6320,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - service.stop:  
       name: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6515,7 +6358,6 @@ pipeline:
   - set.body:  
       value: <value>  
       format: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6560,7 +6402,6 @@ pipeline:
       mapping: <value>  
       output: <value>  
       input: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6601,7 +6442,6 @@ pipeline:
       key: <value>  
       value: <value>  
       format: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6650,7 +6490,6 @@ pipeline:
       port: <value>  
       credentials: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6699,7 +6538,6 @@ pipeline:
       port: <value>  
       credentials: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6748,7 +6586,6 @@ pipeline:
       port: <value>  
       credentials: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6797,7 +6634,6 @@ pipeline:
       port: <value>  
       credentials: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6848,7 +6684,6 @@ pipeline:
       port: <value>  
       credentials: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6897,7 +6732,6 @@ pipeline:
       port: <value>  
       credentials: <value>  
       input: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6936,7 +6770,6 @@ pipeline:
   - slack.send:  
       url: <value>  
       text: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -6983,7 +6816,6 @@ pipeline:
       dataField: <value>  
       columnField: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7020,7 +6852,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - switch:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7061,7 +6892,6 @@ pipeline:
       clearCache: <value>  
       resource: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7110,7 +6940,6 @@ pipeline:
       template: <value>  
       input: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7151,7 +6980,6 @@ pipeline:
       model: <value>  
       template: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7188,7 +7016,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - transform.html2docx:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7227,7 +7054,6 @@ pipeline:
   - transform.pdf2png:  
       dpi: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7266,7 +7092,6 @@ pipeline:
   - transform.png2pdf:  
       dpi: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7307,7 +7132,6 @@ pipeline:
   - transform.word2pdf:  
       path: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7348,7 +7172,6 @@ pipeline:
       model: <value>  
       template: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7395,7 +7218,6 @@ pipeline:
       apiKey: <value>  
       restUrl: <value>  
       filter: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7432,7 +7254,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - unzip:  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7473,7 +7294,6 @@ pipeline:
       schema: <value>  
       version: <value>  
       path: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7510,7 +7330,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - webhook.delete:  
       uuid: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7549,7 +7368,6 @@ pipeline:
   - webhook.get:  
       uuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7592,7 +7410,6 @@ pipeline:
       pipeline: <value>  
       uuid: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7629,7 +7446,6 @@ Name | Type | Required | Default | Description
 pipeline:  
   - webhook.receive:  
       uuid: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7670,7 +7486,6 @@ pipeline:
       url: <value>  
       message: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7713,7 +7528,6 @@ pipeline:
       appId: <value>  
       propertyKey: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7754,7 +7568,6 @@ pipeline:
       name: <value>  
       id: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7799,7 +7612,6 @@ pipeline:
       businessKey: <value>  
       messageName: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7838,7 +7650,6 @@ pipeline:
   - workflow.find.processinstances:  
       processInstanceBusinessKey: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7885,7 +7696,6 @@ pipeline:
       processInstanceId: <value>  
       processInstanceBusinessKey: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7936,7 +7746,6 @@ pipeline:
       subject: <value>  
       message: <value>  
       model: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -7975,7 +7784,6 @@ pipeline:
   - workflow.model.attachment.get:  
       processInstanceId: <value>  
       fileName: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8006,6 +7814,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `processInstanceId` | String | true | null | The process instance id.
 `fileName` | String | true | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
+`contentType` | String | false | null | The content type to be used for this attachment.
 
 
 **Pipeline example:**  
@@ -8014,18 +7823,18 @@ pipeline:
   - workflow.model.attachment.put:  
       processInstanceId: <value>  
       fileName: <value>  
-  
+      contentType: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<value>&fileName=<value>  
+http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<value>&fileName=<value>&contentType=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value>  
+pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value> contentType=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8053,7 +7862,6 @@ pipeline:
   - workflow.model:  
       mappings: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8098,7 +7906,6 @@ pipeline:
       processInstanceId: <value>  
       processInstanceBusinessKey: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8143,7 +7950,6 @@ pipeline:
       processInstanceId: <value>  
       processInstanceBusinessKey: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8194,7 +8000,6 @@ pipeline:
       workflowModelInstanceKey: <value>  
       workflowStartedBy: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8235,7 +8040,6 @@ pipeline:
       taskId: <value>  
       variables: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8280,7 +8084,6 @@ pipeline:
       processInstanceId: <value>  
       processInstanceBusinessKey: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8319,7 +8122,6 @@ pipeline:
   - workflow.undeploy:  
       name: <value>  
       onError: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8358,7 +8160,6 @@ pipeline:
   - workflow.users:  
       processDefinitionId: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
@@ -8399,7 +8200,6 @@ pipeline:
       name: <value>  
       level: <value>  
       output: <value>  
-  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 

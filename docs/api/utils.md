@@ -1,7 +1,7 @@
 # Utils  
 Reference documentation of [Pipeline Expression Language (PEL)](../guides/pel) utils.  
 
-Generated: **28/11/2021**  
+Generated: **29/11/2021**  
 Number of built-in utils: **15**  
 Also see: **[Utils Guide](../guides/utils)** | **[PEL Guide](../guides/pel)**
 
@@ -11,6 +11,10 @@ pipeline:
   - log:  
       message: "The current date is: #{@date.now()}"  
 ```  
+
+Use the [online workbench](https://try.pipeforce.org) to get auto-completion for PEL utils:  
+
+![](../img/workbench-completion-utils.png)  
 
 ##  @calc 
 ----------  
