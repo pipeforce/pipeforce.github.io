@@ -4351,6 +4351,10 @@
               "fileName" : {
                 "type" : "string",
                 "description" : "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one."
+              },
+              "contentType" : {
+                "type" : "string",
+                "description" : "The content type to be used for this attachment."
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
