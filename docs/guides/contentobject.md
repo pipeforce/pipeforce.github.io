@@ -1,6 +1,6 @@
 # Content Object
 
-Content Object
+## Introduction
 
 In order to process documents and other files using a pipeline, you first need to load such a file into the pipeline. After loaded, the file is automatically converted into a so called content object format. This is a wrapper around a document which provides all required information for such a document like its name size, mime type aso., for easier processing inside the pipeline. The content object provides these attributes:
 
@@ -16,7 +16,7 @@ In order to process documents and other files using a pipeline, you first need t
 
 Here is an example to load a file from the drive service into the body scope and access its attributes of the content object afterwards from there:
 
-```
+```yaml
 pipeline:
   # Load document from drive and set it as content object in the body
   - drive.read:
@@ -26,10 +26,9 @@ pipeline:
       message: "Name: #{body.name}, Size: #{body.size}" 
 ```
 
-Content Object Collection
--------------------------
+## Collection
 
-In case multiple documents are loaded into a pipeline, such documents are grouped together in a so called content object collection. Such a collection has a similar meaning like a folder in a local file system.
+In case multiple documents are loaded into a pipeline, such documents are grouped together in a so called content object **collection**. Such a collection has a similar meaning like a folder in a local file system.
 
 |     |     |     |
 | --- | --- | --- |
@@ -40,8 +39,7 @@ In case multiple documents are loaded into a pipeline, such documents are groupe
 
 A Content Collection is also a Content Object and therefore it also has all attributes of the Content Object.
 
-Uploading a file
-================
+## Uploading a file
 
 In order to upload a file and use it inside a command or pipeline you have different possibilities.
 
