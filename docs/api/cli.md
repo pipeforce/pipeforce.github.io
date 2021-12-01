@@ -9,7 +9,6 @@ See the *[Downloads](/docs/downloads)* section on how to install this tool.
 The tutorial [Setup local workspace + CLI](../docs/tutorials/beginner/intro.md) shows, how to install and work with the CLI.
 
 ## Call structure
-----------
 
 The main structure of a CLI command is always like this:
 
@@ -26,7 +25,6 @@ pi help
 Below you can find the description of the most important actions.
 
 ## pi command
-----------
 
 Executes a single pipeline command at server side and returns the result.
 
@@ -55,7 +53,6 @@ Use the command `pi help command` to get the documentation of all available comm
 Or use the command `pi help command COMMAND_NAME` to get the documentation for a specific command.
 
 ## pi delete
-----------
 
 Deletes the remote resources inside a given app. It doesn’t delete any local resource.
 
@@ -80,7 +77,6 @@ This command deletes remote resources without the option to recover. So be caref
 :::
 
 ## pi get
-----------
 
 Downloads all resources of a given app, stores them into the local workspace in order to be able to edit them. If a local resource already exists, asks for overwrite or skip.
 
@@ -109,7 +105,6 @@ pi get global/app/myapp/pipeline/hello
 ```
 
 ## pi help
--------
 
 Lists all available CLI options or pipeline commands.
 
@@ -162,7 +157,6 @@ log:
 ```
 
 ## pi list
-----------
 
 Lists all remote resources of a given path.
 
@@ -183,7 +177,6 @@ pi list global/app/myapp/*
 Lists all resources of the folder `myapp` but not the resources inside any sub-folder.
 
 ## pi new
-----------
 
 Creates a new resource based on a wizard.
 
@@ -224,7 +217,6 @@ And if you are inside a app folder, the app you want to create the resource for 
 ```
 
 ## pi pipeline
-----------
 
 Executes a locally stored pipeline file, a remote pipeline or a pipeline uri.
 
@@ -284,7 +276,6 @@ The idea of a pipeline uri is to adhoc execute commands without the need to crea
 Also see the CLI command `pi help command` which lists all available pipeline commands and their description you can use to build pipelines and pipeline uris.
 
 ## pi publish
-----------
 
 Uploads your created or changed resources like pipeline or form configurations to the server.
 
@@ -338,7 +329,6 @@ This will publish all resources inside `src/gobal/app/myapp` recursively.
 For security reasons (for example to no accidentally publish a huge path structure of your file system to the server), publish is only possible in case your current working dir is inside the workspace folder.
 
 ## pi setup
-----------
 
 Changes the settings of the CLI tool using a wizard and/or installs the CLI if not already done.
 
@@ -359,7 +349,6 @@ pi setup advanced
 ```
 
 ## pi status
-----------
 
 Returns status information about the CLI.
 
@@ -370,7 +359,6 @@ pi status
 ```
 
 ## pi update
-----------
 
 Looks for an update of the CLI and installs it if a newer version exists.
 
