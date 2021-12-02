@@ -2,7 +2,7 @@
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
-Generated: **29/11/2021**  
+Generated: **01/12/2021**  
 Number of built-in commands: **202**  
 Download pipeline and commands schema: **[pipeline-schema.json](./assets/pipeline-schema.txt)**  
 Also see: **[Pipeline Guide](../guides/pipeline)** | **[Command Guide](../guides/command)**  
@@ -862,42 +862,6 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## credentials.list
-----------   
-Lists the metadata of all available credentials entries.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.list)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - credentials.list:  
-      output: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/credentials.list?output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command credentials.list output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
-
-  
-
 ## credentials.put
 ----------   
 Creates a new credentials entry.
@@ -910,7 +874,7 @@ Creates a new credentials entry.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`format` | String | true | null | The format of the secret to store. One of: secretText, bearer, header, usernamePassword.
+`format` | String | true | null | The format of the secret to store. One of: secret-text, bearer, header, username-password.
 `name` | String | true | null | The unique name of the credentials.
 `secret` | String | true | null | The secret part of the credentials (for example the username:password or Bearer TOKEN).
 `timeToLive` | String | false | null | The time to live in minutes. After this time, the credentials will be deleted.
@@ -4561,6 +4525,48 @@ http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command microsoft.teams.send url=<value> message=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## mock.command
+----------   
+Mocks a given command of the current pipeline.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=mock.command)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`enabled` | String | false | true | Is the mock active? Can be a boolean or a PEL returning a boolean
+`command` | String | true | null | The name of the command to mock
+`when` | String | false | true | The mock expression: When this evaluates to true, the mock will be applied.
+`thenReturn` | String | false | null | The value to be returned in the body when this mock applies. If not defined, the current body will not be changed.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - mock.command:  
+      enabled: <value>  
+      command: <value>  
+      when: <value>  
+      thenReturn: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/mock.command?enabled=<value>&command=<value>&when=<value>&thenReturn=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command mock.command enabled=<value> command=<value> when=<value> thenReturn=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
