@@ -1,143 +1,38 @@
-# Authentication
+# Pipeline commands
 
-One of the most important parts in PIPEFORCE is the **command**. Easily spoken, a command is a single server side endpoint similar to a REST endpoint which executes a certain task of your business solution. 
+The main purpose of Pipelines and Commands is to create and maintain data integrations between different systems and to implement business logic in a fairly flexible and easy way:
 
-The concept of PIPEFORCE commands is in its base a combination of the [command pattern](https://en.wikipedia.org/wiki/Command_pattern) and [function as a service](https://en.wikipedia.org/wiki/Function_as_a_service) approach. 
+*   A pipeline is written in an **executable** YAML format.
+    
+*   Each pipeline consists of one or more **commands**.
+    
+*   A **command** is a component which can create, edit, send data and execute logic.
+    
+*   The **output** of the first command will become the **input** of the second, aso.
+    
+*   A pipeline can be executed manually or by a **trigger**.
+    
+*   Commands are sometimes also referred to as **Pipes**.
+    
 
-All built-in commands and their parameters are documented in the [commands reference](../api/commands).
+![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/grafik-20200901-145056.png?api=v2)
 
-### Unique Command Name
-Each command has a unique name which is always written in lower case and follows the dot notation. Here is an example of such a command name:
+*   The pipeline can be created in your **preferred local editor** or in the **Online Workbench** (only ENTERPRISE, CORPORATE).
+    
+*   To manually execute a pipeline locally you can use the CLI (we will cover these possibilities of the CLI later in this chapter):
+    
+    *   `pi pipeline file /path/to/your/local/pipeline.pi.yaml`
+        
+    *   `pi pipeline remote key/of/your/pipeline/on/server`
+        
+    *   `pi pipeline uri “inline-pipeline”`
+        
+*   But the easiest way to ad-hoc execute a pipeline is by using the **Online Workbench** of your portal (available since version 7.0 for ENTERPRISE, CORPORATE licenses).
+    
 
-```
-mail.send
-```
+# What is a Command?
 
-## Executing a Command
-
-Commands can be executed in three different ways, called ***execution contexts***:
-
-- As single requests via HTTP GET, POST or PUT
-- Embedded as part of a [Pipeline](../guides/pipeline.md)
-- As a command line command using the [Command Line Interface (CLI)](../guids/../api/cli.md)
-
-### Parameters
-Commands can have zero to many parameters. Whereas each parameter is a name-value pair. The parameters can be passed in different ways to the command, depending on the execution context you're working in. 
-
-
-#### As HTTP GET
-Here is an example to set the `message` parameter to a `log` command using a HTTP GET request:
-
-```
-http://yourserver/api/v3/command/log?message=HELLO
-```
-:::note
-Authentication is not considered here for simplicity reaasons.
-:::
-
-#### As HTTP POST
-Here is an example to set the `message` parameter to a `log` command using a HTTP POST request and `curl`:
-
-```
-curl -H "Authorization: Bearer <YOUR_TOKEN>" \
-  -X POST "https://hub-acme.pipeforce.net/api/v3/command/log" -d "message=HELLO"
-```
-
-:::note
-Authentication is done here by using the `Authorization` header.
-:::
-
-### Input and Output Documents
-Beside its parameters, each command is also capable to take optionally a document as input. 
-
-This document can be provided by the optional parameter `input`:
-
-```
-encrypt?input=TEXT
-```
-
-Or the input is placed in the body of the execution context (for example in the body of a HTTP POST call in case it is executed inside the HTTP context).
-
-
-Finally, the result of a command is by default written to the output body. 
-
-Dealing with documents in the body is similar to the request and response body of a HTTP request. How such a document can be provided to and consumed from the command depends on the execution context, the command is running in.
-
-
-
-## Command Execution Contexts
-
-### Via HTTP request
-
-You can execute any command similar to rest-like endpoints using HTTP GET or POST requests by executing an HTTP endpoint.
-
-See this example using the terminal and `curl` to call the `datetime` command using the url `https://hub-acme.pipeforce.net/api/v3/command/datetime`:
-
-```
-curl -H "apitoken: <YOUR_TOKEN>" \
-  -X GET "https://hub-acme.pipeforce.net/api/v3/command/datetime"
-```
-
-By default, the response of this command will look like this:
-
-```
-{
-  "result": "2020-08-07T15:14:02.471"
-}
-```
-
-Note the url prefix for the command: `https://hub-acme.pipeforce.net/api/v3/command/` followed by the command `datetime`.
-
-Any HTTP **request parameter** will be mapped to **command parameter**. See below an example with parameters:
-
-```
-curl -H "apitoken: <YOUR_TOKEN>" \
-  -X GET "https://hub-acme.pipeforce.net/api/v3/command/log?message=HELLO"
-
-```
-
-The same also works, if you do a POST instead of a GET call:
-
-```
-curl -H "apitoken: <YOUR_TOKEN>" \
-  -X POST "https://hub-acme.pipeforce.net/api/v3/command/log" -d "message=HELLO"
-```
-
-:::info
-Even if many commands do have a similar resource-based semantic for HTTP GET, POST or PUT as REST do, they do not follow this approach 100% since commands
-can be used also outside of the HTTP context. Therefore, the operation type of a command is often defined by its name. For example: `property.put` or
-`config.get` to name just a few.
-:::
-
-
-Here are some examples of such commands (whether these commands are also available in your instance depends on your license and your settings):
-
-|     |     |
-| --- | --- |
-| **Command** | **Description** |
-| `config.get` | Returns the configuration from the backend. |
-| `datetime` | Returns the date and time from the backend. |
-| `decrypt`, `encrypt` | Encrypts and decrypts data using AES-256 and other algorithms. |
-| `delivery.send` | Creates and sends a digital delivery with attachments via email. |
-| `docusign` | Starts a docusign process from inside a pipeline. |
-| `drive.save`, `drive.read` | Uploads and downloads files from your online cloud drive. |
-| `event.send`, `event.listen` | Sends or listens to events in a pipeline. |
-| `website.scrap` | Opens a website and extracts data from it or clicks links on it. |
-| `iam.*` | A lot of commands to manage users, groups and permissions. |
-| `mail.send` | Sends an email to one or more recipients. |
-| `pdf.stamp` | Puts a stamp or watermark on a PDF. |
-| `http.get`, `http.post`, … | Commands to do external HTTP / REST calls. |
-| `salesforce.create`, … | Creates a given entity in Salesforce and others. |
-| `slack.send` | Sends a message to Slack. |
-| `transform.word2pdf` | Transforms a MS Word document to PDF. |
-| `workflow.start` | Starts a BPMN workflow. |
-| `zip`, `unzip` | Zips and un-zips files. |
-
-
-
-
-
-It supports input parameters, an input message and can optionally produce an output message:
+The most important part of a pipeline is a **command**. Easily spoken, a command is a single server side task or function which can be executed from outside by its unique name. It is based on the [command pattern](https://en.wikipedia.org/wiki/Command_pattern) and [function as a service](https://en.wikipedia.org/wiki/Function_as_a_service) software architecture patterns. It supports input parameters, an input message and can optionally produce an output message:
 
 ![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/Untitled%20Diagram.drawio.png?api=v2)
 
@@ -592,7 +487,7 @@ A Content Collection is also a Content Object and therefore it also has all attr
 
 In order to upload a file and use it inside a command or pipeline you have different possibilities.
 
-##Upload a single file to a single command
+## Upload a single file to a single command
 
 In case a command expects a file as input message in its body, you can execute the command from the client using HTTP POST and put the file content in the body of the request. It will be loaded from the body and provided as input to the command’s body. Here’s an example request using the command `transform.word2pdf` which takes a `.docx` document as input converts it to PDF and sends back the result as response to the client:
 
@@ -600,10 +495,10 @@ In case a command expects a file as input message in its body, you can execute t
 POST /api/v3/pipe:transform.word2pdf HTTP/1.1 
 Host: hub-acme.pipefore.net
 
-BINARY DATA OF my.docx
+<BINARY DATA OF my.docx>
 ```
 
-##Upload one or more files to a pipeline
+## Upload one or more files to a pipeline
 
 In order to upload one or multiple files to be executed by a pipeline, you can make a HTTP POST request with header `Content-Type: multipart/form-data` to the pipeline endpoint. This will create a HTTP request with multiple parts in the HTTP request body, whereas the very first part is the pipeline YAML and all other parts are one or more files to be uploaded and used inside this pipeline.
 
@@ -661,7 +556,7 @@ In order to enable auto-completion support for pipeline configuration files in y
 
 ![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/image-20200815-094048.png?api=v2)
 
-# Support in IntelliJ
+## Support in IntelliJ
 
 To enable auto-completion in IntelliJ, open preferences and navigate to JSON Schema Mappings:
 
@@ -705,6 +600,6 @@ Then open `Preferences → Settings` and add this line to your configuration **s
 
 ```
 "yaml.schemas": { 
-  "https://hub-NAMESPACE.pipeforce.org/api/v3/pipe:pipe.schema.v7": ["/*.pi.yaml"] 
+  "https://hub-<NS>.pipeforce.org/api/v3/pipe:pipe.schema.v7": ["/*.pi.yaml"] 
 }
 ```

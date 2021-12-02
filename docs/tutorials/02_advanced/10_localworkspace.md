@@ -15,7 +15,6 @@ This tutorial is for advanced users who want to develop in source code locally. 
 :::
 
 ## 1 - Setup your local environment
-----------
 
 At first, before you can setup your local workbench, you have to make sure that you have these local toolings installed on your computer:
 
@@ -84,7 +83,6 @@ As an alternative you can go to Preferences → Extensions in VS Code and then s
 ![](../../img/vscode-yaml-plugin.png)
 
 ## 2 - Setup the CLI
-----------
 
 In order to create and publish resources like apps, workflows, forms, lists or pipelines in your low-code workspace, we provide a command line tool which simplifies these steps a lot.
 
@@ -151,7 +149,6 @@ Done.
 Finally the PIPEFORCE CLI tool was successfully installed to your home folder `$USER_HOME/pipeforce` and you can start creating your workflow apps. To do so, see the next steps in this guide.
 
 ## 3 - Open the PIPEFORCE workspace
-----------
 
 After successful installation, you can find the PIPEFORCE workspace folder under `$USER_HOME/pipeforce` whereas `$USER_HOME` depends on your underlying operating system and username.
 
