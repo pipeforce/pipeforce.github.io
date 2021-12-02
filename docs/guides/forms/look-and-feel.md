@@ -1,6 +1,6 @@
 # Look & Feel   
 
-The appearance attributes allow you to change the look and feel of your form elements like color, height, weight or borders for example.
+The appearance attributes inside the forms configuration allow you to change the look and feel of your form elements like color, height, weight or borders for example.
 
 To do so, you need to add those look & feel attributes to the field in the form configuration. For example:
 

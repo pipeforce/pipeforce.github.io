@@ -1,4 +1,4 @@
-# Forms
+# Forms Basics
 
 In order to define a form in PIPEFORCE, you need at least a **JSON schema** and the **form configuration**.
 

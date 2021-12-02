@@ -1,6 +1,6 @@
 # Workflows
 
-**Note: This page is outdated and needs review**
+**Note: This page is outdated and needs to be updated**
 
 A workflow in PIPEFORCE is a stateful business process where one or more humans are involved. Workflows can be modelled using a graphical interface and they can optionally trigger the execution of pipelines.
 
