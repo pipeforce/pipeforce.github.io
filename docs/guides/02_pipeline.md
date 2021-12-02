@@ -30,7 +30,6 @@ The PDF file `my.pdf` is the output from the command `drive.read` and will becom
 
 
 ## Execution of a pipeline
------------------------
 
 Similar to a single command, a pipeline of commands is executed by sending it in a request to the server. Its a more advanced version of the “Function as a Service” approach since it can execute a bunch of commands in a predefined order.
 
@@ -201,7 +200,6 @@ You can access values in the body scope using the Pipeline Expression Language (
 
 
 ## Auto-completion support
-----------
 
 **Note: This is experimental.**
 

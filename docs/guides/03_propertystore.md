@@ -3,7 +3,6 @@
 The property store is a data repository in PIPEFORCE to save all your application data. You can upload, download and delete resources from the property store using pipeline commands or the online low-code workbench.
 
 ## What is a Property?
-----------
 
 Each entry stored in the property store is called a **property**. Other names could also be **asset**, **object** or **entity** for example. But we will stick with the name **property** here.
 
@@ -63,7 +62,6 @@ In case you want to store a bigger amount of binary data, consider to use proper
 :::
 
 ## How to use the Property Store?
-----------
 
 Typically the property store is managed using one of the [`property.*`](../api/commands#property) commands. This is handy, if you want to manage the property store programmatically.
 
@@ -127,8 +125,7 @@ Content-Type: application/json
 }
 ```
 
-Change the value of a property
-------------------------------
+## Change the value of a property
 
 To change the value of the property, you can use the command `property.put`.
 
@@ -222,8 +219,7 @@ Content-Type: application/json
 }
 ```
 
-Delete a property
------------------
+## Delete a property
 
 In order to delete a property from the property store, you can use the command `property.schema.delete` which deletes the property value and all meta data that belong to this property.
 
@@ -305,8 +301,7 @@ In this example, the property will be deleted by sending a HTTP GET request :
 GET https://hub-NAMESPACE.pipeforce.org/api/v3/command:property.delete?key=global/app/myApp/myNewProperty
 ```
 
-Listing and filtering existing properties
------------------------------------------
+## Listing and filtering existing properties
 
 If you want to list all existing properties and their metadata, you can use the command `property.list`.
 
@@ -397,37 +392,31 @@ In this example, the properties will be listed by sending a HTTP GET request:
 GET https://hub-NAMESPACE.pipeforce.org/api/v3/command:property.list?filter=global/app/myapp/**
 ```
 
-The top-level folders
-=====================
+# The top-level folders
 
 The top-level level folders inside your property store define the access rules for a certain group or users of your instance.
 
 ![](https://logabit.atlassian.net/wiki/download/attachments/2151287086/image-20201021-174116.png?api=v2)
 
-global
-------
+## global
 
 The global root folder contains all data and configuration accessible by any user by default.
 
 This is the default folder where you should put your configuration and application data in most cases.
 
-group
------
+## group
 
 The resources inside this folder are accessible by the defined groups. Any group has its own sub folder here whereas the name of the folder is the uuid of the group.
 
-tenant
-------
+## tenant
 
 This root folder contains any resources and application data for tenants. Any tenant has its own sub folder here whereas the name of the folder is the uuid of the tenant.
 
-user
-----
+## user
 
 This root folder contains user specific resources and application data. Any user has its own sub folder here whereas the name of the folder is the uuid of the user.
 
-The app folder
-==============
+# The app folder
 
 The app folder contains all resource folders which are required to define a single app. The name of the sub folder of the app folder is the unique name of the app. Here is an example how such a folder structure typically looks like:
 
@@ -463,8 +452,7 @@ global/app/vacationrequest
 global/app/onboarding
 ```
 
-The app folder structure
-------------------------
+## The app folder structure
 
 Inside of an `app` folder there is a certain folder structure which defines the resources of an app. The typical folder structure looks like this:
 
@@ -647,8 +635,7 @@ For example:
 global/app/myApp/workflow/approveNewEmployee
 ```
 
-Setting up a customization workspace
-====================================
+# Setting up a customization workspace
 
 In its simple case you can manage all properties in the property store with the `property.*` commands and the CLI using `pi pipeline`.
 
@@ -664,8 +651,7 @@ See here how to setup such a customization workspace: [Local Low-Code Workspace]
 
 See here for a getting started guide how to setup the CLI and use the local workspace: [https://logabit.atlassian.netnull/pages/createpage.action?spaceKey=DEVEX&title=Getting%20Started%20-%20Basics&linkCreation=true&fromPageId=988807265](https://logabit.atlassian.netnull/pages/createpage.action?spaceKey=DEVEX&title=Getting%20Started%20-%20Basics&linkCreation=true&fromPageId=988807265) .
 
-Working with Visual Studio Code
-===============================
+# Working with Visual Studio Code
 
 We recommend you to work with the Visual Studio Code editor to manage your local resources in the customization editor.
 
