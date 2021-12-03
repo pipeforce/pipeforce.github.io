@@ -1,10 +1,10 @@
-# Forms Basics
+# Forms
 
 In order to define a form in PIPEFORCE, you need at least a **JSON schema** and the **form configuration**.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287994/grafik-20201023-083314.png?api=v2)
+![](../img/grafik-20201023-083314.png)
 
-The JSON **schema** (also called the “object schema”) defines the structure of a data set and “tells” the form which fields to display and a user can fill-out. Learn more about JSON Schema in this chapter: [Schema & Objects](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287651).
+The JSON **schema** (also called the “object schema”) defines the structure of a data set and “tells” the form which fields to display and a user can fill-out. Learn more about JSON Schema in this chapter: [Schema & Objects](https://pipeforce.github.io/docs/guides/schema-&-objects).
 
 The **input** data is used in case an existing data set needs to be edited. The form is pre-filled with these data, so the use can make changes and save again.
 
@@ -21,7 +21,7 @@ After this, an event is send, depending on what the form did with an object/prop
 
 Any pipeline can then listen to such events using the command `event.listen` and do additional logic afterwards using the submitted data. For example sending notification emails, doing data integration or alike. Such a pipeline could look like this:
 
-```
+```yaml
 pipeline:
   - event.listen:
       key: "property.created"
@@ -34,7 +34,7 @@ The glue of all this is the **form configuration** which defines, how the form s
 
 By default, after a submit, the data of a form is automatically stored into the property store under a new property having this key path:
 
-```
+```bash
 global/app/<APP>/object/<NAME>/v1/instance/<UUID>
 ```
 
@@ -42,13 +42,13 @@ Whereas `<APP>` is the name of your app. `<NAME>` is the name of the object, the
 
 In the person example above, after a form submit with new data, this data could be stored in a new property with key path which looks like this:
 
-```
+```bash
 global/app/myApp/object/person/v1/instance/133a11f6-8011-47d3-b6eb-1376cca5e6b6
 ```
 
 The output of the form - which is the value of this instance property - could look like this:
 
-```
+```json
 {
   "firstName": "Bart",
   "lastName": "Simpson",
@@ -59,29 +59,29 @@ The output of the form - which is the value of this instance property - could lo
 
 You can easily querying for existing instances using the command `property.list`. For example using the pi tool:
 
-```
+```bash
 pi pipeline uri "property.list?filter=/**/global/app/myApp/object/person/v1/instance/*"
 ```
 
 In case you have more than one object type in your app and you want to list all instances of all objects of your app, you could use this list filter:
 
-```
+```bash
 pi pipeline uri "property.list?filter=/**/global/app/myApp/object/*/v1/instance/*"
 ```
 
-**Note**: Be careful since in this example it would return the instances from all objects of myApp. Learn more about filtering properties from the property store in this section [Property Store](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287086/Property+Store).
+**Note**: Be careful since in this example it would return the instances from all objects of myApp. Learn more about filtering properties from the property store in this section [Property Store](https://pipeforce.github.io/docs/guides/propertystore).
 
 ## How to load and edit input data in a form
 
 After a form has been submitted, for each submit a new instance property is created in the instance path of an object, for example:
 
-```
+```bash
 global/app/myApp/object/person/v1/instance/133a11f6-8011-47d3-b6eb-1376cca5e6b6
 ```
 
 In case you want to edit such an instance first you need to load it into the form using the request parameter `input`, when calling the form:
 
-```
+```bash
 ?input=property.list?filter=global/app/myApp/object/person/1/instance/133a11f6-8011-47d3-b6eb-1376cca5e6b6
 ```
 
@@ -89,7 +89,7 @@ Now form renders initial values from input, but will still save into new`global/
 
 To save to the same record, additional form `output` parameter needs to be added to overwrite default behaviour.
 
-```
+```bash
 ...&output=global/app/myApp/object/person/v1/instance/133a11f6-8011-47d3-b6eb-1376cca5e6b6
 ```
 
@@ -101,7 +101,7 @@ The last step to create and configure a new form is to create a form configurati
 
 Here’s an example how such a file could look like:
 
-```
+```json
 {
   "title": "Person",
   "description": "The person form.",
@@ -122,7 +122,7 @@ Note: In version >= 7.0 it is no longer required to specify the attributes `sche
 
 By default the form configuration is stored inside the form folder as JSON file:
 
-```
+```bash
 global/app/myApp/form/personForm
 ```
 
@@ -136,22 +136,22 @@ To reach custom layout, fields behaviour, file uploads, custom buttons and more,
 
 You can change this default by configuring orientation of the layout in the form configuration.
 
-See this section for more details: [Form - Orientation](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288104/Form+-+Orientation)
+See this section for more details: [Form - Orientation](https://pipeforce.github.io/docs/guides/forms/orientation)
 
 ## Change appearance of form fields
 
 Beside the orientation (vertical, horizontal) of form fields, also the appearance (color, border, icons, aso) can be changed inside the layout section.
 
-See this section for more details: [Form - Look & Feel](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288157)
+See this section for more details: [Form - Look & Feel](https://pipeforce.github.io/docs/guides/forms/look-and-feel)
 
 ## Custom buttons
 
 Replacements for default Submit button can be defined by `render` attribute of boolean field in layout section.
 
-See this section for more details:[Form - Buttons](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288324/Form+-+Buttons)
+See this section for more details:[Form - Buttons](https://pipeforce.github.io/docs/guides/forms/buttons)
 
 ## File upload
 
 In layout section it is also possible to configure that set of schema properties defines form upload.
 
-See this section for more details: [Form - Upload](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288228/Form+-+Upload)
+See this section for more details: [Form - Upload](https://pipeforce.github.io/docs/guides/forms/upload)

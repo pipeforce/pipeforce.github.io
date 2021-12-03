@@ -10,7 +10,7 @@ Every property has a unique key.
 
 Properties in the property store are structured in an **hierarchical way**, whereas the key of a property is also its **path** in the tree structure. Here is an example of such a key of a property:
 
-```
+```bash
 global/app/myapp/settings
 ```
 
@@ -29,13 +29,13 @@ Each property contains attributes. The most important ones are:
 
 To query a property with all of its attributes, you can use the  [`property.list`](../api/commands#propertylist) command:
 
-```
+```bash
 pi command property.list filter=global/app/myapp/pipeline/helloworld
 ```
 
 This command will return a result similar to the result shown below, which describes all important attributes of the property:
 
-```
+```yaml
 key: "/pipeforce/enterprise/global/app/myapp/pipeline/helloworld"
 uuid: "529a38e7-9188-4135-b87b-3d890f6764f3"
 value: "pipeline:\n  - log:        \n      message: \"Hello World\""
@@ -52,7 +52,7 @@ The `value` attribute of a property is always stored as string (text) value. Whi
 
 Furthermore, the `value` attribute can also contain binary data. In this case the field is `base64` encoded. This is marked in the `type` attribute as such using the mime type parameter `encoding=base64`. Example:
 
-```
+```yaml
 value: "some base64 encoded value"
 type: "application/pdf;encoding=base64"
 ```
@@ -67,7 +67,7 @@ Typically the property store is managed using one of the [`property.*`](../api/c
 
 To get an overview of all available commands to manage the property store in your terminal, you could type in this command using the PIPEFORCE CLI:
 
-```
+```bash
 pi commands property.
 ```
 
@@ -84,7 +84,7 @@ See this link of your instance for details about this command (only: ENTERPRISE,
 
 Or use the CLI to get the documentation of this command listed:
 
-```
+```bash
 pi help command property.schema.put
 ```
 
@@ -92,7 +92,7 @@ pi help command property.schema.put
 
 Here is an example using a simple pipeline to create a new property:
 
-```
+```yaml
 pipeline:
   - property.schema.put:
       key: global/app/myApp/myNewProperty
@@ -102,7 +102,7 @@ pipeline:
 
 Here is an example to use the CLI to create a new property:
 
-```
+```bash
 pi command property.schema.put key=global/app/myApp/myNewProperty
 ```
 
@@ -110,7 +110,7 @@ pi command property.schema.put key=global/app/myApp/myNewProperty
 
 In this example, a new property is created sending a HTTP POST request with the pipeline in JSON format:
 
-```
+```yaml
 POST https://hub-NAMESPACE.pipeforce.org/api/v3/pipeline
 Content-Type: application/json
 
@@ -140,7 +140,7 @@ See this link of your instance for details about this command (only: ENTERPRISE,
 
 Or use the CLI to list the documentation:
 
-```
+```bash
 pi help command property.put
 ```
 
@@ -148,7 +148,7 @@ pi help command property.put
 
 Here is an example of using a pipeline to set the value of a property:
 
-```
+```yaml
 pipeline:
   - property.put:
       key: global/app/myApp/myNewProperty
@@ -157,7 +157,7 @@ pipeline:
 
 You can also combine two commands to create a property and set its value right after:
 
-```
+```yaml
 pipeline:
   - property.schema.put:
       key: global/app/myApp/myNewProperty
@@ -173,7 +173,7 @@ Because there are two different security levels with permissions. Those users wh
 
 Here is an example using the CLI to set the value of a property manually:
 
-```
+```bash
 pi command property.put key=global/app/myApp/myNewProperty value=someValue
 ```
 
@@ -181,7 +181,7 @@ pi command property.put key=global/app/myApp/myNewProperty value=someValue
 
 If you did setup a local low-code workspace with an app with multiple files in it and you want to upload those resources to the property store, you can use the CLI:
 
-```
+```bash
 pi publish src/global/app/myapp
 ```
 
@@ -197,13 +197,13 @@ will get this property store key assigned:
 
 `global/app/myapp/pipeline/helloworld`
 
-See the CLI documentation for more information about the publish action [Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739)
+See the CLI documentation for more information about the publish action [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)
 
 ### Using a Restful HTTP POST
 
 In this example, a value of a property is changed by sending a HTTP POST request with the pipeline in JSON format:
 
-```
+```yaml
 POST https://hub-NAMESPACE.pipeforce.org/api/v3/pipeline
 Content-Type: application/json
 
@@ -234,7 +234,7 @@ See this link of your instance for details about this command (only: ENTERPRISE,
 
 Or make this call in your terminal using the CLI:
 
-```
+```bash
 pi help command property.schema.delete
 ```
 
@@ -242,7 +242,7 @@ pi help command property.schema.delete
 
 Here is an example using a pipeline to delete a property:
 
-```
+```yaml
 pipeline:
   - property.schema.delete:
       key: global/app/myApp/myNewProperty
@@ -252,7 +252,7 @@ pipeline:
 
 Here is a call using the CLI to delete a property manually:
 
-```
+```bash
 pi command property.schema.delete key=global/app/myApp/myNewProperty
 ```
 
@@ -262,13 +262,13 @@ This approach allows to delete a property at any location as long as you have th
 
 With the CLI it is also possible to delete multiple properties with one call:
 
-```
+```bash
 pi delete src/myapp/myresource/somename/**
 ```
 
 This will delete all properties below the path somename recursively.
 
-```
+```bash
 pi delete src/myapp/myresource/somename/*
 ```
 
@@ -278,7 +278,7 @@ This will delete only properties inside the “folder” `somename` but will lea
 
 In this example, the property will be deleted by sending a HTTP POST request with the pipeline in JSON format:
 
-```
+```yaml
 POST https://hub-NAMESPACE.pipeforce.org/api/v3/pipeline
 Content-Type: application/json
 
@@ -312,7 +312,7 @@ See this link of your instance for details about this command:
 
 Or use the CLI to display the documentation in the command line:
 
-```
+```bash
 pi help command property.list
 ```
 
@@ -320,7 +320,7 @@ pi help command property.list
 
 Here is an example using a pipeline to list all properties:
 
-```
+```yaml
 pipeline:
   - property.list
 ```
@@ -333,7 +333,7 @@ If you want to list only properties from a certain sub-path, you can use the `fi
 
 For example, if you want to see only the properties of your app `myapp`, then use this filter:
 
-```
+```yaml
 pipeline:
   - property.list:
       filter: global/app/myapp/**
@@ -345,7 +345,7 @@ The single asterisk `*` means a single folder.
 
 The wildcards (asterisks) can also be used inside a key. If you want to list for example all object schemas of your app `myapp`, you could use this list filter:
 
-```
+```yaml
 pipeline:
   - property.list:
       filter: global/app/myapp/object/*/v1/schema
@@ -355,13 +355,13 @@ pipeline:
 
 You can use this CLI to list all properties:
 
-```
+```bash
 pi command property.list
 ```
 
 And for sure, you can also use the CLI with a filter:
 
-```
+```bash
 pi command property.list filter=global/app/myapp/**
 ```
 
@@ -369,7 +369,7 @@ pi command property.list filter=global/app/myapp/**
 
 In this example, the properties will be listed by sending a HTTP POST request with the pipeline in JSON format:
 
-```
+```yaml
 POST https://hub-NAMESPACE.pipeforce.org/api/v3/pipeline
 Content-Type: application/json
 
@@ -396,7 +396,7 @@ GET https://hub-NAMESPACE.pipeforce.org/api/v3/command:property.list?filter=glob
 
 The top-level level folders inside your property store define the access rules for a certain group or users of your instance.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287086/image-20201021-174116.png?api=v2)
+![](../img/properstystore.png)
 
 ## global
 
@@ -420,7 +420,7 @@ This root folder contains user specific resources and application data. Any user
 
 The app folder contains all resource folders which are required to define a single app. The name of the sub folder of the app folder is the unique name of the app. Here is an example how such a folder structure typically looks like:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287086/grafik-20201022-181615.png?api=v2)
+![](../img/grafik-20201022-181615.png)
 
 The key of your application would be this:
 
@@ -456,7 +456,7 @@ global/app/onboarding
 
 Inside of an `app` folder there is a certain folder structure which defines the resources of an app. The typical folder structure looks like this:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287086/grafik-20201022-181638.png?api=v2)
+![](../img/grafik-20201022-181638.png)
 
 ### form
 
@@ -500,7 +500,7 @@ object/person/v1/schema
 
 The schema property typically contains as value a JSON schema which describes this object. For the person object, the schema could for example look like this:
 
-```
+```json
 {
   "type": "object",
 
@@ -546,7 +546,7 @@ global/app/myApp/object/person/v1/instance/fa471958-fdb7-4bf6-a0a3-c5e8c782893e
 
 Each instance property will contain as value the data of the object instance which matches the object schema, for example:
 
-```
+```json
 {
   "firstName": "Homer",
   "lastName": "Simpson",
@@ -559,7 +559,7 @@ Each instance property will contain as value the data of the object instance whi
 
 This folder contains all pipeline configurations for the given app. A pipeline can be seen as the business logic part of an application.
 
-Find here more about pipelines: [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/785088596](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/785088596)
+Find here more about pipelines: [https://pipeforce.github.io/docs/guides/pipeline](https://pipeforce.github.io/docs/guides/pipeline)
 
 Each property name corresponds with the name of the pipeline and contains as value the pipeline configuration. For example:
 
@@ -571,7 +571,7 @@ global/app/myApp/pipeline/addToActiveDirectory
 
 Such a pipeline configuration could look like this:
 
-```
+```yaml
 pipeline:
   - mail.send:
       to: hr@company.de
@@ -588,7 +588,7 @@ global/app/myApp/script/helloworld
 
 Such a script could look like this example:
 
-```
+```jsx
 function command() {
 
     pi.message.headers["foo"] = "bar";
@@ -601,7 +601,7 @@ function command() {
 
 You can call such a script from a pipeline, like this example shows:
 
-```
+```yaml
 pipeline:
   - script.run:
       path: "global/app/myApp/script/helloworld"
@@ -619,7 +619,7 @@ global/app/myApp/test/createUserTest
 
 The property contains the test pipeline as value. Such a test pipeline could look like this:
 
-```
+```yaml
 pipeline:
   - test:
       assertTrue(false)
@@ -641,18 +641,18 @@ In its simple case you can manage all properties in the property store with the 
 
 But if you want to develop applications with forms, pipelines or workflows inside, we recommend you to use a local development & customization workspace. This workspace contain the properties of such an app stored as files inside your local path $USER\_HOME/pipeforce/app/myapp. Any file created inside the myapp folder can then easily be synced with the property store with a single command line call using the CLI:
 
-```
+```bash
 pi publish src/global/app/myapp
 ```
 
 This scans the your local `myapp` folder and uploads only those resources which have been changed since last upload or have been created since then.
 
-See here how to setup such a customization workspace: [Local Low-Code Workspace](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286786)
+See here how to setup such a customization workspace: [Local Low-Code Workspace](https://pipeforce.github.io/docs/guides/low-code)
 
-See here for a getting started guide how to setup the CLI and use the local workspace: [https://logabit.atlassian.netnull/pages/createpage.action?spaceKey=DEVEX&title=Getting%20Started%20-%20Basics&linkCreation=true&fromPageId=988807265](https://logabit.atlassian.netnull/pages/createpage.action?spaceKey=DEVEX&title=Getting%20Started%20-%20Basics&linkCreation=true&fromPageId=988807265) .
+See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli) .
 
 # Working with Visual Studio Code
 
 We recommend you to work with the Visual Studio Code editor to manage your local resources in the customization editor.
 
-Learn more about using VS Code for this here: [https://logabit.atlassian.net/wiki/pages/resumedraft.action?draftId=1008336990](https://logabit.atlassian.net/wiki/pages/resumedraft.action?draftId=1008336990)
+Learn more about using VS Code for this here: [Visual Studio Code](https://pipeforce.github.io/docs/guides/vs-code)

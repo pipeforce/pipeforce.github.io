@@ -2,7 +2,7 @@
 
 In order to create custom validations rule for form fields, you can add the validation attribute to each field in the form configuration. For example:
 
-```
+```json
 {
   "title": "Person",
   "description": "A person form",  
@@ -26,7 +26,7 @@ You can define as many validation rules as you want. All of them will be execute
 
 Each validation rule has this format:
 
-```
+```json
 { "type":"TYPE", "rule":"EXPRESSION", "message": "MESSAGE" }
 ```
 
@@ -46,7 +46,7 @@ The field value is provided as variable `val` and can be used inside the rule ex
 
 The given field is a required one. Therefore, make sure the field has a value. See the `!!` operator in JavaScript:
 
-```
+```json
 { 
   "type":"js", 
   "rule":"!!val", 
@@ -56,7 +56,7 @@ The given field is a required one. Therefore, make sure the field has a value. S
 
 Make sure that the given input has not more than 150 characters:
 
-```
+```json
 { 
   "type":"js", 
   "rule":"val.length <= 150", 
@@ -66,7 +66,7 @@ Make sure that the given input has not more than 150 characters:
 
 Make sure the given input contains the word `Hello`:
 
-```
+```json
 { 
   "type":"js", 
   "rule":"val.includes('Hello')", 
@@ -76,7 +76,7 @@ Make sure the given input contains the word `Hello`:
 
 Make sure the given input is an email (simple approach):
 
-```
+```json
 { 
   "type":"js", 
   "rule":"val.indexOf('@'') > 0", 
@@ -86,7 +86,7 @@ Make sure the given input is an email (simple approach):
 
 Make sure the given input is an email (advanced approach with regex):
 
-```
+```json
 { 
   "type":"js", 
   "rule":"/\S+@\S+\.\S+/.test(val)", 

@@ -108,13 +108,13 @@ Instead of manually creating and assigning the roles of your app, you can automa
 
 Create a new pipeline inside the setup folder of your app, for example:
 
-```
+```bash
 global/app/myapp/setup/permissions.pi.yaml
 ```
 
 Open this pipeline, add this content and then publish + execute it:
 
-```
+```yaml
 headers:
   description: "Creates the default users, groups and permissions of myapp"
   onCommandError: "IGNORE"
@@ -143,7 +143,7 @@ In the `headers` section we set special fields:
 *   `onCommandError` = Defines what should happen if a command in the pipeline failed. In this case we `IGNORE` such a problem since it would usually mean that the role already exists or was already assigned.
     
 
-For more information about the available default headers see [Pipeline Headers Reference](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287529/Pipeline+Headers+Reference) .
+For more information about the available default headers see [Pipeline Headers Reference](https://pipeforce.github.io/docs/guides/pipeline-headers) .
 
 In the pipeline section we use these commands:
 

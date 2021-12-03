@@ -2,7 +2,7 @@
 
 The PEL Utils is a powerful library of built-in utility methods which can be used inside a Pipeline Expression (PE) to simplify work. The libraries cover typical day-to-day flows and logics as simple helpers which are embedded into the PE.
 
-**Note**: In order to understand PEL Utils you should have at least basic knowledge about the [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+**Note**: In order to understand PEL Utils you should have at least basic knowledge about the [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 # Using a PEL Util
 
@@ -16,7 +16,7 @@ Replace `utilName` by the name of the utility and `method` by the function/metho
 
 Lets take a look on this example how to embed the PEL util `@date` inside a pipeline:
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Today is: #{@date.now('dd.MM.YYYY')}"
@@ -30,7 +30,7 @@ Today is: 12.08.2020
 
 Another example is to detect the language of a given text automatically using the PEL util @text:
 
-```
+```yaml
 vars:
   text: "Guten Tag, Frau Meier"
 pipeline:
@@ -50,15 +50,15 @@ Only: ENTERPRISE, CORPORATE
 
 When using the low code editor of the online workbench in the web UI, you can get auto-completion support. Whenever you are inside a pipeline expression indicated by a starting `#{` you can type `@` + Ctrl + Space and you will get a list of all available PEL utils. For example:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287481/grafik-20210731-110329.png?api=v2)
+![](../img/grafik-20210731-110329.png)
 
 After you have selected a util you can browse the available methods of the util by typing a period `.` + Ctrl + Space:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287481/grafik-20210731-110434.png?api=v2)
+![](../img/grafik-20210731-110434.png)
 
 After running the pipeline, the output would be similar to this:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287481/grafik-20210731-111041.png?api=v2)
+![](../img/grafik-20210731-111041.png)
 
 # PEL Utils Reference
 
@@ -81,7 +81,7 @@ Calculates the average based on the given list of input values.
 
 #### Example 1
 
-```
+```yaml
 vars:
   ageList: "35, 89, 12, 56, 78, 23"
 pipeline:
@@ -106,7 +106,7 @@ Calculates the sum based on the given list of input values.
 
 #### Example 1
 
-```
+```yaml
 vars:
   numbers: "10, 10, 10, 10"
 pipeline:
@@ -139,7 +139,7 @@ Note: base64 encoding is not an encryption! If you need to encrypt data, use the
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@convert.toBase64('Hello World!')}"
@@ -166,7 +166,7 @@ Note: base64 encoding is not an encryption! If you need to encrypt data, use the
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@convert.fromBase64('SGVsbG8gV29ybGQh')}"
@@ -193,7 +193,7 @@ Note: base64 encoding is not an encryption! If you need to encrypt data, use the
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@convert.fromBase64ToBytes('SGVsbG8gV29ybGQh')}"
@@ -216,7 +216,7 @@ Loads the content of the given content uri as a lazy map.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@convert.lazy('uri:user:username=someUser')}"
@@ -271,7 +271,7 @@ Formats the given `dateTime` string using the given `pattern`.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Date: #{@date.format('2030-01-10T20:00:00Z', 'dd.MM.YYYY')}"
@@ -301,7 +301,7 @@ For example if you want to send a reminder email to a user in case a given amoun
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Date: #{@date.isExpired('2030-01-01T20:00:00Z', '2030-01-10T20:00:00Z', 0.7)}"
@@ -325,7 +325,7 @@ Returns true in case the current date is after the given due date.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Date: #{@date.isOverdue('2010-01-01T20:00:00Z')}"
@@ -348,7 +348,7 @@ Gets the current server time and formats it using the given format pattern.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Current date: #{@date.now('dd.MM.YYYY')}"
@@ -362,7 +362,7 @@ Current date: 01.03.2020
 
 #### Example 2
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Current date: #{@date.now('dd.MM.YYYY, HH:mm')}"
@@ -384,7 +384,7 @@ Returns the time in milliseconds since 01.01.1970 (also known as â€œunix epochâ€
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Timesmap: #{@date.timestamp()}"
@@ -410,7 +410,7 @@ The domain name, this instance is currently running at.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@instance.domain()}"
@@ -432,7 +432,7 @@ The namespace, this instance is currently running at.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@instance.namespace()}"
@@ -455,7 +455,7 @@ Returns the instance url to the given service.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@instance.url('drive')}"
@@ -469,7 +469,7 @@ https://drive-acme.pipeforce.net
 
 #### Example 2
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@instance.url()}"
@@ -497,7 +497,7 @@ Adds the given element at the end of the given list.
 
 #### Example 1
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -527,7 +527,7 @@ Returns true in case `value` is a list and contains `needle` as entry.
 
 #### Example 1
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -552,7 +552,7 @@ Returns the true in case the given `value` is null or empty.
 
 #### Example 1
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -577,7 +577,7 @@ Returns the first element of the given list value.
 
 #### Example 1
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -602,7 +602,7 @@ Returns the last element from the given list.
 
 #### Example 1
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -627,7 +627,7 @@ Returns the number of entries in the given list.
 
 #### Example 1
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -653,7 +653,7 @@ Returns a sublist from `value` based on the given `expression`.
 
 #### Example 1
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -669,7 +669,7 @@ Result: Claudia
 
 #### Example 2
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -685,7 +685,7 @@ Result: Sharol, Sabine
 
 #### Example 3
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -701,7 +701,7 @@ Result: Megan, Sharol, Sabine
 
 #### Example 4
 
-```
+```yaml
 vars:
   names: "Megan, Sharol, Sabine, Claudia"
 pipeline:
@@ -730,7 +730,7 @@ Returns the base name of a path or filename without extension.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@path.basename('/foo/bar/invoice.pdf')}"
@@ -753,7 +753,7 @@ Returns the extension of the file inside the given path.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@path.extension('/foo/bar/invoice.pdf')}"
@@ -778,7 +778,7 @@ Converts every character to lower case. In case text is null or empty, returns t
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@path.join('my', '///super', 'folder')}"
@@ -805,7 +805,7 @@ Returns the property from Property Store with given `key`.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Color: #{@property.get('global/settings/color').value}"
@@ -837,7 +837,7 @@ Returns the value of the property with given key.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Color: #{@property.value('global/settings/color')}"
@@ -853,7 +853,7 @@ Color: green
 
 Access the property of a JSON directly after loading it:
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Email address: #{@property.value('global/person').email}"
@@ -881,7 +881,7 @@ Appends the given text at the end of the given base text.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.append('Hello ', 'World')}"
@@ -895,7 +895,7 @@ Hello World
 
 #### Example 2
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.append(null, 'World')}"
@@ -921,7 +921,7 @@ Concats the values of the given list using the given separator.
 
 #### Example 1
 
-```
+```yaml
 vars:
   items: "Sun, Moon, Stars"
 pipeline:
@@ -948,7 +948,7 @@ Similar to `@text.concat(separator, list)`. Additionally applies the given PEL t
 
 #### Example 1
 
-```
+```yaml
 vars:
   items: "#{{
       {firstName: 'Bart', lastName: 'Simpson'},
@@ -980,7 +980,7 @@ Checks whether given value contains the given needle text, ignoring case. Furthe
 
 #### Example 1
 
-```
+```yaml
 vars:
   items: "Sun, Moon, Stars"
 pipeline:
@@ -1005,7 +1005,7 @@ Checks, whether the given text is empty.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.isEmpty('')}"
@@ -1030,7 +1030,7 @@ More languages uppon request. Please contact our supprort team if you need suppo
 
 #### Example 1
 
-```
+```yaml
 vars:
   text: "Guten Tag, Frau Meier"
 pipeline:
@@ -1046,7 +1046,7 @@ GERMAN
 
 #### Example 2
 
-```
+```yaml
 vars:
   text: "'Un texte en franÃ§ais"
 pipeline:
@@ -1071,7 +1071,7 @@ Returns the length of the given `value` (the number of character including white
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.length('HELLO')}"
@@ -1094,7 +1094,7 @@ Converts every character to lower case. In case text is null or empty, returns t
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.lowerCase('HELLO')}"
@@ -1117,7 +1117,7 @@ Converts the very first character to lower case. In case text is null or empty, 
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.lowerCaseFirst('HELLO')}"
@@ -1141,7 +1141,7 @@ Returns the part of text up to first occurrence of stopWord. So for example with
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.prefix('invoice.pdf', '.')}"
@@ -1166,7 +1166,7 @@ If you need a universal unique id with very low probability for collisions, look
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.random(10)}"
@@ -1190,7 +1190,7 @@ In case the given text is longer than length, shortens it and adds three dots â€
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.shorten('HELLO WORLD', 6)}"
@@ -1213,7 +1213,7 @@ Removes any leading and ending whites pace and line feeds from the given text.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.trim('  hello  ')}"
@@ -1236,7 +1236,7 @@ Converts any character in the text to upper case.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.upperCase('hello')}"
@@ -1259,7 +1259,7 @@ Converts the first character in the text to upper case.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.upperCaseFirst('hello')}"
@@ -1283,7 +1283,7 @@ See here about UUID: [https://de.wikipedia.org/wiki/Universally\_Unique\_Identif
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "#{@text.uuid()}"
@@ -1311,7 +1311,7 @@ Returns the display name of the given user which is by default `user@email.de (F
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Your are logged-in as: #{@user.displayName()}"
@@ -1333,7 +1333,7 @@ Returns the primary email address of the currently logged-in user.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Your email is: #{@user.email()}"
@@ -1355,7 +1355,7 @@ Returns the first name of the currently logged-in user.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Your first name: #{@user.firstName()}"
@@ -1377,7 +1377,7 @@ Returns the last name of the currently logged-in user.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Your last name: #{@user.lastName()}"
@@ -1399,7 +1399,7 @@ Returns the locale of the currently logged-in user.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Your locale is: #{@user.locale()}"
@@ -1421,7 +1421,7 @@ Returns the unique id of the currently logged-in user.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Your user id is: #{@user.uuid()}"
@@ -1443,7 +1443,7 @@ Returns the username of the currently logged-in user.
 
 #### Example 1
 
-```
+```yaml
 pipeline:
   - log: 
       message: "Your are logged-in as: #{@user.username()}"

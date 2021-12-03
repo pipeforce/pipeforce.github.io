@@ -5,7 +5,7 @@ In this step now its time for your first pipeline. Pipelines are “the heart”
 
 In order to create your first pipeline, type-in this command in your VS Code terminal:
 
-```
+```bash
 ~/pipeforce %> pi new pipeline
 ```
 
@@ -18,7 +18,7 @@ Then follow the questions of the wizard:
 
 Finally a new demo pipeline file is created `src/global/app/myapp42/pipeline/helloworld.pi.yaml`:
 
-```
+```yaml
 pipeline:
   - log:        
       message: "Hello World"
@@ -28,14 +28,13 @@ As you can see, this demo pipeline is really simple. It defines the YAML element
 
 At first, lets execute this pipeline file locally without publishing it. To do so, execute this command:
 
-```
+```yaml
 ~/pipeforce %> pi pipeline file src/global/app/myapp42/pipeline/helloworld.pi.yaml
 ```
 
 What happens in the background is that the command instructions of the locally stored pipeline file will be send to the server and executed there, but without storing it at server side. Then the result is sent back to the client. This is handy in case you would like to try and execute an ad-hoc task without uploading the pipeline to the server. After execution, you should see an output similar to this in your VS Code terminal:
 
-```
----
+```yaml
 result:
   value: "Hello World"
 ```
@@ -46,13 +45,13 @@ result:
 
 Now lets publish the pipeline to the server using this command:
 
-```
+```yaml
 ~/pipeforce %> pi publish
 ```
 
 Once the pipeline was published to the server you can execute it now remotely:
 
-```
+```yaml
 ~/pipeforce %> pi pipeline remote global/app/myapp42/pipeline/helloworld
 ```
 
@@ -74,7 +73,7 @@ Lets assume you have a PDF file `invoice.pdf` stored in the root of your drive f
 
 Then, upload a invoice PDF file into the root of your drive and name it `invoice.pdf`:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286028/image-20210213-042536.png?api=v2)
+![](../../img/image-20210213-042536.png)
 
 If you do not have a sufficient PDF file at hand, you can download and use the PDF file attached here:
 
@@ -82,13 +81,13 @@ If you do not have a sufficient PDF file at hand, you can download and use the P
 
 In the next step, we gonna use a pipeline to write the text `RECEIVED <TIMESTAMP>` on this PDF. To do so, first create another pipeline using this command:
 
-```
+```yaml
 ~/piepforce %> pi new pipeline
 ```
 
 When asked, select the app `myapp42`, give the pipeline the name `createstamp` and finally open the generated pipeline which contains again the helloworld log command. Remove the content of this file and replace it by the commands shown below:
 
-```
+```yaml
 pipeline:
   - drive.read:
       path: "invoice.pdf"
@@ -110,23 +109,23 @@ Your pipeline now consists of three commands:
 
 Save this pipeline and execute it locally:
 
-```
+```yaml
 ~/pipeforce %> pi pipeline file src/global/app/myapp42/pipeline/createstamp.pi.yaml
 ```
 
 After execution of this command, open the drive service in your browser. After a refresh of the page you should now see the additional file `invoice-received.pdf` listed there:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286028/image-20210213-045220.png?api=v2)
+![](../../img/image-20210213-045220.png)
 
 When you open it, you should see the generated stamp in the top right corner of the PDF:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286028/image-20210213-045350.png?api=v2)
+![](../../img/image-20210213-045350.png)
 
 **Tip 1:** The online documentation of all available commands can be found at [https://NAMESPACE.pipeforce.org/#/commands](https://NAMESPACE.pipeforce.org/#/commands) (replace NAMESPACE by your real namespace name) or you use the CLI:  
 `pi help command`
 
 **Tip 2:** If not already done, we highly recommend to activate the YAML plugin in your editor in order to get all available commands listed right inside your editor while typing. See the local toolings section at the beginning of this tutorial on how to do it. Or even better, use the online workbench.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286028/image-20200815-094048.png?api=v2)
+![](../../img/image-20200815-094048.png)
 
 **Tip 3:** If you wonder whats about the hieroglyphs displayed in your VS Code terminal after the execution of the pipeline (only on versions < 7.0): This is the content of the PDF document which is stored to drive and additionally send back to the client for further processing. This is the default behavior of a pipeline: If something is in the body, it will be send back to the client. To avoid this, you can add the command `body.delete` at the very end of the pipeline. It removes the body content before sending back a response to the client.

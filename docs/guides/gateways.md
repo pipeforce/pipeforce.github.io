@@ -8,7 +8,7 @@ In this example, depending on whether the supervisor has approved or declined th
 
 1.  To define the rule for the decline gateway, select the **declined** edge of the gateway and fill-in this condition: `${vacationApproved == false}`:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151288607/grafik-20210727-131453.png?api=v2)
+    ![](../img/grafik-20210727-131453.png)
 2.  This makes sure that this branch is executed in case the supervisor set `vacationApproved` to false in the task form.
     
 3.  Repeat these steps for the task “Send approved email” and set the condition to  
@@ -42,12 +42,12 @@ For more details see [https://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html](
     
 *   Field provides a dropdown list for user (Approve, Decline, Delegate)  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151288607/image-20211026-042805.png?api=v2)
+    ![](../img/image-20211026-042805.png)
 *   Gateway should represent the “Approve” selection
     
 *   Condition looks like this:
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151288607/image-20211026-043538.png?api=v2)
+    ![](../img/image-20211026-043538.png)
 
 ## Condition for checkbox
 
@@ -55,12 +55,12 @@ For more details see [https://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html](
     
 *   Field provides a checkbox  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151288607/image-20211026-050043.png?api=v2)
+    ![](../img/image-20211026-050043.png)
 *   Gateway should represent the situation that the checkbox is ticked
     
 *   Condition looks like this:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151288607/image-20211026-044236.png?api=v2)
+    ![](../img/image-20211026-044236.png)
 
 ${ checked } works also. Similar ${ !checked } can be use in place of ${ checked == false }
 
@@ -68,14 +68,14 @@ ${ checked } works also. Similar ${ !checked } can be use in place of ${ checked
 
 *   Condition refers to a field named “Kosten”  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151288607/image-20211026-050320.png?api=v2)
+    ![](../img/image-20211026-050320.png)
 *   Field provides the option to type in numbers
     
 *   Gateway should represent the situation that the value is > 100 but < 1000
     
 *   Condition looks like this:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151288607/image-20211026-050440.png?api=v2)
+    ![](../img/image-20211026-050440.png)
 
 ## Multiple conditions
 
@@ -93,4 +93,4 @@ ${ checked } works also. Similar ${ !checked } can be use in place of ${ checked
         
 *   Condition looks like this:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151288607/image-20211026-045846.png?api=v2)
+    ![](../img/image-20211026-045846.png)

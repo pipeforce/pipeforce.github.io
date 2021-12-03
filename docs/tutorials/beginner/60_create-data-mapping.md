@@ -8,11 +8,11 @@
     
 *   You have a valid PIPEFORCE Developer account
     
-*   You have completed tutorial: [Tutorial: Create a new app](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151284934/Tutorial%3A+Create+a+new+app)
+*   You have completed tutorial: [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app)
     
-*   You have completed tutorial: [Tutorial: Create and execute a pipeline](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151285094/Tutorial%3A+Create+and+execute+a+pipeline)
+*   You have completed tutorial: [Tutorial: Create and execute a pipeline](https://pipeforce.github.io/docs/tutorials/beginner/create-pipeline)
     
-*   You have a basic understanding of the PEL: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454)
+*   You have a basic understanding of the PEL: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel)
     
 
 ## Intro
@@ -148,7 +148,7 @@ Let's see in this tutorial how to implement this conversion task by using a pipe
     
 11.  Then click RUN to execute the pipeline which should look like this:
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285172/image-20211016-072351.png?api=v2)
+    ![](../../img/image-20211016-072351.png)
 12.  You should then see a result similar to this:
     
     ```json

@@ -6,7 +6,7 @@ You can change this default behaviour in two steps:
 
 **Step1:** Change the JSON Schema and add a new field of type `boolean` for each button. This field should carry the value of the button after it was clicked (`true`) or not (`false`). For example:
 
-```
+```json
 {
   "type": "object",
 
@@ -23,7 +23,7 @@ You can change this default behaviour in two steps:
 
 **Step 2:** “Tell” the form configuration, that it should “draw” these fields as buttons using the `render` attribute. For example:
 
-```
+```json
 {
   "title": "Approval",
   "description": "Do you approve?",  
@@ -33,13 +33,13 @@ You can change this default behaviour in two steps:
       {"field": "buttonYes", "render": "button"},      
       {"field": "buttonNo", "render": "button"}
     ]
-  },
+  }
 }
 ```
 
 After a button has been clicked, a new object is created and stored in the property store which do have a structure like this:
 
-```
+```json
 {
   "buttonYes": true,
   "buttonNo": false

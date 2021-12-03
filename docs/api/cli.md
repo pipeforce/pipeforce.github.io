@@ -6,19 +6,19 @@ It makes it handy to automate local tasks by executing commands and pipelines an
 
 See the *[Downloads](/docs/downloads)* section on how to install this tool.
 
-The tutorial [Setup local workspace + CLI](../docs/tutorials/beginner/intro.md) shows, how to install and work with the CLI.
+The tutorial [Setup local workspace + CLI](../tutorials/02_advanced/10_localworkspace.md) shows, how to install and work with the CLI.
 
 ## Call structure
 
 The main structure of a CLI command is always like this:
 
-```
+```bash
 pi <action> <args>
 ```
 
 To get a list off all supported actions and their parameters use the help command:
 
-```
+```bash
 pi help
 ```
 
@@ -32,7 +32,7 @@ Each command parameter will become a command line parameter.
 
 **Example 1:**
 
-```
+```bash
 pi command log message=HELLO
 ```
 
@@ -40,7 +40,7 @@ This executes the `log` command at server side with the parameter `message` set 
 
 **Example 2:**
 
-```
+```bash
 pi command mail.send to=my@email.tld subject=Hello message="This is a test"
 ```
 
@@ -58,7 +58,7 @@ Deletes the remote resources inside a given app. It doesn’t delete any local r
 
 **Example 1:**
 
-```
+```bash
 pi delete global/app/myapp/pipeline/helloworld
 ```
 
@@ -66,7 +66,7 @@ Deletes the pipeline helloworld.
 
 **Example 2:**
 
-```
+```bash
 pi delete global/app/myapp/**
 ```
 
@@ -82,7 +82,7 @@ Downloads all resources of a given app, stores them into the local workspace in 
 
 **Example 1:**
 
-```
+```bash
 pi get global/app/myapp/**
 ```
 
@@ -92,7 +92,7 @@ This command line call downloads all resources of the app `myapp` and its sub-fo
 
 This downloads only the resources inside the `myapp` folder but no resource from inside its sub-folders.
 
-```
+```bash
 pi get global/app/myapp/*
 ```
 
@@ -100,7 +100,7 @@ pi get global/app/myapp/*
 
 This downloads a single resource by its key:
 
-```
+```bash
 pi get global/app/myapp/pipeline/hello
 ```
 
@@ -110,7 +110,7 @@ Lists all available CLI options or pipeline commands.
 
 **Example 1:**
 
-```
+```bash
 pi help
 ```
 
@@ -118,7 +118,7 @@ Lists all available command line options.
 
 **Example 2:**
 
-```
+```bash
 pi help command
 ```
 
@@ -126,14 +126,13 @@ Lists the documentation of all available pipeline commands for the currently log
 
 **Example 2:**
 
-```
+```bash
 pi help command log
 ```
 
 Explains the log pipeline command. The output could look like this:
 
-```
----
+```yaml
 log:
   type: "object"
   description: "Logs the given input message without changing it. Sets the log message\
@@ -162,7 +161,7 @@ Lists all remote resources of a given path.
 
 **Example 1:**
 
-```
+```bash
 pi list global/app/myapp**
 ```
 
@@ -170,7 +169,7 @@ Lists all resources of the app `myapp` recursively.
 
 **Example 2:**
 
-```
+```bash
 pi list global/app/myapp/*
 ```
 
@@ -182,13 +181,13 @@ Creates a new resource based on a wizard.
 
 **Example 1:**
 
-```
+```bash
 pi new
 ```
 
 Would print this wizard:
 
-```
+```yaml
 Create new...
   0: app
   1: form
@@ -203,7 +202,7 @@ Choose number :
 
 You can also directly start the resource wizard:
 
-```
+```bash
 pi new app
 ```
 
@@ -211,7 +210,7 @@ pi new app
 
 And if you are inside a app folder, the app you want to create the resource for is already pre-selected for you.
 
-```
+```bash
 ~ pipeforce> cd src/global/app/myapp
 ~ app/myapp> pi new pipeline
 ```
@@ -222,7 +221,7 @@ Executes a locally stored pipeline file, a remote pipeline or a pipeline uri.
 
 **Example 1:**
 
-```
+```bash
 pi pipeline file src/global/app/myapp/pipeline/helloworld.pi.yaml
 ```
 
@@ -230,7 +229,7 @@ This example uploads the content of the `helloworld.pi.yaml` to the server, exec
 
 **Example 2:**
 
-```
+```bash
 pi pipeline uri "log?message=HELLO"
 ```
 
@@ -246,7 +245,7 @@ It is also possible to combine multiple commands to form a pipeline using the pi
 
 Here is an example to re-write this YAML pipeline configuration:
 
-```
+```yaml
 pipeline:
   - datetime:
       format: "dd.MM.YY"
@@ -255,19 +254,19 @@ pipeline:
 
 To this pipeline uri format:
 
-```
+```bash
 datetime?format=dd.MM.YY|log
 ```
 
 Therefore, a call of this pipeline uri would look like this:
 
-```
+```bash
 pi pipeline uri "datetime?format=dd.MM.YY|log"
 ```
 
 Output:
 
-```
+```bash
 23.01.21
 ```
 
@@ -283,7 +282,7 @@ In case a resource already exists at the server updates only in case it has chan
 
 **Example 1:**
 
-```
+```bash
 pi publish
 ```
 
@@ -293,7 +292,7 @@ This command uploads / updates all resources inside the `src` folder.
 
 If you want to publish only a certain subset of the src folder, you can specify the folder like this:
 
-```
+```bash
 pi publish src/global/app/myapp/**
 ```
 
@@ -303,7 +302,7 @@ This will recursively publish any resource inside this folder and its sub-folder
 
 In case you want to publish only the files inside this folder but not its sub-folders and files, you can use a single asterisk instead:
 
-```
+```bash
 pi publish src/global/app/myapp/*
 ```
 
@@ -311,7 +310,7 @@ pi publish src/global/app/myapp/*
 
 If you want to publish a single resource, define it by its filename:
 
-```
+```bash
 pi publish src/global/app/myapp/pipeline/hello.pi.yaml
 ```
 
@@ -319,7 +318,7 @@ pi publish src/global/app/myapp/pipeline/hello.pi.yaml
 
 Note that the path argument is always relatively to your current working dir, as long as you are inside the workspace home folder $USER\_HOME/pipeforce:
 
-```
+```bash
 cd $USER_HOME/pipeforce/src/global/app/myapp
 pi publish **
 ```
@@ -336,7 +335,7 @@ This writes the final result into the file `$USER_HOME/pipeforce/conf/cli.conf.j
 
 **Example 1:**
 
-```
+```bash
 pi setup
 ```
 
@@ -344,7 +343,7 @@ pi setup
 
 For more advanced users, you can use the flag advanced in order to be able to adjust more settings:
 
-```
+```bash
 pi setup advanced
 ```
 
@@ -354,7 +353,7 @@ Returns status information about the CLI.
 
 **Example:**
 
-```
+```bash
 pi status
 ```
 
@@ -364,6 +363,6 @@ Looks for an update of the CLI and installs it if a newer version exists.
 
 **Example:**
 
-```
+```bash
 pi update
 ```

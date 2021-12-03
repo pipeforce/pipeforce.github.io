@@ -8,9 +8,9 @@
     
 *   You have a valid PIPEFORCE Developer account
     
-*   You have completed tutorial: [Tutorial: Create a new app](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151284934/Tutorial%3A+Create+a+new+app)
+*   You have completed tutorial: [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app)
     
-*   You have completed tutorial: [Tutorial: Create and execute a pipeline](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151285094/Tutorial%3A+Create+and+execute+a+pipeline)
+*   You have completed tutorial: [Tutorial: Create and execute a pipeline](https://pipeforce.github.io/docs/tutorials/beginner/create-pipeline)
     
 *   You have an Office 365 / Teams account
     
@@ -29,19 +29,19 @@ In the first step, you need to create a webhook in Teams so we can send data to 
     
 3.  Navigate to Teams → Your Teams → Select the channel you want to send messages to → Connectors:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285568/grafik-20210727-092443.png?api=v2)
+    ![](../../img/grafik-20210727-092443.png)
     
 4.  In the upcoming list click `Configure` of **Incoming Webhook**:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285568/grafik-20210727-092742.png?api=v2)
+    ![](../../img/grafik-20210727-092742.png)
     
 5.  Give the webhook a meaningful name and then click `Create`:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285568/grafik-20210727-092945.png?api=v2)
+    ![](../../img/grafik-20210727-092945.png)
     
 6.  Copy the generated webhook url into your clipboard, then click `Done`:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285568/grafik-20210727-093159.png?api=v2)
+    ![](../../img/grafik-20210727-093159.png)
 
 ## 2 - Send a message from a pipeline
 
@@ -71,7 +71,7 @@ In the first step, you need to create a webhook in Teams so we can send data to 
     
 8.  **Done**. After a few seconds, you should receive a new message in the Teams channel:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285568/grafik-20210727-123350.png?api=v2)
+    ![](../../img/grafik-20210727-123350.png)
 9.  If you want, you can persist this pipeline in an app to keep it for later use.
     
 

@@ -4,19 +4,19 @@ The CLI can be used to simplify working with PIPEFORCE.
 
 In order to run this tool Java >= Version 8 must be installed.
 
-See here for more details about this CLI tool: [Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739)
+See here for more details about this CLI tool: [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)
 
 ## Verify and install Java 8
 
 Open your terminal and verify that you have a Java runtime version >= 1.8 installed:
 
-```
+```bash
 $> java -version
 ```
 
 You should see an output similar to this:
 
-```
+```bash
 java version "1.8"
 ```
 
@@ -35,7 +35,7 @@ If you have not Java runtime yet, follow these steps to download and install:
 3.  Open **a new console window** and try out that this command now shows the installed Java version:
     
 
-```
+```bash
 $> java -version
 ```
 
@@ -51,13 +51,13 @@ Select the jar file with highest version number and download it to your computer
 
 After this, open a new terminal / command line window and change to the folder where you downloaded the file to. Usually this is the Download folder as shown in this example for Mac and could differ for your operating system:
 
-```
+```bash
 $> cd /Users/username/Downloads
 ```
 
 Now install the cli tool by executing this command:
 
-```
+```bash
 > java -jar pipeforce-cli-VERSION.jar setup
 ```
 
@@ -71,7 +71,7 @@ Follow the wizard to install the CLI.
 
 To update to the lastest version, simply use this command:
 
-```
+```bash
 pi update
 ```
 
@@ -81,7 +81,7 @@ It will search for latest versions and automatically download + install it for y
 
 Optionally you can add the pi tool to your path variable in order to simplify the call to:
 
-```
+```bash
 pi status
 ```
 
@@ -91,7 +91,7 @@ To do so, add the file `pi.bat` inside your `$USER_HOME/pipeforce` folder to the
 
 Optionally you can add the CLI tool to your path variable in order to simplify the call to:
 
-```
+```bash
 pi status
 ```
 

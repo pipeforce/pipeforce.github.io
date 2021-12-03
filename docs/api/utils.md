@@ -1,7 +1,7 @@
 # Utils  
 Reference documentation of [Pipeline Expression Language (PEL)](../guides/pel) utils.  
 
-Generated: **01/12/2021**  
+Generated: **29/11/2021**  
 Number of built-in utils: **15**  
 Also see: **[Utils Guide](../guides/utils)** | **[PEL Guide](../guides/pel)**
 
@@ -110,7 +110,7 @@ uri | ``string`` | The uri to be used for the content object
 ```  
 
  
-##  @convert 
+## @convert 
 Provides utility functions inside a pipeline expression for simple conversion and encoding tasks.
 You can access the functions declared here in the PEL using <code>@convert</code>  
 
@@ -651,7 +651,6 @@ dateTime | ``object`` | The date time object to be parsed.
 
  
 ##  @format 
-----------  
 Provides utility functions inside a pipeline expression for formatting values.  
 
 ### decimal(value,pattern)   
@@ -748,7 +747,6 @@ email | ``string`` | The email of the user.
 
  
 ##  @instance 
-----------  
 Provides utility functions inside a pipeline expression to return information about the current instance.
 You can access the functions declared here in the PEL using <code>@instance</code>  
 

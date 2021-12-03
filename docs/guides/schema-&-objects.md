@@ -16,7 +16,7 @@ But also in other areas beside forms it is meaningful to define a JSON Schema fi
 
 Here is an example of how such a JSON schema can look like defining an person object:
 
-```
+```json
 {
   "type": "object",
 
@@ -42,13 +42,13 @@ You can see that it defines four fields of different types: The `firstName`, `la
 
 By default, a JSON schema which describes an object within PIPEORCE is placed in a property using this key path:
 
-```
+```bash
 global/app/<APP>/object/<NAME>/v1/schema
 ```
 
 Whereas `<APP>` is the name of the app, the object belongs to and `<NAME>` is the name of the object. In the example of a person which is part of the app `myApp`, you could use this path to access the object schema in a unique way from within the overall PIPEFORCE instance:
 
-```
+```bash
 global/app/myApp/object/person/v1/schema
 ```
 
@@ -56,4 +56,4 @@ global/app/myApp/object/person/v1/schema
 
 The JSON schema will be used as a base to render the fields defined in it as a form. By default all fields are rendered vertically (each in a row) as you can see here:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287651/grafik-20201023-084022.png?api=v2)
+![](../img/grafik-20201023-084022.png)

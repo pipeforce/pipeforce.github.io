@@ -1,12 +1,5 @@
 # Commands
 
-Reference documentation of all built-in [Commands](../guides/command).  
-
-Generated: **01/12/2021**  
-Number of built-in commands: **202**  
-Download pipeline and commands schema: **[pipeline-schema.json](./assets/pipeline-schema.txt)**  
-Also see: **[Pipeline Guide](../guides/pipeline)** | **[Command Guide](../guides/command)**  
-
 Example usage of chained commands in a pipeline with [PEL](../guides/pel) to access the body:  
 ```yaml  
 pipeline:  
@@ -36,7 +29,7 @@ pipeline:
   - apidoc.commands:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -71,7 +64,7 @@ pipeline:
   - apidoc.pel.utils:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -116,7 +109,7 @@ pipeline:
       value: <value>  
       message: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -159,7 +152,7 @@ pipeline:
       throwException: <value>  
       processInstanceId: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -202,7 +195,7 @@ pipeline:
       format: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -239,7 +232,7 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -278,7 +271,7 @@ pipeline:
       method: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -309,7 +302,7 @@ Sets the value in the body to null. Deletes any existing value in the body.
 pipeline:  
   - body.delete:  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -346,7 +339,7 @@ pipeline:
       properties: <value>  
       removeKey: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -381,7 +374,7 @@ pipeline:
   - cache.clear:  
       key: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -422,7 +415,7 @@ pipeline:
       exit: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -457,7 +450,7 @@ pipeline:
   - cache.info:  
       key: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -492,7 +485,7 @@ pipeline:
   - cache.list:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -533,7 +526,7 @@ pipeline:
       key: <value>  
       value: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -572,7 +565,7 @@ pipeline:
       args: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -603,7 +596,7 @@ DEPREACTED (Use the cache.* commands instead). Captures the last pipe message an
 pipeline:  
   - capture:  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -640,7 +633,7 @@ pipeline:
       pipe: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -675,7 +668,7 @@ pipeline:
   - pipe.schema.v7:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -716,7 +709,7 @@ pipeline:
       includePermission: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -753,7 +746,7 @@ pipeline:
       uri: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -788,7 +781,7 @@ pipeline:
   - credentials.delete:  
       name: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -825,7 +818,7 @@ pipeline:
       name: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -835,6 +828,41 @@ http://host/api/v3/command/credentials.get?name=<value>&output=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command credentials.get name=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## credentials.list
+Lists the metadata of all available credentials entries.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.list)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - credentials.list:  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/02_pipeline.md). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/credentials.list?output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command credentials.list output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -851,7 +879,7 @@ Creates a new credentials entry.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`format` | String | true | null | The format of the secret to store. One of: secret-text, bearer, header, username-password.
+`format` | String | true | null | The format of the secret to store. One of: secretText, bearer, header, usernamePassword.
 `name` | String | true | null | The unique name of the credentials.
 `secret` | String | true | null | The secret part of the credentials (for example the username:password or Bearer TOKEN).
 `timeToLive` | String | false | null | The time to live in minutes. After this time, the credentials will be deleted.
@@ -866,7 +894,7 @@ pipeline:
       secret: <value>  
       timeToLive: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -905,7 +933,7 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -952,7 +980,7 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -989,7 +1017,7 @@ pipeline:
       format: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1024,7 +1052,7 @@ pipeline:
   - datetime.zones:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1063,7 +1091,7 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1106,7 +1134,7 @@ pipeline:
       length: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1155,7 +1183,7 @@ pipeline:
       notifySender: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1190,7 +1218,7 @@ pipeline:
   - delivery.delete:  
       deliveryUuid: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1227,7 +1255,7 @@ pipeline:
       deliveryUuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1264,7 +1292,7 @@ pipeline:
       deliveryUuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1305,7 +1333,7 @@ pipeline:
       locale: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1344,7 +1372,7 @@ pipeline:
       recipients: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1395,7 +1423,7 @@ pipeline:
       notifySender: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1430,7 +1458,7 @@ pipeline:
   - doc.api.pelutils:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1482,7 +1510,7 @@ pipeline:
       accountId: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1525,7 +1553,7 @@ pipeline:
       restUrl: <value>  
       filter: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1564,7 +1592,7 @@ pipeline:
       namingPattern: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1601,7 +1629,7 @@ pipeline:
       path: <value>  
       to: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1636,7 +1664,7 @@ pipeline:
   - drive.delete:  
       path: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1673,7 +1701,7 @@ pipeline:
       path: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1710,7 +1738,7 @@ pipeline:
       path: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1747,7 +1775,7 @@ pipeline:
       path: <value>  
       recurse: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1784,7 +1812,7 @@ pipeline:
       path: <value>  
       to: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1823,7 +1851,7 @@ pipeline:
       append: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1862,7 +1890,7 @@ pipeline:
       namingStrategy: <value>  
       cleanupBody: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1917,7 +1945,7 @@ pipeline:
       invite: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1958,7 +1986,7 @@ pipeline:
       tagvalue: <value>  
       remove: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -1999,7 +2027,7 @@ pipeline:
       path: <value>  
       index: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2036,7 +2064,7 @@ pipeline:
       password: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2071,7 +2099,7 @@ pipeline:
   - eval:  
       expr: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2108,7 +2136,7 @@ pipeline:
       key: <value>  
       filter: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2143,7 +2171,7 @@ pipeline:
   - event.mapping.get:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2184,7 +2212,7 @@ pipeline:
       payload: <value>  
       async: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2225,7 +2253,7 @@ pipeline:
       loopName: <value>  
       end: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2256,7 +2284,7 @@ DEPRECATED. Use the set command instead. Sets any parameter value as header. For
 pipeline:  
   - header.set:  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2291,7 +2319,7 @@ pipeline:
   - htmlunit.website.form.find:  
       select: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2328,7 +2356,7 @@ pipeline:
       value: <value>  
       select: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2363,7 +2391,7 @@ pipeline:
   - htmlunit.website.form.submit:  
       select: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2398,7 +2426,7 @@ pipeline:
   - htmlunit.website.link.click:  
       select: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2433,7 +2461,7 @@ pipeline:
   - htmlunit.website.open:  
       url: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2470,7 +2498,7 @@ pipeline:
       xpath: <value>  
       select: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2515,7 +2543,7 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2560,7 +2588,7 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2605,7 +2633,7 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2650,7 +2678,7 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2695,7 +2723,7 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2730,7 +2758,7 @@ pipeline:
   - iam.token.refresh:  
       refreshToken: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2769,7 +2797,7 @@ pipeline:
       password: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2800,7 +2828,7 @@ Adds header 'authUserId' - name of an user authenticated as a sender of the pipe
 pipeline:  
   - iam.authinfo:  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2843,7 +2871,7 @@ pipeline:
       username: <value>  
       password: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2882,7 +2910,7 @@ pipeline:
       uuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2921,7 +2949,7 @@ pipeline:
       uuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -2962,7 +2990,7 @@ pipeline:
       groupName: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3003,7 +3031,7 @@ pipeline:
       attributes: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3040,7 +3068,7 @@ pipeline:
       uuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3085,7 +3113,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3126,7 +3154,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3171,7 +3199,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3216,7 +3244,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3251,7 +3279,7 @@ pipeline:
   - iam.realm.create:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3290,7 +3318,7 @@ pipeline:
       composites: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3331,7 +3359,7 @@ pipeline:
       attributes: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3374,7 +3402,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3409,7 +3437,7 @@ pipeline:
   - iam.run.as:  
       username: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3452,7 +3480,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3487,7 +3515,7 @@ pipeline:
   - iam.token.logout:  
       refreshToken: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3528,7 +3556,7 @@ pipeline:
       groupIds: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3569,7 +3597,7 @@ pipeline:
       roleNames: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3620,7 +3648,7 @@ pipeline:
       attributes: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3657,7 +3685,7 @@ pipeline:
       uuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3696,7 +3724,7 @@ pipeline:
       uuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3741,7 +3769,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3782,7 +3810,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3827,7 +3855,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3866,7 +3894,7 @@ pipeline:
       end: <value>  
       else: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3903,7 +3931,7 @@ pipeline:
       cron: <value>  
       stop: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3940,7 +3968,7 @@ pipeline:
       query: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -3977,7 +4005,7 @@ pipeline:
       message: <value>  
       level: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4018,7 +4046,7 @@ pipeline:
       format: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4059,7 +4087,7 @@ pipeline:
       createdBefore: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4096,7 +4124,7 @@ pipeline:
       interpolate: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4147,7 +4175,7 @@ pipeline:
       path: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4192,7 +4220,7 @@ pipeline:
       inboxPassword: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4242,7 +4270,7 @@ pipeline:
       replyTo: <value>  
       attachments: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4297,7 +4325,7 @@ pipeline:
       email.blacklist: <value>  
       challenge: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4332,7 +4360,7 @@ pipeline:
   - map:  
       reverse: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4367,7 +4395,7 @@ pipeline:
   - memory.info:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4404,7 +4432,7 @@ pipeline:
       url: <value>  
       message: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4414,48 +4442,6 @@ http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command microsoft.teams.send url=<value> message=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
-
-  
-
-## mock.command
-----------   
-Mocks a given command of the current pipeline.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=mock.command)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`enabled` | String | false | true | Is the mock active? Can be a boolean or a PEL returning a boolean
-`command` | String | true | null | The name of the command to mock
-`when` | String | false | true | The mock expression: When this evaluates to true, the mock will be applied.
-`thenReturn` | String | false | null | The value to be returned in the body when this mock applies. If not defined, the current body will not be changed.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - mock.command:  
-      enabled: <value>  
-      command: <value>  
-      when: <value>  
-      thenReturn: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/mock.command?enabled=<value>&command=<value>&when=<value>&thenReturn=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command mock.command enabled=<value> command=<value> when=<value> thenReturn=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4485,7 +4471,7 @@ pipeline:
       format: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4522,7 +4508,7 @@ pipeline:
       name: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4579,7 +4565,7 @@ pipeline:
       lineNo: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4614,7 +4600,7 @@ pipeline:
   - pipeline.delete:  
       name: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4651,7 +4637,7 @@ pipeline:
       name: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4688,7 +4674,7 @@ pipeline:
       name: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4723,7 +4709,7 @@ pipeline:
   - pipeline.run:  
       name: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4762,7 +4748,7 @@ pipeline:
       vars: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4799,7 +4785,7 @@ pipeline:
       appNames: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4840,7 +4826,7 @@ pipeline:
       index: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4881,7 +4867,7 @@ pipeline:
       index: <value>  
       content: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4920,7 +4906,7 @@ pipeline:
       name: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4957,7 +4943,7 @@ pipeline:
       key: <value>  
       name: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -4996,7 +4982,7 @@ pipeline:
       name: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5033,7 +5019,7 @@ pipeline:
       key: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5074,7 +5060,7 @@ pipeline:
       content: <value>  
       contentType: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5113,7 +5099,7 @@ pipeline:
       name: <value>  
       uri: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5150,7 +5136,7 @@ pipeline:
       key: <value>  
       to: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5187,7 +5173,7 @@ pipeline:
       key: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5224,7 +5210,7 @@ pipeline:
       strategy: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5261,7 +5247,7 @@ pipeline:
       pattern: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5298,7 +5284,7 @@ pipeline:
       pattern: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5337,7 +5323,7 @@ pipeline:
       filter: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5374,7 +5360,7 @@ pipeline:
       key: <value>  
       to: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5411,7 +5397,7 @@ pipeline:
       key: <value>  
       value: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5446,7 +5432,7 @@ pipeline:
   - property.schema.delete:  
       key: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5497,7 +5483,7 @@ pipeline:
       attachments: <value>  
       tags: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5546,7 +5532,7 @@ pipeline:
       recipients: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5583,7 +5569,7 @@ pipeline:
       key: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5624,7 +5610,7 @@ pipeline:
       name: <value>  
       value: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5667,7 +5653,7 @@ pipeline:
       aggregate: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5704,7 +5690,7 @@ pipeline:
       key: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5741,7 +5727,7 @@ pipeline:
       module: <value>  
       path: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5778,7 +5764,7 @@ pipeline:
       id: <value>  
       id: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5815,7 +5801,7 @@ pipeline:
       value: <value>  
       id: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5854,7 +5840,7 @@ pipeline:
       uri: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5889,7 +5875,7 @@ pipeline:
   - resource.save:  
       path: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5920,7 +5906,7 @@ Closes website and releases all used resources.Note: The pipe is BETA and not in
 pipeline:  
   - rpa.website.close:  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5955,7 +5941,7 @@ pipeline:
   - rpa.website.open:  
       url: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -5990,7 +5976,7 @@ pipeline:
   - rpa.website.scrap:  
       xpath: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6025,7 +6011,7 @@ pipeline:
   - schema.pipeline:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6066,7 +6052,7 @@ pipeline:
       language: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6101,7 +6087,7 @@ pipeline:
   - server.info:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6136,7 +6122,7 @@ pipeline:
   - service.start:  
       name: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6171,7 +6157,7 @@ pipeline:
   - service.stop:  
       name: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6208,7 +6194,7 @@ pipeline:
       value: <value>  
       format: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6251,7 +6237,7 @@ pipeline:
       output: <value>  
       input: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6290,7 +6276,7 @@ pipeline:
       value: <value>  
       format: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6337,7 +6323,7 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6384,7 +6370,7 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6431,7 +6417,7 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6478,7 +6464,7 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6527,7 +6513,7 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6574,7 +6560,7 @@ pipeline:
       credentials: <value>  
       input: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6611,7 +6597,7 @@ pipeline:
       url: <value>  
       text: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6656,7 +6642,7 @@ pipeline:
       columnField: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6691,7 +6677,7 @@ pipeline:
   - switch:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6730,7 +6716,7 @@ pipeline:
       resource: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6777,7 +6763,7 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6816,7 +6802,7 @@ pipeline:
       template: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6851,7 +6837,7 @@ pipeline:
   - transform.html2docx:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6888,7 +6874,7 @@ pipeline:
       dpi: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6925,7 +6911,7 @@ pipeline:
       dpi: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -6964,7 +6950,7 @@ pipeline:
       path: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7003,7 +6989,7 @@ pipeline:
       template: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7048,7 +7034,7 @@ pipeline:
       restUrl: <value>  
       filter: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7083,7 +7069,7 @@ pipeline:
   - unzip:  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7122,7 +7108,7 @@ pipeline:
       version: <value>  
       path: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7157,7 +7143,7 @@ pipeline:
   - webhook.delete:  
       uuid: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7194,7 +7180,7 @@ pipeline:
       uuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7235,7 +7221,7 @@ pipeline:
       uuid: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7270,7 +7256,7 @@ pipeline:
   - webhook.receive:  
       uuid: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7309,7 +7295,7 @@ pipeline:
       message: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7350,7 +7336,7 @@ pipeline:
       propertyKey: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7389,7 +7375,7 @@ pipeline:
       id: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7432,7 +7418,7 @@ pipeline:
       messageName: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7469,7 +7455,7 @@ pipeline:
       processInstanceBusinessKey: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7514,7 +7500,7 @@ pipeline:
       processInstanceBusinessKey: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7563,7 +7549,7 @@ pipeline:
       message: <value>  
       model: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7600,7 +7586,7 @@ pipeline:
       processInstanceId: <value>  
       fileName: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7639,7 +7625,7 @@ pipeline:
       fileName: <value>  
       contentType: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7676,7 +7662,7 @@ pipeline:
       mappings: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7719,7 +7705,7 @@ pipeline:
       processInstanceBusinessKey: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7762,7 +7748,7 @@ pipeline:
       processInstanceBusinessKey: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7811,7 +7797,7 @@ pipeline:
       workflowStartedBy: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7850,7 +7836,7 @@ pipeline:
       variables: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7893,7 +7879,7 @@ pipeline:
       processInstanceBusinessKey: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7930,7 +7916,7 @@ pipeline:
       name: <value>  
       onError: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -7967,7 +7953,7 @@ pipeline:
       processDefinitionId: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  
@@ -8006,7 +7992,7 @@ pipeline:
       level: <value>  
       output: <value>  
 ```  
-Learn more: [Pipeline](../guides/pipeline). 
+Learn more: [Pipeline](../guides/02_pipeline.md). 
 
 **URL example:**  
 ```yaml  

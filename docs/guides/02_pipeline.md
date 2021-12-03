@@ -1,8 +1,8 @@
 # Pipeline
 
-Two or more [**commands**](../guides/command) can be chained to a **pipeline**. If such a pipeline gets executed, the commands in it will be executed by their serial ordering within the pipeline. The output message of the first command will become the input message of the next command and so on. 
+Two or more [**commands**](../guides/01_command.md) can be chained to a **pipeline**. If such a pipeline gets executed, the commands in it will be executed by their serial ordering within the pipeline. The output message of the first command will become the input message of the next command and so on. 
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/pipe-chain.drawio.png?api=v2)
+![](../img/pipe-chain.drawio.png)
 
 By default, such a pipeline is written in a [YAML](https://en.wikipedia.org/wiki/YAML) format. Here is an example which uses two simple commands: The `datetime` command to produce the current date and time and after this the `log` command to log the result at server side:
 
@@ -16,7 +16,7 @@ In the YAML a pipeline is defined using the `pipeline:` list as root element. In
 
 Here is a more sophisticated example which uses three commands: The first loads a PDF file from cloud drive (which is a built-in archive and dropbox in PIPEFORCE), the second puts a stamp on this document and the third saves the PDF with the stamp back to drive:
 
-```
+```yaml
 pipeline:
  - drive.read:
      path: /my.pdf
@@ -37,17 +37,17 @@ Similar to a single command, a pipeline of commands is executed by sending it in
 
 Since version 7.0 of PIPEFORCE, the Online Workbench is available. This is an advanced online editor with full code completion support where you can write pipelines and commands to be executed and then run them online. This is the easiest and most preferred way to ad-hoc execute a command or pipelines. Here you can see a simple pipeline after its ad-hoc execution as an example:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/grafik-20210711-083848.png?api=v2)
+![](../img/grafik-20210711-083848.png)
 
 ### Via CLI
 
-Another approach to execute a pipeline is by using the CLI: [Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739).
+Another approach to execute a pipeline is by using the CLI: [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli).
 
 #### Local file
 
 Lets assume you have a local pipeline file stored at `src/global/app/myapp/pipeline/test.pi.yaml` inside of your PIPEFORCE workspace, then you can execute it via this CLI call:
 
-```
+```bash
 pi pipeline file src/global/app/myapp/pipeline/test.pi.yaml
 ```
 
@@ -59,9 +59,9 @@ A pipeline file must end in this suffix to be detected correctly by your workspa
 
 #### Remote
 
-In case you have stored your pipeline at server side in the [Property Store](../guides/propertystore), then you can execute it using this call:
+In case you have stored your pipeline at server side in the [Property Store](../guides/03_propertystore.md), then you can execute it using this call:
 
-```
+```bash
 pi pipeline remote global/app/myapp/pipeline/test
 ```
 
@@ -71,7 +71,7 @@ This command searches for a property in the property store with key `global/app/
 
 A third option to execute a pipeline is by using a **pipeline uri** which is an inline version of a pipeline. You can rewrite any pipeline YAML fromat also as a pipeline uri. Lets assume this example:
 
-```
+```yaml
 pipeline:
   - datetime
       format: dd.MM.YYYY     
@@ -80,13 +80,13 @@ pipeline:
 
 You can rewrite this pipeline YAML as an inline pipeline uri which looks like this:
 
-```
+```bash
 datetime?format=dd.MM.YYYY|log
 ```
 
 Such a pipeline uri you can then execute using this CLI call in one line:
 
-```
+```bash
 pi pipeline uri "datetime?format=dd.MM.YYYY|log"
 ```
 
@@ -96,7 +96,7 @@ This is handy especially for smaller pipelines which you want to execute ad-hoc 
 
 You can execute a pipeline also by sending it via HTTP POST to the server. See this example:
 
-```
+```yaml
 POST /api/v3/pipeline HTTP/1.1 
 Host: hub-acme.pipefore.net
 
@@ -113,7 +113,7 @@ This will do by default a synchron execution of the pipeline at server side and 
 
 Here is the PDF pipeline example from above, now executed using the `curl` tool which is available on all Linux, Mac and Windows systems:
 
-```
+```bash
 curl -X POST "http://hub/api/v3/pipeline" 
   -H "Content-Type: application/yaml" 
   --data-binary @- << EOF
@@ -130,7 +130,6 @@ EOF
 With this flexibility you can for example define a bash script and store it locally to execute this pipeline with a single command and not much configuration, setup or coding required.
 
 ## Pipeline Scopes
-----------
 
 Every pipeline script may consist of four main sections, called **scopes**:
 
@@ -145,7 +144,7 @@ Every pipeline script may consist of four main sections, called **scopes**:
 
 Here is an example of a pipeline script which defines all of these scopes:
 
-```
+```yaml
 headers:
   contentType: "text/plain"
   
@@ -169,7 +168,7 @@ It depends on the pipeline and its commands whether and which headers are requir
 
 It is similar to HTTP Request headers: [https://en.wikipedia.org/wiki/List\_of\_HTTP\_header\_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 
-You can set values in the headers scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can set values in the headers scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ### vars
 
@@ -179,7 +178,7 @@ Values can also be complex objects and documents.
 
 Values can be changed during pipeline processing.
 
-You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ### pipeline
 
@@ -187,7 +186,7 @@ The pipeline section is mandatory and lists all commands which must be executed 
 
 See your instance portal for a reference of available commands.
 
-You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ### body
 
@@ -195,7 +194,7 @@ The body section is optional. It defines a single object to be used as “data p
 
 In case commands return a value, by default they will write this value to the body implicitly. Whereas a previous commands value in the body will be overwritten by the command which comes next.
 
-You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 
 
@@ -205,7 +204,7 @@ You can access values in the body scope using the Pipeline Expression Language (
 
 In order to enable auto-completion support for pipeline scripts in your local development editor, you need an editor which supports YAML schema validation. Then, you could have auto-completion which shows all available commands and their parameters:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/image-20200815-094048.png?api=v2)
+![](../img/image-20200815-094048.png)
 
 ### IntelliJ
 
@@ -232,7 +231,7 @@ Note: A YAML pipeline script should always end in suffix **.pi.yaml** which stan
 
 To enable auto-completion in Visual Studio Code, open `Preferences → Settings` and search for section `json.schemas` and add a new mapping entry like this:
 
-```
+```yaml
     "json.schemas": [
         {
             "fileMatch": [
@@ -249,7 +248,7 @@ Note: Visual Studio Code doesn't have built-in schema support for yaml files. If
 
 Then open `Preferences → Settings` and add this line to your configuration **settings.json**:
 
-```
+```yaml
 "yaml.schemas": { 
   "https://hub-NAMESPACE.pipeforce.org/api/v3/pipe:pipe.schema.v7": ["/*.pi.yaml"] 
 }
