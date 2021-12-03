@@ -213,8 +213,7 @@ Output:
 false
 ```
 
-Logical operators
------------------
+## Logical operators
 
 ### and
 
@@ -264,8 +263,7 @@ Output:
 false
 ```
 
-Mathematical operators
-----------------------
+## Mathematical operators
 
 ### Addition and subtraction
 
@@ -411,8 +409,7 @@ Output:
 16
 ```
 
-Assignment
-----------
+## Assignment
 
 #### Example 1
 

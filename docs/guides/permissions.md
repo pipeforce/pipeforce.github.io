@@ -143,7 +143,7 @@ In the `headers` section we set special fields:
 *   `onCommandError` = Defines what should happen if a command in the pipeline failed. In this case we `IGNORE` such a problem since it would usually mean that the role already exists or was already assigned.
     
 
-For more information about the available default headers see [Pipeline Headers Reference](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287529/Pipeline+Headers+Reference) .
+For more information about the available default headers see [Pipeline Headers Reference](https://pipeforce.github.io/docs/guides/pipeline-headers) .
 
 In the pipeline section we use these commands:
 

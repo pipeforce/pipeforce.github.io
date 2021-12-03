@@ -4,28 +4,28 @@
 
 Whenever you need to define the namespace of your instance, this is referred to the subdomain part of your [pipeforce.net](http://pipeforce.net) instance url.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151284847/image-20210212-104035.png?api=v2)
+![](../img/image-20210212-104035.png)
 
-[Tutorial: Basics](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151284899/Tutorial%3A+Basics)  
+[Tutorial: Basics](https://pipeforce.github.io/docs/tutorials/beginner/basics)  
 Learn basic terms and concepts.
 
-[Tutorial: Setup local workspace + CLI](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151285978)  
+[Tutorial: Setup local workspace + CLI](https://pipeforce.github.io/docs/tutorials/advanced/localworkspace)  
 Learn how to setup and use your low-code workspace.
 
-[https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1583087663](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1583087663)  
+[Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app)  
 Create your first custom app.
 
-[https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1586397197](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1586397197)  
+[Tutorial: Create a new form](https://pipeforce.github.io/docs/tutorials/beginner/create-form)  
 Create your first custom form.
 
-[https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1586659344](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1586659344)  
+[Tutorial: Create a new list](https://pipeforce.github.io/docs/tutorials/beginner/create-list)  
 Create your first custom list.
 
-[Tutorial: Create a pipeline with CLI](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286028/Tutorial%3A+Create+a+pipeline+with+CLI)  
+[Tutorial: Create a pipeline with CLI](https://pipeforce.github.io/docs/tutorials/advanced/create-pipeline)  
 Create your first custom pipeline
 
-[Tutorial: Release an app](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286074/Tutorial%3A+Release+an+app)  
+[Tutorial: Release an app](https://pipeforce.github.io/docs/tutorials/advanced/release)  
 Release your app to a group of users.
 
-[https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286089](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286089)  
+[Totorial: Create a new BPMN workflow](https://pipeforce.github.io/docs/tutorials/beginner/create-BPMN-workflow)  
 Create your first BPMN workflow.

@@ -2,7 +2,7 @@
 
 The PEL Utils is a powerful library of built-in utility methods which can be used inside a Pipeline Expression (PE) to simplify work. The libraries cover typical day-to-day flows and logics as simple helpers which are embedded into the PE.
 
-**Note**: In order to understand PEL Utils you should have at least basic knowledge about the [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+**Note**: In order to understand PEL Utils you should have at least basic knowledge about the [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 # Using a PEL Util
 
@@ -50,15 +50,15 @@ Only: ENTERPRISE, CORPORATE
 
 When using the low code editor of the online workbench in the web UI, you can get auto-completion support. Whenever you are inside a pipeline expression indicated by a starting `#{` you can type `@` + Ctrl + Space and you will get a list of all available PEL utils. For example:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287481/grafik-20210731-110329.png?api=v2)
+![](../img/grafik-20210731-110329.png)
 
 After you have selected a util you can browse the available methods of the util by typing a period `.` + Ctrl + Space:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287481/grafik-20210731-110434.png?api=v2)
+![](../img/grafik-20210731-110434.png)
 
 After running the pipeline, the output would be similar to this:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287481/grafik-20210731-111041.png?api=v2)
+![](../img/grafik-20210731-111041.png)
 
 # PEL Utils Reference
 

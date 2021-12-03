@@ -19,7 +19,7 @@ Typically, all apps reside in the property store under the key path `global/app/
 
 In this tutorial you will learn how to create and publish an app using the online workbench in a few simple steps.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151284934/grafik-20210720-140552.png?api=v2)
+![](../../img/grafik-20210720-140552.png)
 
 ## 1 - Create a new app with the online workbench
 
@@ -39,7 +39,7 @@ The easiest way to create a new app is by using the online workbench. To do so, 
         
 5.  Click SAVE:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151284934/grafik-20210720-140519.png?api=v2)
+    ![](../../img/grafik-20210720-140519.png)
 6.  The new property configuration was created and pre-filled with some data.
     
 7.  Here you can make later changes to configure your app.
@@ -53,7 +53,7 @@ The easiest way to create a new app is by using the online workbench. To do so, 
 11.  Congrats, you’ve created your first custom app!
     
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151284934/grafik-20210720-140552.png?api=v2)
+![](../../img/grafik-20210720-140552.png)
 
 If you click your app, currently nothing happens since we did not add any logic to this app for now. This will change in the next tutorials.
 

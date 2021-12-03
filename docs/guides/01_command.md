@@ -90,7 +90,7 @@ pipeline:
 ```
 
 :::tip Note
- - Its also possible to chain multiple commands in a pipeline. Learn more about this in the [Pipelines](../guides/pipeline) guide.
+ - Its also possible to chain multiple commands in a pipeline. Learn more about this in the [Pipelines](../guides/02_pipeline.md) guide.
  - You can try out pipelines using the [online workbench](https://trial.pipeforce.org/#/propertyeditor). 
 :::
 
@@ -113,7 +113,7 @@ curl -H "Authorization: Bearer <YOUR_TOKEN>" \
 ```
 
 :::tip Note
-- Authentication is done here by using the `Authorization` header. See [Authorization](../guides/auth.md) for details.
+- Authentication is done here by using the `Authorization` header. See [Authorization](../guides/authentication.md) for details.
 - Replace ``http://hub-trial.pipeforce.org`` by the url of your target system.
 :::
 

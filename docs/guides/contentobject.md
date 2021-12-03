@@ -26,8 +26,7 @@ pipeline:
       message: "Name: #{body.name}, Size: #{body.size}" 
 ```
 
-Content Object Collection
--------------------------
+## Content Object Collection
 
 In case multiple documents are loaded into a pipeline, such documents are grouped together in a so called content object collection. Such a collection has a similar meaning like a folder in a local file system.
 
@@ -40,13 +39,11 @@ In case multiple documents are loaded into a pipeline, such documents are groupe
 
 A Content Collection is also a Content Object and therefore it also has all attributes of the Content Object.
 
-Uploading a file
-================
+# Uploading a file
 
 In order to upload a file and use it inside a command or pipeline you have different possibilities.
 
-Upload a single file to a single command
-----------------------------------------
+## Upload a single file to a single command
 
 In case a command expects a file as input message in its body, you can execute the command from the client using HTTP POST and put the file content in the body of the request. It will be loaded from the body and provided as input to the command’s body. Here’s an example request using the command `transform.word2pdf` which takes a `.docx` document as input converts it to PDF and sends back the result as response to the client:
 
@@ -57,8 +54,7 @@ Host: hub-acme.pipefore.net
 BINARY DATA OF my.docx
 ```
 
-Upload one or more files to a pipeline
---------------------------------------
+## Upload one or more files to a pipeline
 
 In order to upload one or multiple files to be executed by a pipeline, you can make a HTTP POST request with header `Content-Type: multipart/form-data` to the pipeline endpoint. This will create a HTTP request with multiple parts in the HTTP request body, whereas the very first part is the pipeline YAML and all other parts are one or more files to be uploaded and used inside this pipeline.
 

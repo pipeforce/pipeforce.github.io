@@ -72,7 +72,7 @@ Only: ENTERPRISE CORPORATE
 
 You can also use the command form LOW CODE → Commands → `webhook.put` in the portal to create a webhook without the CLI:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-134322.png?api=v2)
+![](../img/image-20211029-134322.png)
 
 ## Trigger incoming webhook message from outside
 
@@ -106,7 +106,7 @@ In case the sender has sent some payload in the body of the webhook request, thi
 #{convert.fromBase64(body.origin)}
 ```
 
-For security reasons, by default the webhook pipeline is executed with very limited `anonymousUser` privileges. So make sure that you use only commands in your pipeline which can be executed by this user. In case you need more privileges, you can use the `iam.run.as` command to switch to the privileges of the given user before executing the command. See the IAM portal for the permissions (=roles) of a given user. Also see [Groups, Roles, Permissions](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288874/Groups%2C+Roles%2C+Permissions) for more details on user privileges / permissions.
+For security reasons, by default the webhook pipeline is executed with very limited `anonymousUser` privileges. So make sure that you use only commands in your pipeline which can be executed by this user. In case you need more privileges, you can use the `iam.run.as` command to switch to the privileges of the given user before executing the command. See the IAM portal for the permissions (=roles) of a given user. Also see [Groups, Roles, Permissions](https://pipeforce.github.io/docs/guides/permissions) for more details on user privileges / permissions.
 
 **Some words about security and webhooks**
 
@@ -134,7 +134,7 @@ Only: ENTERPRISE CORPORATE
 
 In the portal go to LOW CODE → Commands → webhook.get and execute the form:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-140005.png?api=v2)![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-140117.png?api=v2)
+![](../img/image-20211029-140005.png)![](../img/image-20211029-140117.png)
 
 ## Edit or delete incoming webhook via CLI
 

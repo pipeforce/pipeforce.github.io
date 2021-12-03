@@ -18,31 +18,31 @@ Inside this folder there is a file called `PIPEFORCE.code-workspace`. Double cli
 
 This will start Visual Studio Code with everything already setup, so you can immediately start to create and deploy customizations in PIPEFORCE:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-145114.png?api=v2)
+![](../img/vs-code.png)
 
 # Show the terminal
 
 Its comfortable to also show the terminal inside of VS Code. To do so, in the top menu click `Terminal → New Terminal`. This opens a new terminal at the bottom of VS Code:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-145809.png?api=v2)
+![](../img/vs-code1.png)
 
 # Create a new resource using a template
 
 You can now use the terminal to create for example a new pipeline by typing in this command line in the VS Code terminal:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-150024.png?api=v2)
+![](../img/vscode-terminal.png)
 
 After pressing enter, you will be asked for a name of the new pipeline. Type-in `helloworld` and press again enter.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-150130.png?api=v2)
+![](../img/vscode-terminal1.png)
 
 After this a new pipeline file was created for you with name `helloworld.pi.yaml`:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-150339.png?api=v2)
+![](../img/vs-code2.png)
 
 If you open this file, you can see it contains a simple hello world demo pipeline which logs “Hello World” into the server log and writes it into the body.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-152125.png?api=v2)
+![](../img/vs-code3.png)
 
 # Executing a pipeline using the VS Code terminal
 
@@ -67,7 +67,7 @@ Now you should be able to use pipeline code completion.
 
 To test it, add a new command in the `helloworld.pi.yaml` file. After you started typing you should get a suggestion list of all available pipeline commands including inline documentation:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-171919.png?api=v2)
+![](../img/vs-code4.png)
 
 # Uploading resources into the property store
 

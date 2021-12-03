@@ -8,7 +8,7 @@
     
 *   You have a valid PIPEFORCE Developer account.
     
-*   You have executed tutorial [Tutorial: Create a new app](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151284934/Tutorial%3A+Create+a+new+app).
+*   You have executed tutorial [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app).
     
 
 ## Intro
@@ -91,7 +91,7 @@ Now you will link the external caller with your pipeline by creating a webhook o
     
 3.  In the form set the field key to `webhook.tutorial` and click submit. The result should look similar to this screenshot:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285528/grafik-20210720-145538.png?api=v2)
+    ![](../../img/grafik-20210720-145538.png)
 4.  Now a new webhook was created and linked using the event key `webhook.tutorial`. Every pipeline which listens to this event key will be executed when the webhook is called.
     
 5.  Copy the webhook url for the next step.

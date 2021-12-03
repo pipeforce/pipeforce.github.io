@@ -139,7 +139,7 @@ Here are some examples of such commands (whether these commands are also availab
 
 It supports input parameters, an input message and can optionally produce an output message:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/Untitled%20Diagram.drawio.png?api=v2)
+![](../img/diagram.drawio.png)
 
 Any command can be configured using its input parameters. What type of parameters a command supports, depends on its implementation an can be looked up in its documentation.
 
@@ -200,11 +200,11 @@ Only: ENTERPRISE, CORPORATE
 
 Since version 7.0 of PIPEFORCE, the Online Workbench is available. This is an advanced online editor with full code completion support where you can write pipelines and commands to be executed and then run them online. This is the easiest and most preferred way to ad-hoc execute commands in pipelines. Here you can see the log command as an example to be executed there:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/grafik-20210711-074128.png?api=v2)
+![](../img/grafik.png)
 
 ### Via Command Line Interface (CLI)
 
-Another approach to execute a single command is by using the [Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739) (CLI). For example there is a built-in command `datetime` which returns the current date time. A call of this command using the CLI would look like this:
+Another approach to execute a single command is by using the [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli) (CLI). For example there is a built-in command `datetime` which returns the current date time. A call of this command using the CLI would look like this:
 
 ```
 pi command datetime 
@@ -270,7 +270,7 @@ There is a web UI available in the portal in order to document any command enabl
 
 Whereas `<NAME>` needs to be replaced by the name of the command. Here’s an example of the default command form for the `datetime` command:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/grafik-20210711-082539.png?api=v2)
+![](../img/grafik-20210711-082539.png)
 
 ### Documentation via CLI
 
@@ -332,7 +332,7 @@ A single command can be executed by using one of these ways:
 
 Two or more **commands** can be combined to a **pipeline**. If such a pipeline gets executed, the commands in it will be executed by their serial ordering within the pipeline. The output message of the first command will become the input message of the next command and so on. By default, such a pipeline is written in a [YAML](https://en.wikipedia.org/wiki/YAML) format.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/pipe-chain.drawio.png?api=v2)
+![](../img/pipe-chain.drawio.png)
 
 Here is an example which uses two simple commands: The `datetime` command to produce the current date and time and after this the `log` command to log the result at server side:
 
@@ -392,11 +392,11 @@ Only: ENTERPRISE, CORPORATE
 
 Since version 7.0 of PIPEFORCE, the Online Workbench is available. This is an advanced online editor with full code completion support where you can write pipelines and commands to be executed and then run them online. This is the easiest and most preferred way to ad-hoc execute a command or pipelines. Here you can see a simple pipeline after its ad-hoc execution as an example:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/grafik-20210711-083848.png?api=v2)
+![](../img/grafik-20210711-083848.png)
 
 ### Via CLI
 
-Another approach to execute a pipeline is by using the CLI: [Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739).
+Another approach to execute a pipeline is by using the CLI: [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli).
 
 #### Local file
 
@@ -412,7 +412,7 @@ Note: A pipeline file must end in suffix to be detected correctly by your worksp
 
 #### Remote
 
-In case you have stored your pipeline at server side in the property store ([Property Store](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287086/Property+Store)), then you can execute it using this call:
+In case you have stored your pipeline at server side in the property store ([Property Store](https://pipeforce.github.io/docs/guides/propertystore)), then you can execute it using this call:
 
 ```
 pi pipeline remote global/app/myapp/pipeline/test
@@ -521,7 +521,7 @@ It depends on the pipeline and its commands whether and which headers are requir
 
 It is similar to HTTP Request headers: [https://en.wikipedia.org/wiki/List\_of\_HTTP\_header\_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 
-You can set values in the headers scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can set values in the headers scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ## vars
 
@@ -531,7 +531,7 @@ Values can also be complex objects and documents.
 
 Values can be changed during pipeline processing.
 
-You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ## pipeline
 
@@ -539,7 +539,7 @@ The pipeline section is mandatory and lists all commands which must be executed 
 
 See your instance portal for a reference of available commands.
 
-You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ## body
 
@@ -547,7 +547,7 @@ The body section is optional. It defines a single object to be used as “data p
 
 In case commands return a value, by default they will write this value to the body implicitly. Whereas a previous commands value in the body will be overwritten by the command which comes next.
 
-You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 # Content Object
 
@@ -659,7 +659,7 @@ The downside of this approach is that the base64 encoding of a file increases it
 
 In order to enable auto-completion support for pipeline configuration files in your local development editor, you need to add the pipeline schema file to your IDE.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/image-20200815-094048.png?api=v2)
+![](../img/image-20200815-094048.png)
 
 # Support in IntelliJ
 

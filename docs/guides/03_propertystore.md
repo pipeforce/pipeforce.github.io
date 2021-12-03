@@ -197,7 +197,7 @@ will get this property store key assigned:
 
 `global/app/myapp/pipeline/helloworld`
 
-See the CLI documentation for more information about the publish action [Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739)
+See the CLI documentation for more information about the publish action [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)
 
 ### Using a Restful HTTP POST
 
@@ -396,7 +396,7 @@ GET https://hub-NAMESPACE.pipeforce.org/api/v3/command:property.list?filter=glob
 
 The top-level level folders inside your property store define the access rules for a certain group or users of your instance.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287086/image-20201021-174116.png?api=v2)
+![](../img/properstystore.png)
 
 ## global
 
@@ -420,7 +420,7 @@ This root folder contains user specific resources and application data. Any user
 
 The app folder contains all resource folders which are required to define a single app. The name of the sub folder of the app folder is the unique name of the app. Here is an example how such a folder structure typically looks like:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287086/grafik-20201022-181615.png?api=v2)
+![](../img/grafik-20201022-181615.png)
 
 The key of your application would be this:
 
@@ -456,7 +456,7 @@ global/app/onboarding
 
 Inside of an `app` folder there is a certain folder structure which defines the resources of an app. The typical folder structure looks like this:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287086/grafik-20201022-181638.png?api=v2)
+![](../img/grafik-20201022-181638.png)
 
 ### form
 
@@ -559,7 +559,7 @@ Each instance property will contain as value the data of the object instance whi
 
 This folder contains all pipeline configurations for the given app. A pipeline can be seen as the business logic part of an application.
 
-Find here more about pipelines: [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/785088596](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/785088596)
+Find here more about pipelines: [https://pipeforce.github.io/docs/guides/pipeline](https://pipeforce.github.io/docs/guides/pipeline)
 
 Each property name corresponds with the name of the pipeline and contains as value the pipeline configuration. For example:
 
@@ -647,12 +647,12 @@ pi publish src/global/app/myapp
 
 This scans the your local `myapp` folder and uploads only those resources which have been changed since last upload or have been created since then.
 
-See here how to setup such a customization workspace: [Local Low-Code Workspace](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286786)
+See here how to setup such a customization workspace: [Local Low-Code Workspace](https://pipeforce.github.io/docs/guides/low-code)
 
-See here for a getting started guide how to setup the CLI and use the local workspace: [https://logabit.atlassian.netnull/pages/createpage.action?spaceKey=DEVEX&title=Getting%20Started%20-%20Basics&linkCreation=true&fromPageId=988807265](https://logabit.atlassian.netnull/pages/createpage.action?spaceKey=DEVEX&title=Getting%20Started%20-%20Basics&linkCreation=true&fromPageId=988807265) .
+See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli) .
 
 # Working with Visual Studio Code
 
 We recommend you to work with the Visual Studio Code editor to manage your local resources in the customization editor.
 
-Learn more about using VS Code for this here: [https://logabit.atlassian.net/wiki/pages/resumedraft.action?draftId=1008336990](https://logabit.atlassian.net/wiki/pages/resumedraft.action?draftId=1008336990)
+Learn more about using VS Code for this here: [Visual Studio Code](https://pipeforce.github.io/docs/guides/vs-code)

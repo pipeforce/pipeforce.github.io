@@ -31,4 +31,4 @@ https://iam-<NAMESPACE>.pipeforce.net
 
 Or by clicking IAM on the portal menu:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288790/image-20211030-022903.png?api=v2)
+![](../img/image-20211030-022903.png)

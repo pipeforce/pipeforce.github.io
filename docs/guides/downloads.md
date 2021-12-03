@@ -4,7 +4,7 @@ The CLI can be used to simplify working with PIPEFORCE.
 
 In order to run this tool Java >= Version 8 must be installed.
 
-See here for more details about this CLI tool: [Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739)
+See here for more details about this CLI tool: [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)
 
 ## Verify and install Java 8
 

@@ -1,8 +1,8 @@
 # Pipeline
 
-Two or more [**commands**](../guides/command) can be chained to a **pipeline**. If such a pipeline gets executed, the commands in it will be executed by their serial ordering within the pipeline. The output message of the first command will become the input message of the next command and so on. 
+Two or more [**commands**](../guides/01_command.md) can be chained to a **pipeline**. If such a pipeline gets executed, the commands in it will be executed by their serial ordering within the pipeline. The output message of the first command will become the input message of the next command and so on. 
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/pipe-chain.drawio.png?api=v2)
+![](../img/pipe-chain.drawio.png)
 
 By default, such a pipeline is written in a [YAML](https://en.wikipedia.org/wiki/YAML) format. Here is an example which uses two simple commands: The `datetime` command to produce the current date and time and after this the `log` command to log the result at server side:
 
@@ -37,11 +37,11 @@ Similar to a single command, a pipeline of commands is executed by sending it in
 
 Since version 7.0 of PIPEFORCE, the Online Workbench is available. This is an advanced online editor with full code completion support where you can write pipelines and commands to be executed and then run them online. This is the easiest and most preferred way to ad-hoc execute a command or pipelines. Here you can see a simple pipeline after its ad-hoc execution as an example:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/grafik-20210711-083848.png?api=v2)
+![](../img/grafik-20210711-083848.png)
 
 ### Via CLI
 
-Another approach to execute a pipeline is by using the CLI: [Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739).
+Another approach to execute a pipeline is by using the CLI: [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli).
 
 #### Local file
 
@@ -59,7 +59,7 @@ A pipeline file must end in this suffix to be detected correctly by your workspa
 
 #### Remote
 
-In case you have stored your pipeline at server side in the [Property Store](../guides/propertystore), then you can execute it using this call:
+In case you have stored your pipeline at server side in the [Property Store](../guides/03_propertystore.md), then you can execute it using this call:
 
 ```
 pi pipeline remote global/app/myapp/pipeline/test
@@ -130,7 +130,6 @@ EOF
 With this flexibility you can for example define a bash script and store it locally to execute this pipeline with a single command and not much configuration, setup or coding required.
 
 ## Pipeline Scopes
-----------
 
 Every pipeline script may consist of four main sections, called **scopes**:
 
@@ -169,7 +168,7 @@ It depends on the pipeline and its commands whether and which headers are requir
 
 It is similar to HTTP Request headers: [https://en.wikipedia.org/wiki/List\_of\_HTTP\_header\_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 
-You can set values in the headers scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can set values in the headers scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ### vars
 
@@ -179,7 +178,7 @@ Values can also be complex objects and documents.
 
 Values can be changed during pipeline processing.
 
-You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ### pipeline
 
@@ -187,7 +186,7 @@ The pipeline section is mandatory and lists all commands which must be executed 
 
 See your instance portal for a reference of available commands.
 
-You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 ### body
 
@@ -195,7 +194,7 @@ The body section is optional. It defines a single object to be used as “data p
 
 In case commands return a value, by default they will write this value to the body implicitly. Whereas a previous commands value in the body will be overwritten by the command which comes next.
 
-You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454).
+You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel).
 
 
 
@@ -205,7 +204,7 @@ You can access values in the body scope using the Pipeline Expression Language (
 
 In order to enable auto-completion support for pipeline scripts in your local development editor, you need an editor which supports YAML schema validation. Then, you could have auto-completion which shows all available commands and their parameters:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287324/image-20200815-094048.png?api=v2)
+![](../img/image-20200815-094048.png)
 
 ### IntelliJ
 

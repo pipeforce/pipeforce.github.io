@@ -14,7 +14,7 @@
 
 In this tutorial we gonna create an example form where you can add person data sets **using the online workbench** which will finally look like this:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151284979/grafik-20210720-140139.png?api=v2)
+![](../../img/grafik-20210720-140139.png)
 
 ## 1 - Create your form schema
 
@@ -36,7 +36,7 @@ The first step is to create a form schema. The schema defines the data structure
         
 6.  Click SAVE:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151284979/grafik-20210720-131608.png?api=v2)
+    ![](../../img/grafik-20210720-131608.png)
 7.  The new schema was created and pre-filled with an example person schema.
     
 8.  Later you can edit this form schema and remove, change or add data fields for your form here. For this tutorial, do not change anything and leave it as it is.
@@ -75,7 +75,7 @@ After the form schema and the form layout have been created, you can open your f
     
 4.  Now should see the form with the example fields:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151284979/grafik-20210720-140250.png?api=v2)
+    ![](../../img/grafik-20210720-140250.png)
 
 Congrats, you have created your first custom form!
 
@@ -126,7 +126,7 @@ Now we gonna change the layout of your form a bit. To do so, we add a custom lay
     
 5.  Here you can see the changed layout: `firstName` and `lastName` is now in the same line (horizontal) and all other fields are vertical:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151284979/grafik-20210720-140139.png?api=v2)
+    ![](../../img/grafik-20210720-140139.png)
 6.  You can learn more about form layouts and orientation in PIPEFORCE here: [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1010991217](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1010991217) and if you would like to change color or designs of the form fields, have a look here: [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1011089441](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1011089441) . More details about the adaptation of the form schema, you will find here: [https://logabit.atlassian.net/l/c/7NdsFNrA](https://logabit.atlassian.net/l/c/7NdsFNrA)
     
 7.  Try out your form and add some new person data sets. In the next tutorial you will learn how to display them in a list.

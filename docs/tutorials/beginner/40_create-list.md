@@ -8,9 +8,9 @@
     
 *   You have a valid PIPEFORCE Developer account.
     
-*   You have executed tutorial [Tutorial: Create a new app](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151284934/Tutorial%3A+Create+a+new+app).
+*   You have executed tutorial [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app).
     
-*   You have executed tutorial [Tutorial: Create a new form](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151284979/Tutorial%3A+Create+a+new+form).
+*   You have executed tutorial [Tutorial: Create a new form](https://pipeforce.github.io/docs/tutorials/beginner/create-form).
     
 *   You have already added 3 or more data sets using your form.
     
@@ -46,7 +46,7 @@ Up to this step you already created an app with a new form inside in the previou
     
 5.  You should now see all the person data sets added before using your form:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285055/grafik-20210720-142349.png?api=v2)
+    ![](../../img/grafik-20210720-142349.png)
 
 You can search and sort the list.
 

@@ -74,7 +74,7 @@ Lets assume you have a PDF file `invoice.pdf` stored in the root of your drive f
 
 Then, upload a invoice PDF file into the root of your drive and name it `invoice.pdf`:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286028/image-20210213-042536.png?api=v2)
+![](../../img/image-20210213-042536.png)
 
 If you do not have a sufficient PDF file at hand, you can download and use the PDF file attached here:
 
@@ -116,17 +116,17 @@ Save this pipeline and execute it locally:
 
 After execution of this command, open the drive service in your browser. After a refresh of the page you should now see the additional file `invoice-received.pdf` listed there:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286028/image-20210213-045220.png?api=v2)
+![](../../img/image-20210213-045220.png)
 
 When you open it, you should see the generated stamp in the top right corner of the PDF:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286028/image-20210213-045350.png?api=v2)
+![](../../img/image-20210213-045350.png)
 
 **Tip 1:** The online documentation of all available commands can be found at [https://NAMESPACE.pipeforce.org/#/commands](https://NAMESPACE.pipeforce.org/#/commands) (replace NAMESPACE by your real namespace name) or you use the CLI:  
 `pi help command`
 
 **Tip 2:** If not already done, we highly recommend to activate the YAML plugin in your editor in order to get all available commands listed right inside your editor while typing. See the local toolings section at the beginning of this tutorial on how to do it. Or even better, use the online workbench.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286028/image-20200815-094048.png?api=v2)
+![](../../img/image-20200815-094048.png)
 
 **Tip 3:** If you wonder whats about the hieroglyphs displayed in your VS Code terminal after the execution of the pipeline (only on versions < 7.0): This is the content of the PDF document which is stored to drive and additionally send back to the client for further processing. This is the default behavior of a pipeline: If something is in the body, it will be send back to the client. To avoid this, you can add the command `body.delete` at the very end of the pipeline. It removes the body content before sending back a response to the client.

@@ -8,7 +8,7 @@ In PIPEFORCE workflows can be designed using BPMN (Business Process Model and No
 
 Below is a very simple example of such a BPMN diagram which shows a vacation approval process where the employee must fill-out a request form and the supervisor then can approve or decline the vacation request:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20210712-071439.png?api=v2)
+![](../img/grafik-20210712-071439.png)
 
 BPMN digrams are designed using a BPMN designer tool. You can use your own local software to design such a diagram and then upload them to PIPEFORCE or you can use the built-in online BPMN designer from PIPEFORCE. With the later you can:
 
@@ -25,7 +25,7 @@ BPMN digrams are designed using a BPMN designer tool. You can use your own local
 
 In order to draw a BPMN diagram, the most important elements are these, you should be aware of:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-111600.png?api=v2)
+![](../img/grafik-20201023-111600.png)
 
 ### The User Task
 
@@ -35,7 +35,7 @@ The input of the user is typically given by filling-out a form.
 
 The form can be defined using the “Forms” tab in the modeller.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-112343.png?api=v2)
+![](../img/grafik-20201023-112343.png)
 
 ### The System Task
 
@@ -52,7 +52,7 @@ To configure a system task to execute such a pipeline, you need to make sure, yo
 3.  The Delegate Expression is set to `${pipelineDelegate}`.
     
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-112937.png?api=v2)
+![](../img/grafik-20201023-112937.png)
 
 To execute a pipeline, you have two configuration options:
 
@@ -65,7 +65,7 @@ To execute a pipeline, you have two configuration options:
 
 In order to trigger an embedded pipeline whenever the system task is executed, you can define a new input parameter with name `pipeline` of type `Text` and add the pipeline directly as value:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-113721.png?api=v2)
+![](../img/send-email.png)
 
 #### Call a pipeline stored in the property store
 
@@ -86,7 +86,7 @@ Then, you need to configure your System Task like this to automatically pick-up 
 
 When executed, the System Task automatically searches for a pipeline in given app folder and executes it.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-115221.png?api=v2)
+![](../img/validation-request.png)
 
 # How to start a workflow in PIPEFORCE?
 

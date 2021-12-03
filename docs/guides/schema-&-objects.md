@@ -56,4 +56,4 @@ global/app/myApp/object/person/v1/schema
 
 The JSON schema will be used as a base to render the fields defined in it as a form. By default all fields are rendered vertically (each in a row) as you can see here:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151287651/grafik-20201023-084022.png?api=v2)
+![](../img/grafik-20201023-084022.png)
