@@ -369,7 +369,7 @@ Output:
 
 #### Example 4 - Modulus
 
-```
+```yaml
 pipeline:
   - log:
       message: "#{7 % 4}"

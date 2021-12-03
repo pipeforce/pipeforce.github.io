@@ -21,7 +21,7 @@ After this, an event is send, depending on what the form did with an object/prop
 
 Any pipeline can then listen to such events using the command `event.listen` and do additional logic afterwards using the submitted data. For example sending notification emails, doing data integration or alike. Such a pipeline could look like this:
 
-```
+```yaml
 pipeline:
   - event.listen:
       key: "property.created"
@@ -34,7 +34,7 @@ The glue of all this is the **form configuration** which defines, how the form s
 
 By default, after a submit, the data of a form is automatically stored into the property store under a new property having this key path:
 
-```
+```bash
 global/app/<APP>/object/<NAME>/v1/instance/<UUID>
 ```
 
@@ -42,13 +42,13 @@ Whereas `<APP>` is the name of your app. `<NAME>` is the name of the object, the
 
 In the person example above, after a form submit with new data, this data could be stored in a new property with key path which looks like this:
 
-```
+```bash
 global/app/myApp/object/person/v1/instance/133a11f6-8011-47d3-b6eb-1376cca5e6b6
 ```
 
 The output of the form - which is the value of this instance property - could look like this:
 
-```
+```json
 {
   "firstName": "Bart",
   "lastName": "Simpson",
@@ -59,13 +59,13 @@ The output of the form - which is the value of this instance property - could lo
 
 You can easily querying for existing instances using the command `property.list`. For example using the pi tool:
 
-```
+```bash
 pi pipeline uri "property.list?filter=/**/global/app/myApp/object/person/v1/instance/*"
 ```
 
 In case you have more than one object type in your app and you want to list all instances of all objects of your app, you could use this list filter:
 
-```
+```bash
 pi pipeline uri "property.list?filter=/**/global/app/myApp/object/*/v1/instance/*"
 ```
 
@@ -75,13 +75,13 @@ pi pipeline uri "property.list?filter=/**/global/app/myApp/object/*/v1/instance/
 
 After a form has been submitted, for each submit a new instance property is created in the instance path of an object, for example:
 
-```
+```bash
 global/app/myApp/object/person/v1/instance/133a11f6-8011-47d3-b6eb-1376cca5e6b6
 ```
 
 In case you want to edit such an instance first you need to load it into the form using the request parameter `input`, when calling the form:
 
-```
+```bash
 ?input=property.list?filter=global/app/myApp/object/person/1/instance/133a11f6-8011-47d3-b6eb-1376cca5e6b6
 ```
 
@@ -89,7 +89,7 @@ Now form renders initial values from input, but will still save into new`global/
 
 To save to the same record, additional form `output` parameter needs to be added to overwrite default behaviour.
 
-```
+```bash
 ...&output=global/app/myApp/object/person/v1/instance/133a11f6-8011-47d3-b6eb-1376cca5e6b6
 ```
 
@@ -101,7 +101,7 @@ The last step to create and configure a new form is to create a form configurati
 
 Here’s an example how such a file could look like:
 
-```
+```json
 {
   "title": "Person",
   "description": "The person form.",
@@ -122,7 +122,7 @@ Note: In version >= 7.0 it is no longer required to specify the attributes `sche
 
 By default the form configuration is stored inside the form folder as JSON file:
 
-```
+```bash
 global/app/myApp/form/personForm
 ```
 

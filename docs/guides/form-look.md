@@ -4,7 +4,7 @@ The appearance attributes allow you to change the look and feel of your form ele
 
 To do so, you need to add those look & feel attributes to the field in the form configuration. For example:
 
-```
+```json
 {
   "title": "Person",
   "description": "A person form",  ...

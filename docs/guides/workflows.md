@@ -71,7 +71,7 @@ In order to trigger an embedded pipeline whenever the system task is executed, y
 
 Lets assume, a pipeline is stored in the property store under this key path:
 
-```
+```bash
 global/app/vacation-request/pipeline/myPipeline
 ```
 

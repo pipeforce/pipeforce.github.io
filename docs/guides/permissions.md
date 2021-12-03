@@ -108,13 +108,13 @@ Instead of manually creating and assigning the roles of your app, you can automa
 
 Create a new pipeline inside the setup folder of your app, for example:
 
-```
+```bash
 global/app/myapp/setup/permissions.pi.yaml
 ```
 
 Open this pipeline, add this content and then publish + execute it:
 
-```
+```yaml
 headers:
   description: "Creates the default users, groups and permissions of myapp"
   onCommandError: "IGNORE"

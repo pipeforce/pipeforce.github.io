@@ -56,7 +56,7 @@ As you could see in the workflow picture above, there are two **service tasks** 
     
 7.  Copy and paste this pipeline snippet (replace any existing content of the pipeline):  
     
-    ```
+    ```yaml
     pipeline:
      - mail.send:
         to: "requester@email.tld"
@@ -82,7 +82,7 @@ As you could see in the workflow picture above, there are two **service tasks** 
     
 14.  Copy and paste this pipeline snippet (replace any existing content of the pipeline):  
     
-    ```
+    ```yaml
     pipeline:
      - mail.send:
         to: "requester@email.tld"
@@ -262,7 +262,7 @@ Currently the pipelines are static. Now we gonna change this and use the `vacati
     
 2.  Change the email message like shown below:  
     
-    ```
+    ```yaml
     pipeline:
      - mail.send:
         to: "requester@email.tld"
@@ -306,7 +306,7 @@ Currently the process is started manually by accessing the task section and star
 7.  Copy and paste this snippet to the schema (replace any existing content):
     
 
-```
+```json
 {
   "type": "object",
   "properties": {
@@ -354,7 +354,7 @@ Currently the process is started manually by accessing the task section and star
 7.  Copy and paste this snippet to the form (replace any existing content):
     
 
-```
+```json
 {
   "title": "Start vacation request",
   "description": "For vacation approval you can request here.",
@@ -384,7 +384,7 @@ Currently the process is started manually by accessing the task section and star
 6.  Copy and paste this pipeline snippet to the pipeline (replace any existing content):
     
 
-```
+```yaml
 pipeline:
 
   - event.listen:
@@ -433,7 +433,7 @@ In your trigger pipeline, you can directly add the values you would like to defi
 2.  Copy and paste this pipeline snippet to the pipeline (replace any existing content):
     
 
-```
+```yaml
 pipeline:
 
   - event.listen:
@@ -465,7 +465,7 @@ You can now modify your email pipelines to sent notifications about approved and
 2.  Copy and paste this pipeline snippet to the pipeline (replace any existing content):
     
 
-```
+```yaml
 pipeline:
  - mail.send:
     to: "#{vars.requester}"
@@ -482,7 +482,7 @@ Adapt your declined email in the same way.
 2.  Copy and paste this pipeline snippet to the pipeline (replace any existing content):
     
 
-```
+```yaml
 pipeline:
  - mail.send:
     to: "#{vars.requester}"

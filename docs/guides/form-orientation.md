@@ -10,7 +10,7 @@ You can change this default by configuring `orientation` of the layout in the fo
 
 To do so, at first you need to add the element `layout` to the form configuration as shown in this example:
 
-```
+```json
 {
   "title": "Person",
   "description": "The person form",  
@@ -36,7 +36,7 @@ This example layout configuration would create exactly the default layout:
 
 You can then change the `orientation`, `width` and `height` of a layout item like this:
 
-```
+```json
 {
   "title": "Person",
   "description": "The person form",  
@@ -72,7 +72,7 @@ Both `min-width` and `max-width` can be also used in place of `width` to reach r
 
 Layouts and its orientations can be nested in order to also create quite complex form structures. Here’s an example:
 
-```
+```json
 {
   "title": "Person Form",
   "description": "A simple person form.",  

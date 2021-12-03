@@ -10,7 +10,7 @@ You can download Visual Studio Code for free here: [https://code.visualstudio.co
 
 After you have created a new PIPEFORCE customization workspace, navigate to its location which looks similar to this (could differ depending on your operating system):
 
-```
+```bash
 cd /Users/USERNAME/pipeforce/propertystore
 ```
 
@@ -48,7 +48,7 @@ If you open this file, you can see it contains a simple hello world demo pipelin
 
 To run the pipeline right from within your VS Code use this command line:
 
-```
+```bash
 pi pipeline file src/global/pipeline/helloworld.pi.yaml
 ```
 
@@ -73,7 +73,7 @@ To test it, add a new command in the `helloworld.pi.yaml` file. After you starte
 
 After you have created a resource locally, you can upload it to the property store with a simple command line:
 
-```
+```bash
 pi publish
 ```
 

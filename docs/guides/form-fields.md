@@ -6,7 +6,7 @@ Form fields of a Trigger-Forms are determined by the respective schema defined f
 
 To create a trigger form you have to create a schema and afterwards create the form as a new property. How to do this is described here: [Tutorial: Create a new form](https://pipeforce.github.io/docs/tutorials/beginner/create-form) . In the form you can just refer to your schema. All fields and types (including file upload functionality) will be taken over from the schema. See example of form description below:
 
-```
+```json
 {
   "title": "person",
   "description": "",
@@ -34,7 +34,7 @@ In case you want to show in a field of a trigger form a dropdown list you have t
 
 To refer to a fix list of entries, you have to define enum in schema. Below you find an easy example for this.
 
-```
+```yaml
 "account": {
       "title": "Kostenstelle *",
       "type": "string",
@@ -58,7 +58,7 @@ In your schema you have to define the respective filed as indicated below.
 
 **In schema:**
 
-```
+```yaml
 "user": {
       "type": "string",
       "title": "User",
@@ -70,7 +70,7 @@ Afterwards you have to enhance your form definition by an specification for the 
 
 **In form:**
 
-```
+```json
 {
   "field": "user",
   "visibleColumns": [
@@ -95,7 +95,7 @@ When a specific value for budget is exceeded, the list of potential reviewer is 
 
 **In schema:**
 
-```
+```yaml
 "user": {
   "type": "string",
   "title": "User",
@@ -109,7 +109,7 @@ When a specific value for budget is exceeded, the list of potential reviewer is 
 
 **In form definition:**
 
-```
+```json
 {
   "title": "f1",
   "description": "",
@@ -141,7 +141,7 @@ You have the option to show calculated values in a trigger form. To do so you ha
 
 **In schema:**
 
-```
+```yaml
 "value1": {
   "type": "number",
   "title": "value1"
@@ -158,7 +158,7 @@ You have the option to show calculated values in a trigger form. To do so you ha
 
 **In form definition:**
 
-```
+```json
 {
   "title": "f1",
   "description": "",
@@ -191,7 +191,7 @@ You have the option to upload a file with a task form. To do so you have to enha
 
 **In schema:**
 
-```
+```yaml
 "myFile": {
   "type": "object",
   "properties": {
@@ -211,7 +211,7 @@ You have the option to upload a file with a task form. To do so you have to enha
 
 **In form:**
 
-```
+```yaml
 "layout": {    
         "orientation": "vertical",
         "items": 

@@ -16,7 +16,7 @@ In order to process documents and other files using a pipeline, you first need t
 
 Here is an example to load a file from the drive service into the body scope and access its attributes of the content object afterwards from there:
 
-```
+```yaml
 pipeline:
   # Load document from drive and set it as content object in the body
   - drive.read:
@@ -47,7 +47,7 @@ In order to upload a file and use it inside a command or pipeline you have diffe
 
 In case a command expects a file as input message in its body, you can execute the command from the client using HTTP POST and put the file content in the body of the request. It will be loaded from the body and provided as input to the command’s body. Here’s an example request using the command `transform.word2pdf` which takes a `.docx` document as input converts it to PDF and sends back the result as response to the client:
 
-```
+```yaml
 POST /api/v3/pipe:transform.word2pdf HTTP/1.1 
 Host: hub-acme.pipefore.net
 
@@ -60,7 +60,7 @@ In order to upload one or multiple files to be executed by a pipeline, you can m
 
 Here’s an example of the body of such an HTTP multipart request as defined by the HTTP specification:
 
-```
+```yaml
 POST /api/v3/pipeline HTTP/1.1 
 Host: hub-acme.pipefore.net
 Content-Type: multipart/form-data;boundary="boundary" 
@@ -88,7 +88,7 @@ This example defines a pipeline and a file upload in the multipart body. It uplo
 
 Another way to upload a file to be used inside a pipeline is to “embed” the file base64 encoded inside the pipeline and upload this pipeline using HTTP POST:
 
-```
+```yaml
 POST /api/v3/pipeline HTTP/1.1 
 Host: hub-acme.pipefore.net
 Content-Type: "application/yaml"  

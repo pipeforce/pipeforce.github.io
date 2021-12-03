@@ -6,7 +6,7 @@ In order to do a file upload using forms, this is a two step process:
 
 Add the properties required for files in your forms schema. For example:
 
-```
+```json
 {  ...
   "myInvoice": {
     "type": "object",
@@ -25,7 +25,7 @@ Add the properties required for files in your forms schema. For example:
 
 “Tell” the form configuration to “draw” the field as a `filepicker` field using the `render` attribute. For example:
 
-```
+```json
 {
   "title": "Invoice",
   "description": "An invoice form",  

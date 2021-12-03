@@ -19,7 +19,7 @@ The concept of PIPEFORCE commands is in its base a combination of the [command p
 ## Command Name
 Each command has a unique name which is always written in lower case and follows the dot notation. Here is an example of such a command name:
 
-```
+```bash
 mail.send
 ```
 
@@ -41,7 +41,7 @@ Even if many commands do have a similar resource-based semantic for HTTP GET, PO
 ### Execute as HTTP Request
 Every command can be excuted by a HTTP request, similar to REST endpoints. The url structure is always like this:
 
-```
+```yaml
 https://HOST/api/v3/command/COMMAND?PARAM=VALUE
 ```
 :::tip Note
@@ -53,7 +53,7 @@ https://HOST/api/v3/command/COMMAND?PARAM=VALUE
 #### Execute as HTTP GET
 Here is an example to execute a command as HTTP GET request and set the `message` parameter to a `log` command using a HTTP GET parameter:
 
-```
+```yaml
 http://hub-trial.pipeforce.org/api/v3/command/log?message=HELLO
 ```
 :::tip Note
@@ -64,7 +64,7 @@ http://hub-trial.pipeforce.org/api/v3/command/log?message=HELLO
 #### Execute as HTTP POST
 Here is an example to execute a command as HTTP POST request and set the `message` parameter to a `log` command using a HTTP POST data body in `curl`:
 
-```
+```bash
 curl -H "Authorization: Bearer <YOUR_TOKEN>" \
   -X POST "https://hub-trial.pipeforce.org/api/v3/command/log" -d "message=HELLO"
 ```
@@ -77,7 +77,7 @@ curl -H "Authorization: Bearer <YOUR_TOKEN>" \
 ### Execute as CLI call
 Here is an example to execute a command using the [CLI tool](../guides/../api/cli.md) and set the `message` parameter to the `log` command:
 
-```
+```bash
 pi command log message=HELLO
 ```
 ### Execute in a Pipeline
@@ -106,7 +106,7 @@ Differently to parameters, the input body is typically a more complex document a
 
 Here is an example to pass data via body to a `cache.put` command using a HTTP POST request and the `curl` tool:
 
-```
+```bash
 curl -H "Authorization: Bearer <YOUR_TOKEN>" \
   -X POST "https://hub-trial.pipeforce.org/api/v3/command/cache.put?key=someKey" \
   -d '{"productId": 123, "quantity": 10}'

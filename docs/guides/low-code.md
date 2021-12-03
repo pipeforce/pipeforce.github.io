@@ -10,7 +10,7 @@ This might be useful for small changes. But if you want to develop and customize
 
 The low-code workspace will mirror the property store properties as a local hierarchy of folders and files. Any configuration and script file created locally inside this workspace can then easily be uploaded to the property store with a single command line. For example:
 
-```
+```bash
 pi publish src/global/app/myapp
 ```
 
@@ -18,7 +18,7 @@ This scans the folder `myapp` inside the workspace and uploads only those resour
 
 You can also use the short form of the command:
 
-```
+```bash
 pi publish 
 ```
 
@@ -38,13 +38,13 @@ After you did setup the local workspace, you should read the chapter about worki
 
 After you have installed the CLI ([Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)), you can create a new workspace by using this command line call:
 
-```
+```bash
 pi setup
 ```
 
 This will ask you a few questions to setup the workspace correctly.
 
-```
+```bash
 Namespace [None]:
 ```
 
@@ -57,13 +57,13 @@ For example if your instance url is [https://**acme**.pipeforce.net](https://acm
 
 Type this name in an press enter.
 
-```
+```bash
 Username [None]:
 ```
 
 Type-in your username to login into the system.
 
-```
+```bash
 Password []:
 ```
 

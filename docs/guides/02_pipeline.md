@@ -16,7 +16,7 @@ In the YAML a pipeline is defined using the `pipeline:` list as root element. In
 
 Here is a more sophisticated example which uses three commands: The first loads a PDF file from cloud drive (which is a built-in archive and dropbox in PIPEFORCE), the second puts a stamp on this document and the third saves the PDF with the stamp back to drive:
 
-```
+```yaml
 pipeline:
  - drive.read:
      path: /my.pdf
@@ -47,7 +47,7 @@ Another approach to execute a pipeline is by using the CLI: [Command Line Interf
 
 Lets assume you have a local pipeline file stored at `src/global/app/myapp/pipeline/test.pi.yaml` inside of your PIPEFORCE workspace, then you can execute it via this CLI call:
 
-```
+```bash
 pi pipeline file src/global/app/myapp/pipeline/test.pi.yaml
 ```
 
@@ -61,7 +61,7 @@ A pipeline file must end in this suffix to be detected correctly by your workspa
 
 In case you have stored your pipeline at server side in the [Property Store](../guides/03_propertystore.md), then you can execute it using this call:
 
-```
+```bash
 pi pipeline remote global/app/myapp/pipeline/test
 ```
 
@@ -71,7 +71,7 @@ This command searches for a property in the property store with key `global/app/
 
 A third option to execute a pipeline is by using a **pipeline uri** which is an inline version of a pipeline. You can rewrite any pipeline YAML fromat also as a pipeline uri. Lets assume this example:
 
-```
+```yaml
 pipeline:
   - datetime
       format: dd.MM.YYYY     
@@ -80,13 +80,13 @@ pipeline:
 
 You can rewrite this pipeline YAML as an inline pipeline uri which looks like this:
 
-```
+```bash
 datetime?format=dd.MM.YYYY|log
 ```
 
 Such a pipeline uri you can then execute using this CLI call in one line:
 
-```
+```bash
 pi pipeline uri "datetime?format=dd.MM.YYYY|log"
 ```
 
@@ -96,7 +96,7 @@ This is handy especially for smaller pipelines which you want to execute ad-hoc 
 
 You can execute a pipeline also by sending it via HTTP POST to the server. See this example:
 
-```
+```yaml
 POST /api/v3/pipeline HTTP/1.1 
 Host: hub-acme.pipefore.net
 
@@ -113,7 +113,7 @@ This will do by default a synchron execution of the pipeline at server side and 
 
 Here is the PDF pipeline example from above, now executed using the `curl` tool which is available on all Linux, Mac and Windows systems:
 
-```
+```bash
 curl -X POST "http://hub/api/v3/pipeline" 
   -H "Content-Type: application/yaml" 
   --data-binary @- << EOF
@@ -144,7 +144,7 @@ Every pipeline script may consist of four main sections, called **scopes**:
 
 Here is an example of a pipeline script which defines all of these scopes:
 
-```
+```yaml
 headers:
   contentType: "text/plain"
   
@@ -231,7 +231,7 @@ Note: A YAML pipeline script should always end in suffix **.pi.yaml** which stan
 
 To enable auto-completion in Visual Studio Code, open `Preferences → Settings` and search for section `json.schemas` and add a new mapping entry like this:
 
-```
+```yaml
     "json.schemas": [
         {
             "fileMatch": [
@@ -248,7 +248,7 @@ Note: Visual Studio Code doesn't have built-in schema support for yaml files. If
 
 Then open `Preferences → Settings` and add this line to your configuration **settings.json**:
 
-```
+```yaml
 "yaml.schemas": { 
   "https://hub-NAMESPACE.pipeforce.org/api/v3/pipe:pipe.schema.v7": ["/*.pi.yaml"] 
 }

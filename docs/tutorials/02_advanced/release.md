@@ -5,4 +5,4 @@ Once your app is stable and you want to “release” it, you need to create and
 
 For more details about app permissions and app release, please refer to [Setup Permissions](https://pipeforce.github.io/docs/guides/permissions) .
 
-**Next tutorial:** [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286089](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286089)
+**Next tutorial:** [Create a BPMN workflow](https://pipeforce.github.io/docs/tutorials/beginner/create-BPMN-workflow)

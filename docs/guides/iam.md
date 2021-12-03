@@ -25,7 +25,7 @@ PIPEFORCE comes with a powerful identity and access management service (IAM). Wi
 
 If you have sufficient permissions, you can reach the service via this url:
 
-```
+```yaml
 https://iam-<NAMESPACE>.pipeforce.net
 ```
 

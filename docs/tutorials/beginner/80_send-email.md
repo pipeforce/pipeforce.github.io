@@ -93,7 +93,7 @@ Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPE
 
 1.  Change your pipeline send-email to this:
     
-    ```
+    ```yaml
     pipeline:
       - drive.read:
           path: "invoice.pdf"
@@ -128,4 +128,4 @@ In order to get auto-completion for available PEL utils in the online editor, si
 
 References:
 
-[PEL Utils Reference](/docs/api/utils.md)
+[PEL Utils Reference](../../guides/pel-reference.md)

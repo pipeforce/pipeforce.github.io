@@ -24,7 +24,7 @@ Note: If an url in this article contains `<NS>`, replace it by the namespace of 
 
 An incoming webhook is an url endpoint created inside PIPEFORCE which can be called by an external system to trigger a pipeline inside PIPEFORCE. The url of such an incoming webhook has a format similar to this:
 
-```
+```yaml
 https://hub-<NS>.pipeforce.net/api/v3/command/webhook.receive?uuid=<uuid>
 ```
 
@@ -88,7 +88,7 @@ In order to secure the **webhookUrl** you should always prefer a **HTTPS connect
 
 After you have successfully setup the webhook, any time the webhook url is called from outside, a new message is produced internally inside PIPEFORCE which then can be consumed by any pipeline. To do so, use the `event.listen` command to listen for such new event messages. Here’s an example which sends an email whenever a new lead in Salesforce was created using a webhook with the `eventKey` =`webhook.salesforce.lead.created`:
 
-```
+```yaml
 pipeline:
  - event.listen:
      eventKey: webhook.salesforce.lead.created
@@ -116,7 +116,7 @@ Since webhooks allow to execute pipelines, they can be very powerful. This power
 
 To list all existing webhooks, you can use the `webhook.get` command:
 
-```
+```bash
 pi command webhook.get
 ```
 
@@ -124,7 +124,7 @@ You will get a JSON / YAML list with details about all existing webhooks.
 
 In order to get the details of a single webhook, use the `webhook.get` with the param `uuid` whereas uuid is the id of the webhook you want to list:
 
-```
+```bash
 pi command webhook.get uuid=<yourWebhookUuid>
 ```
 
@@ -140,13 +140,13 @@ In the portal go to LOW CODE → Commands → webhook.get and execute the form:
 
 In order to edit an existing webhook, you can use the `webhook.put` command and set the uuid of the webhook to edit. For example:
 
-```
+```bash
 pi command webhook.put uuid=abcdef eventKey=webhook.changed.key
 ```
 
 In order to delete an existing webhook, you can use the command `webhook.delete`:
 
-```
+```bash
 pi command webhook.delete uuid=abcdef
 ```
 
@@ -162,7 +162,7 @@ To edit or delete a webhook using the portal, go to Commands → `webhook.put` o
 
 Its also possible to send a playload like multiple files with a webhook. To do so, execute the request as multipart POST with the body formatted as `multipart/form-data`. For example:
 
-```
+```yaml
 POST /api/v3/command/webhook.receive?uuid=abcdef HTTP/1.1 
 Host: hub-<NS>.pipefore.net
 Content-Type: multipart/form-data;boundary="boundary" 
@@ -188,7 +188,7 @@ An outgoing webhook is a url to be called from inside a pipeline in order to tri
 
 To send a webhook to an external system, you can use the command `webhook.send` as this pipeline example shows:
 
-```
+```yaml
 pipeline:
   - webhook.send:
       url: https://hostname/webhook/id

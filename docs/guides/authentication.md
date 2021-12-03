@@ -9,7 +9,7 @@ All built-in commands and their parameters are documented in the [commands refer
 ### Unique Command Name
 Each command has a unique name which is always written in lower case and follows the dot notation. Here is an example of such a command name:
 
-```
+```bash
 mail.send
 ```
 
@@ -18,7 +18,7 @@ mail.send
 Commands can be executed in three different ways, called ***execution contexts***:
 
 - As single requests via HTTP GET, POST or PUT
-- Embedded as part of a [Pipeline](../guides/pipeline.md)
+- Embedded as part of a [Pipeline](../guides/02_pipeline.md)
 - As a command line command using the [Command Line Interface (CLI)](../guids/../api/cli.md)
 
 ### Parameters
@@ -28,7 +28,7 @@ Commands can have zero to many parameters. Whereas each parameter is a name-valu
 #### As HTTP GET
 Here is an example to set the `message` parameter to a `log` command using a HTTP GET request:
 
-```
+```yaml
 http://yourserver/api/v3/command/log?message=HELLO
 ```
 :::note
@@ -38,7 +38,7 @@ Authentication is not considered here for simplicity reaasons.
 #### As HTTP POST
 Here is an example to set the `message` parameter to a `log` command using a HTTP POST request and `curl`:
 
-```
+```bash
 curl -H "Authorization: Bearer <YOUR_TOKEN>" \
   -X POST "https://hub-acme.pipeforce.net/api/v3/command/log" -d "message=HELLO"
 ```
@@ -52,7 +52,7 @@ Beside its parameters, each command is also capable to take optionally a documen
 
 This document can be provided by the optional parameter `input`:
 
-```
+```bash
 encrypt?input=TEXT
 ```
 
@@ -73,14 +73,14 @@ You can execute any command similar to rest-like endpoints using HTTP GET or POS
 
 See this example using the terminal and `curl` to call the `datetime` command using the url `https://hub-acme.pipeforce.net/api/v3/command/datetime`:
 
-```
+```bash
 curl -H "apitoken: <YOUR_TOKEN>" \
   -X GET "https://hub-acme.pipeforce.net/api/v3/command/datetime"
 ```
 
 By default, the response of this command will look like this:
 
-```
+```json
 {
   "result": "2020-08-07T15:14:02.471"
 }
@@ -90,7 +90,7 @@ Note the url prefix for the command: `https://hub-acme.pipeforce.net/api/v3/comm
 
 Any HTTP **request parameter** will be mapped to **command parameter**. See below an example with parameters:
 
-```
+```bash
 curl -H "apitoken: <YOUR_TOKEN>" \
   -X GET "https://hub-acme.pipeforce.net/api/v3/command/log?message=HELLO"
 
@@ -98,7 +98,7 @@ curl -H "apitoken: <YOUR_TOKEN>" \
 
 The same also works, if you do a POST instead of a GET call:
 
-```
+```bash
 curl -H "apitoken: <YOUR_TOKEN>" \
   -X POST "https://hub-acme.pipeforce.net/api/v3/command/log" -d "message=HELLO"
 ```
@@ -206,31 +206,31 @@ Since version 7.0 of PIPEFORCE, the Online Workbench is available. This is an ad
 
 Another approach to execute a single command is by using the [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli) (CLI). For example there is a built-in command `datetime` which returns the current date time. A call of this command using the CLI would look like this:
 
-```
+```bash
 pi command datetime 
 ```
 
 Which will return a result similar to this:
 
-```
+```bash
 06.03.2020
 ```
 
 In order to pass parameters to such a command, you can add them after the command name:
 
-```
+```bash
 pi command datetime format=dd-MM-YYYY
 ```
 
 Another, more advanced possibility to run a command is within a so called “pipeline uri”:
 
-```
+```bash
 pi pipeline uri "datetime?format=dd-MM-YYYY"
 ```
 
 This allows you to combine commands to a **pipeline** using the pipe `|` character on the command line:
 
-```
+```bash
 pi pipeline uri "datetime|log?message=HELLO"
 ```
 
@@ -240,14 +240,14 @@ Note: Since different terminals handle characters like ? or | for example differ
 
 You can execute any command also as a rest-like endpoint using HTTP GET or POST calls. See this example using `curl` to call the `datetime` command:
 
-```
+```bash
 curl -H "apitoken: <YOUR_TOKEN>" \
   -X GET "https://hub-acme.pipeforce.net/api/v3/command/datetime"
 ```
 
 By default, the response will look like this:
 
-```
+```json
 {
   "result": "2020-08-07T15:14:02.471"
 }
@@ -255,7 +255,7 @@ By default, the response will look like this:
 
 The **request parameters** will be automatically mapped to **command parameters**. See below an example with parameters:
 
-```
+```bash
 curl -H "apitoken: <YOUR_TOKEN>" \
   -X GET "https://hub-acme.pipeforce.net/api/v3/command/log?message=HELLO"
 ```
@@ -276,19 +276,19 @@ Whereas `<NAME>` needs to be replaced by the name of the command. Here’s an ex
 
 An alternative to see the documentation of all available commands is to use the CLI tool:
 
-```
+```bash
 pi help command
 ```
 
 This lists the documentation of all available commands.
 
-```
+```bash
 pi help command log
 ```
 
 This lists the documentation of a single command which is the `log` command in this example. Here is the example documentation output of this:
 
-```
+```yaml
 log:
   type: "object"
   description: "Logs the given input message without changing it. Sets the log message\
@@ -336,7 +336,7 @@ Two or more **commands** can be combined to a **pipeline**. If such a pipeline g
 
 Here is an example which uses two simple commands: The `datetime` command to produce the current date and time and after this the `log` command to log the result at server side:
 
-```
+```yaml
 pipeline:
   - datetime
   - log
@@ -346,7 +346,7 @@ In the YAML a pipeline is defined using the `pipeline:` list. Inside this list e
 
 Here is a more sophisticated example which uses three commands: The first loads a PDF file from cloud drive (which is a built-in archive and dropbox in PIPEFORCE), the second puts a stamp on this document and the third saves the PDF with the stamp back to drive:
 
-```
+```yaml
 pipeline:
  - drive.read:
      path: /my.pdf
@@ -360,7 +360,7 @@ The PDF file `my.pdf` is the output from the command `drive.read` and will becom
 
 It's also possible to write your pipeline script in a JSON format. But we recommend using YAML since it is less “noisy”. The pipeline from above rewritten as a JSON would look like this:
 
-```
+```json
 {
   "pipeline": [
     {
@@ -402,7 +402,7 @@ Another approach to execute a pipeline is by using the CLI: [Command Line Interf
 
 Lets assume you have a local pipeline file stored at `src/global/app/myapp/pipeline/test.pi.yaml` inside of your PIPEFORCE workspace, then you can execute it via this CLI call:
 
-```
+```bash
 pi pipeline file src/global/app/myapp/pipeline/test.pi.yaml
 ```
 
@@ -414,7 +414,7 @@ Note: A pipeline file must end in suffix to be detected correctly by your worksp
 
 In case you have stored your pipeline at server side in the property store ([Property Store](https://pipeforce.github.io/docs/guides/propertystore)), then you can execute it using this call:
 
-```
+```bash
 pi pipeline remote global/app/myapp/pipeline/test
 ```
 
@@ -424,7 +424,7 @@ This command searches for a property in the property store with key `global/app/
 
 A third option to execute a pipeline is by using a **pipeline uri** which is an inline version of a pipeline. You can rewrite any pipeline YAML fromat also as a pipeline uri. Lets assume this example:
 
-```
+```yaml
 pipeline:
   - datetime
       format: dd.MM.YYYY     
@@ -433,13 +433,13 @@ pipeline:
 
 You can rewrite this pipeline YAML as an inline pipeline uri which looks like this:
 
-```
+```bash
 datetime?format=dd.MM.YYYY|log
 ```
 
 Such a pipeline uri you can then execute using this CLI call in one line:
 
-```
+```bash
 pi pipeline uri "datetime?format=dd.MM.YYYY|log"
 ```
 
@@ -449,7 +449,7 @@ This is handy especially for smaller pipelines which you want to execute ad-hoc 
 
 You can execute a pipeline also by sending it via HTTP POST to the server. See this example:
 
-```
+```yaml
 POST /api/v3/pipeline HTTP/1.1 
 Host: hub-acme.pipefore.net
 
@@ -466,7 +466,7 @@ This will do by default a synchron execution of the pipeline at server side and 
 
 Here is the PDF pipeline example from above, now executed using the `curl` tool which is available on all Linux, Mac and Windows systems:
 
-```
+```bash
 curl -X POST "http://hub/api/v3/pipeline" 
   -H "Content-Type: application/yaml" 
   --data-binary @- << EOF
@@ -497,7 +497,7 @@ Every pipeline script may consist of four main sections, called **scopes**:
 
 Here is an example of a pipeline script which defines all of these scopes:
 
-```
+```yaml
 headers:
   contentType: "text/plain"
   
@@ -565,7 +565,7 @@ In order to process documents and other files using a pipeline, you first need t
 
 Here is an example to load a file from the drive service into the body scope and access its attributes of the content object afterwards from there:
 
-```
+```yaml
 pipeline:
   # Load document from drive and set it as content object in the body
   - drive.read:
@@ -596,7 +596,7 @@ In order to upload a file and use it inside a command or pipeline you have diffe
 
 In case a command expects a file as input message in its body, you can execute the command from the client using HTTP POST and put the file content in the body of the request. It will be loaded from the body and provided as input to the command’s body. Here’s an example request using the command `transform.word2pdf` which takes a `.docx` document as input converts it to PDF and sends back the result as response to the client:
 
-```
+```yaml
 POST /api/v3/pipe:transform.word2pdf HTTP/1.1 
 Host: hub-acme.pipefore.net
 
@@ -609,7 +609,7 @@ In order to upload one or multiple files to be executed by a pipeline, you can m
 
 Here’s an example of the body of such an HTTP multipart request as defined by the HTTP specification:
 
-```
+```yaml
 POST /api/v3/pipeline HTTP/1.1 
 Host: hub-acme.pipefore.net
 Content-Type: multipart/form-data;boundary="boundary" 
@@ -637,7 +637,7 @@ This example defines a pipeline and a file upload in the multipart body. It uplo
 
 Another way to upload a file to be used inside a pipeline is to “embed” the file base64 encoded inside the pipeline and upload this pipeline using HTTP POST:
 
-```
+```yaml
 POST /api/v3/pipeline HTTP/1.1 
 Host: hub-acme.pipefore.net
 Content-Type: "application/yaml"  
@@ -686,7 +686,7 @@ Note: A YAML pipeline script should always end in suffix **.pi.yaml** which stan
 
 To enable auto-completion in Visual Studio Code, open `Preferences → Settings` and search for section `json.schemas` and add a new mapping entry like this:
 
-```
+```yaml
     "json.schemas": [
         {
             "fileMatch": [
@@ -703,7 +703,7 @@ Note: Visual Studio Code doesn't have built-in schema support for yaml files. If
 
 Then open `Preferences → Settings` and add this line to your configuration **settings.json**:
 
-```
+```yaml
 "yaml.schemas": { 
   "https://hub-NAMESPACE.pipeforce.org/api/v3/pipe:pipe.schema.v7": ["/*.pi.yaml"] 
 }
