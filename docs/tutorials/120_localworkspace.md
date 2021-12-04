@@ -1,4 +1,4 @@
-# Setup CLI and Local Workspace
+# Tutorial 12: Setup CLI and Local Workspace
 
 **Estimated time:** 30 min.
 
@@ -72,7 +72,7 @@ Regardless which editor you’re using, it is very important to make sure the ed
 
 Since we will create and edit a lot of configuration files in the YAML format, we recommend you to install the YAML editor plugin in VS Code. With this you will get YAML editor with text completion as shown here:
 
-![](../../img/yaml-completion-demo.gif)
+![](../img/yaml-completion-demo.gif)
 
 To do so, open this link in your browser and click on “Install”:
 
@@ -80,7 +80,7 @@ To do so, open this link in your browser and click on “Install”:
 
 As an alternative you can go to Preferences → Extensions in VS Code and then search for YAML and then click on install on the plugin found:
 
-![](../../img/vscode-yaml-plugin.png)
+![](../img/vscode-yaml-plugin.png)
 
 ## 2 - Setup the CLI
 
@@ -128,7 +128,7 @@ $> Namespace:
 
 Type in your customer namespace and press enter. This is the prefix name of your instance when you open it in your web browser. For example:
 
-![](../../img/namespace.png)
+![](../img/namespace.png)
 
 You got this link after with your trial or production instance. If unsure, ask your sales manager for your namespace.
 
@@ -152,13 +152,13 @@ Finally the PIPEFORCE CLI tool was successfully installed to your home folder `$
 
 After successful installation, you can find the PIPEFORCE workspace folder under `$USER_HOME/pipeforce` whereas `$USER_HOME` depends on your underlying operating system and username.
 
-![](../../img/workspace-files.png)
+![](../img/workspace-files.png)
 
 Inside this folder a file called `PIPEFORCE.code-workspace` is placed. Double click it in order to start the VS Code with the PIPEFORCE workspace folder pre-selected for you.
 
 You should then see a VS Code window similar to this:
 
-![](../../img/vscode-workspace.png)
+![](../img/vscode-workspace.png)
 
 At the left you can see all the files and folders from your `$USER_HOME/pipeforce` folder. The meaning of these files and folders are:
 

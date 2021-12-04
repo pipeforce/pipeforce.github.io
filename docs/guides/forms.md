@@ -4,7 +4,7 @@ In order to define a form in PIPEFORCE, you need at least a **JSON schema** and 
 
 ![](../img/grafik-20201023-083314.png)
 
-The JSON **schema** (also called the “object schema”) defines the structure of a data set and “tells” the form which fields to display and a user can fill-out. Learn more about JSON Schema in this chapter: [Schema & Objects](https://pipeforce.github.io/docs/guides/schema-&-objects).
+The JSON **schema** (also called the “object schema”) defines the structure of a data set and “tells” the form which fields to display and a user can fill-out. Learn more about JSON Schema in this chapter: [Schema & Objects](../guides/schema-&-objects).
 
 The **input** data is used in case an existing data set needs to be edited. The form is pre-filled with these data, so the use can make changes and save again.
 
@@ -69,7 +69,7 @@ In case you have more than one object type in your app and you want to list all 
 pi pipeline uri "property.list?filter=/**/global/app/myApp/object/*/v1/instance/*"
 ```
 
-**Note**: Be careful since in this example it would return the instances from all objects of myApp. Learn more about filtering properties from the property store in this section [Property Store](https://pipeforce.github.io/docs/guides/propertystore).
+**Note**: Be careful since in this example it would return the instances from all objects of myApp. Learn more about filtering properties from the property store in this section [Property Store](../guides/propertystore).
 
 ## How to load and edit input data in a form
 
@@ -136,22 +136,22 @@ To reach custom layout, fields behaviour, file uploads, custom buttons and more,
 
 You can change this default by configuring orientation of the layout in the form configuration.
 
-See this section for more details: [Form - Orientation](https://pipeforce.github.io/docs/guides/forms/orientation)
+See this section for more details: [Form - Orientation](../guides/forms/orientation)
 
 ## Change appearance of form fields
 
 Beside the orientation (vertical, horizontal) of form fields, also the appearance (color, border, icons, aso) can be changed inside the layout section.
 
-See this section for more details: [Form - Look & Feel](https://pipeforce.github.io/docs/guides/forms/look-and-feel)
+See this section for more details: [Form - Look & Feel](../guides/forms/look-and-feel)
 
 ## Custom buttons
 
 Replacements for default Submit button can be defined by `render` attribute of boolean field in layout section.
 
-See this section for more details:[Form - Buttons](https://pipeforce.github.io/docs/guides/forms/buttons)
+See this section for more details:[Form - Buttons](../guides/forms/buttons)
 
 ## File upload
 
 In layout section it is also possible to configure that set of schema properties defines form upload.
 
-See this section for more details: [Form - Upload](https://pipeforce.github.io/docs/guides/forms/upload)
+See this section for more details: [Form - Upload](../guides/forms/upload)

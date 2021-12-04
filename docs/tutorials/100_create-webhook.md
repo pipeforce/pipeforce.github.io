@@ -1,4 +1,4 @@
-# Create a new Webhook
+# Tutorial 10: Create a Webhook
 
 **Estimated time:** 15 min.
 
@@ -8,7 +8,7 @@
     
 *   You have a valid PIPEFORCE Developer account.
     
-*   You have executed tutorial [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app).
+*   You have executed tutorial [Tutorial: Create a new app](../tutorials/create-app).
     
 
 ## Intro
@@ -91,7 +91,7 @@ Now you will link the external caller with your pipeline by creating a webhook o
     
 3.  In the form set the field key to `webhook.tutorial` and click submit. The result should look similar to this screenshot:  
     
-    ![](../../img/grafik-20210720-145538.png)
+    ![](../img/grafik-20210720-145538.png)
 4.  Now a new webhook was created and linked using the event key `webhook.tutorial`. Every pipeline which listens to this event key will be executed when the webhook is called.
     
 5.  Copy the webhook url for the next step.

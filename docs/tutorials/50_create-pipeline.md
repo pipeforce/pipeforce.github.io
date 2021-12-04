@@ -1,4 +1,4 @@
-# Create a new Pipeline
+# Tutorial 5: Create a Pipeline
 
 **Estimated time:** 20 min.
 
@@ -8,7 +8,7 @@
     
 *   You have a valid PIPEFORCE Developer account
     
-*   You have executed tutorial [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app)
+*   You have executed tutorial [Tutorial: Create a new app](../tutorials/beginner/create-app)
     
 
 ## Intro
@@ -27,7 +27,7 @@ A pipeline in PIPEFORCE is an easy to learn **low code script** which can do man
 
 It’s named “low code script”, because you are not required to do real coding inside such a pipeline script. You will mainly configure commands with parameters and combine them in a list. All commands in the list will then be executed one after another.
 
-Because of its simplicity and power at the same time, the pipeline is one of the most important part in PIPEFORCE. In this tutorial, you will learn how to create and execute such a pipeline script. To learn more about pipelines and commands in detail, see this section of the documentation: [Pipelines & Commands](https://pipeforce.github.io/docs/guides/Pipelines-&-Commands)
+Because of its simplicity and power at the same time, the pipeline is one of the most important part in PIPEFORCE. In this tutorial, you will learn how to create and execute such a pipeline script. To learn more about pipelines and commands in detail, see this section of the documentation: [Pipelines & Commands](..//guides/Pipelines-&-Commands)
 
 ## 1 - Execute an ad-hoc pipeline
 
@@ -46,25 +46,25 @@ In this first part of the tutorial we gonna execute an **ad-hoc pipeline**. To d
     
 3.  Now you should see the ad-hoc pipeline editor automatically opened for you. It looks similar to this:  
     
-    ![](../../img/grafik-20210721-060243.png)
+    ![](../img/grafik-20210721-060243.png)
 4.  Here you can scribble any ad-hoc pipeline and execute it by pushing the RUN button.
     
 5.  There is already a hello world demo pipeline prepared for you here.
     
 6.  Do not change this pipeline and execute it by pushing the RUN button. After this, you should see an output like this at the bottom:  
     
-    ![](../../img/grafik-20210721-060457.png)
+    ![](../img/grafik-20210721-060457.png)
 7.  Congrats, you have executed your first pipeline!
     
 8.  Next, lets create a more sophisticated pipeline by sending a simple email. To do so, start typing inside the editor after the dash `-` and you should see command suggestions like this:  
     
-    ![](../../img/grafik-20210721-060810.png)
+    ![](../img/grafik-20210721-060810.png)
 9.  Lets select the command `mail.send` from the list, finish the line with a colon `:`, go to next line and indent with two tabs `[->|]`. To see the list of available parameters for the command press `[CTRL] + [SPACE]` and you should again see the auto-completion list like this:
     
-    ![](../../img/grafik-20210721-061124.png)
+    ![](../img/grafik-20210721-061124.png)
 10.  Lets select the parameter `to` from the list and set your email address here and a `subject` as shown below:
     
-    ![](../../img/grafik-20210721-061508.png)
+    ![](../img/grafik-20210721-061508.png)
 11.  In your pipeline you have now two commands: The first one simply logs a message, the second one sends an email. Note that each command
     
     1.  is listed below `pipeline:`,
@@ -123,7 +123,7 @@ After you have persisted a pipeline you can execute it by calling it using its u
     
 3.  Into the parameter field `key` copy the key of the pipeline you have created before, for example like this:  
     
-    ![](../../img/grafik-20210721-070826.png)
+    ![](../img/grafik-20210721-070826.png)
     
 4.  Execute the command by clicking **SUBMIT**.
     

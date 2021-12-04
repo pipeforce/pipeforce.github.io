@@ -1,4 +1,4 @@
-# Load a JSON file
+# Tutorial 7: Load a JSON file
 
 **Estimated time:** 10 min.
 
@@ -12,7 +12,7 @@
     
 *   You have completed tutorial: **[Create a pipeline](create-pipeline)**
     
-*   You have a basic understanding of the **[Pipeline Expression Language (PEL)](pipeline-expression-language)**
+*   You have a basic understanding of the **[Pipeline Expression Language (PEL)](../guides/pel.md)**
     
 
 ## Intro

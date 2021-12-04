@@ -6,7 +6,7 @@ All values entered in a form are stored in variables and can be displayed and ed
 
 In case you are defining form fields via the Online Workflow Modeler, like in the example below, all field IDs are directly stored as workflow variables. If you use those IDs in multiple steps in the workflow model, the content entered in previous steps are displayed automatically.
 
-In case you would like to use workflow variables from a trigger form, there are a few additional steps to do. These steps are described in this tutorial [Tutorial: Create a new BPMN workflow](https://pipeforce.github.io/docs/tutorials/beginner/create-BPMN-workflow) , section 9 and 10.
+In case you would like to use workflow variables from a trigger form, there are a few additional steps to do. These steps are described in this tutorial [Tutorial: Create a new BPMN workflow](../tutorials/beginner/create-BPMN-workflow) , section 9 and 10.
 
 ## Display workflow variables
 

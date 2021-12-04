@@ -1,4 +1,4 @@
-# Create a PDF stamp
+# Tutorial 11: Create a PDF stamp
 
 **Estimated time:** 10 min.
 
@@ -8,9 +8,9 @@
     
 *   You have a valid PIPEFORCE Developer account
     
-*   You have completed tutorial: [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app)
+*   You have completed tutorial: [Tutorial: Create a new app](../tutorials/create-app)
     
-*   You have completed tutorial: [Tutorial: Create and execute a pipeline](https://pipeforce.github.io/docs/tutorials/beginner/create-pipeline)
+*   You have completed tutorial: [Tutorial: Create and execute a pipeline](../tutorials/create-pipeline)
     
 
 ## Intro
@@ -31,7 +31,7 @@ If you don’t have a sample invoice PDF at hand, you can use this one:
     
 3.  Upload the sample invoice PDF in the root folder of your drive. Keep the name `invoice.pdf`:  
     
-    ![](../../img/image-20210213-042536.png)
+    ![](../img/image-20210213-042536.png)
 
 ## 2 - Create the stamp pipeline
 
@@ -41,7 +41,7 @@ In the next step you will create a pipeline which loads the PDF, puts a stamp on
     
 2.  Navigate to LOW CODE → Workbench
     
-3.  Select the node of your app or [create a new one](https://pipeforce.github.io/docs/tutorials/beginner/create-app).
+3.  Select the node of your app or [create a new one](../tutorials/create-app).
     
 4.  Click the plus icon at the top of the tree.
     
@@ -79,10 +79,10 @@ In the next step you will create a pipeline which loads the PDF, puts a stamp on
     
 11.  After a refresh of the drive page, you should see a new PDF invoice-received.pdf:  
     
-    ![](../../img/image-20210213-045220.png)
+    ![](../img/image-20210213-045220.png)
 12.  Open the `invoice-received.pdf`. You should see the generated stamp at the top right corner:  
     
-    ![](../../img/image-20210213-045350.png)
+    ![](../img/image-20210213-045350.png)
 13.  **Done. Congratulations!**
     
 

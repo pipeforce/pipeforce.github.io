@@ -1,10 +1,28 @@
 # Webhooks
 
-A webhook is a unique url pointing from outside to PIPEFORCE. When called, produces an internal event message which in turn can be consumed by a pipeline using the command `event.listen`.
+A webhook is a unique url endpoint. When called, it triggers some action on the target server.
 
-Note: If an url in this article contains `<NS>`, replace it by the namespace of your PIPE|FORCE instance.
+In PIPEFORCE you can create **custom** url endpoints. When called, it produces an internal event message which in turn can be consumed by a pipeline using the command `event.listen`.
 
-# Quick guide to create a webhook
+:::info
+Replace any url **``https://hub-try.pipeforce.org``** from the examples shown on this page by the url of your PIPEFORCE instance.
+:::
+    
+## Incoming Webhook
+
+An incoming webhook is an url endpoint created inside PIPEFORCE which can be called by an external system to trigger a pipeline inside PIPEFORCE. The url of such an incoming webhook has a format similar to this:
+
+```
+https://hub-try.pipeforce.org/api/v3/command/webhook.receive?uuid=<uuid>
+```
+
+:::info
+*   Replace `<uuid>` by the UUID of your webhook. See below to get such an uuid.
+:::
+    
+### Create Webhook
+
+#### Quick guide to create a webhook
 
 1.  Create a new incoming webhook endpoint by using the command `webhook.put`.
     
@@ -15,27 +33,11 @@ Note: If an url in this article contains `<NS>`, replace it by the namespace of 
 4.  Create a pipeline which listens for the `eventKey` fired by the webhook using the `event.listen` command and store it to the property store (this automatically triggers the registration of the listener). This pipeline then will be executed every time this webhook is called.
     
 5.  To call a webhook from outside use the command `webhook.receive` and the webhook uuid, example:  
-    `https://hub-<NS>.pipeforce.net/api/v3/command/webhook.receive?uuid=<uuid>`
+    `https://hub-try.pipeforce.org/api/v3/command/webhook.receive?uuid=<uuid>`
     
 6.  To trigger a webhook from inside a pipeline to an external system, use the command `webhook.send`.
-    
 
-# Incoming webhook
-
-An incoming webhook is an url endpoint created inside PIPEFORCE which can be called by an external system to trigger a pipeline inside PIPEFORCE. The url of such an incoming webhook has a format similar to this:
-
-```yaml
-https://hub-<NS>.pipeforce.net/api/v3/command/webhook.receive?uuid=<uuid>
-```
-
-Whereas:
-
-*   Replace `<NS>` by your namespace.
-    
-*   Replace `<uuid>` by the UUID of your webhook.
-    
-
-## Setup incoming webhook via CLI
+#### Create Webhook via CLI
 
 1.  In order to create and setup a new incoming webhook, you can simply use the command `webhook.put` and the CLI:
     
@@ -55,7 +57,7 @@ Whereas:
     ```
     {
       "eventKey": "salesforce.lead.created",
-      "webhookUrl": "https://hub-<NS>.pipeforce.net/api/v3/webhook.receive?uuid=885d...",
+      "webhookUrl": "https://hub-try.pipeforce.org/api/v3/webhook.receive?uuid=885d...",
       "uuid": "885d...",
       ...
     }
@@ -64,27 +66,27 @@ Whereas:
 
 Since a webhook is secured by its uuid which is a secret and hard to detect, make sure the **webhookUrl** is kept secure between the two systems.
 
-**Note: PIPEFORCE scans regularly the internet for this secret and if it finds it, the according webhooks will be deactivated for security reasons. So never make it public available!**
+:::note 
+PIPEFORCE scans regularly the internet for this secret and if it finds it, the according webhooks will be deactivated for security reasons. So never make it public available!
+:::
 
-## Setup incoming webhook via portal
-
-Only: ENTERPRISE CORPORATE
+#### Setup Webhook via Portal
 
 You can also use the command form LOW CODE → Commands → `webhook.put` in the portal to create a webhook without the CLI:
 
-![](../img/image-20211029-134322.png)
+![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-134322.png?api=v2)
 
-## Trigger incoming webhook message from outside
+### Trigger Webhook
 
 After you have setup successfully the webhook, it can be triggered (called) from outside.
 
 To do so, send a GET or POST HTTP request to the webhook url which was returned when you created it:
 
-`https://hub-<NS>.pipeforce.net/api/v3/command/webhook.receive?uuid=abcdef`
+`https://hub-try.pipeforce.org/api/v3/command/webhook.receive?uuid=abcdef`
 
 In order to secure the **webhookUrl** you should always prefer a **HTTPS connection** between the two systems and send the uuid parameter in the body of a **POST** request instead of GET. PIPEFORCE supports both methods. But it mainly depends on the caller of the webhook whether this external system supports **POST** calls.
 
-## Consuming incoming webhook
+### Listening for Webhook
 
 After you have successfully setup the webhook, any time the webhook url is called from outside, a new message is produced internally inside PIPEFORCE which then can be consumed by any pipeline. To do so, use the `event.listen` command to listen for such new event messages. Here’s an example which sends an email whenever a new lead in Salesforce was created using a webhook with the `eventKey` =`webhook.salesforce.lead.created`:
 
@@ -106,17 +108,21 @@ In case the sender has sent some payload in the body of the webhook request, thi
 #{convert.fromBase64(body.origin)}
 ```
 
-For security reasons, by default the webhook pipeline is executed with very limited `anonymousUser` privileges. So make sure that you use only commands in your pipeline which can be executed by this user. In case you need more privileges, you can use the `iam.run.as` command to switch to the privileges of the given user before executing the command. See the IAM portal for the permissions (=roles) of a given user. Also see [Groups, Roles, Permissions](https://pipeforce.github.io/docs/guides/permissions) for more details on user privileges / permissions.
+For security reasons, by default the webhook pipeline is executed with very limited `anonymousUser` privileges. So make sure that you use only commands in your pipeline which can be executed by this user. In case you need more privileges, you can use the `iam.run.as` command to switch to the privileges of the given user before executing the command. See the IAM portal for the permissions (=roles) of a given user. Also see [Groups, Roles, Permissions](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288874/Groups%2C+Roles%2C+Permissions) for more details on user privileges / permissions.
 
-**Some words about security and webhooks**
+:::caution Some words about security and webhooks
 
 Since webhooks allow to execute pipelines, they can be very powerful. This power also comes with **additional responsibility** to you, the pipeline engineer. Make sure you have sufficient security testings in place and you have secured your webhook pipelines accordingly.
 
-## List existing incoming webhooks via CLI
+:::
+
+### List all Webhooks
+
+#### List all Webhooks via CLI
 
 To list all existing webhooks, you can use the `webhook.get` command:
 
-```bash
+```
 pi command webhook.get
 ```
 
@@ -124,45 +130,45 @@ You will get a JSON / YAML list with details about all existing webhooks.
 
 In order to get the details of a single webhook, use the `webhook.get` with the param `uuid` whereas uuid is the id of the webhook you want to list:
 
-```bash
+```
 pi command webhook.get uuid=<yourWebhookUuid>
 ```
 
-## List existing incoming webhooks via portal
+#### List all Webhooks via Portal
 
 Only: ENTERPRISE CORPORATE
 
 In the portal go to LOW CODE → Commands → webhook.get and execute the form:
 
-![](../img/image-20211029-140005.png)![](../img/image-20211029-140117.png)
+![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-140005.png?api=v2)![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-140117.png?api=v2)
 
-## Edit or delete incoming webhook via CLI
+### Edit or delete webhook 
+
+#### Edit or delete via CLI
 
 In order to edit an existing webhook, you can use the `webhook.put` command and set the uuid of the webhook to edit. For example:
 
-```bash
+```
 pi command webhook.put uuid=abcdef eventKey=webhook.changed.key
 ```
 
 In order to delete an existing webhook, you can use the command `webhook.delete`:
 
-```bash
+```
 pi command webhook.delete uuid=abcdef
 ```
 
 And then set the uuid of the webhook you want to delete.
 
-## Edit or delete incoming webhook via portal
-
-Only: ENTERPRISE CORPORATE
+#### Edit or delete via Portal
 
 To edit or delete a webhook using the portal, go to Commands → `webhook.put` or Commands -> `webhook.delete` and execute the form accordingly.
 
-## Receiving multiple files with incoming webhook
+### Receiving Files
 
 Its also possible to send a playload like multiple files with a webhook. To do so, execute the request as multipart POST with the body formatted as `multipart/form-data`. For example:
 
-```yaml
+```
 POST /api/v3/command/webhook.receive?uuid=abcdef HTTP/1.1 
 Host: hub-<NS>.pipefore.net
 Content-Type: multipart/form-data;boundary="boundary" 
@@ -180,23 +186,22 @@ Content-Disposition: form-data; name="file"; filename="fileB.pdf"
 
 More information about multipart POST requests can be for example found here: [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)
 
-# Outgoing webhook
+## Outgoing webhook
 
-An outgoing webhook is a url to be called from inside a pipeline in order to trigger something at an external system.
-
-## Send outgoing webhook
-
-To send a webhook to an external system, you can use the command `webhook.send` as this pipeline example shows:
+An outgoing webhook is a url to be called from inside a pipeline in order to trigger something at an external system. To send a webhook to an external system, you can use the command `webhook.send` as this pipeline example shows:
 
 ```yaml
 pipeline:
   - webhook.send:
-      url: https://hostname/webhook/id
-      message: "{\"text\": \"hello world\"}"
+      url: "https://hostname/webhook/id"
+      message: |
+        {"text": "hello world"}
 ```
 
-When this pipeline is called it sends the `message` (must be a valid JSON string) as POST body to the given `url`.
+When this pipeline is called it sends the `message` (must be a valid JSON string) as ``POST`` body to the given `url`. The response from the webhook call is written into the pipeline body by default.
 
-How the webhook url looks like and what format the webhook supports as message depends on the target system. Consult its documentation for more details.
+How the webhook url looks like and what format the webhook supports as message, depends on the target system. Consult its documentation for more details.
 
-Note: The same can also be reached using the `http.get` and `http.post` commands.
+:::info
+The same can also be reached using one of the `http.get` and `http.post` commands.
+:::

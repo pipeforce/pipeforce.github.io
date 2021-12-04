@@ -49,14 +49,15 @@ const config = {
           src: 'img/pipeforce-logo-150w.png',
         },
         items: [
+          /** 
           {
             type: 'docsVersionDropdown',
-          },
+          },**/
           {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Manuals',
+            label: 'Documentation',
           },
           {
             type: 'doc',
@@ -69,6 +70,12 @@ const config = {
             docId: 'api/commands',
             position: 'left',
             label: 'API',
+          },
+          {
+            type: 'doc',
+            docId: 'downloads',
+            position: 'left',
+            label: 'Downloads',
           },
           {to: '/blog', label: 'News', position: 'left'},
           {

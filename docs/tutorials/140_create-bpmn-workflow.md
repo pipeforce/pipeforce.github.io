@@ -1,5 +1,5 @@
 
-# BPMN
+# Tutorial 14: Create a BPMN Workflow
 
 In order to graphically design and automate user workflows and discuss them with internal and external teams, we believe that it is inevitable to rely on official standards, everybody can easily understand and which are accepted in industries worldwide.
 
@@ -13,7 +13,7 @@ Lets see in this tutorial how you can design, discuss and run such workflows.
 
 The workflow we gonna create in this tutorial will look like this:
 
-![](../../img/grafik-20210723-085211.png)
+![](../img/grafik-20210723-085211.png)
 
 It is a simple vacation request workflow: The first task is a form which is filled-out by the employee requesting a vacation. The second task is also a form which is filled-out by the reviewer which is typically a supervisor. He approves or declines the vacation request. Depending on the decision of the supervisor a declined or an approved email will be send to the requester.
 
@@ -40,7 +40,7 @@ As you could see in the workflow picture above, there are two **service tasks** 
 
 1.  Login to the portal https://YOUR\_NAMESPACE.pipeforce.net
     
-2.  Go to `LOW CODE → Workbench` and select the app node in the tree you would like to create the workflow inside or create a new app first (see [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app) how to do it).
+2.  Go to `LOW CODE → Workbench` and select the app node in the tree you would like to create the workflow inside or create a new app first (see [Tutorial: Create a new app](../tutorials/create-app) how to do it).
     
 3.  Click the plus icon at the top of the tree.
     
@@ -116,20 +116,20 @@ The next step is to create the BPMN workflow design. To do so, follow these step
 5.  The property was saved and the BPMN online designer has been opened for you.
     
 6.  **Tip**: In order to have more space in the designer, you can hide the very left menu by clicking on the top left grid icon. Clicking it again will bring back the menu:  
-    ![](../../img/grafik-20210724-045959.png)
+    ![](../img/grafik-20210724-045959.png)
 7.  Now lets create the user task “Request vacation”. Add a new task, then click the wrench icon and then select “User Task” from the list:  
 
-    ![](../../img/grafik-20210723-094114.png)    
+    ![](../img/grafik-20210723-094114.png)    
 8.  Repeat these steps with the next task “Review request” to have two user tasks like this:  
 
-    ![](../../img/vocation-request.png)
+    ![](../img/vocation-request.png)
 9.  Now lets add the gateway and a service task:  
     
-    ![](../../img/vocation-request-v1.png)
+    ![](../img/vocation-request-v1.png)
     
 10.  Repeat these steps to create the second service task and to add an end task. Finally your BPMN diagram should look like this:  
     
-    ![](../../img/grafik-20210723-095307.png)
+    ![](../img/grafik-20210723-095307.png)
 11.  Click `SAVE`.
     
 
@@ -137,7 +137,7 @@ The next step is to create the BPMN workflow design. To do so, follow these step
 
 1.  In the next step we will link the service tasks with the pipelines. To do so, select the “Send declined email” service task, in the details view click the PIPELINE tab and from the dropdown select the `send-declined-email` pipeline we created before:  
     
-    ![](../../img/grafik-20210723-095737.png)
+    ![](../img/grafik-20210723-095737.png)
     
 2.  Repeat these steps with the “Send approved email” service task and the `send-approved-email` pipeline.
     
@@ -171,7 +171,7 @@ In the next step we will add input fields for the user forms.
     
 4.  Set the values for the vacationStartDate like this and click `APPLY`:  
     
-    ![](../../img/form-fields-details.png)
+    ![](../img/form-fields-details.png)
     
 5.  Repeat this step for the field “Vacation End”:
     
@@ -202,7 +202,7 @@ Depending on whether the supervisor has approved or declined the vacation reques
 
 1.  Select the **declined** edge of the gateway and fill-in this condition: `${vacationApproved == false}`:  
     
-    ![](../../img/grafik-20210727-131453.png)
+    ![](../img/grafik-20210727-131453.png)
 2.  This makes sure that this branch is executed in case the supervisor set `vacationApproved` to false.
     
 3.  Repeat these steps for the task “Send approved email” and set the condition to  
@@ -223,7 +223,7 @@ Now its time to activate the workflow and execute it. To do so, follow these ste
     
 4.  A dialog opens where your workflow should be listed as `appname_workflowname`, for example `myapp42_vacation-request`:  
     
-    ![](../../img/grafik-20210727-132250.png)
+    ![](../img/grafik-20210727-132250.png)
     
 5.  Click on your process and then on `Start` to start it.
     
@@ -235,7 +235,7 @@ Now its time to activate the workflow and execute it. To do so, follow these ste
     
 9.  Then click on Claim to assign this task to you:  
     
-    ![](../../img/grafik-20210727-132250.png)
+    ![](../img/grafik-20210727-132250.png)
     
 10.  Select a vacation start and a vacation end date and click `Complete`.
     
@@ -243,7 +243,7 @@ Now its time to activate the workflow and execute it. To do so, follow these ste
     
 12.  Click on `Diagram` in the tabs list to see the current flow state:
     
-    ![](../../img/grafik-20210727-133238.png)
+    ![](../img/grafik-20210727-133238.png)
 13.  Go back to the Form tab and click again `Claim`.
     
 14.  Now you are in the role of the supervisior. You can approve or decline the request.
@@ -280,11 +280,11 @@ Currently the pipelines are static. Now we gonna change this and use the `vacati
     
 6.  Now execute the workflow again and you should receive emails with the `vacationStartDate` and `vacationEndDate` dynamically set like this example shows:  
     
-    ![](../../img/vocation-declined.png)
+    ![](../img/vocation-declined.png)
 
 # 9 - Improvement: Use a form as start trigger
 
-Currently the process is started manually by accessing the task section and starting the workflow. However, in many cases a workflow should be started by submitting a form which is located in the online portal. How to create such a form in general is explained here: [Tutorial: Create a new form](https://pipeforce.github.io/docs/tutorials/beginner/create-form). For the current example, follow these steps:
+Currently the process is started manually by accessing the task section and starting the workflow. However, in many cases a workflow should be started by submitting a form which is located in the online portal. How to create such a form in general is explained here: [Tutorial: Create a new form](../tutorials/create-form). For the current example, follow these steps:
 
 ## Create a schema
 
@@ -302,7 +302,7 @@ Currently the process is started manually by accessing the task section and star
     
 5.  The new schema was created
     
-6.  ![](../../img/Bildschirmfoto-2021-10-21-um.png)
+6.  ![](../img/Bildschirmfoto-2021-10-21-um.png)
 7.  Copy and paste this snippet to the schema (replace any existing content):
     
 
@@ -414,7 +414,7 @@ Since you have now a new start trigger for your workflow, you don’t need the f
 
 Your new workflow should look like this:
 
-![](../../img/image-20211021-171228.png)
+![](../img/image-20211021-171228.png)
 
 After you have updated the BPMN-Workflow, press `DEPLOY` .
 
@@ -507,12 +507,12 @@ Currently the Reviewer can see the inputs (`vacation start date` and `vacation e
 5.  Click `SAVE`
     
 
-![](../../img/image-20211021-174605.png)
+![](../img/image-20211021-174605.png)
 
 **Tip:** Since the requester was already defined as process variable in previous steps, you can work with this value by just referring to the ID. In case you have skipped some previous steps, you have to go back and define the Requester as a process variable.
 
 The new task form of the Reviewer should now look like this:
 
-![](../../img/Bildschirmfoto.png)
+![](../img/Bildschirmfoto.png)
 
 If you now start the workflow new, you are able to see this additional information (requester email) in the task form of the Reviewer.

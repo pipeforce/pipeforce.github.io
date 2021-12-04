@@ -26,17 +26,17 @@ This will publish any new or changes resources inside the `src` folder to the se
 
 # Prerequisites
 
-To setup your local low-code workspace, at first you need to download and install the CLI as described here: [Downloads](https://pipeforce.github.io/docs/guides/downloads)
+To setup your local low-code workspace, at first you need to download and install the CLI as described here: [Downloads](../guides/downloads)
 
 Furthermore, we recommend you to download and install the free source code editor Visual Studio Code from here: [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 
 Even if you have a different favorite editor, we recommend you to start with this one, since it is easier to follow all examples. Later, you can switch to a different editor, if you want.
 
-After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](https://pipeforce.github.io/docs/guides/vs-code)
+After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](../guides/vs-code)
 
 # Creating a new customization workspace
 
-After you have installed the CLI ([Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)), you can create a new workspace by using this command line call:
+After you have installed the CLI ([Command Line Interface (CLI)](../api/cli)), you can create a new workspace by using this command line call:
 
 ```bash
 pi setup
@@ -81,4 +81,4 @@ Congratulations! A new property store workspace was been created for you under
 *   For Mac this is typically: `/Users/YOUR_USERNAME`
     
 
-After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](https://pipeforce.github.io/docs/guides/vs-code)
+After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](../guides/vs-code)

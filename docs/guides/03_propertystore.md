@@ -197,7 +197,7 @@ will get this property store key assigned:
 
 `global/app/myapp/pipeline/helloworld`
 
-See the CLI documentation for more information about the publish action [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)
+See the CLI documentation for more information about the publish action [Command Line Interface (CLI)](../api/cli)
 
 ### Using a Restful HTTP POST
 
@@ -559,7 +559,7 @@ Each instance property will contain as value the data of the object instance whi
 
 This folder contains all pipeline configurations for the given app. A pipeline can be seen as the business logic part of an application.
 
-Find here more about pipelines: [https://pipeforce.github.io/docs/guides/pipeline](https://pipeforce.github.io/docs/guides/pipeline)
+Find here more about pipelines: [../guides/pipeline](../guides/pipeline)
 
 Each property name corresponds with the name of the pipeline and contains as value the pipeline configuration. For example:
 
@@ -647,12 +647,12 @@ pi publish src/global/app/myapp
 
 This scans the your local `myapp` folder and uploads only those resources which have been changed since last upload or have been created since then.
 
-See here how to setup such a customization workspace: [Local Low-Code Workspace](https://pipeforce.github.io/docs/guides/low-code)
+See here how to setup such a customization workspace: [Local Low-Code Workspace](../guides/low-code)
 
-See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli) .
+See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](../api/cli) .
 
 # Working with Visual Studio Code
 
 We recommend you to work with the Visual Studio Code editor to manage your local resources in the customization editor.
 
-Learn more about using VS Code for this here: [Visual Studio Code](https://pipeforce.github.io/docs/guides/vs-code)
+Learn more about using VS Code for this here: [Visual Studio Code](../guides/vs-code)

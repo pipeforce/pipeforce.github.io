@@ -1,4 +1,4 @@
-# Create a Data Mapping Pipeline
+# Tutorial 6: Data Mapping
 
 **Estimated time:** 10 min.
 
@@ -8,11 +8,11 @@
     
 *   You have a valid PIPEFORCE Developer account
     
-*   You have completed tutorial: [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app)
+*   You have completed tutorial: [Tutorial: Create a new app](../tutorials/create-app)
     
-*   You have completed tutorial: [Tutorial: Create and execute a pipeline](https://pipeforce.github.io/docs/tutorials/beginner/create-pipeline)
+*   You have completed tutorial: [Tutorial: Create and execute a pipeline](../tutorials/create-pipeline)
     
-*   You have a basic understanding of the PEL: [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel)
+*   You have a basic understanding of the PEL: [Pipeline Expression Language (PEL)](../guides/pel)
     
 
 ## Intro
@@ -104,9 +104,9 @@ Let's see in this tutorial how to implement this conversion task by using a pipe
     
     1.  We used the `data.mapping` command which allows to map from one structure to another.
         
-    2.  The `input` parameter defines the source data as a static JSON string in this example. Beside a static string, this value could also be a pipeline expression (PEL) pointing to some dynamic data in the `vars` section or by calling external services (see the [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/991363104](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/991363104) for more details on this). In this example we want to focus on the data mapping and keep the rest simple. If the parameter `input` would not be specified, the current value from the body would be expected as input. Note the handy pipe symbol `|` here which is specific to the YAML syntax and allows a multi-line value without additional annotations, ticks or quotes.
+    2.  The `input` parameter defines the source data as a static JSON string in this example. Beside a static string, this value could also be a [pipeline expression (PEL)](../guides/pel) pointing to some dynamic data in the `vars` section or by calling external services. In this example we want to focus on the data mapping and keep the rest simple. If the parameter `input` would not be specified, the current value from the body would be expected as input. Note the handy pipe symbol `|` here which is specific to the YAML syntax and allows a multi-line value without additional annotations, ticks or quotes.
         
-    3.  The `rules` parameter (or `mappingRules` in versions < 8.0) defines the mapping rules which will read from the input data and write to the output data. You can define as many mapping rules as you want. Each mapping rule ends with a comma and a line break at the very end. They will be applied from top to down on. The input expression is defined at the left hand side and selects + prepares the input data for the mapping. At the right hand side the output expression is defined. It specifies the location where to write the data in the output structure. Both expressions are separated by an arrow `->` . Each side can use the [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/991363104](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/991363104) and therefore the full power of this language. Its not necessary to wrap a pipeline expression inside `#{` and `}`. So the format on each line should look like this:
+    3.  The `rules` parameter (or `mappingRules` in versions < 8.0) defines the mapping rules which will read from the input data and write to the output data. You can define as many mapping rules as you want. Each mapping rule ends with a comma and a line break at the very end. They will be applied from top to down on. The input expression is defined at the left hand side and selects + prepares the input data for the mapping. At the right hand side the output expression is defined. It specifies the location where to write the data in the output structure. Both expressions are separated by an arrow `->` . Each side can use the [pipeline expression language (PEL)](../guides/pel) and therefore the full power of this language. Its not necessary to wrap a pipeline expression inside `#{` and `}`. So the format on each line should look like this:
         
         ```
         inputExpression -> outputExpression,
@@ -130,25 +130,25 @@ Let's see in this tutorial how to implement this conversion task by using a pipe
         age >= 18                   -> customer.isLegalAge,
         ```
         
-    7.  The fourth rule executes the pipeline util `@date` (see [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1002897409](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1002897409) for more details) in order to return the current date and writes this value to the new field `mappingDate` at top level of the output:
+    7.  The fourth rule executes the pipeline util [`@date`](../api/utils#@date) in order to return the current date and writes this value to the new field `mappingDate` at top level of the output:
         
         ```
         @date.now()                 -> mappingDate,
         ```
         
-    8.  The last rule is similar to the previous one and calls the pipeline util `@user` in order to return the username of the currently logged-in user and writes the result to the new field `mappedBy` at the top level of the output:
+    8.  The last rule is similar to the previous one and calls the pipeline util [`@user`](../api/utils#@user) in order to return the username of the currently logged-in user and writes the result to the new field `mappedBy` at the top level of the output:
         
         ```
         @user.username()            -> mappedBy
         ```
         
-    9.  Not mentioned here because it is optional: The `output` parameter for the command `data.mapping`. Its value must be a [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/991363104](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/991363104) which points to the location (or a sub-path) to write the mapping result to (for example a variable inside the `vars` scope). If not specified, it will be written to the body by default. This is the case for our example.
+    9.  Not mentioned here because it is optional: The `output` parameter for the command `data.mapping`. Its value must be a [pipeline expression language (PEL)](../guides/pel) which points to the location (or a sub-path) to write the mapping result to (for example a variable inside the `vars` scope). If not specified, it will be written to the body by default. This is the case for our example.
         
 10.  Click SAVE to save the pipeline.
     
 11.  Then click RUN to execute the pipeline which should look like this:
     
-    ![](../../img/image-20211016-072351.png)
+    ![](../img/image-20211016-072351.png)
 12.  You should then see a result similar to this:
     
     ```json

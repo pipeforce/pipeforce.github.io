@@ -1,4 +1,4 @@
-# Create a new List
+# Tutorial 4: Create a List
 
 **Estimated time:** 15 min.
 
@@ -8,9 +8,9 @@
     
 *   You have a valid PIPEFORCE Developer account.
     
-*   You have executed tutorial [Tutorial: Create a new app](https://pipeforce.github.io/docs/tutorials/beginner/create-app).
+*   You have executed tutorial [Tutorial: Create a new app](../tutorials/beginner/create-app).
     
-*   You have executed tutorial [Tutorial: Create a new form](https://pipeforce.github.io/docs/tutorials/beginner/create-form).
+*   You have executed tutorial [Tutorial: Create a new form](../tutorials/beginner/create-form).
     
 *   You have already added 3 or more data sets using your form.
     
@@ -46,7 +46,7 @@ Up to this step you already created an app with a new form inside in the previou
     
 5.  You should now see all the person data sets added before using your form:  
     
-    ![](../../img/grafik-20210720-142349.png)
+    ![](../img/grafik-20210720-142349.png)
 
 You can search and sort the list.
 
