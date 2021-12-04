@@ -2577,7 +2577,7 @@
               "when" : {
                 "type" : "string",
                 "description" : "The mock expression: When this evaluates to true, the mock will be applied.",
-                "default" : "true"
+                "default" : "#{true}"
               },
               "thenReturn" : {
                 "type" : "string",

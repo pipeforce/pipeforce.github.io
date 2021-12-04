@@ -1,7 +1,7 @@
 # Utils  
 Reference documentation of [Pipeline Expression Language (PEL)](../guides/pel) utils.  
 
-Generated: **01/12/2021**  
+Generated: **04/12/2021**  
 Number of built-in utils: **15**  
 Also see: **[Utils Guide](../guides/utils)** | **[PEL Guide](../guides/pel)**
 
@@ -17,6 +17,7 @@ Use the [online workbench](https://try.pipeforce.org) to get auto-completion for
 ![](../img/workbench-completion-utils.png)  
 
 ##  @calc 
+----------  
 Provides utility functions inside a pipeline expression for simple calculations of lists.
 You can access the functions declared here in the PEL using <code>@calc</code>  
 
@@ -59,6 +60,7 @@ list | ``object`` | The list of numbers.
 
  
 ##  @content 
+----------  
 Provides utility functions inside a pipeline expression for creation and managing of content objects.
 You can access the functions declared here in the PEL using <code>@content</code>  
 
@@ -111,6 +113,7 @@ uri | ``string`` | The uri to be used for the content object
 
  
 ##  @convert 
+----------  
 Provides utility functions inside a pipeline expression for simple conversion and encoding tasks.
 You can access the functions declared here in the PEL using <code>@convert</code>  
 
@@ -348,6 +351,7 @@ value | ``object`` | The value to convert.
 
  
 ##  @data 
+----------  
 Provides utility functions inside a pipeline expression for simple CRUD and transformation data operations.
 You can access the functions declared here in the PEL using <code>@data</code>  
 
@@ -429,6 +433,7 @@ endInt | ``int`` | The end index to fill the list up to.
 
  
 ##  @date 
+----------  
 Provides utility functions inside a pipeline expression for simple date and time handling.
 You can access the functions declared here in the PEL using <code>@date</code>  
 
@@ -692,6 +697,7 @@ value | ``object`` | The number to format.
 
  
 ##  @iam 
+----------  
 Provides utility functions inside a pipeline expression for accessing IAM information.
 You can access the functions declared here in the PEL using <code>@iam</code>  
 
@@ -828,6 +834,7 @@ Docs: Not added to official docs so far.
 
  
 ##  @json 
+----------  
 Provides addon functions inside a pipe expression in order to read and change JSON documents.
 You can access the functions declared here in the PEL using <code>@json</code>  
 
@@ -850,6 +857,7 @@ source | ``object`` | The JSON source to load.
 
  
 ##  @list 
+----------  
 Provides utility functions inside a pipeline expression for simple lists handling.
 You can access the functions declared here in the PEL using <code>@list</code>  
 
@@ -988,6 +996,7 @@ needles | ``object`` | The items to search for. Can also be a list of items.
 
  
 ##  @path 
+----------  
 Provides utility functions inside a pipeline expression for simple path calculations.
 You can access the functions declared here in the PEL using <code>@path</code>  
 
@@ -1047,7 +1056,8 @@ path | ``string`` | The path string.
 
  
 ##  @property 
-xProvides addon functions inside a pipe expression in order to read properties from the property store.
+----------  
+Provides addon functions inside a pipe expression in order to read properties from the property store.
 You can access the functions declared here in the PEL using <code>@property</code>  
 
 ### value(key)   
@@ -1106,6 +1116,7 @@ key | ``string`` | The property key with optional fragment reference in form 'gl
 
  
 ##  @text 
+----------  
 Provides utility functions inside a pipeline expression for simple calculations of lists.
 You can access the functions declared here in the PEL using <code>@calc</code>  
 
@@ -1415,6 +1426,7 @@ replacement | ``string`` | The string to be substituted for each match.
 
  
 ##  @uri 
+----------  
 Provides utility functions inside a pipeline expression for simple uri resolving.
 You can access the functions declared here in the PEL using <code>@uri</code>  
 
@@ -1442,6 +1454,7 @@ uri | ``string`` | The uri to be resolved.
 
  
 ##  @user 
+----------  
 Provides utility functions inside a pipeline expression for simple handling of the currently logged-in user.
 You can access the functions declared here in the PEL using <code>@user</code>  
 
