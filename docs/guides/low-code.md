@@ -10,7 +10,7 @@ This might be useful for small changes. But if you want to develop and customize
 
 The low-code workspace will mirror the property store properties as a local hierarchy of folders and files. Any configuration and script file created locally inside this workspace can then easily be uploaded to the property store with a single command line. For example:
 
-```
+```bash
 pi publish src/global/app/myapp
 ```
 
@@ -18,7 +18,7 @@ This scans the folder `myapp` inside the workspace and uploads only those resour
 
 You can also use the short form of the command:
 
-```
+```bash
 pi publish 
 ```
 
@@ -26,25 +26,25 @@ This will publish any new or changes resources inside the `src` folder to the se
 
 # Prerequisites
 
-To setup your local low-code workspace, at first you need to download and install the CLI as described here: [Downloads](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288972/Downloads)
+To setup your local low-code workspace, at first you need to download and install the CLI as described here: [Downloads](https://pipeforce.github.io/docs/guides/downloads)
 
 Furthermore, we recommend you to download and install the free source code editor Visual Studio Code from here: [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 
 Even if you have a different favorite editor, we recommend you to start with this one, since it is easier to follow all examples. Later, you can switch to a different editor, if you want.
 
-After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286821/Visual+Studio+Code)
+After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](https://pipeforce.github.io/docs/guides/vs-code)
 
 # Creating a new customization workspace
 
-After you have installed the CLI ([Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739)), you can create a new workspace by using this command line call:
+After you have installed the CLI ([Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)), you can create a new workspace by using this command line call:
 
-```
+```bash
 pi setup
 ```
 
 This will ask you a few questions to setup the workspace correctly.
 
-```
+```bash
 Namespace [None]:
 ```
 
@@ -57,13 +57,13 @@ For example if your instance url is [https://**acme**.pipeforce.net](https://acm
 
 Type this name in an press enter.
 
-```
+```bash
 Username [None]:
 ```
 
 Type-in your username to login into the system.
 
-```
+```bash
 Password []:
 ```
 
@@ -81,4 +81,4 @@ Congratulations! A new property store workspace was been created for you under
 *   For Mac this is typically: `/Users/YOUR_USERNAME`
     
 
-After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286821/Visual+Studio+Code)
+After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](https://pipeforce.github.io/docs/guides/vs-code)

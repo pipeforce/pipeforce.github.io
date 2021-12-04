@@ -656,7 +656,6 @@ dateTime | ``object`` | The date time object to be parsed.
 
  
 ##  @format 
-----------  
 Provides utility functions inside a pipeline expression for formatting values.  
 
 ### decimal(value,pattern)   
@@ -754,7 +753,6 @@ email | ``string`` | The email of the user.
 
  
 ##  @instance 
-----------  
 Provides utility functions inside a pipeline expression to return information about the current instance.
 You can access the functions declared here in the PEL using <code>@instance</code>  
 

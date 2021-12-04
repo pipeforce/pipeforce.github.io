@@ -28,13 +28,13 @@ At first, before you can setup your local workbench, you have to make sure that 
 
 Open your terminal and verify that you have a Java runtime version >= 1.8 installed:
 
-```
+```bash
 $> java -version
 ```
 
 You should see an output similar to this:
 
-```
+```bash
 java version "1.8"
 ```
 
@@ -50,7 +50,7 @@ If you have not Java runtime yet, follow these steps to download and install:
     
 3.  Open **a new console window** and try out that this command now shows the installed Java version:
     
-4.  ```
+4.  ```bash
     $> java -version
     ```
     
@@ -90,7 +90,7 @@ In order to create and publish resources like apps, workflows, forms, lists or p
 
 In order to install this tool, first make sure you have a working Java version installed locally by opening up a terminal window and typing in this command:
 
-```
+```bash
 $> java -version
 ```
 
@@ -106,13 +106,13 @@ Select the jar file with latest version and download it to your computer.
 
 After this, open a new terminal / command line window and change to the folder where you downloaded the file to. Usually this is the Download folder as shown in this example for Mac and could differ for your operating system:
 
-```
+```bash
 $> cd /Users/username/Downloads
 ```
 
 Now install the cli tool by executing this command:
 
-```
+```bash
 $> java -jar pipeforce-cli-latest.jar setup
 ```
 
@@ -122,7 +122,7 @@ You will then be asked to install the tool. Select `yes`.
 
 Also a setup wizard is started automatically with these questions:
 
-```
+```bash
 $> Namespace:
 ```
 
@@ -132,13 +132,13 @@ Type in your customer namespace and press enter. This is the prefix name of your
 
 You got this link after with your trial or production instance. If unsure, ask your sales manager for your namespace.
 
-```
+```bash
 $> Username:
 ```
 
 Type in your PIPEFORCE username and press enter.
 
-```
+```bash
 $> Password:
 ```
 

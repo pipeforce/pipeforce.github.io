@@ -1,16 +1,14 @@
 # Workflows
 
-**Note: This page is outdated and needs to be updated**
-
 A workflow in PIPEFORCE is a stateful business process where one or more humans are involved. Workflows can be modelled using a graphical interface and they can optionally trigger the execution of pipelines.
 
-## Workflow design with BPMN
+# Workflow design with BPMN
 
 In PIPEFORCE workflows can be designed using BPMN (Business Process Model and Notation) which is a worldwide ISO standardization to describe business processes in a formalized (graphical) way. Also most non-technicals can understand BPMN diagrams. If you’re not familiar with BPMN so far, we highly recommend you to learn more about it before you dive deeper into this chapter. Here you can find a first introduction on Wikipedia: [https://en.wikipedia.org/wiki/Business\_Process\_Model\_and\_Notation](https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation).
 
 Below is a very simple example of such a BPMN diagram which shows a vacation approval process where the employee must fill-out a request form and the supervisor then can approve or decline the vacation request:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20210712-071439.png?api=v2)
+![](../img/grafik-20210712-071439.png)
 
 BPMN digrams are designed using a BPMN designer tool. You can use your own local software to design such a diagram and then upload them to PIPEFORCE or you can use the built-in online BPMN designer from PIPEFORCE. With the later you can:
 
@@ -23,11 +21,13 @@ BPMN digrams are designed using a BPMN designer tool. You can use your own local
 *   Directly execute and review BPMN diagrams as workflows
     
 
+## Most important BPMN diagram elements
+
 In order to draw a BPMN diagram, the most important elements are these, you should be aware of:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-111600.png?api=v2)
+![](../img/grafik-20201023-111600.png)
 
-## User Task
+### The User Task
 
 The user task is the part of a workflow in case an input from a user is required. The workflow waits at this point until the user has finished this task by clicking “Complete”.
 
@@ -35,9 +35,9 @@ The input of the user is typically given by filling-out a form.
 
 The form can be defined using the “Forms” tab in the modeller.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-112343.png?api=v2)
+![](../img/grafik-20201023-112343.png)
 
-## System Task
+### The System Task
 
 If a task in the workflow must be executed by a “machine”, for example sending an email, doing a conversion or creating a new data set, typically a System Task is used for this.
 
@@ -52,7 +52,7 @@ To configure a system task to execute such a pipeline, you need to make sure, yo
 3.  The Delegate Expression is set to `${pipelineDelegate}`.
     
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-112937.png?api=v2)
+![](../img/grafik-20201023-112937.png)
 
 To execute a pipeline, you have two configuration options:
 
@@ -61,17 +61,17 @@ To execute a pipeline, you have two configuration options:
 2.  Calling a pipeline **stored in the property store**.
     
 
-### Call an embedded pipeline
+#### Call an embedded pipeline
 
 In order to trigger an embedded pipeline whenever the system task is executed, you can define a new input parameter with name `pipeline` of type `Text` and add the pipeline directly as value:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-113721.png?api=v2)
+![](../img/send-email.png)
 
-### Call a pipeline stored in the property store
+#### Call a pipeline stored in the property store
 
 Lets assume, a pipeline is stored in the property store under this key path:
 
-```
+```bash
 global/app/vacation-request/pipeline/myPipeline
 ```
 
@@ -86,9 +86,9 @@ Then, you need to configure your System Task like this to automatically pick-up 
 
 When executed, the System Task automatically searches for a pipeline in given app folder and executes it.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151288542/grafik-20201023-115221.png?api=v2)
+![](../img/validation-request.png)
 
-## How to start a workflow in PIPEFORCE?
+# How to start a workflow in PIPEFORCE?
 
 The design and execution of a workflow in PIPEFORCE is always a 3-steps task:
 

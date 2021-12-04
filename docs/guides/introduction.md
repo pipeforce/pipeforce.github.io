@@ -2,11 +2,11 @@
 
 We have a two step support process for end user requests. Requests have to be addressed to customer administrator / partner who evaluates the support level. Support Level 1 and 2 is directly handled by the customer administrator / partner. In case of technical / platform related issues and bugs the request should be forwarded to pipeforce via the ticketing system.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151284747/Bildschirmfoto%202020-09-29%20um%2018.31.14.png?api=v2)
+![](../img/support.png)
 
 The ticketing system can be accessed by a named “Administrator” via: [https://logabit.atlassian.net/servicedesk/customer/portals](https://logabit.atlassian.net/servicedesk/customer/portals)
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151284747/Bildschirmfoto%202020-09-29%20um%2018.39.13.png?api=v2)
+![](../img/help-desk.png)
 
 # Documentation
 

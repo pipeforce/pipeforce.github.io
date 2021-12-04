@@ -3,7 +3,7 @@
 
 In PIPEFORCE an event is represented by a JSON object with a certain structure like this:
 
-```
+```json
 {
   "eventKey": "string",
   "namespace": "string",
@@ -33,13 +33,13 @@ Here are some examples of built-in event keys:
 
 Events coming from external systems via webhooks must be prefixed with `webhook.systemname.` for example:
 
-```
+```bash
 webhook.weclapp.order.created
 ```
 
 Custom events (not part of the built-in events) must be prefixed with the reversed internet domain name of the creator. For example:
 
-```
+```bash
 com.company.eventname
 ```
 
@@ -76,7 +76,7 @@ In case a pipeline should be executed when a certain event was fired, the `event
 
 Lets assume an example: Whenever a new lead was created in Salesforce, the pipeline must send an email to the sales team:
 
-```
+```yaml
 pipeline:
  - event.listen:
      key: webhook.salesforce.lead.created
@@ -93,7 +93,7 @@ Note: Each pipeline can define exactly one `event.listen` command an it must be 
 
 Beside the event key, each event can also be filtered by its properties. So a pipeline gets executed only in case such a filter evaluated with `true`. To do so, you can use the `filter` parameter of the `event.listen` command and place a pipeline expression here. Since the event object is automatically provided in the `body` for you, you can access it there from inside your pipeline expression (PE). For example:
 
-```
+```yaml
 pipeline:
  - event.listen:
      key: webhook.salesforce.lead.created
@@ -111,7 +111,7 @@ In this example we assume that the event contains the Salesforce `Lead` object s
 
 In order to send an event, you can use the `event.send` command. Here is an example:
 
-```
+```yaml
 pipeline:
   - event.send:
       key: com.company.myevent

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The **Pipeline Expression Language (PEL)** or just **PE (Pipeline Expression)** is a powerful expression language that is used inside a pipeline to dynamically set values. It can be used for data mapping and to dynamically calculate, set and change values at processing time of a pipeline. This gives you a huge flexibility in your pipeline.
+The **Pipeline Expression Language (PEL)** or just *PE (Pipeline Expression)* is a powerful expression language that is used inside a pipeline to dynamically set values. It can be used for data mapping and to dynamically calculate, set and change values at processing time of a pipeline. This gives you a huge flexibility in your pipeline.
 
 Typically a PE starts with `#{` and ends with `}` and is placed in the value part of headers, variables or command parameters. It uses late binding: It will be executed only in case the according entry (header, variable or command parameter) is referenced somewhere.
 
@@ -213,8 +213,7 @@ Output:
 false
 ```
 
-Logical operators
------------------
+## Logical operators
 
 ### and
 
@@ -264,8 +263,7 @@ Output:
 false
 ```
 
-Mathematical operators
-----------------------
+## Mathematical operators
 
 ### Addition and subtraction
 
@@ -371,7 +369,7 @@ Output:
 
 #### Example 4 - Modulus
 
-```
+```yaml
 pipeline:
   - log:
       message: "#{7 % 4}"
@@ -411,8 +409,7 @@ Output:
 16
 ```
 
-Assignment
-----------
+## Assignment
 
 #### Example 1
 

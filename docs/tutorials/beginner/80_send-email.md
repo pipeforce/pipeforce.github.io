@@ -53,7 +53,7 @@ In this tutorial you will learn, how you can send emails from a pipeline with an
     
 11.  After a while, you should have received an email similar to this, decorated with the default layout:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285699/grafik-20210802-064546.png?api=v2)
+    ![](../../img/grafik-20210802-064546.png)
 
 ## 2 - Extra: Add attachments
 
@@ -89,11 +89,11 @@ In this step you will learn how to add attachments to such an email pipeline. Fo
 
 ## 3 - Extra: Set from + dynamic text in emails
 
-Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPEFORCE to do so is by using the [Pipeline Expression Language (PEL)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151287454). In this step we will simply add the currently logged-in user as the from email field so that the recipient can easily reply to you and the current date and time in the email text using PEL:
+Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPEFORCE to do so is by using the [Pipeline Expression Language (PEL)](https://pipeforce.github.io/docs/guides/pel). In this step we will simply add the currently logged-in user as the from email field so that the recipient can easily reply to you and the current date and time in the email text using PEL:
 
 1.  Change your pipeline send-email to this:
     
-    ```
+    ```yaml
     pipeline:
       - drive.read:
           path: "invoice.pdf"
@@ -118,7 +118,7 @@ Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPE
     
 4.  After a while you should receive an email similar to this:  
     
-    ![](https://logabit.atlassian.net/wiki/download/attachments/2151285699/grafik-20210802-072933.png?api=v2)
+    ![](../../img/grafik-20210802-072933.png)
 5.  Done.
     
 
@@ -128,4 +128,4 @@ In order to get auto-completion for available PEL utils in the online editor, si
 
 References:
 
-[PEL Utils Reference](/docs/references/utils)
+[PEL Utils Reference](../../guides/pel-reference.md)

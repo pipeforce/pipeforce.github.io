@@ -10,7 +10,7 @@ This might be useful for small changes. But if you want to develop and customize
 
 The low-code workspace will mirror the property store properties as a local hierarchy of folders and files. Any configuration and script file created locally inside this workspace can then easily be uploaded to the property store with a single command line. For example:
 
-```
+```bash
 pi publish src/global/app/myapp/*
 ```
 
@@ -18,7 +18,7 @@ This scans the folder `myapp` inside the workspace and uploads only those resour
 
 You can also use the short form of the command:
 
-```
+```bash
 pi publish 
 ```
 
@@ -26,25 +26,25 @@ This will publish any new or changes resources inside the `src` folder to the se
 
 ## Prerequisites
 
-To setup your local low-code workspace, at first you need to download and install the CLI as described here: [Downloads](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288972/Downloads)
+To setup your local low-code workspace, at first you need to download and install the CLI as described here: [Downloads](https://pipeforce.github.io/docs/guides/downloads)
 
 Furthermore, we recommend you to download and install the free source code editor Visual Studio Code from here: [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 
 Even if you have a different favorite editor, we recommend you to start with this one, since it is easier to follow all examples. Later, you can switch to a different editor, if you want.
 
-After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286821/Visual+Studio+Code)
+After you did setup the local workspace, you should read the chapter about working with Visual Studio Code to learn how you can optimize your customization steps: [Visual Studio Code](https://pipeforce.github.io/docs/guides/vs-code)
 
 ## Create a new workspace
 
-After you have installed the CLI ([Command Line Interface (CLI)](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151286739)), you can create a new workspace by using this command line call:
+After you have installed the CLI ([Command Line Interface (CLI)](https://pipeforce.github.io/docs/api/cli)), you can create a new workspace by using this command line call:
 
-```
+```bash
 pi setup
 ```
 
 This will ask you a few questions to setup the workspace correctly.
 
-```
+```bash
 Namespace [None]:
 ```
 
@@ -57,13 +57,13 @@ For example if your instance url is [https://**acme**.pipeforce.net](https://acm
 
 Type this name in an press enter.
 
-```
+```bash
 Username [None]:
 ```
 
 Type-in your username to login into the system.
 
-```
+```bash
 Password []:
 ```
 
@@ -97,7 +97,7 @@ You can download Visual Studio Code for free here: [https://code.visualstudio.co
 
 After you have created a new PIPEFORCE customization workspace, navigate to its location which looks similar to this (could differ depending on your operating system):
 
-```
+```bash
 cd /Users/USERNAME/pipeforce/
 ```
 
@@ -105,37 +105,37 @@ Inside this folder there is a file called `PIPEFORCE.code-workspace`. Double cli
 
 This will start Visual Studio Code with everything already setup, so you can immediately start to create and deploy customizations in PIPEFORCE:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-145114.png?api=v2)
+![](../img/vs-code.png)
 
 ### Show the terminal
 
 Its comfortable to also show the terminal inside of VS Code. To do so, in the top menu click `Terminal → New Terminal`. This opens a new terminal at the bottom of VS Code:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-145809.png?api=v2)
+![](../img/vs-code1.png)
 
 ### Create a new resource
 
 You can now use the terminal to create for example a new pipeline by typing in this command line in the VS Code terminal:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-150024.png?api=v2)
+![](../img/vscode-terminal.png)
 
 After pressing enter, you will be asked for a name of the new pipeline. Type-in `helloworld` and press again enter.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-150130.png?api=v2)
+![](../img/vscode-terminal1.png)
 
 After this a new pipeline file was created for you with name `helloworld.pi.yaml`:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-150339.png?api=v2)
+![](../img/vscode-terminal1.png)
 
 If you open this file, you can see it contains a simple hello world demo pipeline which logs “Hello World” into the server log and writes it into the body.
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-152125.png?api=v2)
+![](../img/vs-code3.png)
 
 ### Execute a pipeline in the terminal
 
 To run the pipeline right from within your VS Code use this command line:
 
-```
+```bash
 pi pipeline file src/global/pipeline/helloworld.pi.yaml
 ```
 
@@ -154,13 +154,13 @@ Now you should be able to use pipeline code completion.
 
 To test it, add a new command in the `helloworld.pi.yaml` file. After you started typing you should get a suggestion list of all available pipeline commands including inline documentation:
 
-![](https://logabit.atlassian.net/wiki/download/attachments/2151286821/grafik-20201022-171919.png?api=v2)
+![](../img/vs-code4.png)
 
 ## Upload a resource
 
 After you have created a resource locally, you can upload it to the property store with a simple command line inside your VS Code terminal:
 
-```
+```bash
 pi publish
 ```
 
