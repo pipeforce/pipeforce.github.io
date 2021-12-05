@@ -30,7 +30,7 @@ function HomepageHeader() {
       </div> */}
         <span className={styles.message}><b>Open</b> Platform for <b>Low Code</b> workflow <b>Automation</b> and <b>Integration</b>.</span>
         <br /><br />
-        <p className="hero__subtitle">Documentation space for Low Code Developers and Professional Developers.</p>
+        <p className="hero__subtitle">Welcome to the documentation space for Low Coders and Professional Developers.</p>
         <br />
         <div className={styles.buttons}>
           <Link

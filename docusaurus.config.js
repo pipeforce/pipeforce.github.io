@@ -127,7 +127,7 @@ const config = {
             items: [
               {
                 label: 'News',
-                to: '/blog',
+                to: 'https://pipeforce.io/blog/',
               },
               {
                 label: "Imprint",
