@@ -1,6 +1,7 @@
-# Pipeline Expression Language
-
-## Introduction
+---
+title: Pipeline Expression Language (PEL) Reference
+sidebar_label: Pipeline Expression Language
+---
 
 The **Pipeline Expression Language (PEL)** or just *PE (Pipeline Expression)* is a powerful expression language that is used inside a pipeline to dynamically set values. It can be used for data mapping and to dynamically calculate, set and change values at processing time of a pipeline. This gives you a huge flexibility in your pipeline.
 
@@ -869,7 +870,7 @@ pipeline:
 
 Inside a PE you can use built-in utils as helpers to simplify work.
 
-A reference about available PEL Utils can be found in this section: [PEL Utils Reference](../api/utils.md).
+A reference about available PEL Utils can be found in this section: [PEL Utils Reference](pel-utils).
 
 #### Example 1
 

@@ -1,12 +1,73 @@
 # Downloads
+## Command Line Interface (CLI)
 
 The CLI can be used to simplify working with PIPEFORCE.
 
-In order to run this tool Java >= Version 8 must be installed.
+### Install on Mac
 
-See here for more details about this CLI tool: [Command Line Interface (CLI)](../api/cli)
+If you're running a Mac, you can download and install a DMG image which contains everything out-of-the-box. Follow these steps to do so:
 
-## Verify and install Java 8
+1. Download the DMG image from here: [https://downloads.pipeforce.io/pipeforce-cli/](https://downloads.pipeforce.io/pipeforce-cli/)
+
+2. Double click it and drag & drop the pi tool into your ``Applications`` folder:
+   
+    ![](img/install-pi-mac.png)
+3. Open your terminal and execute this command in order to create a local workspace:  
+    ```
+    /Applications/pi.app/Contents/MacOS/universalJavaApplicationStub setup
+    ```
+4. Follow the setup instructions.
+5. Add the path to the pi workspace to the paths variable. To do so, open the ``etc/paths`` file:
+
+    ```bash
+    $> sudo nano /etc/paths
+    ```
+    Add a line pointing to the pi workspace script at the end of the file and save it. The file content might finally look similar to this:
+    ```
+    /usr/local/bin
+    /usr/bin
+    /bin
+    /usr/sbin
+    /sbin
+    /Users/you/pipeforce
+    ```
+6. You're done. Close and re-open your terminal. Test it by running this command in the terminal:
+
+    ```
+    $> pi status
+    ```
+    This should print you the status of your ``pi`` installation and your server instance without any errors. You should get an output similar to this:
+    ```yaml
+    result:
+        value:
+            cli:
+                status: "OK"
+                url: "https://hub-yourinstance.pipeforce.net:443/api/v3/"
+                username: "yourUser"
+                apiTokenCreated: "2022-12-04T07:59:27.886108Z"
+                configLastUpdated: "2022-12-05T06:56:33.488201Z"
+                home: "/Users/you/pipeforce"
+                version: "2.24"
+                lastUpdateCheck: "2022-12-05T06:56:38.021Z"
+            server:
+                status: "OK"
+                setup: "FINISHED"
+                namespace: "yourinstance"
+                domain: "pipeforce.net"
+                edition: "enterprise"
+                stage: "PROD"
+                tag: "7.5.0-9e9e386"
+                build: "24"
+                version: "7.5.0"
+                versionMajor: 7
+                versionMinor: 5
+                versionBugfix: 0
+      ```
+
+### Install on other platforms
+
+If you're running Windows or Linux, follow these steps in order to download and install the CLI.
+#### Verify and install Java 8
 
 Open your terminal and verify that you have a Java runtime version >= 1.8 installed:
 
@@ -24,7 +85,7 @@ If there is a version number 1.8 or higher shown, then you have installed “Jav
 
 In case you see an output like “command not found” then you probably have no Java environment installed yet. So go to the next step and download and install the environment.
 
-### Install Java
+#### Install Java
 
 If you have not Java runtime yet, follow these steps to download and install:
 
@@ -39,7 +100,7 @@ If you have not Java runtime yet, follow these steps to download and install:
 $> java -version
 ```
 
-## How to download an install the CLI?
+#### Download an install the CLI
 
 After you have made sure that Java is installed and runs correctly, you can download the latest version of the cli tool by clicking this link:
 
@@ -67,7 +128,7 @@ You will then be asked to install the tool. Select `yes`.
 
 Follow the wizard to install the CLI.
 
-## How to update?
+#### How to update?
 
 To update to the lastest version, simply use this command:
 
@@ -77,7 +138,12 @@ pi update
 
 It will search for latest versions and automatically download + install it for you.
 
-## Add it to your Windows path
+:::note
+The auto-update feature is only available if you have installed the Java-Version of the CLI as described in this section.
+It doesnt work with the Mac DMG image version.
+:::
+
+#### Add it to your Windows path
 
 Optionally you can add the pi tool to your path variable in order to simplify the call to:
 
@@ -87,7 +153,7 @@ pi status
 
 To do so, add the file `pi.bat` inside your `$USER_HOME/pipeforce` folder to the PATH variable on your Windows system.
 
-## Add it to your Mac/\*nix path
+#### Add it to your Linux path
 
 Optionally you can add the CLI tool to your path variable in order to simplify the call to:
 
@@ -97,11 +163,13 @@ pi status
 
 To do so, add the folder `$USER_HOME/pipeforce` to your paths file.
 
-# BPMN Modeler
+## BPMN Modeler
 
-The BPMN modeler is a free tool to design BPMN diagrams and save the BPMN files. These files then can be deployed to PIPEFORCE using the `workflow.deploy` command.
+The BPMN modeler is a free tool to design BPMN diagrams and save the BPMN files offline. These files then can be deployed to PIPEFORCE using the `workflow.deploy` command or using the online workbench.
 
-Note: ENTERPRISE and CORPORATE users can also use the online BPMN editor in the portal.
+:::tip 
+The PIPEFORCE portal has also an online BPMN designer built-in, so an offline tool like this is optional in this case.
+:::
 
 |     |     |     |
 | --- | --- | --- |

@@ -128,4 +128,4 @@ In order to get auto-completion for available PEL utils in the online editor, si
 
 References:
 
-[PEL Utils Reference](../guides/pel-reference.md)
+[PEL Utils Reference](../api/utils.md)

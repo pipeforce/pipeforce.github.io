@@ -4,11 +4,11 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 05/12/2021 05:45:14 by CommandComplianceTest -->
+<!-- Generated: 05/12/2021 08:27:02 by CommandComplianceTest -->
 
-Reference documentation of [Pipeline Expression Language (PEL)](../guides/pel) utils (PEL Utils).  
+Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
-Also see: **[PEL Guide](../guides/pel)**
+
 
 Example usage of the ``@date`` util inside a PEL expression :  
 ```yaml  

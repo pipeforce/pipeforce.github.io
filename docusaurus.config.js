@@ -11,8 +11,8 @@ const config = {
   url: 'https://pipeforce.github.io',
   baseUrl: '/',
   // TODO Change this to 'throw', once in production:
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'pipeforce', // Usually your GitHub org/user name.
   projectName: 'website', // Usually your repo name.
@@ -61,7 +61,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'tutorials/basics',
             position: 'left',
             label: 'Tutorials',
           },
@@ -77,7 +77,7 @@ const config = {
             position: 'left',
             label: 'Downloads',
           },
-          {to: '/blog', label: 'News', position: 'left'},
+          /**{to: '/blog', label: 'News', position: 'left'},**/
           {
             position: 'right',
             href: 'https://logabit.atlassian.net/servicedesk/customer/portals',
@@ -88,7 +88,7 @@ const config = {
       announcementBar: {
         id: 'support_us',
         content:
-          'We are hiring Developers. <a target="_blank" rel="noopener noreferrer" href="#">Apply now!</a>',
+          'We are hiring Developers. <a target="_blank" rel="noopener noreferrer" href="https://germantechjobs.de/jobs/LOGABIT-GmbH-Fullstack-Open-Source-Entwickler-mwd">Apply now!</a>',
         backgroundColor: '#fafbfc',
         textColor: '#091E42',
         isCloseable: false,
@@ -100,26 +100,26 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Developer',
-                to: '/docs/intro',
+                label: 'Tutorials',
+                to: '/docs/tutorials/basics',
+              },
+              {
+                label: 'FAQ',
+                to: '/docs/faq',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'LOGABIT',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Website',
+                href: 'https://pipeforce.io',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+                label: 'Support',
+                href: 'https://logabit.atlassian.net/servicedesk/customer/portals',
+              }
             ],
           },
           {
@@ -128,11 +128,15 @@ const config = {
               {
                 label: 'News',
                 to: '/blog',
+              },
+              {
+                label: "Imprint",
+                to: 'https://pipeforce.io/impressum/',
               }
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} LOGABIT GmbH.`,
+        copyright: `<br/>Copyright © ${new Date().getFullYear()} <b>LOGABIT GmbH.</b>`,
       },
       prism: {
         theme: require('prism-react-renderer/themes/dracula'),
