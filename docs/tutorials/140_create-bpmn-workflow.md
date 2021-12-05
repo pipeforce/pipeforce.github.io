@@ -9,7 +9,7 @@ This is the reason why PIPEFORCE uses [BPMN](https://en.wikipedia.org/wiki/Busin
 
 Lets see in this tutorial how you can design, discuss and run such workflows.
 
-# 2 - The vacation request workflow
+## 2 - The vacation request workflow
 
 The workflow we gonna create in this tutorial will look like this:
 
@@ -34,7 +34,7 @@ Even if this workflow is a simple one, it contains already many of the most impo
 
 With these elements you can already create many different types of workflows and run them immediately in PIPEFORCE.
 
-# 3 - Create the pipelines
+## 3 - Create the pipelines
 
 As you could see in the workflow picture above, there are two **service tasks** both of which will send an email. A service tasks is a task which is typically not executed by a human but by a system (which is typically called a “service”). In PIPEFORCE this is done by mapping to a persisted pipeline. Whenever the service task is executed it delegates to this pipeline, executes it and then returns. So lets create first the two pipelines we need later to map with the two service tasks:
 
@@ -97,7 +97,7 @@ As you could see in the workflow picture above, there are two **service tasks** 
 17.  Hint: Its also possible to work with a single pipeline and use parameters, but to keeps things simple here and to focus on the workflow not the pipeline, we will use two pipelines for now.
     
 
-# 3 - Create a new BPMN workflow
+## 3 - Create a new BPMN workflow
 
 The next step is to create the BPMN workflow design. To do so, follow these steps:
 
@@ -133,7 +133,7 @@ The next step is to create the BPMN workflow design. To do so, follow these step
 11.  Click `SAVE`.
     
 
-# 4 - Link service tasks with pipelines
+## 4 - Link service tasks with pipelines
 
 1.  In the next step we will link the service tasks with the pipelines. To do so, select the “Send declined email” service task, in the details view click the PIPELINE tab and from the dropdown select the `send-declined-email` pipeline we created before:  
     
@@ -159,7 +159,7 @@ The next step is to create the BPMN workflow design. To do so, follow these step
 
 Your BPMN diagram is now available in the Online Low-Code Workbench.
 
-# 5 - Add form fields
+## 5 - Add form fields
 
 In the next step we will add input fields for the user forms.
 
@@ -196,7 +196,7 @@ In the next step we will add input fields for the user forms.
 9.  Repeat those steps to create the decline field.
     
 
-# 6 - Add gateway conditions
+## 6 - Add gateway conditions
 
 Depending on whether the supervisor has approved or declined the vacation request, the workflow should execute the “Send declined email” or the “Send approved email” task. For this, we need to define rules on the gateway edges:
 
@@ -211,7 +211,7 @@ Depending on whether the supervisor has approved or declined the vacation reques
 4.  Click `SAVE` to save the current state of the BPMN workflow.
     
 
-# 7 - Deploy and run the workflow
+## 7 - Deploy and run the workflow
 
 Now its time to activate the workflow and execute it. To do so, follow these steps:
 
@@ -253,7 +253,7 @@ Now its time to activate the workflow and execute it. To do so, follow these ste
 
 **Congratulations you have created your first BPMN workflow and executed it!**
 
-# 8 - Improvement: Use workflow variables inside a pipeline
+## 8 - Improvement: Use workflow variables inside a pipeline
 
 Currently the pipelines are static. Now we gonna change this and use the `vacationStartDate` and `vacationEndDate` variables inside the pipeline and pass them into our email messages. All workflow variables like form fields in a workflow are automatically passed to a pipeline. Inside the pipeline you can easily access it using the `vars.` context, for example  
 `#{vars.vacationStartDate}`, `#{vars.vacationEndDate}` and `#{vars.vacationApproved}`:
@@ -282,11 +282,11 @@ Currently the pipelines are static. Now we gonna change this and use the `vacati
     
     ![](../img/vocation-declined.png)
 
-# 9 - Improvement: Use a form as start trigger
+## 9 - Improvement: Use a form as start trigger
 
 Currently the process is started manually by accessing the task section and starting the workflow. However, in many cases a workflow should be started by submitting a form which is located in the online portal. How to create such a form in general is explained here: [Tutorial: Create a new form](../tutorials/create-form). For the current example, follow these steps:
 
-## Create a schema
+### Create a schema
 
 1.  Go to LOW CODE → Workbench and select the root node of your app.
     
@@ -333,7 +333,7 @@ Currently the process is started manually by accessing the task section and star
 
 7\. Klick `SAVE`
 
-## Create a form
+### Create a form
 
 1.  Go to LOW CODE → Workbench and select the root node of your app.
     
@@ -365,7 +365,7 @@ Currently the process is started manually by accessing the task section and star
 
 **Tip:** Make sure to replace YOUR\_APP by the name of your app.
 
-## Add a starting pipeline
+### Add a starting pipeline
 
 1.  Go to LOW CODE → Workbench and select the root node of your app.
     
@@ -408,7 +408,7 @@ pipeline:
 
 As you can see in the pipeline above we introduced in this section the concept of Workflow Model with: `workflowModelInstanceKey: "#{body.target.key}"`. We recommend to use this approach to work with values and variables of an workflow in a more structured way.
 
-## Adapt the workflow model
+### Adapt the workflow model
 
 Since you have now a new start trigger for your workflow, you don’t need the first step in your BPMN-Workflow Model any longer. To adapt your workflow model, go to the BPMN Modeler and remove the first step (“Request Vacation”).
 
@@ -420,11 +420,11 @@ After you have updated the BPMN-Workflow, press `DEPLOY` .
 
 Test your new workflow by selecting your form in the Online Portal and entering some values. After submitting the form you can directly see the new task for the Reviewer in the task view.
 
-# 10 - Improvement: Use dynamic email receiver
+## 10 - Improvement: Use dynamic email receiver
 
 Currently the email is sent always to the address you have entered in the pipeline. However, in case the form is deployed for multiple users, the emails should be sent always to the person who submitted the vacation request (Requester). To enhance the workflow accordingly, follow these steps:
 
-## Modify your trigger pipeline
+### Modify your trigger pipeline
 
 In your trigger pipeline, you can directly add the values you would like to define as process variables. With those process variables you can work in subsequent steps of the workflow. In our example we define the logged in user, who is starting the workflow, as the Requester. To do so, follow these steps:
 
@@ -456,7 +456,7 @@ pipeline:
 
 As you can see at the bottom of the pipeline, in addition to the `vacation start date` and the `vacation end date`, you have now defined a new process variable `requester` and matched the email of the user who started the workflow to this variable.
 
-## Modify your email pipeline
+### Modify your email pipeline
 
 You can now modify your email pipelines to sent notifications about approved and declined emails accordingly:
 
@@ -492,7 +492,7 @@ pipeline:
         to #{@date.format(vars.vacationEndDate, 'dd/MM/YYYY')} was declined.
 ```
 
-# 11 - Improvement: Work with form inputs in subsequent steps
+## 11 - Improvement: Work with form inputs in subsequent steps
 
 Currently the Reviewer can see the inputs (`vacation start date` and `vacation end date`) made by the Requester. We now improve this task view of the Reviewer so that he can see the user email who have sent the vacation request. To do so, follow these steps:
 

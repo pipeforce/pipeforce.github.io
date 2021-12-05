@@ -4,7 +4,7 @@ By default in a form, all fields from the JSON schema are displayed vertically e
 
 ![](../../img/grafik-20201023-084022.png)
 
-# Vertical orientation
+## Vertical orientation
 
 You can change this default by configuring `orientation` of the layout in the form configuration.
 
@@ -32,7 +32,7 @@ This example layout configuration would create exactly the default layout:
 
 ![](../../img/grafik-20201023-100242.png)
 
-# Horizontal orientation
+## Horizontal orientation
 
 You can then change the `orientation`, `width` and `height` of a layout item like this:
 
@@ -68,7 +68,7 @@ Layout items and fields in horizontal orientation by default try to span as much
 
 Both `min-width` and `max-width` can be also used in place of `width` to reach responsiveness within defined limits.
 
-# Nesting layouts and orientations
+## Nesting layouts and orientations
 
 Layouts and its orientations can be nested in order to also create quite complex form structures. Here’s an example:
 

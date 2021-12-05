@@ -1,10 +1,10 @@
-# Upload
+# File Upload
 
-In order to do a file upload using forms, this is a two step process:
+In order to do a file upload using forms, follow this two-step process:
 
-# Step 1
+## Step 1
 
-Add the properties required for files in your forms schema. For example:
+Add the properties required for files in your [JSON schema](../schema-and-objects). For example:
 
 ```json
 {  ...
@@ -21,7 +21,7 @@ Add the properties required for files in your forms schema. For example:
 }
 ```
 
-# Step 2
+## Step 2
 
 “Tell” the form configuration to “draw” the field as a `filepicker` field using the `render` attribute. For example:
 

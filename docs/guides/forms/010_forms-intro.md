@@ -101,7 +101,7 @@ To save to the same record, additional form `output` parameter needs to be added
 
 This all is automatically done for you in case you call a form using a list.
 
-# The form configuration
+## The form configuration
 
 The last step to create and configure a new form is to create a form configuration file. This is a configuration file in JSON format which defines important attributes of a form like its title or layout information.
 
@@ -138,25 +138,25 @@ For all schema properties there is a web input control rendered - filed. By defa
 
 To reach custom layout, fields behaviour, file uploads, custom buttons and more, additional `layout` attribute of form configuration file needs to be used. Layout uses different approach to define which fields to show. Only field referenced in this structure are rendered. For details see following sections.
 
-## Change orientation of form fields
+### Change orientation of form fields
 
 You can change this default by configuring orientation of the layout in the form configuration.
 
 See this section for more details: [Form - Orientation](../guides/forms/orientation)
 
-## Change appearance of form fields
+### Change appearance of form fields
 
 Beside the orientation (vertical, horizontal) of form fields, also the appearance (color, border, icons, aso) can be changed inside the layout section.
 
 See this section for more details: [Form - Look & Feel](../guides/forms/look-and-feel)
 
-## Custom buttons
+### Custom buttons
 
 Replacements for default Submit button can be defined by `render` attribute of boolean field in layout section.
 
 See this section for more details:[Form - Buttons](../guides/forms/buttons)
 
-## File upload
+### File upload
 
 In layout section it is also possible to configure that set of schema properties defines form upload.
 

@@ -12,7 +12,7 @@
     
 *   You have completed tutorial: **[Create a pipeline](create-pipeline)**
     
-*   You have a basic understanding of the **[Pipeline Expression Language (PEL)](../guides/pel.md)**
+*   You have a basic understanding of the **[Pipeline Expression Language (PEL)](../api/pel)**
     
 
 ## Intro

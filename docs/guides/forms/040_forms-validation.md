@@ -1,6 +1,8 @@
 # Validation
 
-In order to create custom validations rule for form fields, you can add the validation attribute to each field in the form configuration. For example:
+Basic validations regarding data types will be specified by the underlying [JSON schema](../schema-and-objects) of the form.
+
+In order to create more specific, custom validation rules for form fields, you can add the validation attribute to each field in the form configuration. For example:
 
 ```json
 {
@@ -36,13 +38,13 @@ Whereas `type` defines the type of the validation engine. This is by default `js
 
 `message` defines the message to be displayed in case this validation has been failed.
 
-# Validation Engine: JavaScript (js)
+## Validation Engine: JavaScript (js)
 
 This validation engine is the default engine. It takes a JavaScript expression using the `rule` attribute and evaluates it. In case it evaluates to `false`, the message given by attribute `message` is shown.
 
 The field value is provided as variable `val` and can be used inside the rule expression.
 
-## Some examples
+### Some examples
 
 The given field is a required one. Therefore, make sure the field has a value. See the `!!` operator in JavaScript:
 

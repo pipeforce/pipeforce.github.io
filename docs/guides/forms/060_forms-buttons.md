@@ -4,7 +4,9 @@ By default each form shows a single submit button. If this button is pressed, th
 
 You can change this default behaviour in two steps:
 
-**Step1:** Change the JSON Schema and add a new field of type `boolean` for each button. This field should carry the value of the button after it was clicked (`true`) or not (`false`). For example:
+## Step1
+
+Change the JSON Schema and add a new field of type `boolean` for each button. This field should carry the value of the button after it was clicked (`true`) or not (`false`). For example:
 
 ```json
 {
@@ -21,7 +23,9 @@ You can change this default behaviour in two steps:
 }
 ```
 
-**Step 2:** “Tell” the form configuration, that it should “draw” these fields as buttons using the `render` attribute. For example:
+## Step 2
+
+“Tell” the form configuration, that it should “draw” these fields as buttons using the `render` attribute. For example:
 
 ```json
 {

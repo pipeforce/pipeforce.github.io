@@ -25,7 +25,7 @@ This would change the look and feel of the form like this:
 
 ![](../../img/image-20201024-075456.png)
 
-# Types
+## Types
 
 **By default the field type is detected from the JSON Schema so there is no requirement to change this.** But you can customize it using these type attributes, if required.
 
@@ -39,7 +39,7 @@ This would change the look and feel of the form like this:
 | `type="tel"` | Renders the field using the browser native phone widget  <br/>(depends on the browser whether this is supported).    |
 | `type="textarea"` | Renders the field using the browser native textarea widget  <br/>(depends on the browser whether this is supported). |
 
-# Attributes
+## Attributes
 
 These are are the attributes you can set to change the appearance of a field:
 
@@ -58,13 +58,13 @@ These are are the attributes you can set to change the appearance of a field:
 | `suffix` | Example: `"suffix":"@email.de"`                           | Shows a suffix for example `@email.de` inside the field.                                                                                                                 |
 | `prefix` | Example:  <br/>`"prefix":"EUR"`                           | Shows a prefix for example `EUR` inside the field.                                                                                                                       |
 
-# Default color palette
+## Default color palette
 
 In order to change the color of an element use one of the color names from these default palettes.
 
 ![](../../img/color-palette.png)![](../../img/color-palette1.png)![](../../img/color-palette2.png)![](../../img/color-palette3.png)
 
-# Material icons
+## Material icons
 
 Below you can find a preview of icons. To get the full list and name of all possible icons go to [https://material.io/resources/icons](https://material.io/resources/icons) and search for the icon you need.
 

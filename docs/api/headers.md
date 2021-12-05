@@ -15,7 +15,7 @@ pipeline:
 ```
 
 :::tip
-You can access the header values using the ``headers`` scope in a [Pipeline Expression (PE)](../guides/pel.md).
+You can access the header values using the ``headers`` scope in a [Pipeline Expression (PE)](../api/pel).
 :::
 
 ## Headers Reference

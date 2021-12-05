@@ -1,6 +1,6 @@
 # Schema & Objects
 
-Objects in PIPEFORCE are custom models that represent data of a specific app or process. For example an `Invoice` or `Person` object. The structure of such objects can by defined using a Schema. Also forms need such a Schema for its field structure.
+**Objects** in PIPEFORCE are custom models that represent data of a specific app or process. For example an `Invoice` or `Person` object. The structure of such objects can by defined using a Schema. Also forms need such a Schema for its field structure.
 
 For example before you can use a form, you need to know which “type of data” such a form produces: After a form was submitted, it creates a new data set called an **object** and stores it into the property store. The structure of such an object (which fields it has) is defined in a JSON Schema.
 
