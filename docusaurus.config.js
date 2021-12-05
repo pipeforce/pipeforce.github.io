@@ -11,7 +11,7 @@ const config = {
   url: 'https://pipeforce.github.io',
   baseUrl: '/',
   // TODO Change this to 'throw', once in production:
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'pipeforce', // Usually your GitHub org/user name.
