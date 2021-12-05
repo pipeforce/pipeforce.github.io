@@ -32,7 +32,7 @@ Commands can be executed in three different ways, called ***execution contexts**
 
 - As single requests via HTTP GET, POST or PUT
 - Embedded as part of a [Pipeline](../guides/pipeline)
-- As a command line command using the [Command Line Interface (CLI)](../guids/../api/cli.md)
+- As a command line command using the [Command Line Interface (CLI)](../guids/../api/cli)
 
 :::tip Note
 Even if many commands do have a similar resource-based semantic for HTTP GET, POST or PUT as REST do, they do not follow this approach 100% since commands can be used also outside of the HTTP context. Therefore, the operation type of a command is often defined by its name. For example: `property.put` or `config.get` to name just a few.
@@ -90,7 +90,7 @@ pipeline:
 ```
 
 :::tip Note
- - Its also possible to chain multiple commands in a pipeline. Learn more about this in the [Pipelines](../guides/02_pipeline.md) guide.
+ - Its also possible to chain multiple commands in a pipeline. Learn more about this in the [Pipelines](../guides/pipeline) guide.
  - You can try out pipelines using the [online workbench](https://trial.pipeforce.org/#/propertyeditor). 
 :::
 

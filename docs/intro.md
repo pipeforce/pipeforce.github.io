@@ -36,11 +36,11 @@ PIPEFORCE helps enterprises to achieve digital superpowers by clearly separating
 
 This documentation is mainly for Low Code and Professional Developers. If you are searching for user or admin manuals, please refer to the [Support pages](https://logabit.atlassian.net/servicedesk/customer/portals).
 
-If you are a Low Code Developer or a Professional Developer and new to PIPEFORCE, we recommend you to walk thru the [Tutorials](tutorials/10_basics.md) section first. After this you should have a good base understanding of PIPEFORCE.
+If you are a Low Code Developer or a Professional Developer and new to PIPEFORCE, we recommend you to walk thru the [Tutorials](tutorials/basics) section first. After this you should have a good base understanding of PIPEFORCE.
 
-In the [Guides](guides/01_command.md) section you can find deep diving documentation about concepts and technologies PIPEFORCE is using.
+In the [Guides](guides/command) section you can find deep diving documentation about concepts and technologies PIPEFORCE is using.
 
-In the [API](api/commands.md) section you can find reference documentation for PIPEFORCE.
+In the [API](api/commands) section you can find reference documentation for PIPEFORCE.
 
 In case you dont have a PIPEFORCE account yet, we highly recommend you to create one first, so you can try out all examples and tutorials live. It's a matter of seconds to create a free account here:
 

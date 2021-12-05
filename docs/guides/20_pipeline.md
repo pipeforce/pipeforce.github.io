@@ -1,6 +1,6 @@
 # Pipeline
 
-Two or more [**commands**](../guides/01_command.md) can be chained to a **pipeline**. If such a pipeline gets executed, the commands in it will be executed by their serial ordering within the pipeline. The output message of the first command will become the input message of the next command and so on. 
+Two or more [**commands**](../guides/command) can be chained to a **pipeline**. If such a pipeline gets executed, the commands in it will be executed by their serial ordering within the pipeline. The output message of the first command will become the input message of the next command and so on. 
 
 ![](../img/pipe-chain.drawio.png)
 
@@ -59,7 +59,7 @@ A pipeline file must end in this suffix to be detected correctly by your workspa
 
 #### Remote
 
-In case you have stored your pipeline at server side in the [Property Store](../guides/03_propertystore.md), then you can execute it using this call:
+In case you have stored your pipeline at server side in the [Property Store](../guides/propertystore), then you can execute it using this call:
 
 ```bash
 pi pipeline remote global/app/myapp/pipeline/test
