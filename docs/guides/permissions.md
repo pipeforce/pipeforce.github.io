@@ -6,11 +6,11 @@ Since changing permissions is always something which needs to be handled very ca
 
 Note that you need to have to be member of `ROLE_ADMIN` or `ROLE_DEVELOPER` in order to be able to change role permissions as described in this chapter. In case you’re not able to login into IAM or apply the steps described below, please contact your PIPEFORCE admin in your company or feel free to contact our support team to grant you the required permissions and roles.
 
-# Group
+## Group
 
 A group in PIPEFORCE combines a set of users with a set of roles. Groups are typically created and managed by admins. There can be “factory default” groups and also customer specific groups.
 
-## Default groups
+### Default groups
 
 There are some default groups in PIPEFORCE. These groups may not be renamed or deleted by admins or developers, otherwise the system will no longer work as expected. These default groups are:
 
@@ -29,7 +29,7 @@ For any app or process there can be additional groups, depending on the license 
 
 Each group can contain one or more roles which is the core permission entity.
 
-# Role and Permission
+## Role and Permission
 
 In PIPEFORCE there is the concept of roles. A role can be seen as a permission (privilege) for a user to be allowed to do a certain task in the system. A role is a permission: So whenever you see a role, it can also be called a permission and vice versa. These namings are equal. Depending on the usage context it makes sometimes more sense to call it role or permission on the other hand.
 
@@ -41,7 +41,7 @@ The main difference between roles and groups is that roles cannot be created or 
 
 Roles can also contain other roles, such parent roles are called **Composite Roles**. You probably never require such type of roles, they are mainly used PIPEFORCE internally only.
 
-## Default Roles
+### Default Roles
 
 These composite roles exist by default in PIPEFORCE and cannot be removed (“factory defaults”). Any user or group which is assigned to such a role has some additional basic set of permissions assigned to fulfill a certain role in PIPEFORCE.
 
@@ -60,7 +60,7 @@ These composite roles exist by default in PIPEFORCE and cannot be removed (“fa
 
 Since PIPEFORCE is a microservice system, it hosts many different such services. Some of them require groups and some can work with roles. Furthermore, there is also a conceptional difference: Groups can be created and managed by admins, roles not. They can only be assigned and revoked by admins.
 
-## Command Permissions
+### Command Permissions
 
 For any command in PIPEFORCE there is a corresponding role (= permission) which allows the user assigned to this role to execute this command. The role has the format `CAN_PIPE_<command_name>`. Some examples:
 
@@ -83,7 +83,7 @@ Examples:
 *   `CAN_PIPE_drive.%` = Grants access to all drive commands
     
 
-## App Permissions
+### App Permissions
 
 Note: Depending on the setup of your PIPEFEORCE system, these steps usually are done by your global corporate admin and cannot be done by developers or default admins. Please ask your global admin or the PIPEFORCE support team to do these steps for you.
 
@@ -102,7 +102,7 @@ Note: Make sure to replace `<APPNAME>` by the real name of your app with **all l
 
 Also make sure that users and groups you want to give access to your app are trustworthy. Furthermore make sure that they have also the permission to access all commands you are using inside your app.
 
-### Automate setup of app permissions
+#### Automate setup of app permissions
 
 Instead of manually creating and assigning the roles of your app, you can automate these steps by providing a setup pipeline using the `iam.*` commands. To do so, follow these steps:
 
@@ -156,6 +156,6 @@ In the pipeline section we use these commands:
 
 For more information about the available `iam.*` commands see the commands dashboard of your instance.
 
-# Anonymous User
+## Anonymous User
 
 In case a user is not logged-in, the system handles this automatically as `anonymousUser` with no roles/permissions and no groups assigned to it. Such a user can only execute a very limited set of public commands.

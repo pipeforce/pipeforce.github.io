@@ -2,13 +2,13 @@
 
 A gateway in BPMN is a branch of the workflow. Depending on a condition, the flow of the process can branch into different directions.
 
-# Where to define gateways conditions
+## Where to define gateways conditions?
 
 In this example, depending on whether the supervisor has approved or declined the vacation request, the workflow should execute the “Send declined email” or the “Send approved email” task. For this, we need to define rules on the gateway edges:
 
 1.  To define the rule for the decline gateway, select the **declined** edge of the gateway and fill-in this condition: `${vacationApproved == false}`:  
     
-    ![](../img/grafik-20210727-131453.png)
+    ![](../../img/grafik-20210727-131453.png)
 2.  This makes sure that this branch is executed in case the supervisor set `vacationApproved` to false in the task form.
     
 3.  Repeat these steps for the task “Send approved email” and set the condition to  
@@ -17,7 +17,7 @@ In this example, depending on whether the supervisor has approved or declined th
 4.  Click `SAVE` to save the current state of the BPMN workflow.
     
 
-# How to design gateways
+## How to design gateways
 
 The gateway design is defined by a specific expression language named _JUEL_. Below you will find the most important operators are:
 
@@ -34,50 +34,50 @@ The gateway design is defined by a specific expression language named _JUEL_. Be
 
 For more details see [https://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html](https://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html)
 
-# Examples of gateway conditions
+## Examples of gateway conditions
 
-## Condition for dropdown
+### Condition for dropdown
 
 *   Condition refers to a field named “decision”
     
 *   Field provides a dropdown list for user (Approve, Decline, Delegate)  
     
-    ![](../img/image-20211026-042805.png)
+    ![](../../img/image-20211026-042805.png)
 *   Gateway should represent the “Approve” selection
     
 *   Condition looks like this:
     
-    ![](../img/image-20211026-043538.png)
+    ![](../../img/image-20211026-043538.png)
 
-## Condition for checkbox
+### Condition for checkbox
 
 *   Condition refers to a field named “checked”
     
 *   Field provides a checkbox  
     
-    ![](../img/image-20211026-050043.png)
+    ![](../../img/image-20211026-050043.png)
 *   Gateway should represent the situation that the checkbox is ticked
     
 *   Condition looks like this:  
     
-    ![](../img/image-20211026-044236.png)
+    ![](../../img/image-20211026-044236.png)
 
 ${ checked } works also. Similar ${ !checked } can be use in place of ${ checked == false }
 
-## Condition for value
+### Condition for value
 
 *   Condition refers to a field named “Kosten”  
     
-    ![](../img/image-20211026-050320.png)
+    ![](../../img/image-20211026-050320.png)
 *   Field provides the option to type in numbers
     
 *   Gateway should represent the situation that the value is > 100 but < 1000
     
 *   Condition looks like this:  
     
-    ![](../img/image-20211026-050440.png)
+    ![](../../img/image-20211026-050440.png)
 
-## Multiple conditions
+### Multiple conditions
 
 *   Condition refers to the fields “decision” and “checked”
     
@@ -93,4 +93,4 @@ ${ checked } works also. Similar ${ !checked } can be use in place of ${ checked
         
 *   Condition looks like this:  
     
-    ![](../img/image-20211026-045846.png)
+    ![](../../img/image-20211026-045846.png)
