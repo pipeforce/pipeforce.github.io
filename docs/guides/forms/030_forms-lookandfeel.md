@@ -23,7 +23,7 @@ To do so, you need to add those look & feel attributes to the field in the form 
 
 This would change the look and feel of the form like this:
 
-![](../img/image-20201024-075456.png)
+![](../../img/image-20201024-075456.png)
 
 # Types
 
@@ -52,8 +52,8 @@ These are are the attributes you can set to change the appearance of a field:
 | `icon` | The name of the material icon.                            | Shows an icon in the element. See the material icons for a reference of available icon names: [https://material.io/resources/icons](https://material.io/resources/icons) |
 | `width` | Integer. For example `500`.                               | Sets the fixed width of an element.<br/><br/>(use `min-width`, `max-width` to set half limits)                                                                           |
 | `readonly` | `true` or `false`.                                        | Makes an element read only so no value can be set there.                                                                                                                 |
-| `rounded` | Example:  <br/>`"rounded":""`                             | ![](../img/image-20201024-083526.png)                                                                                                                                    |
-| `filled` | Example:  <br/>`"filled":""`                              | ![](../img/filled.png)                                                                                                                                                   |
+| `rounded` | Example:  <br/>`"rounded":""`                             | ![](../../img/image-20201024-083526.png)                                                                                                                                    |
+| `filled` | Example:  <br/>`"filled":""`                              | ![](../../img/filled.png)                                                                                                                                                   |
 | `autogrow` | Example:  <br/>`"autogrow":""`                            | The field automatically grows while user is typing more text.                                                                                                            |
 | `suffix` | Example: `"suffix":"@email.de"`                           | Shows a suffix for example `@email.de` inside the field.                                                                                                                 |
 | `prefix` | Example:  <br/>`"prefix":"EUR"`                           | Shows a prefix for example `EUR` inside the field.                                                                                                                       |
@@ -62,10 +62,10 @@ These are are the attributes you can set to change the appearance of a field:
 
 In order to change the color of an element use one of the color names from these default palettes.
 
-![](../img/color-palette.png)![](../img/color-palette1.png)![](../img/color-palette2.png)![](../img/color-palette3.png)
+![](../../img/color-palette.png)![](../../img/color-palette1.png)![](../../img/color-palette2.png)![](../../img/color-palette3.png)
 
 # Material icons
 
 Below you can find a preview of icons. To get the full list and name of all possible icons go to [https://material.io/resources/icons](https://material.io/resources/icons) and search for the icon you need.
 
-![](../img/material-icons.png)![](../img/material-icons1.png)
+![](../../img/material-icons.png)![](../../img/material-icons1.png)

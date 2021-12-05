@@ -1,9 +1,14 @@
-# Utils  
-Reference documentation of [Pipeline Expression Language (PEL)](../guides/pel) utils.  
+---
+title: PEL Utils Reference
+sidebar_label: PEL Utils
+---
 
-Generated: **04/12/2021**  
-Number of built-in utils: **15**  
-Also see: **[Utils Guide](../guides/utils)** | **[PEL Guide](../guides/pel)**
+<!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
+<!-- Generated: 05/12/2021 05:45:14 by CommandComplianceTest -->
+
+Reference documentation of [Pipeline Expression Language (PEL)](../guides/pel) utils (PEL Utils).  
+
+Also see: **[PEL Guide](../guides/pel)**
 
 Example usage of the ``@date`` util inside a PEL expression :  
 ```yaml  
@@ -656,6 +661,7 @@ dateTime | ``object`` | The date time object to be parsed.
 
  
 ##  @format 
+----------  
 Provides utility functions inside a pipeline expression for formatting values.  
 
 ### decimal(value,pattern)   
@@ -753,6 +759,7 @@ email | ``string`` | The email of the user.
 
  
 ##  @instance 
+----------  
 Provides utility functions inside a pipeline expression to return information about the current instance.
 You can access the functions declared here in the PEL using <code>@instance</code>  
 

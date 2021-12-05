@@ -1,4 +1,8 @@
-# CLI
+---
+title: Command Line Interface (CLI) Reference
+sidebar_label: CLI
+---
+
 
 The **Command Line Interface** (short “CLI” or “pi tool”) is a local command line tool, which allows remote control PIPEFORCE from the command line.
 
@@ -6,7 +10,7 @@ It makes it handy to automate local tasks by executing commands and pipelines an
 
 See the *[Downloads](/docs/downloads)* section on how to install this tool.
 
-The tutorial [Setup local workspace + CLI](../tutorials/02_advanced/10_localworkspace.md) shows, how to install and work with the CLI.
+The tutorial [Setup local workspace + CLI](../tutorials/localworkspace) shows, how to install and work with the CLI.
 
 ## Call structure
 

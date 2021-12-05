@@ -1,4 +1,4 @@
-# Validations
+# Validation
 
 In order to create custom validations rule for form fields, you can add the validation attribute to each field in the form configuration. For example:
 

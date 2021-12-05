@@ -70,7 +70,7 @@ curl -H "Authorization: Bearer <YOUR_TOKEN>" \
 ```
 
 :::tip Note
-- Authentication is done here by using the `Authorization` header. See [Authorization](../guides/auth.md) for details.
+- Authentication is done here by using the `Authorization` header. See [Authorization](../api/headers) for details.
 - Replace ``http://hub-trial.pipeforce.org`` by the url of your target system.
 :::
 
@@ -113,7 +113,7 @@ curl -H "Authorization: Bearer <YOUR_TOKEN>" \
 ```
 
 :::tip Note
-- Authentication is done here by using the `Authorization` header. See [Authorization](../guides/authentication.md) for details.
+- Authentication is done here by using the `Authorization` header. See [Authorization](../api/headers.md#authorization) for details.
 - Replace ``http://hub-trial.pipeforce.org`` by the url of your target system.
 :::
 

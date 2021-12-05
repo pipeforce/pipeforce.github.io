@@ -1,4 +1,7 @@
-# Events
+---
+title: Events Reference
+sidebar_label: Events
+---
 
 This is the reference documentation of the built-in events which come out-of-the-box with PIPEFORCE. 
 

@@ -1,8 +1,14 @@
-# Forms
+---
+id: basics
+
+title: Forms Basics
+sidebar_label: Basics
+slug: /forms-basics
+---
 
 In order to define a form in PIPEFORCE, you need at least a **JSON schema** and the **form configuration**.
 
-![](../img/grafik-20201023-083314.png)
+![](../../img/grafik-20201023-083314.png)
 
 The JSON **schema** (also called the “object schema”) defines the structure of a data set and “tells” the form which fields to display and a user can fill-out. Learn more about JSON Schema in this chapter: [Schema & Objects](../guides/schema-&-objects).
 

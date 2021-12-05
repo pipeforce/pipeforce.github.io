@@ -463,19 +463,6 @@
             },
             "required" : [ ]
           },
-          "credentials.list" : {
-            "type" : "object",
-            "description" : "Lists the metadata of all available credentials entries.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ ]
-          },
           "credentials.put" : {
             "type" : "object",
             "description" : "Creates a new credentials entry.",
@@ -484,7 +471,7 @@
             "properties" : {
               "format" : {
                 "type" : "string",
-                "description" : "The format of the secret to store. One of: secretText, bearer, header, usernamePassword."
+                "description" : "The format of the secret to store. One of: secret-text, bearer, header, username-password."
               },
               "name" : {
                 "type" : "string",

@@ -19,7 +19,7 @@ To create a trigger form you have to create a schema and afterwards create the f
 
 When working with task forms via the Online-Workflow-Modeler you can select the form type directly from a dropdown list. In this list there are the same options as for schema.
 
-![](../img/form-fields.det.png)
+![](../../img/form-fields.det.png)
 
 ## Static drop down values for form fields
 
