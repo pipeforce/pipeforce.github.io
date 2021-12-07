@@ -221,12 +221,17 @@ And if you are inside a app folder, the app you want to create the resource for 
 
 ## pi pipeline
 
-Executes a locally stored pipeline file, a remote pipeline or a pipeline uri.
+Executes a a locally stored pipeline file, a remote pipeline or a pipeline uri. Which type of pipeline is detected by the the pipeline argument:
+
+- Starts with ``src/``: It's assumbed to be a local pipeline file.
+- Starts with ``global/``: It's assumed to be a persisted remote pipeline.
+- None of the above: It's assumed to be a pipeline uri.
+
 
 **Example 1:**
 
 ```bash
-pi pipeline file src/global/app/myapp/pipeline/helloworld.pi.yaml
+pi pipeline src/global/app/myapp/pipeline/helloworld.pi.yaml
 ```
 
 This example uploads the content of the `helloworld.pi.yaml` to the server, executes it there and returns the result. It doesn't store the pipeline at server side.
@@ -234,7 +239,16 @@ This example uploads the content of the `helloworld.pi.yaml` to the server, exec
 **Example 2:**
 
 ```bash
-pi pipeline uri "log?message=HELLO"
+pi pipeline global/app/myapp/pipeline/helloworld.pi.yaml
+```
+
+This example executes a persisted pipeline stored at the key path ``global/app/myapp/pipeline/helloworld.pi.yaml``.
+
+
+**Example 3:**
+
+```bash
+pi pipeline "log?message=HELLO"
 ```
 
 This example takes the given pipeline uri and executes it at server side.
@@ -265,7 +279,7 @@ datetime?format=dd.MM.YY|log
 Therefore, a call of this pipeline uri would look like this:
 
 ```bash
-pi pipeline uri "datetime?format=dd.MM.YY|log"
+pi pipeline "datetime?format=dd.MM.YY|log"
 ```
 
 Output:
@@ -360,6 +374,28 @@ Returns status information about the CLI.
 ```bash
 pi status
 ```
+
+## pi sync
+
+Does a one-way-sync of files inside the local ``src`` folder to the server. It watches a given folder and immediately syncs changes of files inside this folder to the server.
+
+:::info
+The folder to sync must be located inside the ``src`` folder of your workspace.
+:::
+
+**Example:**
+
+```bash
+pi sync src/global/app/myapp
+```
+
+This example syncs any file from the folder ``myapp`` to the server.
+
+At the beginning of the sync you will be asked whether you want to backup and cleanup the given folder. If you choose ``yes`` then the content of the remote folder will be downloaded and stored in your workspace inside the ``backup`` folder and then the remote content gets deleted. This is handy in case you want to start with a clean sync state between local and server side.
+
+:::caution
+This is a one-way-sync from local to server. Changes made on server side will not be merged to your local sources. If you need such an approach please refer to source managament tools like Git for example which do have built-in merge conflict handling and concurrent editing features.
+:::
 
 ## pi update
 
