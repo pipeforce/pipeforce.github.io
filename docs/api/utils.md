@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 05/12/2021 11:20:16 by CommandComplianceTest -->
+<!-- Generated: 09/12/2021 11:05:54 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -122,8 +122,8 @@ uri | ``string`` | The uri to be used for the content object
 Provides utility functions inside a pipeline expression for simple conversion and encoding tasks.
 You can access the functions declared here in the PEL using <code>@convert</code>  
 
-### toBase64(plainText)   
-Encodes the given text to base64.   
+### toBase64(value)   
+Encodes the given value to base64. If value is not a text, it will be converted to a text before conversion.   
 
 #### Returns  
 ``string`` - The encoded string.  
@@ -131,29 +131,12 @@ Encodes the given text to base64.
 #### Parameters  
 Name | Type | Description
 --- | --- | ---
-plainText | ``string`` | The plain text to encode. 
+value | ``object`` | The value to encode. 
 
 
 #### Example  
 ```  
-@convert.toBase64(plainText)  
-```  
-
-### toBase64(bytes)   
-Encodes the given byte array to base64.   
-
-#### Returns  
-``string`` - The bytes as base64 encoded string.  
-
-#### Parameters  
-Name | Type | Description
---- | --- | ---
-bytes | ``byte[]`` | The plain bytes to encode. 
-
-
-#### Example  
-```  
-@convert.toBase64(bytes)  
+@convert.toBase64(value)  
 ```  
 
 ### fromBase64(base64String)   
@@ -1082,6 +1065,22 @@ key | ``string`` | The property key
 @property.value(key)  
 ```  
 
+### updateValue(key,value)   
+Updates the value of a property under given key.   
+
+#### Returns  
+void#### Parameters  
+Name | Type | Description
+--- | --- | ---
+key | ``string`` | The key of the property to update. 
+value | ``object`` | The value of the property to update. 
+
+
+#### Example  
+```  
+@property.updateValue(key,value)  
+```  
+
 ### get(key)   
 Returns the property with given key as object.   
 
@@ -1117,6 +1116,28 @@ key | ``string`` | The property key with optional fragment reference in form 'gl
 #### Example  
 ```  
 @property.lazy(key)  
+```  
+
+ 
+##  @size 
+----------  
+Provides utility functions inside a pipeline expression for size calculations.  
+
+### of(value)   
+Calculates the size of the given value regardless of the type it is.   
+
+#### Returns  
+``long`` - The size of the value. Returns a size of 0 in case the input value is null or cannot be counted.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The value to count for size. 
+
+
+#### Example  
+```  
+@size.of(value)  
 ```  
 
  
