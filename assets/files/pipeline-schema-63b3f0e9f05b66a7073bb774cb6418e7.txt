@@ -68,6 +68,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -81,6 +85,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -117,6 +125,10 @@
               "message" : {
                 "type" : "string",
                 "description" : "An optional message to be used in case of invalid condition. Can be a PE."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -147,6 +159,10 @@
               "processInstanceId" : {
                 "type" : "string",
                 "description" : "The id of the process instance the task to check belongs to."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "processInstanceId" ]
@@ -174,6 +190,10 @@
                 "description" : "The dynamic format of the barcode to be created. One of: AZTEC, CODABAR, CODE_39, CODE_93, CODE_128, DATA_MATRIX, EAN_8, EAN_13, ITF, PDF_417, QR_CODE, UPC_A, UPC_E",
                 "default" : "PDF_417"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -187,6 +207,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -212,6 +236,10 @@
                 "type" : "string",
                 "description" : "The method name of the bean to be executed."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -224,6 +252,12 @@
             "description" : "Sets the value in the body to null. Deletes any existing value in the body. ",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              }
+            },
             "required" : [ ]
           },
           "body.filter" : {
@@ -240,6 +274,10 @@
                 "type" : "boolean",
                 "description" : "Can only be applied, if the result is a list and contains elements with a single property each. For example: [{name: foo}, {name: bar}]. If set to true, removes the key from the property and converts the result to a simple list like: [foo, bar]. If the result is not a list or elements in the list contain more than one property, this param is ignored.",
                 "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -253,6 +291,10 @@
               "key" : {
                 "type" : "string",
                 "description" : "The key to load the value from the cache to remove. If empty or null, all entries in the cache will be inspected and those time to live has been expired will be removed."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -277,6 +319,10 @@
                 "description" : "If true, exits the pipeline if cache entry exists.",
                 "default" : "false"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -293,6 +339,10 @@
               "key" : {
                 "type" : "string",
                 "description" : "Returns the info for a given cache entry. If null or empty, the overall cache info is returned."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -303,6 +353,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -328,6 +382,10 @@
               "value" : {
                 "type" : "string",
                 "description" : "The value for the cache entry. If not set, null is used."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -346,6 +404,10 @@
                 "type" : "string",
                 "description" : "Name value pair of arguments to be passed to the script. If the script is a pipeline, the arguments are set as vars overwriting any existing vars.If the script is a remote HTTP URL, the arguments are passed as request parameters, each.If the script is a script in classpath or property store, the arguments are passed via implicit variable: pi.args."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -358,6 +420,12 @@
             "description" : "DEPREACTED (Use the cache.* commands instead). Captures the last pipe message and adds it into a list in the header under key {@link #HEADER_CAPTURED}. This is primarily for testing purposes but also can be used to create a snapshot of a certain pipeline state.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              }
+            },
             "required" : [ ]
           },
           "pipe.schema" : {
@@ -369,6 +437,10 @@
               "pipe" : {
                 "type" : "string",
                 "description" : "The specific pipe name to fetch schema from. If set, only the schema for this specific pipe is returned."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -383,6 +455,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -409,6 +485,10 @@
                 "description" : "If true, additionally shows whether a currently logged-in user can write/change a configuration or not by adding the attribute canOverwrite:true|false. to each config entry.",
                 "default" : "false"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -426,6 +506,10 @@
                 "type" : "string",
                 "description" : "The content uri of the content to load."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -442,6 +526,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of the credentials entry to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -455,6 +543,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of a single credentials to return. If null or empty, all credentials will be returned."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -484,6 +576,10 @@
               "timeToLive" : {
                 "type" : "string",
                 "description" : "The time to live in minutes. After this time, the credentials will be deleted."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "format", "name", "secret" ]
@@ -497,6 +593,10 @@
               "rules" : {
                 "type" : "string",
                 "description" : "A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -> outputPEL1. Multiple rules are separated by a comma directly followed by a new line."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -537,6 +637,10 @@
                 "type" : "string",
                 "description" : "The template to be used for the transformation. It can the template text itself as string or a qualified uri pointing to a template resource like this for example: $uri:property:/my/template/path"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -558,6 +662,10 @@
                 "type" : "string",
                 "description" : "The date time format pattern. If null, the system default format is used."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -571,6 +679,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -587,6 +699,10 @@
               "password" : {
                 "type" : "string",
                 "description" : "The password to decrypt the body with."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -621,6 +737,10 @@
                 "type" : "string",
                 "description" : "The length of the attachment in bytes.",
                 "default" : "0"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -666,6 +786,10 @@
                 "description" : "If true, notifies sender when recipients have downloaded delivery.",
                 "default" : "true"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -682,6 +806,10 @@
               "deliveryUuid" : {
                 "type" : "string",
                 "description" : "The uuid of the delivery to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -695,6 +823,10 @@
               "deliveryUuid" : {
                 "type" : "string",
                 "description" : "The uuid of the delivery to finalize."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -712,6 +844,10 @@
               "deliveryUuid" : {
                 "type" : "string",
                 "description" : "The uuid of the delivery."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -738,6 +874,10 @@
                 "type" : "string",
                 "description" : "The locale to be used for this recipient like de, en or fr for example."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -758,6 +898,10 @@
               "recipients" : {
                 "type" : "string",
                 "description" : "The comma separated or PEL list of recipients to (re-)send the delivery to. The recipients must already exist in the delivery. If null or empty, the delivery message is send to all existing recipients of the delivery."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -807,6 +951,10 @@
                 "description" : "If true, notifies sender when recipients have downloaded delivery. If null or empty, this attribute wont be updated.",
                 "default" : "true"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -820,6 +968,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -861,6 +1013,10 @@
                 "type" : "string",
                 "description" : "The docuSign account Id for REST calls. Can be obtained here: https://developers.docusign.com/esign-rest-api/guides/authentication/user-info-endpoints . If not set, the command tries to get the account ID by an additional request from DocuSign"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -874,6 +1030,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -911,6 +1071,10 @@
                 "type" : "string",
                 "description" : "The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The number of files currently stored in the archive folder. archivePath = The path to the archive as given by path param. "
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -931,6 +1095,10 @@
               "to" : {
                 "type" : "string",
                 "description" : "The target folder to copy the resource into."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path", "to" ]
@@ -944,6 +1112,10 @@
               "path" : {
                 "type" : "string",
                 "description" : "The path of the resource to be deleted. If it is a folder, it will be deleted recursively."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path" ]
@@ -957,6 +1129,10 @@
               "path" : {
                 "type" : "string",
                 "description" : "The path of the resource to check for existence."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -974,6 +1150,10 @@
               "path" : {
                 "type" : "string",
                 "description" : "The path of the folder to be listed."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -996,6 +1176,10 @@
                 "type" : "string",
                 "description" : "If set to true, any non existing folder in the path will be created.",
                 "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path" ]
@@ -1013,6 +1197,10 @@
               "to" : {
                 "type" : "string",
                 "description" : "The target folder to move the resource into."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path", "to" ]
@@ -1031,6 +1219,10 @@
                 "type" : "boolean",
                 "description" : "If true, appends the files read from drive to any existing collection in the body. In case the body is no collection but a content (single file), creates a new collection and adds all to this collection (already existing file and read files). In case the body is different from collection or content, an error is thrown. If false (default), overwrites any existing body value.",
                 "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1057,6 +1249,10 @@
                 "type" : "string",
                 "description" : "If true, deletes the content from the body after the content was saved to drive (default).",
                 "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path" ]
@@ -1109,6 +1305,10 @@
                 "type" : "boolean",
                 "description" : "NOT SUPPORTED YET. Send an invite email to recipients."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1137,6 +1337,10 @@
               "remove" : {
                 "type" : "boolean",
                 "description" : "If true (or any non empty/null value), removes the given tag."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path", "tagname" ]
@@ -1162,6 +1366,10 @@
               "index" : {
                 "type" : "number",
                 "description" : "The index of the chunk. Mandatory for the upload action."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "action" ]
@@ -1175,6 +1383,10 @@
               "password" : {
                 "type" : "string",
                 "description" : "The password to encrypt the body with."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1192,6 +1404,10 @@
               "expr" : {
                 "type" : "string",
                 "description" : "The pipeline expression to be executed."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "expr" ]
@@ -1209,6 +1425,10 @@
               "filter" : {
                 "type" : "string",
                 "description" : "An optional PEL to execute the pipeline only in case the filter applies."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -1219,6 +1439,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1248,9 +1472,48 @@
                 "type" : "string",
                 "description" : "Send the event in ASYNC mode? Note: ASYNC is faster but lacks transaction capability. If false, message is send in SYNC. Slower but can use the current authentication and transaction context.",
                 "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
+          },
+          "exit" : {
+            "type" : "object",
+            "description" : "Exits the current pipeline flow and returns the current body state to the caller.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "if" : {
+                "type" : "string",
+                "description" : "The PE to be evaluated. If true, the pipeline will exit.",
+                "default" : "#{true}"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              }
+            },
+            "required" : [ ]
+          },
+          "finally" : {
+            "type" : "object",
+            "description" : "Executes a PEL at the very end of the pipeline flow.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "do" : {
+                "type" : "string",
+                "description" : "The PE to execute."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              }
+            },
+            "required" : [ "do" ]
           },
           "foreach" : {
             "type" : "object",
@@ -1274,6 +1537,10 @@
               "end" : {
                 "type" : "string",
                 "description" : "Signals the end of a for each loop."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "in" ]
@@ -1283,6 +1550,12 @@
             "description" : "DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              }
+            },
             "required" : [ ]
           },
           "htmlunit.website.form.find" : {
@@ -1294,6 +1567,10 @@
               "select" : {
                 "type" : "string",
                 "description" : "A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1311,6 +1588,10 @@
               "select" : {
                 "type" : "string",
                 "description" : "A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1324,6 +1605,10 @@
               "select" : {
                 "type" : "string",
                 "description" : "A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1337,6 +1622,10 @@
               "select" : {
                 "type" : "string",
                 "description" : "A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1350,6 +1639,10 @@
               "url" : {
                 "type" : "string",
                 "description" : "The url of the web page to open."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "url" ]
@@ -1367,6 +1660,10 @@
               "select" : {
                 "type" : "string",
                 "description" : "A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "xpath" ]
@@ -1388,6 +1685,10 @@
               "body" : {
                 "type" : "string",
                 "description" : "The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -1422,6 +1723,10 @@
                 "type" : "string",
                 "description" : "The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -1454,6 +1759,10 @@
               "body" : {
                 "type" : "string",
                 "description" : "The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -1488,6 +1797,10 @@
                 "type" : "string",
                 "description" : "The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -1521,6 +1834,10 @@
                 "type" : "string",
                 "description" : "The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -1545,6 +1862,10 @@
               "refreshToken" : {
                 "type" : "string",
                 "description" : "The refresh token."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "refreshToken" ]
@@ -1563,6 +1884,10 @@
                 "type" : "string",
                 "description" : "The user password."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1575,6 +1900,12 @@
             "description" : "Adds header 'authUserId' - name of an user authenticated as a sender of the pipe message.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              }
+            },
             "required" : [ ]
           },
           "iam.authorize" : {
@@ -1602,6 +1933,10 @@
               "password" : {
                 "type" : "string",
                 "description" : "The password to be used for authentication."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1619,6 +1954,10 @@
               "uuid" : {
                 "type" : "string",
                 "description" : "The uuid of the user to unlock. If set, the param username is ignored."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1640,6 +1979,10 @@
               "uuid" : {
                 "type" : "string",
                 "description" : "The uuid of the user to return the status for. If set, the param username is ignored."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1666,6 +2009,10 @@
                 "type" : "string",
                 "description" : "The unique group name."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1691,6 +2038,10 @@
                 "type" : "string",
                 "description" : "A map which holds optional attributes to be added to this group."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1707,6 +2058,10 @@
               "uuid" : {
                 "type" : "string",
                 "description" : "The uuid of the group to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1739,6 +2094,10 @@
                 "description" : "The offset to start return entries.",
                 "default" : "0"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1765,6 +2124,10 @@
               "filter" : {
                 "type" : "string",
                 "description" : "The filter query to additionally filter the result. Not applied if null"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1801,6 +2164,10 @@
                 "type" : "string",
                 "description" : "The filter query to additionally filter the result. Not applied if null"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1836,6 +2203,10 @@
                 "type" : "string",
                 "description" : "The filter query to additionally filter the result. Not applied if null"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1849,6 +2220,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1869,6 +2244,10 @@
               "composites" : {
                 "type" : "string",
                 "description" : "The composite role names to join. Can be a comma separated list or a PEL pointing to a list."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1894,6 +2273,10 @@
               "attributes" : {
                 "type" : "string",
                 "description" : "A map which holds optional attributes to be added to this role."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1926,6 +2309,10 @@
                 "type" : "string",
                 "description" : "The filter query to additionally filter the result. Not applied if null"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1942,6 +2329,10 @@
               "username" : {
                 "type" : "string",
                 "description" : "The username, subsequent pipe commands must be executed as. This user must has RUN_AS_SOURCE role assigned."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "username" ]
@@ -1970,6 +2361,10 @@
                 "type" : "string",
                 "description" : "The filter query to additionally filter the result. Not applied if null"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1986,6 +2381,10 @@
               "refreshToken" : {
                 "type" : "string",
                 "description" : "The refresh token."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "refreshToken" ]
@@ -2007,6 +2406,10 @@
               "groupIds" : {
                 "type" : "string",
                 "description" : "The group ids to join. If not given, groupIds is required."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2032,6 +2435,10 @@
               "roleNames" : {
                 "type" : "string",
                 "description" : "The role names to join. Can be a comma separated list or a PEL pointing to a list."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2078,6 +2485,10 @@
                 "type" : "string",
                 "description" : "A map which holds optional attributes to be added to this user."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2094,6 +2505,10 @@
               "uuid" : {
                 "type" : "string",
                 "description" : "The uuid of the user to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2115,6 +2530,10 @@
               "uuid" : {
                 "type" : "string",
                 "description" : "The uuid of the user. If set, the param username is ignored."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2151,6 +2570,10 @@
                 "type" : "string",
                 "description" : "The filter query to additionally filter the result. Not applied if null"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2177,6 +2600,10 @@
               "filter" : {
                 "type" : "string",
                 "description" : "The filter query to additionally filter the result. Not applied if null"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2213,6 +2640,10 @@
                 "type" : "string",
                 "description" : "The filter query to additionally filter the result. Not applied if null"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2237,6 +2668,10 @@
               "else" : {
                 "type" : "string",
                 "description" : "Defines the else part of the if statement. If value of if evaluates to false, the section right after this else statement is executed until the if?end statement or the end of the pipeline. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "true" ]
@@ -2254,6 +2689,10 @@
               "stop" : {
                 "type" : "string",
                 "description" : "If this param is set, all other params are ignored. It contains the uuid of the job to be canceled."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -2267,6 +2706,10 @@
               "query" : {
                 "type" : "string",
                 "description" : "The JPA query to be executed."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2289,6 +2732,10 @@
                 "type" : "string",
                 "description" : "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used.",
                 "default" : "INFO"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "message" ]
@@ -2313,6 +2760,10 @@
                 "type" : "string",
                 "description" : "The format to be returned. One of: text, json",
                 "default" : "text"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2341,6 +2792,10 @@
                 "description" : "Returns only those emails created before this date in ISO-8601 format. If null or empty, no before filter will be set.",
                 "default" : ""
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2358,6 +2813,10 @@
                 "type" : "string",
                 "description" : "Return all properties with values interpolated? (= ${some.var} is resolved).",
                 "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2405,6 +2864,10 @@
                 "type" : "string",
                 "description" : "The remote folder path in drive where to upload the emails into. For each new email a new sub folder will be created inside this path. If null or empty, uploads to the root folder of the logged in user."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2438,6 +2901,10 @@
               "inboxPassword" : {
                 "type" : "string",
                 "description" : "The password of the email inbox."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2486,6 +2953,10 @@
               "attachments" : {
                 "type" : "string",
                 "description" : "Can be a comma separated list of URI Strings (e.g.: uri:drive:file1, uri:property:global/file2, uri:drive:file1, uri:classpath:pipeforce/file3). Also can point via PEL to a content object or a content collection. If the PEL points to an object differently to an uri or content object, serializes the value to string and attaches this as a text file."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "to" ]
@@ -2511,6 +2982,10 @@
               "challenge" : {
                 "type" : "string",
                 "description" : "The challenge which will become part of the link in the email when redirecting back."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "email" ]
@@ -2525,6 +3000,10 @@
                 "type" : "boolean",
                 "description" : "Reverses the left and right expressions. This is a workaround if for some reason the left sidefor example may not contain special characters.",
                 "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -2535,6 +3014,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2555,6 +3038,10 @@
               "message" : {
                 "type" : "string",
                 "description" : "The text message to be send to Teams."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "url", "message" ]
@@ -2579,9 +3066,17 @@
                 "description" : "The mock expression: When this evaluates to true, the mock will be applied.",
                 "default" : "#{true}"
               },
-              "thenReturn" : {
+              "thenSetBody" : {
                 "type" : "string",
                 "description" : "The value to be returned in the body when this mock applies. If not defined, the current body will not be changed."
+              },
+              "thenSetVar" : {
+                "type" : "string",
+                "description" : "Defines a map which will be set as vars."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "command" ]
@@ -2602,6 +3097,10 @@
                 "description" : "The format of the pages to create. One of: A0, A1, A2, A3, A4, A5, A6, LEGAL, LETTER",
                 "default" : "A4"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2618,6 +3117,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of resulting document content."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2682,6 +3185,10 @@
                 "description" : "Enforces that text is written at a specific line",
                 "default" : "0"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2698,6 +3205,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The exact name of the pipeline to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -2711,6 +3222,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of the pipeline to search for. Supports wildcard * matching. If null or empty, returns all entries."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2729,6 +3244,10 @@
                 "type" : "string",
                 "description" : "The unique name of this pipeline within this namespace."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2745,6 +3264,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of the pipeline to load and execute."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -2763,6 +3286,10 @@
                 "type" : "string",
                 "description" : "A variables map to be put on this pipeline. Note: Any var in this map will overwrite the var in the target pipeline vars scope."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2779,6 +3306,10 @@
               "appNames" : {
                 "type" : "string",
                 "description" : "A comma separated list of app names those config must be returned. If null or empty, all configs of all apps are returned, the currently logged in user is assigned to. If there is an app name given which doesnt exist or the current user has no access to, nothing happens for security reasons."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2805,6 +3336,10 @@
                 "type" : "string",
                 "description" : "The index of the chunk to return.",
                 "default" : "0"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2834,6 +3369,10 @@
               "content" : {
                 "type" : "string",
                 "description" : "The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "name" ]
@@ -2851,6 +3390,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of the attachment."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2872,6 +3415,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of the attachment to be deleted."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "name" ]
@@ -2890,6 +3437,10 @@
                 "type" : "string",
                 "description" : "The name of the attachment to return."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2906,6 +3457,10 @@
               "key" : {
                 "type" : "string",
                 "description" : "The key of the property to list its attachments for."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2935,6 +3490,10 @@
               "contentType" : {
                 "type" : "string",
                 "description" : "The content type to be used for this attachment."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "name" ]
@@ -2956,6 +3515,10 @@
               "uri" : {
                 "type" : "string",
                 "description" : "The uri of resource to point symlink to."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "name", "uri" ]
@@ -2973,6 +3536,10 @@
               "to" : {
                 "type" : "string",
                 "description" : "The target key to copy the property to. If a property with this key already exists, it will be overwritten."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "to" ]
@@ -2986,6 +3553,10 @@
               "key" : {
                 "type" : "string",
                 "description" : "The path key of the property to check for. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3005,6 +3576,10 @@
                 "description" : "Defines what to do if a property with same key already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. ",
                 "default" : "skip"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3022,6 +3597,10 @@
                 "type" : "string",
                 "description" : "The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. "
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3038,6 +3617,10 @@
               "pattern" : {
                 "type" : "string",
                 "description" : "The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3060,6 +3643,10 @@
                 "type" : "string",
                 "description" : "This parameter is deprecated. Use param 'pattern' instead."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3080,6 +3667,10 @@
               "to" : {
                 "type" : "string",
                 "description" : "The target key to move the property to. If a property with this key already exists, an exception is thrown."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "to" ]
@@ -3097,6 +3688,10 @@
               "value" : {
                 "type" : "string",
                 "description" : "The value of the property. May be null or empty."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -3110,6 +3705,10 @@
               "key" : {
                 "type" : "string",
                 "description" : "The path key of the property to delete. If property with this key doesnt exist, nothing happens."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -3158,6 +3757,14 @@
               "tags" : {
                 "type" : "string",
                 "description" : "The initial tags to add to this property. Can be a comma separated list of name value pairs, like this name1:value1, name2:value2."
+              },
+              "finalAction" : {
+                "type" : "string",
+                "description" : "What should happen with this property finally when pipeline execution has been finished? Available actions: 'persist' (writes the latest state to DB), 'remove' (removes the latest state from DB), null (nothing happens = default)"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -3196,6 +3803,10 @@
                 "type" : "string",
                 "description" : "The emails of recipients."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3212,6 +3823,10 @@
               "key" : {
                 "type" : "string",
                 "description" : "The path key of the property to list the tags for."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3241,6 +3856,10 @@
               "value" : {
                 "type" : "string",
                 "description" : "The value of a single tag to add. Only used in case tag name is not null."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -3267,6 +3886,10 @@
                 "type" : "string",
                 "description" : "Defines an expression to be applied on the final result. For example to count all values or to transform them. If null or empty, no aggregation will be applied."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3283,6 +3906,10 @@
               "key" : {
                 "type" : "string",
                 "description" : "The key of the property to be returned."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3304,6 +3931,10 @@
               "path" : {
                 "type" : "string",
                 "description" : "Path of the provision script to call. If not specified, uses default path: main.pipe.yaml"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -3316,7 +3947,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The public form id."
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "id" ]
@@ -3333,7 +3964,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The public form id."
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "value", "id" ]
@@ -3352,6 +3983,10 @@
                 "type" : "string",
                 "description" : "The uri path to load the resource from. If it starts with classpath:pipeforce, a lookup in the classpath subfolder pipeforce is done (other locations are not allowed). If it starts with property: a lookup in the property store is done and the result is thevalue of the property if exists."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3368,6 +4003,10 @@
               "path" : {
                 "type" : "string",
                 "description" : "The path to save the resource to."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path" ]
@@ -3377,6 +4016,12 @@
             "description" : "Closes website and releases all used resources.Note: The pipe is BETA and not intended to be used in production!",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              }
+            },
             "required" : [ ]
           },
           "rpa.website.open" : {
@@ -3388,6 +4033,10 @@
               "url" : {
                 "type" : "string",
                 "description" : "The url of the web page to open."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "url" ]
@@ -3401,6 +4050,10 @@
               "xpath" : {
                 "type" : "string",
                 "description" : "Executes the given xpath expression on the current page and puts the result in the body. In case the xpath returns more than one results, adds an array to the body. Otherwise the body only contains the single result value."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "xpath" ]
@@ -3411,6 +4064,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3437,6 +4094,10 @@
                 "description" : "The script language to be used. Possible values: js, groovy.",
                 "default" : "js"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3450,6 +4111,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3466,6 +4131,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of the service to start. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -3479,6 +4148,10 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of the service. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -3497,6 +4170,10 @@
                 "type" : "string",
                 "description" : "Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.",
                 "default" : "auto"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "value" ]
@@ -3518,6 +4195,10 @@
               "mapping" : {
                 "type" : "string",
                 "description" : "A list of mapping rules to be applied to the given input value."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3548,6 +4229,10 @@
                 "type" : "string",
                 "description" : "Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.",
                 "default" : "auto"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "value" ]
@@ -3577,6 +4262,10 @@
               "port" : {
                 "type" : "string",
                 "description" : "The port"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -3614,6 +4303,10 @@
               "port" : {
                 "type" : "string",
                 "description" : "The port"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -3653,6 +4346,10 @@
                 "type" : "string",
                 "description" : "The port"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "credentials" : {
                 "type" : "string",
                 "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
@@ -3689,6 +4386,10 @@
               "port" : {
                 "type" : "string",
                 "description" : "The port"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -3731,6 +4432,10 @@
                 "type" : "string",
                 "description" : "The port"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "credentials" : {
                 "type" : "string",
                 "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
@@ -3769,6 +4474,10 @@
                 "type" : "string",
                 "description" : "The port"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "credentials" : {
                 "type" : "string",
                 "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
@@ -3793,6 +4502,10 @@
               "text" : {
                 "type" : "string",
                 "description" : "The text message to be send to Slack."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "url", "text" ]
@@ -3827,6 +4540,10 @@
                 "description" : "If given, places the column names inside a separate property with this name.",
                 "default" : "columns"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3840,6 +4557,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3861,6 +4582,10 @@
                 "type" : "string",
                 "description" : "The type of resource to be loaded. Must be one of: background, logo, pipeforce-logo. If null or invalid value, falls back to default value.",
                 "default" : "logo"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3897,6 +4622,10 @@
                 "type" : "string",
                 "description" : "The template to be used for the transformation. It can the template text itself as string or a qualified uri pointing to a template resource like this for example: $uri:property:/my/template/path"
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -3922,6 +4651,10 @@
                 "type" : "string",
                 "description" : "The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3935,6 +4668,10 @@
             "inputType" : "Byte",
             "outputType" : "Byte",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3951,6 +4688,10 @@
               "dpi" : {
                 "type" : "string",
                 "description" : "DPI to use for conversion. 300 DPI is used when not specified."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3969,6 +4710,10 @@
                 "type" : "string",
                 "description" : "DPI to forcibly use for conversion."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3985,6 +4730,10 @@
               "path" : {
                 "type" : "string",
                 "description" : "Provides the URL the word document is located at. If set, it uses REST PDF conversion service instead of library."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4007,6 +4756,10 @@
                 "type" : "string",
                 "description" : "The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path.docx) pointing to the template."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4028,6 +4781,10 @@
                 "type" : "string",
                 "description" : "The target language to transform the text to. Supported values: DE, EN, FR, IT, JA, ES, NL, PL, PT, RU, ZH",
                 "default" : "EN"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4054,6 +4811,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4079,6 +4840,10 @@
               "path" : {
                 "type" : "string",
                 "description" : "A pipe expression pointing to the JSON inside the pipe message validation is required for. If missing, null or empty, the body is used by default."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -4092,6 +4857,10 @@
               "uuid" : {
                 "type" : "string",
                 "description" : "Id of the webhook to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "uuid" ]
@@ -4105,6 +4874,10 @@
               "uuid" : {
                 "type" : "string",
                 "description" : "Id of the single webhook to return. If null or empty, all webhooks will be returned."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4131,6 +4904,10 @@
                 "type" : "string",
                 "description" : "The id of an existing webhook. If given, tries to update this webhook instead of creating a new one."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4147,6 +4924,10 @@
               "uuid" : {
                 "type" : "string",
                 "description" : "The uuid of the webhook."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "uuid" ]
@@ -4164,6 +4945,10 @@
               "message" : {
                 "type" : "string",
                 "description" : "The message to be send in the POST body to the webhook. Must be a valid JSON."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4190,6 +4975,10 @@
                 "type" : "string",
                 "description" : "The optional key of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this propertyKey is missing, the BPMN is expected to be in the body."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4209,7 +4998,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "Id of the deployment. Exact match."
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4236,6 +5025,10 @@
                 "type" : "string",
                 "description" : "The name of this message. It is used to find the endpoint to be triggered in the workflow."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4252,6 +5045,10 @@
               "processInstanceBusinessKey" : {
                 "type" : "string",
                 "description" : "Filter tasks by businessKey."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4286,6 +5083,10 @@
               "processInstanceBusinessKey" : {
                 "type" : "string",
                 "description" : "Filter tasks by businessKey."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4331,6 +5132,10 @@
               "model" : {
                 "type" : "string",
                 "description" : "The model to be used in the invite message template."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "workflowModel" ]
@@ -4348,6 +5153,10 @@
               "fileName" : {
                 "type" : "string",
                 "description" : "The attachment name."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
@@ -4369,6 +5178,10 @@
               "contentType" : {
                 "type" : "string",
                 "description" : "The content type to be used for this attachment."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
@@ -4382,6 +5195,10 @@
               "mappings" : {
                 "type" : "string",
                 "description" : "A list of mapping rules to be applied to the given workflow model. See online docs for more details about such mapping rules."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4412,6 +5229,10 @@
                 "type" : "string",
                 "description" : "Filter tasks by businessKey."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4440,6 +5261,10 @@
               "processInstanceBusinessKey" : {
                 "type" : "string",
                 "description" : "Filter tasks by businessKey."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4474,6 +5299,10 @@
                 "type" : "string",
                 "description" : "The name of the process variable which holds the uuid of the user who started this process using this command. If null or empty, the currently logged-in user willbe used instead."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4494,6 +5323,10 @@
               "variables" : {
                 "type" : "string",
                 "description" : "A map of variables to be passed to the task. Can be null."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4524,6 +5357,10 @@
                 "type" : "string",
                 "description" : "Filter tasks by businessKey."
               },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4545,6 +5382,10 @@
                 "type" : "string",
                 "description" : "What to do if an error happened in this command?",
                 "default" : "EXIT"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -4558,6 +5399,10 @@
               "processDefinitionId" : {
                 "type" : "string",
                 "description" : "The id of the process definition."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4579,6 +5424,10 @@
               "level" : {
                 "type" : "string",
                 "description" : "Sets the compression level 0-9. If not set, the default level is used which could vary."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
