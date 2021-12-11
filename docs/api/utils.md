@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 09/12/2021 11:05:54 by CommandComplianceTest -->
+<!-- Generated: 10/12/2021 14:46:01 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -366,6 +366,26 @@ value | ``object`` | The value to set.
 @data.set(data,path,value)  
 ```  
 
+### put(map,key,value)   
+Expects the given data to be map-like structure and puts the given value under given key to it.
+Overwrites any existing entry under this key.   
+
+#### Returns  
+``object`` - The map like data structure with the new entry added.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+map | ``object`` | The map-like data structure. 
+key | ``object`` | The key to add the value under. 
+value | ``object`` | The value to add. 
+
+
+#### Example  
+```  
+@data.put(map,key,value)  
+```  
+
 ### select(input,selections)   
 Applies the given selection string on the given input object in order to extract
 data from the input object. If there is more than one selection string, puts the
@@ -417,6 +437,47 @@ endInt | ``int`` | The end index to fill the list up to.
 #### Example  
 ```  
 @data.integerList(startInt,endInt)  
+```  
+
+### size(value)   
+Calculates the size of the given value regardless of the type it is.   
+
+#### Returns  
+``long`` - The size of the value. Returns a size of 0 in case the input value is null or cannot be counted.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The value to count for size. 
+
+
+#### Example  
+```  
+@data.size(value)  
+```  
+
+### empty(data)   
+Checks if given data structure is null or empty.
+For example:
+<ul>
+    <li>If it is a list, returns true in case the list contains no entry or is null.</li>
+    <li>If it is a map, returns true in case the map contains no entry or is null.</li>
+    <li>If it is a node, returns true in case the node contains no entry or is null.</li>
+    <li>If it is a string, returns true in case the string contains no chars or is null.</li>
+</ul>   
+
+#### Returns  
+``boolean`` - true in case the given list is null or empty.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data structure to check. 
+
+
+#### Example  
+```  
+@data.empty(data)  
 ```  
 
  
@@ -884,7 +945,8 @@ value | ``object`` | Any supported list object.
 ```  
 
 ### size(list)   
-Returns the size of the given list.   
+Returns the size of the given list.
+DEPRECATED. Use ``@data.size(...)`` instead.   
 
 #### Returns  
 ``int`` - The size of the list. 0 in case list is null or unknown type.  
@@ -901,7 +963,8 @@ list | ``object`` | The list.
 ```  
 
 ### empty(list)   
-Checks if given list is null or empty.   
+Checks if given list is null or empty.
+DEPRECATED. Use ``@data.empty(...)`` instead.   
 
 #### Returns  
 ``boolean`` - true in case the given list is null or empty.  
@@ -947,7 +1010,8 @@ expression | ``string`` | The list expression.
 ### add(list,element)   
 Appends the given element to the end of the given list.
 This method is useful in case the list implementation is not clear since
-this method can detect it (for example whether it is a collecton or a JSON array).   
+this method can detect it (for example whether it is a collection or a JSON array).
+By default doesn't add null items.   
 
 #### Returns  
 ``collection`` - The input list with new element or a new list in case the input list was unmodifiable.  
@@ -962,6 +1026,27 @@ element | ``object`` | The element to append.
 #### Example  
 ```  
 @list.add(list,element)  
+```  
+
+### add(list,element,ignoreNulls)   
+Appends the given element to the end of the given list.
+This method is useful in case the list implementation is not clear since
+this method can detect it (for example whether it is a collection or a JSON array).   
+
+#### Returns  
+``collection`` - The input list with new element or a new list in case the input list was unmodifiable.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+list | ``object`` | The list to append to. 
+element | ``object`` | The element to append. 
+ignoreNulls | ``boolean`` | If true, null items will not be added. 
+
+
+#### Example  
+```  
+@list.add(list,element,ignoreNulls)  
 ```  
 
 ### contains(list,needles)   
@@ -980,6 +1065,19 @@ needles | ``object`` | The items to search for. Can also be a list of items.
 #### Example  
 ```  
 @list.contains(list,needles)  
+```  
+
+### create()   
+Creates a new empty list.   
+
+#### Returns  
+``list`` - A new, empty, modifiable list.  
+
+
+
+#### Example  
+```  
+@list.create()  
 ```  
 
  
@@ -1069,7 +1167,9 @@ key | ``string`` | The property key
 Updates the value of a property under given key.   
 
 #### Returns  
-void#### Parameters  
+void  
+
+#### Parameters  
 Name | Type | Description
 --- | --- | ---
 key | ``string`` | The key of the property to update. 
@@ -1116,28 +1216,6 @@ key | ``string`` | The property key with optional fragment reference in form 'gl
 #### Example  
 ```  
 @property.lazy(key)  
-```  
-
- 
-##  @size 
-----------  
-Provides utility functions inside a pipeline expression for size calculations.  
-
-### of(value)   
-Calculates the size of the given value regardless of the type it is.   
-
-#### Returns  
-``long`` - The size of the value. Returns a size of 0 in case the input value is null or cannot be counted.  
-
-#### Parameters  
-Name | Type | Description
---- | --- | ---
-value | ``object`` | The value to count for size. 
-
-
-#### Example  
-```  
-@size.of(value)  
 ```  
 
  
@@ -1315,6 +1393,24 @@ Creates a new uuid and returns it as hexadecimal string.
 #### Example  
 ```  
 @text.uuid()  
+```  
+
+### toHtml(text)   
+Converts the given text to an HTML fragment. Replaces &, gt and lt signs, keeps line breaks
+and converts links to href elements.   
+
+#### Returns  
+``string`` - The HTML result.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``string`` | The text to convert to HTML. 
+
+
+#### Example  
+```  
+@text.toHtml(text)  
 ```  
 
 ### append(basetext,text)   
