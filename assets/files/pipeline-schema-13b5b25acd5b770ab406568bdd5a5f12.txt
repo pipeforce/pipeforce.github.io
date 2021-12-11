@@ -70,7 +70,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -87,7 +87,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -128,7 +128,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -162,7 +162,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "processInstanceId" ]
@@ -192,7 +192,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -209,7 +209,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -238,7 +238,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -255,7 +255,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -277,7 +277,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -294,7 +294,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -321,7 +321,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -342,7 +342,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -355,7 +355,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -385,7 +385,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -406,7 +406,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -423,7 +423,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -440,7 +440,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -457,7 +457,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -487,7 +487,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -508,7 +508,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -529,7 +529,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -546,7 +546,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -579,7 +579,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "format", "name", "secret" ]
@@ -596,7 +596,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -639,7 +639,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -664,7 +664,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -681,7 +681,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -702,7 +702,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -740,7 +740,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -788,7 +788,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -809,7 +809,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -826,7 +826,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -847,7 +847,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -876,7 +876,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -901,7 +901,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -953,7 +953,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -970,7 +970,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1015,7 +1015,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1032,7 +1032,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -1073,7 +1073,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1098,7 +1098,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path", "to" ]
@@ -1115,7 +1115,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path" ]
@@ -1132,7 +1132,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1153,7 +1153,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1179,7 +1179,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path" ]
@@ -1200,7 +1200,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path", "to" ]
@@ -1222,7 +1222,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1252,7 +1252,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path" ]
@@ -1307,7 +1307,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1340,7 +1340,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path", "tagname" ]
@@ -1369,7 +1369,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "action" ]
@@ -1386,7 +1386,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1407,7 +1407,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "expr" ]
@@ -1428,7 +1428,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -1441,7 +1441,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1475,7 +1475,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -1493,31 +1493,31 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
           },
           "finally" : {
             "type" : "object",
-            "description" : "Executes a PEL at the very end of the pipeline flow.",
+            "description" : "Any command placed after this finally command will be executed even if the pipeline execution was quit using the exit command or by an exception.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "do" : {
                 "type" : "string",
-                "description" : "The PE to execute."
+                "description" : "An optional PE to execute finally."
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
-            "required" : [ "do" ]
+            "required" : [ ]
           },
           "foreach" : {
             "type" : "object",
-            "description" : "Repeats the subsequent pipeline commands for each entry in a given list. By default the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end.",
+            "description" : "Repeats the subsequent pipeline commands for each entry in a given list. By default the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end. The current iteration item is placed in vars.loop.item.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -1540,10 +1540,10 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
-            "required" : [ "in" ]
+            "required" : [ ]
           },
           "header.set" : {
             "type" : "object",
@@ -1553,7 +1553,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1570,7 +1570,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1591,7 +1591,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1608,7 +1608,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1625,7 +1625,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1642,7 +1642,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "url" ]
@@ -1663,7 +1663,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "xpath" ]
@@ -1688,7 +1688,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -1725,7 +1725,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -1762,7 +1762,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -1799,7 +1799,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -1836,7 +1836,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -1865,7 +1865,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "refreshToken" ]
@@ -1886,7 +1886,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1903,7 +1903,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1936,7 +1936,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -1957,7 +1957,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -1982,7 +1982,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2011,7 +2011,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2040,7 +2040,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2061,7 +2061,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2096,7 +2096,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2127,7 +2127,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2166,7 +2166,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2205,7 +2205,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2222,7 +2222,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2247,7 +2247,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2276,7 +2276,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2311,7 +2311,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2332,7 +2332,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "username" ]
@@ -2363,7 +2363,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2384,7 +2384,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "refreshToken" ]
@@ -2409,7 +2409,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2438,7 +2438,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2487,7 +2487,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2508,7 +2508,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2533,7 +2533,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2572,7 +2572,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2603,7 +2603,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2642,7 +2642,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2671,7 +2671,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "true" ]
@@ -2692,7 +2692,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -2709,7 +2709,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2735,7 +2735,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "message" ]
@@ -2763,7 +2763,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2794,7 +2794,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2816,7 +2816,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2866,7 +2866,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2904,7 +2904,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -2956,7 +2956,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "to" ]
@@ -2985,7 +2985,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "email" ]
@@ -3003,7 +3003,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -3016,7 +3016,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3041,7 +3041,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "url", "message" ]
@@ -3076,7 +3076,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "command" ]
@@ -3099,7 +3099,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3120,7 +3120,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3187,7 +3187,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3208,7 +3208,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -3225,7 +3225,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3246,7 +3246,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3267,7 +3267,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -3288,7 +3288,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3309,7 +3309,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3339,7 +3339,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3372,7 +3372,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "name" ]
@@ -3393,7 +3393,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3418,7 +3418,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "name" ]
@@ -3439,7 +3439,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3460,7 +3460,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3493,7 +3493,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "name" ]
@@ -3518,7 +3518,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "name", "uri" ]
@@ -3539,7 +3539,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "to" ]
@@ -3556,7 +3556,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3578,7 +3578,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3599,7 +3599,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3620,7 +3620,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3645,7 +3645,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3670,7 +3670,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "to" ]
@@ -3691,7 +3691,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -3708,7 +3708,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -3764,7 +3764,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -3805,7 +3805,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3826,7 +3826,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3859,7 +3859,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key" ]
@@ -3888,7 +3888,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3909,7 +3909,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -3934,7 +3934,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -3947,7 +3947,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "id" ]
@@ -3964,7 +3964,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "value", "id" ]
@@ -3985,7 +3985,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4006,7 +4006,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "path" ]
@@ -4019,7 +4019,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -4036,7 +4036,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "url" ]
@@ -4053,7 +4053,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "xpath" ]
@@ -4066,7 +4066,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4096,7 +4096,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4113,7 +4113,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4134,7 +4134,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -4151,7 +4151,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -4173,7 +4173,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "value" ]
@@ -4198,7 +4198,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4232,7 +4232,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "key", "value" ]
@@ -4265,7 +4265,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -4306,7 +4306,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -4348,7 +4348,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -4389,7 +4389,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -4434,7 +4434,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -4476,7 +4476,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "credentials" : {
                 "type" : "string",
@@ -4505,7 +4505,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "url", "text" ]
@@ -4542,7 +4542,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4559,7 +4559,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4585,7 +4585,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4624,7 +4624,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "input" : {
                 "type" : "string",
@@ -4653,7 +4653,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4670,7 +4670,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4691,7 +4691,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4712,7 +4712,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4733,7 +4733,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4758,7 +4758,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4784,7 +4784,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4813,7 +4813,7 @@
             "properties" : {
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4843,7 +4843,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]
@@ -4860,7 +4860,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "uuid" ]
@@ -4877,7 +4877,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4906,7 +4906,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4927,7 +4927,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "uuid" ]
@@ -4948,7 +4948,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4977,7 +4977,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -4998,7 +4998,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5027,7 +5027,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5048,7 +5048,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5086,7 +5086,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5135,7 +5135,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "workflowModel" ]
@@ -5156,7 +5156,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
@@ -5181,7 +5181,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
@@ -5198,7 +5198,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5231,7 +5231,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5264,7 +5264,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5301,7 +5301,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5326,7 +5326,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5359,7 +5359,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5385,7 +5385,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ "name" ]
@@ -5402,7 +5402,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
@@ -5427,7 +5427,7 @@
               },
               "id" : {
                 "type" : "string",
-                "description" : "The id of this command, unique within the pipeline."
+                "description" : "The optional id of this command, unique within the pipeline."
               },
               "output" : {
                 "type" : "string",
