@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 10/12/2021 by CommandComplianceTest -->
+<!-- Generated: 23/12/2021 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -238,7 +238,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## barcode.read
 ----------   
-Reads a barcode from a dynamic PNG format. Detects the barcode type automatically. By default returns the text extracted from the barcode in the body.
+Reads a barcode from a dynamic PNG format. Expects the barcode image as content object in the body. Detects the barcode type automatically. By default returns the text extracted from the barcode in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=barcode.read)
 
@@ -6594,7 +6594,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## script.run
 ----------   
-Executes a given script at server side and returns the output of the script in the output. Note: The script must define a function called command(). Optionally, the function argument pi can be used to access the current message (pi.message) or the logger (pi.log).
+Executes a given script at server side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, you cannot change it in the script.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=script.run)
 
@@ -6607,6 +6607,7 @@ Name | Type | Required | Default | Description
 `script` | String | false | null | The script to be executed.
 `path` | String | false | null | The path to the script to be loaded Currently only the protocol property: is supported which points to a property in the property store and loads its value as script.
 `language` | String | false | js | The script language to be used. Possible values: js, groovy.
+`if` | String | false | true | A PE which must evaluate to true in order to execute this command.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -6618,6 +6619,7 @@ pipeline:
       script: <value>  
       path: <value>  
       language: <value>  
+      if: <value>  
       id: <value>  
       output: <value>  
 ```  
@@ -6625,12 +6627,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<value>&if=<value>&id=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command script.run script=<value> path=<value> language=<value> id=<value> output=<value>  
+pi command script.run script=<value> path=<value> language=<value> if=<value> id=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

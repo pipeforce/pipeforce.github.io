@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 10/12/2021 14:46:01 by CommandComplianceTest -->
+<!-- Generated: 23/12/2021 07:37:31 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -241,6 +241,23 @@ object | ``object`` | The object to convert to a map structure.
 @convert.toMap(object)  
 ```  
 
+### toMapOrList(o)   
+Converts the given object to a map or list structure depending on which is more appropriate.   
+
+#### Returns  
+``object`` - The converted map or list structure or null in case input was null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+o | ``object`` | The object to convert to a map or list structure. 
+
+
+#### Example  
+```  
+@convert.toMapOrList(o)  
+```  
+
 ### lazy(uri)   
 Converts all supported uri variants to LazyUriMap   
 
@@ -456,7 +473,7 @@ value | ``object`` | The value to count for size.
 @data.size(value)  
 ```  
 
-### empty(data)   
+### isEmpty(data)   
 Checks if given data structure is null or empty.
 For example:
 <ul>
@@ -477,7 +494,25 @@ data | ``object`` | The data structure to check.
 
 #### Example  
 ```  
-@data.empty(data)  
+@data.isEmpty(data)  
+```  
+
+### has(data,attribute)   
+Checks whether given data object has an attribute, member or getter with given name.   
+
+#### Returns  
+``boolean`` - true in case the data object has given attribute.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data object to scan for attribute. 
+attribute | ``string`` | The attribute name to search for. 
+
+
+#### Example  
+```  
+@data.has(data,attribute)  
 ```  
 
  
@@ -497,6 +532,19 @@ Returns the current time at server side formatted using the preferred zone and l
 #### Example  
 ```  
 @date.now()  
+```  
+
+### nowIso8601()   
+Returns the current time at server side formatted using the ISO8601 time format.   
+
+#### Returns  
+``string`` - Current date and time formatted as ISO8601. For example: <code>2021-05-30T17:30:00+02:00</code>  
+
+
+
+#### Example  
+```  
+@date.nowIso8601()  
 ```  
 
 ### now(format)   
@@ -904,6 +952,25 @@ source | ``object`` | The JSON source to load.
 @json.load(source)  
 ```  
 
+### path(json,query)   
+Applies a given JsonPath query to the given json object and returns the result.
+Learn more about the JsonPath syntax: https://goessner.net/articles/JsonPath/   
+
+#### Returns  
+``object`` - The result from the JsonPath query.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+json | ``object`` | The JSON object to apply the query to. 
+query | ``string`` | The query to be applied. 
+
+
+#### Example  
+```  
+@json.path(json,query)  
+```  
+
  
 ##  @list 
 ----------  
@@ -964,7 +1031,7 @@ list | ``object`` | The list.
 
 ### empty(list)   
 Checks if given list is null or empty.
-DEPRECATED. Use ``@data.empty(...)`` instead.   
+DEPRECATED. Use ``@data.isEmpty(...)`` instead.   
 
 #### Returns  
 ``boolean`` - true in case the given list is null or empty.  
@@ -1471,8 +1538,7 @@ collection | ``object`` | The collection of items.
 ```  
 
 ### commajoin(collection)   
-Same as &lbrace;@link #concat(String, Object)&rbrace; but with comma as default separator.
-Docs: Not added to official docs for now. Not sure about its naming.   
+Same as &lbrace;@link #concat(String, Object)&rbrace; but with comma as default separator.   
 
 #### Returns  
 ``string`` - The comma separated string of concatenated items.  
@@ -1491,7 +1557,7 @@ collection | ``object`` | The collection of items to concatenate.
 ### concatAndFormat(separator,collection,pel)   
 Similar to &lbrace;@link #concat(String, Object...)&rbrace; but additionally applies the given PEL expression on
 each list entry before it gets concatenated. This is useful for example to convert each entry in
-the list before adding it to the resulting string.   
+the list before adding it to the resulting string. For example to remove whitespaces on each entry.   
 
 #### Returns  
 ``string`` - The concatenated string.  
@@ -1510,7 +1576,7 @@ pel | ``string`` | The pipeline expression without wrapping #{ and }
 ```  
 
 ### startsWith(text,prefix)   
-Tests string for prefix.   
+Tests the given text whether it starts with given prefix.   
 
 #### Returns  
 ``boolean`` - true if given text starts with the second parameter provided  
@@ -1555,9 +1621,10 @@ You can access the functions declared here in the PEL using <code>@uri</code>
 ### resolve(uri)   
 Resolves the given uri to its object representation. Supported uri schemes:
 <ul>
-    <li><code>uri:user:</code> Resolves to an user object.</li>
-    <li><code>uri:pipeline:</code> Resolves the given pipeline uri and returns the result as object.</li>
-    <li><code>uri:property:</code> Resolves the given property and returns it as object.</li>
+    <li><code>uri:user:</code>Resolves to an user object.</li>
+    <li><code>uri:pipeline:</code>Resolves the given path, pointing to a persisted pipeline, executes it
+    and returns the body result.</li>
+    <li><code>uri:property:</code> Resolves the given property key path and returns it from the storage.</li>
 </ul>   
 
 #### Returns  
@@ -1784,6 +1851,48 @@ See &lbrace;@link ZoneId#getAvailableZoneIds()&rbrace; and here: http://www.iana
 #### Example  
 ```  
 @user.zone()  
+```  
+
+ 
+##  @xml 
+----------  
+Provides addon functions inside a pipeline expression in order to read and change XML documents.
+You can access the functions declared here in the PEL using <code>@xml</code>  
+
+### xpath(document,xpath)   
+Evaluates given XPath expression of given document and returns the result as a list of DOM nodes.   
+
+#### Returns  
+``list`` - The result of the applied expression as a list of DOM nodes.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+document | ``object`` | The document to be applied. Can be a DOM or an XML string. 
+xpath | ``string`` | The expression to be applied. 
+
+
+#### Example  
+```  
+@xml.xpath(document,xpath)  
+```  
+
+### xpathAsText(document,xpath)   
+Evaluates given XPath expression of given document and returns the result as a text value.   
+
+#### Returns  
+``string`` - The result of the applied expression as text.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+document | ``object`` | The document to be applied. Can be a DOM or an XML string. 
+xpath | ``string`` | The expression to be applied. 
+
+
+#### Example  
+```  
+@xml.xpathAsText(document,xpath)  
 ```  
 
  
