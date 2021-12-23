@@ -2,7 +2,7 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-You can find the official documentation here: https://docusaurus.io/docs/docs-introduction
+You can find the official Docusaurus documentation here: https://docusaurus.io/docs/docs-introduction
 
 ## Prerequisites
 Before you can start with working on the documentation pages locally, make sure you have downloaded and installed these tools first:
@@ -46,3 +46,76 @@ When you are ready, commit + push your changes into the master branch.
 The build will start automatically.
 
 After a while you should see your latest changes deployed to: https://pipeforce.github.io.
+
+
+# Markdown (MD)
+
+It's important that you know what Markdown (MD) is. If not, please read this first: https://en.wikipedia.org/wiki/Markdown
+
+## Embedd external links
+
+In order to embedd links into your MD file to external sites, you can place the url directly in it and it will be rendered to a link:
+
+```
+http://www.google.com
+```
+This will be rendered to: http://google.de
+
+Or you add a name to it:
+
+```
+[GOOGLE](http://www.google.com)
+```
+This will be rendered to: [GOOGLE](http://www.google.com) 
+
+## Refer to other documentation pages
+
+In case you'd like to refer to other pages of the documentation, you can also use the link syntax. For example:
+
+```
+[Property Store](../guides/propertystore)
+```
+
+Note:
+ - The path to the target page must be relative to the current directory.
+ - The path may not contain a ordering prefix like ``10_`` for example, nor the ``.md`` suffix.
+
+
+## Embedd an image
+
+In order to embedd images to MD files, you need to follow these steps:
+
+  1. Put the image file into the folder ``docs/img``.
+  2. Embedd the image inside the MD file using this syntax: ``![](../img/name-of-your-image.png)``
+
+In order to create screenshots on Mac use Shift + CMD + 4 and use the built-in image viewer to prepare or optionally the tool [Skitch](https://apps.apple.com/de/app/skitch/id425955336).
+
+On Windows you can use the free tool [Greenshot](https://getgreenshot.org/downloads/) to create and edit screenshots.
+
+## Embedd a note, info or warning section
+
+These are called *Admonitions*. See here: https://docusaurus.io/docs/markdown-features/admonitions
+
+## Headings
+
+Headings start always with ``#``. Add another ``#`` for each heading level:
+
+```
+# Heading Level 1
+## Heading Level 2
+### Heading Level 3
+#### Heading Level 4
+```
+
+By default the level 1 heading is also used as named for the link in the sidebar menu.
+
+You should *not add more* than 4 heading levels.
+
+For more information about headings see here:
+https://docusaurus.io/docs/markdown-features/headings
+
+
+
+
+
+
