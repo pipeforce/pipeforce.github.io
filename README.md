@@ -96,6 +96,29 @@ On Windows you can use the free tool [Greenshot](https://getgreenshot.org/downlo
 
 These are called *Admonitions*. See here: https://docusaurus.io/docs/markdown-features/admonitions
 
+## Embedd a table
+
+In order to create a table inside your MD file, use this syntax:
+
+```
+Header 1 | Header 2 | Header 2
+--- | --- | ---
+Content1 | Content 2 | Content 3
+```
+This will be rendered to:
+Header 1 | Header 2 | Header 2
+--- | --- | ---
+Content 1 | Content 2 | Content 3
+
+## Embedd source code
+
+In order to embedd source code inside your MD file, use this syntax:
+
+```json
+{"foo": "bar"}
+```
+
+
 ## Headings
 
 Headings start always with ``#``. Add another ``#`` for each heading level:
@@ -110,6 +133,7 @@ Headings start always with ``#``. Add another ``#`` for each heading level:
 By default the level 1 heading is also used as named for the link in the sidebar menu.
 
 You should *not add more* than 4 heading levels.
+
 
 For more information about headings see here:
 https://docusaurus.io/docs/markdown-features/headings
