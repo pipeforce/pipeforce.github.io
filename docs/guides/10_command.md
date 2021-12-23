@@ -20,7 +20,7 @@ The concept of PIPEFORCE commands is in its base a combination of the [command p
 Each command has a unique name which is always written in lower case and follows the dot notation. Here is an example of such a command name:
 
 ```bash
-mail.send
+mail.send   
 ```
 
 ## Command Parameters
