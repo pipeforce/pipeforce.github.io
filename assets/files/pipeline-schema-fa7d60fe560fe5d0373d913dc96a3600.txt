@@ -203,7 +203,7 @@
           },
           "barcode.read" : {
             "type" : "object",
-            "description" : "Reads a barcode from a dynamic PNG format. Detects the barcode type automatically. By default returns the text extracted from the barcode in the body.",
+            "description" : "Reads a barcode from a dynamic PNG format. Expects the barcode image as content object in the body. Detects the barcode type automatically. By default returns the text extracted from the barcode in the body.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -4077,7 +4077,7 @@
           },
           "script.run" : {
             "type" : "object",
-            "description" : "Executes a given script at server side and returns the output of the script in the output. Note: The script must define a function called command(). Optionally, the function argument pi can be used to access the current message (pi.message) or the logger (pi.log).",
+            "description" : "Executes a given script at server side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, you cannot change it in the script.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -4093,6 +4093,11 @@
                 "type" : "string",
                 "description" : "The script language to be used. Possible values: js, groovy.",
                 "default" : "js"
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "A PE which must evaluate to true in order to execute this command.",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
