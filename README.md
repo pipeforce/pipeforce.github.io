@@ -114,9 +114,11 @@ Content 1 | Content 2 | Content 3
 
 In order to embedd source code inside your MD file, use this syntax:
 
+````
 ```json
 {"foo": "bar"}
 ```
+````
 
 
 ## Headings
