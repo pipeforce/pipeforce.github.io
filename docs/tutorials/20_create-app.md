@@ -33,7 +33,7 @@ The easiest way to create a new app is by using the online workbench. To do so, 
     
 4.  The new property view opens:
     
-    1.  For property key, use the value `global/app/MY_APP/config/app`. Replace `MY_APP` with the name of the app you would like to create, e.g. `myapp24`. **Do use only lower case letters and don’t use special characters or spaces!**
+    1.  As a property key, use the value `global/app/MY_APP/config/app`. Replace `MY_APP` with the name of the app you would like to create, e.g. `myapp24`. **Do use only lower case letters and don’t use special characters or spaces!**
         
     2.  As mime type, select `application/json`.
         
