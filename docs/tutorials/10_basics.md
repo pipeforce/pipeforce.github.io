@@ -24,7 +24,7 @@ The PIPEFORCE platform is built with Kubernetes as its base framework. On this p
 *   And more…
     
 
-With these built-in services you can start very quickly to build your own business / data pipeline apps. It is also possible to add additional services via (Docker) containers if required.
+With these built-in services you can start very quickly to build your own business/data pipeline apps. It is also possible to add additional services via (Docker) containers if required.
 
 ![](../img/image-20210225-132457.png)
 
@@ -64,22 +64,20 @@ You can learn more about workflows here: [Workflows](../guides/workflows/basics)
 
 ## 7 - Low Code Workbench
 
-The workbench is an online section where you can create forms, lists, data mappings, workflows and many more. Everything without deep development, just low code or no code.
-
-You can learn more about the low code workbench here: [Low-Code Workspace](../guides/low-code)
+The workbench is an online section where you can create forms, lists, data mappings, workflows, and many more. Everything can be done without deep development i.e. just low code or no code.
 
 ## 8 - Command Line Interface (CLI)
 
-The command line interface is a little command line tool which can be used to automate tasks from your local command line and to manage a workspace. This is recommended only for advanced users. If you’re new to PIPEFORCE, consider to start with the online workbench first.
+The command line interface is a little command line tool, which can be used to automate tasks from your local command line and to manage a workspace. However, this is recommended only for advanced users. If you’re new to PIPEFORCE, consider starting with the online workbench first.
 
 You can learn more about the CLI here: [Command Line Interface (CLI)](../api/cli)
 
 ## 9 - Property Store
 
-This is a key-value, distributed database which stores all resources related to a business process app. Whenever you submit form data, store configurations for apps, want to temporarily cache data or need just a persistent storage, the property store is ready for you.
+This is a key-value distributed database, which stores all resources related to a business app. Whenever you submit form data, store configurations for apps, want to temporarily cache data, or need just a persistent storage, the property store is here for you.
 
 You can learn more about the property store here: [Property Store](../guides/propertystore)
 
 ## 10 - Pipeline Engineer / The Low Coder
 
-And last but not least the most important part: It’s **you**, the pipeline engineer (or: “Low Coder”). Every user who develops business applications based on PIPEFORCE we call a pipeline engineer. A pipeline engineer mainly uses low-code and the low-code workbench for most rapid implementation cycles. In some rarely cases he can also program additional features.
+And last but not least, the most important part: It’s **you**, the pipeline engineer (or “Low Coder”). Every user who develops business applications based on PIPEFORCE, we call a pipeline engineer. A pipeline engineer mainly uses low-code and the low-code workbench for most rapid implementation cycles. In some rare cases, he can also program/develop additional features.
