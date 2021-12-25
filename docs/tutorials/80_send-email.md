@@ -15,7 +15,7 @@
 
 ## Intro
 
-In this tutorial you will learn, how you can send emails from a pipeline with and without attachments.
+In this tutorial, you will learn how you can send emails from a pipeline, with and without attachments.
 
 ## 1 - Create the pipeline and send simple email
 
@@ -29,15 +29,15 @@ In this tutorial you will learn, how you can send emails from a pipeline with an
     
 5.  The new property view opens:
     
-    1.  As property key use: `global/app/YOUR_APP/pipeline/send-email`
+    1.  As property key, use: `global/app/YOUR_APP/pipeline/send-email`
         
-    2.  As mime type use: `application/yaml; type=pipeline`
+    2.  As mime type, use: `application/yaml; type=pipeline`
         
 6.  Click `SAVE`
     
-7.  The new property has been created and the content editor was opened for you.
+7.  The new property has been created, and the content editor was opened for you.
     
-8.  Now copy and paste this content into the editor and overwrite any existing data there by this:
+8.  Now copy and paste this content into the editor, and overwrite any existing data there by this:
     
     ```yaml
     pipeline:
@@ -57,7 +57,7 @@ In this tutorial you will learn, how you can send emails from a pipeline with an
 
 ## 2 - Extra: Add attachments
 
-In this step you will learn how to add attachments to such an email pipeline. For this, we will upload a PDF document to drive first, which will be used as attachment.
+In this step, you will learn how to add attachments to such an email pipeline. For this, we will upload a PDF document to drive first, which will be used as an attachment.
 
 1.  Login to the portal https://**NAMESPACE**.pipeforce.net
     
@@ -78,18 +78,18 @@ In this step you will learn how to add attachments to such an email pipeline. Fo
           attachments: "#{body}"
     ```
     
-5.  As you can see, we added the command `drive.read` to read the PDF from drive into the body of the pipeline (which happens automatically for you). Additionally we added the parameter `attachments` to the `mail.send` command. As value the PEL expression `#{body}` is used. This expression points to the body of the current pipeline where the PDF document was loaded to. You can add multiple attachments by adding them separated by a comma. You can also point to resources inside the property store by using the uri format `uri:property:path/to/resource`.
+5.  As you can see, we added the command `drive.read` to read the PDF from drive into the body of the pipeline (which happens automatically for you). Additionally, we added the parameter `attachments` to the `mail.send` command. As value, the PEL expression `#{body}` is used. This expression points to the body of the current pipeline where the PDF document was loaded to. You can add multiple attachments by adding them separated by a comma. You can also point to resources inside the property store by using the uri format `uri:property:path/to/resource`.
     
-6.  Click SAVE and RUN.
+6.  Click `SAVE` and then `RUN`.
     
-7.  After a while you should receive again an email, but this time now with the PDF as attachment
+7.  After a while, you should receive again an email, but this time with the PDF as an attachment
     
 8.  Done.
     
 
 ## 3 - Extra: Set from + dynamic text in emails
 
-Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPEFORCE to do so is by using the [Pipeline Expression Language (PEL)](../guides/pel). In this step we will simply add the currently logged-in user as the from email field so that the recipient can easily reply to you and the current date and time in the email text using PEL:
+Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPEFORCE to do so, is by using the [Pipeline Expression Language (PEL)](../api/pel). In this step, we will simply add the currently logged-in user as the from email field, so that the recipient can easily reply to you with the current date and time in the email text using PEL:
 
 1.  Change your pipeline send-email to this:
     
@@ -108,13 +108,13 @@ Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPE
     
 2.  As you can see, we did several changes in the pipeline:
     
-    1.  We added the parameter `replyTo: "#{@user.email()}"` those value will be replaced by the email address of the currently logged-in user so the recipient can simply press the reply button in order to reply to this email.
+    1.  We added the parameter `replyTo: "#{@user.email()}"`. Its value will be replaced by the email address of the currently logged-in user, so the recipient can simply press the reply button to reply to this email.
         
-    2.  We added the parameter `fromName: "#{@user.displayName()}"` those value will be replaced by the display name of the currently logged in user.
+    2.  We added the parameter `fromName: "#{@user.displayName()}"`. Its value will be replaced by the display name of the currently logged in user.
         
-    3.  Finally we added the PEL expression `#{@date.now('dd.MM.YY, HH:mm')}` to the email message in order to display the current date and time dynamically inside the email.
+    3.  Finally, we added the PEL expression `#{@date.now('dd.MM.YY, HH:mm')}` to the email message, in order to display the current date and time dynamically inside the email.
         
-3.  Click `SAVE` and `RUN`.
+3.  Click `SAVE` and then `RUN`.
     
 4.  After a while you should receive an email similar to this:  
     
@@ -123,7 +123,7 @@ Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPE
     
 
 :::tip Auto-completion in online editor 
-In order to get auto-completion for available PEL utils in the online editor, simply start typing in the parameter value fields `#{@` and then press Ctrl + Space. Then you should be presented with the list and short description of all available PEL utils. After you have selected a util, type a period `.` + Ctrl + Space and you will be presented with all available methods of this util.
+In order to get auto-completion for available PEL utils in the online editor, simply start typing in the parameter value fields `#{@` and then press Ctrl + Space. Then, you should be presented with the list and short description of all available PEL utils. After you have selected a util, type a period `.` + Ctrl + Space, and you will be presented with all available methods of this util.
 :::
 
 References:
