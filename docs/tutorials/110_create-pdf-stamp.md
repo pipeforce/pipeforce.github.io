@@ -15,7 +15,7 @@
 
 ## Intro
 
-In this tutorial you will learn, how you could put text stamps on PDF files. With this you can for example put incoming date stamps or watermarks on PDFs.
+In this tutorial, you will learn how you can put text stamps on PDF files. With this, you can put incoming date stamps or watermarks on PDFs.
 
 ## 1 - Provide the invoice PDF
 
@@ -35,7 +35,7 @@ If you don’t have a sample invoice PDF at hand, you can use this one:
 
 ## 2 - Create the stamp pipeline
 
-In the next step you will create a pipeline which loads the PDF, puts a stamp on it and saves the stamped PDF back to drive:
+In the next step, you will create a pipeline which loads the PDF, puts a stamp on it, and saves the stamped PDF back to drive:
 
 1.  Login to the portal https://**NAMESPACE**.pipeforce.net
     
@@ -47,15 +47,15 @@ In the next step you will create a pipeline which loads the PDF, puts a stamp on
     
 5.  The new property view opens:
     
-    1.  As property key use: `global/app/YOUR_APP/pipeline/pdf-stamp`
+    1.  As property key, use: `global/app/YOUR_APP/pipeline/pdf-stamp`
         
-    2.  As mime type use: `application/yaml; type=pipeline`
+    2.  As mime type, use: `application/yaml; type=pipeline`
         
 6.  Click `SAVE`
     
-7.  The new property has been created and the content editor was opened for you.
+7.  The new property has been created, and the content editor was opened for you.
     
-8.  Now copy and paste this content into the editor and overwrite any existing data there by this:
+8.  Now copy and paste this content into the editor, and overwrite any existing data there by this:
     
     ```yaml
     pipeline:
@@ -71,9 +71,9 @@ In the next step you will create a pipeline which loads the PDF, puts a stamp on
     
     1.  Load the PDF document from drive using the command `drive.read`.
         
-    2.  Put a PDF stamp on this loaded invoice using the `pdf.stamp` command. Additionally we use the `@date` PEL util here to return the current date and time.
+    2.  Put a PDF stamp on this loaded invoice using the `pdf.stamp` command. Additionally, we use the `@date` PEL util here to return the current date and time.
         
-    3.  Store the stamped PDF document back to drive under new name `invoice-received.pdf` using the command `drive.save`.
+    3.  Store the stamped PDF document back to drive under a new name `invoice-received.pdf` using the command `drive.save`.
         
 10.  Click `SAVE` and then `RUN` to execute the pipeline.
     
@@ -88,7 +88,7 @@ In the next step you will create a pipeline which loads the PDF, puts a stamp on
 
 ## 3 - Extra: Send PDF inline via email
 
-A very often use case is, to put a stamp to a PDF and then send it via email to one or more recipients. Because of this, we will show you here how to do so with the stamped PDF in the same pipeline:
+A very often use case is, to put a stamp to a PDF, and then send it via email to one or more recipients. Because of this, we will show you here how to do so with the stamped PDF in the same pipeline:
 
 1.  Open your pipeline `pdf-stamp` and change it to this:  
     
@@ -112,12 +112,12 @@ A very often use case is, to put a stamp to a PDF and then send it via email to 
     
     1.  We added the parameter `cleanupBody: false` to `drive.save`. This keeps the final PDF in the body for use of the next command.
         
-    2.  We added `mail.send` as next command which will take the PDF from the body as attachment and send it via email to the given recipient. Note the `#{body}` expression in the attachment parameter which points to the body of the pipeline where the PDF resides temporarily.
+    2.  We added `mail.send` as next command, which will take the PDF from the body as an attachment and send it via email to the given recipient. Note the `#{body}` expression in the attachment parameter, which points to the body of the pipeline where the PDF resides temporarily.
         
 3.  Replace `you@domain.tld` by your real email address.
     
-4.  Click `SAVE` and `RUN`.
+4.  Click `SAVE` and then `RUN`.
     
-5.  After a while you should receive an email with the stamped PDF as attachment.
+5.  After a while, you should receive an email with the stamped PDF as an attachment.
     
 6.  Done.
