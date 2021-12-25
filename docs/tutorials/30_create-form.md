@@ -127,7 +127,7 @@ Now we are going to change the layout of your form a bit. To do so, we add a cus
 5.  Here you can see the changed layout: `firstName` and `lastName` is now in the same line (horizontal) and all other fields are in separate lines (vertical):  
     
     ![](../img/grafik-20210720-140139.png)
-6.  You can learn more about form layouts and orientation in PIPEFORCE here: [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1010991217](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1010991217), and if you would like to change color or designs of the form fields, have a look here: [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1011089441](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1011089441). More details about the adaptation of the form schema, you will find here: [https://logabit.atlassian.net/l/c/7NdsFNrA](https://logabit.atlassian.net/l/c/7NdsFNrA)
+6.  You can learn more about form layouts and orientation in PIPEFORCE here: [Form - Orientation](../guides/forms/forms-orientation), and if you would like to change color or designs of the form fields, have a look here: [Form - lookandfeel](../guides/forms/forms-lookandfeel)(https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/1011089441).
     
 7.  Try out your form, and add some new person datasets. In the next tutorial you will learn how to display them in a list.
     

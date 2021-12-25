@@ -503,7 +503,7 @@ Currently, the Reviewer can see the inputs (`vacation start date` and `vacation 
 3.  Add a new form field; Use the ID `requester` and Label `Requester`.
     
 4.  Adapt type of `vacationStartDate` and `vacationEndDate` to `string`.
-    
+
 5.  Click `SAVE`.
     
 
@@ -515,4 +515,4 @@ The new task form of the Reviewer should now look like this:
 
 ![](../img/Bildschirmfoto.png)
 
-If you now start the workflow new, you are able to see this additional information (requester email) in the task form of the Reviewer.
+If you now start the workflow, you are able to see this additional information (requester email) in the task form of the Reviewer.
