@@ -17,11 +17,11 @@
 
 ## Intro
 
-As you should already know, a pipeline in PIPEFORCE is an easy to learn **low code script** which can do many different things for you. One very important thing is the mapping, conversion and normalization of (JSON) data.
+As you should already know, a pipeline in PIPEFORCE is an easy to learn **low code script**, which can do many different things for you. One very important thing is the mapping, conversion and normalization of (JSON) data.
 
-Lets assume this example: You got an customer data set from the sales system and you need to make sure, that this data set perfectly fits into the structure of the ERP system. For this, you need some way of converting the source data from the CRM system to the target format of the ERP system. To do so, you can use the data mapping power of a pipeline.
+Lets assume this example: You got a customer dataset from the sales system, and you need to make sure, that this data set perfectly fits into the structure of the ERP system. For this, you need some way of converting the source data from the CRM system to target format of the ERP system. To do so, you can use the data mapping power of a pipeline.
 
-Lets assume the customer data set from the CRM system looks like this:
+Lets assume the customer dataset from the CRM system looks like this:
 
 ```json
 {
@@ -31,7 +31,7 @@ Lets assume the customer data set from the CRM system looks like this:
 }
 ```
 
-And we want to convert this input data set into an output format for the ERP system which expects the customer data set to have a structure like this:
+And we want to convert this input dataset into an output format for the ERP system, which expects the customer dataset to have a structure like this:
 
 ```json
 {
@@ -45,18 +45,18 @@ And we want to convert this input data set into an output format for the ERP sys
 }
 ```
 
-As you can see, we have to do some steps to transform from the source to the target format:
+As you can see, we have to do some steps to transform from the source to target format:
 
 *   We have to nest every customer data inside the `customer` field.
     
 *   We have to combine the first and last name into the single `name` field.
     
-*   The target system expects the additional field `isLegalAge` which doesn’t exist in the source system. The value of this field must be set to `true` in case the age of the customer is > 18, otherwise it must be set to `false`.
+*   The target system expects the additional field `isLegalAge`, which doesn’t exist in the source system. The value of this field must be set to `true` in case age of the customer is > 18, otherwise it must be set to `false`.
     
-*   Finally, let's assume the target system expects a new field `mappingDate` which contains the date of mapping and `mappedBy` to contain the username of the user who did the mapping just for compliance reasons.
+*   Finally, let's assume the target system expects a new field `mappingDate`, which contains the date of mapping, and `mappedBy` to contain the username of the user who did the mapping, just for compliance reasons.
     
 
-Let's see in this tutorial how to implement this conversion task by using a pipeline script and the **[Pipeline Expression Language (PEL)](pipeline-expression-language)** .
+Let's see in this tutorial, how to implement this conversion task by using a pipeline script and the **[Pipeline Expression Language (PEL)](pipeline-expression-language)** .
 
 
 ## 1 - Create a new data mapping pipeline
@@ -72,15 +72,15 @@ Let's see in this tutorial how to implement this conversion task by using a pipe
     
 5.  The new property view opens:
     
-    1.  As property key use: `global/app/YOUR_APP/pipeline/data-mapping`
+    1.  As property key, use: `global/app/YOUR_APP/pipeline/data-mapping`
         
-    2.  As mime type use: `application/yaml; type=pipeline`
+    2.  As mime type, use: `application/yaml; type=pipeline`
         
 6.  Click SAVE
     
 7.  The new property has been created and the content editor was opened for you.
     
-8.  Now copy and paste this content into the editor and overwrite any existing data there by this:
+8.  Now copy and paste this content into the editor, and overwrite any existing data there by this:
     
     ```yaml title="global/app/YOUR_APP/pipeline/data-mapping"
     pipeline:
@@ -100,19 +100,19 @@ Let's see in this tutorial how to implement this conversion task by using a pipe
             @user.username()            -> mappedBy
     ```
     
-9.  In this snippet we created a very simple data mapping configuration:
+9.  In this snippet, we created a very simple data mapping configuration:
     
-    1.  We used the `data.mapping` command which allows to map from one structure to another.
+    1.  We used the `data.mapping` command, which allows to map from one structure to another.
         
-    2.  The `input` parameter defines the source data as a static JSON string in this example. Beside a static string, this value could also be a [pipeline expression (PEL)](../guides/pel) pointing to some dynamic data in the `vars` section or by calling external services. In this example we want to focus on the data mapping and keep the rest simple. If the parameter `input` would not be specified, the current value from the body would be expected as input. Note the handy pipe symbol `|` here which is specific to the YAML syntax and allows a multi-line value without additional annotations, ticks or quotes.
+    2.  The `input` parameter defines the source data as a static JSON string in this example. Besides a static string, this value could also be a [pipeline expression (PEL)](../guides/pel) pointing to some dynamic data in the `vars` section or external services. In this example, we want to focus on the data mapping, and keep the rest simple. If the parameter `input` is not specified, the current value from the body would be expected as input. Note the handy pipe symbol `|` here, which is specific to the YAML syntax and allows a multi-line value without additional annotations, ticks or quotes.
         
-    3.  The `rules` parameter (or `mappingRules` in versions < 8.0) defines the mapping rules which will read from the input data and write to the output data. You can define as many mapping rules as you want. Each mapping rule ends with a comma and a line break at the very end. They will be applied from top to down on. The input expression is defined at the left hand side and selects + prepares the input data for the mapping. At the right hand side the output expression is defined. It specifies the location where to write the data in the output structure. Both expressions are separated by an arrow `->` . Each side can use the [pipeline expression language (PEL)](../guides/pel) and therefore the full power of this language. Its not necessary to wrap a pipeline expression inside `#{` and `}`. So the format on each line should look like this:
+    3.  The `rules` parameter (or `mappingRules` in versions < 8.0) defines the mapping rules, which will read from the input data and write to the output data. You can define as many mapping rules as you want. Each mapping rule ends with a comma and a line break at the very end. They will be applied from top to down. The input expression is defined at the left hand side, and selecting + prepares the input data for the mapping. At the right hand side, the output expression is defined. It specifies the location where to write the data in the output structure. Both expressions are separated by an arrow `->` . Each side can use the [pipeline expression language (PEL)](../guides/pel), and therefore, the full power of this language. It's not necessary to wrap a pipeline expression inside `#{` and `}`. So the format on each line should look like this:
         
         ```
         inputExpression -> outputExpression,
         ```
         
-    4.  As a first rule we simply concat (= combine) the first and last name separated by a space from input and write the result into the output to the location `customer.name`:
+    4.  As a first rule, we simply concat (= combine) the first and last name separated by a space from input and write the result into the output to the location `customer.name`:
         
         ```
         firstName + ' ' + lastName  -> customer.name,
@@ -124,25 +124,25 @@ Let's see in this tutorial how to implement this conversion task by using a pipe
         age                         -> customer.age,
         ```
         
-    6.  The third rule is an expression which detects whether the age field on the input contains a value >= 18 and writes the result to the output at the location `customer.isLegalAge`:
+    6.  The third rule is an expression, which detects whether the age field on the input contains a value >= 18. Then, it writes the result to the output at the location `customer.isLegalAge`:
         
         ```
         age >= 18                   -> customer.isLegalAge,
         ```
         
-    7.  The fourth rule executes the pipeline util [`@date`](../api/utils#@date) in order to return the current date and writes this value to the new field `mappingDate` at top level of the output:
+    7.  The fourth rule executes the pipeline util [`@date`](../api/utils#@date), in order to return the current date. Then, it writes this value to the new field `mappingDate` at top level of the output:
         
         ```
         @date.now()                 -> mappingDate,
         ```
         
-    8.  The last rule is similar to the previous one and calls the pipeline util [`@user`](../api/utils#@user) in order to return the username of the currently logged-in user and writes the result to the new field `mappedBy` at the top level of the output:
+    8.  The last rule is similar to the previous one and calls the pipeline util [`@user`](../api/utils#@user), in order to return the username of the currently logged-in user. Then, it writes the result to the new field `mappedBy` at the top level of the output:
         
         ```
         @user.username()            -> mappedBy
         ```
         
-    9.  Not mentioned here because it is optional: The `output` parameter for the command `data.mapping`. Its value must be a [pipeline expression language (PEL)](../guides/pel) which points to the location (or a sub-path) to write the mapping result to (for example a variable inside the `vars` scope). If not specified, it will be written to the body by default. This is the case for our example.
+    9.  Not mentioned here because it is optional: The `output` parameter for the command `data.mapping`. Its value must be a [pipeline expression language (PEL)](../guides/pel), which points to the location (or a sub-path) to write the mapping result to (for example a variable inside the `vars` scope). If not specified, it will be written to the body by default. That is the case for our example.
         
 10.  Click SAVE to save the pipeline.
     
