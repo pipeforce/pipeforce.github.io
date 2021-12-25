@@ -18,13 +18,13 @@ Each property contains attributes. The most important ones are:
 
 | Attribute     | Description 
 | ---           | ---         
-| `uuid`        | A unqiue identificator of the property. Differently to the key, once created this **will never change**.  |  
-| `key`         | The unique key of the property. This value can change over time. For example if a property was moved to another virtual location.
+| `uuid`        | A unqiue identificator of the property. Different to the key, once created, this **will never change**.  |  
+| `key`         | The unique key of the property. This value can change over time, for example, if a property was moved to another virtual location.
 | `value`       | This attribute contains the payload of the property.
 | `type`        | This attribute contains the mime type of the value. If this attribute is ```null```, it is expected that the mime type of the value is of the default type: `text/plain`.
 | `reated`      | A unix epoch timestamp in millis when this property was created.
 | `updated`     | A unix epoch timestamp in millis when this property was updated last.
-| `timeToLive`  |The time to live (ttl) in minutes of this property since creation. If the time to live has been expired, the property is eligable to be deleted. Usually one of the next cleanup jobs will then delete this property. If the value of **timeToLive** is `0` or `null`, the property will never be deleted.
+| `timeToLive`  | The time to live (ttl) in minutes of this property since creation. If the time to live has been expired, the property is eligable to be deleted. Usually one of the next cleanup jobs will then delete this property. If the value of **timeToLive** is `0` or `null`, the property will never be deleted.
     
 
 To query a property with all of its attributes, you can use the  [`property.list`](../api/commands#propertylist) command:
@@ -48,9 +48,9 @@ timeToLive: null
 
 ### The Property Value
 
-The `value` attribute of a property is always stored as string (text) value. Which type the text value represents, is defined by the `type` attribute which could be of any supported mime type. For example `application/json` or `text/plain`. The latter is the default if no type is specified.
+The `value` attribute of a property is always stored as string (text) value. Which type the text value represents, is defined by the `type` attribute which could be of any supported mime type e.g. `application/json` or `text/plain`. The latter is the default, if no type is specified.
 
-Furthermore, the `value` attribute can also contain binary data. In this case the field is `base64` encoded. This is marked in the `type` attribute as such using the mime type parameter `encoding=base64`. Example:
+Furthermore, the `value` attribute can also contain binary data. In this case, the field is `base64` encoded. This is marked in the `type` attribute as such using the mime type parameter `encoding=base64`. Example:
 
 ```yaml
 value: "some base64 encoded value"
@@ -58,14 +58,14 @@ type: "application/pdf;encoding=base64"
 ```
 
 :::note
-In case you want to store a bigger amount of binary data, consider to use property attachments instead since they do have a chunked storage handling concept to store a huge amount of binary data very effectively.
+In case you want to store a bigger amount of binary data, consider using property attachments instead, since they do have a chunked storage handling concept to store a huge amount of binary data very effectively.
 :::
 
 ## How to use the Property Store?
 
 Typically the property store is managed using one of the [`property.*`](../api/commands#property) commands. This is handy, if you want to manage the property store programmatically.
 
-To get an overview of all available commands to manage the property store in your terminal, you could type in this command using the PIPEFORCE CLI:
+To get an overview of all available commands to manage the property store in your terminal, you could type this command using the PIPEFORCE CLI:
 
 ```bash
 pi commands property.
@@ -77,7 +77,7 @@ This will show you all available `property.*` pipeline commands and their descri
 
 To create a new property, you need to use the command [`property.schema.put`](../api/commands#propertyschemaput).
 
-Whenever you create a new a property, an event with key `property.created` is fired which can be used in other pipelines to listen for it.
+Whenever you create a new a property, an event with key `property.created` is fired, which can be used in other pipelines.
 
 See this link of your instance for details about this command (only: ENTERPRISE, CORPORATE):  
 `https://portal-NAMESPACE.pipeforce.net/#/pipeform?pipe=property.schema.put`
@@ -100,7 +100,7 @@ pipeline:
 
 ### Using the CLI
 
-Here is an example to use the CLI to create a new property:
+Here is an example using the CLI to create a new property:
 
 ```bash
 pi command property.schema.put key=global/app/myApp/myNewProperty
@@ -129,7 +129,7 @@ Content-Type: application/json
 
 To change the value of the property, you can use the command `property.put`.
 
-Whenever you change the value of a property, an event with key `property.changed` is fired which can be used in pipelines to listen for it.
+Whenever you change the value of a property, an event with key `property.changed` is fired which can be used in pipelines.
 
 Note: The property must already exist before you set its value. So use `property.schema.put` to define the property and then `property.put` to set its value.
 
@@ -167,7 +167,7 @@ pipeline:
 ```
 
 **Why are there two different commands to create a property and set its value?**  
-Because there are two different security levels with permissions. Those users who are able to change the value of a property with `property.put` not always have the permission to create a new property using `property.schema.put`. Having two commands allows it to differentiate in a pipeline what a user can do since in PIPEFORCE any command can have assigned different permissions.
+Because there are two different security levels with permissions. Those users who are able to change the value of a property with `property.put`, not always have the permission to create a new property using `property.schema.put`. Having two commands allows it to differentiate in a pipeline what a user can do, since in PIPEFORCE any command can have assigned different permissions.
 
 ### Using the CLI
 
@@ -185,11 +185,11 @@ If you did setup a local low-code workspace with an app with multiple files in i
 pi publish src/global/app/myapp
 ```
 
-This CLI call with automatically “convert” all of your local files stored inside thy `myapp` folder to properties and uploads them to the server afterwards. The content of the files will become the value field of the property. Furthermore the type (mime type) field is automatically detected by inspecting the extension and the content of the file.
+This CLI call with automatically “convert” all of your local files stored inside thy `myapp` folder to properties and upload them to the server afterwards. The content of the files will become the value field of the property. Furthermore the type (mime type) field is automatically detected by inspecting the extension and the content of the file.
 
-This can save you a lot of effort compared to do manual uploads.
+This can save you a lot of effort compared to doing manual uploads.
 
-Note: In the conversion process the properties will be saved at server side without any file extensions like `.json`, `.pi.yaml` or `.xml` for example. So a local file like this:
+Note: In the conversion process the properties will be saved at server side without any file extensions like `.json`, `.pi.yaml` or `.xml`. So a local file like this:
 
 `src/global/app/myapp/pipeline/helloworld.pi.yaml`
 
@@ -221,11 +221,11 @@ Content-Type: application/json
 
 ## Delete a property
 
-In order to delete a property from the property store, you can use the command `property.schema.delete` which deletes the property value and all meta data that belong to this property.
+In order to delete a property from the property store, you can use the command `property.schema.delete`, which deletes the property value and all metadata that belongs to this property.
 
 **Be careful using this command since once deleted, the property and its value cannot be restored!**
 
-Whenever you change the value of a property, an event with key `property.deleted` is fired which can be used in pipelines to listen for it.
+Whenever you change the value of a property, an event with key `property.deleted` is fired, which can be used in pipelines.
 
 ### Documentation reference
 
@@ -266,13 +266,13 @@ With the CLI it is also possible to delete multiple properties with one call:
 pi delete src/myapp/myresource/somename/**
 ```
 
-This will delete all properties below the path somename recursively.
+This will delete all properties below the path `somename` recursively.
 
 ```bash
 pi delete src/myapp/myresource/somename/*
 ```
 
-This will delete only properties inside the “folder” `somename` but will leave all sub folders of it untouched.
+This will delete only properties inside the “folder” `somename`, but will leave all sub folders of it untouched.
 
 ### Using a Restful HTTP POST
 
@@ -394,7 +394,7 @@ GET https://hub-NAMESPACE.pipeforce.org/api/v3/command:property.list?filter=glob
 
 # The top-level folders
 
-The top-level level folders inside your property store define the access rules for a certain group or users of your instance.
+The top-level folders inside your property store define the access rules for a certain group or users of your instance.
 
 ![](../img/properstystore.png)
 
@@ -406,15 +406,15 @@ This is the default folder where you should put your configuration and applicati
 
 ## group
 
-The resources inside this folder are accessible by the defined groups. Any group has its own sub folder here whereas the name of the folder is the uuid of the group.
+The resources inside this folder are accessible by the defined groups. Any group has its own sub folder here, whereas the name of the folder is the uuid of the group.
 
 ## tenant
 
-This root folder contains any resources and application data for tenants. Any tenant has its own sub folder here whereas the name of the folder is the uuid of the tenant.
+This root folder contains any resources and application data for tenants. Any tenant has its own sub folder here, whereas the name of the folder is the uuid of the tenant.
 
 ## user
 
-This root folder contains user specific resources and application data. Any user has its own sub folder here whereas the name of the folder is the uuid of the user.
+This root folder contains user specific resources and application data. Any user has its own sub folder here, whereas the name of the folder is the uuid of the user.
 
 # The app folder
 
@@ -428,7 +428,7 @@ The key of your application would be this:
 global/app/myApp
 ```
 
-Since the app `myApp` is stored inside the global `app` folder, it is globally accessible. That means it can be potentially loaded by any user of the system. Whether this is possible additionally depends on the app itself since each app can have its own access rules set in IAM.
+Since the app `myApp` is stored inside the global `app` folder, it is globally accessible. That means it can be potentially loaded by any user of the system. Whether this is possible additionally depends on the app itself, since each app can have its own access rules set in IAM.
 
 In order to make an app available only to a certain tenant, one could move it to the tenant folder as this example shows:
 
@@ -454,13 +454,13 @@ global/app/onboarding
 
 ## The app folder structure
 
-Inside of an `app` folder there is a certain folder structure which defines the resources of an app. The typical folder structure looks like this:
+Inside of an `app` folder, there is a certain folder structure which defines the resources of an app. The typical folder structure looks like this:
 
 ![](../img/grafik-20201022-181638.png)
 
 ### form
 
-This folder contains all form configuration properties for any form of the app whereas the name of the property is the name of the form. For example:
+This folder contains all form configuration properties for any form of the app, whereas the name of the property is the name of the form. For example:
 
 ```
 global/app/myApp/form/createUser
@@ -469,7 +469,7 @@ global/app/myApp/form/deleteUser
 
 ### list
 
-This folder contains all list configuration properties for any list of the app whereas the name of the property is the name of the list. For example:
+This folder contains all list configuration properties for any list of the app, whereas the name of the property is the name of the list. For example:
 
 ```
 global/app/myApp/list/users
@@ -498,7 +498,7 @@ For example:
 object/person/v1/schema
 ```
 
-The schema property typically contains as value a JSON schema which describes this object. For the person object, the schema could for example look like this:
+The schema property typically contains as value a JSON schema, which describes this object. For the person object, the schema could, for example, look like this:
 
 ```json
 {
@@ -580,7 +580,7 @@ pipeline:
 
 ### script
 
-Inside of the optional script folder, scripts can be placed which can contain more complex business logic if required. By default such scripts are written in JavaScript. Optionally also Python or Groovy are available (ask [support@pipeforce.io](mailto:support@pipeforce.io) if required). For example:
+Inside of the optional script folder, scripts can be placed which can contain more complex business logic if required. By default, such scripts are written in JavaScript. Optionally also Python or Groovy are available (ask [support@pipeforce.io](mailto:support@pipeforce.io) if required). For example:
 
 ```
 global/app/myApp/script/helloworld
@@ -645,9 +645,9 @@ But if you want to develop applications with forms, pipelines or workflows insid
 pi publish src/global/app/myapp
 ```
 
-This scans the your local `myapp` folder and uploads only those resources which have been changed since last upload or have been created since then.
+This scans your local `myapp` folder and uploads only those resources which have been changed since the last upload or have been created since then.
 
-See here how to setup such a customization workspace: [Local Low-Code Workspace](../guides/low-code)
+See here how to setup such a customization workspace: [Local Low-Code Workspace](../guides/local-workspace)
 
 See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](../api/cli) .
 
@@ -655,4 +655,4 @@ See here for a getting started guide how to setup the CLI and use the local work
 
 We recommend you to work with the Visual Studio Code editor to manage your local resources in the customization editor.
 
-Learn more about using VS Code for this here: [Visual Studio Code](../guides/vs-code)
+Learn more about installing VS Code for this here: [Visual Studio Code](../tutorials/localworkspace)
