@@ -11,7 +11,7 @@ In this example, depending on whether the supervisor has approved or declined th
     ![](../../img/grafik-20210727-131453.png)
 2.  This makes sure that this branch is executed in case the supervisor set `vacationApproved` to false in the task form.
     
-3.  Repeat these steps for the task “Send approved email” and set the condition to  
+3.  Repeat these steps for the task “Send approved email”, and set the condition to  
     `${vacationApproved == true}`.
     
 4.  Click `SAVE` to save the current state of the BPMN workflow.
@@ -19,7 +19,7 @@ In this example, depending on whether the supervisor has approved or declined th
 
 ## How to design gateways
 
-The gateway design is defined by a specific expression language named _JUEL_. Below you will find the most important operators are:
+The gateway design is defined by a specific expression language named _JUEL_. Below, you will find that the most important operators are:
 
 *   **Arithmetic**: `+`, `-` (binary), `*`, `/` and `div`, `%` and `mod`, `-` (unary)
     
@@ -27,7 +27,7 @@ The gateway design is defined by a specific expression language named _JUEL_. Be
     
 *   **Relational**: `==`, `eq`, `!=`, `ne`, `<`, `lt`, `>`, `gt`, `<=`, `ge`, `>=`, `le`. Comparisons can be made against other values, or against boolean, string, integer, or floating point literals.
     
-*   **Empty**: The `empty` operator is a prefix operation that can be used to determine whether a value is `null` or empty.
+*   **Empty**: The `empty` operator is a prefix operation, that can be used to determine whether a value is `null` or empty.
     
 *   **Conditional**: `A ? B : C`. Evaluate `B` or `C`, depending on the result of the evaluation of `A`.
     
@@ -40,7 +40,7 @@ For more details see [https://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html](
 
 *   Condition refers to a field named “decision”
     
-*   Field provides a dropdown list for user (Approve, Decline, Delegate)  
+*   Field provides a dropdown list for the user (Approve, Decline, or Delegate)  
     
     ![](../../img/image-20211026-042805.png)
 *   Gateway should represent the “Approve” selection
@@ -62,7 +62,7 @@ For more details see [https://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html](
     
     ![](../../img/image-20211026-044236.png)
 
-${ checked } works also. Similar ${ !checked } can be use in place of ${ checked == false }
+${ checked } works as well. Similarly, ${ !checked } can be used in place of ${ checked == false }
 
 ### Condition for value
 
@@ -71,7 +71,7 @@ ${ checked } works also. Similar ${ !checked } can be use in place of ${ checked
     ![](../../img/image-20211026-050320.png)
 *   Field provides the option to type in numbers
     
-*   Gateway should represent the situation that the value is > 100 but < 1000
+*   Gateway should represent the situation that the value is > 100, but < 1000
     
 *   Condition looks like this:  
     
@@ -79,9 +79,9 @@ ${ checked } works also. Similar ${ !checked } can be use in place of ${ checked
 
 ### Multiple conditions
 
-*   Condition refers to the fields “decision” and “checked”
+*   Condition refers to the fields: “decision” and “checked”
     
-*   Field “decision” provides a dropdown list for user (Approve, Decline, Delegate)
+*   Field “decision” provides a dropdown list for the user (Approve, Decline, or Delegate)
     
 *   Field “checked” provides a checkbox
     
