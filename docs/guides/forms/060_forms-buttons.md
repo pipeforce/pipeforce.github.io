@@ -1,6 +1,6 @@
 # Buttons
 
-By default each form shows a single submit button. If this button is pressed, the data of the form will be stored as new instance property into the property store.
+By default, each form shows a single submit button. If this button is pressed, the data of the form will be stored into the property store as a new instance property.
 
 You can change this default behaviour in two steps:
 
@@ -41,7 +41,7 @@ Change the JSON Schema and add a new field of type `boolean` for each button. Th
 }
 ```
 
-After a button has been clicked, a new object is created and stored in the property store which do have a structure like this:
+After a button has been clicked, a new object is created and stored in the property store which has a structure like this:
 
 ```json
 {
@@ -50,6 +50,6 @@ After a button has been clicked, a new object is created and stored in the prope
 }
 ```
 
-Here you can see that the “Yes” button was clicked.
+Here, you can see that the “Yes” button was clicked.
 
-You can then create a event.listen pipeline to listen for such a submit and react accordingly. See section about listening for form submits.
+You can then create a event.listen pipeline to listen for such a submit, and react accordingly.

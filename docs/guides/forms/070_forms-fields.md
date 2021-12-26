@@ -2,9 +2,9 @@
 
 ## Form fields for trigger forms
 
-Form fields of a Trigger-Forms are determined by the respective schema defined for your app. The type inside a JSON schema defines the data format of a field. Furthermore based on this type, form fields are rendered automatically in order to fit the defined format. The supported format types are listed in the section [Schema - Types](../guides/schema-types) .
+Form fields of a Trigger-Form are determined by the respective schema defined for your app. The type inside a JSON schema defines the data format of a field. Furthermore, based on its type, form fields are rendered automatically in order to fit the defined format. The supported format types are listed in the section [Schema - Types](../guides/schema-and-objects) .
 
-To create a trigger form you have to create a schema and afterwards create the form as a new property. How to do this is described here: [Tutorial: Create a new form](../tutorials/beginner/create-form) . In the form you can just refer to your schema. All fields and types (including file upload functionality) will be taken over from the schema. See example of form description below:
+To create a trigger form, you have to create a schema, and afterwards, create the form as a new property. How to do this is described here: [Tutorial: Create a new form](../tutorials/create-form) .In the form, you can just refer to your schema. All fields and types (including file upload functionality) will be taken over from the schema. See example of the form description below:
 
 ```json
 {
@@ -17,13 +17,13 @@ To create a trigger form you have to create a schema and afterwards create the f
 
 ## Form fields for task forms
 
-When working with task forms via the Online-Workflow-Modeler you can select the form type directly from a dropdown list. In this list there are the same options as for schema.
+When working with task forms via the Online-Workflow-Modeler, you can select the form type directly from a dropdown list. In this list, there are same options for schema.
 
 ![](../../img/form-fields.det.png)
 
 ## Static drop down values for form fields
 
-In case you want to show in a field of a trigger form a dropdown list you have the following options:
+In case you want to show a dropdown list in a field of a trigger form, you have the following options:
 
 1.  Refer to a fix list with any values
     
@@ -32,7 +32,7 @@ In case you want to show in a field of a trigger form a dropdown list you have t
 
 ### Fix list of entries
 
-To refer to a fix list of entries, you have to define enum in schema. Below you find an easy example for this.
+To refer to a fix list of entries, you have to define "enum" in schema. Below you find an easy example for this.
 
 ```yaml
 "account": {
@@ -48,13 +48,13 @@ To refer to a fix list of entries, you have to define enum in schema. Below you 
     }
 ```
 
-If you refer in the form section to this field “account”, you will see a dropdown list of the values entered (1000, 2000, 3000, 4000, 5000).
+If you refer to this field “account” in the form section, you will see a dropdown list of the values entered (1000, 2000, 3000, 4000, 5000).
 
 ### Group of users in IAM
 
-to refer to a group of user in IAM, you have to adapt your schema and your form definition.
+To refer to a group of user in IAM, you have to adapt your schema and your form definition.
 
-In your schema you have to define the respective filed as indicated below.
+In your schema, you have to define the respective filed as indicated below.
 
 **In schema:**
 
@@ -66,7 +66,7 @@ In your schema you have to define the respective filed as indicated below.
     }
 ```
 
-Afterwards you have to enhance your form definition by an specification for the field an a easy pipeline definition, which gives you some values back from IAM. In the example below, all user from group “Employee (Standard)” will be shown in the dropdown list.
+Afterwards, you have to enhance your form definition by an easy pipeline definition as specification for the field, which gives you some values back from IAM. In the example below, all user from group “Employee (Standard)” will be shown in the dropdown list.
 
 **In form:**
 
@@ -82,11 +82,11 @@ Afterwards you have to enhance your form definition by an specification for the 
 
 ## Dynamic drop down values for form fields
 
-In case you want to filter values in a dropdown list based on specific entries in the form you have to enhance your schema and your form definition.
+In case you want to filter values in a dropdown list based on specific entries in the form, you have to enhance your schema and your form definition.
 
 **Example**
 
-When a specific value for budget is exceeded, the list of potential reviewer is directly filtered to members of a specific group in IAM.
+When a specific value for a budget is exceeded, the list of potential reviewer is directly filtered to members of a specific group in IAM.
 
 |     |     |
 | --- | --- |
@@ -137,7 +137,7 @@ When a specific value for budget is exceeded, the list of potential reviewer is 
 
 ## Dynamic calculation of values in a form
 
-You have the option to show calculated values in a trigger form. To do so you have to enhance the schema and the form definition. Below you will find an example how to show a sum of two entries (value1 and value 2) in a third filed.
+You have the option to show calculated values in a trigger form. To do so, you have to enhance the schema and the form definition. Below, you will find an example how to show a sum of two entries (value1 and value 2) in a third field.
 
 **In schema:**
 
@@ -187,7 +187,7 @@ You have the option to show calculated values in a trigger form. To do so you ha
 
 ## Add attachments in a task form
 
-You have the option to upload a file with a task form. To do so you have to enhance your schema and your form definition. Below you will find an example.
+You have the option to upload a file with a task form. To do so, you have to enhance your schema and your form definition. Below, you will find an example.
 
 **In schema:**
 
@@ -232,7 +232,7 @@ You have the option to upload a file with a task form. To do so you have to enha
 }
 ```
 
-Tip: Be aware that you have to configure a layout for your form in order to show the file picker as expected.
+Tip: Be aware, that you have to configure a layout for your form in order to show the file picker as expected.
 
 ## Show attachments in a task form
 

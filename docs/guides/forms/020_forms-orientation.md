@@ -1,6 +1,6 @@
 # Orientation
 
-By default in a form, all fields from the JSON schema are displayed vertically each in a row.
+By default, in a form, all fields from the JSON schema are displayed vertically, each in a different row.
 
 ![](../../img/grafik-20201023-084022.png)
 
@@ -8,7 +8,7 @@ By default in a form, all fields from the JSON schema are displayed vertically e
 
 You can change this default by configuring `orientation` of the layout in the form configuration.
 
-To do so, at first you need to add the element `layout` to the form configuration as shown in this example:
+To do so, firstly you need to add the element `layout` to the form configuration as shown in this example:
 
 ```json
 {
@@ -56,21 +56,21 @@ You can then change the `orientation`, `width` and `height` of a layout item lik
 }
 ```
 
-`width` and `height` can be also specified to individual fields.
+`width` and `height` can be also specified in individual fields.
 
 This would result in this form layout afterwards, where all fields are displayed in a single row (horizontally):
 
 ![](../../img/image-20210319-064428.png)
 
-Width of 900 of horizonal layout item prevents fields to cover all available space.
+Width of 900 in horizonal layout item prevents fields to cover all of the available space.
 
-Layout items and fields in horizontal orientation by default try to span as much width as possible, but with respect to similar need of neighbouring fields - behave responsively.
+Layout items and fields in horizontal orientation, by default, try to span as much width as possible, but with respect to neighbouring fields - behave responsively.
 
 Both `min-width` and `max-width` can be also used in place of `width` to reach responsiveness within defined limits.
 
 ## Nesting layouts and orientations
 
-Layouts and its orientations can be nested in order to also create quite complex form structures. Here’s an example:
+Layouts and its orientations can be nested in order to create quite complex form structures. Here’s an example:
 
 ```json
 {

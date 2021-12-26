@@ -4,7 +4,7 @@ In order to do a file upload using forms, follow this two-step process:
 
 ## Step 1
 
-Add the properties required for files in your [JSON schema](../schema-and-objects). For example:
+Add the properties required for files in your [JSON schema](../guides/schema-and-objects). For example:
 
 ```json
 {  ...
@@ -41,4 +41,4 @@ Add the properties required for files in your [JSON schema](../schema-and-object
 }
 ```
 
-Instead of `filepicker` you can set the render attribute also to `pdfviewer` in order to show an embedded preview of an uploaded PDF.
+Instead of `filepicker`, you can set the render attribute also to `pdfviewer` in order to show an embedded preview of an uploaded PDF.
