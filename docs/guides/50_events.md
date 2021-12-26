@@ -68,7 +68,7 @@ It is `true`, in case this event was sent in an asynchronous way. Otherwise, it 
 
 ## headers
 
-These are optional name-value-pairs to describe the event. It is good practise to filter events based on header values and avoid filtering on payload for better performance.
+These are optional name-value-pairs to describe the event. It is a good practice to filter events based on header values and avoid filtering on payload for better performance.
 
 ## Listening to events
 

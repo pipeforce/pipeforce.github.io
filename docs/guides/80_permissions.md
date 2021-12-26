@@ -35,7 +35,7 @@ In PIPEFORCE, there is the concept of roles. A role can be seen as a permission 
 
 Roles can be assigned to a single user or group. A user will be granted all roles of all groups he is a member of.
 
-It is good practice to assign roles via groups, instead of directly to users.
+It is a good practice to assign roles via groups, instead of directly to users.
 
 The main difference between roles and groups is that roles cannot be created or deleted by admins. These are “factory default” roles and some roles created by developers.
 
