@@ -218,37 +218,41 @@ Now, its time to activate the workflow and execute it. To do so, follow these st
 1.  Click `DEPLOY` to deploy the current state of the BPMN to the workflow engine.
     
 2.  In the left main menu, go to SERVICES → Tasks.
+
+3.  Click on the "Workflow" button (to the right of the search bar):
+
+    ![](../img/tasks-workflow.png)
     
-3.  Click on Start process in the upper right corner.
+4.  Click on Start process in the upper right corner.
     
-4.  A dialog opens where your workflow should be listed as `appname_workflowname`, for example `myapp42_vacation-request`:  
-    
-    ![](../img/grafik-20210727-132250.png)
-    
-5.  Click on your process and then on `Start`.
-    
-6.  Your process has been started in the workflow engine.
-    
-7.  To see the tasks, you need to add a task filter: Click on `Add a simple filter`.
-    
-8.  Now you should see the first task in the list `Request vacation`. Click it to show the form.
-    
-9.  Then click on Claim to assign this task to you:  
+5.  A dialog opens where your workflow should be listed as `appname_workflowname`, for example `myapp42_vacation-request`:  
     
     ![](../img/grafik-20210727-132250.png)
     
-10.  Select a vacation start and a vacation end date, then click `Complete`.
+6.  Click on your process and then on `Start`.
     
-11.  In the next step, select the `Review request` from the tasks list.
+7.  Your process has been started in the workflow engine.
     
-12.  Click on `Diagram` in the tabs list to see the current flow state:
+8.  To see the tasks, you need to add a task filter: Click on `Add a simple filter`.
+    
+9.  Now you should see the first task in the list `Request vacation`. Click it to show the form.
+    
+10.  Then click on Claim to assign this task to you:  
+    
+    ![](../img/grafik-20210727-132250.png)
+    
+11.  Select a vacation start and a vacation end date, then click `Complete`.
+    
+12.  In the next step, select the `Review request` from the tasks list.
+    
+13.  Click on `Diagram` in the tabs list to see the current flow state:
     
     ![](../img/grafik-20210727-133238.png)
-13.  Go back to the Form tab and click `Claim` again.
+14.  Go back to the Form tab and click `Claim` again.
     
-14.  Now you are in the role of the supervisior. You can approve or decline the request.
+15.  Now you are in the role of the supervisior. You can approve or decline the request.
     
-15.  Depending on your decision, you will get a approval or declined email.
+16.  Depending on your decision, you will get a approval or declined email.
     
 
 **Congratulations you have created your first BPMN workflow and executed it!**
