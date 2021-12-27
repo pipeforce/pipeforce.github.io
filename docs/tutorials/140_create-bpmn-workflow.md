@@ -229,7 +229,7 @@ Now, its time to activate the workflow and execute it. To do so, follow these st
     
     ![](../img/grafik-20210727-132250.png)
     
-6.  Click on your process and then on `Start`.
+6.  Click on your process and then on `Start`. 
     
 7.  Your process has been started in the workflow engine.
     
