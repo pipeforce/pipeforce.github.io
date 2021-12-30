@@ -39,7 +39,7 @@ The easiest way to create a new app is by using the online workbench. To do so, 
         
 5.  Click SAVE:  
     
-    ![](../img/grafik-20210720-140519.png)
+    ![](../img/new-app.png)
 6.  The new property configuration was created and pre-filled with some data.
     
 7.  Here, you can make later changes to configure your app.
