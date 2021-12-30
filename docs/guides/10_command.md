@@ -3,16 +3,16 @@
 One of the most important parts in PIPEFORCE is the **command**. Easily spoken, the definition of a command is like this:
 
 :::tip What is a Command?
- A command is server-side component which can be called remotely. It takes an input, does a certain task, and finally produces an output.
+ A command is a server-side component, which can be called remotely. It takes an input, does a certain task, and finally produces an output.
 :::
 
-There are many different commands for different tasks. For example commands to 
+There are many different commands for different tasks. For example, commands can 
 - upload and download files
 - encrypt and decrypt data 
 - save data into a database or read from it 
 - connect to other systems, and read / write data there
 
-just to name a few examples. You can find a all built-in commands in the [commands reference](../api/commands) or directly try them out in the [trial instance](https://trial.pipeforce.org/#/commands).
+just to name a few. You can find a all built-in commands in the [commands reference](../api/commands) or directly try them out in the [trial instance](https://trial.pipeforce.org/#/commands).
 
 The concept of PIPEFORCE commands is described by a combination of the [command pattern](https://en.wikipedia.org/wiki/Command_pattern) and [function as a service](https://en.wikipedia.org/wiki/Function_as_a_service) approach. 
 
