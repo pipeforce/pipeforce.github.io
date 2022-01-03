@@ -511,7 +511,7 @@ Currently, the Reviewer can see the inputs (`vacation start date` and `vacation 
 5.  Click `SAVE`.
     
 
-![](../img/image-20211021-174605.png)
+![](../img/workflow-form.png)
 
 **Tip:** Since the requester was already defined as process variable in the previous steps, you can work with this value by just referring to the ID. In case you have skipped some previous steps, you have to go back and define the Requester as a process variable.
 
