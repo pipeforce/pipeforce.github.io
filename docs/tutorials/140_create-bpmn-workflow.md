@@ -239,7 +239,7 @@ Now, its time to activate the workflow and execute it. To do so, follow these st
     
 10.  Then click on Claim to assign this task to you:  
     
-    ![](../img/grafik-20210727-132250.png)
+    ![](../img/workflow-claim.png)
     
 11.  Select a vacation start and a vacation end date, then click `Complete`.
     
