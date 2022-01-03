@@ -509,7 +509,7 @@ Currently, the Reviewer can see the inputs (`vacation start date` and `vacation 
 4.  Adapt type of `vacationStartDate` and `vacationEndDate` to `string`.
 
 5.  Click `SAVE`.
-    
+
 ![](../img/workflow-form.png)
 
 **Tip:** Since the requester was already defined as process variable in the previous steps, you can work with this value by just referring to the ID. In case you have skipped some previous steps, you have to go back and define the Requester as a process variable.
