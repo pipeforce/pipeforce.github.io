@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 23/12/2021 by CommandComplianceTest -->
+<!-- Generated: 06/01/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -91,6 +91,46 @@ http://host/api/v3/command/apidoc.pel.utils?id=<value>&output=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command apidoc.pel.utils id=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## app.install
+----------   
+Installs the given app into the property store.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.install)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - app.install:  
+      github: <value>  
+      id: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/app.install?github=<value>&id=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command app.install github=<value> id=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7303,6 +7343,48 @@ http://host/api/v3/command/switch?id=<value>&output=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command switch id=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## test.run
+----------   
+Runs all test scripts defined by given pattern.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=test.run)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`locations` | String | false | global/app/*/test/*, global/app/*/script/* | A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs.
+`includeMethods` | String | false | methodName.startsWith('test') | A PE which defines the test methods to be included. The selected method name is provided as variable: methodName.
+`excludeMethods` | String | false | methodName.endsWith('IT') | A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - test.run:  
+      locations: <value>  
+      includeMethods: <value>  
+      excludeMethods: <value>  
+      id: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&excludeMethods=<value>&id=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command test.run locations=<value> includeMethods=<value> excludeMethods=<value> id=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

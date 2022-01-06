@@ -96,6 +96,27 @@
             },
             "required" : [ ]
           },
+          "app.install" : {
+            "type" : "object",
+            "description" : "Installs the given app into the property store.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "github" : {
+                "type" : "string",
+                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
           "assert" : {
             "type" : "object",
             "description" : "Evaluates a given PEL conditions and throws an error in case a condition is invalid.",
@@ -4569,6 +4590,34 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "test.run" : {
+            "type" : "object",
+            "description" : "Runs all test scripts defined by given pattern.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "locations" : {
+                "type" : "string",
+                "description" : "A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs.",
+                "default" : "global/app/*/test/*, global/app/*/script/*"
+              },
+              "includeMethods" : {
+                "type" : "string",
+                "description" : "A PE which defines the test methods to be included. The selected method name is provided as variable: methodName.",
+                "default" : "methodName.startsWith('test')"
+              },
+              "excludeMethods" : {
+                "type" : "string",
+                "description" : "A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored.",
+                "default" : "methodName.endsWith('IT')"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
               }
             },
             "required" : [ ]

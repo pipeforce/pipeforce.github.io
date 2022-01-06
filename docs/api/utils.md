@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 23/12/2021 07:37:31 by CommandComplianceTest -->
+<!-- Generated: 06/01/2022 14:57:40 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -914,10 +914,7 @@ Returns the base url of the instance. For example: https://acme.pipeforce.net.
 ```  
 
 ### profiles()   
-The active profiles this instance is tagged with to run as.
-The core profile names for example are: dev, test, production.
-Also combinations are possible: [dev, test].
-Docs: Not added to official docs so far.   
+The active profiles this instance is tagged with to run as.   
 
 #### Returns  
 ``list<string>`` - The active profiles as a list or empty list. Never null.  
@@ -927,6 +924,98 @@ Docs: Not added to official docs so far.
 #### Example  
 ```  
 @instance.profiles()  
+```  
+
+### stage()   
+Returns the stage the instance is running in.   
+
+#### Returns  
+``string`` - The stage. Usually this is one of local, dev, qa, prod.  
+
+
+
+#### Example  
+```  
+@instance.stage()  
+```  
+
+### version()   
+Returns the version number of this instance.   
+
+#### Returns  
+``string`` - The version number.  
+
+
+
+#### Example  
+```  
+@instance.version()  
+```  
+
+### build()   
+Returns the build ID of this instance.   
+
+#### Returns  
+``string`` - The build ID.  
+
+
+
+#### Example  
+```  
+@instance.build()  
+```  
+
+### edition()   
+Returns edition of this instance.   
+
+#### Returns  
+``string`` - The edition name.  
+
+
+
+#### Example  
+```  
+@instance.edition()  
+```  
+
+### storage()   
+Returns the storage info reserved for this instance (hub service).   
+
+#### Returns  
+``string`` - The storage for the hub service.  
+
+
+
+#### Example  
+```  
+@instance.storage()  
+```  
+
+### tag()   
+Returns the full build tag of this instance.   
+
+#### Returns  
+``string`` - The full build tag.  
+
+
+
+#### Example  
+```  
+@instance.tag()  
+```  
+
+### uptime()   
+Returns the uptime of this instance. Note: Since PIPEFORCE is a clustered environment,
+update of a single hub service and the cluster could differ.   
+
+#### Returns  
+``long`` - The uptime of this instance (hub service).  
+
+
+
+#### Example  
+```  
+@instance.uptime()  
 ```  
 
  
