@@ -3,18 +3,18 @@
 One of the most important parts in PIPEFORCE is the **command**. Easily spoken, the definition of a command is like this:
 
 :::tip What is a Command?
- A command is server-side component which can be called remotely. It takes an input, does a certain task and finally produces an output.
+ A command is a server-side component, which can be called remotely. It takes an input, does a certain task, and finally produces an output.
 :::
 
-There are many different commands for different tasks. For example commands to 
+There are many different commands for different tasks. For example, commands can 
 - upload and download files
 - encrypt and decrypt data 
 - save data into a database or read from it 
-- connect to other systems and read / write data there
+- connect to other systems, and read / write data there
 
-just to name a few examples. You can find a all built-in commands in the [commands reference](../api/commands) or directly try them out in the [trial instance](https://trial.pipeforce.org/#/commands).
+just to name a few. You can find a all built-in commands in the [commands reference](../api/commands) or directly try them out in the [trial instance](https://trial.pipeforce.org/#/commands).
 
-The concept of PIPEFORCE commands is in its base a combination of the [command pattern](https://en.wikipedia.org/wiki/Command_pattern) and [function as a service](https://en.wikipedia.org/wiki/Function_as_a_service) approach. 
+The concept of PIPEFORCE commands is described by a combination of the [command pattern](https://en.wikipedia.org/wiki/Command_pattern) and [function as a service](https://en.wikipedia.org/wiki/Function_as_a_service) approach. 
 
 ## Command Name
 Each command has a unique name which is always written in lower case and follows the dot notation. Here is an example of such a command name:
@@ -35,7 +35,7 @@ Commands can be executed in three different ways, called ***execution contexts**
 - As a command line command using the [Command Line Interface (CLI)](../guids/../api/cli)
 
 :::tip Note
-Even if many commands do have a similar resource-based semantic for HTTP GET, POST or PUT as REST do, they do not follow this approach 100% since commands can be used also outside of the HTTP context. Therefore, the operation type of a command is often defined by its name. For example: `property.put` or `config.get` to name just a few.
+Even if many commands do have a similar resource-based semantic for HTTP GET, POST or PUT as REST do, they do not follow this approach 100%, since commands can be used also outside of the HTTP context. Therefore, the operation type of a command is often defined by its name. For example: `property.put` or `config.get` to name just a few.
 :::
 
 ### Execute as HTTP Request
@@ -51,7 +51,7 @@ https://HOST/api/v3/command/COMMAND?PARAM=VALUE
 :::
 
 #### Execute as HTTP GET
-Here is an example to execute a command as HTTP GET request and set the `message` parameter to a `log` command using a HTTP GET parameter:
+Here is an example to execute a command as HTTP GET request, and set the `message` parameter to a `log` command using a HTTP GET parameter:
 
 ```yaml
 http://hub-trial.pipeforce.org/api/v3/command/log?message=HELLO
@@ -62,7 +62,7 @@ http://hub-trial.pipeforce.org/api/v3/command/log?message=HELLO
 :::
 
 #### Execute as HTTP POST
-Here is an example to execute a command as HTTP POST request and set the `message` parameter to a `log` command using a HTTP POST data body in `curl`:
+Here is an example to execute a command as HTTP POST request, and set the `message` parameter to a `log` command using a HTTP POST data body in `curl`:
 
 ```bash
 curl -H "Authorization: Bearer <YOUR_TOKEN>" \
@@ -75,7 +75,7 @@ curl -H "Authorization: Bearer <YOUR_TOKEN>" \
 :::
 
 ### Execute as CLI call
-Here is an example to execute a command using the [CLI tool](../guides/../api/cli.md) and set the `message` parameter to the `log` command:
+Here is an example to execute a command using the [CLI tool](../guides/../api/cli.md), and set the `message` parameter to the `log` command:
 
 ```bash
 pi command log message=HELLO
@@ -96,13 +96,13 @@ pipeline:
 
 ## Input and Output Body
 
-Beside **parameters** a command can also consume a so called **input body** to read data from and write to an **output body**.
+Beside **parameters**, a command can also consume an **input body** to read data from and write to an **output body**.
 
 ![](../img/command.png)
 
-This is similar to an HTTP POST request which also can consume a huge amount of data in the request body and returns with data in the response body.
+This is similar to an HTTP POST request which also can consume a huge amount of data in the request body and return with data in the response body.
 
-Differently to parameters, the input body is typically a more complex document and/or bigger data stream which must be modified in some way. Therfore it is passed-in and written-out via the body by default. 
+Different to parameters, the input body is typically a more complex document and/or bigger data stream which must be modified in some way. Therfore, it is passed-in and written-out via the body by default. 
 
 Here is an example to pass data via body to a `cache.put` command using a HTTP POST request and the `curl` tool:
 
@@ -120,7 +120,7 @@ curl -H "Authorization: Bearer <YOUR_TOKEN>" \
 ## Chaining of Commands (Pipelining)
 
 One of the most powerful things of commands is that they can be chained, so multiple commands can be executed in serial one after another in a single request. In this case, the output of a previous command becomes automatically the input of the next command.
-This avoids server-client-round-trips which can increase performance a lot, adds a huge level of flexibility and reduces complexity in client code.
+This avoids server-client-round-trips to increase performance, add a huge level of flexibility and reduce complexity in client code.
 
 ![](../img/chaining.png)
 
@@ -130,7 +130,7 @@ This avoids server-client-round-trips which can increase performance a lot, adds
 
 ### Send a pipeline via HTTP
 
-To chain commands, you have to send a POST request to the endpoint ``https://HOST/api/v3/pipeline`` and put a YAML document with the chained commands in the body. Lets assume you have a pipeline of commands like this, which simply logs the current data and time:
+To chain commands, you have to send a POST request to the endpoint ``https://HOST/api/v3/pipeline``, and put a YAML document with the chained commands in the body. Lets assume you have a pipeline of commands like this, which simply logs the current data and time:
 
 ```yaml
 pipeline:
@@ -138,7 +138,7 @@ pipeline:
   - log
 ```
 
-Then, you could send this YAML pipeline to the server for execution like this example using ``curl`` shows:
+Then, you could send this YAML pipeline to the server for execution, like this example using ``curl`` shows:
 
 ```bash
 curl -H "Authorization: Bearer <YOUR_TOKEN>" \

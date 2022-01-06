@@ -3,9 +3,9 @@ title: Events Reference
 sidebar_label: Events
 ---
 
-This is the reference documentation of the built-in events which come out-of-the-box with PIPEFORCE. 
+This is the reference documentation of the built-in events which comes out-of-the-box with PIPEFORCE. 
 
-Here is an example how to listen for such events in a **persisted** pipeline:
+Here is an example on how to listen for such events in a **persisted** pipeline:
 
 ```yaml
 pipeline:
@@ -21,9 +21,9 @@ Also see the **[Event Guide](../guides/event)** for details about the structure 
 
 ## property.created
 
-Fired every time a new property was created in the property store. 
+It is fired every time a new property gets created in the property store. 
 
-Contains as ``origin`` the value ``null`` and as ``target`` the property created before. 
+It contains as ``origin``, the value ``null``, and as ``target``, the property created before. 
 
 ```json
 {
@@ -43,9 +43,9 @@ Contains as ``origin`` the value ``null`` and as ``target`` the property created
 
 ## property.copied
 
-Fired every time a property was copied in the property store.
+It is fired every time a property gets copied in the property store.
 
-Contains as ``origin`` the source property and as ``target`` the property where source was copied to.
+It contains as ``origin``, the source property, and as ``target``, the property where source was copied to.
 
 ```json
 {
@@ -72,9 +72,9 @@ Contains as ``origin`` the source property and as ``target`` the property where 
 
 ## property.deleted
 
-Fired every time a property was deleted from the property store.
+It is fired every time a property was deleted from the property store.
 
-Contains as ``origin`` the property which was deleted and as ``target`` the value ``null``.
+It contains as ``origin``, the property which was deleted, and as ``target``, the value ``null``.
 
 ```json
 {
@@ -94,9 +94,9 @@ Contains as ``origin`` the property which was deleted and as ``target`` the valu
 
 ## property.moved
 
-Fired every time a property was moved from one key to another key.
+It is fired every time a property was moved from one key to another.
 
-Contains as ``origin`` the key of the source property and as ``target`` the key of the property where it was moved to.
+It contains as ``origin``, the key of the source property, and as ``target``, the key of the property where it was moved to.
 
 ```json
 {
@@ -109,9 +109,9 @@ Contains as ``origin`` the key of the source property and as ``target`` the key 
 
 ## property.updated
 
-Fired after a property has been updated in the property store.
+It is fired after a property has been updated in the property store.
 
-Contains as ``origin`` the property before the update and as ``target`` the property after the update.
+It contains as ``origin``, the property before the update, and as ``target``, the property after the update.
 
 ```json
 {
@@ -138,21 +138,21 @@ Contains as ``origin`` the property before the update and as ``target`` the prop
 
 ## setup.finished
 
-Fired after the hub service was successfully started and all setup scripts have been executed successfully.
+It is fired after the hub service gets successfully started, and all setup scripts have been executed successfully.
 
 *This event contains no payload.*
 
 ## setup.starting
 
-Fired after the hub service was successfully started but right before all setup scripts will be executed.
+It is fired after the hub service was successfully started, but right before all setup scripts are executed.
 
 *This event contains no payload.*
 
 ## hub.context.started
 
-Fired after the hub service was successfully started.
+It is fired after the hub service was successfully started.
 
-Contains as ``origin`` the configuration of the context as key-value-pairs. The ``target`` is ``null``.
+It contains as ``origin``, the configuration of the context as key-value-pairs. The ``target`` is ``null``.
 
 ```json
 {
@@ -168,8 +168,8 @@ Contains as ``origin`` the configuration of the context as key-value-pairs. The 
 
 ## iam.bruteforce.detected
 
-Fired every time a potential brute force attempt was detected.
+It is fired every time a potential brute force attempt was detected.
 
 ## iam.login.error
 
-Fired every time a login attempt has been failed.
+It is fired every time a login attempt gets failed.

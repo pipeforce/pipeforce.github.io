@@ -5,13 +5,13 @@ sidebar_label: Custom URIs
 
 Reference documentation of built-int custom URI types.
 
-Whenever you need to load data from a location, you can use a [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) to  point to such a location. You do already so by using such URIs in your web browser for example. Common URI types you might be familiar with, are:
+Whenever you need to load data from a location, you can use a [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) to  point to such a location. You do so already by using such URIs in your web browser, for example. Common URI types you might be familiar with, are:
 
 - ``https://www.google.com``
 - ``ftp://smith:12345@ftp.host``
 - ``file:/data/path/contract.docx``
 
-Beside such commonly known URI types, PIPEFORE also supports custom URI types to simplify access to common resources. Whenever an URI is accepted as argument, for example in commands or on utils, you can apply such custom URIs. Here are some examples of such custom URIs in PIPEFORCE:
+Besides such commonly known URI types, PIPEFORE also supports custom URI types to simplify access to common resources. Whenever a URI is accepted as an argument, for example in commands or utils, you can apply such custom URIs. Here are some examples of such custom URIs in PIPEFORCE:
 
 :::info Examples 
 - ``$uri:drive:/someFolder/myFile.txt`` - Loads a file from the ``drive`` data room.
@@ -36,7 +36,7 @@ pipeline:
         message": Hello World!"
         attachments: "$uri:property:global/app/myapp/resources/file"
 ```
-As you can see in this example, the attachments argument contains a custom URI pointing to a property in the property store. This property will be loaded and added as attachment.
+As you can see in this example, the attachments argument contains a custom URI pointing to a property in the property store. This property will be loaded and added as an attachment.
 
 And in this example, a custom uri is used inside a PEL util instead:
 
@@ -63,13 +63,13 @@ pipeline:
 
 ## Pipeline URI
 
-This URI can be used to execute a persisted pipeline and return the final body output of this pipeline as result.
+This URI can be used to execute a persisted pipeline, and return the final body output of this pipeline as a result.
 
 ```
 $uri:pipeline:[PIPELINE PATH]
 ```
 
-Lets assume you have a pipeline like this stored at ``global/app/myapp/pipeline/hello``:
+Let's assume you have a pipeline like this stored at ``global/app/myapp/pipeline/hello``:
 
 ```yaml
 pipeline:
@@ -77,7 +77,7 @@ pipeline:
         value: "HELLO WORLD!"
 ```
 
-To execute this pipeline and to output this hello world example, you could execute an URI like this:
+To execute this pipeline and to output this hello world example, you could execute a URI like this:
 
 ```yaml
 pipeline:
@@ -85,7 +85,7 @@ pipeline:
         message: "Output: #{@uri.resolve('$uri:pipeline:global/app/myapp/pipeline/hello')}"
 ```
 
-This will create a log entry like this:
+This will create a log-entry like this:
 
 ```
 Output: HELLO WORLD!
@@ -109,7 +109,7 @@ pipeline:
 
 ### Property Filter
 
-It is also possible to further filter the property using a PE which gets applied to the property before its result will be returned.
+It is also possible to further filter the property using a PE, which gets applied to the property before its result will be returned.
 
 ```
 $uri:property:[PATH]@[PROPERTY_PEL]
@@ -148,7 +148,7 @@ As you might already know, a property has a structure like this:
 
 For a full list of the attributes of a property, please refer to the [Property Store Guide](../guides/propertystore#what-is-a-property).
 
-With a Property Filter you can now select the part you would like to return in your URI:
+With a Property Filter, you can now select the part you would like to return in your URI:
 
 ```yaml
 pipeline:
@@ -159,16 +159,16 @@ As you can see in this example, you can count the number of attachments of the p
 
 ### Value Filter
 
-In case the value of a property is of type ``application/json``, you can apply a value filter in order to return just a subset from the JSON value.
+In case the value of a property is of the type ``application/json``, you can apply a value filter in order to return just a subset from the JSON value.
 
 ```
 $uri:property:[PATH]#[VALUE_PEL]
 ```
 :::caution
-This filter only works in case the value of the property is of type ``application/json``!
+This filter only works in case the value of the property is of the type: ``application/json``!
 :::
 
-Lets assume we have a property in the property store like this:
+Let's assume we have a property in the property store like this:
 
 ```json
 {
@@ -199,7 +199,7 @@ Which will log a message like this:
 Name: Max Master
 ```
 
-Its possible to use the full power of the PEL to filter, for example:
+It's possible to use the full power of the PEL to filter, for example:
 
 ```yaml
 pipeline:
@@ -215,7 +215,7 @@ Number of hobbies: 3
 
 ## User URI
 
-This uri is handy to load a user object given by username or uuid.
+This uri is handy to load a user object given by a username or uuid.
 
 ```
 $uri:user:[USERNAME]
@@ -235,7 +235,7 @@ pipeline:
         value: "#{@uri.resolve('$uri:user:maria')}"
 ```
 
-This will return the user info data similar to this:
+This will return the user-info data similar to this:
 
 ```json
 {

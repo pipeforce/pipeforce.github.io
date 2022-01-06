@@ -17,11 +17,11 @@
 
 ## Intro
 
-Sending messages from PIPEFORCE to external systems is very easy in case there is an API or webhook available. This tutorial will demonstrate that by sending a message to Office 365 / Teams.
+Sending messages from PIPEFORCE to external systems is very easy when there is an API or webhook available. This tutorial will demonstrate that by sending a message to Office 365 / Teams.
 
 ## 1 - Create a webhook in Microsoft Teams
 
-In the first step, you need to create a webhook in Teams so we can send data to it. To do so, follow these steps:
+In the first step, you need to create a webhook in Teams, so we can send data to it. To do so, follow these steps:
 
 1.  Login to your Office 365 account: [https://office.com](https://office.com)
     
@@ -51,7 +51,7 @@ In the first step, you need to create a webhook in Teams so we can send data to 
     
 3.  The ad-hoc pipeline editor is shown
     
-4.  Copy and paste this content into the editor and overwrite any existing data there by this:  
+4.  Copy and paste this content into the editor, and overwrite any existing data there by this:  
     
     ```yaml
     pipeline:
@@ -65,7 +65,7 @@ In the first step, you need to create a webhook in Teams so we can send data to 
     
 5.  Replace the `url` param by the webhook url you have copied to clipboard before.
     
-6.  As you can see, we set the `url` and the `body` for the HTTP message which will be used by the `http.post` command in order to send it to the Teams webhook using the given url. Note the pipe `|` character of parameter body. This is specific to YAML and allows to define a multi-line value without additional “line encodings” or “escapes”. We can write a JSON string straight here.
+6.  As you can see, we set the `url` and the `body` for the HTTP message, which will be used by the `http.post` command, in order to send it to the Teams webhook using the given url. Note the pipe `|` character of parameter body. This is specific to YAML and allows to define a multi-line value without additional “line encodings” or “escapes”. We can write a JSON string straight here.
     
 7.  Click `RUN`.
     

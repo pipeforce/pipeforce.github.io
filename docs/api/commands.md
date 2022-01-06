@@ -22,7 +22,7 @@ pipeline:
 
 ## apidoc.commands
 ----------   
-Returns the OpenAPI documentation of commands.
+It returns the OpenAPI documentation of commands.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.commands)
 
@@ -32,8 +32,8 @@ Returns the OpenAPI documentation of commands.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`id` | String | false | null | This is an optional id of this command, that is unique within the pipeline.
+`output` | String | false | null | This defines a PEL where to write the result of the command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -60,7 +60,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## apidoc.pel.utils
 ----------   
-Returns the OpenAPI documentation of PEL utils.
+It returns the OpenAPI documentation of PEL utils.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.pel.utils)
 
@@ -70,8 +70,8 @@ Returns the OpenAPI documentation of PEL utils.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`id` | String | false | null | This is an optional id of this command, that is unique within the pipeline.
+`output` | String | false | null | This defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -138,7 +138,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## assert
 ----------   
-Evaluates a given PEL conditions and throws an error in case a condition is invalid.
+It evaluates a given PEL conditions and throws an error in case a condition is invalid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=assert)
 
@@ -150,7 +150,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `true` | String | false | null | A PE which must evaluate to true.
 `false` | String | false | null | A PE which must evaluate to false.
-`body.equals` | String | false | null | The value of this param is compared to the body. If different, exception is thrown. Can be a PE.
+`body.equals` | String | false | null | The value of this param is compared to the body. If different, an exception is thrown. Can be a PE.
 `equals` | String | false | null | Compares the result of param value with this. If not equal, throws exception. Can be a PE.
 `value` | String | false | null | The value to be used for comparision. Can be a PE.
 `message` | String | false | null | An optional message to be used in case of invalid condition. Can be a PE.
@@ -186,7 +186,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.assert
 ----------   
-Applies asserts for a given workflow in the workflow service.
+It applies asserts for a given workflow in the workflow service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.assert)
 
@@ -232,7 +232,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## barcode.create
 ----------   
-Creates a barcode from a dynamic format.
+It creates a barcode from a dynamic format.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=barcode.create)
 
@@ -278,7 +278,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## barcode.read
 ----------   
-Reads a barcode from a dynamic PNG format. Expects the barcode image as content object in the body. Detects the barcode type automatically. By default returns the text extracted from the barcode in the body.
+It reads a barcode from a dynamic PNG format. It expects the barcode image as content object inside the body. It detects the barcode type automatically. By default, it returns the text extracted from the barcode inside the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=barcode.read)
 
@@ -318,7 +318,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## bean
 ----------   
-Executes a method on a Spring bean. Is only available for support users.
+It executes a method on a Spring bean. It is only available for support users.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=bean)
 
@@ -360,7 +360,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## body.delete
 ----------   
-Sets the value in the body to null. Deletes any existing value in the body. 
+It sets the value in the body to null. It deletes any existing value in the body. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=body.delete)
 
@@ -396,7 +396,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## body.filter
 ----------   
-DEPRECATED. Converts the input body to JSON and then filters the input body and removes any properties not matching the given filter. Throws exception if input body cannot be converted to JSON.Does nothing, if input body is null or empty. If the first level of the body is a list, appliesthe filter to each element inside the list. This command can be used for example to filter outsensitive information or to shrink a big result set for performance reasons.
+DEPRECATED. It converts the input body to JSON, then filters the input body, and removes any properties not matching the given filter. It throws an exception if the input body cannot be converted to JSON. It does nothing, if the input body is null or empty. If the first level of the body is a list, it applies the filter to each element inside the list. This command can be used, for example, to filter-out sensitive information or to shrink a big result-set for performance reasons.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=body.filter)
 
@@ -436,7 +436,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.clear
 ----------   
-Clears the underlying central cache and removes any entry those time to live has been expired. Can also be used to remove a single entry from the cache.
+It clears the underlying central cache, and removes any entry in time, for which the time to live has been expired. It can also be used to remove a single entry from the cache.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.clear)
 
@@ -446,7 +446,7 @@ Clears the underlying central cache and removes any entry those time to live has
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | false | null | The key to load the value from the cache to remove. If empty or null, all entries in the cache will be inspected and those time to live has been expired will be removed.
+`key` | String | false | null | The key to load the value from the cache (to remove). If empty or null, all entries in the cache will be inspected, and those whose time to live that has been expired, will be removed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 
 
@@ -474,7 +474,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.get
 ----------   
-Reads a value with given key from the cache and writes it into the output.
+It reads a value with given key from the cache, and writes it into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.get)
 
@@ -518,7 +518,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.info
 ----------   
-Returns information about the current state of the cache. Available for system and support users only.
+It returns information about the current state of the cache. It is only available for system and support users only.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.info)
 
@@ -556,7 +556,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.list
 ----------   
-Lists ALL entries of the cache. Use with care!
+It lists ALL entries of the cache. Use with care!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.list)
 
@@ -594,9 +594,9 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.put
 ----------   
-Saves the given value under given key into a central cache.
-If no value param is given, uses the body as cache value.
-The max time to live of each entry is 120 min. The min time to live is 5 min. Default is 5 min.
+It saves the given value under a given key into central cache.
+If no value param is given, it uses the body as the cache value.
+The max time to live for each entry is 120 min. The min time to live is 5 min. Also, the default is 5 min.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.put)
 
@@ -638,7 +638,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## call
 ----------   
-Calls a script and returns with the result in the body.
+It calls a script and returns with the result inside the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=call)
 
@@ -680,7 +680,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## capture
 ----------   
-DEPREACTED (Use the cache.* commands instead). Captures the last pipe message and adds it into a list in the header under key {@link #HEADER_CAPTURED}. This is primarily for testing purposes but also can be used to create a snapshot of a certain pipeline state.
+DEPREACTED (Use the cache.* commands instead). This captures the last pipe message, and adds it into a list inside the header under the key {@link #HEADER_CAPTURED}. This is primarily used for testing purposes, but can also be used to create a snapshot of a certain pipeline state.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=capture)
 
@@ -716,7 +716,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipe.schema
 ----------   
-Returns the JSON schema for all built-in pipes.
+This returns the JSON schema for all built-in pipes.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema)
 
@@ -756,7 +756,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipe.schema.v7
 ----------   
-Returns the V7 compliant JSON schema for all built-in pipes.
+This returns the V7 compliant JSON schema for all built-in pipes.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema.v7)
 
@@ -794,7 +794,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## config.get
 ----------   
-Returns all admin config settings for a given group from the backend as a JSON in this format: {configKey:{value:someValue, canOverwrite:true|false}}. The attribute canOverwrite is only available if param includePermission is set.
+This returns all admin config settings, for a given group from the backend, as a JSON in this format: {configKey:{value:someValue, canOverwrite:true|false}}. The attribute to Overwrite is only available if param includePermission is set.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=config.get)
 
@@ -838,7 +838,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## content.get
 ----------   
-Reads content from provided uri and puts the result back to body.
+It reads content from the provided uri, and puts the result back to body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=content.get)
 
@@ -878,7 +878,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## credentials.delete
 ----------   
-Deletes a credentials entry.
+It deletes a credential entry.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=credentials.delete)
 
@@ -916,7 +916,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## credentials.get
 ----------   
-Lists the metadata of all available credentials entries.
+It lists the metadata of all available credential entries.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=credentials.get)
 
@@ -956,7 +956,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## credentials.put
 ----------   
-Creates a new credentials entry.
+It creates a new credential entry.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=credentials.put)
 
@@ -1000,7 +1000,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## data.mapping
 ----------   
-Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required.
+It converts from one data structure into another by applying simple mapping rules. It also auto-creates nested elements, if required.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=data.mapping)
 
@@ -1042,7 +1042,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## data.transform
 ----------   
-This data transformer converts the input to an output format by applying the given template. By default the current message is provided as model inside the template context so you can access body, vars or headers similar to the default PEL approach.
+It converts the input to an output format by applying the given template. By default, the current message is provided as a model inside the template context. So, you can access body, vars or headers similar to the default PEL approach.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=data.transform)
 
@@ -1092,7 +1092,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## datetime
 ----------   
-Returns the current time at server side.
+It returns the current time at server-side.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=datetime)
 
@@ -1132,7 +1132,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## datetime.zones
 ----------   
-Returns all official IANA time-zone names supported by this PIPEFORCE instance: http://www.iana.org/time-zones
+It returns all official IANA time-zone names supported by this PIPEFORCE instance: http://www.iana.org/time-zones
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=datetime.zones)
 
@@ -1170,7 +1170,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## decrypt
 ----------   
-Decrypts the data in the body using the defined encryption parameter. Puts the encrypted data back to the body.
+It decrypts the data in the body using the defined encryption parameter. It also puts the encrypted data back in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=decrypt)
 
@@ -1212,7 +1212,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.attachment.add
 ----------   
-Adds a single attachment to an existing PIPEFORCE Secure Delivery. Note: Attachments can be added to deliveries only in state DRAFT.
+It adds a single attachment to an existing PIPEFORCE Secure Delivery. Note: Attachments can be added to deliveries only in state DRAFT.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.attachment.add)
 
@@ -1258,7 +1258,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.create
 ----------   
-Creates a new PIPEFORCE Secure Delivery and sets it in the target
+It creates a new PIPEFORCE Secure Delivery, and sets it in the target
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.create)
 
@@ -1310,7 +1310,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.delete
 ----------   
-Deletes a given delivery.
+It deletes a given delivery.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.delete)
 
@@ -1348,7 +1348,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.finalize
 ----------   
-Finalizes an existing delivery. After finalized, only recipients can be added but message and attachments of delivery can not be changed any longer.
+It finalizes an existing delivery. After finalized, recipients can be added, but message and attachments of delivery can not be changed any longer.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.finalize)
 
@@ -1388,7 +1388,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.get
 ----------   
-Returns an existing delivery.
+It returns an existing delivery.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.get)
 
@@ -1428,7 +1428,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.recipient.add
 ----------   
-Adds recipients to an existing PIPEFORCE Secure Delivery. Note: Recipients can be added to deliveries only in state DRAFT or FINALIZED.
+It adds recipients to an existing PIPEFORCE Secure Delivery. Note: Recipients can be added to deliveries only in state DRAFT or FINALIZED.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.recipient.add)
 
@@ -1472,7 +1472,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.send
 ----------   
-Sends a given PIPEFORCE Secure Delivery. If delivery is in status DRAFT it will be converted to FINALIZED before send.
+It sends a given PIPEFORCE Secure Delivery. If delivery is in status DRAFT, it will be converted to FINALIZED before send.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.send)
 
@@ -1514,7 +1514,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.update
 ----------   
-Updates an existing PIPEFORCE Secure Delivery.
+It updates an existing PIPEFORCE Secure Delivery.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.update)
 
@@ -1568,7 +1568,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## doc.api.pelutils
 ----------   
-Returns the api doc for the available PEL utils.
+It returns the api doc for the available PEL utils.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=doc.api.pelutils)
 
@@ -1606,10 +1606,10 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## docusign
 ----------   
-Requests a signature of the given document in the body 
+It requests a signature of the given document in the body 
 via email (remote signing) using DocuSign. See here: 
 https://developers.docusign.com/esign-rest-api/code-examples/code-example-request-a-signature-via-email
-Expects the to be signed document in the body with json.file encoding.
+It expects the document to be signed in the body with json.file encoding.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=docusign)
 
@@ -1661,7 +1661,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## document.understand
 ----------   
-Returns metadata for a given unstructured document like an invoice PDF for example. Expects the document to be in the body by default. Returns the result as JSON in the body (replacing any existing value in the body).
+It returns metadata for a given unstructured document, like an invoice PDF, for example. It expects the document to be in the body, by default. It returns the result as a JSON in the body (replacing any existing value in the body).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=document.understand)
 
@@ -1707,7 +1707,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.archive.save
 ----------   
-Saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. Verifies the integrity of the archive on write. Returns the final archive file name into the output target.
+It saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. It also verifies the integrity of the archive on write. Then, it returns the final archive file name into the output target.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.archive.save)
 
@@ -1749,7 +1749,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.copy
 ----------   
-Copies a folder or file on Drive.
+It copies a folder or file on Drive.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.copy)
 
@@ -1789,7 +1789,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.delete
 ----------   
-Deletes a file or folder on Drive. If resource doesnt exist, nothing happens.
+It deletes a file or folder on Drive. If the resource doesnt exist, nothing happens.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.delete)
 
@@ -1827,7 +1827,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.exists
 ----------   
-Checks whether a resource in Drive exists. Puts the string true or false in the message body depending whether the resource exists.
+It checks whether a resource in Drive exists. It also puts the string true or false in the message body, depending whether the resource exists or not.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.exists)
 
@@ -1867,7 +1867,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.list
 ----------   
-Lists all resources from drive folder.
+It lists all resources from the drive folder.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.list)
 
@@ -1907,7 +1907,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.mkdir
 ----------   
-Creates a new dir on Drive if it not already exists.
+It creates a new dir on Drive if it not already exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.mkdir)
 
@@ -1947,7 +1947,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.move
 ----------   
-Moves a folder or file on Drive from one location into another.
+It moves a folder or file on Drive from one location to another.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.move)
 
@@ -1987,7 +1987,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.read
 ----------   
-Reads a file from drive and puts its content as a pipeline resource into the body.
+It reads a file from the drive, and puts its content as a pipeline resource into the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.read)
 
@@ -2029,7 +2029,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.save
 ----------   
-Saves the content of the body to one or more files in Drive. The content of the body can be a single pipeline resource or a pipeline resource collection. 
+It saves the content of the body to one or more files in the Drive. The content of the body can be a single pipeline resource or a pipeline resource collection. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.save)
 
@@ -2071,7 +2071,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.share
 ----------   
-Shares a folder in Drive given by path to users given by recipients.
+It shares a folder in the Drive, given by path to users (given by recipients).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.share)
 
@@ -2129,7 +2129,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.tag
 ----------   
-Adds or removes a WebDAV tag to a resource on drive.
+It adds or removes a WebDAV tag to a resource on the Drive.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.tag)
 
@@ -2173,7 +2173,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.upload.chunked
 ----------   
-Supports chunked uploads of large files into the Drive endpoint. Expects an object in the body which can be converted to an input stream as the chunk data to be uploaded.
+It supports chunked uploads of large files into the Drive endpoint. It expects an object in the body, which can be converted to an input stream as the chunk data to be uploaded.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.upload.chunked)
 
@@ -2217,7 +2217,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## encrypt
 ----------   
-Encrypts the data in the body using the defined encryption parameter and puts the encrypted datain the output.
+It encrypts the data in the body using the defined encryption parameter, and puts the encrypted data in the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=encrypt)
 
@@ -2257,7 +2257,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## eval
 ----------   
-Executes a given pipeline expression with the message as context.
+It executes a given pipeline expression with the message as context.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=eval)
 
@@ -2295,7 +2295,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## event.listen
 ----------   
-Listening for events works like this: Add this command at the very first in your pipeline, define the event key you want to listen for and an optional filter expression. Then save this pipeline into the property store. This causes the system to automatically register this pipeline and execute it whenever an event with given key and matching filter is fired. Note: Only one event.listen command per pipeline is allowed and it needs to be the very first command in the pipeline. In the body of the pipeline the event object is provided and can be used for filtering for example.
+The listening for events works like this: Add this command at the very first in your pipeline, and define the event key you want to listen for and an optional filter expression. Then, save this pipeline into the property store. This causes the system to automatically register this pipeline and execute it whenever an event with given key and matching filter is fired. Note: Only one event.listen command per pipeline is allowed and it needs to be the very first command in the pipeline. In the body of the pipeline, the event object is provided and can be used for filtering, for example.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=event.listen)
 
@@ -2335,7 +2335,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## event.mapping.get
 ----------   
-Returns all event key to pipeline key mappings.
+It returns all event keys to the pipeline key mappings.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=event.mapping.get)
 
@@ -2373,7 +2373,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## event.send
 ----------   
-Sends a new event to inform listeners in pipelines.
+It sends a new event to inform listeners in pipelines.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=event.send)
 
@@ -2417,7 +2417,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## exit
 ----------   
-Exits the current pipeline flow and returns the current body state to the caller.
+It exits the current pipeline flow, and returns the current body state to the caller.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=exit)
 
@@ -2493,7 +2493,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## foreach
 ----------   
-Repeats the subsequent pipeline commands for each entry in a given list. By default the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end. The current iteration item is placed in vars.loop.item.
+It repeats the subsequent pipeline commands for each entry in a given list. By default, the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end. The current iteration item is placed in vars.loop.item.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=foreach)
 
@@ -2537,7 +2537,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## header.set
 ----------   
-DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2
+DEPRECATED. Use the set command instead. It sets any parameter value as header. For example, header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=header.set)
 
@@ -2573,7 +2573,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.form.find
 ----------   
-Searches for a form on the page and sets is as vars.form model in PEL. If param 'select' is given, uses this PEL to find the form object. Otherwise tries to detect the form automatically by searching the page and using the first form found. Note: The pipe is BETA and not intended to be used in production!
+It searches for a form on the page, and sets it as vars.form model in PEL. If param 'select' is given, it uses this PEL to find the form object. Otherwise, it tries to detect the form automatically by searching the page and using the first form found. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.find)
 
@@ -2611,7 +2611,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.form.input
 ----------   
-Searches for an input element with given name and sets the given value on it. Note: The pipe is BETA and not intended to be used in production!
+It searches for an input element with the given name and sets the given value on it. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.input)
 
@@ -2651,7 +2651,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.form.submit
 ----------   
-Searches for a submit button and clicks it. Note: The pipe is BETA and not intended to be used in production!
+It searches for a submit button, and then clicks it. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.submit)
 
@@ -2689,7 +2689,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.link.click
 ----------   
-Searches for a link on current page and clicks it. Note: The pipe is BETA and not intended to be used in production!
+It searches for a link on current page, and then clicks it. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.link.click)
 
@@ -2727,7 +2727,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.open
 ----------   
-Opens a website and sets it as 'vars.page' in PEL. Additionally sets the current browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
+It opens a website and sets it as 'vars.page' in PEL. Additionally, it sets the current browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.open)
 
@@ -2765,7 +2765,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.scrap
 ----------   
-Scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
+It scraps data from the current website, and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.scrap)
 
@@ -2805,7 +2805,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.delete
 ----------   
-Executes a DELETE HTTP call to the given url.Returns the result from the server in the message body.
+It executes a DELETE HTTP call to the given url. It returns the result from the server inside the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.delete)
 
@@ -2853,7 +2853,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.get
 ----------   
-Executes a GET HTTP call to the given url.Returns the result from the server in the message body.
+It executes a GET HTTP call to the given url. Then, it returns the result from the server in the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.get)
 
@@ -2901,7 +2901,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.patch
 ----------   
-Executes a PATCH HTTP call to the given url.Returns the result from the server in the message body.
+It xecutes a PATCH HTTP call to the given url. Then, it returns the result from the server inside the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.patch)
 
@@ -2949,7 +2949,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.post
 ----------   
-Executes a POST HTTP call to the given url.Returns the result from the server in the message body.
+It executes a POST HTTP call to the given url. Then, it returns the result from the server inside the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.post)
 
@@ -2997,7 +2997,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.put
 ----------   
-Executes a PUT HTTP call to the given url.Returns the result from the server in the message body.
+It executes a PUT HTTP call to the given url. Then, it returns the result from the server inside the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.put)
 
@@ -3045,7 +3045,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.token.refresh
 ----------   
-Enrich headers with accessToken obtained from authorization server using refreshToken.
+It enrich headers with an accessToken obtained from the authorization server using refreshToken.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.refresh)
 
@@ -3083,7 +3083,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.apitoken
 ----------   
-Obtains the apitoken in exchange for user credentials provided and writes into the output.
+It obtains the apitoken in exchange for the provided user credentials, and writes it into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.apitoken)
 
@@ -3125,7 +3125,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.authinfo
 ----------   
-Adds header 'authUserId' - name of an user authenticated as a sender of the pipe message.
+It adds header 'authUserId' - name of an user authenticated as a sender of the pipe message.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.authinfo)
 
@@ -3161,7 +3161,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.authorize
 ----------   
-Authorizes pipeline execution and overwrites any existing authentication by this new, successful authentication. Additionally puts the successful authentication token on an internal stack. See iam.logout to pop from stack.Subsequent commands will be executed only if authorization was successful. Tries each existing parameter for authentication in this order. If multiple params are given, first existing one is used from this list: accessToken, refreshToken, basic, username+password. Throws exception and exits pipeline execution on first not matching login try.
+It authorizes pipeline execution, and overwrites any existing authentication by this new and successful authentication. Additionally, it puts the successful authentication token on an internal stack. See iam.logout to pop from the stack. Subsequent commands will be executed only if the authorization was successful. This command tries each existing parameter for authentication in this order: If multiple params are given, first existing one is used from this list: accessToken, refreshToken, basic, username+password. The command throws an exception before exiting the pipeline execution on the first unsuccessful login try.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.authorize)
 
@@ -3207,7 +3207,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.bruteforce.release
 ----------   
-Releases any bruteforce lock for the given user. If user is not locked, nothing happens.
+It releases any bruteforce lock for the given user. If the user is not locked, nothing happens.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.release)
 
@@ -3249,7 +3249,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.bruteforce.status
 ----------   
-Returns the bruteforce status for a single user
+It returns the bruteforce status for a single user.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.status)
 
@@ -3291,7 +3291,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.add.roles
 ----------   
-Adds roles to a given group. Roles must exist beforehand.
+It adds roles to a given group. However, the roles must exist beforehand.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.add.roles)
 
@@ -3335,7 +3335,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.create
 ----------   
-Creates a new group and puts its uuid in the body under key groupUuid. Throws exception if group already exists.
+It creates a new group, and puts its uuid inside the body under key: groupUuid. The command throws an exception if the group already exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.create)
 
@@ -3379,7 +3379,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.delete
 ----------   
-Deletes the group with given uuid.
+It deletes group with the given uuid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.delete)
 
@@ -3419,7 +3419,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.list
 ----------   
-Lists all groups. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
+It lists all groups. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list)
 
@@ -3467,7 +3467,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.list.names
 ----------   
-Lists all group names. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
+It lists all group names. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list.names)
 
@@ -3511,7 +3511,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.members
 ----------   
-Lists all users which are member of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+It lists all users which are members of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.members)
 
@@ -3559,7 +3559,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.roles
 ----------   
-Lists all effective role names, the given group is assigned to.
+It lists all effective role names, the given group is assigned to.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.roles)
 
@@ -3607,7 +3607,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.realm.create
 ----------   
-Creates a new realm. Sets the uuid in the body under key realmUuid. Throws exception if realm already exists. Expects a JSON in the body of this structure: https://www.keycloak.org/docs-api/11.0/rest-api/index.html#_realmrepresentation
+It creates a new realm. It also sets uuid inside the body under the key: realmUuid. The command throws an exception if the realm already exists. It expects a JSON in the body of this structure: https://www.keycloak.org/docs-api/11.0/rest-api/index.html#_realmrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.realm.create)
 
@@ -3645,7 +3645,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.role.add.composites
 ----------   
-Adds existing composite roles to an existing role.
+It adds existing composite roles to an existing role.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.add.composites)
 
@@ -3687,7 +3687,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.role.create
 ----------   
-Creates a new role and puts its role uuid in the body under key roleUuid. Throws exception if role already exists.
+It creates a new role, and puts its role uuid inside the body under the key: roleUuid. The command throws an exception if the role already exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.create)
 
@@ -3731,7 +3731,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.role.members
 ----------   
-Lists all users which are member of the given role. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+It lists all users which are members of the given role. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.members)
 
@@ -3777,7 +3777,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.run.as
 ----------   
-Executes the subsequent pipeline as different user if following two conditions are met. 1. currently logged-in user has permission CAN_RUN_AS_SOURCE 2. requested user has permission CAN_RUN_AS_TARGET 
+It executes the subsequent pipeline as a different user, if the following two conditions are met: 1. currently logged-in user has the permission: CAN_RUN_AS_SOURCE 2. requested user has the permission: CAN_RUN_AS_TARGET 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.run.as)
 
@@ -3815,7 +3815,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.search
 ----------   
-Searches for specific entity in the IAM service matching the given filter. Returns the JSON representation of the given type as JSON array. See here for the representation types: https://www.keycloak.org/docs-api/11.0/rest-api/ .For example the type 'USER' would return a list of 'UserRepresentation'.
+It searches for a specific entity in the IAM service, that is matching the given filter. The command returns the JSON representation of the given type as a JSON array. See here for the representation types: https://www.keycloak.org/docs-api/11.0/rest-api/ .For example the type 'USER' would return a list of 'UserRepresentation'.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.search)
 
@@ -3861,7 +3861,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.token.logout
 ----------   
-Logs out keycloak session associated with refreshToken and removes any refresh and access tokens from headers.
+It logs-out the keycloak session, that is associated with the refreshToken, and removes any refresh & access tokens from the headers.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.logout)
 
@@ -3899,7 +3899,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.add.groups
 ----------   
-Adds groups to a user by group id or name and returns the group ids added.
+It adds groups to a user by group id or name, and then returns the group ids added.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.groups)
 
@@ -3943,7 +3943,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.add.roles
 ----------   
-Adds roles to a given user. Roles must exist beforehand.
+It adds roles to a given user. However, these Roles must exist beforehand.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.roles)
 
@@ -3987,7 +3987,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.create
 ----------   
-Creates a new user and returns its uuid in the body. Throws exception if user already exists.
+It creates a new user, and returns its uuid in the body. The command throws an exception if the user already exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.create)
 
@@ -4041,7 +4041,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.delete
 ----------   
-Deletes the user with given uuid.
+It deletes the user with the given uuid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.delete)
 
@@ -4081,7 +4081,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.get
 ----------   
-Looks up a user returns it in the body if exists. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+It looks-up a user, and returns it inside the body if it exists already. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.get)
 
@@ -4123,7 +4123,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.groups
 ----------   
-Lists all groups, the given user is member of. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
+It lists all groups, the given user is member of. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.groups)
 
@@ -4171,7 +4171,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.list
 ----------   
-Lists all users. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+It lists all users. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.list)
 
@@ -4215,7 +4215,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.roles
 ----------   
-Lists all effective role names, the given user is member of.
+It lists all effective role names, the given user is member of.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.roles)
 
@@ -4263,7 +4263,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## if
 ----------   
-Executes the subsequent pipeline only if given condition evaluates to true. By default the full pipeline until the end will be executed. To skip the pipes inside the if definition place the pipe if?end where the if should end.
+It executes the subsequent pipeline only if the given condition evaluates to true. By default, the full pipeline until the end will be executed. To skip the pipes inside the if definition, place the pipe if?end where the if should end.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=if)
 
@@ -4305,7 +4305,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## job
 ----------   
-Schedules any subsequent pipes of the current pipeline and executes it at the scheduled times.
+It schedules any subsequent pipes of the current pipeline, and executes it at the scheduled times.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=job)
 
@@ -4345,7 +4345,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## jpa.query
 ----------   
-Executes a JPA query and returns the result as JSON in the body. NOTE: This pipe is primarily meant for support to monitor the system. Its not accessible by default accounts! This can change at any time without notice!
+It executes a JPA query, and returns the result as a JSON inside the body. NOTE: This pipe is primarily meant for support to monitor the system. It's not accessible by default accounts! This can change at any time without notice!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=jpa.query)
 
@@ -4385,7 +4385,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## log
 ----------   
-Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body.
+It logs the given input message without changing it. It also sets the log message inside the body, in case the body is empty. It doesn't overwrite any existing content inside the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log)
 
@@ -4425,7 +4425,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## log.list
 ----------   
-Logs the given number of log lines from specified service.
+It logs the given number of log lines from the specified service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.list)
 
@@ -4469,7 +4469,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## log.list.email
 ----------   
-Returns the email audit log properties. Only available for developers, system or support users.
+It returns the email audit log properties. This is only available for developers, system or support users.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.list.email)
 
@@ -4513,7 +4513,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## log.list.environment
 ----------   
-Logs the current environment properties. Only available for developers, system or support users.
+It logs the current environment properties. Only available for developers, system, or support users.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.list.environment)
 
@@ -4553,7 +4553,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mail.dump
 ----------   
-Fetches new emails from given mail inbox and uploads them into a drive folder.
+It fetches new emails from a given mail inbox, and uploads them into a drive folder.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.dump)
 
@@ -4607,7 +4607,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mail.fetch
 ----------   
-Fetches new emails from given mail inbox and returns them as JSON in the output.
+It fetches new emails from the given mail inbox, and returns them as JSON in the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.fetch)
 
@@ -4655,7 +4655,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mail.send
 ----------   
-Sends the given message as email. The message's subject and body will be used for in the email accordingly.
+It sends the given message as email. The message's subject and body will be used in the email accordingly.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.send)
 
@@ -4708,19 +4708,19 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mail.verify
 ----------   
- Protects any subsequent pipe commands: Pipeline is only executed 
- in case the caller has verified that he is the owner of given 
+ It protects any subsequent pipe commands: Pipeline is only executed 
+ in case the caller has verified, that he is the owner of the given 
  email address. To do so, a magic link (verification link) is sent 
  to his email account. Only if the user clicks on this link within 
  a certain amount of time (default is 10min), the subsequent pipe 
- commands are executed. From a technical point of view this is done 
- by putting the current state of the message into a cache which deletes 
+ commands are executed. From a technical point of view, this is done 
+ by putting the current state of the message into a cache, which deletes 
  any entries older than 10min. Then, the email with the key to this 
  cache entry (=challenge) is send to the user. If the user clicks on 
  this link, the message is loaded from the cache using the challenge as 
- the key. If the user clicked within 10min, the entry is here, can be 
- loaded and the message execution can be resumed. Otherwise if the user 
- clicks after 10min on the link, no more entry in it. Execution fails. 
+ the key. If the user clicked within 10min, the entry here can be 
+ loaded, and the message execution can be resumed. Otherwise, if the user 
+ clicks after 10min on the link, no more entry is in it. Thus, execution fails. 
  User has to re-request the link.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.verify)
@@ -4766,7 +4766,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## map
 ----------   
-DEPRECATED. Use the set command instead. Maps, calculates and converts data from fields of the input message to fields of the output message.
+DEPRECATED. Use the set command instead. This command maps, calculates, and converts data from fields of the input message to fields of the output message.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=map)
 
@@ -4804,7 +4804,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## memory.info
 ----------   
-Shows the current system info like memory consumption. Available for system and support users only.
+It shows the current system info like memory consumption. Available for system and support users only.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=memory.info)
 
@@ -4842,7 +4842,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## microsoft.teams.send
 ----------   
-Sends a message to a Microsoft Teams channel.Note: This command needs an additional license + plugin. This is here only for documentation purposes. Ask support@pipeforce.io for more information.
+It sends a message to a Microsoft Teams channel. Note: This command needs an additional license + plugin. This is here only for documentation purposes. Ask support@pipeforce.io for more information.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=microsoft.teams.send)
 
@@ -4882,7 +4882,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mock.command
 ----------   
-Mocks a given command of the current pipeline.
+It mocks a given command of the current pipeline.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mock.command)
 
@@ -4970,7 +4970,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pdf.merge
 ----------   
-Takes collection of pdfs that is expected in the body (as pipeline resource) and converts it into single pdf document.
+It takes a collection of pdfs that is expected in the body (as pipeline resource), and converts it into a single pdf document.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pdf.merge)
 
@@ -5010,7 +5010,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pdf.stamp
 ----------   
-Writes both text or images to a pdf file under a specific layer. It expects the word pdf file as a pipeline resource in the body and transforms the result back also as a pipeline resource in the body.
+It writes both text or images to a pdf file under a specific layer. It expects the word pdf file as a pipeline resource in the body, and transforms the result back also as a pipeline resource in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pdf.stamp)
 
@@ -5070,7 +5070,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipeline.delete
 ----------   
-Deletes a persisted pipeline.
+It deletes a persisted pipeline.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.delete)
 
@@ -5108,7 +5108,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipeline.get
 ----------   
-Returns all persisted pipelines matching the given name.
+It returns all persisted pipelines matching the given name.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.get)
 
@@ -5148,7 +5148,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipeline.put
 ----------   
-Persists a new pipeline to the system or updates an existing one. The pipeline yaml is expected in the body. Can be null. Returns the updated property in the output.
+It persists a new pipeline to the system or updates an existing one. The pipeline yaml is expected in the body. Can be null. The command returns the updated property in the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.put)
 
@@ -5226,7 +5226,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipeline.start
 ----------   
-Loads and executes the persisted pipeline and returns its result in the output.
+It loads and executes the persisted pipeline, and then returns its result in the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.start)
 
@@ -5268,7 +5268,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.app.config
 ----------   
-Returns all config resources from apps the current user has access to (role CAN_APP_ is assigned) as a list into the output.
+It returns all config resources from apps, that the current user has access to (role CAN_APP_ is assigned), as a list into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.app.config)
 
@@ -5308,7 +5308,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.chunk.get
 ----------   
-Returns the chunk (content) of an attachment in the output. Returns empty body if chunk was not found.
+It returns the chunk (content) of an attachment in the output. Then, it returns an empty body if the chunk was not found.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.get)
 
@@ -5352,7 +5352,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.chunk.put
 ----------   
-Adds a chunk of data to the given attachment.
+It adds a chunk of data to the given attachment.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.put)
 
@@ -5396,7 +5396,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.content
 ----------   
-Returns the content of an property attachment as a byte stream content object into the output.
+It returns the content of property attachment as a byte-stream content object into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.content)
 
@@ -5438,7 +5438,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.delete
 ----------   
-Removes an attachment and its content from a property.
+It removes an attachment and its content from a property.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.delete)
 
@@ -5478,7 +5478,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.get
 ----------   
-Returns an attachment of a property (without content).
+It returns an attachment of a property (without content).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.get)
 
@@ -5520,7 +5520,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.list
 ----------   
-Lists all attachments of a given property. The content is not part of this list. Use property.attachment.chunk.get in order to retrieve the content data.
+It lists all attachments of a given property. The content is not part of this list. Use property.attachment.chunk.get in order to retrieve the content data.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.list)
 
@@ -5560,7 +5560,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.put
 ----------   
-Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as a single chunk to the attachment and will replace any existing chunks. If no content is in body, chunks will not change at all if they exist.
+It adds an attachment to a property, or updates an existing one. It also overwrites any existing attachment with same name. If there is content in the body, it will be added as a single chunk to the attachment and will replace any existing chunks. If no content is in the body, chunks will not change at all if they exist.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put)
 
@@ -5604,7 +5604,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.put.uri
 ----------   
-Sets property attachment to be symlink to resource referenced by uri.
+It sets the property attachment to be symlink to resource referenced by uri.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put.uri)
 
@@ -5686,7 +5686,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.exists
 ----------   
-Checks whether a given property exists and returns the boolean result in the body.
+It checks whether a given property exists and returns the boolean result in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.exists)
 
@@ -5726,7 +5726,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.import
 ----------   
-Imports properties given as JSON document in the body into the property store.
+It imports properties given as a JSON document in the body into the property store.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.import)
 
@@ -5766,7 +5766,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.keys.children
 ----------   
-Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end.
+It returns all property child keys for a given parent key. For any child 'folder', the command returns "/" at the very end.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.keys.children)
 
@@ -5806,7 +5806,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.keys
 ----------   
-Returns all property keys for a given pattern.
+It returns all property keys for a given pattern.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.keys)
 
@@ -5846,7 +5846,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.list
 ----------   
-Lists all properties from the store.
+It lists all properties from the store.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.list)
 
@@ -5888,7 +5888,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.move
 ----------   
-Moves a property from one key to another.
+It moves a property from one key to another.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.move)
 
@@ -5928,7 +5928,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.put
 ----------   
-Saves the value of a property. The property schema must exist in advance.
+It saves the value of a property. The property schema must exist in advance.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.put)
 
@@ -5968,7 +5968,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.schema.delete
 ----------   
-Deletes an existing property schema and its assigned value.
+It deletes an existing property schema and its assigned value.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.delete)
 
@@ -6006,7 +6006,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.schema.put
 ----------   
-Creates or updates a property schema. This command is intended for provisioning, admin and service tasks. Also consider property.put instead. Returns a result JSON indicating the result of the command which usually is one of: create, update or skip.
+It creates or updates a property schema. This command is intended for provisioning, admin, and service tasks. Also, consider property.put instead. The command returns a JSON result indicating the result of the command is usually one of: create, update or skip.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.put)
 
@@ -6062,7 +6062,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.send.delivery
 ----------   
-Sends specified property including attachments as pipeforce delivery.
+It sends the specified property including attachments as pipeforce delivery.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.send.delivery)
 
@@ -6114,7 +6114,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.tag.list
 ----------   
-Returns all tags for a given property in the body as JSON: {name1:value1, name2:value2}.
+It returns all tags for a given property in the body as a JSON: {name1:value1, name2:value2}.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.list)
 
@@ -6154,7 +6154,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.tag.put
 ----------   
-Adds a tag to an existing property. Overwrites any existing one.
+It adds a tag to an existing property. This also Overwrites any existing one.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.put)
 
@@ -6198,7 +6198,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.value.expression
 ----------   
-Executes the given expression on persisted properties and returns the matching ones. This type of search for properties is very powerful since it allows to search on any schemaless structures. But be aware it is low performing on a huge amount of properties.
+It executes the given expression on persisted properties and returns the matching ones. This type of search for properties is very powerful, since it allows to search on any schemaless structures. But, be aware it is low performing on a huge amount of properties.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.value.expression)
 
@@ -6244,7 +6244,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.value.get
 ----------   
-Returns the value of a given property.
+It returns the value of a given property.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.value.get)
 
@@ -6284,7 +6284,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## provision
 ----------   
-Executes a specific provision script targeted for a namespace.
+It executes a specific provision script targeted for a namespace.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=provision)
 
@@ -6324,7 +6324,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## publicform.definition
 ----------   
-Composes full public form definition structure.
+It composes full public form definition structure.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=publicform.definition)
 
@@ -6364,7 +6364,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## publicform.submit
 ----------   
-Stores submitted public form data and attachments. All Form definitions are searched for matching id. Additionally form needs to be marked with 'public: true' property.
+It stores submitted public form data and attachments. All Form definitions are searched for matching id. Additionally, form needs to be marked with the'public: true' property.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=publicform.submit)
 
@@ -6404,7 +6404,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## resource
 ----------   
-Loads a resource depending on its resource protocol like classpath:, property: or alike.
+It loads a resource depending on its resource protocol, like classpath:, property: or alike.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=resource)
 
@@ -6446,7 +6446,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## resource.save
 ----------   
-Expects a resource base64 encoded in the body and saves it as a resource to hub.
+It expects a resource base64 encoded in the body and saves it as a resource to hub.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=resource.save)
 
@@ -6484,7 +6484,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## rpa.website.close
 ----------   
-Closes website and releases all used resources.Note: The pipe is BETA and not intended to be used in production!
+It closes the website and releases all used resources. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.close)
 
@@ -6520,7 +6520,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## rpa.website.open
 ----------   
-Opens a website and sets its browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
+It opens a website and sets its browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.open)
 
@@ -6558,7 +6558,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## rpa.website.scrap
 ----------   
-Scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
+It scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.scrap)
 
@@ -6596,7 +6596,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## schema.pipeline
 ----------   
-Returns the V7 compliant JSON schema for all built-in pipes.
+It returns the V7 compliant JSON schema for all built-in pipes.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=schema.pipeline)
 
@@ -6634,7 +6634,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## script.run
 ----------   
-Executes a given script at server side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, you cannot change it in the script.
+It executes a given script at server-side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, that you cannot change it in the script.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=script.run)
 
@@ -6680,7 +6680,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## server.info
 ----------   
-Returns information about the current server. For example the version it is running under. Returns a flat JSON with these keys: status, namespace, domain, edition, stage, tag, build, version, versionMajor, versionMinor, versionBugfix
+It returns information about the current server. For example, the version it is running under. The command returns a flat JSON with these keys: status, namespace, domain, edition, stage, tag, build, version, versionMajor, versionMinor, versionBugfix
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=server.info)
 
@@ -6718,7 +6718,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## service.start
 ----------   
-Starts a service defined in services config.
+It starts a service defined in the services' config.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=service.start)
 
@@ -6756,7 +6756,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## service.stop
 ----------   
-Stops one the service.
+It stops one of the service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=service.stop)
 
@@ -6794,7 +6794,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## set.body
 ----------   
-Sets a value in the body. Overwrites any existing value in the body. The value to be set can be a constant or an expression.
+It sets a value in the body. This also overwrites any existing value inside the body. The value to be set can be a constant or an expression.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=set.body)
 
@@ -6834,7 +6834,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## set
 ----------   
-Sets a value in the pipe message. The value to be set can be a constant or an expression.
+It sets a value in the pipe message. The value to be set can be a constant or an expression.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=set)
 
@@ -6880,7 +6880,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## set.var
 ----------   
-Sets a value in the vars scope. Overwrites any existing var in the vars scope. The value to be set can be a constant or an expression.
+It sets a value in the vars scope. This also overwrites any existing var in the vars scope. The value to be set can be a constant or an expression.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=set.var)
 
@@ -6922,7 +6922,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.delete
 ----------   
-Deletes a file or folder on the SFTP server.
+It deletes a file or folder on the SFTP server.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.delete)
 
@@ -6972,7 +6972,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.download
 ----------   
-Downloads a file from a SFTP server. The file is written as content object to output.
+It downloads a file from a SFTP server. The file is written as a content object to the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.download)
 
@@ -7022,7 +7022,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.list
 ----------   
-Lists all files of a given folder. The result is written to output.
+It lists all files of a given folder. The result is written to the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.list)
 
@@ -7072,7 +7072,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.mkdir
 ----------   
-Creates a new directory on the SFTP server.
+It creates a new directory on the SFTP server.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.mkdir)
 
@@ -7122,7 +7122,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.rename
 ----------   
-Renames a file or folder on the SFTP server.
+It renames a file or folder on the SFTP server.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.rename)
 
@@ -7174,7 +7174,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.upload
 ----------   
-Uploads a file to a SFTP server. The file is expected to be in the input.
+It uploads a file to a SFTP server. The file is expected to be in the input.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.upload)
 
@@ -7224,7 +7224,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## slack.send
 ----------   
-Sends a text message via webhook url to Slack. Also see: https://api.slack.com/messaging/webhooks
+It sends a text message to Slack via a webhook url. Also see: https://api.slack.com/messaging/webhooks
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=slack.send)
 
@@ -7264,7 +7264,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sql.query
 ----------   
-Executes a (read-only) SQL query and returns the result as JSON in the body. NOTE: This command is primarily meant for developers and admins to monitor the system. It should not be used in production workflows! It can change at any time without notice!
+It executes a (read-only) SQL query and returns the result as JSON in the body. NOTE: This command is primarily meant for developers and admins to monitor the system. It should not be used in production workflows! It can change at any time without notice!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sql.query)
 
@@ -7312,7 +7312,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## switch
 ----------   
-Evaluates each switch statement. Takes the value part of the first match and writes it to the given output. If no output is given, writes it to the body. Any param key will be the selection expression which needs to evaluate to a boolean true or false and any value will be the selected value.
+It evaluates each switch statement. This takes the value part of the first match and writes it to the given output. If no output is given, writes it to the body. Any param key will be the selection expression, which needs to evaluate to a boolean true or false, and any value will be the selected value.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=switch)
 
@@ -7392,7 +7392,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## theme
 ----------   
-Returns the resources for a given theme in the body and enrich headers with appropriate Content-type. Caches the resources.
+It returns the resources for a given theme in the body and enrich headers with appropriate Content-type. The command caches the resources.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=theme)
 
@@ -7434,7 +7434,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform
 ----------   
-This transformer converts the input to an output format by applying the given template engine. By default the current message is provided as model inside the template context so you can access body, vars or headers similar to the default PEL approach.
+It converts the input to an output format by applying the given template engine. By default, the current message is provided as a model inside the template context, so you can access the body, vars or headers, similar to the default PEL approach.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform)
 
@@ -7484,7 +7484,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.ftl
 ----------   
-This transformer uses the FreeMarker template engine for its transformation. It expects the template to be in the body or in the template param, transforms it and puts the result  to the output (as a content object).
+It uses the FreeMarker template engine for its transformation. It expects the template to be in the body or in the template param. The command then transforms it and puts the result to the output (as a content object).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.ftl)
 
@@ -7526,7 +7526,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.html2docx
 ----------   
-Takes html text that is expected in the body, (as pipeline resource) and converts it back to docx document and then writes to output.
+It takes html text that is expected inside the body (as pipeline resource), and converts it back to docx document. Then, it writes to the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.html2docx)
 
@@ -7564,7 +7564,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.pdf2png
 ----------   
-Takes pdf that is expected in the body, (as pipeline resource) and converts it back to body (as pipeline resource) as a collection of png images.
+It takes a pdf, that is expected inside the body (as pipeline resource), and converts it back to body (as pipeline resource) as a collection of png images.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.pdf2png)
 
@@ -7604,7 +7604,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.png2pdf
 ----------   
-Takes collection of pngs that is expected in the body (as pipeline resource) and converts it back to body (as pipeline resource) to pdf document.
+It takes a collection of pngs, that is expected in the body (as pipeline resource), and converts it back to body (as pipeline resource) as a pdf document.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.png2pdf)
 
@@ -7644,9 +7644,8 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.word2pdf
 ----------   
-DEPRECATED. Use microsoft.word.export.pdf instead. Takes a word file (.docx) that is expected in the 
-body and converts
-it to pdf and stores it back into the body.
+DEPRECATED. Use microsoft.word.export.pdf instead. The command makes a word file (.docx), that is expected in the 
+body, converts it to pdf, and then stores it back into the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.word2pdf)
 
@@ -7686,7 +7685,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.wordtemplate
 ----------   
-Transforms velocity template expressions in word files. It expects the template to be in the body or in thetemplate param, transforms it and puts the result back to the body as byte array content.
+It transforms velocity template expressions in word files. It expects the template to be in the body or in the template param, transforms it, and puts the result back to the body as a byte array content.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.wordtemplate)
 
@@ -7728,7 +7727,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## translate
 ----------   
-Translates the given text to the given target language. Expects the input by default in the body and writes the result by default back to the body.
+It translates the given text to the given target language. The command expects the input (by default) in the body, and writes the result back to the body (by default).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=translate)
 
@@ -7776,7 +7775,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## unzip
 ----------   
-Unzips a given zipped content from the body and puts the uncompressed content into the output. Note: Currently only files in the root level of the zip are supported.
+It unzips a given zipped content from the body, and puts the uncompressed content into the output. Note: Currently, only files in the root level of the zip are supported.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=unzip)
 
@@ -7814,7 +7813,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## validate.json
 ----------   
-Validates the JSON body of the message against a given JSON schema. See https://json-schema.org/. 
+It validates the JSON body of the message against a given JSON schema. See https://json-schema.org/. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=validate.json)
 
@@ -7856,7 +7855,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.delete
 ----------   
-Deletes an existing webhook. If no such webhook exists, nothing happens.
+It deletes an existing webhook. If no such webhook exists, nothing happens.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.delete)
 
@@ -7894,7 +7893,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.get
 ----------   
-Returns all persisted webhooks as a list.
+It returns all persisted webhooks as a list.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.get)
 
@@ -7934,7 +7933,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.put
 ----------   
-Creates a new webhook or updates an existing one and returns its metadata.
+It creates a new webhook or updates an existing one, and then returns its metadata.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.put)
 
@@ -7978,7 +7977,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.receive
 ----------   
-Runs a webhook identified by its uuid.
+It runs a webhook identified by its uuid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive)
 
@@ -8016,7 +8015,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.send
 ----------   
-Sends a webhook message to an external system. Returns a JSON in the body like {result:STATUS} whereasSTATUS is the response string sent back by the webhook target system. Usually this is 'ok' if everything was OK. Consult the documentation of the webhook target system about the STATUS codes.
+It sends a webhook message to an external system. The command returns a JSON in the body, like {result:STATUS}, where STATUS is the response string sent back by the webhook target system. Usually, this is 'ok' if everything was OK. Consult the documentation of the webhook target system about the STATUS codes.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.send)
 
@@ -8058,7 +8057,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.deploy
 ----------   
-Deploys a given BPMN from the body or a given property into the underlying workflow engine.
+It deploys a given BPMN from the body or a given property into the underlying workflow engine.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deploy)
 
@@ -8102,7 +8101,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.deployment.find
 ----------   
-Finds all deployments from the workflow engine matching given parameters and puts them into the body.
+It finds all deployments from the workflow engine by matching the given parameters and puts them into the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deployment.find)
 
@@ -8144,7 +8143,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.event
 ----------   
-Sends an event message to a message endpoint inside 
+It sends an event message to a message endpoint inside 
 a given workflow. As payload of the event message, 
 the current pipe message will be used as input.
 
@@ -8190,7 +8189,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.find.processinstances
 ----------   
-Returns all process instances matching the given criteria.
+It returns all process instances matching the given criteria.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.find.processinstances)
 
@@ -8230,7 +8229,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.history.tasks
 ----------   
-Returns all finished tasks matching the given criteria.
+It returns all finished tasks matching the given criteria.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.history.tasks)
 
@@ -8278,7 +8277,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.member.message
 ----------   
-Sends a message to the given workflow member. In case the workflow member is not already added to the workflow model, adds a new entry to a given workflow model, which is usually a data model (JSON) with a single member structure like this: workflowModel.members[someUserId] whereas in this level user, taskUrl and shareUrl will be added if required.
+It sends a message to the given workflow member. In case the workflow member is not already added to the workflow model, this adds a new entry to a given workflow model, which is usually a data model (JSON) with a single member structure like this: workflowModel.members[someUserId]. Whereas, in this level user, taskUrl and shareUrl will be added if required.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.member.message)
 
@@ -8330,7 +8329,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.model.attachment.get
 ----------   
-Returns property.attachment.content from process model property attachment.
+It returns property.attachment.content from the process model property attachment.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.get)
 
@@ -8370,7 +8369,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.model.attachment.put
 ----------   
-Does property.attachment.put to process model property attachment. 
+It uses property.attachment.put to process the model property attachment. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.put)
 
@@ -8412,7 +8411,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.model
 ----------   
-Utility command to easier workflow model handling.
+This is a utility command for easier workflow model handling.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model)
 
@@ -8452,7 +8451,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.tasks.open
 ----------   
-Returns all open tasks grouped by assignee. Returned parameters are dynamically and depend on the underlying workflow engine. Default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
+It returns all open tasks grouped by assignee. The Returned parameters are dynamic and depend on the underlying workflow engine. The default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes, see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open)
 
@@ -8498,7 +8497,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.tasks.open.reminder
 ----------   
-Sends a reminder email to each assignee having open tasks matching given criteria.
+It sends a reminder email to each assignee having open tasks matching the given criteria.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open.reminder)
 
@@ -8544,11 +8543,11 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.start
 ----------   
-Starts a new instance of a process in the workflow engine. 
+It starts a new instance of a process in the workflow engine. 
 The given pipe message will be serialized to JSON and
 put as variable <code>pipeJson</code> into context of the 
 process (process variables).
-Returns the input message unchanged.
+The command returns the input message unchanged.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.start)
 
@@ -8596,7 +8595,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.task.complete
 ----------   
-Completes a given workflow task and puts any resulting variable from the task in the body.
+It completes a given workflow task, and puts any resulting variable from the task inside the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.task.complete)
 
@@ -8638,7 +8637,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.tasks
 ----------   
-Returns all tasks for a given workflow. Returned parameters are dynamically and depend on the underlying workflow engine. Default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
+It returns all tasks for a given workflow. The returned parameters are dynamic and depend on the underlying workflow engine. The default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes, see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks)
 
@@ -8684,7 +8683,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.undeploy
 ----------   
-Undeploys a given BPMN from workflow engine.
+It undeploys a given BPMN from the workflow engine.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.undeploy)
 
@@ -8724,7 +8723,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.users
 ----------   
-Returns all users eligible to participate in given workflow.
+It returns all users eligible to participate in a given workflow.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.users)
 
@@ -8764,7 +8763,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## zip
 ----------   
-Compresses a given content in the body and puts the compressed data into the output. If content is a content collection, puts all entries in the resulting zip file. Note: Currently a nested content collection is currently not supported! Any content entry must be at the root level.
+It compresses a given content in the body and puts the compressed data into the output. If content is a content collection, the command puts all entries in the resulting zip file. Note: Currently, a nested content collection is currently not supported! Any content entry must be at the root level.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=zip)
 

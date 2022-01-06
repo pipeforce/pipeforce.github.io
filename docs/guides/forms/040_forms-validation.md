@@ -1,8 +1,8 @@
 # Validation
 
-Basic validations regarding data types will be specified by the underlying [JSON schema](../schema-and-objects) of the form.
+Basic validations regarding data types will be specified by the underlying [JSON schema](../guides/schema-and-objects) of the form.
 
-In order to create more specific, custom validation rules for form fields, you can add the validation attribute to each field in the form configuration. For example:
+In order to create more specific custom validation rules for form fields, you can add the validation attribute to each field in the form configuration. For example:
 
 ```json
 {
@@ -24,7 +24,7 @@ In order to create more specific, custom validation rules for form fields, you c
 }
 ```
 
-You can define as many validation rules as you want. All of them will be executed in the order they are defined in the list. The first one which fails will be shown to the user as validation message.
+You can define as many validation rules as you want. All of them will be executed in the order they are specified in the list. The first one, which fails, will be shown to the user as a validation message.
 
 Each validation rule has this format:
 
@@ -32,11 +32,11 @@ Each validation rule has this format:
 { "type":"TYPE", "rule":"EXPRESSION", "message": "MESSAGE" }
 ```
 
-Whereas `type` defines the type of the validation engine. This is by default `js` which validates using a JavaScript expression. In future there will be different validation engines available here.
+Where `type` defines the type of the validation engine. This is, by default, `js` which validates using a JavaScript expression. In future, there will be different validation engines available here.
 
 `rule` defines the rule expression to be applied. The return value of this rule must be `true` in order to have a valid field value.
 
-`message` defines the message to be displayed in case this validation has been failed.
+`message` defines the message to be displayed in case this validation has failed.
 
 ## Validation Engine: JavaScript (js)
 

@@ -1,7 +1,7 @@
 
 # Events
 
-In PIPEFORCE an event is represented by a JSON object with a certain structure like this:
+In PIPEFORCE, an event is represented by a JSON object with a certain structure like this:
 
 ```json
 {
@@ -20,7 +20,7 @@ This event JSON object is automatically provided to you in the `body` of the pip
 
 ## eventKey
 
-Contains a unique key for this event type. The event keys are typically written lower case and in a dot notation where each part is separated by a dot.
+Contains a unique key for this event type. The event keys are typically written in a lower case and dot notation, where each part is separated by a dot.
 
 Here are some examples of built-in event keys:
 
@@ -51,9 +51,9 @@ The namespace (= tenant) where this event happened. If null or empty, the event 
 
 The optional payload of the event as JSON object. The structure of this payload depends on the event type.
 
-**Note:** Every event also has the virtual properties `origin` and `target` whereas each in term point to the `origin` or `target` properties inside the `payload` (if there exists any). Virtual means, these properties are not serialized to JSON and can only be accessed by a pipeline expression (PE). This is handy for filters, since no null check for `payload` is necessary here.
+**Note:** Every event also has the virtual properties `origin` and `target`, where each term inside the `payload` (if there exists any) points to the `origin` or `target` properties. Virtual means, that these properties are not serialized to JSON and can only be accessed by a pipeline expression (PE). This is handy for filters, since no null check for `payload` is necessary here.
 
-So these paths point to the same whereas the left part will never raise a null exception:
+So these paths point to the same, whereas the left part will never raise a null exception:
 
 *   `origin = payload.origin` (the origin value **BEFORE** an event happened)
     
@@ -64,15 +64,15 @@ It depends on the event whether `origin` and / or `target` is provided and which
 
 ## async
 
-`true`, in case this event was sent in asynchronous way. Otherwise `false`.
+It is `true`, in case this event was sent in an asynchronous way. Otherwise, it is `false`.
 
 ## headers
 
-Optional name-value-pairs to describe the event. Its good practise to filter events based on header values and avoid filtering on payload because of performance.
+These are optional name-value-pairs to describe the event. It is a good practice to filter events based on header values and avoid filtering on payload for better performance.
 
 ## Listening to events
 
-In case a pipeline should be executed when a certain event was fired, the `event.listen` command can be used. When the pipeline is deployed, the `event.listen` registers itself as listener to the event system. Whenever an event is fired which matches the `event.listen` criteria, any subsequent commands of this pipeline are executed then.
+In case a pipeline should be executed when a certain event was fired, the `event.listen` command should be used. When the pipeline is deployed, the `event.listen` registers itself as a listener to the event system. Whenever an event is fired that matches the `event.listen` criteria, any subsequent commands of this pipeline gets executed.
 
 Lets assume an example: Whenever a new lead was created in Salesforce, the pipeline must send an email to the sales team:
 
@@ -85,13 +85,13 @@ pipeline:
      subject: "New lead created!"
 ```
 
-After this pipeline was deployed to the property store, it will be executed automatically any time a new event with key `webhook.salesforce.lead.created` happens. In this case a new email will be sent to `sales@company.tld`.
+After this pipeline was deployed to the property store, it will be executed automatically any time a new event with key `webhook.salesforce.lead.created` occurs. In this case, a new email will be sent to `sales@company.tld`.
 
 Note: Each pipeline can define exactly one `event.listen` command and it must be the very first command in the pipeline.
 
 ### Deep filtering of events
 
-Beside the event key, each event can also be filtered by its properties. So a pipeline gets executed only in case such a filter evaluated with `true`. To do so, you can use the `filter` parameter of the `event.listen` command and place a pipeline expression here. Since the event object is automatically provided in the `body` for you, you can access it there from inside your pipeline expression (PE). For example:
+Besides the event key, each event can also be filtered by its properties. So a pipeline gets executed only in case such a filter evaluated with `true`. To do so, you can use the `filter` parameter of the `event.listen` command and place a pipeline expression here. Since the event object is automatically provided in the `body` for you, you can access it there from inside your pipeline expression (PE). For example:
 
 ```yaml
 pipeline:
@@ -105,7 +105,7 @@ pipeline:
 
 In the `filter` parameter you can place a pipeline expression (PE). If this expression evaluates with `true`, all subsequent commands after `event.listen` will be executed.
 
-In this example we assume that the event contains the Salesforce `Lead` object so we can filter for the `CountryCode` here. But this depends on the implementation of the webhook.
+In this example, we assume that the event contains the Salesforce `Lead` object. So, we can filter for the `CountryCode` here. But this depends on the implementation of the webhook.
 
 ## Sending event
 
@@ -117,9 +117,9 @@ pipeline:
       key: "com.company.myevent"
 ```
 
-Every time this pipeline gets executed, it will send a new event with key `com.company.myevent`. Optionally you also set the `payload` of the event using its `payload` parameter. This can be a literal or a pipeline expression (PE) which points to an object to be attached to the payload.
+Every time this pipeline gets executed, it will send a new event with key `com.company.myevent`. Optionally, you also set the `payload` of the event using its `payload` parameter. This can be a literal or a pipeline expression (PE) which points to an object to be attached to the payload.
 
-Note: Whenever you send a custom event you need to prefix it with the reversed internet address of your company. In this example it is `com.company`. Otherwise it could be, that your event gets dropped or causes an exception.
+Note: Whenever you send a custom event, you need to prefix it with the reversed internet address of your company. In this example it is `com.company`. Otherwise, it could be that your event gets dropped or causes an exception.
 
 ## Built-in events
 

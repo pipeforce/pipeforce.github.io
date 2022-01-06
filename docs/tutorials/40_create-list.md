@@ -17,17 +17,17 @@
 
 ## 1 - Create your list
 
-Up to this step you already created an app with a new form inside in the previous tutorials. When you submit the form the data of the form will be automatically stored for you in PIPEFORCE, but you cant see it yet. In this step we want to display this data using a list. To do so, follow these steps:
+Up to this step, you have already created an app with a new form inside (in the previous tutorials). When you submit the form, the data of the form will be automatically stored for you in PIPEFORCE, but you cant see it yet. In this step we want to display this data using a list. To do so, follow these steps:
 
 1.  Login to your portal https://YOUR\_NAMESPACE.pipeforce.net.
     
 2.  Navigate to LOW CODE → Workbench.
     
-3.  Select your app node in the property tree and click the plus icon at the top.
+3.  Select your app node in the property tree, and click the plus icon at the top.
     
 4.  The new property view opens:
     
-    1.  As a property key use the value `global/app/MY_APP/list/person`. Replace `MY_APP` with the name of the app you created before, for example `myapp24`. **Do use only lower case letters and don’t use special characters or spaces!**
+    1.  As a property key, use the value `global/app/MY_APP/list/person`. Replace `MY_APP` with the name of the app you created before, for example `myapp24`. **Do use only lower case letters and don’t use special characters or spaces!**
         
     2.  As mime type select `application/json; type=list`.
         
@@ -36,7 +36,7 @@ Up to this step you already created an app with a new form inside in the previou
 
 ## 2 - Open your new list
 
-1.  The list property has been created for you and pre-configured using the person schema, you created in the last tutorial. Do not change anything in here.
+1.  The list property has been created for you and pre-configured using the person schema you created in the last tutorial. Do not change anything in here.
     
 2.  Navigate to `All Apps`
     
@@ -44,7 +44,7 @@ Up to this step you already created an app with a new form inside in the previou
     
 4.  Click on “person”
     
-5.  You should now see all the person data sets added before using your form:  
+5.  You should now see all the person datasets added before using your form:  
     
     ![](../img/grafik-20210720-142349.png)
 

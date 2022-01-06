@@ -4,9 +4,9 @@ sidebar_label: CLI
 ---
 
 
-The **Command Line Interface** (short “CLI” or “pi tool”) is a local command line tool, which allows remote control PIPEFORCE from the command line.
+The **Command Line Interface** (short “CLI” or “pi tool”) is a local command-line tool, which allows remote control of PIPEFORCE from the command line.
 
-It makes it handy to automate local tasks by executing commands and pipelines and helps in local development.
+It makes it handy to automate local tasks by executing commands and pipelines. It also helps in local development.
 
 See the *[Downloads](/docs/downloads)* section on how to install this tool.
 
@@ -20,19 +20,19 @@ The main structure of a CLI command is always like this:
 pi <action> <args>
 ```
 
-To get a list off all supported actions and their parameters use the help command:
+To get a list of all supported actions and their parameters, use the help command:
 
 ```bash
 pi help
 ```
 
-Below you can find the description of the most important actions.
+Below, you can find the description of the most important actions.
 
 ## pi command
 
-Executes a single pipeline command at server side and returns the result.
+This executes a single pipeline command at the server-side and returns the result.
 
-Each command parameter will become a command line parameter.
+Each parameter will become a command-line parameter.
 
 **Example 1:**
 
@@ -40,7 +40,7 @@ Each command parameter will become a command line parameter.
 pi command log message=HELLO
 ```
 
-This executes the `log` command at server side with the parameter `message` set to `HELLO`.
+This executes the `log` command at server-side with the parameter `message` set to `HELLO`.
 
 **Example 2:**
 
@@ -58,7 +58,7 @@ Or use the command `pi help command COMMAND_NAME` to get the documentation for a
 
 ## pi delete
 
-Deletes the remote resources inside a given app. It doesn’t delete any local resource.
+This deletes the remote resources inside a given app. It doesn’t delete any local resource.
 
 **Example 1:**
 
@@ -66,7 +66,7 @@ Deletes the remote resources inside a given app. It doesn’t delete any local r
 pi delete global/app/myapp/pipeline/helloworld
 ```
 
-Deletes the pipeline helloworld.
+This deletes the pipeline helloworld.
 
 **Example 2:**
 
@@ -74,15 +74,15 @@ Deletes the pipeline helloworld.
 pi delete global/app/myapp/**
 ```
 
-Deletes all resources of the app `myapp`.
+This deletes all resources of the app `myapp`.
 
 :::caution
-This command deletes remote resources without the option to recover. So be careful in using it!
+This command deletes remote resources without the option to recover. So, be careful in using it!
 :::
 
 ## pi get
 
-Downloads all resources of a given app, stores them into the local workspace in order to be able to edit them. If a local resource already exists, asks for overwrite or skip.
+This downloads all resources of a given app, stores them into the local workspace in order to be able to edit them. If a local resource already exists, this asks for either to overwrite or to skip.
 
 **Example 1:**
 
@@ -90,11 +90,11 @@ Downloads all resources of a given app, stores them into the local workspace in 
 pi get global/app/myapp/**
 ```
 
-This command line call downloads all resources of the app `myapp` and its sub-folders and stores them into the local workspace folder `src/global/app/myapp`. Note that you have to define the property key here, not the local file path.
+This command-line call downloads all resources of the app `myapp` and its sub-folders, and stores them into the local workspace folder `src/global/app/myapp`. Note, that you have to define the property key here, not the local file path.
 
 **Example 2:**
 
-This downloads only the resources inside the `myapp` folder but no resource from inside its sub-folders.
+This downloads only the resources inside the `myapp` folder, but no resource from inside its sub-folders.
 
 ```bash
 pi get global/app/myapp/*
@@ -110,7 +110,7 @@ pi get global/app/myapp/pipeline/hello
 
 ## pi help
 
-Lists all available CLI options or pipeline commands.
+Thid lists all available CLI options or pipeline commands.
 
 **Example 1:**
 
@@ -118,7 +118,7 @@ Lists all available CLI options or pipeline commands.
 pi help
 ```
 
-Lists all available command line options.
+This lists all available command-line options.
 
 **Example 2:**
 
@@ -126,7 +126,7 @@ Lists all available command line options.
 pi help command
 ```
 
-Lists the documentation of all available pipeline commands for the currently logged-in user.
+This lists the documentation of all available pipeline commands for the currently logged-in user.
 
 **Example 2:**
 
@@ -134,7 +134,7 @@ Lists the documentation of all available pipeline commands for the currently log
 pi help command log
 ```
 
-Explains the log pipeline command. The output could look like this:
+This explains the log pipeline command. The output could look like this:
 
 ```yaml
 log:
@@ -161,7 +161,7 @@ log:
 
 ## pi list
 
-Lists all remote resources of a given path.
+This lists all remote resources of a given path.
 
 **Example 1:**
 
@@ -169,7 +169,7 @@ Lists all remote resources of a given path.
 pi list global/app/myapp**
 ```
 
-Lists all resources of the app `myapp` recursively.
+This lists all resources of the app `myapp` recursively.
 
 **Example 2:**
 
@@ -177,11 +177,11 @@ Lists all resources of the app `myapp` recursively.
 pi list global/app/myapp/*
 ```
 
-Lists all resources of the folder `myapp` but not the resources inside any sub-folder.
+This lists all resources of the folder `myapp`, but not the resources inside any sub-folder.
 
 ## pi new
 
-Creates a new resource based on a wizard.
+This creates a new resource based on a wizard.
 
 **Example 1:**
 
@@ -189,7 +189,7 @@ Creates a new resource based on a wizard.
 pi new
 ```
 
-Would print this wizard:
+This would print this wizard:
 
 ```yaml
 Create new...
@@ -204,7 +204,7 @@ Choose number :
 
 **Example 2:**
 
-You can also directly start the resource wizard:
+You can also directly start the resource wizard by the command:
 
 ```bash
 pi new app
@@ -212,7 +212,7 @@ pi new app
 
 **Example 3:**
 
-And if you are inside a app folder, the app you want to create the resource for is already pre-selected for you.
+And if you are inside a app folder, the app you want to create the resource for, is already pre-selected for you.
 
 ```bash
 ~ pipeforce> cd src/global/app/myapp
@@ -221,9 +221,9 @@ And if you are inside a app folder, the app you want to create the resource for 
 
 ## pi pipeline
 
-Executes a a locally stored pipeline file, a remote pipeline or a pipeline uri. Which type of pipeline is detected by the the pipeline argument:
+This executes a a locally stored pipeline file, a remote pipeline or a pipeline uri. Which type of pipeline is detected by the pipeline argument:
 
-- Starts with ``src/``: It's assumbed to be a local pipeline file.
+- Starts with ``src/``: It's assumed to be a local pipeline file.
 - Starts with ``global/``: It's assumed to be a persisted remote pipeline.
 - None of the above: It's assumed to be a pipeline uri.
 
@@ -234,7 +234,7 @@ Executes a a locally stored pipeline file, a remote pipeline or a pipeline uri. 
 pi pipeline src/global/app/myapp/pipeline/helloworld.pi.yaml
 ```
 
-This example uploads the content of the `helloworld.pi.yaml` to the server, executes it there and returns the result. It doesn't store the pipeline at server side.
+This example uploads the content of the `helloworld.pi.yaml` to the server, executes it there, and returns the result. It doesn't store the pipeline at server-side.
 
 **Example 2:**
 
@@ -290,13 +290,13 @@ Output:
 
 The idea of a pipeline uri is to adhoc execute commands without the need to create a pipeline file and/or upload it.
 
-Also see the CLI command `pi help command` which lists all available pipeline commands and their description you can use to build pipelines and pipeline uris.
+Also, see the CLI command `pi help command`, which lists all available pipeline commands and their description you can use to build pipelines and pipeline uris.
 
 ## pi publish
 
-Uploads your created or changed resources like pipeline or form configurations to the server.
+This uploads your created or changed resources like pipeline or form configurations to the server.
 
-In case a resource already exists at the server updates only in case it has changed since last upload.
+In case a resource already exists at the server, this updates only if it has changed since last upload.
 
 **Example 1:**
 
@@ -318,7 +318,7 @@ This will recursively publish any resource inside this folder and its sub-folder
 
 **Example 3:**
 
-In case you want to publish only the files inside this folder but not its sub-folders and files, you can use a single asterisk instead:
+In case you want to publish only the files inside this folder, but not its sub-folders and files, you can use a single asterisk instead:
 
 ```bash
 pi publish src/global/app/myapp/*
@@ -334,7 +334,7 @@ pi publish src/global/app/myapp/pipeline/hello.pi.yaml
 
 **Example 5:**
 
-Note that the path argument is always relatively to your current working dir, as long as you are inside the workspace home folder $USER\_HOME/pipeforce:
+Note, that the path argument is always relatively to your current working dir, as long as you are inside the workspace home folder $USER\_HOME/pipeforce:
 
 ```bash
 cd $USER_HOME/pipeforce/src/global/app/myapp
@@ -343,11 +343,11 @@ pi publish **
 
 This will publish all resources inside `src/gobal/app/myapp` recursively.
 
-For security reasons (for example to no accidentally publish a huge path structure of your file system to the server), publish is only possible in case your current working dir is inside the workspace folder.
+For security reasons (for example, to not accidentally publish a huge path structure of your file system to the server), publish is only possible in case your current working dir is inside the workspace folder.
 
 ## pi setup
 
-Changes the settings of the CLI tool using a wizard and/or installs the CLI if not already done.
+This changes the settings of the CLI tool using a wizard and/or installs the CLI if not already done.
 
 This writes the final result into the file `$USER_HOME/pipeforce/conf/cli.conf.json`.
 
@@ -359,7 +359,7 @@ pi setup
 
 **Example 2:**
 
-For more advanced users, you can use the flag advanced in order to be able to adjust more settings:
+For more advanced users, you can use the advanced flag in order to be able to adjust more settings:
 
 ```bash
 pi setup advanced
@@ -367,7 +367,7 @@ pi setup advanced
 
 ## pi status
 
-Returns status information about the CLI.
+This returns status information about the CLI.
 
 **Example:**
 
@@ -377,7 +377,7 @@ pi status
 
 ## pi sync
 
-Does a one-way-sync of files inside the local ``src`` folder to the server. It watches a given folder and immediately syncs changes of files inside this folder to the server.
+This does a one-way-sync of files inside the local ``src`` folder to the server. It watches a given folder, and immediately syncs changes of files inside this folder to the server.
 
 :::info
 The folder to sync must be located inside the ``src`` folder of your workspace.
@@ -389,17 +389,17 @@ The folder to sync must be located inside the ``src`` folder of your workspace.
 pi sync src/global/app/myapp
 ```
 
-This example syncs any file from the folder ``myapp`` to the server.
+This example syncs all files from the folder ``myapp`` to the server.
 
-At the beginning of the sync you will be asked whether you want to backup and cleanup the given folder. If you choose ``yes`` then the content of the remote folder will be downloaded and stored in your workspace inside the ``backup`` folder and then the remote content gets deleted. This is handy in case you want to start with a clean sync state between local and server side.
+At the beginning of the sync, you will be asked whether you want to backup and cleanup the given folder. If you choose ``yes``, then the content of the remote folder will be downloaded and stored in your workspace inside the ``backup`` folder, and then the remote content gets deleted. This is handy in case you want to start with a clean sync state between local and server side.
 
 :::caution
-This is a one-way-sync from local to server. Changes made on server side will not be merged to your local sources. If you need such an approach please refer to source managament tools like Git for example which do have built-in merge conflict handling and concurrent editing features.
+This is a one-way-sync from local to server. Changes made on the server-side will not be merged to your local sources. If you need such an approach, please refer to source managament tools like Git, for example, which have built-in merge conflict handling and concurrent editing features.
 :::
 
 ## pi update
 
-Looks for an update of the CLI and installs it if a newer version exists.
+This looks for an update of the CLI and installs it if a newer version exists.
 
 **Example:**
 

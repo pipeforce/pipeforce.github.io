@@ -27,10 +27,10 @@ Provides utility functions inside a pipeline expression for simple calculations 
 You can access the functions declared here in the PEL using <code>@calc</code>  
 
 ### sum(list)   
-Does a "nice" sum the values of the given list with high precision.
+Does a "nice" sum of the values of a given list with high precision.
 If an item in the given list is a string, it will be tried
-to convert it to a number. If the value is null or cannot be converted it will be excluded from
-the summary but no exception is thrown -> be nice.   
+to convert to a number. If the value is null or cannot be converted, it will be excluded from
+the summary, but no exception is thrown -> be nice.   
 
 #### Returns  
 ``bigdecimal`` - The sum of the given list.  
