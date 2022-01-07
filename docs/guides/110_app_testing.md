@@ -146,7 +146,7 @@ You have multiple options to run tests stored in PIPEFORCE.
 
 ### Using a command
 
-You can use the [`test.run`](../api/commands.md#test_run) command to run the tests:
+You can use the [`test.run`](../api/commands.md#testrun) command to run the tests:
 
 ```yaml
 pipeline:
