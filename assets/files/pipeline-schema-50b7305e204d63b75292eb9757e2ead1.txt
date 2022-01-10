@@ -72,6 +72,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -88,6 +93,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -109,6 +119,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "credentials" : {
                 "type" : "string",
@@ -150,6 +165,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -184,6 +204,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "processInstanceId" ]
@@ -215,6 +240,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -231,6 +261,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "input" : {
                 "type" : "string",
@@ -261,6 +296,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -277,6 +317,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -299,6 +344,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -316,6 +366,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -344,6 +399,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -364,6 +424,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -377,6 +442,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -407,6 +477,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key" ]
@@ -429,6 +504,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -445,6 +525,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -463,6 +548,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -479,6 +569,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -510,6 +605,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -531,6 +631,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -551,6 +656,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "name" ]
@@ -568,6 +678,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -601,6 +716,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "format", "name", "secret" ]
@@ -618,6 +738,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "input" : {
                 "type" : "string",
@@ -662,6 +787,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -687,6 +817,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -703,6 +838,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -724,6 +864,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "input" : {
                 "type" : "string",
@@ -762,6 +907,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -811,6 +961,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -831,6 +986,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -848,6 +1008,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -869,6 +1034,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -899,6 +1069,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -923,6 +1098,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -976,6 +1156,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -992,6 +1177,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -1038,6 +1228,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1054,6 +1249,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "input" : {
                 "type" : "string",
@@ -1096,6 +1296,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1120,6 +1325,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "path", "to" ]
@@ -1137,6 +1347,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "path" ]
@@ -1154,6 +1369,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -1175,6 +1395,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -1201,6 +1426,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "path" ]
@@ -1222,6 +1452,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "path", "to" ]
@@ -1244,6 +1479,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -1274,6 +1514,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "path" ]
@@ -1330,6 +1575,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1362,6 +1612,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "path", "tagname" ]
@@ -1391,6 +1646,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "action" ]
@@ -1408,6 +1668,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -1429,6 +1694,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "expr" ]
@@ -1450,6 +1720,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key" ]
@@ -1463,6 +1738,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -1497,6 +1777,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key" ]
@@ -1509,8 +1794,8 @@
             "properties" : {
               "if" : {
                 "type" : "string",
-                "description" : "The PE to be evaluated. If true, the pipeline will exit.",
-                "default" : "#{true}"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -1532,6 +1817,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1562,6 +1852,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1575,6 +1870,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1592,6 +1892,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1613,6 +1918,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1630,6 +1940,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1647,6 +1962,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1664,6 +1984,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "url" ]
@@ -1685,6 +2010,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "xpath" ]
@@ -1710,6 +2040,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "input" : {
                 "type" : "string",
@@ -1748,6 +2083,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -1784,6 +2124,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "input" : {
                 "type" : "string",
@@ -1822,6 +2167,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -1859,6 +2209,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -1887,6 +2242,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "refreshToken" ]
@@ -1909,6 +2269,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -1925,6 +2290,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1958,6 +2328,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -1979,6 +2354,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2004,6 +2384,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2034,6 +2419,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2063,6 +2453,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2083,6 +2478,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2119,6 +2519,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2149,6 +2554,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2189,6 +2599,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2228,6 +2643,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2244,6 +2664,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2269,6 +2694,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2298,6 +2728,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2334,6 +2769,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2354,6 +2794,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "username" ]
@@ -2386,6 +2831,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2406,6 +2856,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "refreshToken" ]
@@ -2431,6 +2886,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2460,6 +2920,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2510,6 +2975,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2530,6 +3000,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2555,6 +3030,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2595,6 +3075,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2625,6 +3110,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2665,6 +3155,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2693,6 +3188,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "true" ]
@@ -2714,6 +3214,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -2731,6 +3236,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2757,6 +3267,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "message" ]
@@ -2785,6 +3300,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2817,6 +3337,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2838,6 +3363,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2889,6 +3419,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -2926,6 +3461,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -2978,6 +3518,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "to" ]
@@ -3007,6 +3552,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "email" ]
@@ -3025,6 +3575,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -3038,6 +3593,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3063,6 +3623,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "url", "message" ]
@@ -3098,6 +3663,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "command" ]
@@ -3122,6 +3692,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3142,6 +3717,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3210,6 +3790,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3230,6 +3815,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "name" ]
@@ -3247,6 +3837,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3269,6 +3864,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3289,6 +3889,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "name" ]
@@ -3311,6 +3916,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3331,6 +3941,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3361,6 +3976,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3394,6 +4014,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key", "name" ]
@@ -3415,6 +4040,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3440,6 +4070,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key", "name" ]
@@ -3462,6 +4097,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3482,6 +4122,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3515,6 +4160,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key", "name" ]
@@ -3540,6 +4190,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key", "name", "uri" ]
@@ -3561,6 +4216,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key", "to" ]
@@ -3578,6 +4238,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3601,6 +4266,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3622,6 +4292,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3642,6 +4317,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3668,6 +4348,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3692,6 +4377,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key", "to" ]
@@ -3713,6 +4403,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key" ]
@@ -3730,6 +4425,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key" ]
@@ -3786,6 +4486,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key" ]
@@ -3828,6 +4533,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3848,6 +4558,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3881,6 +4596,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key" ]
@@ -3911,6 +4631,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -3931,6 +4656,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -3956,6 +4686,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -3969,6 +4704,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "id" ]
@@ -3986,6 +4726,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "value", "id" ]
@@ -4008,6 +4753,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4028,6 +4778,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "path" ]
@@ -4041,6 +4796,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -4058,6 +4818,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "url" ]
@@ -4075,6 +4840,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "xpath" ]
@@ -4088,6 +4858,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4115,14 +4890,14 @@
                 "description" : "The script language to be used. Possible values: js, groovy.",
                 "default" : "js"
               },
-              "if" : {
-                "type" : "string",
-                "description" : "A PE which must evaluate to true in order to execute this command.",
-                "default" : "true"
-              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4140,6 +4915,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4161,6 +4941,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "name" ]
@@ -4178,6 +4963,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "name" ]
@@ -4200,6 +4990,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "value" ]
@@ -4225,6 +5020,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4259,6 +5059,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "key", "value" ]
@@ -4292,6 +5097,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "credentials" : {
                 "type" : "string",
@@ -4334,6 +5144,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "credentials" : {
                 "type" : "string",
                 "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
@@ -4347,7 +5162,7 @@
           },
           "sftp.list" : {
             "type" : "object",
-            "description" : "Lists all files of a given folder. The result is written to output.",
+            "description" : "Lists files of a given folder. If not filter parameter is used all files are returned. The result is written to output.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -4355,6 +5170,10 @@
                 "type" : "string",
                 "description" : "The path to the folder to list.",
                 "default" : "/"
+              },
+              "filter" : {
+                "type" : "string",
+                "description" : "The filter to apply to files list. '?' - match one character, '*' - match zero o more characters, '\\*' to match '*' in filename"
               },
               "username" : {
                 "type" : "string",
@@ -4375,6 +5194,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "credentials" : {
                 "type" : "string",
@@ -4416,6 +5240,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "credentials" : {
                 "type" : "string",
@@ -4462,6 +5291,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "credentials" : {
                 "type" : "string",
                 "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
@@ -4504,6 +5338,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "credentials" : {
                 "type" : "string",
                 "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
@@ -4532,6 +5371,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "url", "text" ]
@@ -4570,6 +5414,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4586,6 +5435,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4618,6 +5472,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -4640,6 +5499,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4680,6 +5544,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
@@ -4709,6 +5578,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4725,6 +5599,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4747,6 +5626,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4768,6 +5652,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4788,6 +5677,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4814,6 +5708,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4839,6 +5738,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4869,6 +5773,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4898,6 +5807,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ ]
@@ -4915,6 +5829,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "uuid" ]
@@ -4932,6 +5851,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -4962,6 +5886,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -4982,6 +5911,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "uuid" ]
@@ -5003,6 +5937,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -5033,6 +5972,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -5053,6 +5997,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -5083,6 +6032,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -5103,6 +6057,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -5141,6 +6100,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -5190,6 +6154,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "workflowModel" ]
@@ -5211,6 +6180,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
@@ -5236,6 +6210,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
@@ -5253,6 +6232,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -5287,6 +6271,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -5319,6 +6308,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -5357,6 +6351,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -5381,6 +6380,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -5415,6 +6419,11 @@
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
               },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -5440,6 +6449,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               }
             },
             "required" : [ "name" ]
@@ -5457,6 +6471,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
@@ -5482,6 +6501,11 @@
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
+                "default" : "true"
               },
               "output" : {
                 "type" : "string",
