@@ -32,6 +32,12 @@ Or you can use the CLI:
 pi command app.install github=acme/my-pipeforce-app
 ```
 
+:::info
+Since GitHub allows only a few requests for non-authenticated API calls, you can install
+only very small apps using this public repo approach. If you have to install apps with
+many resources, use the private repo approach since this has higher limits for API calls.
+:::
+
 ### Private repo
 
 In case you would like to install from a private repo, you have to do additional steps:

@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 06/01/2022 by CommandComplianceTest -->
+<!-- Generated: 08/01/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -22,7 +22,7 @@ pipeline:
 
 ## apidoc.commands
 ----------   
-It returns the OpenAPI documentation of commands.
+Returns the OpenAPI documentation of commands.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.commands)
 
@@ -32,8 +32,9 @@ It returns the OpenAPI documentation of commands.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`id` | String | false | null | This is an optional id of this command, that is unique within the pipeline.
-`output` | String | false | null | This defines a PEL where to write the result of the command. If null or empty, then the result is written to the body.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -41,18 +42,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - apidoc.commands:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/apidoc.commands?id=<value>&output=<value>  
+http://host/api/v3/command/apidoc.commands?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command apidoc.commands id=<value> output=<value>  
+pi command apidoc.commands id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -60,7 +62,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## apidoc.pel.utils
 ----------   
-It returns the OpenAPI documentation of PEL utils.
+Returns the OpenAPI documentation of PEL utils.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.pel.utils)
 
@@ -70,8 +72,9 @@ It returns the OpenAPI documentation of PEL utils.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`id` | String | false | null | This is an optional id of this command, that is unique within the pipeline.
-`output` | String | false | null | This defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -79,18 +82,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - apidoc.pel.utils:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/apidoc.pel.utils?id=<value>&output=<value>  
+http://host/api/v3/command/apidoc.pel.utils?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command apidoc.pel.utils id=<value> output=<value>  
+pi command apidoc.pel.utils id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -110,6 +114,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -119,18 +124,19 @@ pipeline:
   - app.install:  
       github: <value>  
       id: <value>  
+      if: <value>  
       credentials: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.install?github=<value>&id=<value>&credentials=<value>  
+http://host/api/v3/command/app.install?github=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.install github=<value> id=<value> credentials=<value>  
+pi command app.install github=<value> id=<value> if=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -138,7 +144,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## assert
 ----------   
-It evaluates a given PEL conditions and throws an error in case a condition is invalid.
+Evaluates a given PEL conditions and throws an error in case a condition is invalid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=assert)
 
@@ -150,11 +156,12 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `true` | String | false | null | A PE which must evaluate to true.
 `false` | String | false | null | A PE which must evaluate to false.
-`body.equals` | String | false | null | The value of this param is compared to the body. If different, an exception is thrown. Can be a PE.
+`body.equals` | String | false | null | The value of this param is compared to the body. If different, exception is thrown. Can be a PE.
 `equals` | String | false | null | Compares the result of param value with this. If not equal, throws exception. Can be a PE.
 `value` | String | false | null | The value to be used for comparision. Can be a PE.
 `message` | String | false | null | An optional message to be used in case of invalid condition. Can be a PE.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -168,17 +175,18 @@ pipeline:
       value: <value>  
       message: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/assert?true=<value>&false=<value>&body.equals=<value>&equals=<value>&value=<value>&message=<value>&id=<value>  
+http://host/api/v3/command/assert?true=<value>&false=<value>&body.equals=<value>&equals=<value>&value=<value>&message=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command assert true=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value> id=<value>  
+pi command assert true=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -186,7 +194,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.assert
 ----------   
-It applies asserts for a given workflow in the workflow service.
+Applies asserts for a given workflow in the workflow service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.assert)
 
@@ -202,6 +210,7 @@ Name | Type | Required | Default | Description
 `throwException` | String | false | true | If true, throws exception when assert is false. Otherwise returns the status in the body.
 `processInstanceId` | String | true | null | The id of the process instance the task to check belongs to.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -214,17 +223,18 @@ pipeline:
       throwException: <value>  
       processInstanceId: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.assert?hasPassed=<value>&hasNotPassed=<value>&processFinished=<value>&throwException=<value>&processInstanceId=<value>&id=<value>  
+http://host/api/v3/command/workflow.assert?hasPassed=<value>&hasNotPassed=<value>&processFinished=<value>&throwException=<value>&processInstanceId=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.assert hasPassed=<value> hasNotPassed=<value> processFinished=<value> throwException=<value> processInstanceId=<value> id=<value>  
+pi command workflow.assert hasPassed=<value> hasNotPassed=<value> processFinished=<value> throwException=<value> processInstanceId=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -232,7 +242,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## barcode.create
 ----------   
-It creates a barcode from a dynamic format.
+Creates a barcode from a dynamic format.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=barcode.create)
 
@@ -247,6 +257,7 @@ Name | Type | Required | Default | Description
 `height` | String | false | null | The height of the barcode. If empty, the default size is used.
 `format` | String | false | PDF_417 | The dynamic format of the barcode to be created. One of: AZTEC, CODABAR, CODE_39, CODE_93, CODE_128, DATA_MATRIX, EAN_8, EAN_13, ITF, PDF_417, QR_CODE, UPC_A, UPC_E
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -259,18 +270,19 @@ pipeline:
       height: <value>  
       format: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/barcode.create?text=<value>&width=<value>&height=<value>&format=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/barcode.create?text=<value>&width=<value>&height=<value>&format=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command barcode.create text=<value> width=<value> height=<value> format=<value> id=<value> output=<value>  
+pi command barcode.create text=<value> width=<value> height=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -278,7 +290,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## barcode.read
 ----------   
-It reads a barcode from a dynamic PNG format. It expects the barcode image as content object inside the body. It detects the barcode type automatically. By default, it returns the text extracted from the barcode inside the body.
+Reads a barcode from a dynamic PNG format. Expects the barcode image as content object in the body. Detects the barcode type automatically. By default returns the text extracted from the barcode in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=barcode.read)
 
@@ -289,6 +301,7 @@ It reads a barcode from a dynamic PNG format. It expects the barcode image as co
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -298,6 +311,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - barcode.read:  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -305,12 +319,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/barcode.read?id=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/barcode.read?id=<value>&if=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command barcode.read id=<value> input=<value> output=<value>  
+pi command barcode.read id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -318,7 +332,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## bean
 ----------   
-It executes a method on a Spring bean. It is only available for support users.
+Executes a method on a Spring bean. Is only available for support users.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=bean)
 
@@ -331,6 +345,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of the bean.
 `method` | String | false | null | The method name of the bean to be executed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -341,18 +356,19 @@ pipeline:
       name: <value>  
       method: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/bean?name=<value>&method=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/bean?name=<value>&method=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command bean name=<value> method=<value> id=<value> output=<value>  
+pi command bean name=<value> method=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -360,7 +376,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## body.delete
 ----------   
-It sets the value in the body to null. It deletes any existing value in the body. 
+Sets the value in the body to null. Deletes any existing value in the body. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=body.delete)
 
@@ -371,6 +387,7 @@ It sets the value in the body to null. It deletes any existing value in the body
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -378,17 +395,18 @@ Name | Type | Required | Default | Description
 pipeline:  
   - body.delete:  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/body.delete?id=<value>  
+http://host/api/v3/command/body.delete?id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command body.delete id=<value>  
+pi command body.delete id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -396,7 +414,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## body.filter
 ----------   
-DEPRECATED. It converts the input body to JSON, then filters the input body, and removes any properties not matching the given filter. It throws an exception if the input body cannot be converted to JSON. It does nothing, if the input body is null or empty. If the first level of the body is a list, it applies the filter to each element inside the list. This command can be used, for example, to filter-out sensitive information or to shrink a big result-set for performance reasons.
+DEPRECATED. Converts the input body to JSON and then filters the input body and removes any properties not matching the given filter. Throws exception if input body cannot be converted to JSON.Does nothing, if input body is null or empty. If the first level of the body is a list, appliesthe filter to each element inside the list. This command can be used for example to filter outsensitive information or to shrink a big result set for performance reasons.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=body.filter)
 
@@ -409,6 +427,7 @@ Name | Type | Required | Default | Description
 `properties` | String | false | null | A comma separated list of first-level properties to be shown. If set, only those properties of the first level will be returned, those are listed here. All other properties will be omitted. For example to filter a user entity in the body with filter: id,username would return only the id and the username of the user. If not set, the body will not be converted and filtered at all and returned unchanged.
 `removeKey` | Boolean | false | false | Can only be applied, if the result is a list and contains elements with a single property each. For example: [{name: foo}, {name: bar}]. If set to true, removes the key from the property and converts the result to a simple list like: [foo, bar]. If the result is not a list or elements in the list contain more than one property, this param is ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -418,17 +437,18 @@ pipeline:
       properties: <value>  
       removeKey: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<value>  
+http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command body.filter properties=<value> removeKey=<value> id=<value>  
+pi command body.filter properties=<value> removeKey=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -436,7 +456,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.clear
 ----------   
-It clears the underlying central cache, and removes any entry in time, for which the time to live has been expired. It can also be used to remove a single entry from the cache.
+Clears the underlying central cache and removes any entry those time to live has been expired. Can also be used to remove a single entry from the cache.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.clear)
 
@@ -446,8 +466,9 @@ It clears the underlying central cache, and removes any entry in time, for which
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | false | null | The key to load the value from the cache (to remove). If empty or null, all entries in the cache will be inspected, and those whose time to live that has been expired, will be removed.
+`key` | String | false | null | The key to load the value from the cache to remove. If empty or null, all entries in the cache will be inspected and those time to live has been expired will be removed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -456,17 +477,18 @@ pipeline:
   - cache.clear:  
       key: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.clear?key=<value>&id=<value>  
+http://host/api/v3/command/cache.clear?key=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.clear key=<value> id=<value>  
+pi command cache.clear key=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -474,7 +496,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.get
 ----------   
-It reads a value with given key from the cache, and writes it into the output.
+Reads a value with given key from the cache and writes it into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.get)
 
@@ -488,6 +510,7 @@ Name | Type | Required | Default | Description
 `remove` | Boolean | false | false | If true, removes the entry after it was successfully returned.
 `exit` | Boolean | false | false | If true, exits the pipeline if cache entry exists.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -499,18 +522,19 @@ pipeline:
       remove: <value>  
       exit: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.get?key=<value>&remove=<value>&exit=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/cache.get?key=<value>&remove=<value>&exit=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.get key=<value> remove=<value> exit=<value> id=<value> output=<value>  
+pi command cache.get key=<value> remove=<value> exit=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -518,7 +542,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.info
 ----------   
-It returns information about the current state of the cache. It is only available for system and support users only.
+Returns information about the current state of the cache. Available for system and support users only.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.info)
 
@@ -530,6 +554,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | false | null | Returns the info for a given cache entry. If null or empty, the overall cache info is returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -538,17 +563,18 @@ pipeline:
   - cache.info:  
       key: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.info?key=<value>&id=<value>  
+http://host/api/v3/command/cache.info?key=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.info key=<value> id=<value>  
+pi command cache.info key=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -556,7 +582,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.list
 ----------   
-It lists ALL entries of the cache. Use with care!
+Lists ALL entries of the cache. Use with care!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.list)
 
@@ -567,6 +593,7 @@ It lists ALL entries of the cache. Use with care!
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -575,18 +602,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - cache.list:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.list?id=<value>&output=<value>  
+http://host/api/v3/command/cache.list?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.list id=<value> output=<value>  
+pi command cache.list id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -594,9 +622,9 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## cache.put
 ----------   
-It saves the given value under a given key into central cache.
-If no value param is given, it uses the body as the cache value.
-The max time to live for each entry is 120 min. The min time to live is 5 min. Also, the default is 5 min.
+Saves the given value under given key into a central cache.
+If no value param is given, uses the body as cache value.
+The max time to live of each entry is 120 min. The min time to live is 5 min. Default is 5 min.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=cache.put)
 
@@ -610,6 +638,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The unique key for the cache entry.
 `value` | String | false | null | The value for the cache entry. If not set, null is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -620,17 +649,18 @@ pipeline:
       key: <value>  
       value: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.put?timeToLive=<value>&key=<value>&value=<value>&id=<value>  
+http://host/api/v3/command/cache.put?timeToLive=<value>&key=<value>&value=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.put timeToLive=<value> key=<value> value=<value> id=<value>  
+pi command cache.put timeToLive=<value> key=<value> value=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -638,7 +668,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## call
 ----------   
-It calls a script and returns with the result inside the body.
+Calls a script and returns with the result in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=call)
 
@@ -651,6 +681,7 @@ Name | Type | Required | Default | Description
 `uri` | String | true | null | The uri to be called.
 `args` | Object | false | null | Name value pair of arguments to be passed to the script. If the script is a pipeline, the arguments are set as vars overwriting any existing vars.If the script is a remote HTTP URL, the arguments are passed as request parameters, each.If the script is a script in classpath or property store, the arguments are passed via implicit variable: pi.args.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -661,18 +692,19 @@ pipeline:
       uri: <value>  
       args: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/call?uri=<value>&args=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/call?uri=<value>&args=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command call uri=<value> args=<value> id=<value> output=<value>  
+pi command call uri=<value> args=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -680,7 +712,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## capture
 ----------   
-DEPREACTED (Use the cache.* commands instead). This captures the last pipe message, and adds it into a list inside the header under the key {@link #HEADER_CAPTURED}. This is primarily used for testing purposes, but can also be used to create a snapshot of a certain pipeline state.
+DEPREACTED (Use the cache.* commands instead). Captures the last pipe message and adds it into a list in the header under key {@link #HEADER_CAPTURED}. This is primarily for testing purposes but also can be used to create a snapshot of a certain pipeline state.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=capture)
 
@@ -691,6 +723,7 @@ DEPREACTED (Use the cache.* commands instead). This captures the last pipe messa
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -698,17 +731,18 @@ Name | Type | Required | Default | Description
 pipeline:  
   - capture:  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/capture?id=<value>  
+http://host/api/v3/command/capture?id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command capture id=<value>  
+pi command capture id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -716,7 +750,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipe.schema
 ----------   
-This returns the JSON schema for all built-in pipes.
+Returns the JSON schema for all built-in pipes.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema)
 
@@ -728,6 +762,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pipe` | String | false | null | The specific pipe name to fetch schema from. If set, only the schema for this specific pipe is returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -737,18 +772,19 @@ pipeline:
   - pipe.schema:  
       pipe: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipe.schema?pipe=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/pipe.schema?pipe=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipe.schema pipe=<value> id=<value> output=<value>  
+pi command pipe.schema pipe=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -756,7 +792,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipe.schema.v7
 ----------   
-This returns the V7 compliant JSON schema for all built-in pipes.
+Returns the V7 compliant JSON schema for all built-in pipes.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema.v7)
 
@@ -767,6 +803,7 @@ This returns the V7 compliant JSON schema for all built-in pipes.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -775,18 +812,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - pipe.schema.v7:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipe.schema.v7?id=<value>&output=<value>  
+http://host/api/v3/command/pipe.schema.v7?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipe.schema.v7 id=<value> output=<value>  
+pi command pipe.schema.v7 id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -794,7 +832,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## config.get
 ----------   
-This returns all admin config settings, for a given group from the backend, as a JSON in this format: {configKey:{value:someValue, canOverwrite:true|false}}. The attribute to Overwrite is only available if param includePermission is set.
+Returns all admin config settings for a given group from the backend as a JSON in this format: {configKey:{value:someValue, canOverwrite:true|false}}. The attribute canOverwrite is only available if param includePermission is set.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=config.get)
 
@@ -808,6 +846,7 @@ Name | Type | Required | Default | Description
 `key` | String | false | null | The config key inside a given group. If null or empty, all configs from the selected group will be returned.
 `includePermission` | String | false | false | If true, additionally shows whether a currently logged-in user can write/change a configuration or not by adding the attribute canOverwrite:true|false. to each config entry.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -819,18 +858,19 @@ pipeline:
       key: <value>  
       includePermission: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/config.get?group=<value>&key=<value>&includePermission=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/config.get?group=<value>&key=<value>&includePermission=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command config.get group=<value> key=<value> includePermission=<value> id=<value> output=<value>  
+pi command config.get group=<value> key=<value> includePermission=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -838,7 +878,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## content.get
 ----------   
-It reads content from the provided uri, and puts the result back to body.
+Reads content from provided uri and puts the result back to body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=content.get)
 
@@ -850,6 +890,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uri` | String | true | null | The content uri of the content to load.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -859,18 +900,19 @@ pipeline:
   - content.get:  
       uri: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/content.get?uri=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/content.get?uri=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command content.get uri=<value> id=<value> output=<value>  
+pi command content.get uri=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -878,7 +920,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## credentials.delete
 ----------   
-It deletes a credential entry.
+Deletes a credentials entry.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=credentials.delete)
 
@@ -890,6 +932,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the credentials entry to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -898,17 +941,18 @@ pipeline:
   - credentials.delete:  
       name: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/credentials.delete?name=<value>&id=<value>  
+http://host/api/v3/command/credentials.delete?name=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command credentials.delete name=<value> id=<value>  
+pi command credentials.delete name=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -916,7 +960,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## credentials.get
 ----------   
-It lists the metadata of all available credential entries.
+Lists the metadata of all available credentials entries.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=credentials.get)
 
@@ -928,6 +972,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of a single credentials to return. If null or empty, all credentials will be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -937,18 +982,19 @@ pipeline:
   - credentials.get:  
       name: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/credentials.get?name=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/credentials.get?name=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command credentials.get name=<value> id=<value> output=<value>  
+pi command credentials.get name=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -956,7 +1002,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## credentials.put
 ----------   
-It creates a new credential entry.
+Creates a new credentials entry.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=credentials.put)
 
@@ -971,6 +1017,7 @@ Name | Type | Required | Default | Description
 `secret` | String | true | null | The secret part of the credentials (for example the username:password or Bearer TOKEN).
 `timeToLive` | String | false | null | The time to live in minutes. After this time, the credentials will be deleted.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -982,17 +1029,18 @@ pipeline:
       secret: <value>  
       timeToLive: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/credentials.put?format=<value>&name=<value>&secret=<value>&timeToLive=<value>&id=<value>  
+http://host/api/v3/command/credentials.put?format=<value>&name=<value>&secret=<value>&timeToLive=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command credentials.put format=<value> name=<value> secret=<value> timeToLive=<value> id=<value>  
+pi command credentials.put format=<value> name=<value> secret=<value> timeToLive=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1000,7 +1048,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## data.mapping
 ----------   
-It converts from one data structure into another by applying simple mapping rules. It also auto-creates nested elements, if required.
+Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=data.mapping)
 
@@ -1012,6 +1060,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `rules` | String | false | null | A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -> outputPEL1. Multiple rules are separated by a comma directly followed by a new line.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1022,6 +1071,7 @@ pipeline:
   - data.mapping:  
       rules: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1029,12 +1079,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.mapping?rules=<value>&id=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.mapping?rules=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.mapping rules=<value> id=<value> input=<value> output=<value>  
+pi command data.mapping rules=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1042,7 +1092,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## data.transform
 ----------   
-It converts the input to an output format by applying the given template. By default, the current message is provided as a model inside the template context. So, you can access body, vars or headers similar to the default PEL approach.
+This data transformer converts the input to an output format by applying the given template. By default the current message is provided as model inside the template context so you can access body, vars or headers similar to the default PEL approach.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=data.transform)
 
@@ -1058,6 +1108,7 @@ Name | Type | Required | Default | Description
 `modelName` | String | false | null | The name of the root model under which the input can be accessed inside the template. If null or empty, then the input defines the model names.
 `template` | String | true | null | The template to be used for the transformation. It can the template text itself as string or a qualified uri pointing to a template resource like this for example: $uri:property:/my/template/path
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1072,6 +1123,7 @@ pipeline:
       modelName: <value>  
       template: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1079,12 +1131,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&id=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> input=<value> output=<value>  
+pi command data.transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1092,7 +1144,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## datetime
 ----------   
-It returns the current time at server-side.
+Returns the current time at server side.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=datetime)
 
@@ -1104,6 +1156,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `format` | String | false | null | The date time format pattern. If null, the system default format is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1113,18 +1166,19 @@ pipeline:
   - datetime:  
       format: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/datetime?format=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/datetime?format=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command datetime format=<value> id=<value> output=<value>  
+pi command datetime format=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1132,7 +1186,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## datetime.zones
 ----------   
-It returns all official IANA time-zone names supported by this PIPEFORCE instance: http://www.iana.org/time-zones
+Returns all official IANA time-zone names supported by this PIPEFORCE instance: http://www.iana.org/time-zones
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=datetime.zones)
 
@@ -1143,6 +1197,7 @@ It returns all official IANA time-zone names supported by this PIPEFORCE instanc
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1151,18 +1206,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - datetime.zones:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/datetime.zones?id=<value>&output=<value>  
+http://host/api/v3/command/datetime.zones?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command datetime.zones id=<value> output=<value>  
+pi command datetime.zones id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1170,7 +1226,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## decrypt
 ----------   
-It decrypts the data in the body using the defined encryption parameter. It also puts the encrypted data back in the body.
+Decrypts the data in the body using the defined encryption parameter. Puts the encrypted data back to the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=decrypt)
 
@@ -1182,6 +1238,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `password` | String | true | null | The password to decrypt the body with.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1192,6 +1249,7 @@ pipeline:
   - decrypt:  
       password: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1199,12 +1257,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/decrypt?password=<value>&id=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/decrypt?password=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command decrypt password=<value> id=<value> input=<value> output=<value>  
+pi command decrypt password=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1212,7 +1270,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.attachment.add
 ----------   
-It adds a single attachment to an existing PIPEFORCE Secure Delivery. Note: Attachments can be added to deliveries only in state DRAFT.
+Adds a single attachment to an existing PIPEFORCE Secure Delivery. Note: Attachments can be added to deliveries only in state DRAFT.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.attachment.add)
 
@@ -1227,6 +1285,7 @@ Name | Type | Required | Default | Description
 `mimeType` | String | false | null | The mime type of the attachment.
 `length` | String | false | 0 | The length of the attachment in bytes.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1239,18 +1298,19 @@ pipeline:
       mimeType: <value>  
       length: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.attachment.add?deliveryUuid=<value>&name=<value>&mimeType=<value>&length=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/delivery.attachment.add?deliveryUuid=<value>&name=<value>&mimeType=<value>&length=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.attachment.add deliveryUuid=<value> name=<value> mimeType=<value> length=<value> id=<value> output=<value>  
+pi command delivery.attachment.add deliveryUuid=<value> name=<value> mimeType=<value> length=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1258,7 +1318,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.create
 ----------   
-It creates a new PIPEFORCE Secure Delivery, and sets it in the target
+Creates a new PIPEFORCE Secure Delivery and sets it in the target
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.create)
 
@@ -1276,6 +1336,7 @@ Name | Type | Required | Default | Description
 `attachments` | String | false | null | The list of attachment file names or a list of JSON objects to be added to this delivery.
 `notifySender` | String | false | true | If true, notifies sender when recipients have downloaded delivery.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1291,18 +1352,19 @@ pipeline:
       attachments: <value>  
       notifySender: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.create?subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/delivery.create?subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.create subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> output=<value>  
+pi command delivery.create subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1310,7 +1372,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.delete
 ----------   
-It deletes a given delivery.
+Deletes a given delivery.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.delete)
 
@@ -1322,6 +1384,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `deliveryUuid` | String | true | null | The uuid of the delivery to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -1330,17 +1393,18 @@ pipeline:
   - delivery.delete:  
       deliveryUuid: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.delete?deliveryUuid=<value>&id=<value>  
+http://host/api/v3/command/delivery.delete?deliveryUuid=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.delete deliveryUuid=<value> id=<value>  
+pi command delivery.delete deliveryUuid=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1348,7 +1412,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.finalize
 ----------   
-It finalizes an existing delivery. After finalized, recipients can be added, but message and attachments of delivery can not be changed any longer.
+Finalizes an existing delivery. After finalized, only recipients can be added but message and attachments of delivery can not be changed any longer.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.finalize)
 
@@ -1360,6 +1424,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `deliveryUuid` | String | true | null | The uuid of the delivery to finalize.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1369,18 +1434,19 @@ pipeline:
   - delivery.finalize:  
       deliveryUuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.finalize?deliveryUuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/delivery.finalize?deliveryUuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.finalize deliveryUuid=<value> id=<value> output=<value>  
+pi command delivery.finalize deliveryUuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1388,7 +1454,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.get
 ----------   
-It returns an existing delivery.
+Returns an existing delivery.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.get)
 
@@ -1400,6 +1466,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `deliveryUuid` | String | true | null | The uuid of the delivery.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1409,18 +1476,19 @@ pipeline:
   - delivery.get:  
       deliveryUuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.get?deliveryUuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/delivery.get?deliveryUuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.get deliveryUuid=<value> id=<value> output=<value>  
+pi command delivery.get deliveryUuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1428,7 +1496,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.recipient.add
 ----------   
-It adds recipients to an existing PIPEFORCE Secure Delivery. Note: Recipients can be added to deliveries only in state DRAFT or FINALIZED.
+Adds recipients to an existing PIPEFORCE Secure Delivery. Note: Recipients can be added to deliveries only in state DRAFT or FINALIZED.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.recipient.add)
 
@@ -1442,6 +1510,7 @@ Name | Type | Required | Default | Description
 `email` | String | false | null | The email address of the recipient to be added.
 `locale` | String | false | null | The locale to be used for this recipient like de, en or fr for example.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1453,18 +1522,19 @@ pipeline:
       email: <value>  
       locale: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.recipient.add?deliveryUuid=<value>&email=<value>&locale=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/delivery.recipient.add?deliveryUuid=<value>&email=<value>&locale=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.recipient.add deliveryUuid=<value> email=<value> locale=<value> id=<value> output=<value>  
+pi command delivery.recipient.add deliveryUuid=<value> email=<value> locale=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1472,7 +1542,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.send
 ----------   
-It sends a given PIPEFORCE Secure Delivery. If delivery is in status DRAFT, it will be converted to FINALIZED before send.
+Sends a given PIPEFORCE Secure Delivery. If delivery is in status DRAFT it will be converted to FINALIZED before send.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.send)
 
@@ -1485,6 +1555,7 @@ Name | Type | Required | Default | Description
 `deliveryUuid` | String | true | null | The uuid of the delivery to send.
 `recipients` | String | false | null | The comma separated or PEL list of recipients to (re-)send the delivery to. The recipients must already exist in the delivery. If null or empty, the delivery message is send to all existing recipients of the delivery.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1495,18 +1566,19 @@ pipeline:
       deliveryUuid: <value>  
       recipients: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.send?deliveryUuid=<value>&recipients=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/delivery.send?deliveryUuid=<value>&recipients=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.send deliveryUuid=<value> recipients=<value> id=<value> output=<value>  
+pi command delivery.send deliveryUuid=<value> recipients=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1514,7 +1586,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## delivery.update
 ----------   
-It updates an existing PIPEFORCE Secure Delivery.
+Updates an existing PIPEFORCE Secure Delivery.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=delivery.update)
 
@@ -1533,6 +1605,7 @@ Name | Type | Required | Default | Description
 `attachments` | String | false | null | The attachments to be set to this delivery. Overwrites any existing attachments. If null or empty, this attribute wont be updated.
 `notifySender` | String | false | true | If true, notifies sender when recipients have downloaded delivery. If null or empty, this attribute wont be updated.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1549,18 +1622,19 @@ pipeline:
       attachments: <value>  
       notifySender: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> output=<value>  
+pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1568,7 +1642,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## doc.api.pelutils
 ----------   
-It returns the api doc for the available PEL utils.
+Returns the api doc for the available PEL utils.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=doc.api.pelutils)
 
@@ -1579,6 +1653,7 @@ It returns the api doc for the available PEL utils.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1587,18 +1662,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - doc.api.pelutils:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/doc.api.pelutils?id=<value>&output=<value>  
+http://host/api/v3/command/doc.api.pelutils?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command doc.api.pelutils id=<value> output=<value>  
+pi command doc.api.pelutils id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1606,10 +1682,10 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## docusign
 ----------   
-It requests a signature of the given document in the body 
+Requests a signature of the given document in the body 
 via email (remote signing) using DocuSign. See here: 
 https://developers.docusign.com/esign-rest-api/code-examples/code-example-request-a-signature-via-email
-It expects the document to be signed in the body with json.file encoding.
+Expects the to be signed document in the body with json.file encoding.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=docusign)
 
@@ -1627,6 +1703,7 @@ Name | Type | Required | Default | Description
 `accessToken` | String | false | null | The DocuSign access token. If null or empty, the token will be read from settings.
 `accountId` | String | false | null | The docuSign account Id for REST calls. Can be obtained here: https://developers.docusign.com/esign-rest-api/guides/authentication/user-info-endpoints . If not set, the command tries to get the account ID by an additional request from DocuSign
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1642,18 +1719,19 @@ pipeline:
       accessToken: <value>  
       accountId: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/docusign?signerEmail=<value>&signerName=<value>&ccEmail=<value>&ccName=<value>&subject=<value>&accessToken=<value>&accountId=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/docusign?signerEmail=<value>&signerName=<value>&ccEmail=<value>&ccName=<value>&subject=<value>&accessToken=<value>&accountId=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command docusign signerEmail=<value> signerName=<value> ccEmail=<value> ccName=<value> subject=<value> accessToken=<value> accountId=<value> id=<value> output=<value>  
+pi command docusign signerEmail=<value> signerName=<value> ccEmail=<value> ccName=<value> subject=<value> accessToken=<value> accountId=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1661,7 +1739,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## document.understand
 ----------   
-It returns metadata for a given unstructured document, like an invoice PDF, for example. It expects the document to be in the body, by default. It returns the result as a JSON in the body (replacing any existing value in the body).
+Returns metadata for a given unstructured document like an invoice PDF for example. Expects the document to be in the body by default. Returns the result as JSON in the body (replacing any existing value in the body).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=document.understand)
 
@@ -1672,6 +1750,7 @@ It returns metadata for a given unstructured document, like an invoice PDF, for 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `apiKey` | String | false | null | The alternative API key to connect to the service. If null or empty, the default one will be used, as defined by the default backend settings.
@@ -1684,6 +1763,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - document.understand:  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
       apiKey: <value>  
@@ -1694,12 +1774,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/document.understand?id=<value>&input=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
+http://host/api/v3/command/document.understand?id=<value>&if=<value>&input=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command document.understand id=<value> input=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
+pi command document.understand id=<value> if=<value> input=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1707,7 +1787,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.archive.save
 ----------   
-It saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. It also verifies the integrity of the archive on write. Then, it returns the final archive file name into the output target.
+Saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. Verifies the integrity of the archive on write. Returns the final archive file name into the output target.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.archive.save)
 
@@ -1720,6 +1800,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the archive folder where the file to be saved.
 `namingPattern` | String | true | null | The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The number of files currently stored in the archive folder. archivePath = The path to the archive as given by path param. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1730,18 +1811,19 @@ pipeline:
       path: <value>  
       namingPattern: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.archive.save path=<value> namingPattern=<value> id=<value> output=<value>  
+pi command drive.archive.save path=<value> namingPattern=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1749,7 +1831,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.copy
 ----------   
-It copies a folder or file on Drive.
+Copies a folder or file on Drive.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.copy)
 
@@ -1762,6 +1844,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the folder or file to be copied.
 `to` | String | true | null | The target folder to copy the resource into.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -1771,17 +1854,18 @@ pipeline:
       path: <value>  
       to: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.copy?path=<value>&to=<value>&id=<value>  
+http://host/api/v3/command/drive.copy?path=<value>&to=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.copy path=<value> to=<value> id=<value>  
+pi command drive.copy path=<value> to=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1789,7 +1873,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.delete
 ----------   
-It deletes a file or folder on Drive. If the resource doesnt exist, nothing happens.
+Deletes a file or folder on Drive. If resource doesnt exist, nothing happens.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.delete)
 
@@ -1801,6 +1885,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the resource to be deleted. If it is a folder, it will be deleted recursively.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -1809,17 +1894,18 @@ pipeline:
   - drive.delete:  
       path: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.delete?path=<value>&id=<value>  
+http://host/api/v3/command/drive.delete?path=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.delete path=<value> id=<value>  
+pi command drive.delete path=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1827,7 +1913,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.exists
 ----------   
-It checks whether a resource in Drive exists. It also puts the string true or false in the message body, depending whether the resource exists or not.
+Checks whether a resource in Drive exists. Puts the string true or false in the message body depending whether the resource exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.exists)
 
@@ -1839,6 +1925,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the resource to check for existence.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1848,18 +1935,19 @@ pipeline:
   - drive.exists:  
       path: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.exists?path=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/drive.exists?path=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.exists path=<value> id=<value> output=<value>  
+pi command drive.exists path=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1867,7 +1955,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.list
 ----------   
-It lists all resources from the drive folder.
+Lists all resources from drive folder.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.list)
 
@@ -1879,6 +1967,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the folder to be listed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1888,18 +1977,19 @@ pipeline:
   - drive.list:  
       path: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.list?path=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/drive.list?path=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.list path=<value> id=<value> output=<value>  
+pi command drive.list path=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1907,7 +1997,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.mkdir
 ----------   
-It creates a new dir on Drive if it not already exists.
+Creates a new dir on Drive if it not already exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.mkdir)
 
@@ -1920,6 +2010,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the folder the new dir should be created within.
 `recurse` | String | false | false | If set to true, any non existing folder in the path will be created.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -1929,17 +2020,18 @@ pipeline:
       path: <value>  
       recurse: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.mkdir?path=<value>&recurse=<value>&id=<value>  
+http://host/api/v3/command/drive.mkdir?path=<value>&recurse=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.mkdir path=<value> recurse=<value> id=<value>  
+pi command drive.mkdir path=<value> recurse=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1947,7 +2039,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.move
 ----------   
-It moves a folder or file on Drive from one location to another.
+Moves a folder or file on Drive from one location into another.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.move)
 
@@ -1960,6 +2052,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the folder or file to be moved.
 `to` | String | true | null | The target folder to move the resource into.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -1969,17 +2062,18 @@ pipeline:
       path: <value>  
       to: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.move?path=<value>&to=<value>&id=<value>  
+http://host/api/v3/command/drive.move?path=<value>&to=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.move path=<value> to=<value> id=<value>  
+pi command drive.move path=<value> to=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1987,7 +2081,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.read
 ----------   
-It reads a file from the drive, and puts its content as a pipeline resource into the body.
+Reads a file from drive and puts its content as a pipeline resource into the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.read)
 
@@ -2000,6 +2094,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the file to be read from Drive.
 `append` | Boolean | false | false | If true, appends the files read from drive to any existing collection in the body. In case the body is no collection but a content (single file), creates a new collection and adds all to this collection (already existing file and read files). In case the body is different from collection or content, an error is thrown. If false (default), overwrites any existing body value.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2010,18 +2105,19 @@ pipeline:
       path: <value>  
       append: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.read?path=<value>&append=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/drive.read?path=<value>&append=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.read path=<value> append=<value> id=<value> output=<value>  
+pi command drive.read path=<value> append=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2029,7 +2125,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.save
 ----------   
-It saves the content of the body to one or more files in the Drive. The content of the body can be a single pipeline resource or a pipeline resource collection. 
+Saves the content of the body to one or more files in Drive. The content of the body can be a single pipeline resource or a pipeline resource collection. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.save)
 
@@ -2043,6 +2139,7 @@ Name | Type | Required | Default | Description
 `namingStrategy` | String | false | null | If defined, applies the given naming strategy to the name of the resource. If null or empty, no name strategy is applied.
 `cleanupBody` | String | false | true | If true, deletes the content from the body after the content was saved to drive (default).
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2053,17 +2150,18 @@ pipeline:
       namingStrategy: <value>  
       cleanupBody: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanupBody=<value>&id=<value>  
+http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanupBody=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value> id=<value>  
+pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2071,7 +2169,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.share
 ----------   
-It shares a folder in the Drive, given by path to users (given by recipients).
+Shares a folder in Drive given by path to users given by recipients.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.share)
 
@@ -2092,6 +2190,7 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | NOT SUPPORTED YET. A password to protect the share.
 `invite` | Boolean | false | null | NOT SUPPORTED YET. Send an invite email to recipients.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2110,18 +2209,19 @@ pipeline:
       password: <value>  
       invite: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.share?to=<value>&type=<value>&path=<value>&permission=<value>&subject=<value>&message=<value>&model=<value>&expires=<value>&password=<value>&invite=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/drive.share?to=<value>&type=<value>&path=<value>&permission=<value>&subject=<value>&message=<value>&model=<value>&expires=<value>&password=<value>&invite=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.share to=<value> type=<value> path=<value> permission=<value> subject=<value> message=<value> model=<value> expires=<value> password=<value> invite=<value> id=<value> output=<value>  
+pi command drive.share to=<value> type=<value> path=<value> permission=<value> subject=<value> message=<value> model=<value> expires=<value> password=<value> invite=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2129,7 +2229,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.tag
 ----------   
-It adds or removes a WebDAV tag to a resource on the Drive.
+Adds or removes a WebDAV tag to a resource on drive.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.tag)
 
@@ -2144,6 +2244,7 @@ Name | Type | Required | Default | Description
 `tagvalue` | String | false | null | The value of the tag to add.
 `remove` | Boolean | false | null | If true (or any non empty/null value), removes the given tag.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2155,17 +2256,18 @@ pipeline:
       tagvalue: <value>  
       remove: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.tag?path=<value>&tagname=<value>&tagvalue=<value>&remove=<value>&id=<value>  
+http://host/api/v3/command/drive.tag?path=<value>&tagname=<value>&tagvalue=<value>&remove=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.tag path=<value> tagname=<value> tagvalue=<value> remove=<value> id=<value>  
+pi command drive.tag path=<value> tagname=<value> tagvalue=<value> remove=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2173,7 +2275,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.upload.chunked
 ----------   
-It supports chunked uploads of large files into the Drive endpoint. It expects an object in the body, which can be converted to an input stream as the chunk data to be uploaded.
+Supports chunked uploads of large files into the Drive endpoint. Expects an object in the body which can be converted to an input stream as the chunk data to be uploaded.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.upload.chunked)
 
@@ -2188,6 +2290,7 @@ Name | Type | Required | Default | Description
 `path` | String | false | null | The target path where to copy the final file on finalize action. Mandatory for the finalize action.
 `index` | Integer | false | null | The index of the chunk. Mandatory for the upload action.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2199,17 +2302,18 @@ pipeline:
       path: <value>  
       index: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.upload.chunked?action=<value>&uuid=<value>&path=<value>&index=<value>&id=<value>  
+http://host/api/v3/command/drive.upload.chunked?action=<value>&uuid=<value>&path=<value>&index=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.upload.chunked action=<value> uuid=<value> path=<value> index=<value> id=<value>  
+pi command drive.upload.chunked action=<value> uuid=<value> path=<value> index=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2217,7 +2321,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## encrypt
 ----------   
-It encrypts the data in the body using the defined encryption parameter, and puts the encrypted data in the output.
+Encrypts the data in the body using the defined encryption parameter and puts the encrypted datain the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=encrypt)
 
@@ -2229,6 +2333,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `password` | String | true | null | The password to encrypt the body with.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2238,18 +2343,19 @@ pipeline:
   - encrypt:  
       password: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/encrypt?password=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/encrypt?password=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command encrypt password=<value> id=<value> output=<value>  
+pi command encrypt password=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2257,7 +2363,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## eval
 ----------   
-It executes a given pipeline expression with the message as context.
+Executes a given pipeline expression with the message as context.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=eval)
 
@@ -2269,6 +2375,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `expr` | String | true | null | The pipeline expression to be executed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2277,17 +2384,18 @@ pipeline:
   - eval:  
       expr: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/eval?expr=<value>&id=<value>  
+http://host/api/v3/command/eval?expr=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command eval expr=<value> id=<value>  
+pi command eval expr=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2295,7 +2403,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## event.listen
 ----------   
-The listening for events works like this: Add this command at the very first in your pipeline, and define the event key you want to listen for and an optional filter expression. Then, save this pipeline into the property store. This causes the system to automatically register this pipeline and execute it whenever an event with given key and matching filter is fired. Note: Only one event.listen command per pipeline is allowed and it needs to be the very first command in the pipeline. In the body of the pipeline, the event object is provided and can be used for filtering, for example.
+Listening for events works like this: Add this command at the very first in your pipeline, define the event key you want to listen for and an optional filter expression. Then save this pipeline into the property store. This causes the system to automatically register this pipeline and execute it whenever an event with given key and matching filter is fired. Note: Only one event.listen command per pipeline is allowed and it needs to be the very first command in the pipeline. In the body of the pipeline the event object is provided and can be used for filtering for example.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=event.listen)
 
@@ -2308,6 +2416,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key to listen for.
 `filter` | String | false | null | An optional PEL to execute the pipeline only in case the filter applies.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2317,17 +2426,18 @@ pipeline:
       key: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/event.listen?key=<value>&filter=<value>&id=<value>  
+http://host/api/v3/command/event.listen?key=<value>&filter=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command event.listen key=<value> filter=<value> id=<value>  
+pi command event.listen key=<value> filter=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2335,7 +2445,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## event.mapping.get
 ----------   
-It returns all event keys to the pipeline key mappings.
+Returns all event key to pipeline key mappings.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=event.mapping.get)
 
@@ -2346,6 +2456,7 @@ It returns all event keys to the pipeline key mappings.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2354,18 +2465,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - event.mapping.get:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/event.mapping.get?id=<value>&output=<value>  
+http://host/api/v3/command/event.mapping.get?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command event.mapping.get id=<value> output=<value>  
+pi command event.mapping.get id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2373,7 +2485,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## event.send
 ----------   
-It sends a new event to inform listeners in pipelines.
+Sends a new event to inform listeners in pipelines.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=event.send)
 
@@ -2388,6 +2500,7 @@ Name | Type | Required | Default | Description
 `payload` | String | false | null | The payload to send with this event. May be null.
 `async` | String | false | true | Send the event in ASYNC mode? Note: ASYNC is faster but lacks transaction capability. If false, message is send in SYNC. Slower but can use the current authentication and transaction context.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2399,17 +2512,18 @@ pipeline:
       payload: <value>  
       async: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/event.send?key=<value>&traceId=<value>&payload=<value>&async=<value>&id=<value>  
+http://host/api/v3/command/event.send?key=<value>&traceId=<value>&payload=<value>&async=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command event.send key=<value> traceId=<value> payload=<value> async=<value> id=<value>  
+pi command event.send key=<value> traceId=<value> payload=<value> async=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2417,7 +2531,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## exit
 ----------   
-It exits the current pipeline flow, and returns the current body state to the caller.
+Exits the current pipeline flow and returns the current body state to the caller.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=exit)
 
@@ -2429,6 +2543,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `if` | String | false | #{true} | The PE to be evaluated. If true, the pipeline will exit.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2437,17 +2552,18 @@ pipeline:
   - exit:  
       if: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/exit?if=<value>&id=<value>  
+http://host/api/v3/command/exit?if=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command exit if=<value> id=<value>  
+pi command exit if=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2467,6 +2583,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `do` | String | false | null | An optional PE to execute finally.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2475,17 +2592,18 @@ pipeline:
   - finally:  
       do: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/finally?do=<value>&id=<value>  
+http://host/api/v3/command/finally?do=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command finally do=<value> id=<value>  
+pi command finally do=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2493,7 +2611,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## foreach
 ----------   
-It repeats the subsequent pipeline commands for each entry in a given list. By default, the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end. The current iteration item is placed in vars.loop.item.
+Repeats the subsequent pipeline commands for each entry in a given list. By default the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end. The current iteration item is placed in vars.loop.item.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=foreach)
 
@@ -2508,6 +2626,7 @@ Name | Type | Required | Default | Description
 `loopName` | String | false | loop | The name of the current loop object in the vars scope. By default this is 'loop' which results in 'vars.loop.item' then for accessing the current loop item. With this attribute you can change this for example to 'iteration' so you can access the loop iterm under 'vars.iteration.item'. The loop object contains attributes for the current loop like item = the current iteration item, index = the current iteration index.
 `end` | String | false | null | Signals the end of a for each loop.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2519,17 +2638,18 @@ pipeline:
       loopName: <value>  
       end: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/foreach?in=<value>&item=<value>&loopName=<value>&end=<value>&id=<value>  
+http://host/api/v3/command/foreach?in=<value>&item=<value>&loopName=<value>&end=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command foreach in=<value> item=<value> loopName=<value> end=<value> id=<value>  
+pi command foreach in=<value> item=<value> loopName=<value> end=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2537,7 +2657,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## header.set
 ----------   
-DEPRECATED. Use the set command instead. It sets any parameter value as header. For example, header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2
+DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=header.set)
 
@@ -2548,6 +2668,7 @@ DEPRECATED. Use the set command instead. It sets any parameter value as header. 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2555,17 +2676,18 @@ Name | Type | Required | Default | Description
 pipeline:  
   - header.set:  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/header.set?id=<value>  
+http://host/api/v3/command/header.set?id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command header.set id=<value>  
+pi command header.set id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2573,7 +2695,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.form.find
 ----------   
-It searches for a form on the page, and sets it as vars.form model in PEL. If param 'select' is given, it uses this PEL to find the form object. Otherwise, it tries to detect the form automatically by searching the page and using the first form found. Note: The pipe is BETA and not intended to be used in production!
+Searches for a form on the page and sets is as vars.form model in PEL. If param 'select' is given, uses this PEL to find the form object. Otherwise tries to detect the form automatically by searching the page and using the first form found. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.find)
 
@@ -2585,6 +2707,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2593,17 +2716,18 @@ pipeline:
   - htmlunit.website.form.find:  
       select: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.form.find?select=<value>&id=<value>  
+http://host/api/v3/command/htmlunit.website.form.find?select=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.form.find select=<value> id=<value>  
+pi command htmlunit.website.form.find select=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2611,7 +2735,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.form.input
 ----------   
-It searches for an input element with the given name and sets the given value on it. Note: The pipe is BETA and not intended to be used in production!
+Searches for an input element with given name and sets the given value on it. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.input)
 
@@ -2624,6 +2748,7 @@ Name | Type | Required | Default | Description
 `value` | String | false | null | The value to be set on the selected input field.
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2633,17 +2758,18 @@ pipeline:
       value: <value>  
       select: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.form.input?value=<value>&select=<value>&id=<value>  
+http://host/api/v3/command/htmlunit.website.form.input?value=<value>&select=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.form.input value=<value> select=<value> id=<value>  
+pi command htmlunit.website.form.input value=<value> select=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2651,7 +2777,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.form.submit
 ----------   
-It searches for a submit button, and then clicks it. Note: The pipe is BETA and not intended to be used in production!
+Searches for a submit button and clicks it. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.submit)
 
@@ -2663,6 +2789,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2671,17 +2798,18 @@ pipeline:
   - htmlunit.website.form.submit:  
       select: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.form.submit?select=<value>&id=<value>  
+http://host/api/v3/command/htmlunit.website.form.submit?select=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.form.submit select=<value> id=<value>  
+pi command htmlunit.website.form.submit select=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2689,7 +2817,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.link.click
 ----------   
-It searches for a link on current page, and then clicks it. Note: The pipe is BETA and not intended to be used in production!
+Searches for a link on current page and clicks it. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.link.click)
 
@@ -2701,6 +2829,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2709,17 +2838,18 @@ pipeline:
   - htmlunit.website.link.click:  
       select: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.link.click?select=<value>&id=<value>  
+http://host/api/v3/command/htmlunit.website.link.click?select=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.link.click select=<value> id=<value>  
+pi command htmlunit.website.link.click select=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2727,7 +2857,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.open
 ----------   
-It opens a website and sets it as 'vars.page' in PEL. Additionally, it sets the current browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
+Opens a website and sets it as 'vars.page' in PEL. Additionally sets the current browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.open)
 
@@ -2739,6 +2869,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | true | null | The url of the web page to open.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2747,17 +2878,18 @@ pipeline:
   - htmlunit.website.open:  
       url: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.open?url=<value>&id=<value>  
+http://host/api/v3/command/htmlunit.website.open?url=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.open url=<value> id=<value>  
+pi command htmlunit.website.open url=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2765,7 +2897,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## htmlunit.website.scrap
 ----------   
-It scraps data from the current website, and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
+Scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.scrap)
 
@@ -2778,6 +2910,7 @@ Name | Type | Required | Default | Description
 `xpath` | String | true | null | Executes the given xpath expression on the current page and puts the result in the body. In case the xpath returns more than one results, adds an array to the body. Otherwise the body only contains the single result value.
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -2787,17 +2920,18 @@ pipeline:
       xpath: <value>  
       select: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.scrap?xpath=<value>&select=<value>&id=<value>  
+http://host/api/v3/command/htmlunit.website.scrap?xpath=<value>&select=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.scrap xpath=<value> select=<value> id=<value>  
+pi command htmlunit.website.scrap xpath=<value> select=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2805,7 +2939,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.delete
 ----------   
-It executes a DELETE HTTP call to the given url. It returns the result from the server inside the message body.
+Executes a DELETE HTTP call to the given url.Returns the result from the server in the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.delete)
 
@@ -2819,6 +2953,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -2832,6 +2967,7 @@ pipeline:
       headers: <value>  
       body: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -2840,12 +2976,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.delete?url=<value>&headers=<value>&body=<value>&id=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.delete?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.delete url=<value> headers=<value> body=<value> id=<value> input=<value> output=<value> credentials=<value>  
+pi command http.delete url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2853,7 +2989,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.get
 ----------   
-It executes a GET HTTP call to the given url. Then, it returns the result from the server in the message body.
+Executes a GET HTTP call to the given url.Returns the result from the server in the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.get)
 
@@ -2867,6 +3003,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -2880,6 +3017,7 @@ pipeline:
       headers: <value>  
       body: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -2888,12 +3026,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.get?url=<value>&headers=<value>&body=<value>&id=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.get?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.get url=<value> headers=<value> body=<value> id=<value> input=<value> output=<value> credentials=<value>  
+pi command http.get url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2901,7 +3039,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.patch
 ----------   
-It xecutes a PATCH HTTP call to the given url. Then, it returns the result from the server inside the message body.
+Executes a PATCH HTTP call to the given url.Returns the result from the server in the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.patch)
 
@@ -2915,6 +3053,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -2928,6 +3067,7 @@ pipeline:
       headers: <value>  
       body: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -2936,12 +3076,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.patch?url=<value>&headers=<value>&body=<value>&id=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.patch?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.patch url=<value> headers=<value> body=<value> id=<value> input=<value> output=<value> credentials=<value>  
+pi command http.patch url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2949,7 +3089,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.post
 ----------   
-It executes a POST HTTP call to the given url. Then, it returns the result from the server inside the message body.
+Executes a POST HTTP call to the given url.Returns the result from the server in the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.post)
 
@@ -2963,6 +3103,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -2976,6 +3117,7 @@ pipeline:
       headers: <value>  
       body: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -2984,12 +3126,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.post?url=<value>&headers=<value>&body=<value>&id=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.post?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.post url=<value> headers=<value> body=<value> id=<value> input=<value> output=<value> credentials=<value>  
+pi command http.post url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2997,7 +3139,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## http.put
 ----------   
-It executes a PUT HTTP call to the given url. Then, it returns the result from the server inside the message body.
+Executes a PUT HTTP call to the given url.Returns the result from the server in the message body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.put)
 
@@ -3011,6 +3153,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3024,6 +3167,7 @@ pipeline:
       headers: <value>  
       body: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -3032,12 +3176,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.put?url=<value>&headers=<value>&body=<value>&id=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.put?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.put url=<value> headers=<value> body=<value> id=<value> input=<value> output=<value> credentials=<value>  
+pi command http.put url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3045,7 +3189,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.token.refresh
 ----------   
-It enrich headers with an accessToken obtained from the authorization server using refreshToken.
+Enrich headers with accessToken obtained from authorization server using refreshToken.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.refresh)
 
@@ -3057,6 +3201,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `refreshToken` | String | true | null | The refresh token.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -3065,17 +3210,18 @@ pipeline:
   - iam.token.refresh:  
       refreshToken: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.token.refresh?refreshToken=<value>&id=<value>  
+http://host/api/v3/command/iam.token.refresh?refreshToken=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.token.refresh refreshToken=<value> id=<value>  
+pi command iam.token.refresh refreshToken=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3083,7 +3229,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.apitoken
 ----------   
-It obtains the apitoken in exchange for the provided user credentials, and writes it into the output.
+Obtains the apitoken in exchange for user credentials provided and writes into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.apitoken)
 
@@ -3096,6 +3242,7 @@ Name | Type | Required | Default | Description
 `username` | String | true | null | The user name.
 `password` | String | true | null | The user password.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3106,18 +3253,19 @@ pipeline:
       username: <value>  
       password: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.apitoken?username=<value>&password=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.apitoken?username=<value>&password=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.apitoken username=<value> password=<value> id=<value> output=<value>  
+pi command iam.apitoken username=<value> password=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3125,7 +3273,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.authinfo
 ----------   
-It adds header 'authUserId' - name of an user authenticated as a sender of the pipe message.
+Adds header 'authUserId' - name of an user authenticated as a sender of the pipe message.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.authinfo)
 
@@ -3136,6 +3284,7 @@ It adds header 'authUserId' - name of an user authenticated as a sender of the p
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -3143,17 +3292,18 @@ Name | Type | Required | Default | Description
 pipeline:  
   - iam.authinfo:  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.authinfo?id=<value>  
+http://host/api/v3/command/iam.authinfo?id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.authinfo id=<value>  
+pi command iam.authinfo id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3161,7 +3311,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.authorize
 ----------   
-It authorizes pipeline execution, and overwrites any existing authentication by this new and successful authentication. Additionally, it puts the successful authentication token on an internal stack. See iam.logout to pop from the stack. Subsequent commands will be executed only if the authorization was successful. This command tries each existing parameter for authentication in this order: If multiple params are given, first existing one is used from this list: accessToken, refreshToken, basic, username+password. The command throws an exception before exiting the pipeline execution on the first unsuccessful login try.
+Authorizes pipeline execution and overwrites any existing authentication by this new, successful authentication. Additionally puts the successful authentication token on an internal stack. See iam.logout to pop from stack.Subsequent commands will be executed only if authorization was successful. Tries each existing parameter for authentication in this order. If multiple params are given, first existing one is used from this list: accessToken, refreshToken, basic, username+password. Throws exception and exits pipeline execution on first not matching login try.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.authorize)
 
@@ -3177,6 +3327,7 @@ Name | Type | Required | Default | Description
 `username` | String | false | null | The username to be used for authentication.
 `password` | String | false | null | The password to be used for authentication.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -3189,17 +3340,18 @@ pipeline:
       username: <value>  
       password: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.authorize?accessToken=<value>&refreshToken=<value>&basic=<value>&username=<value>&password=<value>&id=<value>  
+http://host/api/v3/command/iam.authorize?accessToken=<value>&refreshToken=<value>&basic=<value>&username=<value>&password=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.authorize accessToken=<value> refreshToken=<value> basic=<value> username=<value> password=<value> id=<value>  
+pi command iam.authorize accessToken=<value> refreshToken=<value> basic=<value> username=<value> password=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3207,7 +3359,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.bruteforce.release
 ----------   
-It releases any bruteforce lock for the given user. If the user is not locked, nothing happens.
+Releases any bruteforce lock for the given user. If user is not locked, nothing happens.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.release)
 
@@ -3220,6 +3372,7 @@ Name | Type | Required | Default | Description
 `username` | String | false | null | The name of the user to unlock. If not set, param uuid must be set.
 `uuid` | String | false | null | The uuid of the user to unlock. If set, the param username is ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3230,18 +3383,19 @@ pipeline:
       username: <value>  
       uuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.bruteforce.release?username=<value>&uuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.bruteforce.release?username=<value>&uuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.bruteforce.release username=<value> uuid=<value> id=<value> output=<value>  
+pi command iam.bruteforce.release username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3249,7 +3403,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.bruteforce.status
 ----------   
-It returns the bruteforce status for a single user.
+Returns the bruteforce status for a single user
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.status)
 
@@ -3262,6 +3416,7 @@ Name | Type | Required | Default | Description
 `username` | String | false | null | The name of the user to return the status for. If not set, param uuid must be set.
 `uuid` | String | false | null | The uuid of the user to return the status for. If set, the param username is ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3272,18 +3427,19 @@ pipeline:
       username: <value>  
       uuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.bruteforce.status?username=<value>&uuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.bruteforce.status?username=<value>&uuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.bruteforce.status username=<value> uuid=<value> id=<value> output=<value>  
+pi command iam.bruteforce.status username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3291,7 +3447,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.add.roles
 ----------   
-It adds roles to a given group. However, the roles must exist beforehand.
+Adds roles to a given group. Roles must exist beforehand.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.add.roles)
 
@@ -3305,6 +3461,7 @@ Name | Type | Required | Default | Description
 `roleNames` | String | true | null | The role names to join. Can be a comma separated list or a PEL pointing to a list.
 `groupName` | String | true | null | The unique group name.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3316,18 +3473,19 @@ pipeline:
       roleNames: <value>  
       groupName: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.add.roles?groupUuid=<value>&roleNames=<value>&groupName=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.group.add.roles?groupUuid=<value>&roleNames=<value>&groupName=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.add.roles groupUuid=<value> roleNames=<value> groupName=<value> id=<value> output=<value>  
+pi command iam.group.add.roles groupUuid=<value> roleNames=<value> groupName=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3335,7 +3493,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.create
 ----------   
-It creates a new group, and puts its uuid inside the body under key: groupUuid. The command throws an exception if the group already exists.
+Creates a new group and puts its uuid in the body under key groupUuid. Throws exception if group already exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.create)
 
@@ -3349,6 +3507,7 @@ Name | Type | Required | Default | Description
 `roleNames` | String | false | null | A list of roles to be assigned to this group on creation.
 `attributes` | Map | false | null | A map which holds optional attributes to be added to this group.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3360,18 +3519,19 @@ pipeline:
       roleNames: <value>  
       attributes: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.create?name=<value>&roleNames=<value>&attributes=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.group.create?name=<value>&roleNames=<value>&attributes=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.create name=<value> roleNames=<value> attributes=<value> id=<value> output=<value>  
+pi command iam.group.create name=<value> roleNames=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3379,7 +3539,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.delete
 ----------   
-It deletes group with the given uuid.
+Deletes the group with given uuid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.delete)
 
@@ -3391,6 +3551,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | The uuid of the group to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3400,18 +3561,19 @@ pipeline:
   - iam.group.delete:  
       uuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.delete?uuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.group.delete?uuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.delete uuid=<value> id=<value> output=<value>  
+pi command iam.group.delete uuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3419,7 +3581,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.list
 ----------   
-It lists all groups. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
+Lists all groups. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list)
 
@@ -3435,6 +3597,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3448,18 +3611,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.list?filter=<value>&sortByName=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.group.list?filter=<value>&sortByName=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.list filter=<value> sortByName=<value> max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.group.list filter=<value> sortByName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3467,7 +3631,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.list.names
 ----------   
-It lists all group names. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
+Lists all group names. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list.names)
 
@@ -3481,6 +3645,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3492,18 +3657,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.list.names?max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.group.list.names?max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.list.names max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.group.list.names max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3511,7 +3677,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.members
 ----------   
-It lists all users which are members of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+Lists all users which are member of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.members)
 
@@ -3527,6 +3693,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3540,18 +3707,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.members?name=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.group.members?name=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.members name=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.group.members name=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3559,7 +3727,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.roles
 ----------   
-It lists all effective role names, the given group is assigned to.
+Lists all effective role names, the given group is assigned to.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.roles)
 
@@ -3575,6 +3743,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3588,18 +3757,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.roles?groupName=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.group.roles?groupName=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.roles groupName=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.group.roles groupName=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3607,7 +3777,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.realm.create
 ----------   
-It creates a new realm. It also sets uuid inside the body under the key: realmUuid. The command throws an exception if the realm already exists. It expects a JSON in the body of this structure: https://www.keycloak.org/docs-api/11.0/rest-api/index.html#_realmrepresentation
+Creates a new realm. Sets the uuid in the body under key realmUuid. Throws exception if realm already exists. Expects a JSON in the body of this structure: https://www.keycloak.org/docs-api/11.0/rest-api/index.html#_realmrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.realm.create)
 
@@ -3618,6 +3788,7 @@ It creates a new realm. It also sets uuid inside the body under the key: realmUu
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3626,18 +3797,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - iam.realm.create:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.realm.create?id=<value>&output=<value>  
+http://host/api/v3/command/iam.realm.create?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.realm.create id=<value> output=<value>  
+pi command iam.realm.create id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3645,7 +3817,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.role.add.composites
 ----------   
-It adds existing composite roles to an existing role.
+Adds existing composite roles to an existing role.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.add.composites)
 
@@ -3658,6 +3830,7 @@ Name | Type | Required | Default | Description
 `roleName` | String | true | null | The unique role name to be loaded.
 `composites` | String | true | null | The composite role names to join. Can be a comma separated list or a PEL pointing to a list.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3668,18 +3841,19 @@ pipeline:
       roleName: <value>  
       composites: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.role.add.composites?roleName=<value>&composites=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.role.add.composites?roleName=<value>&composites=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.role.add.composites roleName=<value> composites=<value> id=<value> output=<value>  
+pi command iam.role.add.composites roleName=<value> composites=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3687,7 +3861,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.role.create
 ----------   
-It creates a new role, and puts its role uuid inside the body under the key: roleUuid. The command throws an exception if the role already exists.
+Creates a new role and puts its role uuid in the body under key roleUuid. Throws exception if role already exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.create)
 
@@ -3701,6 +3875,7 @@ Name | Type | Required | Default | Description
 `composites` | String | false | null | A PEL list of roles names to add to this role as children. Makes this role a composite.
 `attributes` | Map | false | null | A map which holds optional attributes to be added to this role.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3712,18 +3887,19 @@ pipeline:
       composites: <value>  
       attributes: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.role.create?name=<value>&composites=<value>&attributes=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.role.create?name=<value>&composites=<value>&attributes=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.role.create name=<value> composites=<value> attributes=<value> id=<value> output=<value>  
+pi command iam.role.create name=<value> composites=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3731,7 +3907,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.role.members
 ----------   
-It lists all users which are members of the given role. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+Lists all users which are member of the given role. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.members)
 
@@ -3746,6 +3922,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3758,18 +3935,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.role.members?roleName=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.role.members?roleName=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.role.members roleName=<value> max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.role.members roleName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3777,7 +3955,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.run.as
 ----------   
-It executes the subsequent pipeline as a different user, if the following two conditions are met: 1. currently logged-in user has the permission: CAN_RUN_AS_SOURCE 2. requested user has the permission: CAN_RUN_AS_TARGET 
+Executes the subsequent pipeline as different user if following two conditions are met. 1. currently logged-in user has permission CAN_RUN_AS_SOURCE 2. requested user has permission CAN_RUN_AS_TARGET 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.run.as)
 
@@ -3789,6 +3967,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `username` | String | true | null | The username, subsequent pipe commands must be executed as. This user must has RUN_AS_SOURCE role assigned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -3797,17 +3976,18 @@ pipeline:
   - iam.run.as:  
       username: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.run.as?username=<value>&id=<value>  
+http://host/api/v3/command/iam.run.as?username=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.run.as username=<value> id=<value>  
+pi command iam.run.as username=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3815,7 +3995,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.search
 ----------   
-It searches for a specific entity in the IAM service, that is matching the given filter. The command returns the JSON representation of the given type as a JSON array. See here for the representation types: https://www.keycloak.org/docs-api/11.0/rest-api/ .For example the type 'USER' would return a list of 'UserRepresentation'.
+Searches for specific entity in the IAM service matching the given filter. Returns the JSON representation of the given type as JSON array. See here for the representation types: https://www.keycloak.org/docs-api/11.0/rest-api/ .For example the type 'USER' would return a list of 'UserRepresentation'.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.search)
 
@@ -3830,6 +4010,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3842,18 +4023,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.search?type=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.search?type=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.search type=<value> max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.search type=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3861,7 +4043,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.token.logout
 ----------   
-It logs-out the keycloak session, that is associated with the refreshToken, and removes any refresh & access tokens from the headers.
+Logs out keycloak session associated with refreshToken and removes any refresh and access tokens from headers.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.logout)
 
@@ -3873,6 +4055,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `refreshToken` | String | true | null | The refresh token.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -3881,17 +4064,18 @@ pipeline:
   - iam.token.logout:  
       refreshToken: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.token.logout?refreshToken=<value>&id=<value>  
+http://host/api/v3/command/iam.token.logout?refreshToken=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.token.logout refreshToken=<value> id=<value>  
+pi command iam.token.logout refreshToken=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3899,7 +4083,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.add.groups
 ----------   
-It adds groups to a user by group id or name, and then returns the group ids added.
+Adds groups to a user by group id or name and returns the group ids added.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.groups)
 
@@ -3913,6 +4097,7 @@ Name | Type | Required | Default | Description
 `groupNames` | String | false | null | The group names to join. If not given, groupIds is required.
 `groupIds` | String | false | null | The group ids to join. If not given, groupIds is required.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3924,18 +4109,19 @@ pipeline:
       groupNames: <value>  
       groupIds: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.add.groups?uuid=<value>&groupNames=<value>&groupIds=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.user.add.groups?uuid=<value>&groupNames=<value>&groupIds=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.add.groups uuid=<value> groupNames=<value> groupIds=<value> id=<value> output=<value>  
+pi command iam.user.add.groups uuid=<value> groupNames=<value> groupIds=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3943,7 +4129,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.add.roles
 ----------   
-It adds roles to a given user. However, these Roles must exist beforehand.
+Adds roles to a given user. Roles must exist beforehand.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.roles)
 
@@ -3957,6 +4143,7 @@ Name | Type | Required | Default | Description
 `username` | String | true | null | The unique username as uuid.
 `roleNames` | String | true | null | The role names to join. Can be a comma separated list or a PEL pointing to a list.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3968,18 +4155,19 @@ pipeline:
       username: <value>  
       roleNames: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.add.roles?userUuid=<value>&username=<value>&roleNames=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.user.add.roles?userUuid=<value>&username=<value>&roleNames=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.add.roles userUuid=<value> username=<value> roleNames=<value> id=<value> output=<value>  
+pi command iam.user.add.roles userUuid=<value> username=<value> roleNames=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3987,7 +4175,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.create
 ----------   
-It creates a new user, and returns its uuid in the body. The command throws an exception if the user already exists.
+Creates a new user and returns its uuid in the body. Throws exception if user already exists.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.create)
 
@@ -4006,6 +4194,7 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password to be set for this user or null in order to let the user choose one on login.
 `attributes` | Map | false | null | A map which holds optional attributes to be added to this user.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4022,18 +4211,19 @@ pipeline:
       password: <value>  
       attributes: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.create?name=<value>&email=<value>&firstName=<value>&lastName=<value>&groupNames=<value>&roleNames=<value>&password=<value>&attributes=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.user.create?name=<value>&email=<value>&firstName=<value>&lastName=<value>&groupNames=<value>&roleNames=<value>&password=<value>&attributes=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.create name=<value> email=<value> firstName=<value> lastName=<value> groupNames=<value> roleNames=<value> password=<value> attributes=<value> id=<value> output=<value>  
+pi command iam.user.create name=<value> email=<value> firstName=<value> lastName=<value> groupNames=<value> roleNames=<value> password=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4041,7 +4231,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.delete
 ----------   
-It deletes the user with the given uuid.
+Deletes the user with given uuid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.delete)
 
@@ -4053,6 +4243,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | The uuid of the user to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4062,18 +4253,19 @@ pipeline:
   - iam.user.delete:  
       uuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.delete?uuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.user.delete?uuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.delete uuid=<value> id=<value> output=<value>  
+pi command iam.user.delete uuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4081,7 +4273,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.get
 ----------   
-It looks-up a user, and returns it inside the body if it exists already. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+Looks up a user returns it in the body if exists. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.get)
 
@@ -4094,6 +4286,7 @@ Name | Type | Required | Default | Description
 `username` | String | false | null | The name of the user. If not set, param uuid must be set.
 `uuid` | String | false | null | The uuid of the user. If set, the param username is ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4104,18 +4297,19 @@ pipeline:
       username: <value>  
       uuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.get?username=<value>&uuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.user.get?username=<value>&uuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.get username=<value> uuid=<value> id=<value> output=<value>  
+pi command iam.user.get username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4123,7 +4317,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.groups
 ----------   
-It lists all groups, the given user is member of. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
+Lists all groups, the given user is member of. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.groups)
 
@@ -4139,6 +4333,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4152,18 +4347,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.groups?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.user.groups?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.groups username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.user.groups username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4171,7 +4367,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.list
 ----------   
-It lists all users. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+Lists all users. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.list)
 
@@ -4185,6 +4381,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4196,18 +4393,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.list?max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.user.list?max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.list max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.user.list max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4215,7 +4413,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.user.roles
 ----------   
-It lists all effective role names, the given user is member of.
+Lists all effective role names, the given user is member of.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.roles)
 
@@ -4231,6 +4429,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4244,18 +4443,19 @@ pipeline:
       offset: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.roles?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/iam.user.roles?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.roles username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> output=<value>  
+pi command iam.user.roles username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4263,7 +4463,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## if
 ----------   
-It executes the subsequent pipeline only if the given condition evaluates to true. By default, the full pipeline until the end will be executed. To skip the pipes inside the if definition, place the pipe if?end where the if should end.
+Executes the subsequent pipeline only if given condition evaluates to true. By default the full pipeline until the end will be executed. To skip the pipes inside the if definition place the pipe if?end where the if should end.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=if)
 
@@ -4277,6 +4477,7 @@ Name | Type | Required | Default | Description
 `end` | String | false | null | Defines the end of of the if pipe. If not set, the full pipeline till its end is executed. 
 `else` | String | false | null | Defines the else part of the if statement. If value of if evaluates to false, the section right after this else statement is executed until the if?end statement or the end of the pipeline. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -4287,17 +4488,18 @@ pipeline:
       end: <value>  
       else: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/if?true=<value>&end=<value>&else=<value>&id=<value>  
+http://host/api/v3/command/if?true=<value>&end=<value>&else=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command if true=<value> end=<value> else=<value> id=<value>  
+pi command if true=<value> end=<value> else=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4305,7 +4507,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## job
 ----------   
-It schedules any subsequent pipes of the current pipeline, and executes it at the scheduled times.
+Schedules any subsequent pipes of the current pipeline and executes it at the scheduled times.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=job)
 
@@ -4318,6 +4520,7 @@ Name | Type | Required | Default | Description
 `cron` | String | false | null | A cron string which configures the execution times. See here to generate a cron string: https://crontab-generator.org/. Required only in case this is a create call.
 `stop` | String | false | null | If this param is set, all other params are ignored. It contains the uuid of the job to be canceled.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -4327,17 +4530,18 @@ pipeline:
       cron: <value>  
       stop: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/job?cron=<value>&stop=<value>&id=<value>  
+http://host/api/v3/command/job?cron=<value>&stop=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command job cron=<value> stop=<value> id=<value>  
+pi command job cron=<value> stop=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4345,7 +4549,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## jpa.query
 ----------   
-It executes a JPA query, and returns the result as a JSON inside the body. NOTE: This pipe is primarily meant for support to monitor the system. It's not accessible by default accounts! This can change at any time without notice!
+Executes a JPA query and returns the result as JSON in the body. NOTE: This pipe is primarily meant for support to monitor the system. Its not accessible by default accounts! This can change at any time without notice!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=jpa.query)
 
@@ -4357,6 +4561,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `query` | String | false | null | The JPA query to be executed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4366,18 +4571,19 @@ pipeline:
   - jpa.query:  
       query: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/jpa.query?query=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/jpa.query?query=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command jpa.query query=<value> id=<value> output=<value>  
+pi command jpa.query query=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4385,7 +4591,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## log
 ----------   
-It logs the given input message without changing it. It also sets the log message inside the body, in case the body is empty. It doesn't overwrite any existing content inside the body.
+Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log)
 
@@ -4398,6 +4604,7 @@ Name | Type | Required | Default | Description
 `message` | String | true | null | The message to log. Can be a string or a pipe expression. If null or empty, the full pipe message will be logged.
 `level` | String | false | INFO | The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -4407,17 +4614,18 @@ pipeline:
       message: <value>  
       level: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>  
+http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log message=<value> level=<value> id=<value>  
+pi command log message=<value> level=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4425,7 +4633,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## log.list
 ----------   
-It logs the given number of log lines from the specified service.
+Logs the given number of log lines from specified service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.list)
 
@@ -4439,6 +4647,7 @@ Name | Type | Required | Default | Description
 `lines` | Integer | false | 100 | The number of lines to print in case format is text. 100 is printed when not specified. 
 `format` | String | false | text | The format to be returned. One of: text, json
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4450,18 +4659,19 @@ pipeline:
       lines: <value>  
       format: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.list?service=<value>&lines=<value>&format=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/log.list?service=<value>&lines=<value>&format=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.list service=<value> lines=<value> format=<value> id=<value> output=<value>  
+pi command log.list service=<value> lines=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4469,7 +4679,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## log.list.email
 ----------   
-It returns the email audit log properties. This is only available for developers, system or support users.
+Returns the email audit log properties. Only available for developers, system or support users.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.list.email)
 
@@ -4483,6 +4693,7 @@ Name | Type | Required | Default | Description
 `createdAfter` | String | false |  | Returns only those emails created after this date in ISO-8601 format. If null or empty, no after filter will be set.
 `createdBefore` | String | false |  | Returns only those emails created before this date in ISO-8601 format. If null or empty, no before filter will be set.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4494,18 +4705,19 @@ pipeline:
       createdAfter: <value>  
       createdBefore: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.list.email?auditId=<value>&createdAfter=<value>&createdBefore=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/log.list.email?auditId=<value>&createdAfter=<value>&createdBefore=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.list.email auditId=<value> createdAfter=<value> createdBefore=<value> id=<value> output=<value>  
+pi command log.list.email auditId=<value> createdAfter=<value> createdBefore=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4513,7 +4725,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## log.list.environment
 ----------   
-It logs the current environment properties. Only available for developers, system, or support users.
+Logs the current environment properties. Only available for developers, system or support users.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.list.environment)
 
@@ -4525,6 +4737,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `interpolate` | String | false | true | Return all properties with values interpolated? (= ${some.var} is resolved).
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4534,18 +4747,19 @@ pipeline:
   - log.list.environment:  
       interpolate: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.list.environment?interpolate=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/log.list.environment?interpolate=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.list.environment interpolate=<value> id=<value> output=<value>  
+pi command log.list.environment interpolate=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4553,7 +4767,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mail.dump
 ----------   
-It fetches new emails from a given mail inbox, and uploads them into a drive folder.
+Fetches new emails from given mail inbox and uploads them into a drive folder.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.dump)
 
@@ -4572,6 +4786,7 @@ Name | Type | Required | Default | Description
 `drivePassword` | String | true | null | The password of the drive account to upload to.
 `path` | String | false | null | The remote folder path in drive where to upload the emails into. For each new email a new sub folder will be created inside this path. If null or empty, uploads to the root folder of the logged in user.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4588,18 +4803,19 @@ pipeline:
       drivePassword: <value>  
       path: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.dump?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&driveUsername=<value>&drivePassword=<value>&path=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/mail.dump?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&driveUsername=<value>&drivePassword=<value>&path=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.dump protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> driveUsername=<value> drivePassword=<value> path=<value> id=<value> output=<value>  
+pi command mail.dump protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> driveUsername=<value> drivePassword=<value> path=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4607,7 +4823,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mail.fetch
 ----------   
-It fetches new emails from the given mail inbox, and returns them as JSON in the output.
+Fetches new emails from given mail inbox and returns them as JSON in the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.fetch)
 
@@ -4623,6 +4839,7 @@ Name | Type | Required | Default | Description
 `inboxUsername` | String | true | null | The username of the email inbox.
 `inboxPassword` | String | true | null | The password of the email inbox.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4636,18 +4853,19 @@ pipeline:
       inboxUsername: <value>  
       inboxPassword: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> id=<value> output=<value>  
+pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4655,7 +4873,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mail.send
 ----------   
-It sends the given message as email. The message's subject and body will be used in the email accordingly.
+Sends the given message as email. The message's subject and body will be used for in the email accordingly.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.send)
 
@@ -4675,6 +4893,7 @@ Name | Type | Required | Default | Description
 `replyTo` | String | false | null | Reply-To email address is used when email receiver uses its mail client's 'reply' function. If not used,the from address is used automatically.
 `attachments` | String | false | null | Can be a comma separated list of URI Strings (e.g.: uri:drive:file1, uri:property:global/file2, uri:drive:file1, uri:classpath:pipeforce/file3). Also can point via PEL to a content object or a content collection. If the PEL points to an object differently to an uri or content object, serializes the value to string and attaches this as a text file.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -4690,17 +4909,18 @@ pipeline:
       replyTo: <value>  
       attachments: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&subject=<value>&model=<value>&message=<value>&replyTo=<value>&attachments=<value>&id=<value>  
+http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&subject=<value>&model=<value>&message=<value>&replyTo=<value>&attachments=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> model=<value> message=<value> replyTo=<value> attachments=<value> id=<value>  
+pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> model=<value> message=<value> replyTo=<value> attachments=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4708,19 +4928,19 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mail.verify
 ----------   
- It protects any subsequent pipe commands: Pipeline is only executed 
- in case the caller has verified, that he is the owner of the given 
+ Protects any subsequent pipe commands: Pipeline is only executed 
+ in case the caller has verified that he is the owner of given 
  email address. To do so, a magic link (verification link) is sent 
  to his email account. Only if the user clicks on this link within 
  a certain amount of time (default is 10min), the subsequent pipe 
- commands are executed. From a technical point of view, this is done 
- by putting the current state of the message into a cache, which deletes 
+ commands are executed. From a technical point of view this is done 
+ by putting the current state of the message into a cache which deletes 
  any entries older than 10min. Then, the email with the key to this 
  cache entry (=challenge) is send to the user. If the user clicks on 
  this link, the message is loaded from the cache using the challenge as 
- the key. If the user clicked within 10min, the entry here can be 
- loaded, and the message execution can be resumed. Otherwise, if the user 
- clicks after 10min on the link, no more entry is in it. Thus, execution fails. 
+ the key. If the user clicked within 10min, the entry is here, can be 
+ loaded and the message execution can be resumed. Otherwise if the user 
+ clicks after 10min on the link, no more entry in it. Execution fails. 
  User has to re-request the link.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.verify)
@@ -4737,6 +4957,7 @@ Name | Type | Required | Default | Description
 `email.blacklist` | String | false | null | A comma separated list of blocked email addresses. Also supports wildcards *. Example: *@domain.com, my@email.com
 `challenge` | String | false | null | The challenge which will become part of the link in the email when redirecting back.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -4748,17 +4969,18 @@ pipeline:
       email.blacklist: <value>  
       challenge: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.verify?email=<value>&email.whitelist=<value>&email.blacklist=<value>&challenge=<value>&id=<value>  
+http://host/api/v3/command/mail.verify?email=<value>&email.whitelist=<value>&email.blacklist=<value>&challenge=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.verify email=<value> email.whitelist=<value> email.blacklist=<value> challenge=<value> id=<value>  
+pi command mail.verify email=<value> email.whitelist=<value> email.blacklist=<value> challenge=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4766,7 +4988,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## map
 ----------   
-DEPRECATED. Use the set command instead. This command maps, calculates, and converts data from fields of the input message to fields of the output message.
+DEPRECATED. Use the set command instead. Maps, calculates and converts data from fields of the input message to fields of the output message.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=map)
 
@@ -4778,6 +5000,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `reverse` | Boolean | false | false | Reverses the left and right expressions. This is a workaround if for some reason the left sidefor example may not contain special characters.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -4786,17 +5009,18 @@ pipeline:
   - map:  
       reverse: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/map?reverse=<value>&id=<value>  
+http://host/api/v3/command/map?reverse=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command map reverse=<value> id=<value>  
+pi command map reverse=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4804,7 +5028,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## memory.info
 ----------   
-It shows the current system info like memory consumption. Available for system and support users only.
+Shows the current system info like memory consumption. Available for system and support users only.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=memory.info)
 
@@ -4815,6 +5039,7 @@ It shows the current system info like memory consumption. Available for system a
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4823,18 +5048,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - memory.info:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/memory.info?id=<value>&output=<value>  
+http://host/api/v3/command/memory.info?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command memory.info id=<value> output=<value>  
+pi command memory.info id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4842,7 +5068,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## microsoft.teams.send
 ----------   
-It sends a message to a Microsoft Teams channel. Note: This command needs an additional license + plugin. This is here only for documentation purposes. Ask support@pipeforce.io for more information.
+Sends a message to a Microsoft Teams channel.Note: This command needs an additional license + plugin. This is here only for documentation purposes. Ask support@pipeforce.io for more information.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=microsoft.teams.send)
 
@@ -4855,6 +5081,7 @@ Name | Type | Required | Default | Description
 `url` | String | true | null | The Teams webhook url to post the message to.
 `message` | String | true | null | The text message to be send to Teams.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -4864,17 +5091,18 @@ pipeline:
       url: <value>  
       message: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>&id=<value>  
+http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command microsoft.teams.send url=<value> message=<value> id=<value>  
+pi command microsoft.teams.send url=<value> message=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4882,7 +5110,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## mock.command
 ----------   
-It mocks a given command of the current pipeline.
+Mocks a given command of the current pipeline.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mock.command)
 
@@ -4898,6 +5126,7 @@ Name | Type | Required | Default | Description
 `thenSetBody` | String | false | null | The value to be returned in the body when this mock applies. If not defined, the current body will not be changed.
 `thenSetVar` | String | false | null | Defines a map which will be set as vars.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -4910,17 +5139,18 @@ pipeline:
       thenSetBody: <value>  
       thenSetVar: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mock.command?enabled=<value>&command=<value>&when=<value>&thenSetBody=<value>&thenSetVar=<value>&id=<value>  
+http://host/api/v3/command/mock.command?enabled=<value>&command=<value>&when=<value>&thenSetBody=<value>&thenSetVar=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mock.command enabled=<value> command=<value> when=<value> thenSetBody=<value> thenSetVar=<value> id=<value>  
+pi command mock.command enabled=<value> command=<value> when=<value> thenSetBody=<value> thenSetVar=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4941,6 +5171,7 @@ Name | Type | Required | Default | Description
 `pages` | String | false | 1 | The number of pages to create. May not be 0 or negative.
 `format` | String | false | A4 | The format of the pages to create. One of: A0, A1, A2, A3, A4, A5, A6, LEGAL, LETTER
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4951,18 +5182,19 @@ pipeline:
       pages: <value>  
       format: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pdf.create?pages=<value>&format=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/pdf.create?pages=<value>&format=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pdf.create pages=<value> format=<value> id=<value> output=<value>  
+pi command pdf.create pages=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4970,7 +5202,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pdf.merge
 ----------   
-It takes a collection of pdfs that is expected in the body (as pipeline resource), and converts it into a single pdf document.
+Takes collection of pdfs that is expected in the body (as pipeline resource) and converts it into single pdf document.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pdf.merge)
 
@@ -4982,6 +5214,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of resulting document content.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4991,18 +5224,19 @@ pipeline:
   - pdf.merge:  
       name: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pdf.merge?name=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/pdf.merge?name=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pdf.merge name=<value> id=<value> output=<value>  
+pi command pdf.merge name=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5010,7 +5244,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pdf.stamp
 ----------   
-It writes both text or images to a pdf file under a specific layer. It expects the word pdf file as a pipeline resource in the body, and transforms the result back also as a pipeline resource in the body.
+Writes both text or images to a pdf file under a specific layer. It expects the word pdf file as a pipeline resource in the body and transforms the result back also as a pipeline resource in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pdf.stamp)
 
@@ -5032,6 +5266,7 @@ Name | Type | Required | Default | Description
 `margin` | Collection | false | 20 | Considers page margin when applying stamp. Can be a single value or a comma separated list of 4 entries forsetting margin in this order: [top, right, down, left]
 `lineNo` | Integer | false | 0 | Enforces that text is written at a specific line
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5051,18 +5286,19 @@ pipeline:
       margin: <value>  
       lineNo: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pdf.stamp?text=<value>&textSize=<value>&textColor=<value>&image=<value>&pages=<value>&position=<value>&layer=<value>&opacity=<value>&degree=<value>&margin=<value>&lineNo=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/pdf.stamp?text=<value>&textSize=<value>&textColor=<value>&image=<value>&pages=<value>&position=<value>&layer=<value>&opacity=<value>&degree=<value>&margin=<value>&lineNo=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pdf.stamp text=<value> textSize=<value> textColor=<value> image=<value> pages=<value> position=<value> layer=<value> opacity=<value> degree=<value> margin=<value> lineNo=<value> id=<value> output=<value>  
+pi command pdf.stamp text=<value> textSize=<value> textColor=<value> image=<value> pages=<value> position=<value> layer=<value> opacity=<value> degree=<value> margin=<value> lineNo=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5070,7 +5306,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipeline.delete
 ----------   
-It deletes a persisted pipeline.
+Deletes a persisted pipeline.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.delete)
 
@@ -5082,6 +5318,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The exact name of the pipeline to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5090,17 +5327,18 @@ pipeline:
   - pipeline.delete:  
       name: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.delete?name=<value>&id=<value>  
+http://host/api/v3/command/pipeline.delete?name=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.delete name=<value> id=<value>  
+pi command pipeline.delete name=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5108,7 +5346,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipeline.get
 ----------   
-It returns all persisted pipelines matching the given name.
+Returns all persisted pipelines matching the given name.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.get)
 
@@ -5120,6 +5358,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of the pipeline to search for. Supports wildcard * matching. If null or empty, returns all entries.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5129,18 +5368,19 @@ pipeline:
   - pipeline.get:  
       name: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.get?name=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/pipeline.get?name=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.get name=<value> id=<value> output=<value>  
+pi command pipeline.get name=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5148,7 +5388,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipeline.put
 ----------   
-It persists a new pipeline to the system or updates an existing one. The pipeline yaml is expected in the body. Can be null. The command returns the updated property in the output.
+Persists a new pipeline to the system or updates an existing one. The pipeline yaml is expected in the body. Can be null. Returns the updated property in the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.put)
 
@@ -5160,6 +5400,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The unique name of this pipeline within this namespace.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5169,18 +5410,19 @@ pipeline:
   - pipeline.put:  
       name: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.put?name=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/pipeline.put?name=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.put name=<value> id=<value> output=<value>  
+pi command pipeline.put name=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5200,6 +5442,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the pipeline to load and execute.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5208,17 +5451,18 @@ pipeline:
   - pipeline.run:  
       name: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.run?name=<value>&id=<value>  
+http://host/api/v3/command/pipeline.run?name=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.run name=<value> id=<value>  
+pi command pipeline.run name=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5226,7 +5470,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## pipeline.start
 ----------   
-It loads and executes the persisted pipeline, and then returns its result in the output.
+Loads and executes the persisted pipeline and returns its result in the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.start)
 
@@ -5239,6 +5483,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified.
 `vars` | String | false | null | A variables map to be put on this pipeline. Note: Any var in this map will overwrite the var in the target pipeline vars scope.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5249,18 +5494,19 @@ pipeline:
       key: <value>  
       vars: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.start?key=<value>&vars=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/pipeline.start?key=<value>&vars=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.start key=<value> vars=<value> id=<value> output=<value>  
+pi command pipeline.start key=<value> vars=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5268,7 +5514,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.app.config
 ----------   
-It returns all config resources from apps, that the current user has access to (role CAN_APP_ is assigned), as a list into the output.
+Returns all config resources from apps the current user has access to (role CAN_APP_ is assigned) as a list into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.app.config)
 
@@ -5280,6 +5526,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `appNames` | String | false | null | A comma separated list of app names those config must be returned. If null or empty, all configs of all apps are returned, the currently logged in user is assigned to. If there is an app name given which doesnt exist or the current user has no access to, nothing happens for security reasons.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5289,18 +5536,19 @@ pipeline:
   - property.app.config:  
       appNames: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.app.config?appNames=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.app.config?appNames=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.app.config appNames=<value> id=<value> output=<value>  
+pi command property.app.config appNames=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5308,7 +5556,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.chunk.get
 ----------   
-It returns the chunk (content) of an attachment in the output. Then, it returns an empty body if the chunk was not found.
+Returns the chunk (content) of an attachment in the output. Returns empty body if chunk was not found.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.get)
 
@@ -5322,6 +5570,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of the attachment this chunk belongs to.
 `index` | String | false | 0 | The index of the chunk to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5333,18 +5582,19 @@ pipeline:
       name: <value>  
       index: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.chunk.get?key=<value>&name=<value>&index=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.chunk.get?key=<value>&name=<value>&index=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.chunk.get key=<value> name=<value> index=<value> id=<value> output=<value>  
+pi command property.attachment.chunk.get key=<value> name=<value> index=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5352,7 +5602,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.chunk.put
 ----------   
-It adds a chunk of data to the given attachment.
+Adds a chunk of data to the given attachment.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.put)
 
@@ -5367,6 +5617,7 @@ Name | Type | Required | Default | Description
 `index` | String | false | null | The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment.
 `content` | String | false | null | The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5378,17 +5629,18 @@ pipeline:
       index: <value>  
       content: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.chunk.put?key=<value>&name=<value>&index=<value>&content=<value>&id=<value>  
+http://host/api/v3/command/property.attachment.chunk.put?key=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.chunk.put key=<value> name=<value> index=<value> content=<value> id=<value>  
+pi command property.attachment.chunk.put key=<value> name=<value> index=<value> content=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5396,7 +5648,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.content
 ----------   
-It returns the content of property attachment as a byte-stream content object into the output.
+Returns the content of an property attachment as a byte stream content object into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.content)
 
@@ -5409,6 +5661,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key of the property this attachment belongs to.
 `name` | String | false | null | The name of the attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5419,18 +5672,19 @@ pipeline:
       key: <value>  
       name: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.content?key=<value>&name=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.content?key=<value>&name=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.content key=<value> name=<value> id=<value> output=<value>  
+pi command property.attachment.content key=<value> name=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5438,7 +5692,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.delete
 ----------   
-It removes an attachment and its content from a property.
+Removes an attachment and its content from a property.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.delete)
 
@@ -5451,6 +5705,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key of the property containing the attachment.
 `name` | String | true | null | The name of the attachment to be deleted.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5460,17 +5715,18 @@ pipeline:
       key: <value>  
       name: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.delete?key=<value>&name=<value>&id=<value>  
+http://host/api/v3/command/property.attachment.delete?key=<value>&name=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.delete key=<value> name=<value> id=<value>  
+pi command property.attachment.delete key=<value> name=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5478,7 +5734,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.get
 ----------   
-It returns an attachment of a property (without content).
+Returns an attachment of a property (without content).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.get)
 
@@ -5491,6 +5747,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key of the property this attachment belongs to.
 `name` | String | false | null | The name of the attachment to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5501,18 +5758,19 @@ pipeline:
       key: <value>  
       name: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.get?key=<value>&name=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.get?key=<value>&name=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.get key=<value> name=<value> id=<value> output=<value>  
+pi command property.attachment.get key=<value> name=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5520,7 +5778,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.list
 ----------   
-It lists all attachments of a given property. The content is not part of this list. Use property.attachment.chunk.get in order to retrieve the content data.
+Lists all attachments of a given property. The content is not part of this list. Use property.attachment.chunk.get in order to retrieve the content data.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.list)
 
@@ -5532,6 +5790,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The key of the property to list its attachments for.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5541,18 +5800,19 @@ pipeline:
   - property.attachment.list:  
       key: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.list?key=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.list?key=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.list key=<value> id=<value> output=<value>  
+pi command property.attachment.list key=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5560,7 +5820,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.put
 ----------   
-It adds an attachment to a property, or updates an existing one. It also overwrites any existing attachment with same name. If there is content in the body, it will be added as a single chunk to the attachment and will replace any existing chunks. If no content is in the body, chunks will not change at all if they exist.
+Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as a single chunk to the attachment and will replace any existing chunks. If no content is in body, chunks will not change at all if they exist.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put)
 
@@ -5575,6 +5835,7 @@ Name | Type | Required | Default | Description
 `content` | String | false | null | The content to add as first chunk. Note: If a PEL is set here must evaluate to a string or byte array. If null, an empty attachment with no chunks is created. 
 `contentType` | String | false | null | The content type to be used for this attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5586,17 +5847,18 @@ pipeline:
       content: <value>  
       contentType: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put?key=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>  
+http://host/api/v3/command/property.attachment.put?key=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put key=<value> name=<value> content=<value> contentType=<value> id=<value>  
+pi command property.attachment.put key=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5604,7 +5866,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.attachment.put.uri
 ----------   
-It sets the property attachment to be symlink to resource referenced by uri.
+Sets property attachment to be symlink to resource referenced by uri.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put.uri)
 
@@ -5618,6 +5880,7 @@ Name | Type | Required | Default | Description
 `name` | String | true | null | The name of the attachment.
 `uri` | String | true | null | The uri of resource to point symlink to.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5628,17 +5891,18 @@ pipeline:
       name: <value>  
       uri: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put.uri?key=<value>&name=<value>&uri=<value>&id=<value>  
+http://host/api/v3/command/property.attachment.put.uri?key=<value>&name=<value>&uri=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put.uri key=<value> name=<value> uri=<value> id=<value>  
+pi command property.attachment.put.uri key=<value> name=<value> uri=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5659,6 +5923,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The origin path key of the property.Otherwise a new entry is created.
 `to` | String | true | null | The target key to copy the property to. If a property with this key already exists, it will be overwritten.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5668,17 +5933,18 @@ pipeline:
       key: <value>  
       to: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.copy?key=<value>&to=<value>&id=<value>  
+http://host/api/v3/command/property.copy?key=<value>&to=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.copy key=<value> to=<value> id=<value>  
+pi command property.copy key=<value> to=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5686,7 +5952,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.exists
 ----------   
-It checks whether a given property exists and returns the boolean result in the body.
+Checks whether a given property exists and returns the boolean result in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.exists)
 
@@ -5698,6 +5964,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The path key of the property to check for. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5707,18 +5974,19 @@ pipeline:
   - property.exists:  
       key: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.exists?key=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.exists?key=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.exists key=<value> id=<value> output=<value>  
+pi command property.exists key=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5726,7 +5994,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.import
 ----------   
-It imports properties given as a JSON document in the body into the property store.
+Imports properties given as JSON document in the body into the property store.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.import)
 
@@ -5738,6 +6006,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `strategy` | String | false | skip | Defines what to do if a property with same key already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5747,18 +6016,19 @@ pipeline:
   - property.import:  
       strategy: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.import?strategy=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.import?strategy=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.import strategy=<value> id=<value> output=<value>  
+pi command property.import strategy=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5766,7 +6036,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.keys.children
 ----------   
-It returns all property child keys for a given parent key. For any child 'folder', the command returns "/" at the very end.
+Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.keys.children)
 
@@ -5778,6 +6048,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pattern` | String | true | null | The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5787,18 +6058,19 @@ pipeline:
   - property.keys.children:  
       pattern: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.keys.children?pattern=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.keys.children?pattern=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.keys.children pattern=<value> id=<value> output=<value>  
+pi command property.keys.children pattern=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5806,7 +6078,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.keys
 ----------   
-It returns all property keys for a given pattern.
+Returns all property keys for a given pattern.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.keys)
 
@@ -5818,6 +6090,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pattern` | String | true | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5827,18 +6100,19 @@ pipeline:
   - property.keys:  
       pattern: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.keys?pattern=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.keys?pattern=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.keys pattern=<value> id=<value> output=<value>  
+pi command property.keys pattern=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5846,7 +6120,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.list
 ----------   
-It lists all properties from the store.
+Lists all properties from the store.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.list)
 
@@ -5859,6 +6133,7 @@ Name | Type | Required | Default | Description
 `pattern` | String | false | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this key. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'.
 `filter` | String | false | null | This parameter is deprecated. Use param 'pattern' instead.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5869,18 +6144,19 @@ pipeline:
       pattern: <value>  
       filter: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.list pattern=<value> filter=<value> id=<value> output=<value>  
+pi command property.list pattern=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5888,7 +6164,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.move
 ----------   
-It moves a property from one key to another.
+Moves a property from one key to another.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.move)
 
@@ -5901,6 +6177,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The origin path key of the property.Otherwise a new entry is created.
 `to` | String | true | null | The target key to move the property to. If a property with this key already exists, an exception is thrown.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5910,17 +6187,18 @@ pipeline:
       key: <value>  
       to: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.move?key=<value>&to=<value>&id=<value>  
+http://host/api/v3/command/property.move?key=<value>&to=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.move key=<value> to=<value> id=<value>  
+pi command property.move key=<value> to=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5928,7 +6206,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.put
 ----------   
-It saves the value of a property. The property schema must exist in advance.
+Saves the value of a property. The property schema must exist in advance.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.put)
 
@@ -5941,6 +6219,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created.
 `value` | String | false | null | The value of the property. May be null or empty.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5950,17 +6229,18 @@ pipeline:
       key: <value>  
       value: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.put?key=<value>&value=<value>&id=<value>  
+http://host/api/v3/command/property.put?key=<value>&value=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.put key=<value> value=<value> id=<value>  
+pi command property.put key=<value> value=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5968,7 +6248,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.schema.delete
 ----------   
-It deletes an existing property schema and its assigned value.
+Deletes an existing property schema and its assigned value.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.delete)
 
@@ -5980,6 +6260,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The path key of the property to delete. If property with this key doesnt exist, nothing happens.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -5988,17 +6269,18 @@ pipeline:
   - property.schema.delete:  
       key: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.delete?key=<value>&id=<value>  
+http://host/api/v3/command/property.schema.delete?key=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.delete key=<value> id=<value>  
+pi command property.schema.delete key=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6006,7 +6288,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.schema.put
 ----------   
-It creates or updates a property schema. This command is intended for provisioning, admin, and service tasks. Also, consider property.put instead. The command returns a JSON result indicating the result of the command is usually one of: create, update or skip.
+Creates or updates a property schema. This command is intended for provisioning, admin and service tasks. Also consider property.put instead. Returns a result JSON indicating the result of the command which usually is one of: create, update or skip.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.put)
 
@@ -6027,6 +6309,7 @@ Name | Type | Required | Default | Description
 `tags` | String | false | null | The initial tags to add to this property. Can be a comma separated list of name value pairs, like this name1:value1, name2:value2.
 `finalAction` | String | false | null | What should happen with this property finally when pipeline execution has been finished? Available actions: 'persist' (writes the latest state to DB), 'remove' (removes the latest state from DB), null (nothing happens = default)
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6044,17 +6327,18 @@ pipeline:
       tags: <value>  
       finalAction: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>  
+http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value>  
+pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6062,7 +6346,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.send.delivery
 ----------   
-It sends the specified property including attachments as pipeforce delivery.
+Sends specified property including attachments as pipeforce delivery.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.send.delivery)
 
@@ -6080,6 +6364,7 @@ Name | Type | Required | Default | Description
 `includeProperty` | String | false | null | Specify id to add property value as additional delivery attachment.
 `recipients` | String | true | null | The emails of recipients.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6095,18 +6380,19 @@ pipeline:
       includeProperty: <value>  
       recipients: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.send.delivery?key=<value>&message=<value>&privacyLevel=<value>&model=<value>&subject=<value>&includeProperty=<value>&recipients=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.send.delivery?key=<value>&message=<value>&privacyLevel=<value>&model=<value>&subject=<value>&includeProperty=<value>&recipients=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.send.delivery key=<value> message=<value> privacyLevel=<value> model=<value> subject=<value> includeProperty=<value> recipients=<value> id=<value> output=<value>  
+pi command property.send.delivery key=<value> message=<value> privacyLevel=<value> model=<value> subject=<value> includeProperty=<value> recipients=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6114,7 +6400,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.tag.list
 ----------   
-It returns all tags for a given property in the body as a JSON: {name1:value1, name2:value2}.
+Returns all tags for a given property in the body as JSON: {name1:value1, name2:value2}.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.list)
 
@@ -6126,6 +6412,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The path key of the property to list the tags for.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6135,18 +6422,19 @@ pipeline:
   - property.tag.list:  
       key: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.tag.list?key=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.tag.list?key=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.tag.list key=<value> id=<value> output=<value>  
+pi command property.tag.list key=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6154,7 +6442,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.tag.put
 ----------   
-It adds a tag to an existing property. This also Overwrites any existing one.
+Adds a tag to an existing property. Overwrites any existing one.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.put)
 
@@ -6169,6 +6457,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of a single tag to add.
 `value` | String | false | null | The value of a single tag to add. Only used in case tag name is not null.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6180,17 +6469,18 @@ pipeline:
       name: <value>  
       value: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.tag.put?key=<value>&tags=<value>&name=<value>&value=<value>&id=<value>  
+http://host/api/v3/command/property.tag.put?key=<value>&tags=<value>&name=<value>&value=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.tag.put key=<value> tags=<value> name=<value> value=<value> id=<value>  
+pi command property.tag.put key=<value> tags=<value> name=<value> value=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6198,7 +6488,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.value.expression
 ----------   
-It executes the given expression on persisted properties and returns the matching ones. This type of search for properties is very powerful, since it allows to search on any schemaless structures. But, be aware it is low performing on a huge amount of properties.
+Executes the given expression on persisted properties and returns the matching ones. This type of search for properties is very powerful since it allows to search on any schemaless structures. But be aware it is low performing on a huge amount of properties.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.value.expression)
 
@@ -6213,6 +6503,7 @@ Name | Type | Required | Default | Description
 `where` | String | false | null | Specifies a selection filter to return only the properties those values match the given where filter. For example: invoice.amount > 50 would select only those properties having a field invoice.amount with value bigger than 50. If null, no where filter is applied and all properties values will be selected.
 `aggregate` | String | false | null | Defines an expression to be applied on the final result. For example to count all values or to transform them. If null or empty, no aggregation will be applied.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6225,18 +6516,19 @@ pipeline:
       where: <value>  
       aggregate: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.expression?select=<value>&from=<value>&where=<value>&aggregate=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.value.expression?select=<value>&from=<value>&where=<value>&aggregate=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> id=<value> output=<value>  
+pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6244,7 +6536,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.value.get
 ----------   
-It returns the value of a given property.
+Returns the value of a given property.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.value.get)
 
@@ -6256,6 +6548,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The key of the property to be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6265,18 +6558,19 @@ pipeline:
   - property.value.get:  
       key: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.get?key=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/property.value.get?key=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.get key=<value> id=<value> output=<value>  
+pi command property.value.get key=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6284,7 +6578,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## provision
 ----------   
-It executes a specific provision script targeted for a namespace.
+Executes a specific provision script targeted for a namespace.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=provision)
 
@@ -6297,6 +6591,7 @@ Name | Type | Required | Default | Description
 `module` | String | false | null | Looks in the specific module for provision scripts. Using current namespaceas default value to load a namespace-specific module.
 `path` | String | false | null | Path of the provision script to call. If not specified, uses default path: main.pipe.yaml
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6306,17 +6601,18 @@ pipeline:
       module: <value>  
       path: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/provision?module=<value>&path=<value>&id=<value>  
+http://host/api/v3/command/provision?module=<value>&path=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command provision module=<value> path=<value> id=<value>  
+pi command provision module=<value> path=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6324,7 +6620,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## publicform.definition
 ----------   
-It composes full public form definition structure.
+Composes full public form definition structure.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=publicform.definition)
 
@@ -6337,6 +6633,7 @@ Name | Type | Required | Default | Description
 `id` | String | true | null | The public form id.
 `id` | String | true | null | The public form id.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6346,17 +6643,18 @@ pipeline:
       id: <value>  
       id: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/publicform.definition?id=<value>&id=<value>&id=<value>  
+http://host/api/v3/command/publicform.definition?id=<value>&id=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command publicform.definition id=<value> id=<value> id=<value>  
+pi command publicform.definition id=<value> id=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6364,7 +6662,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## publicform.submit
 ----------   
-It stores submitted public form data and attachments. All Form definitions are searched for matching id. Additionally, form needs to be marked with the'public: true' property.
+Stores submitted public form data and attachments. All Form definitions are searched for matching id. Additionally form needs to be marked with 'public: true' property.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=publicform.submit)
 
@@ -6377,6 +6675,7 @@ Name | Type | Required | Default | Description
 `value` | String | true | null | The value of the property.
 `id` | String | true | null | The public form id.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6386,17 +6685,18 @@ pipeline:
       value: <value>  
       id: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/publicform.submit?value=<value>&id=<value>&id=<value>  
+http://host/api/v3/command/publicform.submit?value=<value>&id=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command publicform.submit value=<value> id=<value> id=<value>  
+pi command publicform.submit value=<value> id=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6404,7 +6704,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## resource
 ----------   
-It loads a resource depending on its resource protocol, like classpath:, property: or alike.
+Loads a resource depending on its resource protocol like classpath:, property: or alike.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=resource)
 
@@ -6417,6 +6717,7 @@ Name | Type | Required | Default | Description
 `path` | String | false | null | DEPRECATED. Use uri instead.
 `uri` | String | true | null | The uri path to load the resource from. If it starts with classpath:pipeforce, a lookup in the classpath subfolder pipeforce is done (other locations are not allowed). If it starts with property: a lookup in the property store is done and the result is thevalue of the property if exists.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6427,18 +6728,19 @@ pipeline:
       path: <value>  
       uri: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/resource?path=<value>&uri=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/resource?path=<value>&uri=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command resource path=<value> uri=<value> id=<value> output=<value>  
+pi command resource path=<value> uri=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6446,7 +6748,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## resource.save
 ----------   
-It expects a resource base64 encoded in the body and saves it as a resource to hub.
+Expects a resource base64 encoded in the body and saves it as a resource to hub.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=resource.save)
 
@@ -6458,6 +6760,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path to save the resource to.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6466,17 +6769,18 @@ pipeline:
   - resource.save:  
       path: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/resource.save?path=<value>&id=<value>  
+http://host/api/v3/command/resource.save?path=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command resource.save path=<value> id=<value>  
+pi command resource.save path=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6484,7 +6788,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## rpa.website.close
 ----------   
-It closes the website and releases all used resources. Note: The pipe is BETA and not intended to be used in production!
+Closes website and releases all used resources.Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.close)
 
@@ -6495,6 +6799,7 @@ It closes the website and releases all used resources. Note: The pipe is BETA an
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6502,17 +6807,18 @@ Name | Type | Required | Default | Description
 pipeline:  
   - rpa.website.close:  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/rpa.website.close?id=<value>  
+http://host/api/v3/command/rpa.website.close?id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command rpa.website.close id=<value>  
+pi command rpa.website.close id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6520,7 +6826,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## rpa.website.open
 ----------   
-It opens a website and sets its browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
+Opens a website and sets its browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.open)
 
@@ -6532,6 +6838,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | true | null | The url of the web page to open.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6540,17 +6847,18 @@ pipeline:
   - rpa.website.open:  
       url: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/rpa.website.open?url=<value>&id=<value>  
+http://host/api/v3/command/rpa.website.open?url=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command rpa.website.open url=<value> id=<value>  
+pi command rpa.website.open url=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6558,7 +6866,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## rpa.website.scrap
 ----------   
-It scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
+Scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.scrap)
 
@@ -6570,6 +6878,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `xpath` | String | true | null | Executes the given xpath expression on the current page and puts the result in the body. In case the xpath returns more than one results, adds an array to the body. Otherwise the body only contains the single result value.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6578,17 +6887,18 @@ pipeline:
   - rpa.website.scrap:  
       xpath: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/rpa.website.scrap?xpath=<value>&id=<value>  
+http://host/api/v3/command/rpa.website.scrap?xpath=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command rpa.website.scrap xpath=<value> id=<value>  
+pi command rpa.website.scrap xpath=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6596,7 +6906,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## schema.pipeline
 ----------   
-It returns the V7 compliant JSON schema for all built-in pipes.
+Returns the V7 compliant JSON schema for all built-in pipes.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=schema.pipeline)
 
@@ -6607,6 +6917,7 @@ It returns the V7 compliant JSON schema for all built-in pipes.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6615,18 +6926,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - schema.pipeline:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/schema.pipeline?id=<value>&output=<value>  
+http://host/api/v3/command/schema.pipeline?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command schema.pipeline id=<value> output=<value>  
+pi command schema.pipeline id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6634,7 +6946,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## script.run
 ----------   
-It executes a given script at server-side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, that you cannot change it in the script.
+Executes a given script at server side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, you cannot change it in the script.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=script.run)
 
@@ -6647,8 +6959,8 @@ Name | Type | Required | Default | Description
 `script` | String | false | null | The script to be executed.
 `path` | String | false | null | The path to the script to be loaded Currently only the protocol property: is supported which points to a property in the property store and loads its value as script.
 `language` | String | false | js | The script language to be used. Possible values: js, groovy.
-`if` | String | false | true | A PE which must evaluate to true in order to execute this command.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6659,20 +6971,20 @@ pipeline:
       script: <value>  
       path: <value>  
       language: <value>  
-      if: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<value>&if=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command script.run script=<value> path=<value> language=<value> if=<value> id=<value> output=<value>  
+pi command script.run script=<value> path=<value> language=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6680,7 +6992,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## server.info
 ----------   
-It returns information about the current server. For example, the version it is running under. The command returns a flat JSON with these keys: status, namespace, domain, edition, stage, tag, build, version, versionMajor, versionMinor, versionBugfix
+Returns information about the current server. For example the version it is running under. Returns a flat JSON with these keys: status, namespace, domain, edition, stage, tag, build, version, versionMajor, versionMinor, versionBugfix
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=server.info)
 
@@ -6691,6 +7003,7 @@ It returns information about the current server. For example, the version it is 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6699,18 +7012,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - server.info:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/server.info?id=<value>&output=<value>  
+http://host/api/v3/command/server.info?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command server.info id=<value> output=<value>  
+pi command server.info id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6718,7 +7032,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## service.start
 ----------   
-It starts a service defined in the services' config.
+Starts a service defined in services config.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=service.start)
 
@@ -6730,6 +7044,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the service to start. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6738,17 +7053,18 @@ pipeline:
   - service.start:  
       name: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.start?name=<value>&id=<value>  
+http://host/api/v3/command/service.start?name=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.start name=<value> id=<value>  
+pi command service.start name=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6756,7 +7072,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## service.stop
 ----------   
-It stops one of the service.
+Stops one the service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=service.stop)
 
@@ -6768,6 +7084,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the service. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6776,17 +7093,18 @@ pipeline:
   - service.stop:  
       name: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.stop?name=<value>&id=<value>  
+http://host/api/v3/command/service.stop?name=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.stop name=<value> id=<value>  
+pi command service.stop name=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6794,7 +7112,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## set.body
 ----------   
-It sets a value in the body. This also overwrites any existing value inside the body. The value to be set can be a constant or an expression.
+Sets a value in the body. Overwrites any existing value in the body. The value to be set can be a constant or an expression.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=set.body)
 
@@ -6807,6 +7125,7 @@ Name | Type | Required | Default | Description
 `value` | String | true | null | A string or an expression to be used as the value to be set.
 `format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6816,17 +7135,18 @@ pipeline:
       value: <value>  
       format: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/set.body?value=<value>&format=<value>&id=<value>  
+http://host/api/v3/command/set.body?value=<value>&format=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command set.body value=<value> format=<value> id=<value>  
+pi command set.body value=<value> format=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6834,7 +7154,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## set
 ----------   
-It sets a value in the pipe message. The value to be set can be a constant or an expression.
+Sets a value in the pipe message. The value to be set can be a constant or an expression.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=set)
 
@@ -6848,6 +7168,7 @@ Name | Type | Required | Default | Description
 `to` | String | false | null | DEPRECATED. Use param output instead.
 `mapping` | String | false | null | A list of mapping rules to be applied to the given input value.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
@@ -6860,6 +7181,7 @@ pipeline:
       to: <value>  
       mapping: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
       input: <value>  
 ```  
@@ -6867,12 +7189,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/set?value=<value>&to=<value>&mapping=<value>&id=<value>&output=<value>&input=<value>  
+http://host/api/v3/command/set?value=<value>&to=<value>&mapping=<value>&id=<value>&if=<value>&output=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command set value=<value> to=<value> mapping=<value> id=<value> output=<value> input=<value>  
+pi command set value=<value> to=<value> mapping=<value> id=<value> if=<value> output=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6880,7 +7202,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## set.var
 ----------   
-It sets a value in the vars scope. This also overwrites any existing var in the vars scope. The value to be set can be a constant or an expression.
+Sets a value in the vars scope. Overwrites any existing var in the vars scope. The value to be set can be a constant or an expression.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=set.var)
 
@@ -6894,6 +7216,7 @@ Name | Type | Required | Default | Description
 `value` | String | true | null | A string or an expression to be used as the value to be set.
 `format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -6904,17 +7227,18 @@ pipeline:
       value: <value>  
       format: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/set.var?key=<value>&value=<value>&format=<value>&id=<value>  
+http://host/api/v3/command/set.var?key=<value>&value=<value>&format=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command set.var key=<value> value=<value> format=<value> id=<value>  
+pi command set.var key=<value> value=<value> format=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6922,7 +7246,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.delete
 ----------   
-It deletes a file or folder on the SFTP server.
+Deletes a file or folder on the SFTP server.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.delete)
 
@@ -6938,6 +7262,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -6952,6 +7277,7 @@ pipeline:
       host: <value>  
       port: <value>  
       id: <value>  
+      if: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -6959,12 +7285,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> credentials=<value> output=<value>  
+pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6972,7 +7298,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.download
 ----------   
-It downloads a file from a SFTP server. The file is written as a content object to the output.
+Downloads a file from a SFTP server. The file is written as content object to output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.download)
 
@@ -6988,6 +7314,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7002,6 +7329,7 @@ pipeline:
       host: <value>  
       port: <value>  
       id: <value>  
+      if: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -7009,12 +7337,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> credentials=<value> output=<value>  
+pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7022,7 +7350,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.list
 ----------   
-It lists all files of a given folder. The result is written to the output.
+Lists files of a given folder. If not filter parameter is used all files are returned. The result is written to output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.list)
 
@@ -7033,11 +7361,13 @@ It lists all files of a given folder. The result is written to the output.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | false | / | The path to the folder to list.
+`filter` | String | false | null | The filter to apply to files list. '?' - match one character, '*' - match zero o more characters, '\*' to match '*' in filename
 `username` | String | false | null | The username
 `password` | String | false | null | The password
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7047,11 +7377,13 @@ Name | Type | Required | Default | Description
 pipeline:  
   - sftp.list:  
       path: <value>  
+      filter: <value>  
       username: <value>  
       password: <value>  
       host: <value>  
       port: <value>  
       id: <value>  
+      if: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -7059,12 +7391,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.list?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.list?path=<value>&filter=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.list path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> credentials=<value> output=<value>  
+pi command sftp.list path=<value> filter=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7072,7 +7404,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.mkdir
 ----------   
-It creates a new directory on the SFTP server.
+Creates a new directory on the SFTP server.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.mkdir)
 
@@ -7088,6 +7420,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7102,6 +7435,7 @@ pipeline:
       host: <value>  
       port: <value>  
       id: <value>  
+      if: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -7109,12 +7443,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> credentials=<value> output=<value>  
+pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7122,7 +7456,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.rename
 ----------   
-It renames a file or folder on the SFTP server.
+Renames a file or folder on the SFTP server.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.rename)
 
@@ -7139,6 +7473,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7154,6 +7489,7 @@ pipeline:
       host: <value>  
       port: <value>  
       id: <value>  
+      if: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -7161,12 +7497,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> id=<value> credentials=<value> output=<value>  
+pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7174,7 +7510,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sftp.upload
 ----------   
-It uploads a file to a SFTP server. The file is expected to be in the input.
+Uploads a file to a SFTP server. The file is expected to be in the input.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sftp.upload)
 
@@ -7190,6 +7526,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
@@ -7204,6 +7541,7 @@ pipeline:
       host: <value>  
       port: <value>  
       id: <value>  
+      if: <value>  
       credentials: <value>  
       input: <value>  
 ```  
@@ -7211,12 +7549,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&credentials=<value>&input=<value>  
+http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&credentials=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> credentials=<value> input=<value>  
+pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7224,7 +7562,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## slack.send
 ----------   
-It sends a text message to Slack via a webhook url. Also see: https://api.slack.com/messaging/webhooks
+Sends a text message via webhook url to Slack. Also see: https://api.slack.com/messaging/webhooks
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=slack.send)
 
@@ -7237,6 +7575,7 @@ Name | Type | Required | Default | Description
 `url` | String | true | null | The Slack webhook url to post the message to. See here to generate one: https://api.slack.com/messaging/webhooks
 `text` | String | true | null | The text message to be send to Slack.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -7246,17 +7585,18 @@ pipeline:
       url: <value>  
       text: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/slack.send?url=<value>&text=<value>&id=<value>  
+http://host/api/v3/command/slack.send?url=<value>&text=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command slack.send url=<value> text=<value> id=<value>  
+pi command slack.send url=<value> text=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7264,7 +7604,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## sql.query
 ----------   
-It executes a (read-only) SQL query and returns the result as JSON in the body. NOTE: This command is primarily meant for developers and admins to monitor the system. It should not be used in production workflows! It can change at any time without notice!
+Executes a (read-only) SQL query and returns the result as JSON in the body. NOTE: This command is primarily meant for developers and admins to monitor the system. It should not be used in production workflows! It can change at any time without notice!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=sql.query)
 
@@ -7280,6 +7620,7 @@ Name | Type | Required | Default | Description
 `dataField` | String | false | data | If given, places the data inside a separate property with this name.
 `columnField` | String | false | columns | If given, places the column names inside a separate property with this name.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7293,18 +7634,19 @@ pipeline:
       dataField: <value>  
       columnField: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sql.query?query=<value>&datasource=<value>&columnName=<value>&dataField=<value>&columnField=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/sql.query?query=<value>&datasource=<value>&columnName=<value>&dataField=<value>&columnField=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sql.query query=<value> datasource=<value> columnName=<value> dataField=<value> columnField=<value> id=<value> output=<value>  
+pi command sql.query query=<value> datasource=<value> columnName=<value> dataField=<value> columnField=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7312,7 +7654,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## switch
 ----------   
-It evaluates each switch statement. This takes the value part of the first match and writes it to the given output. If no output is given, writes it to the body. Any param key will be the selection expression, which needs to evaluate to a boolean true or false, and any value will be the selected value.
+Evaluates each switch statement. Takes the value part of the first match and writes it to the given output. If no output is given, writes it to the body. Any param key will be the selection expression which needs to evaluate to a boolean true or false and any value will be the selected value.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=switch)
 
@@ -7323,6 +7665,7 @@ It evaluates each switch statement. This takes the value part of the first match
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7331,18 +7674,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - switch:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/switch?id=<value>&output=<value>  
+http://host/api/v3/command/switch?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command switch id=<value> output=<value>  
+pi command switch id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7364,6 +7708,7 @@ Name | Type | Required | Default | Description
 `includeMethods` | String | false | methodName.startsWith('test') | A PE which defines the test methods to be included. The selected method name is provided as variable: methodName.
 `excludeMethods` | String | false | methodName.endsWith('IT') | A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -7374,17 +7719,18 @@ pipeline:
       includeMethods: <value>  
       excludeMethods: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&excludeMethods=<value>&id=<value>  
+http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&excludeMethods=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command test.run locations=<value> includeMethods=<value> excludeMethods=<value> id=<value>  
+pi command test.run locations=<value> includeMethods=<value> excludeMethods=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7392,7 +7738,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## theme
 ----------   
-It returns the resources for a given theme in the body and enrich headers with appropriate Content-type. The command caches the resources.
+Returns the resources for a given theme in the body and enrich headers with appropriate Content-type. Caches the resources.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=theme)
 
@@ -7405,6 +7751,7 @@ Name | Type | Required | Default | Description
 `clearCache` | Boolean | false | null | If true, the current theme cache is cleared.
 `resource` | String | true | logo | The type of resource to be loaded. Must be one of: background, logo, pipeforce-logo. If null or invalid value, falls back to default value.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7415,18 +7762,19 @@ pipeline:
       clearCache: <value>  
       resource: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/theme?clearCache=<value>&resource=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/theme?clearCache=<value>&resource=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command theme clearCache=<value> resource=<value> id=<value> output=<value>  
+pi command theme clearCache=<value> resource=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7434,7 +7782,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform
 ----------   
-It converts the input to an output format by applying the given template engine. By default, the current message is provided as a model inside the template context, so you can access the body, vars or headers, similar to the default PEL approach.
+This transformer converts the input to an output format by applying the given template engine. By default the current message is provided as model inside the template context so you can access body, vars or headers similar to the default PEL approach.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform)
 
@@ -7450,6 +7798,7 @@ Name | Type | Required | Default | Description
 `modelName` | String | false | null | The name of the root model under which the input can be accessed inside the template. If null or empty, then the input defines the model names.
 `template` | String | true | null | The template to be used for the transformation. It can the template text itself as string or a qualified uri pointing to a template resource like this for example: $uri:property:/my/template/path
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7464,6 +7813,7 @@ pipeline:
       modelName: <value>  
       template: <value>  
       id: <value>  
+      if: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -7471,12 +7821,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&id=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> input=<value> output=<value>  
+pi command transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7484,7 +7834,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.ftl
 ----------   
-It uses the FreeMarker template engine for its transformation. It expects the template to be in the body or in the template param. The command then transforms it and puts the result to the output (as a content object).
+This transformer uses the FreeMarker template engine for its transformation. It expects the template to be in the body or in the template param, transforms it and puts the result  to the output (as a content object).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.ftl)
 
@@ -7497,6 +7847,7 @@ Name | Type | Required | Default | Description
 `model` | String | false | null | The model to be placed into the template scope. If null, the message is used as model
 `template` | String | false | null | The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7507,18 +7858,19 @@ pipeline:
       model: <value>  
       template: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.ftl?model=<value>&template=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/transform.ftl?model=<value>&template=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.ftl model=<value> template=<value> id=<value> output=<value>  
+pi command transform.ftl model=<value> template=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7526,7 +7878,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.html2docx
 ----------   
-It takes html text that is expected inside the body (as pipeline resource), and converts it back to docx document. Then, it writes to the output.
+Takes html text that is expected in the body, (as pipeline resource) and converts it back to docx document and then writes to output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.html2docx)
 
@@ -7537,6 +7889,7 @@ It takes html text that is expected inside the body (as pipeline resource), and 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7545,18 +7898,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - transform.html2docx:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.html2docx?id=<value>&output=<value>  
+http://host/api/v3/command/transform.html2docx?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.html2docx id=<value> output=<value>  
+pi command transform.html2docx id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7564,7 +7918,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.pdf2png
 ----------   
-It takes a pdf, that is expected inside the body (as pipeline resource), and converts it back to body (as pipeline resource) as a collection of png images.
+Takes pdf that is expected in the body, (as pipeline resource) and converts it back to body (as pipeline resource) as a collection of png images.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.pdf2png)
 
@@ -7576,6 +7930,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `dpi` | String | false | null | DPI to use for conversion. 300 DPI is used when not specified.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7585,18 +7940,19 @@ pipeline:
   - transform.pdf2png:  
       dpi: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.pdf2png?dpi=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/transform.pdf2png?dpi=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.pdf2png dpi=<value> id=<value> output=<value>  
+pi command transform.pdf2png dpi=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7604,7 +7960,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.png2pdf
 ----------   
-It takes a collection of pngs, that is expected in the body (as pipeline resource), and converts it back to body (as pipeline resource) as a pdf document.
+Takes collection of pngs that is expected in the body (as pipeline resource) and converts it back to body (as pipeline resource) to pdf document.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.png2pdf)
 
@@ -7616,6 +7972,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `dpi` | String | false | null | DPI to forcibly use for conversion.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7625,18 +7982,19 @@ pipeline:
   - transform.png2pdf:  
       dpi: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.png2pdf?dpi=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/transform.png2pdf?dpi=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.png2pdf dpi=<value> id=<value> output=<value>  
+pi command transform.png2pdf dpi=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7644,8 +8002,9 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.word2pdf
 ----------   
-DEPRECATED. Use microsoft.word.export.pdf instead. The command makes a word file (.docx), that is expected in the 
-body, converts it to pdf, and then stores it back into the body.
+DEPRECATED. Use microsoft.word.export.pdf instead. Takes a word file (.docx) that is expected in the 
+body and converts
+it to pdf and stores it back into the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.word2pdf)
 
@@ -7657,6 +8016,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | false | null | Provides the URL the word document is located at. If set, it uses REST PDF conversion service instead of library.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7666,18 +8026,19 @@ pipeline:
   - transform.word2pdf:  
       path: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.word2pdf?path=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/transform.word2pdf?path=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.word2pdf path=<value> id=<value> output=<value>  
+pi command transform.word2pdf path=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7685,7 +8046,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## transform.wordtemplate
 ----------   
-It transforms velocity template expressions in word files. It expects the template to be in the body or in the template param, transforms it, and puts the result back to the body as a byte array content.
+Transforms velocity template expressions in word files. It expects the template to be in the body or in thetemplate param, transforms it and puts the result back to the body as byte array content.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.wordtemplate)
 
@@ -7698,6 +8059,7 @@ Name | Type | Required | Default | Description
 `model` | String | true | null | The model to be placed into the template scope. May not be null.
 `template` | String | false | null | The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path.docx) pointing to the template.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7708,18 +8070,19 @@ pipeline:
       model: <value>  
       template: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.wordtemplate?model=<value>&template=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/transform.wordtemplate?model=<value>&template=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.wordtemplate model=<value> template=<value> id=<value> output=<value>  
+pi command transform.wordtemplate model=<value> template=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7727,7 +8090,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## translate
 ----------   
-It translates the given text to the given target language. The command expects the input (by default) in the body, and writes the result back to the body (by default).
+Translates the given text to the given target language. Expects the input by default in the body and writes the result by default back to the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=translate)
 
@@ -7740,6 +8103,7 @@ Name | Type | Required | Default | Description
 `text` | String | true | null | The text to be translated.
 `targetLanguage` | String | false | EN | The target language to transform the text to. Supported values: DE, EN, FR, IT, JA, ES, NL, PL, PT, RU, ZH
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `apiKey` | String | false | null | The alternative API key to connect to the service. If null or empty, the default one will be used, as defined by the default backend settings.
 `restUrl` | String | false | null | The URL to be called by the command. If null or empty, the default url will be used as defined in the backend.
@@ -7753,6 +8117,7 @@ pipeline:
       text: <value>  
       targetLanguage: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
       apiKey: <value>  
       restUrl: <value>  
@@ -7762,12 +8127,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/translate?text=<value>&targetLanguage=<value>&id=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
+http://host/api/v3/command/translate?text=<value>&targetLanguage=<value>&id=<value>&if=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command translate text=<value> targetLanguage=<value> id=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
+pi command translate text=<value> targetLanguage=<value> id=<value> if=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7775,7 +8140,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## unzip
 ----------   
-It unzips a given zipped content from the body, and puts the uncompressed content into the output. Note: Currently, only files in the root level of the zip are supported.
+Unzips a given zipped content from the body and puts the uncompressed content into the output. Note: Currently only files in the root level of the zip are supported.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=unzip)
 
@@ -7786,6 +8151,7 @@ It unzips a given zipped content from the body, and puts the uncompressed conten
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7794,18 +8160,19 @@ Name | Type | Required | Default | Description
 pipeline:  
   - unzip:  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/unzip?id=<value>&output=<value>  
+http://host/api/v3/command/unzip?id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command unzip id=<value> output=<value>  
+pi command unzip id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7813,7 +8180,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## validate.json
 ----------   
-It validates the JSON body of the message against a given JSON schema. See https://json-schema.org/. 
+Validates the JSON body of the message against a given JSON schema. See https://json-schema.org/. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=validate.json)
 
@@ -7827,6 +8194,7 @@ Name | Type | Required | Default | Description
 `version` | String | false | V7 | The version of the schema specification to be used. One of: V4, V6, V7
 `path` | String | false | null | A pipe expression pointing to the JSON inside the pipe message validation is required for. If missing, null or empty, the body is used by default.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -7837,17 +8205,18 @@ pipeline:
       version: <value>  
       path: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/validate.json?schema=<value>&version=<value>&path=<value>&id=<value>  
+http://host/api/v3/command/validate.json?schema=<value>&version=<value>&path=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command validate.json schema=<value> version=<value> path=<value> id=<value>  
+pi command validate.json schema=<value> version=<value> path=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7855,7 +8224,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.delete
 ----------   
-It deletes an existing webhook. If no such webhook exists, nothing happens.
+Deletes an existing webhook. If no such webhook exists, nothing happens.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.delete)
 
@@ -7867,6 +8236,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | Id of the webhook to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -7875,17 +8245,18 @@ pipeline:
   - webhook.delete:  
       uuid: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.delete?uuid=<value>&id=<value>  
+http://host/api/v3/command/webhook.delete?uuid=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.delete uuid=<value> id=<value>  
+pi command webhook.delete uuid=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7893,7 +8264,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.get
 ----------   
-It returns all persisted webhooks as a list.
+Returns all persisted webhooks as a list.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.get)
 
@@ -7905,6 +8276,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | false | null | Id of the single webhook to return. If null or empty, all webhooks will be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7914,18 +8286,19 @@ pipeline:
   - webhook.get:  
       uuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.get?uuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/webhook.get?uuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.get uuid=<value> id=<value> output=<value>  
+pi command webhook.get uuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7933,7 +8306,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.put
 ----------   
-It creates a new webhook or updates an existing one, and then returns its metadata.
+Creates a new webhook or updates an existing one and returns its metadata.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.put)
 
@@ -7947,6 +8320,7 @@ Name | Type | Required | Default | Description
 `pipeline` | String | false | null | DEPRECATED. Stored pipeline reference key.
 `uuid` | String | false | null | The id of an existing webhook. If given, tries to update this webhook instead of creating a new one.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7958,18 +8332,19 @@ pipeline:
       pipeline: <value>  
       uuid: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> id=<value> output=<value>  
+pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7977,7 +8352,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.receive
 ----------   
-It runs a webhook identified by its uuid.
+Runs a webhook identified by its uuid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive)
 
@@ -7989,6 +8364,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | The uuid of the webhook.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -7997,17 +8373,18 @@ pipeline:
   - webhook.receive:  
       uuid: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.receive?uuid=<value>&id=<value>  
+http://host/api/v3/command/webhook.receive?uuid=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.receive uuid=<value> id=<value>  
+pi command webhook.receive uuid=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8015,7 +8392,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## webhook.send
 ----------   
-It sends a webhook message to an external system. The command returns a JSON in the body, like {result:STATUS}, where STATUS is the response string sent back by the webhook target system. Usually, this is 'ok' if everything was OK. Consult the documentation of the webhook target system about the STATUS codes.
+Sends a webhook message to an external system. Returns a JSON in the body like {result:STATUS} whereasSTATUS is the response string sent back by the webhook target system. Usually this is 'ok' if everything was OK. Consult the documentation of the webhook target system about the STATUS codes.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.send)
 
@@ -8028,6 +8405,7 @@ Name | Type | Required | Default | Description
 `url` | String | true | null | The webhook url to post the message to.
 `message` | String | false | null | The message to be send in the POST body to the webhook. Must be a valid JSON.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8038,18 +8416,19 @@ pipeline:
       url: <value>  
       message: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.send?url=<value>&message=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/webhook.send?url=<value>&message=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.send url=<value> message=<value> id=<value> output=<value>  
+pi command webhook.send url=<value> message=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8057,7 +8436,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.deploy
 ----------   
-It deploys a given BPMN from the body or a given property into the underlying workflow engine.
+Deploys a given BPMN from the body or a given property into the underlying workflow engine.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deploy)
 
@@ -8071,6 +8450,7 @@ Name | Type | Required | Default | Description
 `appId` | String | false | null | The appId to be used to prefix the process name with: appId_workflowname. If null or empty no prefix is appended.
 `propertyKey` | String | false | null | The optional key of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this propertyKey is missing, the BPMN is expected to be in the body.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8082,18 +8462,19 @@ pipeline:
       appId: <value>  
       propertyKey: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKey=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKey=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> id=<value> output=<value>  
+pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8101,7 +8482,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.deployment.find
 ----------   
-It finds all deployments from the workflow engine by matching the given parameters and puts them into the body.
+Finds all deployments from the workflow engine matching given parameters and puts them into the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deployment.find)
 
@@ -8114,6 +8495,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | Name of the deployment. Exact match.
 `id` | String | false | null | Id of the deployment. Exact match.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8124,18 +8506,19 @@ pipeline:
       name: <value>  
       id: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.deployment.find?name=<value>&id=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.deployment.find?name=<value>&id=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.deployment.find name=<value> id=<value> id=<value> output=<value>  
+pi command workflow.deployment.find name=<value> id=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8143,7 +8526,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.event
 ----------   
-It sends an event message to a message endpoint inside 
+Sends an event message to a message endpoint inside 
 a given workflow. As payload of the event message, 
 the current pipe message will be used as input.
 
@@ -8159,6 +8542,7 @@ Name | Type | Required | Default | Description
 `businessKey` | String | false | null | The business key of the process which needs to be informed by the event. One of businessKey or processInstanceId must be given.
 `messageName` | String | true | null | The name of this message. It is used to find the endpoint to be triggered in the workflow.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8170,18 +8554,19 @@ pipeline:
       businessKey: <value>  
       messageName: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=<value>&messageName=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=<value>&messageName=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> id=<value> output=<value>  
+pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8189,7 +8574,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.find.processinstances
 ----------   
-It returns all process instances matching the given criteria.
+Returns all process instances matching the given criteria.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.find.processinstances)
 
@@ -8201,6 +8586,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8210,18 +8596,19 @@ pipeline:
   - workflow.find.processinstances:  
       processInstanceBusinessKey: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.find.processinstances?processInstanceBusinessKey=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.find.processinstances?processInstanceBusinessKey=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.find.processinstances processInstanceBusinessKey=<value> id=<value> output=<value>  
+pi command workflow.find.processinstances processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8229,7 +8616,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.history.tasks
 ----------   
-It returns all finished tasks matching the given criteria.
+Returns all finished tasks matching the given criteria.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.history.tasks)
 
@@ -8245,6 +8632,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | true | null | Filter tasks by process instance id.
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8258,18 +8646,19 @@ pipeline:
       processInstanceId: <value>  
       processInstanceBusinessKey: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.history.tasks?dueBefore=<value>&assignee=<value>&includeVariables=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.history.tasks?dueBefore=<value>&assignee=<value>&includeVariables=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.history.tasks dueBefore=<value> assignee=<value> includeVariables=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> output=<value>  
+pi command workflow.history.tasks dueBefore=<value> assignee=<value> includeVariables=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8277,7 +8666,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.member.message
 ----------   
-It sends a message to the given workflow member. In case the workflow member is not already added to the workflow model, this adds a new entry to a given workflow model, which is usually a data model (JSON) with a single member structure like this: workflowModel.members[someUserId]. Whereas, in this level user, taskUrl and shareUrl will be added if required.
+Sends a message to the given workflow member. In case the workflow member is not already added to the workflow model, adds a new entry to a given workflow model, which is usually a data model (JSON) with a single member structure like this: workflowModel.members[someUserId] whereas in this level user, taskUrl and shareUrl will be added if required.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.member.message)
 
@@ -8296,6 +8685,7 @@ Name | Type | Required | Default | Description
 `message` | String | false | null | The invite message to be used to send an invite email to the new member. Can be a text message, a uri or content object template.
 `model` | String | false | null | The model to be used in the invite message template.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -8311,17 +8701,18 @@ pipeline:
       message: <value>  
       model: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.member.message?workflowModel=<value>&userId=<value>&username=<value>&resourcePath=<value>&taskUrl=<value>&subject=<value>&message=<value>&model=<value>&id=<value>  
+http://host/api/v3/command/workflow.member.message?workflowModel=<value>&userId=<value>&username=<value>&resourcePath=<value>&taskUrl=<value>&subject=<value>&message=<value>&model=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.member.message workflowModel=<value> userId=<value> username=<value> resourcePath=<value> taskUrl=<value> subject=<value> message=<value> model=<value> id=<value>  
+pi command workflow.member.message workflowModel=<value> userId=<value> username=<value> resourcePath=<value> taskUrl=<value> subject=<value> message=<value> model=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8329,7 +8720,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.model.attachment.get
 ----------   
-It returns property.attachment.content from the process model property attachment.
+Returns property.attachment.content from process model property attachment.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.get)
 
@@ -8342,6 +8733,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | true | null | The process instance id.
 `fileName` | String | true | null | The attachment name.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -8351,17 +8743,18 @@ pipeline:
       processInstanceId: <value>  
       fileName: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.model.attachment.get?processInstanceId=<value>&fileName=<value>&id=<value>  
+http://host/api/v3/command/workflow.model.attachment.get?processInstanceId=<value>&fileName=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.model.attachment.get processInstanceId=<value> fileName=<value> id=<value>  
+pi command workflow.model.attachment.get processInstanceId=<value> fileName=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8369,7 +8762,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.model.attachment.put
 ----------   
-It uses property.attachment.put to process the model property attachment. 
+Does property.attachment.put to process model property attachment. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.put)
 
@@ -8383,6 +8776,7 @@ Name | Type | Required | Default | Description
 `fileName` | String | true | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
 `contentType` | String | false | null | The content type to be used for this attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -8393,17 +8787,18 @@ pipeline:
       fileName: <value>  
       contentType: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<value>&fileName=<value>&contentType=<value>&id=<value>  
+http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<value>&fileName=<value>&contentType=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value> contentType=<value> id=<value>  
+pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value> contentType=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8411,7 +8806,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.model
 ----------   
-This is a utility command for easier workflow model handling.
+Utility command to easier workflow model handling.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model)
 
@@ -8423,6 +8818,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `mappings` | String | false | null | A list of mapping rules to be applied to the given workflow model. See online docs for more details about such mapping rules.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8432,18 +8828,19 @@ pipeline:
   - workflow.model:  
       mappings: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.model?mappings=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.model?mappings=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.model mappings=<value> id=<value> output=<value>  
+pi command workflow.model mappings=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8451,7 +8848,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.tasks.open
 ----------   
-It returns all open tasks grouped by assignee. The Returned parameters are dynamic and depend on the underlying workflow engine. The default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes, see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
+Returns all open tasks grouped by assignee. Returned parameters are dynamically and depend on the underlying workflow engine. Default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open)
 
@@ -8466,6 +8863,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | false | null | Filter tasks by process instance id.
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8478,18 +8876,19 @@ pipeline:
       processInstanceId: <value>  
       processInstanceBusinessKey: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.tasks.open?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.tasks.open?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.tasks.open dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> output=<value>  
+pi command workflow.tasks.open dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8497,7 +8896,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.tasks.open.reminder
 ----------   
-It sends a reminder email to each assignee having open tasks matching the given criteria.
+Sends a reminder email to each assignee having open tasks matching given criteria.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open.reminder)
 
@@ -8512,6 +8911,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | false | null | Filter tasks by process instance id.
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8524,18 +8924,19 @@ pipeline:
       processInstanceId: <value>  
       processInstanceBusinessKey: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.tasks.open.reminder?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.tasks.open.reminder?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.tasks.open.reminder dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> output=<value>  
+pi command workflow.tasks.open.reminder dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8543,11 +8944,11 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.start
 ----------   
-It starts a new instance of a process in the workflow engine. 
+Starts a new instance of a process in the workflow engine. 
 The given pipe message will be serialized to JSON and
 put as variable <code>pipeJson</code> into context of the 
 process (process variables).
-The command returns the input message unchanged.
+Returns the input message unchanged.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.start)
 
@@ -8563,6 +8964,7 @@ Name | Type | Required | Default | Description
 `workflowModelInstanceKey` | String | false | null | The optional property key of the central process model instance to be used. Will be passed under this name to the process engine as process variable.Note: The model instance key must start with an app path followed by an object path. For example global/app/myApp/object/someObject/v1/instance/SOME_UUID.
 `workflowStartedBy` | String | false | null | The name of the process variable which holds the uuid of the user who started this process using this command. If null or empty, the currently logged-in user willbe used instead.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8576,18 +8978,19 @@ pipeline:
       workflowModelInstanceKey: <value>  
       workflowStartedBy: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.start?key=<value>&businessKey=<value>&variables=<value>&workflowModelInstanceKey=<value>&workflowStartedBy=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.start?key=<value>&businessKey=<value>&variables=<value>&workflowModelInstanceKey=<value>&workflowStartedBy=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.start key=<value> businessKey=<value> variables=<value> workflowModelInstanceKey=<value> workflowStartedBy=<value> id=<value> output=<value>  
+pi command workflow.start key=<value> businessKey=<value> variables=<value> workflowModelInstanceKey=<value> workflowStartedBy=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8595,7 +8998,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.task.complete
 ----------   
-It completes a given workflow task, and puts any resulting variable from the task inside the body.
+Completes a given workflow task and puts any resulting variable from the task in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.task.complete)
 
@@ -8608,6 +9011,7 @@ Name | Type | Required | Default | Description
 `taskId` | String | true | null | The id (not name!) of the task to complete.
 `variables` | String | false | null | A map of variables to be passed to the task. Can be null.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8618,18 +9022,19 @@ pipeline:
       taskId: <value>  
       variables: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.task.complete?taskId=<value>&variables=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.task.complete?taskId=<value>&variables=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.task.complete taskId=<value> variables=<value> id=<value> output=<value>  
+pi command workflow.task.complete taskId=<value> variables=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8637,7 +9042,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.tasks
 ----------   
-It returns all tasks for a given workflow. The returned parameters are dynamic and depend on the underlying workflow engine. The default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes, see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
+Returns all tasks for a given workflow. Returned parameters are dynamically and depend on the underlying workflow engine. Default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks)
 
@@ -8652,6 +9057,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | false | null | Filter tasks by process instance id.
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8664,18 +9070,19 @@ pipeline:
       processInstanceId: <value>  
       processInstanceBusinessKey: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.tasks?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.tasks?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.tasks dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> output=<value>  
+pi command workflow.tasks dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8683,7 +9090,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.undeploy
 ----------   
-It undeploys a given BPMN from the workflow engine.
+Undeploys a given BPMN from workflow engine.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.undeploy)
 
@@ -8696,6 +9103,7 @@ Name | Type | Required | Default | Description
 `name` | String | true | null | The name of the deployment to remove.
 `onError` | String | false | EXIT | What to do if an error happened in this command?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 
 
 **Pipeline example:**  
@@ -8705,17 +9113,18 @@ pipeline:
       name: <value>  
       onError: <value>  
       id: <value>  
+      if: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.undeploy?name=<value>&onError=<value>&id=<value>  
+http://host/api/v3/command/workflow.undeploy?name=<value>&onError=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.undeploy name=<value> onError=<value> id=<value>  
+pi command workflow.undeploy name=<value> onError=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8723,7 +9132,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## workflow.users
 ----------   
-It returns all users eligible to participate in a given workflow.
+Returns all users eligible to participate in given workflow.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=workflow.users)
 
@@ -8735,6 +9144,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `processDefinitionId` | String | false | null | The id of the process definition.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8744,18 +9154,19 @@ pipeline:
   - workflow.users:  
       processDefinitionId: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.users?processDefinitionId=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/workflow.users?processDefinitionId=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.users processDefinitionId=<value> id=<value> output=<value>  
+pi command workflow.users processDefinitionId=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8763,7 +9174,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## zip
 ----------   
-It compresses a given content in the body and puts the compressed data into the output. If content is a content collection, the command puts all entries in the resulting zip file. Note: Currently, a nested content collection is currently not supported! Any content entry must be at the root level.
+Compresses a given content in the body and puts the compressed data into the output. If content is a content collection, puts all entries in the resulting zip file. Note: Currently a nested content collection is currently not supported! Any content entry must be at the root level.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=zip)
 
@@ -8776,6 +9187,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of the final zip file. If not given, the name will be set by this rule: If it is a single entry, uses the name of the entry + .zip. If there are multiple entries, creates a random name + .zip
 `level` | String | false | null | Sets the compression level 0-9. If not set, the default level is used which could vary.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8786,18 +9198,19 @@ pipeline:
       name: <value>  
       level: <value>  
       id: <value>  
+      if: <value>  
       output: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/zip?name=<value>&level=<value>&id=<value>&output=<value>  
+http://host/api/v3/command/zip?name=<value>&level=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command zip name=<value> level=<value> id=<value> output=<value>  
+pi command zip name=<value> level=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
