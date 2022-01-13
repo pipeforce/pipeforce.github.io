@@ -168,7 +168,7 @@ Whether and which headers are required depends on the pipeline and its commands.
 
 It is similar to HTTP Request headers: [https://en.wikipedia.org/wiki/List\_of\_HTTP\_header\_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 
-You can set values in the headers scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../guides/pel).
+You can set values in the headers scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../api/pel).
 
 ### vars
 
@@ -178,7 +178,7 @@ Values can also be complex objects and documents.
 
 Values can be changed during pipeline processing.
 
-You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../guides/pel).
+You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../api/pel).
 
 ### pipeline
 
@@ -186,7 +186,7 @@ The pipeline section is mandatory and lists all commands which must be executed 
 
 See your instance portal for a reference of available commands.
 
-You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../guides/pel).
+You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../api/pel).
 
 ### body
 
@@ -194,7 +194,7 @@ The body section is optional. It defines a single object to be used as “data p
 
 In case commands return a value, by default, they will write this value to the body implicitly. Whereas a previous command's value in the body will be overwritten by the command which comes next.
 
-You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../guides/pel).
+You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../api/pel).
 
 
 

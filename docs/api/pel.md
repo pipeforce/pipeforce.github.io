@@ -870,7 +870,7 @@ pipeline:
 
 Inside a PE you can use built-in utils as helpers to simplify work.
 
-A reference about available PEL Utils can be found in this section: [PEL Utils Reference](pel-utils).
+A reference about available PEL Utils can be found in this section: [PEL Utils Reference](../api/utils).
 
 #### Example 1
 
