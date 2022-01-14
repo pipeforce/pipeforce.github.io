@@ -13,6 +13,12 @@ PIPEFORCE is the first workflow automation and integration platform that is buil
 
 PIPEFORCE helps you to:
 
+- document
+- automate
+- train
+
+business workflows within your company. Its an open platform which supports you to
+
 - integrate (connect) different Systems and APIs with simple to use connectors and pipelines
 - do data migration, transformation, cleansing and enrichment using data pipelines
 - build any business apps using a forms and lists framework
@@ -20,7 +26,6 @@ PIPEFORCE helps you to:
 - automate tasks und flows using the built-in RPA toolings and workflows
 - define a clear model for separation of people's responsbilities 
 - define a clear development and deployment model 
-- become a digital leader
 
 All of this in a fraction of time.
 
