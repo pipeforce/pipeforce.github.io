@@ -56,7 +56,7 @@ As you can see, we have to do some steps to transform from the source to target 
 *   Finally, let's assume the target system expects a new field `mappingDate`, which contains the date of mapping, and `mappedBy` to contain the username of the user who did the mapping, just for compliance reasons.
     
 
-Let's see in this tutorial, how to implement this conversion task by using a pipeline script and the **[Pipeline Expression Language (PEL)](pipeline-expression-language)** .
+Let's see in this tutorial, how to implement this conversion task by using a pipeline script and the **[Pipeline Expression Language (PEL)](../api/pel)** .
 
 
 ## 1 - Create a new data mapping pipeline
@@ -104,9 +104,9 @@ Let's see in this tutorial, how to implement this conversion task by using a pip
     
     1.  We used the `data.mapping` command, which allows to map from one structure to another.
         
-    2.  The `input` parameter defines the source data as a static JSON string in this example. Besides a static string, this value could also be a [pipeline expression (PEL)](../guides/pel) pointing to some dynamic data in the `vars` section or external services. In this example, we want to focus on the data mapping, and keep the rest simple. If the parameter `input` is not specified, the current value from the body would be expected as input. Note the handy pipe symbol `|` here, which is specific to the YAML syntax and allows a multi-line value without additional annotations, ticks or quotes.
+    2.  The `input` parameter defines the source data as a static JSON string in this example. Besides a static string, this value could also be a [pipeline expression (PEL)](../api/pel) pointing to some dynamic data in the `vars` section or external services. In this example, we want to focus on the data mapping, and keep the rest simple. If the parameter `input` is not specified, the current value from the body would be expected as input. Note the handy pipe symbol `|` here, which is specific to the YAML syntax and allows a multi-line value without additional annotations, ticks or quotes.
         
-    3.  The `rules` parameter (or `mappingRules` in versions < 8.0) defines the mapping rules, which will read from the input data and write to the output data. You can define as many mapping rules as you want. Each mapping rule ends with a comma and a line break at the very end. They will be applied from top to down. The input expression is defined at the left hand side, and selecting + prepares the input data for the mapping. At the right hand side, the output expression is defined. It specifies the location where to write the data in the output structure. Both expressions are separated by an arrow `->` . Each side can use the [pipeline expression language (PEL)](../guides/pel), and therefore, the full power of this language. It's not necessary to wrap a pipeline expression inside `#{` and `}`. So the format on each line should look like this:
+    3.  The `rules` parameter (or `mappingRules` in versions < 8.0) defines the mapping rules, which will read from the input data and write to the output data. You can define as many mapping rules as you want. Each mapping rule ends with a comma and a line break at the very end. They will be applied from top to down. The input expression is defined at the left hand side, and selecting + prepares the input data for the mapping. At the right hand side, the output expression is defined. It specifies the location where to write the data in the output structure. Both expressions are separated by an arrow `->` . Each side can use the [pipeline expression language (PEL)](../api/pel), and therefore, the full power of this language. It's not necessary to wrap a pipeline expression inside `#{` and `}`. So the format on each line should look like this:
         
         ```
         inputExpression -> outputExpression,
@@ -142,7 +142,7 @@ Let's see in this tutorial, how to implement this conversion task by using a pip
         @user.username()            -> mappedBy
         ```
         
-    9.  Not mentioned here because it is optional: The `output` parameter for the command `data.mapping`. Its value must be a [pipeline expression language (PEL)](../guides/pel), which points to the location (or a sub-path) to write the mapping result to (for example a variable inside the `vars` scope). If not specified, it will be written to the body by default. That is the case for our example.
+    9.  Not mentioned here because it is optional: The `output` parameter for the command `data.mapping`. Its value must be a [pipeline expression language (PEL)](../api/pel), which points to the location (or a sub-path) to write the mapping result to (for example a variable inside the `vars` scope). If not specified, it will be written to the body by default. That is the case for our example.
         
 10.  Click SAVE to save the pipeline.
     

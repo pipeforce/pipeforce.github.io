@@ -17,7 +17,7 @@ pipeline:
 
 Every time an event is fired matching the given criteria, all commands after ``event.listen`` will be executed.
 
-Also see the **[Event Guide](../guides/event)** for details about the structure and usage of events.
+Also see the **[Event Guide](../guides/events)** for details about the structure and usage of events.
 
 ## property.created
 

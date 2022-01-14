@@ -5,4 +5,4 @@ Once your app is stable and you want to “release” it, you need to create and
 
 For more details about app permissions and app release, please refer to [Setup Permissions](../guides/permissions) .
 
-**Next tutorial:** [Create a BPMN workflow](../tutorials/beginner/create-BPMN-workflow)
+**Next tutorial:** [Create a BPMN workflow](../tutorials/create-bpmn-workflow)

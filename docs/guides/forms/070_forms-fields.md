@@ -2,9 +2,9 @@
 
 ## Form fields for trigger forms
 
-Form fields of a Trigger-Form are determined by the respective schema defined for your app. The type inside a JSON schema defines the data format of a field. Furthermore, based on its type, form fields are rendered automatically in order to fit the defined format. The supported format types are listed in the section [Schema - Types](../guides/schema-and-objects) .
+Form fields of a Trigger-Form are determined by the respective schema defined for your app. The type inside a JSON schema defines the data format of a field. Furthermore, based on its type, form fields are rendered automatically in order to fit the defined format. The supported format types are listed in the section [Schema - Types](../schema-and-objects) .
 
-To create a trigger form, you have to create a schema, and afterwards, create the form as a new property. How to do this is described here: [Tutorial: Create a new form](../tutorials/create-form) .In the form, you can just refer to your schema. All fields and types (including file upload functionality) will be taken over from the schema. See example of the form description below:
+To create a trigger form, you have to create a schema, and afterwards, create the form as a new property. How to do this is described here: [Tutorial: Create a new form](../../tutorials/create-form) .In the form, you can just refer to your schema. All fields and types (including file upload functionality) will be taken over from the schema. See example of the form description below:
 
 ```json
 {

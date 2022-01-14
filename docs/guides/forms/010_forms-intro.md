@@ -142,22 +142,22 @@ To reach custom layout, fields behaviour, file uploads, custom buttons, and more
 
 You can change this default by configuring orientation of the layout in the form configuration.
 
-See this section for more details: [Form - Orientation](../guides/forms/forms-orientation)
+See this section for more details: [Form - Orientation](../docs/guides/forms/forms-orientation)
 
 ### Change appearance of form fields
 
 Besides the orientation (vertical, horizontal) of form fields, the appearance (color, border, icons, aso) can also be changed inside the layout section.
 
-See this section for more details: [Form - Look & Feel](../guides/forms/forms-lookandfeel)
+See this section for more details: [Form - Look & Feel](../docs/guides/forms/forms-lookandfeel)
 
 ### Custom buttons
 
 Replacements for the default Submit button can be defined by `render` attribute of boolean field in the layout section.
 
-See this section for more details:[Form - Buttons](../guides/forms/forms-buttons)
+See this section for more details:[Form - Buttons](../docs/guides/forms/forms-buttons)
 
 ### File upload
 
 In the layout section, it is also possible to configure the set of schema properties defining form upload.
 
-See this section for more details: [Form - Upload](../guides/forms/forms-upload)
+See this section for more details: [Form - Upload](../docs/guides/forms/forms-upload)
