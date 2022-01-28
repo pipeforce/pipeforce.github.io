@@ -74,8 +74,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -96,8 +95,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -122,8 +120,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "credentials" : {
                 "type" : "string",
@@ -168,8 +165,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -207,8 +203,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "processInstanceId" ]
@@ -242,8 +237,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -264,8 +258,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -298,8 +291,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -320,8 +312,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -347,8 +338,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -369,8 +359,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -401,8 +390,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -427,8 +415,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -445,8 +432,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -480,8 +466,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key" ]
@@ -506,8 +491,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -528,8 +512,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -550,8 +533,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -572,8 +554,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -607,8 +588,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -633,8 +613,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -659,8 +638,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "name" ]
@@ -681,8 +659,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -719,8 +696,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "format", "name", "secret" ]
@@ -741,8 +717,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -789,8 +764,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -819,8 +793,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -841,8 +814,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -867,8 +839,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -910,8 +881,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -963,8 +933,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -989,8 +958,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -1011,8 +979,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1037,8 +1004,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1071,8 +1037,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1101,8 +1066,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1158,8 +1122,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1180,8 +1143,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1230,8 +1192,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1252,8 +1213,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -1298,8 +1258,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1328,8 +1287,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "path", "to" ]
@@ -1350,8 +1308,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "path" ]
@@ -1372,8 +1329,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1398,8 +1354,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1429,8 +1384,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "path" ]
@@ -1455,8 +1409,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "path", "to" ]
@@ -1482,8 +1435,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1517,8 +1469,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "path" ]
@@ -1577,8 +1528,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1615,8 +1565,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "path", "tagname" ]
@@ -1649,8 +1598,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "action" ]
@@ -1671,8 +1619,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1697,8 +1644,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "expr" ]
@@ -1723,8 +1669,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key" ]
@@ -1741,8 +1686,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -1780,8 +1724,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key" ]
@@ -1794,8 +1737,8 @@
             "properties" : {
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.",
+                "default" : "#{true}"
               },
               "id" : {
                 "type" : "string",
@@ -1820,8 +1763,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -1855,8 +1797,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -1873,8 +1814,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -1895,8 +1835,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -1921,8 +1860,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -1943,8 +1881,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -1965,8 +1902,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -1987,8 +1923,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "url" ]
@@ -2013,8 +1948,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "xpath" ]
@@ -2043,8 +1977,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -2085,8 +2018,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -2127,8 +2059,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -2169,8 +2100,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -2211,8 +2141,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -2245,8 +2174,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "refreshToken" ]
@@ -2271,8 +2199,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2293,8 +2220,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -2331,8 +2257,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -2357,8 +2282,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2387,8 +2311,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2421,8 +2344,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2455,8 +2377,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2481,8 +2402,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2521,8 +2441,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2557,8 +2476,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2601,8 +2519,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2645,8 +2562,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2667,8 +2583,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2697,8 +2612,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2731,8 +2645,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2771,8 +2684,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2797,8 +2709,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "username" ]
@@ -2833,8 +2744,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2859,8 +2769,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "refreshToken" ]
@@ -2889,8 +2798,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2923,8 +2831,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -2977,8 +2884,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3003,8 +2909,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3033,8 +2938,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3077,8 +2981,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3093,6 +2996,14 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "includeGroups" : {
+                "type" : "boolean",
+                "description" : "Include all groups, for each user he is member of? Note: If true, the command execution becomes significantly slower!"
+              },
+              "includeRoles" : {
+                "type" : "boolean",
+                "description" : "Include all realm roles, for each user he is member of? Note: If true, the command execution becomes significantly slower!"
+              },
               "max" : {
                 "type" : "number",
                 "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
@@ -3113,8 +3024,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3157,8 +3067,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3191,11 +3100,10 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
-            "required" : [ "true" ]
+            "required" : [ ]
           },
           "job" : {
             "type" : "object",
@@ -3217,8 +3125,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -3239,8 +3146,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3270,8 +3176,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "message" ]
@@ -3303,8 +3208,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3339,8 +3243,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3366,8 +3269,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3421,8 +3323,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3464,8 +3365,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3521,8 +3421,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "to" ]
@@ -3555,8 +3454,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "email" ]
@@ -3578,8 +3476,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -3596,8 +3493,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3626,8 +3522,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "url", "message" ]
@@ -3666,8 +3561,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "command" ]
@@ -3694,8 +3588,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3720,8 +3613,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3792,8 +3684,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3818,8 +3709,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "name" ]
@@ -3840,8 +3730,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3866,8 +3755,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3892,8 +3780,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "name" ]
@@ -3918,8 +3805,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3944,8 +3830,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -3979,8 +3864,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4017,8 +3901,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key", "name" ]
@@ -4043,8 +3926,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4073,8 +3955,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key", "name" ]
@@ -4099,8 +3980,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4125,8 +4005,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4163,8 +4042,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key", "name" ]
@@ -4193,8 +4071,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key", "name", "uri" ]
@@ -4219,8 +4096,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key", "to" ]
@@ -4241,8 +4117,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4268,8 +4143,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4294,8 +4168,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4320,8 +4193,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4350,8 +4222,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4380,8 +4251,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key", "to" ]
@@ -4406,8 +4276,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key" ]
@@ -4428,8 +4297,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key" ]
@@ -4489,8 +4357,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key" ]
@@ -4535,8 +4402,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4561,8 +4427,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4599,8 +4464,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key" ]
@@ -4633,8 +4497,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4659,8 +4522,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4689,8 +4551,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -4707,8 +4568,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "id" ]
@@ -4729,8 +4589,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "value", "id" ]
@@ -4755,8 +4614,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4781,8 +4639,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "path" ]
@@ -4799,8 +4656,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -4821,8 +4677,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "url" ]
@@ -4843,8 +4698,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "xpath" ]
@@ -4861,8 +4715,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4896,8 +4749,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4918,8 +4770,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -4944,8 +4795,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "name" ]
@@ -4966,8 +4816,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "name" ]
@@ -4993,8 +4842,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "value" ]
@@ -5023,8 +4871,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5062,8 +4909,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key", "value" ]
@@ -5100,8 +4946,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "credentials" : {
                 "type" : "string",
@@ -5146,8 +4991,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "credentials" : {
                 "type" : "string",
@@ -5197,8 +5041,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "credentials" : {
                 "type" : "string",
@@ -5243,8 +5086,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "credentials" : {
                 "type" : "string",
@@ -5293,8 +5135,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "credentials" : {
                 "type" : "string",
@@ -5340,8 +5181,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "credentials" : {
                 "type" : "string",
@@ -5374,8 +5214,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "url", "text" ]
@@ -5416,8 +5255,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5438,8 +5276,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5464,6 +5301,11 @@
                 "description" : "A PE which defines the test methods to be included. The selected method name is provided as variable: methodName.",
                 "default" : "methodName.startsWith('test')"
               },
+              "reportFormat" : {
+                "type" : "string",
+                "description" : "The format of the resulting test report. Possible values: json (default), junit",
+                "default" : "junit"
+              },
               "excludeMethods" : {
                 "type" : "string",
                 "description" : "A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored.",
@@ -5475,8 +5317,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -5502,8 +5343,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5546,8 +5386,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "input" : {
                 "type" : "string",
@@ -5580,8 +5419,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5602,8 +5440,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5628,8 +5465,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5654,8 +5490,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5680,8 +5515,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5710,8 +5544,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5741,8 +5574,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5775,8 +5607,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5810,8 +5641,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -5832,8 +5662,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "uuid" ]
@@ -5854,8 +5683,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5888,8 +5716,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5914,8 +5741,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "uuid" ]
@@ -5940,8 +5766,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -5974,8 +5799,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6000,8 +5824,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6034,8 +5857,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6060,8 +5882,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6103,8 +5924,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6157,8 +5977,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "workflowModel" ]
@@ -6183,8 +6002,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
@@ -6213,8 +6031,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "processInstanceId", "fileName" ]
@@ -6235,8 +6052,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6273,8 +6089,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6311,8 +6126,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6353,8 +6167,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6383,8 +6196,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6421,8 +6233,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6452,8 +6263,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "name" ]
@@ -6474,8 +6284,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
@@ -6504,8 +6313,7 @@
               },
               "if" : {
                 "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.",
-                "default" : "true"
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               },
               "output" : {
                 "type" : "string",
