@@ -1,4 +1,4 @@
-# Identity and Access Management (IAM)
+# Identity and Access (IAM)
 
 PIPEFORCE comes with a powerful identity and access management service (IAM). With this service, you can:
 

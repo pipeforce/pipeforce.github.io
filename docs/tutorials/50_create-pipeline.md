@@ -77,7 +77,7 @@ In this first part of the tutorial we gonna execute an **ad-hoc pipeline**. To d
         
     5.  can have optional parameters. In this case, you can specify them below the command after an additional indent using a tab.
         
-    6.  can exchange data with other commands. If you want to learn more about this, have a look here: [https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/785088596](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/785088596).
+    6.  can exchange data with other commands. If you want to learn more about this, have a look here: [Pipeline](../guides/20_pipeline.md).
         
 12.  Now, let's execute this pipeline by pressing the RUN button.
     

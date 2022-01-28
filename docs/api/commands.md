@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 08/01/2022 by CommandComplianceTest -->
+<!-- Generated: 26/01/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -33,7 +33,7 @@ Returns the OpenAPI documentation of commands.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -56,7 +56,7 @@ http://host/api/v3/command/apidoc.commands?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command apidoc.commands id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -73,7 +73,7 @@ Returns the OpenAPI documentation of PEL utils.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -96,7 +96,7 @@ http://host/api/v3/command/apidoc.pel.utils?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command apidoc.pel.utils id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -114,7 +114,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -138,7 +138,7 @@ http://host/api/v3/command/app.install?github=<value>&id=<value>&if=<value>&cred
 ```bash  
 pi command app.install github=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -161,7 +161,7 @@ Name | Type | Required | Default | Description
 `value` | String | false | null | The value to be used for comparision. Can be a PE.
 `message` | String | false | null | An optional message to be used in case of invalid condition. Can be a PE.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -188,7 +188,7 @@ http://host/api/v3/command/assert?true=<value>&false=<value>&body.equals=<value>
 ```bash  
 pi command assert true=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -210,7 +210,7 @@ Name | Type | Required | Default | Description
 `throwException` | String | false | true | If true, throws exception when assert is false. Otherwise returns the status in the body.
 `processInstanceId` | String | true | null | The id of the process instance the task to check belongs to.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -236,7 +236,7 @@ http://host/api/v3/command/workflow.assert?hasPassed=<value>&hasNotPassed=<value
 ```bash  
 pi command workflow.assert hasPassed=<value> hasNotPassed=<value> processFinished=<value> throwException=<value> processInstanceId=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -257,7 +257,7 @@ Name | Type | Required | Default | Description
 `height` | String | false | null | The height of the barcode. If empty, the default size is used.
 `format` | String | false | PDF_417 | The dynamic format of the barcode to be created. One of: AZTEC, CODABAR, CODE_39, CODE_93, CODE_128, DATA_MATRIX, EAN_8, EAN_13, ITF, PDF_417, QR_CODE, UPC_A, UPC_E
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -284,7 +284,7 @@ http://host/api/v3/command/barcode.create?text=<value>&width=<value>&height=<val
 ```bash  
 pi command barcode.create text=<value> width=<value> height=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -301,7 +301,7 @@ Reads a barcode from a dynamic PNG format. Expects the barcode image as content 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -326,7 +326,7 @@ http://host/api/v3/command/barcode.read?id=<value>&if=<value>&input=<value>&outp
 ```bash  
 pi command barcode.read id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -345,7 +345,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of the bean.
 `method` | String | false | null | The method name of the bean to be executed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -370,7 +370,7 @@ http://host/api/v3/command/bean?name=<value>&method=<value>&id=<value>&if=<value
 ```bash  
 pi command bean name=<value> method=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -387,7 +387,7 @@ Sets the value in the body to null. Deletes any existing value in the body.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -408,7 +408,7 @@ http://host/api/v3/command/body.delete?id=<value>&if=<value>
 ```bash  
 pi command body.delete id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -427,7 +427,7 @@ Name | Type | Required | Default | Description
 `properties` | String | false | null | A comma separated list of first-level properties to be shown. If set, only those properties of the first level will be returned, those are listed here. All other properties will be omitted. For example to filter a user entity in the body with filter: id,username would return only the id and the username of the user. If not set, the body will not be converted and filtered at all and returned unchanged.
 `removeKey` | Boolean | false | false | Can only be applied, if the result is a list and contains elements with a single property each. For example: [{name: foo}, {name: bar}]. If set to true, removes the key from the property and converts the result to a simple list like: [foo, bar]. If the result is not a list or elements in the list contain more than one property, this param is ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -450,7 +450,7 @@ http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<
 ```bash  
 pi command body.filter properties=<value> removeKey=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -468,7 +468,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | false | null | The key to load the value from the cache to remove. If empty or null, all entries in the cache will be inspected and those time to live has been expired will be removed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -490,7 +490,7 @@ http://host/api/v3/command/cache.clear?key=<value>&id=<value>&if=<value>
 ```bash  
 pi command cache.clear key=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -510,7 +510,7 @@ Name | Type | Required | Default | Description
 `remove` | Boolean | false | false | If true, removes the entry after it was successfully returned.
 `exit` | Boolean | false | false | If true, exits the pipeline if cache entry exists.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -536,7 +536,7 @@ http://host/api/v3/command/cache.get?key=<value>&remove=<value>&exit=<value>&id=
 ```bash  
 pi command cache.get key=<value> remove=<value> exit=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -554,7 +554,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | false | null | Returns the info for a given cache entry. If null or empty, the overall cache info is returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -576,7 +576,7 @@ http://host/api/v3/command/cache.info?key=<value>&id=<value>&if=<value>
 ```bash  
 pi command cache.info key=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -593,7 +593,7 @@ Lists ALL entries of the cache. Use with care!
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -616,7 +616,7 @@ http://host/api/v3/command/cache.list?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command cache.list id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -638,7 +638,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The unique key for the cache entry.
 `value` | String | false | null | The value for the cache entry. If not set, null is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -662,7 +662,7 @@ http://host/api/v3/command/cache.put?timeToLive=<value>&key=<value>&value=<value
 ```bash  
 pi command cache.put timeToLive=<value> key=<value> value=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -681,7 +681,7 @@ Name | Type | Required | Default | Description
 `uri` | String | true | null | The uri to be called.
 `args` | Object | false | null | Name value pair of arguments to be passed to the script. If the script is a pipeline, the arguments are set as vars overwriting any existing vars.If the script is a remote HTTP URL, the arguments are passed as request parameters, each.If the script is a script in classpath or property store, the arguments are passed via implicit variable: pi.args.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -706,7 +706,7 @@ http://host/api/v3/command/call?uri=<value>&args=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command call uri=<value> args=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -723,7 +723,7 @@ DEPREACTED (Use the cache.* commands instead). Captures the last pipe message an
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -744,7 +744,7 @@ http://host/api/v3/command/capture?id=<value>&if=<value>
 ```bash  
 pi command capture id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -762,7 +762,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pipe` | String | false | null | The specific pipe name to fetch schema from. If set, only the schema for this specific pipe is returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -786,7 +786,7 @@ http://host/api/v3/command/pipe.schema?pipe=<value>&id=<value>&if=<value>&output
 ```bash  
 pi command pipe.schema pipe=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -803,7 +803,7 @@ Returns the V7 compliant JSON schema for all built-in pipes.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -826,7 +826,7 @@ http://host/api/v3/command/pipe.schema.v7?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command pipe.schema.v7 id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -846,7 +846,7 @@ Name | Type | Required | Default | Description
 `key` | String | false | null | The config key inside a given group. If null or empty, all configs from the selected group will be returned.
 `includePermission` | String | false | false | If true, additionally shows whether a currently logged-in user can write/change a configuration or not by adding the attribute canOverwrite:true|false. to each config entry.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -872,7 +872,7 @@ http://host/api/v3/command/config.get?group=<value>&key=<value>&includePermissio
 ```bash  
 pi command config.get group=<value> key=<value> includePermission=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -890,7 +890,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uri` | String | true | null | The content uri of the content to load.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -914,7 +914,7 @@ http://host/api/v3/command/content.get?uri=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command content.get uri=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -932,7 +932,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the credentials entry to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -954,7 +954,7 @@ http://host/api/v3/command/credentials.delete?name=<value>&id=<value>&if=<value>
 ```bash  
 pi command credentials.delete name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -972,7 +972,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of a single credentials to return. If null or empty, all credentials will be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -996,7 +996,7 @@ http://host/api/v3/command/credentials.get?name=<value>&id=<value>&if=<value>&ou
 ```bash  
 pi command credentials.get name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1017,7 +1017,7 @@ Name | Type | Required | Default | Description
 `secret` | String | true | null | The secret part of the credentials (for example the username:password or Bearer TOKEN).
 `timeToLive` | String | false | null | The time to live in minutes. After this time, the credentials will be deleted.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -1042,7 +1042,7 @@ http://host/api/v3/command/credentials.put?format=<value>&name=<value>&secret=<v
 ```bash  
 pi command credentials.put format=<value> name=<value> secret=<value> timeToLive=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1060,7 +1060,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `rules` | String | false | null | A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -> outputPEL1. Multiple rules are separated by a comma directly followed by a new line.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1086,7 +1086,7 @@ http://host/api/v3/command/data.mapping?rules=<value>&id=<value>&if=<value>&inpu
 ```bash  
 pi command data.mapping rules=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1108,7 +1108,7 @@ Name | Type | Required | Default | Description
 `modelName` | String | false | null | The name of the root model under which the input can be accessed inside the template. If null or empty, then the input defines the model names.
 `template` | String | true | null | The template to be used for the transformation. It can the template text itself as string or a qualified uri pointing to a template resource like this for example: $uri:property:/my/template/path
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1138,7 +1138,7 @@ http://host/api/v3/command/data.transform?iterate=<value>&groupBy=<value>&engine
 ```bash  
 pi command data.transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1156,7 +1156,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `format` | String | false | null | The date time format pattern. If null, the system default format is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1180,7 +1180,7 @@ http://host/api/v3/command/datetime?format=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command datetime format=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1197,7 +1197,7 @@ Returns all official IANA time-zone names supported by this PIPEFORCE instance: 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1220,7 +1220,7 @@ http://host/api/v3/command/datetime.zones?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command datetime.zones id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1238,7 +1238,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `password` | String | true | null | The password to decrypt the body with.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1264,7 +1264,7 @@ http://host/api/v3/command/decrypt?password=<value>&id=<value>&if=<value>&input=
 ```bash  
 pi command decrypt password=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1285,7 +1285,7 @@ Name | Type | Required | Default | Description
 `mimeType` | String | false | null | The mime type of the attachment.
 `length` | String | false | 0 | The length of the attachment in bytes.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1312,7 +1312,7 @@ http://host/api/v3/command/delivery.attachment.add?deliveryUuid=<value>&name=<va
 ```bash  
 pi command delivery.attachment.add deliveryUuid=<value> name=<value> mimeType=<value> length=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1336,7 +1336,7 @@ Name | Type | Required | Default | Description
 `attachments` | String | false | null | The list of attachment file names or a list of JSON objects to be added to this delivery.
 `notifySender` | String | false | true | If true, notifies sender when recipients have downloaded delivery.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1366,7 +1366,7 @@ http://host/api/v3/command/delivery.create?subject=<value>&message=<value>&priva
 ```bash  
 pi command delivery.create subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1384,7 +1384,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `deliveryUuid` | String | true | null | The uuid of the delivery to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -1406,7 +1406,7 @@ http://host/api/v3/command/delivery.delete?deliveryUuid=<value>&id=<value>&if=<v
 ```bash  
 pi command delivery.delete deliveryUuid=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1424,7 +1424,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `deliveryUuid` | String | true | null | The uuid of the delivery to finalize.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1448,7 +1448,7 @@ http://host/api/v3/command/delivery.finalize?deliveryUuid=<value>&id=<value>&if=
 ```bash  
 pi command delivery.finalize deliveryUuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1466,7 +1466,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `deliveryUuid` | String | true | null | The uuid of the delivery.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1490,7 +1490,7 @@ http://host/api/v3/command/delivery.get?deliveryUuid=<value>&id=<value>&if=<valu
 ```bash  
 pi command delivery.get deliveryUuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1510,7 +1510,7 @@ Name | Type | Required | Default | Description
 `email` | String | false | null | The email address of the recipient to be added.
 `locale` | String | false | null | The locale to be used for this recipient like de, en or fr for example.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1536,7 +1536,7 @@ http://host/api/v3/command/delivery.recipient.add?deliveryUuid=<value>&email=<va
 ```bash  
 pi command delivery.recipient.add deliveryUuid=<value> email=<value> locale=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1555,7 +1555,7 @@ Name | Type | Required | Default | Description
 `deliveryUuid` | String | true | null | The uuid of the delivery to send.
 `recipients` | String | false | null | The comma separated or PEL list of recipients to (re-)send the delivery to. The recipients must already exist in the delivery. If null or empty, the delivery message is send to all existing recipients of the delivery.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1580,7 +1580,7 @@ http://host/api/v3/command/delivery.send?deliveryUuid=<value>&recipients=<value>
 ```bash  
 pi command delivery.send deliveryUuid=<value> recipients=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1605,7 +1605,7 @@ Name | Type | Required | Default | Description
 `attachments` | String | false | null | The attachments to be set to this delivery. Overwrites any existing attachments. If null or empty, this attribute wont be updated.
 `notifySender` | String | false | true | If true, notifies sender when recipients have downloaded delivery. If null or empty, this attribute wont be updated.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1636,7 +1636,7 @@ http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&
 ```bash  
 pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1653,7 +1653,7 @@ Returns the api doc for the available PEL utils.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1676,7 +1676,7 @@ http://host/api/v3/command/doc.api.pelutils?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command doc.api.pelutils id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1703,7 +1703,7 @@ Name | Type | Required | Default | Description
 `accessToken` | String | false | null | The DocuSign access token. If null or empty, the token will be read from settings.
 `accountId` | String | false | null | The docuSign account Id for REST calls. Can be obtained here: https://developers.docusign.com/esign-rest-api/guides/authentication/user-info-endpoints . If not set, the command tries to get the account ID by an additional request from DocuSign
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1733,7 +1733,7 @@ http://host/api/v3/command/docusign?signerEmail=<value>&signerName=<value>&ccEma
 ```bash  
 pi command docusign signerEmail=<value> signerName=<value> ccEmail=<value> ccName=<value> subject=<value> accessToken=<value> accountId=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1750,7 +1750,7 @@ Returns metadata for a given unstructured document like an invoice PDF for examp
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `apiKey` | String | false | null | The alternative API key to connect to the service. If null or empty, the default one will be used, as defined by the default backend settings.
@@ -1781,7 +1781,7 @@ http://host/api/v3/command/document.understand?id=<value>&if=<value>&input=<valu
 ```bash  
 pi command document.understand id=<value> if=<value> input=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1800,7 +1800,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the archive folder where the file to be saved.
 `namingPattern` | String | true | null | The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The number of files currently stored in the archive folder. archivePath = The path to the archive as given by path param. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1825,7 +1825,7 @@ http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>
 ```bash  
 pi command drive.archive.save path=<value> namingPattern=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1844,7 +1844,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the folder or file to be copied.
 `to` | String | true | null | The target folder to copy the resource into.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -1867,7 +1867,7 @@ http://host/api/v3/command/drive.copy?path=<value>&to=<value>&id=<value>&if=<val
 ```bash  
 pi command drive.copy path=<value> to=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1885,7 +1885,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the resource to be deleted. If it is a folder, it will be deleted recursively.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -1907,7 +1907,7 @@ http://host/api/v3/command/drive.delete?path=<value>&id=<value>&if=<value>
 ```bash  
 pi command drive.delete path=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1925,7 +1925,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the resource to check for existence.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1949,7 +1949,7 @@ http://host/api/v3/command/drive.exists?path=<value>&id=<value>&if=<value>&outpu
 ```bash  
 pi command drive.exists path=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1967,7 +1967,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the folder to be listed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1991,7 +1991,7 @@ http://host/api/v3/command/drive.list?path=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command drive.list path=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2010,7 +2010,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the folder the new dir should be created within.
 `recurse` | String | false | false | If set to true, any non existing folder in the path will be created.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2033,7 +2033,7 @@ http://host/api/v3/command/drive.mkdir?path=<value>&recurse=<value>&id=<value>&i
 ```bash  
 pi command drive.mkdir path=<value> recurse=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2052,7 +2052,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the folder or file to be moved.
 `to` | String | true | null | The target folder to move the resource into.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2075,7 +2075,7 @@ http://host/api/v3/command/drive.move?path=<value>&to=<value>&id=<value>&if=<val
 ```bash  
 pi command drive.move path=<value> to=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2094,7 +2094,7 @@ Name | Type | Required | Default | Description
 `path` | String | true | null | The path of the file to be read from Drive.
 `append` | Boolean | false | false | If true, appends the files read from drive to any existing collection in the body. In case the body is no collection but a content (single file), creates a new collection and adds all to this collection (already existing file and read files). In case the body is different from collection or content, an error is thrown. If false (default), overwrites any existing body value.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2119,7 +2119,7 @@ http://host/api/v3/command/drive.read?path=<value>&append=<value>&id=<value>&if=
 ```bash  
 pi command drive.read path=<value> append=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2139,7 +2139,7 @@ Name | Type | Required | Default | Description
 `namingStrategy` | String | false | null | If defined, applies the given naming strategy to the name of the resource. If null or empty, no name strategy is applied.
 `cleanupBody` | String | false | true | If true, deletes the content from the body after the content was saved to drive (default).
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2163,7 +2163,7 @@ http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanu
 ```bash  
 pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2190,7 +2190,7 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | NOT SUPPORTED YET. A password to protect the share.
 `invite` | Boolean | false | null | NOT SUPPORTED YET. Send an invite email to recipients.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2223,7 +2223,7 @@ http://host/api/v3/command/drive.share?to=<value>&type=<value>&path=<value>&perm
 ```bash  
 pi command drive.share to=<value> type=<value> path=<value> permission=<value> subject=<value> message=<value> model=<value> expires=<value> password=<value> invite=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2244,7 +2244,7 @@ Name | Type | Required | Default | Description
 `tagvalue` | String | false | null | The value of the tag to add.
 `remove` | Boolean | false | null | If true (or any non empty/null value), removes the given tag.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2269,7 +2269,7 @@ http://host/api/v3/command/drive.tag?path=<value>&tagname=<value>&tagvalue=<valu
 ```bash  
 pi command drive.tag path=<value> tagname=<value> tagvalue=<value> remove=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2290,7 +2290,7 @@ Name | Type | Required | Default | Description
 `path` | String | false | null | The target path where to copy the final file on finalize action. Mandatory for the finalize action.
 `index` | Integer | false | null | The index of the chunk. Mandatory for the upload action.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2315,7 +2315,7 @@ http://host/api/v3/command/drive.upload.chunked?action=<value>&uuid=<value>&path
 ```bash  
 pi command drive.upload.chunked action=<value> uuid=<value> path=<value> index=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2333,7 +2333,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `password` | String | true | null | The password to encrypt the body with.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2357,7 +2357,7 @@ http://host/api/v3/command/encrypt?password=<value>&id=<value>&if=<value>&output
 ```bash  
 pi command encrypt password=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2375,7 +2375,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `expr` | String | true | null | The pipeline expression to be executed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2397,7 +2397,7 @@ http://host/api/v3/command/eval?expr=<value>&id=<value>&if=<value>
 ```bash  
 pi command eval expr=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2416,7 +2416,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key to listen for.
 `filter` | String | false | null | An optional PEL to execute the pipeline only in case the filter applies.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2439,7 +2439,7 @@ http://host/api/v3/command/event.listen?key=<value>&filter=<value>&id=<value>&if
 ```bash  
 pi command event.listen key=<value> filter=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2456,7 +2456,7 @@ Returns all event key to pipeline key mappings.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2479,7 +2479,7 @@ http://host/api/v3/command/event.mapping.get?id=<value>&if=<value>&output=<value
 ```bash  
 pi command event.mapping.get id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2500,7 +2500,7 @@ Name | Type | Required | Default | Description
 `payload` | String | false | null | The payload to send with this event. May be null.
 `async` | String | false | true | Send the event in ASYNC mode? Note: ASYNC is faster but lacks transaction capability. If false, message is send in SYNC. Slower but can use the current authentication and transaction context.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2525,7 +2525,7 @@ http://host/api/v3/command/event.send?key=<value>&traceId=<value>&payload=<value
 ```bash  
 pi command event.send key=<value> traceId=<value> payload=<value> async=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2543,7 +2543,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `if` | String | false | #{true} | The PE to be evaluated. If true, the pipeline will exit.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2565,7 +2565,7 @@ http://host/api/v3/command/exit?if=<value>&id=<value>&if=<value>
 ```bash  
 pi command exit if=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2583,7 +2583,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `do` | String | false | null | An optional PE to execute finally.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2605,7 +2605,7 @@ http://host/api/v3/command/finally?do=<value>&id=<value>&if=<value>
 ```bash  
 pi command finally do=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2626,7 +2626,7 @@ Name | Type | Required | Default | Description
 `loopName` | String | false | loop | The name of the current loop object in the vars scope. By default this is 'loop' which results in 'vars.loop.item' then for accessing the current loop item. With this attribute you can change this for example to 'iteration' so you can access the loop iterm under 'vars.iteration.item'. The loop object contains attributes for the current loop like item = the current iteration item, index = the current iteration index.
 `end` | String | false | null | Signals the end of a for each loop.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2651,7 +2651,7 @@ http://host/api/v3/command/foreach?in=<value>&item=<value>&loopName=<value>&end=
 ```bash  
 pi command foreach in=<value> item=<value> loopName=<value> end=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2668,7 +2668,7 @@ DEPRECATED. Use the set command instead. Sets any parameter value as header. For
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2689,7 +2689,7 @@ http://host/api/v3/command/header.set?id=<value>&if=<value>
 ```bash  
 pi command header.set id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2707,7 +2707,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2729,7 +2729,7 @@ http://host/api/v3/command/htmlunit.website.form.find?select=<value>&id=<value>&
 ```bash  
 pi command htmlunit.website.form.find select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2748,7 +2748,7 @@ Name | Type | Required | Default | Description
 `value` | String | false | null | The value to be set on the selected input field.
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2771,7 +2771,7 @@ http://host/api/v3/command/htmlunit.website.form.input?value=<value>&select=<val
 ```bash  
 pi command htmlunit.website.form.input value=<value> select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2789,7 +2789,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2811,7 +2811,7 @@ http://host/api/v3/command/htmlunit.website.form.submit?select=<value>&id=<value
 ```bash  
 pi command htmlunit.website.form.submit select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2829,7 +2829,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2851,7 +2851,7 @@ http://host/api/v3/command/htmlunit.website.link.click?select=<value>&id=<value>
 ```bash  
 pi command htmlunit.website.link.click select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2869,7 +2869,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | true | null | The url of the web page to open.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2891,7 +2891,7 @@ http://host/api/v3/command/htmlunit.website.open?url=<value>&id=<value>&if=<valu
 ```bash  
 pi command htmlunit.website.open url=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2910,7 +2910,7 @@ Name | Type | Required | Default | Description
 `xpath` | String | true | null | Executes the given xpath expression on the current page and puts the result in the body. In case the xpath returns more than one results, adds an array to the body. Otherwise the body only contains the single result value.
 `select` | String | false | null | A PE to select elements on a website for subsequent RPA commands. If null, form is tried to select automatically.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -2933,7 +2933,7 @@ http://host/api/v3/command/htmlunit.website.scrap?xpath=<value>&select=<value>&i
 ```bash  
 pi command htmlunit.website.scrap xpath=<value> select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2953,7 +2953,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -2983,7 +2983,7 @@ http://host/api/v3/command/http.delete?url=<value>&headers=<value>&body=<value>&
 ```bash  
 pi command http.delete url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3003,7 +3003,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3033,7 +3033,7 @@ http://host/api/v3/command/http.get?url=<value>&headers=<value>&body=<value>&id=
 ```bash  
 pi command http.get url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3053,7 +3053,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3083,7 +3083,7 @@ http://host/api/v3/command/http.patch?url=<value>&headers=<value>&body=<value>&i
 ```bash  
 pi command http.patch url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3103,7 +3103,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3133,7 +3133,7 @@ http://host/api/v3/command/http.post?url=<value>&headers=<value>&body=<value>&id
 ```bash  
 pi command http.post url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3153,7 +3153,7 @@ Name | Type | Required | Default | Description
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3183,7 +3183,7 @@ http://host/api/v3/command/http.put?url=<value>&headers=<value>&body=<value>&id=
 ```bash  
 pi command http.put url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3201,7 +3201,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `refreshToken` | String | true | null | The refresh token.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -3223,7 +3223,7 @@ http://host/api/v3/command/iam.token.refresh?refreshToken=<value>&id=<value>&if=
 ```bash  
 pi command iam.token.refresh refreshToken=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3242,7 +3242,7 @@ Name | Type | Required | Default | Description
 `username` | String | true | null | The user name.
 `password` | String | true | null | The user password.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3267,7 +3267,7 @@ http://host/api/v3/command/iam.apitoken?username=<value>&password=<value>&id=<va
 ```bash  
 pi command iam.apitoken username=<value> password=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3284,7 +3284,7 @@ Adds header 'authUserId' - name of an user authenticated as a sender of the pipe
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -3305,7 +3305,7 @@ http://host/api/v3/command/iam.authinfo?id=<value>&if=<value>
 ```bash  
 pi command iam.authinfo id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3327,7 +3327,7 @@ Name | Type | Required | Default | Description
 `username` | String | false | null | The username to be used for authentication.
 `password` | String | false | null | The password to be used for authentication.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -3353,7 +3353,7 @@ http://host/api/v3/command/iam.authorize?accessToken=<value>&refreshToken=<value
 ```bash  
 pi command iam.authorize accessToken=<value> refreshToken=<value> basic=<value> username=<value> password=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3372,7 +3372,7 @@ Name | Type | Required | Default | Description
 `username` | String | false | null | The name of the user to unlock. If not set, param uuid must be set.
 `uuid` | String | false | null | The uuid of the user to unlock. If set, the param username is ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3397,7 +3397,7 @@ http://host/api/v3/command/iam.bruteforce.release?username=<value>&uuid=<value>&
 ```bash  
 pi command iam.bruteforce.release username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3416,7 +3416,7 @@ Name | Type | Required | Default | Description
 `username` | String | false | null | The name of the user to return the status for. If not set, param uuid must be set.
 `uuid` | String | false | null | The uuid of the user to return the status for. If set, the param username is ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3441,7 +3441,7 @@ http://host/api/v3/command/iam.bruteforce.status?username=<value>&uuid=<value>&i
 ```bash  
 pi command iam.bruteforce.status username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3461,7 +3461,7 @@ Name | Type | Required | Default | Description
 `roleNames` | String | true | null | The role names to join. Can be a comma separated list or a PEL pointing to a list.
 `groupName` | String | true | null | The unique group name.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3487,7 +3487,7 @@ http://host/api/v3/command/iam.group.add.roles?groupUuid=<value>&roleNames=<valu
 ```bash  
 pi command iam.group.add.roles groupUuid=<value> roleNames=<value> groupName=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3507,7 +3507,7 @@ Name | Type | Required | Default | Description
 `roleNames` | String | false | null | A list of roles to be assigned to this group on creation.
 `attributes` | Map | false | null | A map which holds optional attributes to be added to this group.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3533,7 +3533,7 @@ http://host/api/v3/command/iam.group.create?name=<value>&roleNames=<value>&attri
 ```bash  
 pi command iam.group.create name=<value> roleNames=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3551,7 +3551,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | The uuid of the group to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3575,7 +3575,7 @@ http://host/api/v3/command/iam.group.delete?uuid=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command iam.group.delete uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3597,7 +3597,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3625,7 +3625,7 @@ http://host/api/v3/command/iam.group.list?filter=<value>&sortByName=<value>&max=
 ```bash  
 pi command iam.group.list filter=<value> sortByName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3645,7 +3645,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3671,7 +3671,7 @@ http://host/api/v3/command/iam.group.list.names?max=<value>&offset=<value>&filte
 ```bash  
 pi command iam.group.list.names max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3693,7 +3693,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3721,7 +3721,7 @@ http://host/api/v3/command/iam.group.members?name=<value>&uuid=<value>&max=<valu
 ```bash  
 pi command iam.group.members name=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3743,7 +3743,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3771,7 +3771,7 @@ http://host/api/v3/command/iam.group.roles?groupName=<value>&uuid=<value>&max=<v
 ```bash  
 pi command iam.group.roles groupName=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3788,7 +3788,7 @@ Creates a new realm. Sets the uuid in the body under key realmUuid. Throws excep
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3811,7 +3811,7 @@ http://host/api/v3/command/iam.realm.create?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command iam.realm.create id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3830,7 +3830,7 @@ Name | Type | Required | Default | Description
 `roleName` | String | true | null | The unique role name to be loaded.
 `composites` | String | true | null | The composite role names to join. Can be a comma separated list or a PEL pointing to a list.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3855,7 +3855,7 @@ http://host/api/v3/command/iam.role.add.composites?roleName=<value>&composites=<
 ```bash  
 pi command iam.role.add.composites roleName=<value> composites=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3875,7 +3875,7 @@ Name | Type | Required | Default | Description
 `composites` | String | false | null | A PEL list of roles names to add to this role as children. Makes this role a composite.
 `attributes` | Map | false | null | A map which holds optional attributes to be added to this role.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3901,7 +3901,7 @@ http://host/api/v3/command/iam.role.create?name=<value>&composites=<value>&attri
 ```bash  
 pi command iam.role.create name=<value> composites=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3922,7 +3922,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3949,7 +3949,7 @@ http://host/api/v3/command/iam.role.members?roleName=<value>&max=<value>&offset=
 ```bash  
 pi command iam.role.members roleName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3967,7 +3967,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `username` | String | true | null | The username, subsequent pipe commands must be executed as. This user must has RUN_AS_SOURCE role assigned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -3989,7 +3989,7 @@ http://host/api/v3/command/iam.run.as?username=<value>&id=<value>&if=<value>
 ```bash  
 pi command iam.run.as username=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4010,7 +4010,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4037,7 +4037,7 @@ http://host/api/v3/command/iam.search?type=<value>&max=<value>&offset=<value>&fi
 ```bash  
 pi command iam.search type=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4055,7 +4055,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `refreshToken` | String | true | null | The refresh token.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -4077,7 +4077,7 @@ http://host/api/v3/command/iam.token.logout?refreshToken=<value>&id=<value>&if=<
 ```bash  
 pi command iam.token.logout refreshToken=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4097,7 +4097,7 @@ Name | Type | Required | Default | Description
 `groupNames` | String | false | null | The group names to join. If not given, groupIds is required.
 `groupIds` | String | false | null | The group ids to join. If not given, groupIds is required.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4123,7 +4123,7 @@ http://host/api/v3/command/iam.user.add.groups?uuid=<value>&groupNames=<value>&g
 ```bash  
 pi command iam.user.add.groups uuid=<value> groupNames=<value> groupIds=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4143,7 +4143,7 @@ Name | Type | Required | Default | Description
 `username` | String | true | null | The unique username as uuid.
 `roleNames` | String | true | null | The role names to join. Can be a comma separated list or a PEL pointing to a list.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4169,7 +4169,7 @@ http://host/api/v3/command/iam.user.add.roles?userUuid=<value>&username=<value>&
 ```bash  
 pi command iam.user.add.roles userUuid=<value> username=<value> roleNames=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4194,7 +4194,7 @@ Name | Type | Required | Default | Description
 `password` | String | false | null | The password to be set for this user or null in order to let the user choose one on login.
 `attributes` | Map | false | null | A map which holds optional attributes to be added to this user.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4225,7 +4225,7 @@ http://host/api/v3/command/iam.user.create?name=<value>&email=<value>&firstName=
 ```bash  
 pi command iam.user.create name=<value> email=<value> firstName=<value> lastName=<value> groupNames=<value> roleNames=<value> password=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4243,7 +4243,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | The uuid of the user to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4267,7 +4267,7 @@ http://host/api/v3/command/iam.user.delete?uuid=<value>&id=<value>&if=<value>&ou
 ```bash  
 pi command iam.user.delete uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4286,7 +4286,7 @@ Name | Type | Required | Default | Description
 `username` | String | false | null | The name of the user. If not set, param uuid must be set.
 `uuid` | String | false | null | The uuid of the user. If set, the param username is ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4311,7 +4311,7 @@ http://host/api/v3/command/iam.user.get?username=<value>&uuid=<value>&id=<value>
 ```bash  
 pi command iam.user.get username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4333,7 +4333,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4361,7 +4361,7 @@ http://host/api/v3/command/iam.user.groups?username=<value>&uuid=<value>&max=<va
 ```bash  
 pi command iam.user.groups username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4377,11 +4377,13 @@ Lists all users. The response is a JSON array of these entities: https://www.key
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
+`includeGroups` | Boolean | false | null | Include all groups, for each user he is member of? Note: If true, the command execution becomes significantly slower!
+`includeRoles` | Boolean | false | null | Include all realm roles, for each user he is member of? Note: If true, the command execution becomes significantly slower!
 `max` | Integer | false | 1000 | The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4389,6 +4391,8 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - iam.user.list:  
+      includeGroups: <value>  
+      includeRoles: <value>  
       max: <value>  
       offset: <value>  
       filter: <value>  
@@ -4400,14 +4404,14 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.list?max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/iam.user.list?includeGroups=<value>&includeRoles=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.list max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
+pi command iam.user.list includeGroups=<value> includeRoles=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4429,7 +4433,7 @@ Name | Type | Required | Default | Description
 `offset` | Integer | false | 0 | The offset to start return entries.
 `filter` | String | false | null | The filter query to additionally filter the result. Not applied if null
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4457,7 +4461,7 @@ http://host/api/v3/command/iam.user.roles?username=<value>&uuid=<value>&max=<val
 ```bash  
 pi command iam.user.roles username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4473,11 +4477,11 @@ Executes the subsequent pipeline only if given condition evaluates to true. By d
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`true` | String | true | null | Default parameter which points to the expression which must evaluate to true. Only one of true or false param is allowed.
+`true` | String | false | null | Default parameter which points to the expression which must evaluate to true. Only one of true or false param is allowed.
 `end` | String | false | null | Defines the end of of the if pipe. If not set, the full pipeline till its end is executed. 
 `else` | String | false | null | Defines the else part of the if statement. If value of if evaluates to false, the section right after this else statement is executed until the if?end statement or the end of the pipeline. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -4501,7 +4505,7 @@ http://host/api/v3/command/if?true=<value>&end=<value>&else=<value>&id=<value>&i
 ```bash  
 pi command if true=<value> end=<value> else=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4520,7 +4524,7 @@ Name | Type | Required | Default | Description
 `cron` | String | false | null | A cron string which configures the execution times. See here to generate a cron string: https://crontab-generator.org/. Required only in case this is a create call.
 `stop` | String | false | null | If this param is set, all other params are ignored. It contains the uuid of the job to be canceled.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -4543,7 +4547,7 @@ http://host/api/v3/command/job?cron=<value>&stop=<value>&id=<value>&if=<value>
 ```bash  
 pi command job cron=<value> stop=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4561,7 +4565,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `query` | String | false | null | The JPA query to be executed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4585,7 +4589,7 @@ http://host/api/v3/command/jpa.query?query=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command jpa.query query=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4604,7 +4608,7 @@ Name | Type | Required | Default | Description
 `message` | String | true | null | The message to log. Can be a string or a pipe expression. If null or empty, the full pipe message will be logged.
 `level` | String | false | INFO | The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -4627,7 +4631,7 @@ http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>&if=<valu
 ```bash  
 pi command log message=<value> level=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4647,7 +4651,7 @@ Name | Type | Required | Default | Description
 `lines` | Integer | false | 100 | The number of lines to print in case format is text. 100 is printed when not specified. 
 `format` | String | false | text | The format to be returned. One of: text, json
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4673,7 +4677,7 @@ http://host/api/v3/command/log.list?service=<value>&lines=<value>&format=<value>
 ```bash  
 pi command log.list service=<value> lines=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4693,7 +4697,7 @@ Name | Type | Required | Default | Description
 `createdAfter` | String | false |  | Returns only those emails created after this date in ISO-8601 format. If null or empty, no after filter will be set.
 `createdBefore` | String | false |  | Returns only those emails created before this date in ISO-8601 format. If null or empty, no before filter will be set.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4719,7 +4723,7 @@ http://host/api/v3/command/log.list.email?auditId=<value>&createdAfter=<value>&c
 ```bash  
 pi command log.list.email auditId=<value> createdAfter=<value> createdBefore=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4737,7 +4741,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `interpolate` | String | false | true | Return all properties with values interpolated? (= ${some.var} is resolved).
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4761,7 +4765,7 @@ http://host/api/v3/command/log.list.environment?interpolate=<value>&id=<value>&i
 ```bash  
 pi command log.list.environment interpolate=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4786,7 +4790,7 @@ Name | Type | Required | Default | Description
 `drivePassword` | String | true | null | The password of the drive account to upload to.
 `path` | String | false | null | The remote folder path in drive where to upload the emails into. For each new email a new sub folder will be created inside this path. If null or empty, uploads to the root folder of the logged in user.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4817,7 +4821,7 @@ http://host/api/v3/command/mail.dump?protocol=<value>&host=<value>&port=<value>&
 ```bash  
 pi command mail.dump protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> driveUsername=<value> drivePassword=<value> path=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4839,7 +4843,7 @@ Name | Type | Required | Default | Description
 `inboxUsername` | String | true | null | The username of the email inbox.
 `inboxPassword` | String | true | null | The password of the email inbox.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4867,7 +4871,7 @@ http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>
 ```bash  
 pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4893,7 +4897,7 @@ Name | Type | Required | Default | Description
 `replyTo` | String | false | null | Reply-To email address is used when email receiver uses its mail client's 'reply' function. If not used,the from address is used automatically.
 `attachments` | String | false | null | Can be a comma separated list of URI Strings (e.g.: uri:drive:file1, uri:property:global/file2, uri:drive:file1, uri:classpath:pipeforce/file3). Also can point via PEL to a content object or a content collection. If the PEL points to an object differently to an uri or content object, serializes the value to string and attaches this as a text file.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -4922,7 +4926,7 @@ http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&su
 ```bash  
 pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> model=<value> message=<value> replyTo=<value> attachments=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4957,7 +4961,7 @@ Name | Type | Required | Default | Description
 `email.blacklist` | String | false | null | A comma separated list of blocked email addresses. Also supports wildcards *. Example: *@domain.com, my@email.com
 `challenge` | String | false | null | The challenge which will become part of the link in the email when redirecting back.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -4982,7 +4986,7 @@ http://host/api/v3/command/mail.verify?email=<value>&email.whitelist=<value>&ema
 ```bash  
 pi command mail.verify email=<value> email.whitelist=<value> email.blacklist=<value> challenge=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5000,7 +5004,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `reverse` | Boolean | false | false | Reverses the left and right expressions. This is a workaround if for some reason the left sidefor example may not contain special characters.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5022,7 +5026,7 @@ http://host/api/v3/command/map?reverse=<value>&id=<value>&if=<value>
 ```bash  
 pi command map reverse=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5039,7 +5043,7 @@ Shows the current system info like memory consumption. Available for system and 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5062,7 +5066,7 @@ http://host/api/v3/command/memory.info?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command memory.info id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5081,7 +5085,7 @@ Name | Type | Required | Default | Description
 `url` | String | true | null | The Teams webhook url to post the message to.
 `message` | String | true | null | The text message to be send to Teams.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5104,7 +5108,7 @@ http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>&id=<
 ```bash  
 pi command microsoft.teams.send url=<value> message=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5126,7 +5130,7 @@ Name | Type | Required | Default | Description
 `thenSetBody` | String | false | null | The value to be returned in the body when this mock applies. If not defined, the current body will not be changed.
 `thenSetVar` | String | false | null | Defines a map which will be set as vars.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5152,7 +5156,7 @@ http://host/api/v3/command/mock.command?enabled=<value>&command=<value>&when=<va
 ```bash  
 pi command mock.command enabled=<value> command=<value> when=<value> thenSetBody=<value> thenSetVar=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5171,7 +5175,7 @@ Name | Type | Required | Default | Description
 `pages` | String | false | 1 | The number of pages to create. May not be 0 or negative.
 `format` | String | false | A4 | The format of the pages to create. One of: A0, A1, A2, A3, A4, A5, A6, LEGAL, LETTER
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5196,7 +5200,7 @@ http://host/api/v3/command/pdf.create?pages=<value>&format=<value>&id=<value>&if
 ```bash  
 pi command pdf.create pages=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5214,7 +5218,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of resulting document content.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5238,7 +5242,7 @@ http://host/api/v3/command/pdf.merge?name=<value>&id=<value>&if=<value>&output=<
 ```bash  
 pi command pdf.merge name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5266,7 +5270,7 @@ Name | Type | Required | Default | Description
 `margin` | Collection | false | 20 | Considers page margin when applying stamp. Can be a single value or a comma separated list of 4 entries forsetting margin in this order: [top, right, down, left]
 `lineNo` | Integer | false | 0 | Enforces that text is written at a specific line
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5300,7 +5304,7 @@ http://host/api/v3/command/pdf.stamp?text=<value>&textSize=<value>&textColor=<va
 ```bash  
 pi command pdf.stamp text=<value> textSize=<value> textColor=<value> image=<value> pages=<value> position=<value> layer=<value> opacity=<value> degree=<value> margin=<value> lineNo=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5318,7 +5322,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The exact name of the pipeline to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5340,7 +5344,7 @@ http://host/api/v3/command/pipeline.delete?name=<value>&id=<value>&if=<value>
 ```bash  
 pi command pipeline.delete name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5358,7 +5362,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of the pipeline to search for. Supports wildcard * matching. If null or empty, returns all entries.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5382,7 +5386,7 @@ http://host/api/v3/command/pipeline.get?name=<value>&id=<value>&if=<value>&outpu
 ```bash  
 pi command pipeline.get name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5400,7 +5404,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The unique name of this pipeline within this namespace.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5424,7 +5428,7 @@ http://host/api/v3/command/pipeline.put?name=<value>&id=<value>&if=<value>&outpu
 ```bash  
 pi command pipeline.put name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5442,7 +5446,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the pipeline to load and execute.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5464,7 +5468,7 @@ http://host/api/v3/command/pipeline.run?name=<value>&id=<value>&if=<value>
 ```bash  
 pi command pipeline.run name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5483,7 +5487,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified.
 `vars` | String | false | null | A variables map to be put on this pipeline. Note: Any var in this map will overwrite the var in the target pipeline vars scope.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5508,7 +5512,7 @@ http://host/api/v3/command/pipeline.start?key=<value>&vars=<value>&id=<value>&if
 ```bash  
 pi command pipeline.start key=<value> vars=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5526,7 +5530,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `appNames` | String | false | null | A comma separated list of app names those config must be returned. If null or empty, all configs of all apps are returned, the currently logged in user is assigned to. If there is an app name given which doesnt exist or the current user has no access to, nothing happens for security reasons.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5550,7 +5554,7 @@ http://host/api/v3/command/property.app.config?appNames=<value>&id=<value>&if=<v
 ```bash  
 pi command property.app.config appNames=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5570,7 +5574,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of the attachment this chunk belongs to.
 `index` | String | false | 0 | The index of the chunk to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5596,7 +5600,7 @@ http://host/api/v3/command/property.attachment.chunk.get?key=<value>&name=<value
 ```bash  
 pi command property.attachment.chunk.get key=<value> name=<value> index=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5617,7 +5621,7 @@ Name | Type | Required | Default | Description
 `index` | String | false | null | The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment.
 `content` | String | false | null | The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5642,7 +5646,7 @@ http://host/api/v3/command/property.attachment.chunk.put?key=<value>&name=<value
 ```bash  
 pi command property.attachment.chunk.put key=<value> name=<value> index=<value> content=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5661,7 +5665,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key of the property this attachment belongs to.
 `name` | String | false | null | The name of the attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5686,7 +5690,7 @@ http://host/api/v3/command/property.attachment.content?key=<value>&name=<value>&
 ```bash  
 pi command property.attachment.content key=<value> name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5705,7 +5709,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key of the property containing the attachment.
 `name` | String | true | null | The name of the attachment to be deleted.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5728,7 +5732,7 @@ http://host/api/v3/command/property.attachment.delete?key=<value>&name=<value>&i
 ```bash  
 pi command property.attachment.delete key=<value> name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5747,7 +5751,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The key of the property this attachment belongs to.
 `name` | String | false | null | The name of the attachment to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5772,7 +5776,7 @@ http://host/api/v3/command/property.attachment.get?key=<value>&name=<value>&id=<
 ```bash  
 pi command property.attachment.get key=<value> name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5790,7 +5794,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The key of the property to list its attachments for.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5814,7 +5818,7 @@ http://host/api/v3/command/property.attachment.list?key=<value>&id=<value>&if=<v
 ```bash  
 pi command property.attachment.list key=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5835,7 +5839,7 @@ Name | Type | Required | Default | Description
 `content` | String | false | null | The content to add as first chunk. Note: If a PEL is set here must evaluate to a string or byte array. If null, an empty attachment with no chunks is created. 
 `contentType` | String | false | null | The content type to be used for this attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5860,7 +5864,7 @@ http://host/api/v3/command/property.attachment.put?key=<value>&name=<value>&cont
 ```bash  
 pi command property.attachment.put key=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5880,7 +5884,7 @@ Name | Type | Required | Default | Description
 `name` | String | true | null | The name of the attachment.
 `uri` | String | true | null | The uri of resource to point symlink to.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5904,7 +5908,7 @@ http://host/api/v3/command/property.attachment.put.uri?key=<value>&name=<value>&
 ```bash  
 pi command property.attachment.put.uri key=<value> name=<value> uri=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5923,7 +5927,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The origin path key of the property.Otherwise a new entry is created.
 `to` | String | true | null | The target key to copy the property to. If a property with this key already exists, it will be overwritten.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -5946,7 +5950,7 @@ http://host/api/v3/command/property.copy?key=<value>&to=<value>&id=<value>&if=<v
 ```bash  
 pi command property.copy key=<value> to=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5964,7 +5968,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The path key of the property to check for. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5988,7 +5992,7 @@ http://host/api/v3/command/property.exists?key=<value>&id=<value>&if=<value>&out
 ```bash  
 pi command property.exists key=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6006,7 +6010,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `strategy` | String | false | skip | Defines what to do if a property with same key already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6030,7 +6034,7 @@ http://host/api/v3/command/property.import?strategy=<value>&id=<value>&if=<value
 ```bash  
 pi command property.import strategy=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6048,7 +6052,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pattern` | String | true | null | The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6072,7 +6076,7 @@ http://host/api/v3/command/property.keys.children?pattern=<value>&id=<value>&if=
 ```bash  
 pi command property.keys.children pattern=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6090,7 +6094,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pattern` | String | true | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6114,7 +6118,7 @@ http://host/api/v3/command/property.keys?pattern=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command property.keys pattern=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6133,7 +6137,7 @@ Name | Type | Required | Default | Description
 `pattern` | String | false | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this key. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'.
 `filter` | String | false | null | This parameter is deprecated. Use param 'pattern' instead.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6158,7 +6162,7 @@ http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&id=<valu
 ```bash  
 pi command property.list pattern=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6177,7 +6181,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The origin path key of the property.Otherwise a new entry is created.
 `to` | String | true | null | The target key to move the property to. If a property with this key already exists, an exception is thrown.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6200,7 +6204,7 @@ http://host/api/v3/command/property.move?key=<value>&to=<value>&id=<value>&if=<v
 ```bash  
 pi command property.move key=<value> to=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6219,7 +6223,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created.
 `value` | String | false | null | The value of the property. May be null or empty.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6242,7 +6246,7 @@ http://host/api/v3/command/property.put?key=<value>&value=<value>&id=<value>&if=
 ```bash  
 pi command property.put key=<value> value=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6260,7 +6264,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The path key of the property to delete. If property with this key doesnt exist, nothing happens.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6282,7 +6286,7 @@ http://host/api/v3/command/property.schema.delete?key=<value>&id=<value>&if=<val
 ```bash  
 pi command property.schema.delete key=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6309,7 +6313,7 @@ Name | Type | Required | Default | Description
 `tags` | String | false | null | The initial tags to add to this property. Can be a comma separated list of name value pairs, like this name1:value1, name2:value2.
 `finalAction` | String | false | null | What should happen with this property finally when pipeline execution has been finished? Available actions: 'persist' (writes the latest state to DB), 'remove' (removes the latest state from DB), null (nothing happens = default)
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6340,7 +6344,7 @@ http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&
 ```bash  
 pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6364,7 +6368,7 @@ Name | Type | Required | Default | Description
 `includeProperty` | String | false | null | Specify id to add property value as additional delivery attachment.
 `recipients` | String | true | null | The emails of recipients.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6394,7 +6398,7 @@ http://host/api/v3/command/property.send.delivery?key=<value>&message=<value>&pr
 ```bash  
 pi command property.send.delivery key=<value> message=<value> privacyLevel=<value> model=<value> subject=<value> includeProperty=<value> recipients=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6412,7 +6416,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The path key of the property to list the tags for.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6436,7 +6440,7 @@ http://host/api/v3/command/property.tag.list?key=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command property.tag.list key=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6457,7 +6461,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of a single tag to add.
 `value` | String | false | null | The value of a single tag to add. Only used in case tag name is not null.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6482,7 +6486,7 @@ http://host/api/v3/command/property.tag.put?key=<value>&tags=<value>&name=<value
 ```bash  
 pi command property.tag.put key=<value> tags=<value> name=<value> value=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6503,7 +6507,7 @@ Name | Type | Required | Default | Description
 `where` | String | false | null | Specifies a selection filter to return only the properties those values match the given where filter. For example: invoice.amount > 50 would select only those properties having a field invoice.amount with value bigger than 50. If null, no where filter is applied and all properties values will be selected.
 `aggregate` | String | false | null | Defines an expression to be applied on the final result. For example to count all values or to transform them. If null or empty, no aggregation will be applied.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6530,7 +6534,7 @@ http://host/api/v3/command/property.value.expression?select=<value>&from=<value>
 ```bash  
 pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6548,7 +6552,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The key of the property to be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6572,7 +6576,7 @@ http://host/api/v3/command/property.value.get?key=<value>&id=<value>&if=<value>&
 ```bash  
 pi command property.value.get key=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6591,7 +6595,7 @@ Name | Type | Required | Default | Description
 `module` | String | false | null | Looks in the specific module for provision scripts. Using current namespaceas default value to load a namespace-specific module.
 `path` | String | false | null | Path of the provision script to call. If not specified, uses default path: main.pipe.yaml
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6614,7 +6618,7 @@ http://host/api/v3/command/provision?module=<value>&path=<value>&id=<value>&if=<
 ```bash  
 pi command provision module=<value> path=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6633,7 +6637,7 @@ Name | Type | Required | Default | Description
 `id` | String | true | null | The public form id.
 `id` | String | true | null | The public form id.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6656,7 +6660,7 @@ http://host/api/v3/command/publicform.definition?id=<value>&id=<value>&id=<value
 ```bash  
 pi command publicform.definition id=<value> id=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6675,7 +6679,7 @@ Name | Type | Required | Default | Description
 `value` | String | true | null | The value of the property.
 `id` | String | true | null | The public form id.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6698,7 +6702,7 @@ http://host/api/v3/command/publicform.submit?value=<value>&id=<value>&id=<value>
 ```bash  
 pi command publicform.submit value=<value> id=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6717,7 +6721,7 @@ Name | Type | Required | Default | Description
 `path` | String | false | null | DEPRECATED. Use uri instead.
 `uri` | String | true | null | The uri path to load the resource from. If it starts with classpath:pipeforce, a lookup in the classpath subfolder pipeforce is done (other locations are not allowed). If it starts with property: a lookup in the property store is done and the result is thevalue of the property if exists.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6742,7 +6746,7 @@ http://host/api/v3/command/resource?path=<value>&uri=<value>&id=<value>&if=<valu
 ```bash  
 pi command resource path=<value> uri=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6760,7 +6764,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path to save the resource to.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6782,7 +6786,7 @@ http://host/api/v3/command/resource.save?path=<value>&id=<value>&if=<value>
 ```bash  
 pi command resource.save path=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6799,7 +6803,7 @@ Closes website and releases all used resources.Note: The pipe is BETA and not in
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6820,7 +6824,7 @@ http://host/api/v3/command/rpa.website.close?id=<value>&if=<value>
 ```bash  
 pi command rpa.website.close id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6838,7 +6842,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | true | null | The url of the web page to open.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6860,7 +6864,7 @@ http://host/api/v3/command/rpa.website.open?url=<value>&id=<value>&if=<value>
 ```bash  
 pi command rpa.website.open url=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6878,7 +6882,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `xpath` | String | true | null | Executes the given xpath expression on the current page and puts the result in the body. In case the xpath returns more than one results, adds an array to the body. Otherwise the body only contains the single result value.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -6900,7 +6904,7 @@ http://host/api/v3/command/rpa.website.scrap?xpath=<value>&id=<value>&if=<value>
 ```bash  
 pi command rpa.website.scrap xpath=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6917,7 +6921,7 @@ Returns the V7 compliant JSON schema for all built-in pipes.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6940,7 +6944,7 @@ http://host/api/v3/command/schema.pipeline?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command schema.pipeline id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6960,7 +6964,7 @@ Name | Type | Required | Default | Description
 `path` | String | false | null | The path to the script to be loaded Currently only the protocol property: is supported which points to a property in the property store and loads its value as script.
 `language` | String | false | js | The script language to be used. Possible values: js, groovy.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6986,7 +6990,7 @@ http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<valu
 ```bash  
 pi command script.run script=<value> path=<value> language=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7003,7 +7007,7 @@ Returns information about the current server. For example the version it is runn
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7026,7 +7030,7 @@ http://host/api/v3/command/server.info?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command server.info id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7044,7 +7048,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the service to start. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -7066,7 +7070,7 @@ http://host/api/v3/command/service.start?name=<value>&id=<value>&if=<value>
 ```bash  
 pi command service.start name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7084,7 +7088,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the service. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -7106,7 +7110,7 @@ http://host/api/v3/command/service.stop?name=<value>&id=<value>&if=<value>
 ```bash  
 pi command service.stop name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7125,7 +7129,7 @@ Name | Type | Required | Default | Description
 `value` | String | true | null | A string or an expression to be used as the value to be set.
 `format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -7148,7 +7152,7 @@ http://host/api/v3/command/set.body?value=<value>&format=<value>&id=<value>&if=<
 ```bash  
 pi command set.body value=<value> format=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7168,7 +7172,7 @@ Name | Type | Required | Default | Description
 `to` | String | false | null | DEPRECATED. Use param output instead.
 `mapping` | String | false | null | A list of mapping rules to be applied to the given input value.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
@@ -7196,7 +7200,7 @@ http://host/api/v3/command/set?value=<value>&to=<value>&mapping=<value>&id=<valu
 ```bash  
 pi command set value=<value> to=<value> mapping=<value> id=<value> if=<value> output=<value> input=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7216,7 +7220,7 @@ Name | Type | Required | Default | Description
 `value` | String | true | null | A string or an expression to be used as the value to be set.
 `format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -7240,7 +7244,7 @@ http://host/api/v3/command/set.var?key=<value>&value=<value>&format=<value>&id=<
 ```bash  
 pi command set.var key=<value> value=<value> format=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7262,7 +7266,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7292,7 +7296,7 @@ http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<v
 ```bash  
 pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7314,7 +7318,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7344,7 +7348,7 @@ http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=
 ```bash  
 pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7367,7 +7371,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7398,7 +7402,7 @@ http://host/api/v3/command/sftp.list?path=<value>&filter=<value>&username=<value
 ```bash  
 pi command sftp.list path=<value> filter=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7420,7 +7424,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7450,7 +7454,7 @@ http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<va
 ```bash  
 pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7473,7 +7477,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7504,7 +7508,7 @@ http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=
 ```bash  
 pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7526,7 +7530,7 @@ Name | Type | Required | Default | Description
 `host` | String | false | null | The host
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
@@ -7556,7 +7560,7 @@ http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<v
 ```bash  
 pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> input=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7575,7 +7579,7 @@ Name | Type | Required | Default | Description
 `url` | String | true | null | The Slack webhook url to post the message to. See here to generate one: https://api.slack.com/messaging/webhooks
 `text` | String | true | null | The text message to be send to Slack.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -7598,7 +7602,7 @@ http://host/api/v3/command/slack.send?url=<value>&text=<value>&id=<value>&if=<va
 ```bash  
 pi command slack.send url=<value> text=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7620,7 +7624,7 @@ Name | Type | Required | Default | Description
 `dataField` | String | false | data | If given, places the data inside a separate property with this name.
 `columnField` | String | false | columns | If given, places the column names inside a separate property with this name.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7648,7 +7652,7 @@ http://host/api/v3/command/sql.query?query=<value>&datasource=<value>&columnName
 ```bash  
 pi command sql.query query=<value> datasource=<value> columnName=<value> dataField=<value> columnField=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7665,7 +7669,7 @@ Evaluates each switch statement. Takes the value part of the first match and wri
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7688,7 +7692,7 @@ http://host/api/v3/command/switch?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command switch id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7706,9 +7710,10 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `locations` | String | false | global/app/*/test/*, global/app/*/script/* | A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs.
 `includeMethods` | String | false | methodName.startsWith('test') | A PE which defines the test methods to be included. The selected method name is provided as variable: methodName.
+`reportFormat` | String | false | junit | The format of the resulting test report. Possible values: json (default), junit
 `excludeMethods` | String | false | methodName.endsWith('IT') | A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -7717,6 +7722,7 @@ pipeline:
   - test.run:  
       locations: <value>  
       includeMethods: <value>  
+      reportFormat: <value>  
       excludeMethods: <value>  
       id: <value>  
       if: <value>  
@@ -7725,14 +7731,14 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&excludeMethods=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&reportFormat=<value>&excludeMethods=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command test.run locations=<value> includeMethods=<value> excludeMethods=<value> id=<value> if=<value>  
+pi command test.run locations=<value> includeMethods=<value> reportFormat=<value> excludeMethods=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7751,7 +7757,7 @@ Name | Type | Required | Default | Description
 `clearCache` | Boolean | false | null | If true, the current theme cache is cleared.
 `resource` | String | true | logo | The type of resource to be loaded. Must be one of: background, logo, pipeforce-logo. If null or invalid value, falls back to default value.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7776,7 +7782,7 @@ http://host/api/v3/command/theme?clearCache=<value>&resource=<value>&id=<value>&
 ```bash  
 pi command theme clearCache=<value> resource=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7798,7 +7804,7 @@ Name | Type | Required | Default | Description
 `modelName` | String | false | null | The name of the root model under which the input can be accessed inside the template. If null or empty, then the input defines the model names.
 `template` | String | true | null | The template to be used for the transformation. It can the template text itself as string or a qualified uri pointing to a template resource like this for example: $uri:property:/my/template/path
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -7828,7 +7834,7 @@ http://host/api/v3/command/transform?iterate=<value>&groupBy=<value>&engine=<val
 ```bash  
 pi command transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7847,7 +7853,7 @@ Name | Type | Required | Default | Description
 `model` | String | false | null | The model to be placed into the template scope. If null, the message is used as model
 `template` | String | false | null | The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7872,7 +7878,7 @@ http://host/api/v3/command/transform.ftl?model=<value>&template=<value>&id=<valu
 ```bash  
 pi command transform.ftl model=<value> template=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7889,7 +7895,7 @@ Takes html text that is expected in the body, (as pipeline resource) and convert
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7912,7 +7918,7 @@ http://host/api/v3/command/transform.html2docx?id=<value>&if=<value>&output=<val
 ```bash  
 pi command transform.html2docx id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7930,7 +7936,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `dpi` | String | false | null | DPI to use for conversion. 300 DPI is used when not specified.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7954,7 +7960,7 @@ http://host/api/v3/command/transform.pdf2png?dpi=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command transform.pdf2png dpi=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7972,7 +7978,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `dpi` | String | false | null | DPI to forcibly use for conversion.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7996,7 +8002,7 @@ http://host/api/v3/command/transform.png2pdf?dpi=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command transform.png2pdf dpi=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8016,7 +8022,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | false | null | Provides the URL the word document is located at. If set, it uses REST PDF conversion service instead of library.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8040,7 +8046,7 @@ http://host/api/v3/command/transform.word2pdf?path=<value>&id=<value>&if=<value>
 ```bash  
 pi command transform.word2pdf path=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8059,7 +8065,7 @@ Name | Type | Required | Default | Description
 `model` | String | true | null | The model to be placed into the template scope. May not be null.
 `template` | String | false | null | The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path.docx) pointing to the template.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8084,7 +8090,7 @@ http://host/api/v3/command/transform.wordtemplate?model=<value>&template=<value>
 ```bash  
 pi command transform.wordtemplate model=<value> template=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8103,7 +8109,7 @@ Name | Type | Required | Default | Description
 `text` | String | true | null | The text to be translated.
 `targetLanguage` | String | false | EN | The target language to transform the text to. Supported values: DE, EN, FR, IT, JA, ES, NL, PL, PT, RU, ZH
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `apiKey` | String | false | null | The alternative API key to connect to the service. If null or empty, the default one will be used, as defined by the default backend settings.
 `restUrl` | String | false | null | The URL to be called by the command. If null or empty, the default url will be used as defined in the backend.
@@ -8134,7 +8140,7 @@ http://host/api/v3/command/translate?text=<value>&targetLanguage=<value>&id=<val
 ```bash  
 pi command translate text=<value> targetLanguage=<value> id=<value> if=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8151,7 +8157,7 @@ Unzips a given zipped content from the body and puts the uncompressed content in
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8174,7 +8180,7 @@ http://host/api/v3/command/unzip?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command unzip id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8194,7 +8200,7 @@ Name | Type | Required | Default | Description
 `version` | String | false | V7 | The version of the schema specification to be used. One of: V4, V6, V7
 `path` | String | false | null | A pipe expression pointing to the JSON inside the pipe message validation is required for. If missing, null or empty, the body is used by default.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -8218,7 +8224,7 @@ http://host/api/v3/command/validate.json?schema=<value>&version=<value>&path=<va
 ```bash  
 pi command validate.json schema=<value> version=<value> path=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8236,7 +8242,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | Id of the webhook to delete.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -8258,7 +8264,7 @@ http://host/api/v3/command/webhook.delete?uuid=<value>&id=<value>&if=<value>
 ```bash  
 pi command webhook.delete uuid=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8276,7 +8282,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | false | null | Id of the single webhook to return. If null or empty, all webhooks will be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8300,7 +8306,7 @@ http://host/api/v3/command/webhook.get?uuid=<value>&id=<value>&if=<value>&output
 ```bash  
 pi command webhook.get uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8320,7 +8326,7 @@ Name | Type | Required | Default | Description
 `pipeline` | String | false | null | DEPRECATED. Stored pipeline reference key.
 `uuid` | String | false | null | The id of an existing webhook. If given, tries to update this webhook instead of creating a new one.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8346,7 +8352,7 @@ http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<v
 ```bash  
 pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8364,7 +8370,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | The uuid of the webhook.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -8386,7 +8392,7 @@ http://host/api/v3/command/webhook.receive?uuid=<value>&id=<value>&if=<value>
 ```bash  
 pi command webhook.receive uuid=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8405,7 +8411,7 @@ Name | Type | Required | Default | Description
 `url` | String | true | null | The webhook url to post the message to.
 `message` | String | false | null | The message to be send in the POST body to the webhook. Must be a valid JSON.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8430,7 +8436,7 @@ http://host/api/v3/command/webhook.send?url=<value>&message=<value>&id=<value>&i
 ```bash  
 pi command webhook.send url=<value> message=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8450,7 +8456,7 @@ Name | Type | Required | Default | Description
 `appId` | String | false | null | The appId to be used to prefix the process name with: appId_workflowname. If null or empty no prefix is appended.
 `propertyKey` | String | false | null | The optional key of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this propertyKey is missing, the BPMN is expected to be in the body.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8476,7 +8482,7 @@ http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKe
 ```bash  
 pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8495,7 +8501,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | Name of the deployment. Exact match.
 `id` | String | false | null | Id of the deployment. Exact match.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8520,7 +8526,7 @@ http://host/api/v3/command/workflow.deployment.find?name=<value>&id=<value>&id=<
 ```bash  
 pi command workflow.deployment.find name=<value> id=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8542,7 +8548,7 @@ Name | Type | Required | Default | Description
 `businessKey` | String | false | null | The business key of the process which needs to be informed by the event. One of businessKey or processInstanceId must be given.
 `messageName` | String | true | null | The name of this message. It is used to find the endpoint to be triggered in the workflow.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8568,7 +8574,7 @@ http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=
 ```bash  
 pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8586,7 +8592,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8610,7 +8616,7 @@ http://host/api/v3/command/workflow.find.processinstances?processInstanceBusines
 ```bash  
 pi command workflow.find.processinstances processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8632,7 +8638,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | true | null | Filter tasks by process instance id.
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8660,7 +8666,7 @@ http://host/api/v3/command/workflow.history.tasks?dueBefore=<value>&assignee=<va
 ```bash  
 pi command workflow.history.tasks dueBefore=<value> assignee=<value> includeVariables=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8685,7 +8691,7 @@ Name | Type | Required | Default | Description
 `message` | String | false | null | The invite message to be used to send an invite email to the new member. Can be a text message, a uri or content object template.
 `model` | String | false | null | The model to be used in the invite message template.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -8714,7 +8720,7 @@ http://host/api/v3/command/workflow.member.message?workflowModel=<value>&userId=
 ```bash  
 pi command workflow.member.message workflowModel=<value> userId=<value> username=<value> resourcePath=<value> taskUrl=<value> subject=<value> message=<value> model=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8733,7 +8739,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | true | null | The process instance id.
 `fileName` | String | true | null | The attachment name.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -8756,7 +8762,7 @@ http://host/api/v3/command/workflow.model.attachment.get?processInstanceId=<valu
 ```bash  
 pi command workflow.model.attachment.get processInstanceId=<value> fileName=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8776,7 +8782,7 @@ Name | Type | Required | Default | Description
 `fileName` | String | true | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
 `contentType` | String | false | null | The content type to be used for this attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -8800,7 +8806,7 @@ http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<valu
 ```bash  
 pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value> contentType=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8818,7 +8824,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `mappings` | String | false | null | A list of mapping rules to be applied to the given workflow model. See online docs for more details about such mapping rules.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8842,7 +8848,7 @@ http://host/api/v3/command/workflow.model?mappings=<value>&id=<value>&if=<value>
 ```bash  
 pi command workflow.model mappings=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8863,7 +8869,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | false | null | Filter tasks by process instance id.
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8890,7 +8896,7 @@ http://host/api/v3/command/workflow.tasks.open?dueBefore=<value>&assignee=<value
 ```bash  
 pi command workflow.tasks.open dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8911,7 +8917,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | false | null | Filter tasks by process instance id.
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8938,7 +8944,7 @@ http://host/api/v3/command/workflow.tasks.open.reminder?dueBefore=<value>&assign
 ```bash  
 pi command workflow.tasks.open.reminder dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8964,7 +8970,7 @@ Name | Type | Required | Default | Description
 `workflowModelInstanceKey` | String | false | null | The optional property key of the central process model instance to be used. Will be passed under this name to the process engine as process variable.Note: The model instance key must start with an app path followed by an object path. For example global/app/myApp/object/someObject/v1/instance/SOME_UUID.
 `workflowStartedBy` | String | false | null | The name of the process variable which holds the uuid of the user who started this process using this command. If null or empty, the currently logged-in user willbe used instead.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8992,7 +8998,7 @@ http://host/api/v3/command/workflow.start?key=<value>&businessKey=<value>&variab
 ```bash  
 pi command workflow.start key=<value> businessKey=<value> variables=<value> workflowModelInstanceKey=<value> workflowStartedBy=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9011,7 +9017,7 @@ Name | Type | Required | Default | Description
 `taskId` | String | true | null | The id (not name!) of the task to complete.
 `variables` | String | false | null | A map of variables to be passed to the task. Can be null.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -9036,7 +9042,7 @@ http://host/api/v3/command/workflow.task.complete?taskId=<value>&variables=<valu
 ```bash  
 pi command workflow.task.complete taskId=<value> variables=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9057,7 +9063,7 @@ Name | Type | Required | Default | Description
 `processInstanceId` | String | false | null | Filter tasks by process instance id.
 `processInstanceBusinessKey` | String | false | null | Filter tasks by businessKey.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -9084,7 +9090,7 @@ http://host/api/v3/command/workflow.tasks?dueBefore=<value>&assignee=<value>&pro
 ```bash  
 pi command workflow.tasks dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9103,7 +9109,7 @@ Name | Type | Required | Default | Description
 `name` | String | true | null | The name of the deployment to remove.
 `onError` | String | false | EXIT | What to do if an error happened in this command?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
 
 **Pipeline example:**  
@@ -9126,7 +9132,7 @@ http://host/api/v3/command/workflow.undeploy?name=<value>&onError=<value>&id=<va
 ```bash  
 pi command workflow.undeploy name=<value> onError=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9144,7 +9150,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `processDefinitionId` | String | false | null | The id of the process definition.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -9168,7 +9174,7 @@ http://host/api/v3/command/workflow.users?processDefinitionId=<value>&id=<value>
 ```bash  
 pi command workflow.users processDefinitionId=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9187,7 +9193,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of the final zip file. If not given, the name will be set by this rule: If it is a single entry, uses the name of the entry + .zip. If there are multiple entries, creates a random name + .zip
 `level` | String | false | null | Sets the compression level 0-9. If not set, the default level is used which could vary.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | true | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -9212,7 +9218,7 @@ http://host/api/v3/command/zip?name=<value>&level=<value>&id=<value>&if=<value>&
 ```bash  
 pi command zip name=<value> level=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../api/cli) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 

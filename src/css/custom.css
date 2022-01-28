@@ -63,6 +63,10 @@ article img {
   font-weight: 600;
 }
 
+.menu__link {
+  font-size: 0.9rem;
+}
+
 
 /* div.container {
   display: block;

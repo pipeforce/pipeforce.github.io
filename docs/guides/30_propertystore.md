@@ -647,7 +647,7 @@ pi publish src/global/app/myapp
 
 This scans your local `myapp` folder and uploads only those resources which have been changed since the last upload or have been created since then.
 
-See here how to setup such a customization workspace: [Local Low-Code Workspace](../guides/local-workspace%20copy)
+See here how to setup such a customization workspace: [Local Low-Code Workspace](../guides/local-workspace)
 
 See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](../api/cli) .
 
