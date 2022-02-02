@@ -46,7 +46,7 @@ The field value is provided as variable `val` and can be used inside the rule ex
 
 ### Some examples
 
-The given field is a required one. Therefore, make sure the field has a value. See the `!!` operator in JavaScript:
+The given field is a required one. Therefore, make sure this field has a value. In case it has not value, `!val` will return `true`. So we have to negate it with an additional `!` in order activare the validation rule and show the message: 
 
 ```json
 { 
