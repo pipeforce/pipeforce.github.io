@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 26/01/2022 by CommandComplianceTest -->
+<!-- Generated: 18/02/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -113,6 +113,8 @@ Installs the given app into the property store.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one.
+`branch` | String | false | null | The branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used.
+`runTests` | String | false | null | Run the tests of the app after installation?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -123,6 +125,8 @@ Name | Type | Required | Default | Description
 pipeline:  
   - app.install:  
       github: <value>  
+      branch: <value>  
+      runTests: <value>  
       id: <value>  
       if: <value>  
       credentials: <value>  
@@ -131,12 +135,100 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.install?github=<value>&id=<value>&if=<value>&credentials=<value>  
+http://host/api/v3/command/app.install?github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.install github=<value> id=<value> if=<value> credentials=<value>  
+pi command app.install github=<value> branch=<value> runTests=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## app.uninstall
+----------   
+Uninstalls the given app.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.uninstall)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`appKey` | String | false | null | The key of the app to uninstall. For example: global/app/myapp.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - app.uninstall:  
+      appKey: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/app.uninstall?appKey=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command app.uninstall appKey=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## app.update
+----------   
+Updates the given apps.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.update)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one.
+`branch` | String | false | null | The branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used.
+`keepData` | String | false | true | If set to true, all data inside object/**/instances/** and data/** wont be deleted.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - app.update:  
+      github: <value>  
+      branch: <value>  
+      keepData: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/app.update?github=<value>&branch=<value>&keepData=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command app.update github=<value> branch=<value> keepData=<value> id=<value> if=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -871,6 +963,136 @@ http://host/api/v3/command/config.get?group=<value>&key=<value>&includePermissio
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command config.get group=<value> key=<value> includePermission=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## container.registry.delete
+----------   
+Deletes a container registry.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.delete)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`url` | String | false | null | The url of the registry.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - container.registry.delete:  
+      url: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/container.registry.delete?url=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command container.registry.delete url=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## container.registry.list
+----------   
+Lists all container registries.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.list)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - container.registry.list:  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/container.registry.list?id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command container.registry.list id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## container.registry.put
+----------   
+Adds a new container registry.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.put)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`url` | String | false | null | The url of the registry.
+`username` | String | false | null | The username to access the registry.
+`password` | String | false | null | The password to access the registry.
+`email` | String | false | null | The email for the registry.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - container.registry.put:  
+      url: <value>  
+      username: <value>  
+      password: <value>  
+      email: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/container.registry.put?url=<value>&username=<value>&password=<value>&email=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command container.registry.put url=<value> username=<value> password=<value> email=<value> id=<value> if=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -1798,7 +2020,7 @@ Saves the content of the body to the given archive folder in Drive. The content 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the archive folder where the file to be saved.
-`namingPattern` | String | true | null | The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The number of files currently stored in the archive folder. archivePath = The path to the archive as given by path param. 
+`namingPattern` | String | true | null | The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The last value used as counter. The .counter file in archive folder holds this value. When not present, is initialized from count of files in archive folder. archivePath = The path to the archive as given by path param. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
@@ -2950,6 +3172,7 @@ Executes a DELETE HTTP call to the given url.Returns the result from the server 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
+`service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -2964,6 +3187,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - http.delete:  
       url: <value>  
+      service: <value>  
       headers: <value>  
       body: <value>  
       id: <value>  
@@ -2976,12 +3200,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.delete?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.delete?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.delete url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
+pi command http.delete url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3000,6 +3224,7 @@ Executes a GET HTTP call to the given url.Returns the result from the server in 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
+`service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -3014,6 +3239,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - http.get:  
       url: <value>  
+      service: <value>  
       headers: <value>  
       body: <value>  
       id: <value>  
@@ -3026,12 +3252,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.get?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.get?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.get url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
+pi command http.get url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3050,6 +3276,7 @@ Executes a PATCH HTTP call to the given url.Returns the result from the server i
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
+`service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -3064,6 +3291,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - http.patch:  
       url: <value>  
+      service: <value>  
       headers: <value>  
       body: <value>  
       id: <value>  
@@ -3076,12 +3304,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.patch?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.patch?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.patch url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
+pi command http.patch url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3100,6 +3328,7 @@ Executes a POST HTTP call to the given url.Returns the result from the server in
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
+`service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -3114,6 +3343,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - http.post:  
       url: <value>  
+      service: <value>  
       headers: <value>  
       body: <value>  
       id: <value>  
@@ -3126,12 +3356,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.post?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.post?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.post url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
+pi command http.post url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3150,6 +3380,7 @@ Executes a PUT HTTP call to the given url.Returns the result from the server in 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `url` | String | false | null | The url for the HTTP call.
+`service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -3164,6 +3395,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - http.put:  
       url: <value>  
+      service: <value>  
       headers: <value>  
       body: <value>  
       id: <value>  
@@ -3176,12 +3408,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.put?url=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.put url=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
+pi command http.put url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7034,6 +7266,56 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+## service.deploy
+----------   
+Deploys a new service into the cluster.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.deploy)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of the service.
+`image` | String | false | null | The repo path of the image to be deployed. If empty, no image will be deployed (just the service slot created).
+`port` | Integer | false | null | The port the running service accepts requests.
+`ingress` | Boolean | false | null | Create an ingress for this service?
+`imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.deploy:  
+      name: <value>  
+      image: <value>  
+      port: <value>  
+      ingress: <value>  
+      imagePullSecret: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.deploy?name=<value>&image=<value>&port=<value>&ingress=<value>&imagePullSecret=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.deploy name=<value> image=<value> port=<value> ingress=<value> imagePullSecret=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
 ## service.start
 ----------   
 Starts a service defined in services config.
@@ -7074,6 +7356,48 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+## service.status
+----------   
+Returns the deployment status of the given service
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.status)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | Name of the service
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.status:  
+      name: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.status?name=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.status name=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
 ## service.stop
 ----------   
 Stops one the service.
@@ -7109,6 +7433,48 @@ http://host/api/v3/command/service.stop?name=<value>&id=<value>&if=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command service.stop name=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## service.undeploy
+----------   
+Undeploys a service from the cluster. Note: This is only enabled in case the instance is running in DEV or QA mode, never in PROD mode!
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.undeploy)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of the service to be undeployed.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.undeploy:  
+      name: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.undeploy?name=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.undeploy name=<value> id=<value> if=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7710,7 +8076,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `locations` | String | false | global/app/*/test/*, global/app/*/script/* | A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs.
 `includeMethods` | String | false | methodName.startsWith('test') | A PE which defines the test methods to be included. The selected method name is provided as variable: methodName.
-`reportFormat` | String | false | junit | The format of the resulting test report. Possible values: json (default), junit
+`reportFormat` | String | false | json | The format of the resulting test report. Possible values: json (default), junit
 `excludeMethods` | String | false | methodName.endsWith('IT') | A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.

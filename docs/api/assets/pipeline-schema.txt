@@ -114,6 +114,73 @@
                 "type" : "string",
                 "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one."
               },
+              "branch" : {
+                "type" : "string",
+                "description" : "The branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used."
+              },
+              "runTests" : {
+                "type" : "string",
+                "description" : "Run the tests of the app after installation?"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
+          "app.uninstall" : {
+            "type" : "object",
+            "description" : "Uninstalls the given app.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "appKey" : {
+                "type" : "string",
+                "description" : "The key of the app to uninstall. For example: global/app/myapp."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
+          "app.update" : {
+            "type" : "object",
+            "description" : "Updates the given apps.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "github" : {
+                "type" : "string",
+                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one."
+              },
+              "branch" : {
+                "type" : "string",
+                "description" : "The branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used."
+              },
+              "keepData" : {
+                "type" : "string",
+                "description" : "If set to true, all data inside object/**/instances/** and data/** wont be deleted.",
+                "default" : "true"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -593,6 +660,89 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "container.registry.delete" : {
+            "type" : "object",
+            "description" : "Deletes a container registry.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "url" : {
+                "type" : "string",
+                "description" : "The url of the registry."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
+          "container.registry.list" : {
+            "type" : "object",
+            "description" : "Lists all container registries.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
+          "container.registry.put" : {
+            "type" : "object",
+            "description" : "Adds a new container registry.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "url" : {
+                "type" : "string",
+                "description" : "The url of the registry."
+              },
+              "username" : {
+                "type" : "string",
+                "description" : "The username to access the registry."
+              },
+              "password" : {
+                "type" : "string",
+                "description" : "The password to access the registry."
+              },
+              "email" : {
+                "type" : "string",
+                "description" : "The email for the registry."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -1250,7 +1400,7 @@
               },
               "namingPattern" : {
                 "type" : "string",
-                "description" : "The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The number of files currently stored in the archive folder. archivePath = The path to the archive as given by path param. "
+                "description" : "The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The last value used as counter. The .counter file in archive folder holds this value. When not present, is initialized from count of files in archive folder. archivePath = The path to the archive as given by path param. "
               },
               "id" : {
                 "type" : "string",
@@ -1963,6 +2113,10 @@
                 "type" : "string",
                 "description" : "The url for the HTTP call."
               },
+              "service" : {
+                "type" : "string",
+                "description" : "The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically."
+              },
               "headers" : {
                 "type" : "string",
                 "description" : "A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2."
@@ -2003,6 +2157,10 @@
               "url" : {
                 "type" : "string",
                 "description" : "The url for the HTTP call."
+              },
+              "service" : {
+                "type" : "string",
+                "description" : "The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically."
               },
               "headers" : {
                 "type" : "string",
@@ -2045,6 +2203,10 @@
                 "type" : "string",
                 "description" : "The url for the HTTP call."
               },
+              "service" : {
+                "type" : "string",
+                "description" : "The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically."
+              },
               "headers" : {
                 "type" : "string",
                 "description" : "A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2."
@@ -2086,6 +2248,10 @@
                 "type" : "string",
                 "description" : "The url for the HTTP call."
               },
+              "service" : {
+                "type" : "string",
+                "description" : "The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically."
+              },
               "headers" : {
                 "type" : "string",
                 "description" : "A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2."
@@ -2126,6 +2292,10 @@
               "url" : {
                 "type" : "string",
                 "description" : "The url for the HTTP call."
+              },
+              "service" : {
+                "type" : "string",
+                "description" : "The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically."
               },
               "headers" : {
                 "type" : "string",
@@ -4779,6 +4949,47 @@
             },
             "required" : [ ]
           },
+          "service.deploy" : {
+            "type" : "object",
+            "description" : "Deploys a new service into the cluster.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the service."
+              },
+              "image" : {
+                "type" : "string",
+                "description" : "The repo path of the image to be deployed. If empty, no image will be deployed (just the service slot created)."
+              },
+              "port" : {
+                "type" : "number",
+                "description" : "The port the running service accepts requests."
+              },
+              "ingress" : {
+                "type" : "boolean",
+                "description" : "Create an ingress for this service?"
+              },
+              "imagePullSecret" : {
+                "type" : "string",
+                "description" : "The optional name of the registry secret to be used in case it is a private registry."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
           "service.start" : {
             "type" : "object",
             "description" : "Starts a service defined in services config.",
@@ -4800,6 +5011,31 @@
             },
             "required" : [ "name" ]
           },
+          "service.status" : {
+            "type" : "object",
+            "description" : "Returns the deployment status of the given service",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "Name of the service"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
           "service.stop" : {
             "type" : "object",
             "description" : "Stops one the service.",
@@ -4820,6 +5056,31 @@
               }
             },
             "required" : [ "name" ]
+          },
+          "service.undeploy" : {
+            "type" : "object",
+            "description" : "Undeploys a service from the cluster. Note: This is only enabled in case the instance is running in DEV or QA mode, never in PROD mode!",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the service to be undeployed."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
           },
           "set.body" : {
             "type" : "object",
@@ -5304,7 +5565,7 @@
               "reportFormat" : {
                 "type" : "string",
                 "description" : "The format of the resulting test report. Possible values: json (default), junit",
-                "default" : "junit"
+                "default" : "json"
               },
               "excludeMethods" : {
                 "type" : "string",
