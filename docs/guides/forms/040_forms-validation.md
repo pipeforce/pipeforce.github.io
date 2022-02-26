@@ -102,7 +102,7 @@ Make sure the given input is an email (advanced approach with regex):
 ```
 
 
-If the form is created using workflow form, then one of the following are ways which can be used to implement the required validation rule:
+If the form is created using workflow form, then one of the following are ways which can be used to implement the "required" validation rule:
 
 1. Local Camunda Modeler:
 
@@ -118,4 +118,4 @@ If the form is created using workflow form, then one of the following are ways w
 </camunda:formField>
 ```
 
-Here, we used `<camunda:constraint name="required" />` to implement the required validation rule.
+Here, we used `<camunda:constraint name="required" />` to implement the "required" validation rule.
