@@ -154,7 +154,7 @@ $> java -jar pipeforce-cli.jar setup advanced
 This will start the setup wizard with advanced settings.
 
 :::tip CLI Reference Documentation
-For further information about how to use the CLI tool, see the [CLI Reference Documentation](../api/cli.md).
+For further information about how to use the CLI tool, see the [CLI Reference Documentation](../api/cli).
 :::
 
 ## 3 - Create a PIPEFORCE workspace
