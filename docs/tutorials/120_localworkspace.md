@@ -23,7 +23,7 @@ At first, before you can setup your local workbench, you have to make sure that 
 *   [**Visual Studio Code**](https://code.visualstudio.com/download) or any similar IDE which supports YAML, JSON and XML editing. We highly recommend VS Code, since it has good integration capabilities with all required toolings.  
 
 
-### Install Java 8
+### Install Java >= 8
 
 
 Open your terminal and verify that you have a Java runtime version >= 1.8 installed:
@@ -88,21 +88,20 @@ In order to create and publish resources like apps, workflows, forms, lists or p
 
 ### Check Java
 
-In order to install this tool, first make sure you have a working Java version installed locally by opening up a terminal window and typing in this command:
+In order to install this tool, first make sure you have a working Java version >= 8 installed locally by opening up a terminal window and typing in this command:
 
 ```bash
 $> java -version
 ```
 
-In case the current Java version is shown, everything is fine. Otherwise you need to install Java first. To do so, please refer to the setup section at the beginning of this guide.
+In case the current Java version is >= 1.8, everything is fine. Otherwise you need to install Java first. To do so, please refer to the setup section at the beginning of this guide.
 
 ### Install pipeforce-cli
 
-After you have made sure that Java is installed and is running correctly, you can download the latest version of the cli tool by clicking this link:
+After you have made sure that Java is installed and is running correctly, you can download the latest version of the cli tool **[here](https://github.com/logabit/pipeforce-cli/releases/latest)**.
 
-**[https://downloads.pipeforce.io/pipeforce-cli/](https://downloads.pipeforce.io/pipeforce-cli/)**
 
-Select the jar file with latest version and download it to your computer.
+Select the `pipeforce-cli.jar` and download it to your computer.
 
 After this, open a new terminal / command line window and move to the folder where you downloaded the file. Usually, this is the Download folder (as shown in this example for Mac and could differ for your operating system):
 
@@ -113,14 +112,10 @@ $> cd /Users/username/Downloads
 Now, install the cli tool by executing this command:
 
 ```bash
-$> java -jar pipeforce-cli-latest.jar setup
+$> java -jar pipeforce-cli.jar setup
 ```
 
-Replace `latest` by the version number of the downloaded file.
-
-You will then be asked to install the tool. Select `yes`.
-
-Also a setup wizard is started automatically with these questions:
+A setup wizard will be started automatically with these questions:
 
 ```bash
 $> Namespace:
@@ -130,7 +125,7 @@ Type in your customer namespace, and press enter. This is the prefix name of you
 
 ![](../img/namespace.png)
 
-You got this link with your trial or production instance. If unsure, ask your sales manager for your namespace.
+You got this link with your trial or production instance. If unsure, ask your manager for your namespace.
 
 ```bash
 $> Username:
@@ -148,31 +143,69 @@ Done.
 
 Finally, the PIPEFORCE CLI tool was successfully installed to your home folder `$USER_HOME/pipeforce`, and you can start creating your workflow apps. To do so, see the next steps in this guide.
 
-## 3 - Open the PIPEFORCE workspace
+We highly recommend to add the folder `$USER_HOME/pipeforce/pipeforce-cli/bin` to the path variables of your operating system. 
 
-After successful installation, you can find the PIPEFORCE workspace folder under `$USER_HOME/pipeforce`, whereas `$USER_HOME` depends on your underlying operating system and username.
+In case you're an advanced developer or you would like to change the default connection settings on setup, use this command instead:
 
-![](../img/workspace-files.png)
+```
+$> java -jar pipeforce-cli.jar setup advanced
+```
+
+This will start the setup wizard with advanced settings.
+
+:::tip CLI Reference Documentation
+For further information about how to use the CLI tool, see the [CLI Reference Documentation](../api/cli).
+:::
+
+## 3 - Create a PIPEFORCE workspace
+
+In order to start development, you have to create a PIPEFORCE workspace first. Such a workspace is a source repository where all of your development resources for particular PIPEFORCE apps reside.
+
+In order to create such a workspace, follow these steps:
+
+At first create a new, empty folder, for example under this path:
+
+```
+> mkdir -p /Users/username/pipeforce/repos/my-repo
+```
+
+Initialize this folder by calling the init command inside:
+```
+> cd /Users/username/pipeforce/repos/my-repo
+> pi init
+```
+
+This creates the necessary `src` folder structure, a `.pipeforce` folder for settings and caching and the VS Code workbench file.
+
+Finally you can open VS Code using these commands, or by double clicking the `PIPEFORCE.code-workspace`:
+
+```
+> cd /Users/username/pipeforce/repos/my-repo
+> code .
+```
+
+In case you are using a different editor, please refer to its documentation how to setup a new repository / project with it.
 
 Inside this folder, a file called `PIPEFORCE.code-workspace` is placed. Double-click it to start the VS Code with the PIPEFORCE workspace folder pre-selected for you.
 
-You should then see a VS Code window similar to this:
-
 ![](../img/vscode-workspace.png)
 
-At the left, you can see all the files and folders from your `$USER_HOME/pipeforce` folder. The meaning of these files and folders are:
+At the left, you can see at least the `src`  folder from your repository. The meaning of these files and folders are. This folder will contain all source files.
 
-*   **conf** : Contains the configuration files for your local environment.
-    
-*   **log** : Contains the log files of your local environment.
-    
-*   **src** : Will contain the workflow apps you will create. This will be typically the place where you gonare going to create and maintain all of your workflow and integration configurations.
-    
-*   **tool** : Contains any tools like the cli for example.
-    
-*   **pi** (or pi.bat on Windows) : Starts the PI CLI.
-    
-*   PIPEFORCE.code-workspace : The VS Code workspace file to open the workspace in VS Code (by default hidden in this view).
+## 4 - Create Git repository
+
+In order to put the repository under source control, it is best practise to create a Git repository with same name and push all your changes there.
+
+1. Create a new repository online. For example with name `my-repo`.
+2. Execute these commands in order to push your PIPEFORCE sources:
+
+```
+git init
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:<orga>/my-repo.git
+git push -u origin master
+```
     
 
-**Congratulations! You have successfully setup your local low-code workbench. Now you can start and create your first app.**
+**Congratulations! You did successfully setup your local PIPEFORCE repository. **
