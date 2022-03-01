@@ -122,10 +122,91 @@ Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPE
 4.  After a while you should receive an email similar to this:  
     
     ![](../../img/grafik-20210802-072933.png)
-    
+
 5.  Done.
 
-## 5 - Advanced template for email pipeline 
+## 5 - Use dynamic email receiver
+
+Currently, the email is sent always to the address you have entered in the pipeline. However, in case the form is deployed for multiple users, the emails should be sent always to the person who submitted the vacation request (i.e. Requester). To enhance the workflow accordingly, follow these steps:
+
+Your new workflow should look like this (go ahead and add the respective tasks and form fields in the workflow):
+
+![](../../img/workflow-form.PNG)
+
+
+In your trigger pipeline, you can directly add the values you would like to define as process variables. With those process variables, you can work in subsequent steps of the workflow. In our example, we define the logged in user, who is starting the workflow as the Requester. To do so, follow these steps:
+
+1.  Go to LOW CODE → Workbench and create your trigger pipeline `global/app/vacation-request/pipeline/trigger-vacation-request`.
+    
+2.  Copy and paste this pipeline snippet to the pipeline (replace any existing content):
+    
+
+```yaml
+pipeline:
+
+  - event.listen:
+      key: "property.created"
+      filter: "#{body.target.key.contains('global/app/YOUR_APP/object/vacationrequest/v1/instance')}"
+
+  - set.var:
+      key: "formData"
+      value: "#{@property.lazy(body.target.key)}"
+
+  - workflow.start:
+      key: "YOUR_APP_vacation-request"
+      workflowModelInstanceKey: "#{body.target.key}"
+      variables: "#{{
+        'vacationStartDate': @date.parseToInstant(vars.formData['vacationStartDate']),
+        'vacationEndDate': @date.parseToInstant(vars.formData['vacationEndDate']),
+        'requester': @user.email()
+      }}"
+```
+
+As you can see at the bottom of the pipeline, in addition to the `vacation start date` and the `vacation end date`, you have now defined a new process variable `requester`, and matched the email of the user who started the workflow to this variable.
+
+### Modify your email pipeline
+
+You can now modify your email pipelines to sent notifications about approved and declined emails accordingly:
+
+1.  Go to LOW CODE → Workbench and create your approved email pipeline `global/app/vacation-request/pipeline/send-approved-email`.
+    
+2.  Copy and paste this pipeline snippet to the pipeline (replace any existing content):
+    
+
+```yaml
+pipeline:
+ - mail.send:
+    to: "#{vars.requester}"
+    subject: "Vacation Request Approved"
+    message: |
+        Hello, your vacation request from #{@date.format(vars.vacationStartDate, 'dd/MM/YYYY')} 
+        to #{@date.format(vars.vacationEndDate, 'dd/MM/YYYY')} was approved.
+```
+
+Adapt your declined email in the same way.
+
+1.  Go to LOW CODE → Workbench and create your approved email pipeline `global/app/YOUR_APP/pipeline/send-declined-email`
+    
+2.  Copy and paste this pipeline snippet to the pipeline (replace any existing content):
+    
+
+```yaml
+pipeline:
+ - mail.send:
+    to: "#{vars.requester}"
+    subject: "Vacation Request Declined"
+    message: |
+        Hello, your vacation request from #{@date.format(vars.vacationStartDate, 'dd/MM/YYYY')} 
+        to #{@date.format(vars.vacationEndDate, 'dd/MM/YYYY')} was declined.
+```
+
+The new task form of the Reviewer should now look like this:
+
+![](../../img/Bildschirmfoto.png)
+
+If you now start the workflow, you are able to see the requester email in the task form of the Reviewer.
+
+## 6 - Advanced template for email pipeline 
 
 ```json
 headers:
@@ -162,4 +243,3 @@ pipeline:
 ```
 
 Here, the email is sent to all "reviewer" members in iam.group.members by using `foreach`, which basically loops over all of the "reviewer" members.
-
