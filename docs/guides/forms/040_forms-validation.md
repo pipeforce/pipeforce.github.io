@@ -56,6 +56,11 @@ The given field is a required one. Therefore, make sure this field has a value. 
 }
 ```
 
+This will produce the `Field is required!` message if the respective field is not given, as seen below: 
+
+![](../../img/form-validation-required.PNG)
+
+
 Make sure that the given input has not more than 150 characters:
 
 ```json
@@ -95,3 +100,22 @@ Make sure the given input is an email (advanced approach with regex):
   "message": "Field must contain a valid email!" 
 }
 ```
+
+
+If the form is created using workflow form, then one of the following are ways which can be used to implement the "required" validation rule:
+
+1. Local Camunda Modeler:
+
+![](../../img/form-validation-required-local-camunda.PNG)
+
+2. BPMN in Online Workbench:
+
+```xml
+<camunda:formField id="v1" label="v1" type="string">
+  <camunda:validation>
+    <camunda:constraint name="required" />
+  </camunda:validation>
+</camunda:formField>
+```
+
+Here, we used `<camunda:constraint name="required" />` to implement the "required" validation rule.
