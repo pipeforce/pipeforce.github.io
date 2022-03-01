@@ -38,7 +38,17 @@ The input of the user is typically given by filling-out a form.
 
 The form can be defined using the “Forms” tab in the modeller.
 
-![](../../img/grafik-20201023-112343.png)
+![](../../img/workflow-user-task.png)
+
+User tasks can also be assigned in the workflow to specific users and user groups, by using the general tab. There is an "Assignment" section below the Description field. In this section, the entries need to be entered in the following format:
+
+Assignee: Username
+
+Candidate User: Username
+
+Candidate Group: Groupname
+
+![](../../img/workflow-user-task-general.png)
 
 ## System Task
 
