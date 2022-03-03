@@ -106,7 +106,7 @@ If the form is created using workflow form, then one of the following are ways w
 
 1. Local Camunda Modeler:
 
-![](../../img/form-validation-required-local-camunda.PNG)
+![](../../img/form-validation-required-local-camunda.png)
 
 2. BPMN in Online Workbench:
 
