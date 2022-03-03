@@ -7,7 +7,7 @@ sidebar_label: Getting Started
 
 Welcome to the PIPEFORCE Documentation.
 
-PIPEFORCE is the first workflow automation and integration platform that is built entirely cloud-native (i.e. runs 100% inside Kubernetes using microservices and messaging) from ground-up. It covers all aspects to create modern and best-of-breed enterprise solutions. It helps to create, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation on a single platform using low-code.
+PIPEFORCE is the first process automation and integration platform that is built entirely cloud-native. It runs 100% inside Kubernetes using microservices and messaging. Designed ground-up that way. It covers all aspects to create modern and best-of-breed enterprise solutions. It helps to create, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation on a single platform using low-code.
 
 ## What is PIPEFROCE for?
 

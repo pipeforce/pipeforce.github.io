@@ -21,6 +21,36 @@ When working with task forms via the Online-Workflow-Modeler, you can select the
 
 ![](../../img/form-fields.det.png)
 
+## Field Attributes
+
+For defining title of the field, we use the "title" attribute. For defining the message directly in form field like "Betrag in EUR", we use the `placeholder` attribute:
+
+**In schema:**
+
+```yaml
+  "Field": {
+    "title": "Frühstück"
+    "type": "number"
+    "placeholder": "Betrag in EUR"
+  }
+```
+
+![](../../img/form-field-message.png)
+
+For defining the message as tooltip like "Alle Informationen zur Reise erfasst", we use the `description` attribute:
+
+**In schema:**
+
+```yaml
+  "Field": {
+    "title": "Alle Informationen zur Reise erfasst",
+    "description": "Alle Informationen zur Reise erfasst",
+    "type": "boolean"
+  }
+```
+
+![](../../img/form-field-tooltip.png)
+
 ## Static drop down values for form fields
 
 In case you want to show a dropdown list in a field of a trigger form, you have the following options:

@@ -3300,6 +3300,23 @@
             },
             "required" : [ ]
           },
+          "job.list" : {
+            "type" : "object",
+            "description" : "Lists all scheduled pipeline jobs.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ ]
+          },
           "jpa.query" : {
             "type" : "object",
             "description" : "Executes a JPA query and returns the result as JSON in the body. NOTE: This pipe is primarily meant for support to monitor the system. Its not accessible by default accounts! This can change at any time without notice!",
