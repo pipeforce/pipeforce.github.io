@@ -1,4 +1,4 @@
-# Email Pipelines
+# Email Pipelines & Templates
 
 We can create templates (in html) for emails, and use them in our pipelines. Task Links can also be included into the emails through templates and pipelines.
 
