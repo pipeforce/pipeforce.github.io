@@ -28,9 +28,9 @@ function HomepageHeader() {
           <p class="parameter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to: me@email.com</p>
         </div>
       </div> */}
-        <span className={styles.message}><b>Open</b> Platform for <b>Low Code</b> workflow <b>Automation</b> and <b>Integration</b>.</span>
+        <span className={styles.message}><b>Open</b> Platform for <b>Process Automation</b> and <b>Integration</b> with <b>Kubernetes</b>.</span>
         <br /><br />
-        <p className="hero__subtitle">Welcome to the documentation space for Low Coders and Professional Developers.</p>
+        <p className="hero__subtitle">Documentation space for <b>Low Coders</b> and <b>Professional Developers</b>.</p>
         <br />
         <div className={styles.buttons}>
           <Link
@@ -41,8 +41,8 @@ function HomepageHeader() {
           &nbsp; &nbsp;
           <Link
             className="button button--primary-light button--lg"
-            to="https://trial.pipeforce.org">
-            Start Trial
+            to="https://try.pipeforce.org">
+            Try Now!
           </Link>
         </div>
       </div>
@@ -54,8 +54,8 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title="Developer Documentation"
+      description="Developer Documentation">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

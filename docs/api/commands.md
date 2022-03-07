@@ -4,7 +4,8 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 27/02/2022 by CommandComplianceTest -->
+
+<!-- Generated: 02/03/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -4778,6 +4779,44 @@ http://host/api/v3/command/job?cron=<value>&stop=<value>&id=<value>&if=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command job cron=<value> stop=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## job.list
+----------   
+Lists all scheduled pipeline jobs.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=job.list)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - job.list:  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/job.list?id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command job.list id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

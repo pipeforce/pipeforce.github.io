@@ -60,8 +60,17 @@ This will produce the `Field is required!` message if the respective field is no
 
 ![](../../img/form-validation-required.PNG)
 
+Make sure that the given number input has maximum range:
 
-Make sure that the given input has not more than 150 characters:
+```json
+{
+  "type": "js",
+  "rule": "val < 1000",
+  "message": "Number cannot be or exceed 1000"
+}
+```
+
+Make sure that the given string input has not more than 150 characters:
 
 ```json
 { 
