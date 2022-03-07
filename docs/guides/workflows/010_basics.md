@@ -40,13 +40,7 @@ The form can be defined using the “Forms” tab in the modeller.
 
 ![](../../img/workflow-user-task.png)
 
-User tasks can also be assigned in the workflow to specific users and user groups, by using the general tab. There is an "Assignment" section below the Description field. In this section, the entries need to be entered in the following format:
-
-Assignee: Username
-
-Candidate User: Username
-
-Candidate Group: Groupname
+User tasks can also be assigned in the workflow to specific users and user groups, by using the general tab. This can be done in the "Assignment" section below the "Description" field. You have to fill out these fields for this: Assignee, Candidate Users, and Candidate Groups. Here, multiple users and user groups can also be given by adding commmas in between their user-names and group-names respectively. 
 
 ![](../../img/workflow-user-task-general.png)
 
