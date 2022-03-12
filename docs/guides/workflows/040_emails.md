@@ -205,3 +205,5 @@ The new task form of the Reviewer should now look like this:
 ![](../../img/Bildschirmfoto.png)
 
 If you now start the workflow, you are able to see the requester email in the task form of the Reviewer.
+
+For more guide on email pipelines and templates, please see: **[Email Pipelines](../email)**
