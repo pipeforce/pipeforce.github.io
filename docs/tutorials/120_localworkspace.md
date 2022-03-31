@@ -192,7 +192,7 @@ Inside this folder, a file called `PIPEFORCE.code-workspace` is placed. Double-c
 
 At the left, you can see at least the `src`  folder from your repository. The meaning of these files and folders are. This folder will contain all source files.
 
-## 4 - Create Git repository
+## 4 - Create Git repository (optional)
 
 In order to put the repository under source control, it is best practise to create a Git repository with same name and push all your changes there.
 
