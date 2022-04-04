@@ -9,7 +9,7 @@ This is the reason why PIPEFORCE uses [BPMN](https://en.wikipedia.org/wiki/Busin
 
 Lets see in this tutorial how you can design, discuss and run such workflows.
 
-## 2 - The vacation request workflow
+## 1 - The vacation request workflow
 
 The workflow we are going to create in this tutorial will look like this:
 
@@ -34,7 +34,7 @@ Even if this workflow is a simple one, it contains already many of the most impo
 
 With these elements, you can already create many different types of workflows and run them immediately in PIPEFORCE.
 
-## 3 - Create the pipelines
+## 2 - Create the pipelines
 
 As you could see in the workflow picture above, there are two **service tasks**, both of which will send an email. A service task is a task, which is typically not executed by a human but by a system (typically called a “service”). In PIPEFORCE, this is done by mapping to a persisted pipeline. Whenever the service task is executed, it delegates to this pipeline, executes it and then returns. So lets create the two pipelines we need later to map with the two service tasks:
 
