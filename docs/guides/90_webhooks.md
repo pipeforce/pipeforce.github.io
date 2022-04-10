@@ -8,9 +8,7 @@ In PIPEFORCE, you can create **custom** webhooks. When called, it produces an in
 Replace any url **``https://hub-try.pipeforce.org``** from the examples shown on this page by the url of your PIPEFORCE instance.
 :::
     
-## Incoming Webhook
-
-An incoming webhook is an url endpoint which can be called by an external system to trigger a pipeline inside PIPEFORCE. The url of such an incoming webhook has a format similar to this:
+The url of such an PIPEFORCE webhook has a format similar to this:
 
 ```
 https://hub-try.pipeforce.org/api/v3/command/webhook.receive?token=<token>
@@ -21,12 +19,14 @@ https://hub-try.pipeforce.org/api/v3/command/webhook.receive?token=<token>
 :::
 
 :::info
+*   The token is sometimes also referred to as the uuid, the unique id, of a webhook. 
+:::
+
+:::info
 *   It's also possible to place the `token` param as request header (recommended, because it is more secure).
 :::
-    
-### Create Webhook
 
-#### Quick guide to create a webhook
+### Quick guide to create a webhook
 
 1.  Create a new webhook endpoint by using the command `webhook.put`.
     
@@ -39,7 +39,7 @@ https://hub-try.pipeforce.org/api/v3/command/webhook.receive?token=<token>
 5.  To call a webhook from outside, use the command `webhook.receive` and the webhook's token, for example:  
     `https://hub-try.pipeforce.org/api/v3/command/webhook.receive?token=<token>`
 
-#### Create Webhook via CLI
+### Create Webhook via CLI
 
 1.  In order to create and setup a new webhook, you can simply use the command `webhook.put` and the CLI:
     
@@ -72,13 +72,13 @@ Since a webhook is secured by its token (= uuid) which is a secret and hard to d
 PIPEFORCE regularly scans the internet for this token, and if it finds it, the associated webhooks will be deactivated for security reasons. So, never make it publicly available!
 :::
 
-#### Setup Webhook via Portal
+### Create Webhook via Portal
 
 You can also use the command form LOW CODE → Commands → `webhook.put` in the portal to create a webhook without the CLI:
 
 ![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-134322.png?api=v2)
 
-### Trigger Webhook
+## Trigger Webhook
 
 After you have setup the webhook successfully, it can be triggered (or called) from the outside.
 
@@ -88,7 +88,7 @@ To do so, send a GET or POST HTTP request to the webhook url which was returned 
 
 In order to secure the **webhookUrl**, you should always prefer a **HTTPS connection** between the two systems, and send the token parameter in the body of a **POST** request, or as HTTP header. PIPEFORCE supports all three methods. But, it mainly depends on the caller of the webhook, whether this external system supports them.
 
-### Listening for Webhook
+## Listening for Webhook
 
 After you have successfully setup the webhook, any time the webhook url is called from the outside, a new message is produced internally inside PIPEFORCE, which can then be consumed by any pipeline. To do so, use the `event.listen` or `message.receive` command to listen for such new event messages. Here’s an example which sends an email whenever a new lead in Salesforce was created using a webhook with the `eventKey` =`webhook.salesforce.lead.created`:
 
@@ -118,9 +118,7 @@ Since webhooks allow executing pipelines, they can be very powerful. This power 
 
 :::
 
-### List all Webhooks
-
-#### List all Webhooks via CLI
+### List all Webhooks via CLI
 
 To list all existing webhooks, you can use the `webhook.get` command:
 
@@ -136,7 +134,7 @@ In order to get the details of a single webhook, use the `webhook.get` with the 
 pi command webhook.get uuid=<yourWebhookUuid>
 ```
 
-#### List all Webhooks via Portal
+### List all Webhooks via Portal
 
 Only: ENTERPRISE CORPORATE
 
@@ -144,9 +142,8 @@ In the portal, go to LOW CODE → Commands → webhook.get, and execute the form
 
 ![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-140005.png?api=v2)![](https://logabit.atlassian.net/wiki/download/attachments/2151288935/image-20211029-140117.png?api=v2)
 
-### Edit or delete webhook 
 
-#### Edit or delete via CLI
+### Edit or delete via CLI
 
 In order to edit an existing webhook, you can use the `webhook.put` command, and set the uuid (= token) of the webhook to edit. For example:
 
@@ -162,11 +159,11 @@ pi command webhook.delete uuid=abcdef
 
 And then, set the uuid of the webhook you want to delete.
 
-#### Edit or delete via Portal
+### Edit or delete via Portal
 
 To edit or delete a webhook using the portal, go to Commands → `webhook.put` or Commands -> `webhook.delete`, and execute the form accordingly.
 
-### Receiving Files
+## Receiving Files
 
 It is also possible to send a playload, like multiple files, with a webhook. To do so, execute the request as multipart POST with the body formatted as `multipart/form-data`. For example:
 
