@@ -97,7 +97,7 @@ pipeline:
  - mail:
      to: name@company.tld
      subject: "New lead was created!"
-     body: "#{convert.fromBase64(body.origin)}"
+     body: "#{@convert.fromBase64(body.origin)}"
 ```
 
 The input body of the `event.listen` command is the payload of the event message submitted from the outside caller.
@@ -105,7 +105,7 @@ The input body of the `event.listen` command is the payload of the event message
 In case the sender has sent some payload in the body of the webhook request, this payload is made available for you as base64 encoded string in the `origin` field of the event. To access this data, you have to convert this value as shown in this example:
 
 ```
-#{convert.fromBase64(body.origin)}
+#{@convert.fromBase64(body.origin)}
 ```
 
 For security reasons, by default, the webhook pipeline is executed with very limited `anonymousUser` privileges. So, make sure that you use only commands in your pipeline which can be executed by this user. In case you need more privileges, you can use the `iam.run.as` command to switch to the privileges of the given user before executing the command. See the IAM portal for the permissions (or roles) of a given user. Also see [Groups, Roles, and Permissions](https://logabit.atlassian.net/wiki/spaces/DEVEX/pages/2151288874/Groups%2C+Roles%2C+Permissions) for more details on user privileges / permissions.
