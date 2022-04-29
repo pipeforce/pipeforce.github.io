@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 02/03/2022 by CommandComplianceTest -->
+<!-- Generated: 19/04/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -1135,134 +1135,6 @@ http://host/api/v3/command/content.get?uri=<value>&id=<value>&if=<value>&output=
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command content.get uri=<value> id=<value> if=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
-
-  
-
-## credentials.delete
-----------   
-Deletes a credentials entry.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.delete)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`name` | String | true | null | The name of the credentials entry to delete.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - credentials.delete:  
-      name: <value>  
-      id: <value>  
-      if: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/credentials.delete?name=<value>&id=<value>&if=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command credentials.delete name=<value> id=<value> if=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
-
-  
-
-## credentials.get
-----------   
-Lists the metadata of all available credentials entries.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.get)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`name` | String | false | null | The name of a single credentials to return. If null or empty, all credentials will be returned.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - credentials.get:  
-      name: <value>  
-      id: <value>  
-      if: <value>  
-      output: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/credentials.get?name=<value>&id=<value>&if=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command credentials.get name=<value> id=<value> if=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
-
-  
-
-## credentials.put
-----------   
-Creates a new credentials entry.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=credentials.put)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`format` | String | true | null | The format of the secret to store. One of: secret-text, bearer, header, username-password.
-`name` | String | true | null | The unique name of the credentials.
-`secret` | String | true | null | The secret part of the credentials (for example the username:password or Bearer TOKEN).
-`timeToLive` | String | false | null | The time to live in minutes. After this time, the credentials will be deleted.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - credentials.put:  
-      format: <value>  
-      name: <value>  
-      secret: <value>  
-      timeToLive: <value>  
-      id: <value>  
-      if: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/credentials.put?format=<value>&name=<value>&secret=<value>&timeToLive=<value>&id=<value>&if=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command credentials.put format=<value> name=<value> secret=<value> timeToLive=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -2707,7 +2579,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## event.send
 ----------   
-Sends a new event to inform listeners in pipelines.
+Sends a new event to inform listeners in pipelines and microservices.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=event.send)
 
@@ -5340,6 +5212,92 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+## message.receive
+----------   
+Listens for cluster internal messages matching the given criteria. If matched, executes the pipeline commands below this command.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.receive)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | The routing key pattern to listen for.
+`exchange` | String | false | null | The exchange to be used. If null, the default exchange will be used.
+`queue` | String | false | null | The queue to receive messages from. If null, the default queue will be used.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - message.receive:  
+      key: <value>  
+      exchange: <value>  
+      queue: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command message.receive key=<value> exchange=<value> queue=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## message.send
+----------   
+Sends a new message to the message service. Uses the pipeline message body as payload.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.send)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | The routing key to send the message as.
+`exchange` | String | false | null | The exchange to be used. If null, the default exchange will be used.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - message.send:  
+      key: <value>  
+      exchange: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/message.send?key=<value>&exchange=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command message.send key=<value> exchange=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
 ## microsoft.teams.send
 ----------   
 Sends a message to a Microsoft Teams channel.Note: This command needs an additional license + plugin. This is here only for documentation purposes. Ask support@pipeforce.io for more information.
@@ -6618,6 +6576,60 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+## property.search
+----------   
+Returns all properties of given search criteria.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.search)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`keyFilter` | String | true | null | They key pattern to pre-select the properties to search in.
+`valueFilter` | String | false | null | The search filter to search inside the value of the properties. This value is case in-sensitive.
+`typeFilter` | String | false | null | The type of the property. Will find any properties containing this type. This value is case in-sensitive.
+`offset` | Integer | false | null | The 0-based offset of the search result to return. If not set, no offset is used.
+`page` | Integer | false | null | The 1-based index of the page to return. Does the offset calculation automatically. If this param is given, offset will be ignored.
+`maxResults` | Integer | false | 30 | The number of results to return. Note: The maximum is 100 results per call because of performance reasons. In case there are more results, use the offset and pagination to retrieve them. If this parameter is set to a value > 100 it will be reset to 100.
+`info` | Boolean | false | false | If set to true, the result will also include information about the request. This is useful for example for pagination.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.search:  
+      keyFilter: <value>  
+      valueFilter: <value>  
+      typeFilter: <value>  
+      offset: <value>  
+      page: <value>  
+      maxResults: <value>  
+      info: <value>  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.search?keyFilter=<value>&valueFilter=<value>&typeFilter=<value>&offset=<value>&page=<value>&maxResults=<value>&info=<value>&id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.search keyFilter=<value> valueFilter=<value> typeFilter=<value> offset=<value> page=<value> maxResults=<value> info=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
 ## property.send.delivery
 ----------   
 Sends specified property including attachments as pipeforce delivery.
@@ -7264,6 +7276,134 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+## secret.delete
+----------   
+Deletes a credentials entry.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=secret.delete)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | true | null | The name of the credentials entry to delete.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - secret.delete:  
+      name: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/secret.delete?name=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command secret.delete name=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## secret.get
+----------   
+Lists the metadata of all available credentials entries.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=secret.get)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of a single credentials to return. If null or empty, all credentials will be returned.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - secret.get:  
+      name: <value>  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/secret.get?name=<value>&id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command secret.get name=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## secret.put
+----------   
+Creates a new credentials entry.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=secret.put)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`format` | String | true | null | The format of the secret to store. One of: secret-text, bearer, header, username-password.
+`name` | String | true | null | The unique name of the credentials.
+`secret` | String | true | null | The secret part (for example the username:password or Bearer TOKEN).
+`timeToLive` | String | false | null | The time to live in minutes. After this time, the credentials will be deleted.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - secret.put:  
+      format: <value>  
+      name: <value>  
+      secret: <value>  
+      timeToLive: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/secret.put?format=<value>&name=<value>&secret=<value>&timeToLive=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command secret.put format=<value> name=<value> secret=<value> timeToLive=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
 ## server.info
 ----------   
 Returns information about the current server. For example the version it is running under. Returns a flat JSON with these keys: status, namespace, domain, edition, stage, tag, build, version, versionMajor, versionMinor, versionBugfix
@@ -7304,59 +7444,9 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## service.deploy
-----------   
-Deploys a new service into the cluster.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.deploy)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`name` | String | false | null | The name of the service.
-`image` | String | false | null | The repo path of the image to be deployed. If empty, no image will be deployed (just the service slot created).
-`port` | Integer | false | null | The port the running service accepts requests.
-`ingress` | Boolean | false | null | Create an ingress for this service?
-`imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - service.deploy:  
-      name: <value>  
-      image: <value>  
-      port: <value>  
-      ingress: <value>  
-      imagePullSecret: <value>  
-      id: <value>  
-      if: <value>  
-      credentials: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/service.deploy?name=<value>&image=<value>&port=<value>&ingress=<value>&imagePullSecret=<value>&id=<value>&if=<value>&credentials=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command service.deploy name=<value> image=<value> port=<value> ingress=<value> imagePullSecret=<value> id=<value> if=<value> credentials=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
-
-  
-
 ## service.start
 ----------   
-Starts a service defined in services config.
+Starts a new microservice in the cluster.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=service.start)
 
@@ -7366,9 +7456,15 @@ Starts a service defined in services config.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`name` | String | true | null | The name of the service to start. 
+`name` | String | false | null | The name of the service.
+`image` | String | false | null | The repo path of the image to be deployed. If empty, no image will be deployed (just the service slot created). In case the image name starts with prefix 'pipeforce-registry/' the image will be loaded from the default PIPEFORCE registry for this namespace.
+`port` | Integer | false | null | The port the running service accepts requests.
+`ingress` | Boolean | false | null | Create an ingress for this service?
+`imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
+`env` | String | false | null | Environment variables to be applied to the service container.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -7376,19 +7472,25 @@ Name | Type | Required | Default | Description
 pipeline:  
   - service.start:  
       name: <value>  
+      image: <value>  
+      port: <value>  
+      ingress: <value>  
+      imagePullSecret: <value>  
+      env: <value>  
       id: <value>  
       if: <value>  
+      credentials: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.start?name=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/service.start?name=<value>&image=<value>&port=<value>&ingress=<value>&imagePullSecret=<value>&env=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.start name=<value> id=<value> if=<value>  
+pi command service.start name=<value> image=<value> port=<value> ingress=<value> imagePullSecret=<value> env=<value> id=<value> if=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7438,7 +7540,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## service.stop
 ----------   
-Stops one the service.
+Stops a microservice from the cluster.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=service.stop)
 
@@ -7448,9 +7550,10 @@ Stops one the service.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`name` | String | true | null | The name of the service. 
+`name` | String | false | null | The name of the microservice to be stopped.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -7460,59 +7563,18 @@ pipeline:
       name: <value>  
       id: <value>  
       if: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/service.stop?name=<value>&id=<value>&if=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command service.stop name=<value> id=<value> if=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
-
-  
-
-## service.undeploy
-----------   
-Undeploys a service from the cluster. Note: This is only enabled in case the instance is running in DEV or QA mode, never in PROD mode!
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.undeploy)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`name` | String | false | null | The name of the service to be undeployed.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - service.undeploy:  
-      name: <value>  
-      id: <value>  
-      if: <value>  
       credentials: <value>  
 ```  
 Learn more: [Pipeline](../guides/pipeline). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.undeploy?name=<value>&id=<value>&if=<value>&credentials=<value>  
+http://host/api/v3/command/service.stop?name=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.undeploy name=<value> id=<value> if=<value> credentials=<value>  
+pi command service.stop name=<value> id=<value> if=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -8728,7 +8790,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `eventKey` | String | true | null | Id of the event to be fired when hook was called.
 `pipeline` | String | false | null | DEPRECATED. Stored pipeline reference key.
-`uuid` | String | false | null | The id of an existing webhook. If given, tries to update this webhook instead of creating a new one.
+`uuid` | String | false | null | The id (=token) of an existing webhook. If given, tries to update this webhook instead of creating a new one.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
@@ -8772,7 +8834,8 @@ Runs a webhook identified by its uuid.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`uuid` | String | true | null | The uuid of the webhook.
+`uuid` | String | false | null | The uuid of the webhook (deprecated, use token instead).
+`token` | String | true | null | The unique token of the webhook. Can passed as request param or as header (recommended) to call the webhook from outside.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
@@ -8782,6 +8845,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - webhook.receive:  
       uuid: <value>  
+      token: <value>  
       id: <value>  
       if: <value>  
 ```  
@@ -8789,56 +8853,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.receive?uuid=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.receive uuid=<value> id=<value> if=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
-
-  
-
-## webhook.send
-----------   
-Sends a webhook message to an external system. Returns a JSON in the body like {result:STATUS} whereasSTATUS is the response string sent back by the webhook target system. Usually this is 'ok' if everything was OK. Consult the documentation of the webhook target system about the STATUS codes.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.send)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`url` | String | true | null | The webhook url to post the message to.
-`message` | String | false | null | The message to be send in the POST body to the webhook. Must be a valid JSON.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - webhook.send:  
-      url: <value>  
-      message: <value>  
-      id: <value>  
-      if: <value>  
-      output: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/webhook.send?url=<value>&message=<value>&id=<value>&if=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command webhook.send url=<value> message=<value> id=<value> if=<value> output=<value>  
+pi command webhook.receive uuid=<value> token=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

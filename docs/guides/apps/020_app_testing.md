@@ -146,7 +146,7 @@ You have multiple options to run tests stored in PIPEFORCE.
 
 ### Using a command
 
-You can use the [`test.run`](../api/commands.md#testrun) command to run the tests:
+You can use the [`test.run`](../docs/api/commands#testrun) command to run the tests:
 
 ```yaml
 pipeline:
@@ -261,4 +261,4 @@ When executing via CLI or command, the result will always be a test run report i
 
 You can run all of your remote tests also online using the Test Console. To do so, login to PIPEFORCE with your developer account and then in the `LOW CODE` section click on `Test Console` and then `Run Tests`. The test result is finally shown as a test report like this example shows:
 
-![](../img/test-console.png)
+![](../../img/test-console.png)
