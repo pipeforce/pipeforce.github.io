@@ -772,85 +772,6 @@
             },
             "required" : [ "uri" ]
           },
-          "credentials.delete" : {
-            "type" : "object",
-            "description" : "Deletes a credentials entry.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "name" : {
-                "type" : "string",
-                "description" : "The name of the credentials entry to delete."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
-              }
-            },
-            "required" : [ "name" ]
-          },
-          "credentials.get" : {
-            "type" : "object",
-            "description" : "Lists the metadata of all available credentials entries.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "name" : {
-                "type" : "string",
-                "description" : "The name of a single credentials to return. If null or empty, all credentials will be returned."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ ]
-          },
-          "credentials.put" : {
-            "type" : "object",
-            "description" : "Creates a new credentials entry.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "format" : {
-                "type" : "string",
-                "description" : "The format of the secret to store. One of: secret-text, bearer, header, username-password."
-              },
-              "name" : {
-                "type" : "string",
-                "description" : "The unique name of the credentials."
-              },
-              "secret" : {
-                "type" : "string",
-                "description" : "The secret part of the credentials (for example the username:password or Bearer TOKEN)."
-              },
-              "timeToLive" : {
-                "type" : "string",
-                "description" : "The time to live in minutes. After this time, the credentials will be deleted."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
-              }
-            },
-            "required" : [ "format", "name", "secret" ]
-          },
           "data.mapping" : {
             "type" : "object",
             "description" : "Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required.",
@@ -1847,7 +1768,7 @@
           },
           "event.send" : {
             "type" : "object",
-            "description" : "Sends a new event to inform listeners in pipelines.",
+            "description" : "Sends a new event to inform listeners in pipelines and microservices.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -3689,6 +3610,60 @@
             },
             "required" : [ ]
           },
+          "message.receive" : {
+            "type" : "object",
+            "description" : "Listens for cluster internal messages matching the given criteria. If matched, executes the pipeline commands below this command.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The routing key pattern to listen for."
+              },
+              "exchange" : {
+                "type" : "string",
+                "description" : "The exchange to be used. If null, the default exchange will be used."
+              },
+              "queue" : {
+                "type" : "string",
+                "description" : "The queue to receive messages from. If null, the default queue will be used."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "key" ]
+          },
+          "message.send" : {
+            "type" : "object",
+            "description" : "Sends a new message to the message service. Uses the pipeline message body as payload.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The routing key to send the message as."
+              },
+              "exchange" : {
+                "type" : "string",
+                "description" : "The exchange to be used. If null, the default exchange will be used."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "key" ]
+          },
           "microsoft.teams.send" : {
             "type" : "object",
             "description" : "Sends a message to a Microsoft Teams channel.Note: This command needs an additional license + plugin. This is here only for documentation purposes. Ask support@pipeforce.io for more information.",
@@ -4549,6 +4524,57 @@
             },
             "required" : [ "key" ]
           },
+          "property.search" : {
+            "type" : "object",
+            "description" : "Returns all properties of given search criteria.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "keyFilter" : {
+                "type" : "string",
+                "description" : "They key pattern to pre-select the properties to search in."
+              },
+              "valueFilter" : {
+                "type" : "string",
+                "description" : "The search filter to search inside the value of the properties. This value is case in-sensitive."
+              },
+              "typeFilter" : {
+                "type" : "string",
+                "description" : "The type of the property. Will find any properties containing this type. This value is case in-sensitive."
+              },
+              "offset" : {
+                "type" : "number",
+                "description" : "The 0-based offset of the search result to return. If not set, no offset is used."
+              },
+              "page" : {
+                "type" : "number",
+                "description" : "The 1-based index of the page to return. Does the offset calculation automatically. If this param is given, offset will be ignored."
+              },
+              "maxResults" : {
+                "type" : "number",
+                "description" : "The number of results to return. Note: The maximum is 100 results per call because of performance reasons. In case there are more results, use the offset and pagination to retrieve them. If this parameter is set to a value > 100 it will be reset to 100.",
+                "default" : "30"
+              },
+              "info" : {
+                "type" : "boolean",
+                "description" : "If set to true, the result will also include information about the request. This is useful for example for pagination.",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "keyFilter" ]
+          },
           "property.send.delivery" : {
             "type" : "object",
             "description" : "Sends specified property including attachments as pipeforce delivery.",
@@ -4945,6 +4971,85 @@
             },
             "required" : [ ]
           },
+          "secret.delete" : {
+            "type" : "object",
+            "description" : "Deletes a credentials entry.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the credentials entry to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "secret.get" : {
+            "type" : "object",
+            "description" : "Lists the metadata of all available credentials entries.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of a single credentials to return. If null or empty, all credentials will be returned."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secret.put" : {
+            "type" : "object",
+            "description" : "Creates a new credentials entry.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "format" : {
+                "type" : "string",
+                "description" : "The format of the secret to store. One of: secret-text, bearer, header, username-password."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The unique name of the credentials."
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "The secret part (for example the username:password or Bearer TOKEN)."
+              },
+              "timeToLive" : {
+                "type" : "string",
+                "description" : "The time to live in minutes. After this time, the credentials will be deleted."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "format", "name", "secret" ]
+          },
           "server.info" : {
             "type" : "object",
             "description" : "Returns information about the current server. For example the version it is running under. Returns a flat JSON with these keys: status, namespace, domain, edition, stage, tag, build, version, versionMajor, versionMinor, versionBugfix",
@@ -4966,9 +5071,9 @@
             },
             "required" : [ ]
           },
-          "service.deploy" : {
+          "service.start" : {
             "type" : "object",
-            "description" : "Deploys a new service into the cluster.",
+            "description" : "Starts a new microservice in the cluster.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -4978,7 +5083,7 @@
               },
               "image" : {
                 "type" : "string",
-                "description" : "The repo path of the image to be deployed. If empty, no image will be deployed (just the service slot created)."
+                "description" : "The repo path of the image to be deployed. If empty, no image will be deployed (just the service slot created). In case the image name starts with prefix 'pipeforce-registry/' the image will be loaded from the default PIPEFORCE registry for this namespace."
               },
               "port" : {
                 "type" : "number",
@@ -4991,6 +5096,10 @@
               "imagePullSecret" : {
                 "type" : "string",
                 "description" : "The optional name of the registry secret to be used in case it is a private registry."
+              },
+              "env" : {
+                "type" : "string",
+                "description" : "Environment variables to be applied to the service container."
               },
               "id" : {
                 "type" : "string",
@@ -5006,27 +5115,6 @@
               }
             },
             "required" : [ ]
-          },
-          "service.start" : {
-            "type" : "object",
-            "description" : "Starts a service defined in services config.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "name" : {
-                "type" : "string",
-                "description" : "The name of the service to start. "
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
-              }
-            },
-            "required" : [ "name" ]
           },
           "service.status" : {
             "type" : "object",
@@ -5055,34 +5143,13 @@
           },
           "service.stop" : {
             "type" : "object",
-            "description" : "Stops one the service.",
+            "description" : "Stops a microservice from the cluster.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "name" : {
                 "type" : "string",
-                "description" : "The name of the service. "
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
-              }
-            },
-            "required" : [ "name" ]
-          },
-          "service.undeploy" : {
-            "type" : "object",
-            "description" : "Undeploys a service from the cluster. Note: This is only enabled in case the instance is running in DEV or QA mode, never in PROD mode!",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "name" : {
-                "type" : "string",
-                "description" : "The name of the service to be undeployed."
+                "description" : "The name of the microservice to be stopped."
               },
               "id" : {
                 "type" : "string",
@@ -5986,7 +6053,7 @@
               },
               "uuid" : {
                 "type" : "string",
-                "description" : "The id of an existing webhook. If given, tries to update this webhook instead of creating a new one."
+                "description" : "The id (=token) of an existing webhook. If given, tries to update this webhook instead of creating a new one."
               },
               "id" : {
                 "type" : "string",
@@ -6011,7 +6078,11 @@
             "properties" : {
               "uuid" : {
                 "type" : "string",
-                "description" : "The uuid of the webhook."
+                "description" : "The uuid of the webhook (deprecated, use token instead)."
+              },
+              "token" : {
+                "type" : "string",
+                "description" : "The unique token of the webhook. Can passed as request param or as header (recommended) to call the webhook from outside."
               },
               "id" : {
                 "type" : "string",
@@ -6022,36 +6093,7 @@
                 "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
-            "required" : [ "uuid" ]
-          },
-          "webhook.send" : {
-            "type" : "object",
-            "description" : "Sends a webhook message to an external system. Returns a JSON in the body like {result:STATUS} whereasSTATUS is the response string sent back by the webhook target system. Usually this is 'ok' if everything was OK. Consult the documentation of the webhook target system about the STATUS codes.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "url" : {
-                "type" : "string",
-                "description" : "The webhook url to post the message to."
-              },
-              "message" : {
-                "type" : "string",
-                "description" : "The message to be send in the POST body to the webhook. Must be a valid JSON."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "url" ]
+            "required" : [ "token" ]
           },
           "workflow.deploy" : {
             "type" : "object",
