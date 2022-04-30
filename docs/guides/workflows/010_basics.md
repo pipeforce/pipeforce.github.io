@@ -38,6 +38,8 @@ The input of the user is typically given by filling-out a form.
 
 The form can be defined using the “Forms” tab in the modeller.
 
+Note: The input in the form fields have a length limit of 4000 characters 
+
 ![](../../img/workflow-user-task.PNG)
 
 User tasks can also be assigned in the workflow to specific users and user groups, by using the general tab. This can be done in the "Assignment" section below the "Description" field. You have to fill out these fields for this: Assignee, Candidate Users, and Candidate Groups. Here, multiple users and user groups can also be given by adding commmas in between their user-names and group-names respectively. 
