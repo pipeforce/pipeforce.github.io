@@ -8,6 +8,8 @@ default channels and bindings is typically already done for you, or there is a b
 
 Otherwise follow the documentation on the [official RabbitMQ websites](https://www.rabbitmq.com/documentation.html).
 
+If you're interested in how to send and receive messages using pipelines, go [here](../messaging).
+
 ## How to connect a microservice with messaging?
 
 In case you have deployed your microservice using the command `service.start`, then these environment variables will be
@@ -23,7 +25,7 @@ See the official documentation: https://www.rabbitmq.com/devtools.html
 
 The next step is to create the queues required by your service. See the Default Queue Naming guide below.
 
-Now create a binding between your queues, the default topic `pipeforce.default.topic` and the routing key pattern
+Now create a binding between your queues, the default topic `pipeforce.hub.default.topic` and the routing key pattern
 of messages your service is interested in.
 
 Also remember to setup the dead leader queue in order to not lose any message as mentioned below.
@@ -61,17 +63,17 @@ service_shoppingcart_orders_q
 
 ## Default Topic
 
-PIEPFORCE automatically creates a default topic exchange on startup with this name: `pipeforce.default.topic`.
+PIEPFORCE automatically creates a default topic exchange on startup with this name: `pipeforce.hub.default.topic`.
 
 PIPEFORCE core services are configured in a way that any event which happens there or is sent using the `event.send` command is also send to this default topic.
 
-In case a microservice wants to listen to a certain type of message with a given routing key, it needs to create a binding between the topic `pipeforce.default.topic` and the queue you want to “feed” this message into.
+In case a microservice wants to listen to a certain type of message with a given routing key, it needs to create a binding between the topic `pipeforce.hub.default.topic` and the queue you want to “feed” this message into.
 
 See here for more details about topics, routings and queues: https://www.rabbitmq.com/tutorials/tutorial-five-python.html
 
 ## Default Dead Letter Queue
 
-Additionally, a default Dead Letter Queue is automatically configured by PIPEFORCE: `pipeforce_default_dlq`.
+Additionally, a default Dead Letter Queue is automatically configured by PIPEFORCE: `pipeforce_hub_default_dlq`.
 
 Any other queue can be configured in a way to forward messages to this queue if one these rules apply:
 
@@ -86,7 +88,7 @@ Typically in order to setup a dead letter queue for your custom queue, you have 
 
 ```
 x-dead-letter-exchange = ""
-x-dead-letter-routing-key = "pipeforce_default_dlq"
+x-dead-letter-routing-key = "pipeforce_hub_default_dlq"
 ```
 
 How to set these arguments in your microservice depends on your selected programming language and the RabbitMQ client
@@ -97,14 +99,14 @@ In case you're using Java + Spring as microservice language for example, it coul
 ```
 return QueueBuilder.durable(Constants.MY_QUEUE)
     .withArgument("x-dead-letter-exchange", "")
-    .withArgument("x-dead-letter-routing-key", "pipeforce_default_dlq)
+    .withArgument("x-dead-letter-routing-key", "pipeforce_hub_default_dlq)
     .build();
 ```
 
 ## Default Message Keys
 
 Here you can find the default message keys, PIPEFORCE will use for internal events and send messages with these keys
-to the default topic `pipeforce.default.topic`. You can subscribe to these keys using a binding between your queue
+to the default topic `pipeforce.hub.default.topic`. You can subscribe to these keys using a binding between your queue
 and this default topic.
 
 You can also describe to multiple keys using the `*` and `#` patterns. For example in order to listen to all property

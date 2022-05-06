@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 19/04/2022 by CommandComplianceTest -->
+<!-- Generated: 06/05/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -1893,6 +1893,8 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the archive folder where the file to be saved.
 `namingPattern` | String | true | null | The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The last value used as counter. The .counter file in archive folder holds this value. When not present, is initialized from count of files in archive folder. archivePath = The path to the archive as given by path param. 
+`year` | String | false | null | The year in which the file to be saved.
+`month` | String | false | null | The month in which file to be saved.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
@@ -1904,6 +1906,8 @@ pipeline:
   - drive.archive.save:  
       path: <value>  
       namingPattern: <value>  
+      year: <value>  
+      month: <value>  
       id: <value>  
       if: <value>  
       output: <value>  
@@ -1912,12 +1916,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&year=<value>&month=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.archive.save path=<value> namingPattern=<value> id=<value> if=<value> output=<value>  
+pi command drive.archive.save path=<value> namingPattern=<value> year=<value> month=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4615,7 +4619,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## job
 ----------   
-Schedules any subsequent pipes of the current pipeline and executes it at the scheduled times.
+Schedules any subsequent commands of the current pipeline and executes it at the scheduled times.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=job)
 
@@ -4625,8 +4629,8 @@ Schedules any subsequent pipes of the current pipeline and executes it at the sc
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`cron` | String | false | null | A cron string which configures the execution times. See here to generate a cron string: https://crontab-generator.org/. Required only in case this is a create call.
-`stop` | String | false | null | If this param is set, all other params are ignored. It contains the uuid of the job to be canceled.
+`schedule` | String | true | null | A schedule string which configures the execution of the job. Can be one of: EVERY_2_MIN, EVERY_5_MIN, EVERY_15_MIN, EVERY_30_MIN, EVERY_45_MIN, HOURLY, DAILY, WEEKLY, MONTHLY. Furthermore in development stage also EVERY_1_MIN is allowed. Throws an exception in production stage.
+`stop` | String | false | null | Deprecated. Use the command stop.stop instead. If this param is set, all other params are ignored. It contains the id of the job to be canceled.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
@@ -4635,7 +4639,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - job:  
-      cron: <value>  
+      schedule: <value>  
       stop: <value>  
       id: <value>  
       if: <value>  
@@ -4644,12 +4648,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/job?cron=<value>&stop=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/job?schedule=<value>&stop=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command job cron=<value> stop=<value> id=<value> if=<value>  
+pi command job schedule=<value> stop=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4688,6 +4692,86 @@ http://host/api/v3/command/job.list?id=<value>&if=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command job.list id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## job.status
+----------   
+Returns the status of a given job or null in case the job doesnt exist.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=job.status)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | true | null | The id of the job those status to return
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - job.status:  
+      id: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/job.status?id=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command job.status id=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## job.stop
+----------   
+Stops the job with given id.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=job.stop)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | true | null | The id of the job to be cancelled.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - job.stop:  
+      id: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/job.stop?id=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command job.stop id=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5270,6 +5354,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The routing key to send the message as.
 `exchange` | String | false | null | The exchange to be used. If null, the default exchange will be used.
+`payload` | String | false | null | The payload to be send in the message. If parameter is missing, the message body will be used as payload.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
@@ -5280,6 +5365,7 @@ pipeline:
   - message.send:  
       key: <value>  
       exchange: <value>  
+      payload: <value>  
       id: <value>  
       if: <value>  
 ```  
@@ -5287,12 +5373,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/message.send?key=<value>&exchange=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/message.send?key=<value>&exchange=<value>&payload=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command message.send key=<value> exchange=<value> id=<value> if=<value>  
+pi command message.send key=<value> exchange=<value> payload=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7498,7 +7584,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## service.status
 ----------   
-Returns the deployment status of the given service
+Returns the deployment status of the given service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=service.status)
 
@@ -7508,7 +7594,7 @@ Returns the deployment status of the given service
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`name` | String | false | null | Name of the service
+`name` | String | false | null | Name of the service. If null or empty, the status of all PIPEFORCE managed services in current namespace will be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.

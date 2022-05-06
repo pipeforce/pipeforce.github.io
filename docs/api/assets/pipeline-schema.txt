@@ -1323,6 +1323,14 @@
                 "type" : "string",
                 "description" : "The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The last value used as counter. The .counter file in archive folder holds this value. When not present, is initialized from count of files in archive folder. archivePath = The path to the archive as given by path param. "
               },
+              "year" : {
+                "type" : "string",
+                "description" : "The year in which the file to be saved."
+              },
+              "month" : {
+                "type" : "string",
+                "description" : "The month in which file to be saved."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -3198,17 +3206,17 @@
           },
           "job" : {
             "type" : "object",
-            "description" : "Schedules any subsequent pipes of the current pipeline and executes it at the scheduled times.",
+            "description" : "Schedules any subsequent commands of the current pipeline and executes it at the scheduled times.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "cron" : {
+              "schedule" : {
                 "type" : "string",
-                "description" : "A cron string which configures the execution times. See here to generate a cron string: https://crontab-generator.org/. Required only in case this is a create call."
+                "description" : "A schedule string which configures the execution of the job. Can be one of: EVERY_2_MIN, EVERY_5_MIN, EVERY_15_MIN, EVERY_30_MIN, EVERY_45_MIN, HOURLY, DAILY, WEEKLY, MONTHLY. Furthermore in development stage also EVERY_1_MIN is allowed. Throws an exception in production stage."
               },
               "stop" : {
                 "type" : "string",
-                "description" : "If this param is set, all other params are ignored. It contains the uuid of the job to be canceled."
+                "description" : "Deprecated. Use the command stop.stop instead. If this param is set, all other params are ignored. It contains the id of the job to be canceled."
               },
               "id" : {
                 "type" : "string",
@@ -3219,7 +3227,7 @@
                 "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
-            "required" : [ ]
+            "required" : [ "schedule" ]
           },
           "job.list" : {
             "type" : "object",
@@ -3237,6 +3245,40 @@
               }
             },
             "required" : [ ]
+          },
+          "job.status" : {
+            "type" : "object",
+            "description" : "Returns the status of a given job or null in case the job doesnt exist.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "id" ]
+          },
+          "job.stop" : {
+            "type" : "object",
+            "description" : "Stops the job with given id.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "id" ]
           },
           "jpa.query" : {
             "type" : "object",
@@ -3652,6 +3694,10 @@
               "exchange" : {
                 "type" : "string",
                 "description" : "The exchange to be used. If null, the default exchange will be used."
+              },
+              "payload" : {
+                "type" : "string",
+                "description" : "The payload to be send in the message. If parameter is missing, the message body will be used as payload."
               },
               "id" : {
                 "type" : "string",
@@ -5118,13 +5164,13 @@
           },
           "service.status" : {
             "type" : "object",
-            "description" : "Returns the deployment status of the given service",
+            "description" : "Returns the deployment status of the given service.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "name" : {
                 "type" : "string",
-                "description" : "Name of the service"
+                "description" : "Name of the service. If null or empty, the status of all PIPEFORCE managed services in current namespace will be returned."
               },
               "id" : {
                 "type" : "string",
