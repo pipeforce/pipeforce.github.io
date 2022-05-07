@@ -28,9 +28,9 @@ Let's assume you have a pipeline, which sends an email like this:
 pipeline:
 
   - mail.send:
-      to: sales@company.tld
-      subject: New Sales Order
-      message: Hello, a new sales order has been created!
+      to: "sales@company.tld"
+      subject: "New Sales Order"
+      message: "Hello, a new sales order has been created!"
 ```
 
 Now you would like to listen for new sales orders on the messaging bus. Every time a new such sales order has been
@@ -49,9 +49,9 @@ pipeline:
       key: "sales.order.created"
 
   - mail.send:
-      to: sales@company.tld
-      subject: New Sales Order
-      message: Hello, a new sales order has been created!
+      to: "sales@company.tld"
+      subject: "New Sales Order"
+      message: "Hello, a new sales order has been created!"
 ```
 
 As you can see, we added the command `message.receive` at the very beginning. It's important that this command is always
@@ -98,7 +98,7 @@ So let's use this payload in order to send more information with our email, like
         key: "sales.order.created"
 
     - mail.send:
-        to: sales@company.tld
+        to: "sales@company.tld"
         subject: "New Sales Order"
         message: |
           Hello, a new sales order has been created:
@@ -139,7 +139,7 @@ This is how the pipeline could look like for example to listen to all sales orde
 pipeline:
 
   - message.receive:
-      key: sales.order.*
+      key: "sales.order.*"
 
   # Commands to be executed go here...
 ```
@@ -150,7 +150,7 @@ And in this example we listen to all messages which are related to create someth
 pipeline:
 
   - message.receive:
-      key: sales.*.created
+      key: "sales.*.created"
 
   # Commands to be executed go here...
 ```
@@ -162,7 +162,7 @@ inside the sales department, we could use a pipeline like this:
 pipeline:
 
   - message.receive:
-      key: sales.#
+      key: "sales.#"
 
   # Commands to be executed go here...
 ```
@@ -179,7 +179,7 @@ Here is an example:
 pipeline:
 
   - message.send: 
-     key: sales.order.created
+     key: "sales.order.created"
      paloyad: |
        {
           "id": "someSalesOrderId",
