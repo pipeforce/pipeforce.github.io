@@ -9,11 +9,11 @@ It's one of the most advanced and most widely used messaging broker in the world
 
 In order to send and receive messages to/from this messaging bus, you have two options:
 
-- Develop a microservice uding a RabbitMQ client library and deploy it to PIPEFORCE using the [service.deploy](../api/commands#servicedeploy) command.
+- Develop a microservice using a RabbitMQ client library and deploy it to PIPEFORCE using the [service.deploy](../api/commands#servicedeploy) command.
   For details about writing such a microservice which produces and consumes messages, see the
   section [messaging and microservices](microservices/messaging).
 - Write pipelines using the [message.receive](../api/commands#messagereceive)
-  and [essage.send](../api/commands#messagesend) commands.
+  and [message.send](../api/commands#messagesend) commands.
 
 This section will cover the second part: How to write pipelines which send and receive messages to/from the messaging
 bus.
