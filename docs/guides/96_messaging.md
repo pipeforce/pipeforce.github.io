@@ -36,8 +36,8 @@ pipeline:
 Now you would like to listen for new sales orders on the messaging bus. Every time a new such sales order has been
 created, we would like to send this email.
 
-For this, the unique messaging key `sales.order.created` was defined and communicated accordingly by the integration
-team.
+Let's assume, the unique messaging key `sales.order.created` was defined and communicated accordingly by the integration
+team. This can be freely designed by the development team.
 
 With this information we can now extend our pipeline easily to listen to messages with this key and automatically send
 an email:
@@ -63,6 +63,13 @@ created for you.
 
 The pipeline then starts to listen: Any time a message with key `sales.order.created` happens in the messaging bus, this
 pipeline will be informed about this and executes any command below `message.receive`.
+
+:::caution
+Whenever you delete a pipeline with a `message.receive` command in it, the according messaging queue, bindings and
+consumers will also automatically be deleted. The same is true in case you remove the `message.receive` command
+from the pipeline. In case you rename the pipeline or change parameters of the command, the old queue, binding and
+consumer will be replaced by a new one. So make sure to change such a pipeline only in development mode, never in production.
+:::
 
 ### Accessing payload
 
