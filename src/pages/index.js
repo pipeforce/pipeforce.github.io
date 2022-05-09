@@ -28,7 +28,7 @@ function HomepageHeader() {
           <p class="parameter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to: me@email.com</p>
         </div>
       </div> */}
-        <span className={styles.message}><b>Open</b> Platform for <b>Process Automation</b> and <b>Integration</b> with <b>Kubernetes</b>.</span>
+        <span className={styles.message}>Open <b>Microservice Platform</b> based on <b>Kubernetes</b>.</span>
         <br /><br />
         <p className="hero__subtitle">Documentation space for <b>Low Coders</b> and <b>Professional Developers</b>.</p>
         <br />
