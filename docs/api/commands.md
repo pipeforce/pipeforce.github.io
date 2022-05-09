@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 06/05/2022 by CommandComplianceTest -->
+<!-- Generated: 09/05/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -4709,7 +4709,7 @@ Returns the status of a given job or null in case the job doesnt exist.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`id` | String | true | null | The id of the job those status to return
+`pipelineKey` | String | true | null | The pipelineKey of the job those status to return
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
@@ -4718,7 +4718,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - job.status:  
-      id: <value>  
+      pipelineKey: <value>  
       id: <value>  
       if: <value>  
 ```  
@@ -4726,12 +4726,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/job.status?id=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/job.status?pipelineKey=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command job.status id=<value> id=<value> if=<value>  
+pi command job.status pipelineKey=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4739,7 +4739,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## job.stop
 ----------   
-Stops the job with given id.
+Stops the job with given id. Note: Usually it is not required to use this command. In order to stop and unregister a job, simply remove it from the pipeline or delete the pipeline.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=job.stop)
 
@@ -4749,7 +4749,7 @@ Stops the job with given id.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`id` | String | true | null | The id of the job to be cancelled.
+`pipelineKey` | String | true | null | The pipeline key of the job to be cancelled.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
@@ -4758,7 +4758,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - job.stop:  
-      id: <value>  
+      pipelineKey: <value>  
       id: <value>  
       if: <value>  
 ```  
@@ -4766,12 +4766,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/job.stop?id=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/job.stop?pipelineKey=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command job.stop id=<value> id=<value> if=<value>  
+pi command job.stop pipelineKey=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

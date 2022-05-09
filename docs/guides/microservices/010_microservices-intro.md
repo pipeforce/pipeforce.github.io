@@ -65,4 +65,17 @@ Step 2-4 are typically automated by using a CI/CD tool like Jenkins, CircleCI, T
 Furthermore, we suggest managing your source code using GitHub and connect your CI/CD tool, so it starts to build, test
 and deploy automatically every time, a new push to GitHub happened (or on other triggers like merging or tagging).
 
+## Logging a microservice
+
+Everything you log into the standard output of your microservice container can be later viewed by using 
+the command [log.list](https://pipeforce.github.io/docs/api/commands#loglist) and specifying the name under 
+which you have deployed the service. Example:
+
+```yaml
+pipeline:
+  - log.list:
+      service: "my-service"
+      lines: "100"
+```
+
 

@@ -3252,6 +3252,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "pipelineKey" : {
+                "type" : "string",
+                "description" : "The pipelineKey of the job those status to return"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -3261,14 +3265,18 @@
                 "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
-            "required" : [ "id" ]
+            "required" : [ "pipelineKey" ]
           },
           "job.stop" : {
             "type" : "object",
-            "description" : "Stops the job with given id.",
+            "description" : "Stops the job with given id. Note: Usually it is not required to use this command. In order to stop and unregister a job, simply remove it from the pipeline or delete the pipeline.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "pipelineKey" : {
+                "type" : "string",
+                "description" : "The pipeline key of the job to be cancelled."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -3278,7 +3286,7 @@
                 "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
-            "required" : [ "id" ]
+            "required" : [ "pipelineKey" ]
           },
           "jpa.query" : {
             "type" : "object",
