@@ -1311,25 +1311,17 @@
           },
           "drive.archive.save" : {
             "type" : "object",
-            "description" : "Saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. Verifies the integrity of the archive on write. Returns the final archive file name into the output target.",
+            "description" : "Saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. Verifies the integrity of the archive on write. Returns the final archive file name / path (without archive root path) into the output target.",
             "inputType" : "Byte",
             "outputType" : "Byte",
             "properties" : {
               "path" : {
                 "type" : "string",
-                "description" : "The path of the archive folder where the file to be saved."
+                "description" : "The root path of the archive folder where the file to be saved to."
               },
               "namingPattern" : {
                 "type" : "string",
-                "description" : "The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The last value used as counter. The .counter file in archive folder holds this value. When not present, is initialized from count of files in archive folder. archivePath = The path to the archive as given by path param. "
-              },
-              "year" : {
-                "type" : "string",
-                "description" : "The year in which the file to be saved."
-              },
-              "month" : {
-                "type" : "string",
-                "description" : "The month in which file to be saved."
+                "description" : "The PEL pattern to be applied to generate the final archive file name /path. This name / path will be relative to the given archive root path. Additionally, provides these variables in this PEL pattern context: archiveCounter = The last value used as counter as it comes from the .counter file. When not present, is initialized by counting all files in archive folder. counter = The archiveCounter increased by 1.archivePath = The path to the archive root as given by path param. basename = The base filename of the archive file, without extension (for example myfile.pdf = myfile). basenameNoId = Same as basename but without the _ID-123 part in the file name if there is any.ext = The extension of the archive file, without a period (for example myfile.pdf = pdf) filename = The full name of the archive file, with extension (for example myfile.pdf = myfile.pdf). The default pattern is this: basename_counter.ext"
               },
               "id" : {
                 "type" : "string",
@@ -1344,7 +1336,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "path", "namingPattern" ]
+            "required" : [ "path" ]
           },
           "drive.copy" : {
             "type" : "object",
@@ -3436,6 +3428,94 @@
             },
             "required" : [ ]
           },
+          "log.search" : {
+            "type" : "object",
+            "description" : "Searches the cloud logs. Returns a page result which has this format: {}",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "services" : {
+                "type" : "string",
+                "description" : "The services to search for log entries. Can be a list or comma separated text. If null or empty, 'hub' will be used as default.",
+                "default" : "hub"
+              },
+              "severities" : {
+                "type" : "string",
+                "description" : "A list of severities to search inside: DEBUG, INFO, WARNING, ERROR. Can be a list or comma separated text. If null or empty, searches in all severities."
+              },
+              "messageFilter" : {
+                "type" : "string",
+                "description" : "Message search string to filter the result by matching this string. Can be null or empty."
+              },
+              "startDateTime" : {
+                "type" : "string",
+                "description" : "An ISO85061 date-time string to start the search at. If null or empty, the date-time string from 24h before will be used."
+              },
+              "endDateTime" : {
+                "type" : "string",
+                "description" : "An ISO85061 date-time string to end the search at. If null or empty, all results up to now will be returned."
+              },
+              "nextPageToken" : {
+                "type" : "string",
+                "description" : "If this value is given, the next page of results of a previous search is loaded."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "log.services" : {
+            "type" : "object",
+            "description" : "Returns all PIPEFORCE services for those logging is allowed / enabled.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "log.severities" : {
+            "type" : "object",
+            "description" : "Returns all severities (for example, DEBUG, INFO,...), supported by the logging system.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "mail.dump" : {
             "type" : "object",
             "description" : "Fetches new emails from given mail inbox and uploads them into a drive folder.",
@@ -5048,7 +5128,7 @@
           },
           "secret.get" : {
             "type" : "object",
-            "description" : "Lists the metadata of all available credentials entries.",
+            "description" : "Lists the metadata (not the secret payload itself) of all available secret entries.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -6137,6 +6217,27 @@
               "token" : {
                 "type" : "string",
                 "description" : "The unique token of the webhook. Can passed as request param or as header (recommended) to call the webhook from outside."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "token" ]
+          },
+          "webhook.receive.logs" : {
+            "type" : "object",
+            "description" : "Returns the receive logs of the given webhook. Note: This command is currently experimental and returns just dummy data.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "token" : {
+                "type" : "string",
+                "description" : "The unique token of the webhook to list logs for."
               },
               "id" : {
                 "type" : "string",
