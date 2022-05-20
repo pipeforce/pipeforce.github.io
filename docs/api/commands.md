@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 10/05/2022 by CommandComplianceTest -->
+<!-- Generated: 19/05/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -1881,7 +1881,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## drive.archive.save
 ----------   
-Saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. Verifies the integrity of the archive on write. Returns the final archive file name into the output target.
+Saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. Verifies the integrity of the archive on write. Returns the final archive file name / path (without archive root path) into the output target.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.archive.save)
 
@@ -1891,10 +1891,8 @@ Saves the content of the body to the given archive folder in Drive. The content 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`path` | String | true | null | The path of the archive folder where the file to be saved.
-`namingPattern` | String | true | null | The pattern to be applied to generate the final archive file name. Additionally, provides these temp variables in this PEL pattern context: archiveCounter = The last value used as counter. The .counter file in archive folder holds this value. When not present, is initialized from count of files in archive folder. archivePath = The path to the archive as given by path param. 
-`year` | String | false | null | The year in which the file to be saved.
-`month` | String | false | null | The month in which file to be saved.
+`path` | String | true | null | The root path of the archive folder where the file to be saved to.
+`namingPattern` | String | false | null | The PEL pattern to be applied to generate the final archive file name /path. This name / path will be relative to the given archive root path. Additionally, provides these variables in this PEL pattern context: archiveCounter = The last value used as counter as it comes from the .counter file. When not present, is initialized by counting all files in archive folder. counter = The archiveCounter increased by 1.archivePath = The path to the archive root as given by path param. basename = The base filename of the archive file, without extension (for example myfile.pdf = myfile). basenameNoId = Same as basename but without the _ID-123 part in the file name if there is any.ext = The extension of the archive file, without a period (for example myfile.pdf = pdf) filename = The full name of the archive file, with extension (for example myfile.pdf = myfile.pdf). The default pattern is this: basename_counter.ext
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
@@ -1906,8 +1904,6 @@ pipeline:
   - drive.archive.save:  
       path: <value>  
       namingPattern: <value>  
-      year: <value>  
-      month: <value>  
       id: <value>  
       if: <value>  
       output: <value>  
@@ -1916,12 +1912,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&year=<value>&month=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.archive.save path=<value> namingPattern=<value> year=<value> month=<value> id=<value> if=<value> output=<value>  
+pi command drive.archive.save path=<value> namingPattern=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -4995,6 +4991,138 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+## log.search
+----------   
+Searches the cloud logs. Returns a page result which has this format: {}
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.search)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`services` | String | false | hub | The services to search for log entries. Can be a list or comma separated text. If null or empty, 'hub' will be used as default.
+`severities` | String | false | null | A list of severities to search inside: DEBUG, INFO, WARNING, ERROR. Can be a list or comma separated text. If null or empty, searches in all severities.
+`messageFilter` | String | false | null | Message search string to filter the result by matching this string. Can be null or empty.
+`startDateTime` | String | false | null | An ISO85061 date-time string to start the search at. If null or empty, the date-time string from 24h before will be used.
+`endDateTime` | String | false | null | An ISO85061 date-time string to end the search at. If null or empty, all results up to now will be returned.
+`nextPageToken` | String | false | null | If this value is given, the next page of results of a previous search is loaded.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - log.search:  
+      services: <value>  
+      severities: <value>  
+      messageFilter: <value>  
+      startDateTime: <value>  
+      endDateTime: <value>  
+      nextPageToken: <value>  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/log.search?services=<value>&severities=<value>&messageFilter=<value>&startDateTime=<value>&endDateTime=<value>&nextPageToken=<value>&id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command log.search services=<value> severities=<value> messageFilter=<value> startDateTime=<value> endDateTime=<value> nextPageToken=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## log.services
+----------   
+Returns all PIPEFORCE services for those logging is allowed / enabled.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.services)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - log.services:  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/log.services?id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command log.services id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## log.severities
+----------   
+Returns all severities (for example, DEBUG, INFO,...), supported by the logging system.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.severities)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - log.severities:  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/log.severities?id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command log.severities id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
 ## mail.dump
 ----------   
 Fetches new emails from given mail inbox and uploads them into a drive folder.
@@ -7404,7 +7532,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## secret.get
 ----------   
-Lists the metadata of all available credentials entries.
+Lists the metadata (not the secret payload itself) of all available secret entries.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secret.get)
 
@@ -8945,6 +9073,46 @@ http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&id=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command webhook.receive uuid=<value> token=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## webhook.receive.logs
+----------   
+Returns the receive logs of the given webhook. Note: This command is currently experimental and returns just dummy data.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive.logs)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`token` | String | true | null | The unique token of the webhook to list logs for.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - webhook.receive.logs:  
+      token: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/webhook.receive.logs?token=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command webhook.receive.logs token=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
