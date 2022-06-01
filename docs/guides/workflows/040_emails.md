@@ -6,7 +6,7 @@
     
 2.  Navigate to LOW CODE → Workbench
     
-3.  Select the node of your app or [create a new one](create-app).
+3.  Select the node of your app or [create a new one](../../tutorials/create-app).
     
 4.  Click the plus icon at the top of the tree.
     
@@ -92,7 +92,7 @@ In this step, you will learn how to add attachments to such an email pipeline. F
 
 ## 4 - Set dynamic text in emails
 
-Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPEFORCE to do so, is by using the [Pipeline Expression Language (PEL)](../api/pel). In this step, we will simply add the currently logged-in user as the from email field, so that the recipient can easily reply to you with the current date and time in the email text using PEL:
+Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPEFORCE to do so, is by using the [Pipeline Expression Language (PEL)](../../api/pel). In this step, we will simply add the currently logged-in user as the from email field, so that the recipient can easily reply to you with the current date and time in the email text using PEL:
 
 1.  Change your pipeline send-email to this:
     

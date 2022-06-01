@@ -8,9 +8,9 @@
     
 *   You have a valid PIPEFORCE Developer account.
     
-*   You have executed tutorial [Tutorial: Create a new app](../tutorials/beginner/create-app).
+*   You have executed tutorial [Tutorial: Create a new app](../tutorials/create-app).
     
-*   You have executed tutorial [Tutorial: Create a new form](../tutorials/beginner/create-form).
+*   You have executed tutorial [Tutorial: Create a new form](../tutorials/create-form).
     
 *   You have already added 3 or more data sets using your form.
     

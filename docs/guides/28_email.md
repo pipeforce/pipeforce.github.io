@@ -8,7 +8,7 @@ We can create templates (in html) for emails, and use them in our pipelines. Tas
     
 2.  Navigate to LOW CODE → Workbench
     
-3.  Select the node of your app or [create a new one](create-app).
+3.  Select the node of your app or [create a new one](../tutorials/create-app).
     
 4.  Click the plus icon at the top of the tree.
     

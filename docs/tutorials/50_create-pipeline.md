@@ -8,7 +8,7 @@
     
 *   You have a valid PIPEFORCE Developer account
     
-*   You have executed tutorial [Tutorial: Create a new app](../tutorials/beginner/create-app)
+*   You have executed tutorial [Tutorial: Create a new app](../tutorials/create-app)
     
 
 ## Intro

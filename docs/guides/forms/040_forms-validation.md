@@ -1,6 +1,6 @@
 # Validation
 
-Basic validations regarding data types will be specified by the underlying [JSON schema](../guides/schema-and-objects) of the form.
+Basic validations regarding data types will be specified by the underlying [JSON schema](../../guides/schema-and-objects) of the form.
 
 In order to create more specific custom validation rules for form fields, you can add the validation attribute to each field in the form configuration. For example:
 
