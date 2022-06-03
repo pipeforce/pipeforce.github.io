@@ -23,7 +23,7 @@ In the first step, you need to upload a sample PDF which can be used for this tu
 
 If you don’t have a sample invoice PDF at hand, you can use this one:
 
-[invoice.pdf](/wiki/spaces/DEVEX/pages/2151285840/Tutorial%3A+Put+a+stamp+on+a+PDF?preview=%2F2151285840%2F2151285861%2Finvoice.pdf)
+[invoice.pdf](../../static/sample-invoice.pdf)
 
 1.  Login to the portal https://**NAMESPACE**.pipeforce.net
     

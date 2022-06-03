@@ -18,6 +18,6 @@ The PIPEFORCE portal has also an online BPMN designer built-in, so an offline to
 |     |     |     |
 | --- | --- | --- |
 | **CVersion** | **Plattform** | **Download** |
-| 4.3.0 | Windows 64bit | [bpmn-modeler-4.3.0-win-x…](/wiki/spaces/DEVEX/pages/2151288972/Downloads?preview=%2F2151288972%2F2151288995%2Fbpmn-modeler-4.3.0-win-x64.zip) |
-| 4.3.0 | Windows 32bit | [bpmn-modeler-4.3.0-win-i…](/wiki/spaces/DEVEX/pages/2151288972/Downloads?preview=%2F2151288972%2F2151288992%2Fbpmn-modeler-4.3.0-win-ia32.zip) |
-| 4.3.0 | Mac OS | [bpmn-modeler-4.3.0-mac.d…](/wiki/spaces/DEVEX/pages/2151288972/Downloads?preview=%2F2151288972%2F2151288989%2Fbpmn-modeler-4.3.0-mac.dmg) |
+| 5.0.0 | Windows 64bit | [camunda-modeler-5.0.0-win-x64.zip](https://downloads.camunda.cloud/release/camunda-modeler/5.0.0/camunda-modeler-5.0.0-win-x64.zip) |
+| 5.0.0  | Windows 32bit | [camunda-modeler-5.0.0-win-ia32.zip](https://downloads.camunda.cloud/release/camunda-modeler/5.0.0/camunda-modeler-5.0.0-win-ia32.zip) |
+| 5.0.0  | Mac OS | [camunda-modeler-5.0.0-mac.zip](https://downloads.camunda.cloud/release/camunda-modeler/5.0.0/camunda-modeler-5.0.0-mac.zip) |
