@@ -1,8 +1,8 @@
 # Tutorial 9: Send Teams Message
 
-**Estimated time:** 10 min.
+**Tutorial 9 Estimated time:** 10 min.
 
-## Prerequisites
+## Tutorial 9 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     
@@ -15,7 +15,7 @@
 *   You have an Office 365 / Teams account
     
 
-## Intro
+## Teams Messaging - Intro
 
 Sending messages from PIPEFORCE to external systems is very easy when there is an API or webhook available. This tutorial will demonstrate that by sending a message to Office 365 / Teams.
 

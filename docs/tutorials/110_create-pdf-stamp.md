@@ -1,8 +1,8 @@
 # Tutorial 11: Create a PDF stamp
 
-**Estimated time:** 10 min.
+**Tutorial 11 Estimated time:** 10 min.
 
-## Prerequisites
+## Tutorial 11 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher + DMS module
     
@@ -13,7 +13,7 @@
 *   You have completed tutorial: [Tutorial: Create and execute a pipeline](../tutorials/create-pipeline)
     
 
-## Intro
+## PDF stamp - Intro
 
 In this tutorial, you will learn how you can put text stamps on PDF files. With this, you can put incoming date stamps or watermarks on PDFs.
 

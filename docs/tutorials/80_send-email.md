@@ -1,8 +1,8 @@
 # Tutorial 8: Send an Email
 
-**Estimated time:** 10 min.
+**Tutorial 8 Estimated time:** 10 min.
 
-## Prerequisites
+## Tutorial 8 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher + DMS module (optional)
     
@@ -13,7 +13,7 @@
 *   You have completed tutorial: [Tutorial: Create and execute a pipeline](create-pipeline)
     
 
-## Intro
+## Email - Intro
 
 In this tutorial, you will learn how you can send emails from a pipeline, with and without attachments.
 

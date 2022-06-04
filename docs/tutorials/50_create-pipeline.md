@@ -1,8 +1,8 @@
 # Tutorial 5: Create a Pipeline
 
-**Estimated time:** 20 min.
+**Tutorial 5 Estimated time:** 20 min.
 
-## Prerequisites
+## Tutorial 5 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     
@@ -11,7 +11,7 @@
 *   You have executed tutorial [Tutorial: Create a new app](../tutorials/create-app)
     
 
-## Intro
+## Pipeline - Intro
 
 A pipeline in PIPEFORCE is an easy to learn **low code script** which can do many different things for you:
 

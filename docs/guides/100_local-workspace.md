@@ -1,6 +1,6 @@
 # Local Workspace
 
-## What is it?
+## Local Workspace - What is it?
 
 The local low-code workspace is a folder on your local machine, where you can store and edit all of your low-code configuration files and scripts, and then sync them with the PIPEFORCE property store with a single call of `pi publish`.
 

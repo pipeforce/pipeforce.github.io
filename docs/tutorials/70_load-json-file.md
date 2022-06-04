@@ -1,8 +1,8 @@
 # Tutorial 7: Load a JSON file
 
-**Estimated time:** 10 min.
+**Tutorial 7 Estimated time:** 10 min.
 
-## Prerequisites
+## Tutorial 7 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     
@@ -15,7 +15,7 @@
 *   You have a basic understanding of the **[Pipeline Expression Language (PEL)](../api/pel)**
     
 
-## Intro
+## JSON-file Loading - Intro
 
 Inside a pipeline you can access any data using the Pipeline Expression Language (PEL). This is handy, in case you want to analyse or transform data, which is in most cases stored in the body of the pipeline.
 

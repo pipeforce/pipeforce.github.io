@@ -1,6 +1,6 @@
 # App Testing
 
-## What is it?
+## App Testing - What is it?
 
 In any system, testing workflows and integrations is a very complex task because of many states, data conversions and different interfaces involved.
 

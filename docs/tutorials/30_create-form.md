@@ -1,8 +1,8 @@
 # Tutorial 3: Create a Form
 
-**Estimated time:** 30 min.
+**Tutorial 3 Estimated time:** 30 min.
 
-## Prerequisites
+## Tutorial 3 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     
@@ -10,7 +10,7 @@
     
 *   You have created and published a new app (in this tutorial we assume it has the name`myapp42`).
 
-## Intro
+## Form Creation - Intro
 
 In this tutorial, we are going to create an example form, where you can add person datasets **using the online workbench**. This will finally look like this:
 

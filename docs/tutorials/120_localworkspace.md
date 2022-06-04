@@ -1,8 +1,8 @@
 # Tutorial 12: Setup CLI and Local Workspace
 
-**Estimated time:** 30 min.
+**Tutorial 12 Estimated time:** 30 min.
 
-**Prerequisites for this tutorial:**
+## Tutorial 12 - Prerequisites
 
 *   You have a valid PIPEFORCE Developer account
     

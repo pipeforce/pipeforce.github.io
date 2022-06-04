@@ -1,8 +1,8 @@
 # Tutorial 6: Data Mapping
 
-**Estimated time:** 10 min.
+**Tutorial 6 Estimated time:** 10 min.
 
-## Prerequisites
+## Tutorial 6 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     
@@ -15,7 +15,7 @@
 *   You have a basic understanding of the PEL: [Pipeline Expression Language (PEL)](../api/pel)
     
 
-## Intro
+## Data Mapping - Intro
 
 As you should already know, a pipeline in PIPEFORCE is an easy to learn **low code script**, which can do many different things for you. One very important thing is the mapping, conversion and normalization of (JSON) data.
 

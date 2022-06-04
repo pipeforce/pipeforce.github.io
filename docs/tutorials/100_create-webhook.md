@@ -1,8 +1,8 @@
 # Tutorial 10: Create a Webhook
 
-**Estimated time:** 15 min.
+**Tutorial 10 Estimated time:** 15 min.
 
-## Prerequisites
+## Tutorial 10 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher.
     
@@ -11,7 +11,7 @@
 *   You have executed tutorial [Tutorial: Create a new app](../tutorials/create-app).
     
 
-## Intro
+## Webhook - Intro
 
 Webhooks are very essential parts for connecting with external systems. A webhook is a unique URL, that external systems can call. In PIPEFORCE, when a webhook URL is called, it is linked to a pipeline internally, which then gets executed.
 

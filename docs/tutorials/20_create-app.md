@@ -1,15 +1,15 @@
 # Tutorial 2: Create an App
 
-**Estimated time:** 15 min.
+**Tutorial 2 Estimated time:** 15 min.
 
-## Prerequisites
+## Tutorial 2 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     
 *   You have a valid PIPEFORCE Developer account
     
 
-## Intro
+## App Creation - Intro
 
 In PIPEFORCE, an app groups together resources like scripts, templates, configurations and others to solve a certain business task. Any pipeline, form or workflow etc. are part of exactly one app.
 

@@ -1,8 +1,8 @@
 # Tutorial 4: Create a List
 
-**Estimated time:** 15 min.
+**Tutorial 4 Estimated time:** 15 min.
 
-## Prerequisites
+## Tutorial 4 - Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher.
     

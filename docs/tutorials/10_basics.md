@@ -1,8 +1,8 @@
 # Tutorial 1: Basics
 
-**Estimated time:** 10 min.
+**Tutorial 1 Estimated time:** 10 min.
 
-## Intro
+## Pipeforce - Intro
 
 PIPEFORCE is the first workflow automation and integration platform that runs entirely cloud-native (i.e. 100% inside Kubernetes using microservices and messaging) and is very extensible through microservices. It helps companies to achieve automation superpowers and enables non-technical employees and partners to create, deploy and operate digital services, workflow apps and data mappings. One can cover the entire journey from planning to implementation on a single platform using low-code.
 
