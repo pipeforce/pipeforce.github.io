@@ -22,6 +22,7 @@ The PIPEFORCE platform is built with Kubernetes as its base framework. On this p
 *   RPA
 *   Integration Pipelines
 *   And more…
+
     
 
 With these built-in services you can start very quickly to build your own business/data pipeline apps. It is also possible to add additional services via (Docker) containers if required.
