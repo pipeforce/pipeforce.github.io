@@ -4,14 +4,14 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 19/05/2022 by CommandComplianceTest -->
+<!-- Generated: 08/07/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
 Download pipeline and commands schema: **[pipeline-schema.json](./assets/pipeline-schema.txt)**  
 Also see: **[Pipeline Guide](../guides/pipeline)** | **[Command Guide](../guides/command)**  
 
-Example usage of chained commands in a pipeline with [PEL](./pel) to access the body: 
+Example usage of chained commands in a pipeline with [PEL](../guides/pel) to access the body:  
 ```yaml  
 pipeline:  
   - datetime:  
@@ -56,7 +56,7 @@ http://host/api/v3/command/apidoc.commands?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command apidoc.commands id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -96,13 +96,13 @@ http://host/api/v3/command/apidoc.pel.utils?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command apidoc.pel.utils id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
 ## app.install
 ----------   
-Installs the given app into the property store.
+Installs an app into the property store. The app can be located on GitHub or is provided as zip file content in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=app.install)
 
@@ -112,18 +112,20 @@ Installs the given app into the property store.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one.
-`branch` | String | false | null | The branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used.
-`runTests` | String | false | null | Run the tests of the app after installation?
+`overwrite` | Boolean | false | false | What to do if app with this key already exists? If true, the existing app will be uninstalled and replaced by this new version. Otherwise, an attempt to install an existing app will cause an error.
+`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead.
+`branch` | String | false | null | The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given.
+`runTests` | Boolean | false | false | Run the tests of the app after installation?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
 ```yaml  
 pipeline:  
   - app.install:  
+      overwrite: <value>  
       github: <value>  
       branch: <value>  
       runTests: <value>  
@@ -135,14 +137,14 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.install?github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&credentials=<value>  
+http://host/api/v3/command/app.install?overwrite=<value>&github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.install github=<value> branch=<value> runTests=<value> id=<value> if=<value> credentials=<value>  
+pi command app.install overwrite=<value> github=<value> branch=<value> runTests=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -161,7 +163,7 @@ Name | Type | Required | Default | Description
 `appKey` | String | false | null | The key of the app to uninstall. For example: global/app/myapp.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -184,13 +186,13 @@ http://host/api/v3/command/app.uninstall?appKey=<value>&id=<value>&if=<value>&cr
 ```bash  
 pi command app.uninstall appKey=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
 ## app.update
 ----------   
-Updates the given apps.
+Deprecated. Use app.install with param update:true instead. Updates the given apps.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=app.update)
 
@@ -200,12 +202,12 @@ Updates the given apps.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one.
-`branch` | String | false | null | The branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used.
-`keepData` | String | false | true | If set to true, all data inside object/**/instances/** and data/** wont be deleted.
+`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead.
+`branch` | String | false | null | The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given.
+`runTests` | Boolean | false | false | Run the tests of the app after installation?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -214,7 +216,7 @@ pipeline:
   - app.update:  
       github: <value>  
       branch: <value>  
-      keepData: <value>  
+      runTests: <value>  
       id: <value>  
       if: <value>  
       credentials: <value>  
@@ -223,14 +225,14 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.update?github=<value>&branch=<value>&keepData=<value>&id=<value>&if=<value>&credentials=<value>  
+http://host/api/v3/command/app.update?github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.update github=<value> branch=<value> keepData=<value> id=<value> if=<value> credentials=<value>  
+pi command app.update github=<value> branch=<value> runTests=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -280,7 +282,7 @@ http://host/api/v3/command/assert?true=<value>&false=<value>&body.equals=<value>
 ```bash  
 pi command assert true=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -328,7 +330,7 @@ http://host/api/v3/command/workflow.assert?hasPassed=<value>&hasNotPassed=<value
 ```bash  
 pi command workflow.assert hasPassed=<value> hasNotPassed=<value> processFinished=<value> throwException=<value> processInstanceId=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -376,7 +378,7 @@ http://host/api/v3/command/barcode.create?text=<value>&width=<value>&height=<val
 ```bash  
 pi command barcode.create text=<value> width=<value> height=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -418,7 +420,7 @@ http://host/api/v3/command/barcode.read?id=<value>&if=<value>&input=<value>&outp
 ```bash  
 pi command barcode.read id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -462,7 +464,7 @@ http://host/api/v3/command/bean?name=<value>&method=<value>&id=<value>&if=<value
 ```bash  
 pi command bean name=<value> method=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -500,7 +502,7 @@ http://host/api/v3/command/body.delete?id=<value>&if=<value>
 ```bash  
 pi command body.delete id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -542,7 +544,7 @@ http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<
 ```bash  
 pi command body.filter properties=<value> removeKey=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -582,7 +584,7 @@ http://host/api/v3/command/cache.clear?key=<value>&id=<value>&if=<value>
 ```bash  
 pi command cache.clear key=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -628,7 +630,7 @@ http://host/api/v3/command/cache.get?key=<value>&remove=<value>&exit=<value>&id=
 ```bash  
 pi command cache.get key=<value> remove=<value> exit=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -668,7 +670,7 @@ http://host/api/v3/command/cache.info?key=<value>&id=<value>&if=<value>
 ```bash  
 pi command cache.info key=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -708,7 +710,7 @@ http://host/api/v3/command/cache.list?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command cache.list id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -754,7 +756,7 @@ http://host/api/v3/command/cache.put?timeToLive=<value>&key=<value>&value=<value
 ```bash  
 pi command cache.put timeToLive=<value> key=<value> value=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -798,7 +800,7 @@ http://host/api/v3/command/call?uri=<value>&args=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command call uri=<value> args=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -836,7 +838,7 @@ http://host/api/v3/command/capture?id=<value>&if=<value>
 ```bash  
 pi command capture id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -878,7 +880,7 @@ http://host/api/v3/command/pipe.schema?pipe=<value>&id=<value>&if=<value>&output
 ```bash  
 pi command pipe.schema pipe=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -918,7 +920,7 @@ http://host/api/v3/command/pipe.schema.v7?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command pipe.schema.v7 id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -964,7 +966,7 @@ http://host/api/v3/command/config.get?group=<value>&key=<value>&includePermissio
 ```bash  
 pi command config.get group=<value> key=<value> includePermission=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -983,7 +985,7 @@ Name | Type | Required | Default | Description
 `url` | String | false | null | The url of the registry.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -1006,7 +1008,7 @@ http://host/api/v3/command/container.registry.delete?url=<value>&id=<value>&if=<
 ```bash  
 pi command container.registry.delete url=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1024,7 +1026,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -1046,7 +1048,7 @@ http://host/api/v3/command/container.registry.list?id=<value>&if=<value>&credent
 ```bash  
 pi command container.registry.list id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1068,7 +1070,7 @@ Name | Type | Required | Default | Description
 `email` | String | false | null | The email for the registry.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -1094,7 +1096,7 @@ http://host/api/v3/command/container.registry.put?url=<value>&username=<value>&p
 ```bash  
 pi command container.registry.put url=<value> username=<value> password=<value> email=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1136,7 +1138,7 @@ http://host/api/v3/command/content.get?uri=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command content.get uri=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1180,7 +1182,7 @@ http://host/api/v3/command/data.mapping?rules=<value>&id=<value>&if=<value>&inpu
 ```bash  
 pi command data.mapping rules=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1232,7 +1234,7 @@ http://host/api/v3/command/data.transform?iterate=<value>&groupBy=<value>&engine
 ```bash  
 pi command data.transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1274,7 +1276,7 @@ http://host/api/v3/command/datetime?format=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command datetime format=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1314,7 +1316,7 @@ http://host/api/v3/command/datetime.zones?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command datetime.zones id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1358,7 +1360,7 @@ http://host/api/v3/command/decrypt?password=<value>&id=<value>&if=<value>&input=
 ```bash  
 pi command decrypt password=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1406,7 +1408,7 @@ http://host/api/v3/command/delivery.attachment.add?deliveryUuid=<value>&name=<va
 ```bash  
 pi command delivery.attachment.add deliveryUuid=<value> name=<value> mimeType=<value> length=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1460,7 +1462,7 @@ http://host/api/v3/command/delivery.create?subject=<value>&message=<value>&priva
 ```bash  
 pi command delivery.create subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1500,7 +1502,7 @@ http://host/api/v3/command/delivery.delete?deliveryUuid=<value>&id=<value>&if=<v
 ```bash  
 pi command delivery.delete deliveryUuid=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1542,7 +1544,7 @@ http://host/api/v3/command/delivery.finalize?deliveryUuid=<value>&id=<value>&if=
 ```bash  
 pi command delivery.finalize deliveryUuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1584,7 +1586,7 @@ http://host/api/v3/command/delivery.get?deliveryUuid=<value>&id=<value>&if=<valu
 ```bash  
 pi command delivery.get deliveryUuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1630,7 +1632,7 @@ http://host/api/v3/command/delivery.recipient.add?deliveryUuid=<value>&email=<va
 ```bash  
 pi command delivery.recipient.add deliveryUuid=<value> email=<value> locale=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1674,7 +1676,7 @@ http://host/api/v3/command/delivery.send?deliveryUuid=<value>&recipients=<value>
 ```bash  
 pi command delivery.send deliveryUuid=<value> recipients=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1730,7 +1732,7 @@ http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&
 ```bash  
 pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1770,7 +1772,7 @@ http://host/api/v3/command/doc.api.pelutils?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command doc.api.pelutils id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1827,7 +1829,7 @@ http://host/api/v3/command/docusign?signerEmail=<value>&signerName=<value>&ccEma
 ```bash  
 pi command docusign signerEmail=<value> signerName=<value> ccEmail=<value> ccName=<value> subject=<value> accessToken=<value> accountId=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1875,7 +1877,7 @@ http://host/api/v3/command/document.understand?id=<value>&if=<value>&input=<valu
 ```bash  
 pi command document.understand id=<value> if=<value> input=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1892,7 +1894,7 @@ Saves the content of the body to the given archive folder in Drive. The content 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The root path of the archive folder where the file to be saved to.
-`namingPattern` | String | false | null | The PEL pattern to be applied to generate the final archive file name /path. This name / path will be relative to the given archive root path. Additionally, provides these variables in this PEL pattern context: archiveCounter = The last value used as counter as it comes from the .counter file. When not present, is initialized by counting all files in archive folder. counter = The archiveCounter increased by 1.archivePath = The path to the archive root as given by path param. basename = The base filename of the archive file, without extension (for example myfile.pdf = myfile). basenameNoId = Same as basename but without the _ID-123 part in the file name if there is any.ext = The extension of the archive file, without a period (for example myfile.pdf = pdf) filename = The full name of the archive file, with extension (for example myfile.pdf = myfile.pdf). The default pattern is this: basename_counter.ext
+`namingPattern` | String | false | null | The PEL pattern to be applied to generate the final archive file name / path. This name / path will be relative to the given archive root path. Additionally, provides these variables in this PEL pattern context: archiveCounter = The last value used as counter as it comes from the .counter file. When not present, is initialized by counting all files in archive folder. counter = The archiveCounter increased by 1.archivePath = The path to the archive root as given by path param. basename = The base filename of the archive file, without extension (for example myfile.pdf = myfile). basenameNoId = Same as basename but without the _ID-123 part in the file name if there is any.ext = The extension of the archive file, without a period (for example myfile.pdf = pdf) filename = The full name of the archive file, with extension (for example myfile.pdf = myfile.pdf). The default pattern is this: basename_counter.ext
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
@@ -1919,7 +1921,7 @@ http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>
 ```bash  
 pi command drive.archive.save path=<value> namingPattern=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -1961,7 +1963,7 @@ http://host/api/v3/command/drive.copy?path=<value>&to=<value>&id=<value>&if=<val
 ```bash  
 pi command drive.copy path=<value> to=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2001,7 +2003,7 @@ http://host/api/v3/command/drive.delete?path=<value>&id=<value>&if=<value>
 ```bash  
 pi command drive.delete path=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2043,7 +2045,7 @@ http://host/api/v3/command/drive.exists?path=<value>&id=<value>&if=<value>&outpu
 ```bash  
 pi command drive.exists path=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2085,7 +2087,7 @@ http://host/api/v3/command/drive.list?path=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command drive.list path=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2127,7 +2129,7 @@ http://host/api/v3/command/drive.mkdir?path=<value>&recurse=<value>&id=<value>&i
 ```bash  
 pi command drive.mkdir path=<value> recurse=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2169,7 +2171,7 @@ http://host/api/v3/command/drive.move?path=<value>&to=<value>&id=<value>&if=<val
 ```bash  
 pi command drive.move path=<value> to=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2213,7 +2215,7 @@ http://host/api/v3/command/drive.read?path=<value>&append=<value>&id=<value>&if=
 ```bash  
 pi command drive.read path=<value> append=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2257,7 +2259,7 @@ http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanu
 ```bash  
 pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2317,7 +2319,7 @@ http://host/api/v3/command/drive.share?to=<value>&type=<value>&path=<value>&perm
 ```bash  
 pi command drive.share to=<value> type=<value> path=<value> permission=<value> subject=<value> message=<value> model=<value> expires=<value> password=<value> invite=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2363,7 +2365,7 @@ http://host/api/v3/command/drive.tag?path=<value>&tagname=<value>&tagvalue=<valu
 ```bash  
 pi command drive.tag path=<value> tagname=<value> tagvalue=<value> remove=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2409,7 +2411,7 @@ http://host/api/v3/command/drive.upload.chunked?action=<value>&uuid=<value>&path
 ```bash  
 pi command drive.upload.chunked action=<value> uuid=<value> path=<value> index=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2451,7 +2453,7 @@ http://host/api/v3/command/encrypt?password=<value>&id=<value>&if=<value>&output
 ```bash  
 pi command encrypt password=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2491,7 +2493,7 @@ http://host/api/v3/command/eval?expr=<value>&id=<value>&if=<value>
 ```bash  
 pi command eval expr=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2533,7 +2535,7 @@ http://host/api/v3/command/event.listen?key=<value>&filter=<value>&id=<value>&if
 ```bash  
 pi command event.listen key=<value> filter=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2573,7 +2575,7 @@ http://host/api/v3/command/event.mapping.get?id=<value>&if=<value>&output=<value
 ```bash  
 pi command event.mapping.get id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2619,7 +2621,7 @@ http://host/api/v3/command/event.send?key=<value>&traceId=<value>&payload=<value
 ```bash  
 pi command event.send key=<value> traceId=<value> payload=<value> async=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2659,7 +2661,7 @@ http://host/api/v3/command/exit?if=<value>&id=<value>&if=<value>
 ```bash  
 pi command exit if=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2699,7 +2701,7 @@ http://host/api/v3/command/finally?do=<value>&id=<value>&if=<value>
 ```bash  
 pi command finally do=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2745,7 +2747,7 @@ http://host/api/v3/command/foreach?in=<value>&item=<value>&loopName=<value>&end=
 ```bash  
 pi command foreach in=<value> item=<value> loopName=<value> end=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2783,7 +2785,7 @@ http://host/api/v3/command/header.set?id=<value>&if=<value>
 ```bash  
 pi command header.set id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2823,7 +2825,7 @@ http://host/api/v3/command/htmlunit.website.form.find?select=<value>&id=<value>&
 ```bash  
 pi command htmlunit.website.form.find select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2865,7 +2867,7 @@ http://host/api/v3/command/htmlunit.website.form.input?value=<value>&select=<val
 ```bash  
 pi command htmlunit.website.form.input value=<value> select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2905,7 +2907,7 @@ http://host/api/v3/command/htmlunit.website.form.submit?select=<value>&id=<value
 ```bash  
 pi command htmlunit.website.form.submit select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2945,7 +2947,7 @@ http://host/api/v3/command/htmlunit.website.link.click?select=<value>&id=<value>
 ```bash  
 pi command htmlunit.website.link.click select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -2985,7 +2987,7 @@ http://host/api/v3/command/htmlunit.website.open?url=<value>&id=<value>&if=<valu
 ```bash  
 pi command htmlunit.website.open url=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3027,7 +3029,7 @@ http://host/api/v3/command/htmlunit.website.scrap?xpath=<value>&select=<value>&i
 ```bash  
 pi command htmlunit.website.scrap xpath=<value> select=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3051,7 +3053,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -3079,7 +3081,7 @@ http://host/api/v3/command/http.delete?url=<value>&service=<value>&headers=<valu
 ```bash  
 pi command http.delete url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3103,7 +3105,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -3131,7 +3133,7 @@ http://host/api/v3/command/http.get?url=<value>&service=<value>&headers=<value>&
 ```bash  
 pi command http.get url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3155,7 +3157,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -3183,7 +3185,7 @@ http://host/api/v3/command/http.patch?url=<value>&service=<value>&headers=<value
 ```bash  
 pi command http.patch url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3207,7 +3209,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -3235,7 +3237,7 @@ http://host/api/v3/command/http.post?url=<value>&service=<value>&headers=<value>
 ```bash  
 pi command http.post url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3259,7 +3261,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -3287,53 +3289,13 @@ http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&
 ```bash  
 pi command http.put url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> input=<value> output=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
-
-  
-
-## iam.token.refresh
-----------   
-Enrich headers with accessToken obtained from authorization server using refreshToken.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.refresh)
-
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`refreshToken` | String | true | null | The refresh token.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - iam.token.refresh:  
-      refreshToken: <value>  
-      id: <value>  
-      if: <value>  
-```  
-Learn more: [Pipeline](../guides/pipeline). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/iam.token.refresh?refreshToken=<value>&id=<value>&if=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command iam.token.refresh refreshToken=<value> id=<value> if=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
 ## iam.apitoken
 ----------   
-Obtains the apitoken in exchange for user credentials provided and writes into the output.
+Obtains the apitoken (= offline token) in exchange for user credentials provided and writes it into the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.apitoken)
 
@@ -3371,7 +3333,7 @@ http://host/api/v3/command/iam.apitoken?username=<value>&password=<value>&id=<va
 ```bash  
 pi command iam.apitoken username=<value> password=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3409,7 +3371,7 @@ http://host/api/v3/command/iam.authinfo?id=<value>&if=<value>
 ```bash  
 pi command iam.authinfo id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3457,7 +3419,7 @@ http://host/api/v3/command/iam.authorize?accessToken=<value>&refreshToken=<value
 ```bash  
 pi command iam.authorize accessToken=<value> refreshToken=<value> basic=<value> username=<value> password=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3501,7 +3463,7 @@ http://host/api/v3/command/iam.bruteforce.release?username=<value>&uuid=<value>&
 ```bash  
 pi command iam.bruteforce.release username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3545,7 +3507,45 @@ http://host/api/v3/command/iam.bruteforce.status?username=<value>&uuid=<value>&i
 ```bash  
 pi command iam.bruteforce.status username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## iam.cache.clear
+----------   
+Clears the security objects (and reloads roles where required). Note: Since this can be a heavy task and slow down the system, use it only in case really required!
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.cache.clear)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.cache.clear:  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.cache.clear?id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.cache.clear id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3591,7 +3591,7 @@ http://host/api/v3/command/iam.group.add.roles?groupUuid=<value>&roleNames=<valu
 ```bash  
 pi command iam.group.add.roles groupUuid=<value> roleNames=<value> groupName=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3637,7 +3637,7 @@ http://host/api/v3/command/iam.group.create?name=<value>&roleNames=<value>&attri
 ```bash  
 pi command iam.group.create name=<value> roleNames=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3679,7 +3679,7 @@ http://host/api/v3/command/iam.group.delete?uuid=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command iam.group.delete uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3729,7 +3729,7 @@ http://host/api/v3/command/iam.group.list?filter=<value>&sortByName=<value>&max=
 ```bash  
 pi command iam.group.list filter=<value> sortByName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3775,7 +3775,7 @@ http://host/api/v3/command/iam.group.list.names?max=<value>&offset=<value>&filte
 ```bash  
 pi command iam.group.list.names max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3825,7 +3825,7 @@ http://host/api/v3/command/iam.group.members?name=<value>&uuid=<value>&max=<valu
 ```bash  
 pi command iam.group.members name=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3875,7 +3875,7 @@ http://host/api/v3/command/iam.group.roles?groupName=<value>&uuid=<value>&max=<v
 ```bash  
 pi command iam.group.roles groupName=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3915,7 +3915,7 @@ http://host/api/v3/command/iam.realm.create?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command iam.realm.create id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -3959,7 +3959,7 @@ http://host/api/v3/command/iam.role.add.composites?roleName=<value>&composites=<
 ```bash  
 pi command iam.role.add.composites roleName=<value> composites=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4005,7 +4005,7 @@ http://host/api/v3/command/iam.role.create?name=<value>&composites=<value>&attri
 ```bash  
 pi command iam.role.create name=<value> composites=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4053,7 +4053,7 @@ http://host/api/v3/command/iam.role.members?roleName=<value>&max=<value>&offset=
 ```bash  
 pi command iam.role.members roleName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4070,6 +4070,7 @@ Executes the subsequent pipeline as different user if following two conditions a
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `username` | String | true | null | The username, subsequent pipe commands must be executed as. This user must has RUN_AS_SOURCE role assigned.
+`caching` | String | false | yes | Should the IAM cache used (= much faster)?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
@@ -4079,6 +4080,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - iam.run.as:  
       username: <value>  
+      caching: <value>  
       id: <value>  
       if: <value>  
 ```  
@@ -4086,14 +4088,14 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.run.as?username=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/iam.run.as?username=<value>&caching=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.run.as username=<value> id=<value> if=<value>  
+pi command iam.run.as username=<value> caching=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4141,7 +4143,51 @@ http://host/api/v3/command/iam.search?type=<value>&max=<value>&offset=<value>&fi
 ```bash  
 pi command iam.search type=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## iam.token
+----------   
+Obtains the full offline token response JSON in exchange for user credentials provided and writes into the output.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`username` | String | true | null | The user name.
+`password` | String | true | null | The user password.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.token:  
+      username: <value>  
+      password: <value>  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.token?username=<value>&password=<value>&id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.token username=<value> password=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4181,7 +4227,49 @@ http://host/api/v3/command/iam.token.logout?refreshToken=<value>&id=<value>&if=<
 ```bash  
 pi command iam.token.logout refreshToken=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## iam.token.refresh
+----------   
+Enrich headers with accessToken obtained from authorization server using refreshToken and returns the tokenResponse in the body.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.refresh)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`refreshToken` | String | true | null | The refresh token.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - iam.token.refresh:  
+      refreshToken: <value>  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/iam.token.refresh?refreshToken=<value>&id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command iam.token.refresh refreshToken=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4227,7 +4315,7 @@ http://host/api/v3/command/iam.user.add.groups?uuid=<value>&groupNames=<value>&g
 ```bash  
 pi command iam.user.add.groups uuid=<value> groupNames=<value> groupIds=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4273,7 +4361,7 @@ http://host/api/v3/command/iam.user.add.roles?userUuid=<value>&username=<value>&
 ```bash  
 pi command iam.user.add.roles userUuid=<value> username=<value> roleNames=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4329,7 +4417,7 @@ http://host/api/v3/command/iam.user.create?name=<value>&email=<value>&firstName=
 ```bash  
 pi command iam.user.create name=<value> email=<value> firstName=<value> lastName=<value> groupNames=<value> roleNames=<value> password=<value> attributes=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4371,7 +4459,7 @@ http://host/api/v3/command/iam.user.delete?uuid=<value>&id=<value>&if=<value>&ou
 ```bash  
 pi command iam.user.delete uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4415,7 +4503,7 @@ http://host/api/v3/command/iam.user.get?username=<value>&uuid=<value>&id=<value>
 ```bash  
 pi command iam.user.get username=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4465,7 +4553,7 @@ http://host/api/v3/command/iam.user.groups?username=<value>&uuid=<value>&max=<va
 ```bash  
 pi command iam.user.groups username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4515,7 +4603,7 @@ http://host/api/v3/command/iam.user.list?includeGroups=<value>&includeRoles=<val
 ```bash  
 pi command iam.user.list includeGroups=<value> includeRoles=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4565,7 +4653,7 @@ http://host/api/v3/command/iam.user.roles?username=<value>&uuid=<value>&max=<val
 ```bash  
 pi command iam.user.roles username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4609,7 +4697,7 @@ http://host/api/v3/command/if?true=<value>&end=<value>&else=<value>&id=<value>&i
 ```bash  
 pi command if true=<value> end=<value> else=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4651,7 +4739,7 @@ http://host/api/v3/command/job?schedule=<value>&stop=<value>&id=<value>&if=<valu
 ```bash  
 pi command job schedule=<value> stop=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4689,7 +4777,7 @@ http://host/api/v3/command/job.list?id=<value>&if=<value>
 ```bash  
 pi command job.list id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4729,7 +4817,7 @@ http://host/api/v3/command/job.status?pipelineKey=<value>&id=<value>&if=<value>
 ```bash  
 pi command job.status pipelineKey=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4769,7 +4857,7 @@ http://host/api/v3/command/job.stop?pipelineKey=<value>&id=<value>&if=<value>
 ```bash  
 pi command job.stop pipelineKey=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4811,7 +4899,7 @@ http://host/api/v3/command/jpa.query?query=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command jpa.query query=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4853,7 +4941,7 @@ http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>&if=<valu
 ```bash  
 pi command log message=<value> level=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4899,7 +4987,7 @@ http://host/api/v3/command/log.list?service=<value>&lines=<value>&format=<value>
 ```bash  
 pi command log.list service=<value> lines=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4945,7 +5033,7 @@ http://host/api/v3/command/log.list.email?auditId=<value>&createdAfter=<value>&c
 ```bash  
 pi command log.list.email auditId=<value> createdAfter=<value> createdBefore=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -4987,13 +5075,13 @@ http://host/api/v3/command/log.list.environment?interpolate=<value>&id=<value>&i
 ```bash  
 pi command log.list.environment interpolate=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
 ## log.search
 ----------   
-Searches the cloud logs. Returns a page result which has this format: {}
+Searches the cloud logs and returns the last 30 entries per request. Supports pagination toscroll thru the entries.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.search)
 
@@ -5003,11 +5091,12 @@ Searches the cloud logs. Returns a page result which has this format: {}
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`services` | String | false | hub | The services to search for log entries. Can be a list or comma separated text. If null or empty, 'hub' will be used as default.
-`severities` | String | false | null | A list of severities to search inside: DEBUG, INFO, WARNING, ERROR. Can be a list or comma separated text. If null or empty, searches in all severities.
-`messageFilter` | String | false | null | Message search string to filter the result by matching this string. Can be null or empty.
-`startDateTime` | String | false | null | An ISO85061 date-time string to start the search at. If null or empty, the date-time string from 24h before will be used.
-`endDateTime` | String | false | null | An ISO85061 date-time string to end the search at. If null or empty, all results up to now will be returned.
+`service` | String | false | hub | The service to search for log entries. Can be a list or comma separated service names. If null or empty, 'hub' will be used as default.
+`severity` | String | false | null | The severity to search inside: DEBUG, INFO, WARNING, ERROR. Can be a list or comma separated text. If null or empty, searches in all severities.
+`messageFilter` | String | false | null | Message search string to filter the result by matching this string. Can be null or empty to return any entry.
+`typeFilter` | String | false | null | A list of types of message logs to show. Possible values are: command, pipeline, security_audit, event_fired, webhook. If not set, all logs will be shown.
+`startDateTime` | String | false | null | An ISO8601 date-time string to start the search at. If null or empty, the date-time string from 24h before will be used.
+`endDateTime` | String | false | null | An ISO8601 date-time string to end the search at. If null or empty, all results up to now will be returned.
 `nextPageToken` | String | false | null | If this value is given, the next page of results of a previous search is loaded.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
@@ -5018,9 +5107,10 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - log.search:  
-      services: <value>  
-      severities: <value>  
+      service: <value>  
+      severity: <value>  
       messageFilter: <value>  
+      typeFilter: <value>  
       startDateTime: <value>  
       endDateTime: <value>  
       nextPageToken: <value>  
@@ -5032,14 +5122,14 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.search?services=<value>&severities=<value>&messageFilter=<value>&startDateTime=<value>&endDateTime=<value>&nextPageToken=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/log.search?service=<value>&severity=<value>&messageFilter=<value>&typeFilter=<value>&startDateTime=<value>&endDateTime=<value>&nextPageToken=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.search services=<value> severities=<value> messageFilter=<value> startDateTime=<value> endDateTime=<value> nextPageToken=<value> id=<value> if=<value> output=<value>  
+pi command log.search service=<value> severity=<value> messageFilter=<value> typeFilter=<value> startDateTime=<value> endDateTime=<value> nextPageToken=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5079,7 +5169,7 @@ http://host/api/v3/command/log.services?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command log.services id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5119,7 +5209,7 @@ http://host/api/v3/command/log.severities?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command log.severities id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5175,7 +5265,7 @@ http://host/api/v3/command/mail.dump?protocol=<value>&host=<value>&port=<value>&
 ```bash  
 pi command mail.dump protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> driveUsername=<value> drivePassword=<value> path=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5225,7 +5315,7 @@ http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>
 ```bash  
 pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5280,7 +5370,7 @@ http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&su
 ```bash  
 pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> model=<value> message=<value> replyTo=<value> attachments=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5340,7 +5430,7 @@ http://host/api/v3/command/mail.verify?email=<value>&email.whitelist=<value>&ema
 ```bash  
 pi command mail.verify email=<value> email.whitelist=<value> email.blacklist=<value> challenge=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5380,13 +5470,13 @@ http://host/api/v3/command/map?reverse=<value>&id=<value>&if=<value>
 ```bash  
 pi command map reverse=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
 ## memory.info
 ----------   
-Shows the current system info like memory consumption. Available for system and support users only.
+Shows the current system info like memory consumption. Available for system, support and developer users only.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=memory.info)
 
@@ -5420,7 +5510,7 @@ http://host/api/v3/command/memory.info?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command memory.info id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5464,7 +5554,7 @@ http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<v
 ```bash  
 pi command message.receive key=<value> exchange=<value> queue=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5508,7 +5598,7 @@ http://host/api/v3/command/message.send?key=<value>&exchange=<value>&payload=<va
 ```bash  
 pi command message.send key=<value> exchange=<value> payload=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5550,7 +5640,7 @@ http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>&id=<
 ```bash  
 pi command microsoft.teams.send url=<value> message=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5598,7 +5688,7 @@ http://host/api/v3/command/mock.command?enabled=<value>&command=<value>&when=<va
 ```bash  
 pi command mock.command enabled=<value> command=<value> when=<value> thenSetBody=<value> thenSetVar=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5642,7 +5732,7 @@ http://host/api/v3/command/pdf.create?pages=<value>&format=<value>&id=<value>&if
 ```bash  
 pi command pdf.create pages=<value> format=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5684,7 +5774,7 @@ http://host/api/v3/command/pdf.merge?name=<value>&id=<value>&if=<value>&output=<
 ```bash  
 pi command pdf.merge name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5746,7 +5836,7 @@ http://host/api/v3/command/pdf.stamp?text=<value>&textSize=<value>&textColor=<va
 ```bash  
 pi command pdf.stamp text=<value> textSize=<value> textColor=<value> image=<value> pages=<value> position=<value> layer=<value> opacity=<value> degree=<value> margin=<value> lineNo=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5786,7 +5876,7 @@ http://host/api/v3/command/pipeline.delete?name=<value>&id=<value>&if=<value>
 ```bash  
 pi command pipeline.delete name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5828,7 +5918,7 @@ http://host/api/v3/command/pipeline.get?name=<value>&id=<value>&if=<value>&outpu
 ```bash  
 pi command pipeline.get name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5870,7 +5960,7 @@ http://host/api/v3/command/pipeline.put?name=<value>&id=<value>&if=<value>&outpu
 ```bash  
 pi command pipeline.put name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5910,7 +6000,7 @@ http://host/api/v3/command/pipeline.run?name=<value>&id=<value>&if=<value>
 ```bash  
 pi command pipeline.run name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5954,7 +6044,7 @@ http://host/api/v3/command/pipeline.start?key=<value>&vars=<value>&id=<value>&if
 ```bash  
 pi command pipeline.start key=<value> vars=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -5996,7 +6086,7 @@ http://host/api/v3/command/property.app.config?appNames=<value>&id=<value>&if=<v
 ```bash  
 pi command property.app.config appNames=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6042,7 +6132,7 @@ http://host/api/v3/command/property.attachment.chunk.get?key=<value>&name=<value
 ```bash  
 pi command property.attachment.chunk.get key=<value> name=<value> index=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6088,7 +6178,7 @@ http://host/api/v3/command/property.attachment.chunk.put?key=<value>&name=<value
 ```bash  
 pi command property.attachment.chunk.put key=<value> name=<value> index=<value> content=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6132,7 +6222,7 @@ http://host/api/v3/command/property.attachment.content?key=<value>&name=<value>&
 ```bash  
 pi command property.attachment.content key=<value> name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6174,7 +6264,7 @@ http://host/api/v3/command/property.attachment.delete?key=<value>&name=<value>&i
 ```bash  
 pi command property.attachment.delete key=<value> name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6218,7 +6308,7 @@ http://host/api/v3/command/property.attachment.get?key=<value>&name=<value>&id=<
 ```bash  
 pi command property.attachment.get key=<value> name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6260,7 +6350,7 @@ http://host/api/v3/command/property.attachment.list?key=<value>&id=<value>&if=<v
 ```bash  
 pi command property.attachment.list key=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6306,7 +6396,7 @@ http://host/api/v3/command/property.attachment.put?key=<value>&name=<value>&cont
 ```bash  
 pi command property.attachment.put key=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6350,7 +6440,7 @@ http://host/api/v3/command/property.attachment.put.uri?key=<value>&name=<value>&
 ```bash  
 pi command property.attachment.put.uri key=<value> name=<value> uri=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6392,7 +6482,47 @@ http://host/api/v3/command/property.copy?key=<value>&to=<value>&id=<value>&if=<v
 ```bash  
 pi command property.copy key=<value> to=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## property.delete
+----------   
+Deletes one or more existing properties matching the given search pattern. Use this command with care!
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.delete)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`pattern` | String | true | null | The path key pattern of the properties to delete. All matching properties will be deleted!
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.delete:  
+      pattern: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.delete?pattern=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.delete pattern=<value> id=<value> if=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6434,7 +6564,7 @@ http://host/api/v3/command/property.exists?key=<value>&id=<value>&if=<value>&out
 ```bash  
 pi command property.exists key=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6476,7 +6606,7 @@ http://host/api/v3/command/property.import?strategy=<value>&id=<value>&if=<value
 ```bash  
 pi command property.import strategy=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6518,7 +6648,7 @@ http://host/api/v3/command/property.keys.children?pattern=<value>&id=<value>&if=
 ```bash  
 pi command property.keys.children pattern=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6560,7 +6690,7 @@ http://host/api/v3/command/property.keys?pattern=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command property.keys pattern=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6604,7 +6734,7 @@ http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&id=<valu
 ```bash  
 pi command property.list pattern=<value> filter=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6646,7 +6776,7 @@ http://host/api/v3/command/property.move?key=<value>&to=<value>&id=<value>&if=<v
 ```bash  
 pi command property.move key=<value> to=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6688,7 +6818,7 @@ http://host/api/v3/command/property.put?key=<value>&value=<value>&id=<value>&if=
 ```bash  
 pi command property.put key=<value> value=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6728,7 +6858,7 @@ http://host/api/v3/command/property.schema.delete?key=<value>&id=<value>&if=<val
 ```bash  
 pi command property.schema.delete key=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6786,7 +6916,7 @@ http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&
 ```bash  
 pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6840,7 +6970,7 @@ http://host/api/v3/command/property.search?keyFilter=<value>&valueFilter=<value>
 ```bash  
 pi command property.search keyFilter=<value> valueFilter=<value> typeFilter=<value> offset=<value> page=<value> maxResults=<value> info=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6894,7 +7024,7 @@ http://host/api/v3/command/property.send.delivery?key=<value>&message=<value>&pr
 ```bash  
 pi command property.send.delivery key=<value> message=<value> privacyLevel=<value> model=<value> subject=<value> includeProperty=<value> recipients=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6936,7 +7066,7 @@ http://host/api/v3/command/property.tag.list?key=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command property.tag.list key=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -6982,7 +7112,7 @@ http://host/api/v3/command/property.tag.put?key=<value>&tags=<value>&name=<value
 ```bash  
 pi command property.tag.put key=<value> tags=<value> name=<value> value=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7030,7 +7160,7 @@ http://host/api/v3/command/property.value.expression?select=<value>&from=<value>
 ```bash  
 pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7072,7 +7202,7 @@ http://host/api/v3/command/property.value.get?key=<value>&id=<value>&if=<value>&
 ```bash  
 pi command property.value.get key=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7114,7 +7244,7 @@ http://host/api/v3/command/provision?module=<value>&path=<value>&id=<value>&if=<
 ```bash  
 pi command provision module=<value> path=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7156,7 +7286,7 @@ http://host/api/v3/command/publicform.definition?id=<value>&id=<value>&id=<value
 ```bash  
 pi command publicform.definition id=<value> id=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7198,7 +7328,7 @@ http://host/api/v3/command/publicform.submit?value=<value>&id=<value>&id=<value>
 ```bash  
 pi command publicform.submit value=<value> id=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7242,7 +7372,7 @@ http://host/api/v3/command/resource?path=<value>&uri=<value>&id=<value>&if=<valu
 ```bash  
 pi command resource path=<value> uri=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7282,7 +7412,7 @@ http://host/api/v3/command/resource.save?path=<value>&id=<value>&if=<value>
 ```bash  
 pi command resource.save path=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7320,7 +7450,7 @@ http://host/api/v3/command/rpa.website.close?id=<value>&if=<value>
 ```bash  
 pi command rpa.website.close id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7360,7 +7490,7 @@ http://host/api/v3/command/rpa.website.open?url=<value>&id=<value>&if=<value>
 ```bash  
 pi command rpa.website.open url=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7400,7 +7530,7 @@ http://host/api/v3/command/rpa.website.scrap?xpath=<value>&id=<value>&if=<value>
 ```bash  
 pi command rpa.website.scrap xpath=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7440,7 +7570,7 @@ http://host/api/v3/command/schema.pipeline?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command schema.pipeline id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7486,7 +7616,7 @@ http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<valu
 ```bash  
 pi command script.run script=<value> path=<value> language=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7526,7 +7656,7 @@ http://host/api/v3/command/secret.delete?name=<value>&id=<value>&if=<value>
 ```bash  
 pi command secret.delete name=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7568,7 +7698,7 @@ http://host/api/v3/command/secret.get?name=<value>&id=<value>&if=<value>&output=
 ```bash  
 pi command secret.get name=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7614,7 +7744,7 @@ http://host/api/v3/command/secret.put?format=<value>&name=<value>&secret=<value>
 ```bash  
 pi command secret.put format=<value> name=<value> secret=<value> timeToLive=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7654,7 +7784,189 @@ http://host/api/v3/command/server.info?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command server.info id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## service.job.logs
+----------   
+Returns the logs of a service job in the cluster.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.logs)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of the service job.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.job.logs:  
+      name: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.job.logs?name=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.job.logs name=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## service.job.start
+----------   
+Starts a new service job in the cluster. The job runs async. Use service.job.status and service.job.logs to check the result of the job.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.start)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of the service job.
+`image` | String | false | null | The repo path of the image to be deployed. In case the image name starts with prefix 'pipeforce-registry/' the image will be loaded from the default PIPEFORCE registry for this namespace.
+`imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
+`imagePullPolicy` | String | false | Always | The policy how to handle non existing image. Can be one of: Always (pull image always from registry, to get latest), IfNotPresent (pull image from registry if not present), Never (pull image never from registry).
+`env` | String | false | null | Environment variables to be applied to the job service container.
+`command` | String | false | null | The list of command to execute on the service job container.
+`args` | String | false | null | The list of args to be passed on to the service job container.
+`replace` | String | false | false | If true, an existing job with same name will be deleted before this new one is created. If false, an exception is thrown in case a job with same name already exists.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.job.start:  
+      name: <value>  
+      image: <value>  
+      imagePullSecret: <value>  
+      imagePullPolicy: <value>  
+      env: <value>  
+      command: <value>  
+      args: <value>  
+      replace: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.job.start?name=<value>&image=<value>&imagePullSecret=<value>&imagePullPolicy=<value>&env=<value>&command=<value>&args=<value>&replace=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.job.start name=<value> image=<value> imagePullSecret=<value> imagePullPolicy=<value> env=<value> command=<value> args=<value> replace=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## service.job.status
+----------   
+Returns the status of a service job in the cluster.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.status)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of the service job.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.job.status:  
+      name: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.job.status?name=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.job.status name=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## service.job.stop
+----------   
+Stops a service job in the cluster even if it is not finished yet.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.stop)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of the service job.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - service.job.stop:  
+      name: <value>  
+      id: <value>  
+      if: <value>  
+      credentials: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/service.job.stop?name=<value>&id=<value>&if=<value>&credentials=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command service.job.stop name=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7672,13 +7984,18 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of the service.
 `image` | String | false | null | The repo path of the image to be deployed. If empty, no image will be deployed (just the service slot created). In case the image name starts with prefix 'pipeforce-registry/' the image will be loaded from the default PIPEFORCE registry for this namespace.
+`imagePullPolicy` | String | false | Always | The policy how to handle non existing image. Can be one of: Always (pull image always from registry, to get latest), IfNotPresent (pull image from registry if not present), Never (pull image never from registry).
 `port` | Integer | false | null | The port the running service accepts requests.
-`ingress` | Boolean | false | null | Create an ingress for this service?
+`ingress` | Boolean | false | null | Expose the given port of the service to the internet? The service is then reachable via HTTPS using the url https://[serviceName]-[namespace].pipeforce.net.
 `imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
-`env` | String | false | null | Environment variables to be applied to the service container.
+`env` | String | false | null | Map of environment variables to be applied to the service container.
+`command` | String | false | null | The list of command to execute on the service job container.
+`args` | String | false | null | The list of args to be passed on to the service job container.
+`replicas` | String | false | 1 | The number of stateless replicas (= scaling instances) of this service to be started in parallel in the cluster by default.
+`volumes` | String | false | null | The list of paths inside the container to mount to persisted volumes. This will automatically create a persistent volume and stores the data in the given paths to this volume. By default, the volume will be kept even on stop and start of the container. See service.stop command.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -7687,10 +8004,15 @@ pipeline:
   - service.start:  
       name: <value>  
       image: <value>  
+      imagePullPolicy: <value>  
       port: <value>  
       ingress: <value>  
       imagePullSecret: <value>  
       env: <value>  
+      command: <value>  
+      args: <value>  
+      replicas: <value>  
+      volumes: <value>  
       id: <value>  
       if: <value>  
       credentials: <value>  
@@ -7699,20 +8021,20 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.start?name=<value>&image=<value>&port=<value>&ingress=<value>&imagePullSecret=<value>&env=<value>&id=<value>&if=<value>&credentials=<value>  
+http://host/api/v3/command/service.start?name=<value>&image=<value>&imagePullPolicy=<value>&port=<value>&ingress=<value>&imagePullSecret=<value>&env=<value>&command=<value>&args=<value>&replicas=<value>&volumes=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.start name=<value> image=<value> port=<value> ingress=<value> imagePullSecret=<value> env=<value> id=<value> if=<value> credentials=<value>  
+pi command service.start name=<value> image=<value> imagePullPolicy=<value> port=<value> ingress=<value> imagePullSecret=<value> env=<value> command=<value> args=<value> replicas=<value> volumes=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
 ## service.status
 ----------   
-Returns the deployment status of the given service.
+Returns the status info of the given PIPEFORCE managed service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=service.status)
 
@@ -7723,9 +8045,10 @@ Returns the deployment status of the given service.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | Name of the service. If null or empty, the status of all PIPEFORCE managed services in current namespace will be returned.
+`format` | String | false | normal | The format of the status output: How much status information must be returned? Can be one of compact, normal, full.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -7733,6 +8056,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - service.status:  
       name: <value>  
+      format: <value>  
       id: <value>  
       if: <value>  
       credentials: <value>  
@@ -7741,14 +8065,14 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.status?name=<value>&id=<value>&if=<value>&credentials=<value>  
+http://host/api/v3/command/service.status?name=<value>&format=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.status name=<value> id=<value> if=<value> credentials=<value>  
+pi command service.status name=<value> format=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7765,9 +8089,10 @@ Stops a microservice from the cluster.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of the microservice to be stopped.
+`deleteVolumes` | String | false | false | If set to true, any volume declared on service.start will be deleted.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -7775,6 +8100,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - service.stop:  
       name: <value>  
+      deleteVolumes: <value>  
       id: <value>  
       if: <value>  
       credentials: <value>  
@@ -7783,14 +8109,14 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.stop?name=<value>&id=<value>&if=<value>&credentials=<value>  
+http://host/api/v3/command/service.stop?name=<value>&deleteVolumes=<value>&id=<value>&if=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.stop name=<value> id=<value> if=<value> credentials=<value>  
+pi command service.stop name=<value> deleteVolumes=<value> id=<value> if=<value> credentials=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7832,7 +8158,7 @@ http://host/api/v3/command/set.body?value=<value>&format=<value>&id=<value>&if=<
 ```bash  
 pi command set.body value=<value> format=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7880,7 +8206,7 @@ http://host/api/v3/command/set?value=<value>&to=<value>&mapping=<value>&id=<valu
 ```bash  
 pi command set value=<value> to=<value> mapping=<value> id=<value> if=<value> output=<value> input=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7924,7 +8250,7 @@ http://host/api/v3/command/set.var?key=<value>&value=<value>&format=<value>&id=<
 ```bash  
 pi command set.var key=<value> value=<value> format=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7947,7 +8273,7 @@ Name | Type | Required | Default | Description
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7976,7 +8302,7 @@ http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<v
 ```bash  
 pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -7999,7 +8325,7 @@ Name | Type | Required | Default | Description
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8028,7 +8354,7 @@ http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=
 ```bash  
 pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8052,7 +8378,7 @@ Name | Type | Required | Default | Description
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8082,7 +8408,7 @@ http://host/api/v3/command/sftp.list?path=<value>&filter=<value>&username=<value
 ```bash  
 pi command sftp.list path=<value> filter=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8105,7 +8431,7 @@ Name | Type | Required | Default | Description
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8134,7 +8460,7 @@ http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<va
 ```bash  
 pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8158,7 +8484,7 @@ Name | Type | Required | Default | Description
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8188,7 +8514,7 @@ http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=
 ```bash  
 pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8211,7 +8537,7 @@ Name | Type | Required | Default | Description
 `port` | String | false | null | The port
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
-`credentials` | String | false | null | Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
 
@@ -8240,7 +8566,7 @@ http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<v
 ```bash  
 pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> credentials=<value> input=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8282,7 +8608,7 @@ http://host/api/v3/command/slack.send?url=<value>&text=<value>&id=<value>&if=<va
 ```bash  
 pi command slack.send url=<value> text=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8332,7 +8658,7 @@ http://host/api/v3/command/sql.query?query=<value>&datasource=<value>&columnName
 ```bash  
 pi command sql.query query=<value> datasource=<value> columnName=<value> dataField=<value> columnField=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8372,7 +8698,7 @@ http://host/api/v3/command/switch?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command switch id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8418,7 +8744,7 @@ http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&rep
 ```bash  
 pi command test.run locations=<value> includeMethods=<value> reportFormat=<value> excludeMethods=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8462,7 +8788,7 @@ http://host/api/v3/command/theme?clearCache=<value>&resource=<value>&id=<value>&
 ```bash  
 pi command theme clearCache=<value> resource=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8514,7 +8840,7 @@ http://host/api/v3/command/transform?iterate=<value>&groupBy=<value>&engine=<val
 ```bash  
 pi command transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8558,7 +8884,7 @@ http://host/api/v3/command/transform.ftl?model=<value>&template=<value>&id=<valu
 ```bash  
 pi command transform.ftl model=<value> template=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8598,7 +8924,7 @@ http://host/api/v3/command/transform.html2docx?id=<value>&if=<value>&output=<val
 ```bash  
 pi command transform.html2docx id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8640,7 +8966,7 @@ http://host/api/v3/command/transform.pdf2png?dpi=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command transform.pdf2png dpi=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8682,7 +9008,7 @@ http://host/api/v3/command/transform.png2pdf?dpi=<value>&id=<value>&if=<value>&o
 ```bash  
 pi command transform.png2pdf dpi=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8726,7 +9052,7 @@ http://host/api/v3/command/transform.word2pdf?path=<value>&id=<value>&if=<value>
 ```bash  
 pi command transform.word2pdf path=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8770,7 +9096,7 @@ http://host/api/v3/command/transform.wordtemplate?model=<value>&template=<value>
 ```bash  
 pi command transform.wordtemplate model=<value> template=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8820,7 +9146,7 @@ http://host/api/v3/command/translate?text=<value>&targetLanguage=<value>&id=<val
 ```bash  
 pi command translate text=<value> targetLanguage=<value> id=<value> if=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8860,7 +9186,7 @@ http://host/api/v3/command/unzip?id=<value>&if=<value>&output=<value>
 ```bash  
 pi command unzip id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8904,7 +9230,7 @@ http://host/api/v3/command/validate.json?schema=<value>&version=<value>&path=<va
 ```bash  
 pi command validate.json schema=<value> version=<value> path=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8944,7 +9270,7 @@ http://host/api/v3/command/webhook.delete?uuid=<value>&id=<value>&if=<value>
 ```bash  
 pi command webhook.delete uuid=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -8986,7 +9312,7 @@ http://host/api/v3/command/webhook.get?uuid=<value>&id=<value>&if=<value>&output
 ```bash  
 pi command webhook.get uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9032,7 +9358,7 @@ http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<v
 ```bash  
 pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9074,7 +9400,7 @@ http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&id=<value>
 ```bash  
 pi command webhook.receive uuid=<value> token=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9114,7 +9440,7 @@ http://host/api/v3/command/webhook.receive.logs?token=<value>&id=<value>&if=<val
 ```bash  
 pi command webhook.receive.logs token=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9160,7 +9486,7 @@ http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKe
 ```bash  
 pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9204,7 +9530,7 @@ http://host/api/v3/command/workflow.deployment.find?name=<value>&id=<value>&id=<
 ```bash  
 pi command workflow.deployment.find name=<value> id=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9252,7 +9578,7 @@ http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=
 ```bash  
 pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9294,7 +9620,7 @@ http://host/api/v3/command/workflow.find.processinstances?processInstanceBusines
 ```bash  
 pi command workflow.find.processinstances processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9344,7 +9670,7 @@ http://host/api/v3/command/workflow.history.tasks?dueBefore=<value>&assignee=<va
 ```bash  
 pi command workflow.history.tasks dueBefore=<value> assignee=<value> includeVariables=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9398,7 +9724,7 @@ http://host/api/v3/command/workflow.member.message?workflowModel=<value>&userId=
 ```bash  
 pi command workflow.member.message workflowModel=<value> userId=<value> username=<value> resourcePath=<value> taskUrl=<value> subject=<value> message=<value> model=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9440,7 +9766,7 @@ http://host/api/v3/command/workflow.model.attachment.get?processInstanceId=<valu
 ```bash  
 pi command workflow.model.attachment.get processInstanceId=<value> fileName=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9484,7 +9810,7 @@ http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<valu
 ```bash  
 pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value> contentType=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9526,7 +9852,7 @@ http://host/api/v3/command/workflow.model?mappings=<value>&id=<value>&if=<value>
 ```bash  
 pi command workflow.model mappings=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9574,7 +9900,7 @@ http://host/api/v3/command/workflow.tasks.open?dueBefore=<value>&assignee=<value
 ```bash  
 pi command workflow.tasks.open dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9622,7 +9948,7 @@ http://host/api/v3/command/workflow.tasks.open.reminder?dueBefore=<value>&assign
 ```bash  
 pi command workflow.tasks.open.reminder dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9676,7 +10002,7 @@ http://host/api/v3/command/workflow.start?key=<value>&businessKey=<value>&variab
 ```bash  
 pi command workflow.start key=<value> businessKey=<value> variables=<value> workflowModelInstanceKey=<value> workflowStartedBy=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9720,7 +10046,7 @@ http://host/api/v3/command/workflow.task.complete?taskId=<value>&variables=<valu
 ```bash  
 pi command workflow.task.complete taskId=<value> variables=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9768,7 +10094,7 @@ http://host/api/v3/command/workflow.tasks?dueBefore=<value>&assignee=<value>&pro
 ```bash  
 pi command workflow.tasks dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9810,7 +10136,7 @@ http://host/api/v3/command/workflow.undeploy?name=<value>&onError=<value>&id=<va
 ```bash  
 pi command workflow.undeploy name=<value> onError=<value> id=<value> if=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9852,7 +10178,7 @@ http://host/api/v3/command/workflow.users?processDefinitionId=<value>&id=<value>
 ```bash  
 pi command workflow.users processDefinitionId=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
@@ -9896,7 +10222,7 @@ http://host/api/v3/command/zip?name=<value>&level=<value>&id=<value>&if=<value>&
 ```bash  
 pi command zip name=<value> level=<value> id=<value> if=<value> output=<value>  
 ```  
-Learn more: [Command Line Interface (CLI)](../tutorials/localworkspace) | [CLI Reference](./cli). 
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
