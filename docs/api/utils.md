@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 13/07/2022 13:05:47 by CommandComplianceTest -->
+<!-- Generated: 16/07/2022 16:39:26 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -25,7 +25,6 @@ Use the [online workbench](https://try.pipeforce.org) to get auto-completion for
 ----------  
 Provides utility functions inside a pipeline expression for simple calculations of lists.
 You can access the functions declared here in the PEL using <code>@calc</code>
-<p>
 Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
 
 ### sum(list)   
@@ -69,9 +68,7 @@ list | ``object`` | The list of numbers.
 ##  @content 
 ----------  
 Provides utility functions inside a pipeline expression for creation and managing of content objects.
-You can access the functions declared here in the PEL using <code>@content</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@content</code>  
 
 ### newCollection(uris)   
 Creates a new content collection and initializes it with given uris.   
@@ -124,9 +121,7 @@ uri | ``string`` | The uri to be used for the content object
 ##  @convert 
 ----------  
 Provides utility functions inside a pipeline expression for simple conversion and encoding tasks.
-You can access the functions declared here in the PEL using <code>@convert</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@convert</code>  
 
 ### toBase64(value)   
 Encodes the given value to base64. If value is not a text, it will be converted to a text before conversion.   
@@ -364,9 +359,7 @@ value | ``object`` | The value to convert.
 ##  @data 
 ----------  
 Provides utility functions inside a pipeline expression for simple CRUD and transformation data operations.
-You can access the functions declared here in the PEL using <code>@data</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@data</code>  
 
 ### set(data,path,value)   
 Sets the given value on the given data object at the given element path where every item is separated by a dot.
@@ -527,9 +520,7 @@ attribute | ``string`` | The attribute name to search for.
 ##  @date 
 ----------  
 Provides utility functions inside a pipeline expression for simple date and time handling.
-You can access the functions declared here in the PEL using <code>@date</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@date</code>  
 
 ### now()   
 Returns the current time at server side formatted using the preferred zone and locale of the currently logged-in user.   
@@ -764,9 +755,7 @@ dateTime | ``object`` | The date time object to be parsed.
  
 ##  @format 
 ----------  
-Provides utility functions inside a pipeline expression for formatting values.
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+Provides utility functions inside a pipeline expression for formatting values.  
 
 ### decimal(value,pattern)   
 Formats the given number as decimal.   
@@ -808,9 +797,7 @@ value | ``object`` | The number to format.
 ##  @iam 
 ----------  
 Provides utility functions inside a pipeline expression for accessing IAM information.
-You can access the functions declared here in the PEL using <code>@iam</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@iam</code>  
 
 ### userByUuid(userUuid)   
 Returns the user by given uuid or null in case no such user exists.   
@@ -867,9 +854,7 @@ email | ``string`` | The email of the user.
 ##  @instance 
 ----------  
 Provides utility functions inside a pipeline expression to return information about the current instance.
-You can access the functions declared here in the PEL using <code>@instance</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@instance</code>  
 
 ### domain()   
 Returns the domain, this hub instance is currently running in. For example: pipeforce.net   
@@ -1074,9 +1059,7 @@ image | ``string`` | The image name to be prefixed by the repo.
 ##  @json 
 ----------  
 Provides addon functions inside a pipe expression in order to read and change JSON documents.
-You can access the functions declared here in the PEL using <code>@json</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@json</code>  
 
 ### load(source)   
 Loads the given source and converts it into a JSONful data object.   
@@ -1118,9 +1101,7 @@ query | ``string`` | The query to be applied.
 ##  @list 
 ----------  
 Provides utility functions inside a pipeline expression for simple lists handling.
-You can access the functions declared here in the PEL using <code>@list</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@list</code>  
 
 ### first(value)   
 Returns the first element in list.   
@@ -1296,9 +1277,7 @@ Creates a new empty list.
 ##  @path 
 ----------  
 Provides utility functions inside a pipeline expression for simple path calculations.
-You can access the functions declared here in the PEL using <code>@path</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@path</code>  
 
 ### join(pathItems)   
 Concats all given items to a single path. Also see &lbrace;@link PathUtil#path(Object...)&rbrace;.   
@@ -1358,9 +1337,7 @@ path | ``string`` | The path string.
 ##  @property 
 ----------  
 Provides addon functions inside a pipe expression in order to read properties from the property store.
-You can access the functions declared here in the PEL using <code>@property</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@property</code>  
 
 ### value(key)   
 Returns the property value by given key from the property store.   
@@ -1438,9 +1415,7 @@ key | ``string`` | The property key with optional fragment reference in form 'gl
 ##  @text 
 ----------  
 Provides utility functions inside a pipeline expression for simple calculations of lists.
-You can access the functions declared here in the PEL using <code>@calc</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@calc</code>  
 
 ### upperCase(text)   
 Converts the given text value to upper case.   
@@ -1767,9 +1742,7 @@ replacement | ``string`` | The string to be substituted for each match.
 ##  @uri 
 ----------  
 Provides utility functions inside a pipeline expression for simple uri resolving.
-You can access the functions declared here in the PEL using <code>@uri</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@uri</code>  
 
 ### resolve(uri)   
 Resolves the given uri to its object representation. Supported uri schemes:
@@ -1798,9 +1771,7 @@ uri | ``string`` | The uri to be resolved.
 ##  @user 
 ----------  
 Provides utility functions inside a pipeline expression for simple handling of the currently logged-in user.
-You can access the functions declared here in the PEL using <code>@user</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@user</code>  
 
 ### username()   
 Returns the username of the currently logged-in user.   
@@ -2012,9 +1983,7 @@ See &lbrace;@link ZoneId#getAvailableZoneIds()&rbrace; and here: http://www.iana
 ##  @xml 
 ----------  
 Provides addon functions inside a pipeline expression in order to read and change XML documents.
-You can access the functions declared here in the PEL using <code>@xml</code>
-<p>
-Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
+You can access the functions declared here in the PEL using <code>@xml</code>  
 
 ### xpath(document,xpath)   
 Evaluates given XPath expression of given document and returns the result as a list of DOM nodes.   

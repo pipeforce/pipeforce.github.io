@@ -407,7 +407,7 @@ This looks for an update of the CLI and installs it if a newer version exists.
 pi update
 ```
 
-# Kubernetes Commands
+## Kubernetes Commands
 
 Since version v3.0.13 the CLI also contains some useful commands in order to make it easier to work with the Kubernetes backend of PIPEFORCE. These commands are intended mainly for backend developers and DevOps.
 
@@ -415,9 +415,9 @@ In order to be able to use these extended commands, [kubectl](https://kubernetes
 
 All commands specific to Kubernetes are prefixed with a **`k`** for example **`k`**`upload`.
 
-All k-commands are executed inside the namespace of the currently instance, selected by `pi setup` or `pi instance`.
+All k-commands are executed inside the namespace of the currently active instance, selected by `pi setup` or `pi instance`.
 
-## pi kdownload
+### pi kdownload
 
 Downloads a file or folder (recursively) from a container inside Kubernetes to the local file system. Automatically selects the container by resolving the given service name.
 
@@ -431,7 +431,7 @@ pi kdownload <SERVICE> <REMOTE_PATH> <LOCAL_PATH>
 pi kdownload hub /srv/ /Users/user1/
 ```
 
-## pi kexec
+### pi kexec
 
 Executes a command inside a container within Kubernetes. Automatically selects the container by resolving the given service name.
 
@@ -445,7 +445,7 @@ pi kexec <SERVICE> -- <REMOTE_COMMAND>
 pi kexec hub -- ls -l
 ```
 
-## pi kpodname
+### pi kpodname
 
 Automatically detects the internal pod names for a given PIPEFORCE service name and returns them.
 
@@ -459,7 +459,7 @@ pi kpodname <SERVICE>
 pi kpodname hub
 ```
 
-## pi ksync
+### pi ksync
 
 Syncs file and folder changes (create, modify, delete) inside a local folder (recursively) with the remote folder in a container. Automatically selects the container by resolving the given service name.
 
