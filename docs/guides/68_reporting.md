@@ -113,7 +113,7 @@ Here is a full working chart configuration with static data:
     "responsive": true,
     "plugins": {
       "legend": {
-        "position": "top",
+        "position": "top"
       },
       "title": {
         "display": true,

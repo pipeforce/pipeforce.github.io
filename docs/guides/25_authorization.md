@@ -1,6 +1,6 @@
 # Authorization
 
-Before you can use a pipeline or command you need to authorize ("login") first. This can be done in different ways depending on your requirements.
+Before you can call a pipeline or command from remote, you need to authorize ("login") first. This can be done in different ways depending on your requirements.
 
 ## HTTP Header Authorization
 
@@ -80,7 +80,7 @@ authorization: Refresh <token>
 
 ## IAM Command Authentication
 
-In some cases it is required, that authentication takes place inside a pipeline. For this, there are different `iam.*` commands available. See commands reference for details.
+In some cases it is required that authentication takes place inside a pipeline. For this, there are different `iam.*` commands available. See commands reference for details.
 
 :::note
 Whenever possible, you should use the HTTP Header Authentication methods and avoid using IAM command authentication. They're intended only for special requirements.
