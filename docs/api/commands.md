@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 08/07/2022 by CommandComplianceTest -->
+<!-- Generated: 13/07/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -143,6 +143,66 @@ http://host/api/v3/command/app.install?overwrite=<value>&github=<value>&branch=<
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command app.install overwrite=<value> github=<value> branch=<value> runTests=<value> id=<value> if=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## app.marketplace.search
+----------   
+Searches the marketplace for apps ready to be installed. Note: This command is limited to max. 10 calls per minute.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.marketplace.search)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`sort` | String | false |  | Sorts the results by author-date or committer-date or (best-match). If null or empty, best-match will be used as default.
+`order` | String | false | desc | Orders the result desc or asc.
+`results` | String | false | 30 | Max. number of results per page.
+`page` | String | false | 1 | The 1-based page number to return.
+`license` | String | false | null | Limit the search to app repos with given exact license keyword only.
+`searchString` | String | false | null | The text to search for.
+`searchInName` | Boolean | false | true | Search for searchString in the app repo name?
+`searchInDesc` | Boolean | false | true | Search for searchString in the app repo description?
+`searchInReadme` | Boolean | false | true | Search for searchString in the app repo README file?
+`searchInTopics` | Boolean | false | true | Search for searchString in the repo topics?
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - app.marketplace.search:  
+      sort: <value>  
+      order: <value>  
+      results: <value>  
+      page: <value>  
+      license: <value>  
+      searchString: <value>  
+      searchInName: <value>  
+      searchInDesc: <value>  
+      searchInReadme: <value>  
+      searchInTopics: <value>  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/app.marketplace.search?sort=<value>&order=<value>&results=<value>&page=<value>&license=<value>&searchString=<value>&searchInName=<value>&searchInDesc=<value>&searchInReadme=<value>&searchInTopics=<value>&id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command app.marketplace.search sort=<value> order=<value> results=<value> page=<value> license=<value> searchString=<value> searchInName=<value> searchInDesc=<value> searchInReadme=<value> searchInTopics=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -5509,6 +5569,46 @@ http://host/api/v3/command/memory.info?id=<value>&if=<value>&output=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command memory.info id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## message.info.queue.get
+----------   
+Returns details about a message queue.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.info.queue.get)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`queueName` | String | true | null | The name of the queue.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - message.info.queue.get:  
+      queueName: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/message.info.queue.get?queueName=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command message.info.queue.get queueName=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

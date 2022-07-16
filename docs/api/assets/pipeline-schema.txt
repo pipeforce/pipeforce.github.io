@@ -106,21 +106,27 @@
           },
           "app.install" : {
             "type" : "object",
-            "description" : "Installs the given app into the property store.",
+            "description" : "Installs an app into the property store. The app can be located on GitHub or is provided as zip file content in the body.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "overwrite" : {
+                "type" : "boolean",
+                "description" : "What to do if app with this key already exists? If true, the existing app will be uninstalled and replaced by this new version. Otherwise, an attempt to install an existing app will cause an error.",
+                "default" : "false"
+              },
               "github" : {
                 "type" : "string",
-                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one."
+                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
               },
               "branch" : {
                 "type" : "string",
-                "description" : "The branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used."
+                "description" : "The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given."
               },
               "runTests" : {
-                "type" : "string",
-                "description" : "Run the tests of the app after installation?"
+                "type" : "boolean",
+                "description" : "Run the tests of the app after installation?",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
@@ -132,7 +138,76 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
+          "app.marketplace.search" : {
+            "type" : "object",
+            "description" : "Searches the marketplace for apps ready to be installed. Note: This command is limited to max. 10 calls per minute.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "sort" : {
+                "type" : "string",
+                "description" : "Sorts the results by author-date or committer-date or (best-match). If null or empty, best-match will be used as default.",
+                "default" : ""
+              },
+              "order" : {
+                "type" : "string",
+                "description" : "Orders the result desc or asc.",
+                "default" : "desc"
+              },
+              "results" : {
+                "type" : "string",
+                "description" : "Max. number of results per page.",
+                "default" : "30"
+              },
+              "page" : {
+                "type" : "string",
+                "description" : "The 1-based page number to return.",
+                "default" : "1"
+              },
+              "license" : {
+                "type" : "string",
+                "description" : "Limit the search to app repos with given exact license keyword only."
+              },
+              "searchString" : {
+                "type" : "string",
+                "description" : "The text to search for."
+              },
+              "searchInName" : {
+                "type" : "boolean",
+                "description" : "Search for searchString in the app repo name?",
+                "default" : "true"
+              },
+              "searchInDesc" : {
+                "type" : "boolean",
+                "description" : "Search for searchString in the app repo description?",
+                "default" : "true"
+              },
+              "searchInReadme" : {
+                "type" : "boolean",
+                "description" : "Search for searchString in the app repo README file?",
+                "default" : "true"
+              },
+              "searchInTopics" : {
+                "type" : "boolean",
+                "description" : "Search for searchString in the repo topics?",
+                "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -157,29 +232,29 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
           },
           "app.update" : {
             "type" : "object",
-            "description" : "Updates the given apps.",
+            "description" : "Deprecated. Use app.install with param update:true instead. Updates the given apps.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "github" : {
                 "type" : "string",
-                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one."
+                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
               },
               "branch" : {
                 "type" : "string",
-                "description" : "The branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used."
+                "description" : "The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given."
               },
-              "keepData" : {
-                "type" : "string",
-                "description" : "If set to true, all data inside object/**/instances/** and data/** wont be deleted.",
-                "default" : "true"
+              "runTests" : {
+                "type" : "boolean",
+                "description" : "Run the tests of the app after installation?",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
@@ -191,7 +266,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -684,7 +759,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -705,7 +780,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -742,7 +817,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -1321,7 +1396,7 @@
               },
               "namingPattern" : {
                 "type" : "string",
-                "description" : "The PEL pattern to be applied to generate the final archive file name /path. This name / path will be relative to the given archive root path. Additionally, provides these variables in this PEL pattern context: archiveCounter = The last value used as counter as it comes from the .counter file. When not present, is initialized by counting all files in archive folder. counter = The archiveCounter increased by 1.archivePath = The path to the archive root as given by path param. basename = The base filename of the archive file, without extension (for example myfile.pdf = myfile). basenameNoId = Same as basename but without the _ID-123 part in the file name if there is any.ext = The extension of the archive file, without a period (for example myfile.pdf = pdf) filename = The full name of the archive file, with extension (for example myfile.pdf = myfile.pdf). The default pattern is this: basename_counter.ext"
+                "description" : "The PEL pattern to be applied to generate the final archive file name / path. This name / path will be relative to the given archive root path. Additionally, provides these variables in this PEL pattern context: archiveCounter = The last value used as counter as it comes from the .counter file. When not present, is initialized by counting all files in archive folder. counter = The archiveCounter increased by 1.archivePath = The path to the archive root as given by path param. basename = The base filename of the archive file, without extension (for example myfile.pdf = myfile). basenameNoId = Same as basename but without the _ID-123 part in the file name if there is any.ext = The extension of the archive file, without a period (for example myfile.pdf = pdf) filename = The full name of the archive file, with extension (for example myfile.pdf = myfile.pdf). The default pattern is this: basename_counter.ext"
               },
               "id" : {
                 "type" : "string",
@@ -2064,7 +2139,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -2109,7 +2184,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -2154,7 +2229,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -2199,7 +2274,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -2244,35 +2319,14 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
           },
-          "iam.token.refresh" : {
-            "type" : "object",
-            "description" : "Enrich headers with accessToken obtained from authorization server using refreshToken.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "refreshToken" : {
-                "type" : "string",
-                "description" : "The refresh token."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
-              }
-            },
-            "required" : [ "refreshToken" ]
-          },
           "iam.apitoken" : {
             "type" : "object",
-            "description" : "Obtains the apitoken in exchange for user credentials provided and writes into the output.",
+            "description" : "Obtains the apitoken (= offline token) in exchange for user credentials provided and writes it into the output.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -2407,6 +2461,23 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "iam.cache.clear" : {
+            "type" : "object",
+            "description" : "Clears the security objects (and reloads roles where required). Note: Since this can be a heavy task and slow down the system, use it only in case really required!",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ ]
@@ -2794,6 +2865,11 @@
                 "type" : "string",
                 "description" : "The username, subsequent pipe commands must be executed as. This user must has RUN_AS_SOURCE role assigned."
               },
+              "caching" : {
+                "type" : "string",
+                "description" : "Should the IAM cache used (= much faster)?",
+                "default" : "yes"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -2844,6 +2920,35 @@
             },
             "required" : [ "type" ]
           },
+          "iam.token" : {
+            "type" : "object",
+            "description" : "Obtains the full offline token response JSON in exchange for user credentials provided and writes into the output.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "username" : {
+                "type" : "string",
+                "description" : "The user name."
+              },
+              "password" : {
+                "type" : "string",
+                "description" : "The user password."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "username", "password" ]
+          },
           "iam.token.logout" : {
             "type" : "object",
             "description" : "Logs out keycloak session associated with refreshToken and removes any refresh and access tokens from headers.",
@@ -2861,6 +2966,31 @@
               "if" : {
                 "type" : "string",
                 "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "refreshToken" ]
+          },
+          "iam.token.refresh" : {
+            "type" : "object",
+            "description" : "Enrich headers with accessToken obtained from authorization server using refreshToken and returns the tokenResponse in the body.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "refreshToken" : {
+                "type" : "string",
+                "description" : "The refresh token."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "refreshToken" ]
@@ -3430,30 +3560,34 @@
           },
           "log.search" : {
             "type" : "object",
-            "description" : "Searches the cloud logs. Returns a page result which has this format: {}",
+            "description" : "Searches the cloud logs and returns the last 30 entries per request. Supports pagination toscroll thru the entries.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "services" : {
+              "service" : {
                 "type" : "string",
-                "description" : "The services to search for log entries. Can be a list or comma separated text. If null or empty, 'hub' will be used as default.",
+                "description" : "The service to search for log entries. Can be a list or comma separated service names. If null or empty, 'hub' will be used as default.",
                 "default" : "hub"
               },
-              "severities" : {
+              "severity" : {
                 "type" : "string",
-                "description" : "A list of severities to search inside: DEBUG, INFO, WARNING, ERROR. Can be a list or comma separated text. If null or empty, searches in all severities."
+                "description" : "The severity to search inside: DEBUG, INFO, WARNING, ERROR. Can be a list or comma separated text. If null or empty, searches in all severities."
               },
               "messageFilter" : {
                 "type" : "string",
-                "description" : "Message search string to filter the result by matching this string. Can be null or empty."
+                "description" : "Message search string to filter the result by matching this string. Can be null or empty to return any entry."
+              },
+              "typeFilter" : {
+                "type" : "string",
+                "description" : "A list of types of message logs to show. Possible values are: command, pipeline, security_audit, event_fired, webhook. If not set, all logs will be shown."
               },
               "startDateTime" : {
                 "type" : "string",
-                "description" : "An ISO85061 date-time string to start the search at. If null or empty, the date-time string from 24h before will be used."
+                "description" : "An ISO8601 date-time string to start the search at. If null or empty, the date-time string from 24h before will be used."
               },
               "endDateTime" : {
                 "type" : "string",
-                "description" : "An ISO85061 date-time string to end the search at. If null or empty, all results up to now will be returned."
+                "description" : "An ISO8601 date-time string to end the search at. If null or empty, all results up to now will be returned."
               },
               "nextPageToken" : {
                 "type" : "string",
@@ -3721,7 +3855,7 @@
           },
           "memory.info" : {
             "type" : "object",
-            "description" : "Shows the current system info like memory consumption. Available for system and support users only.",
+            "description" : "Shows the current system info like memory consumption. Available for system, support and developer users only.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -3739,6 +3873,27 @@
               }
             },
             "required" : [ ]
+          },
+          "message.info.queue.get" : {
+            "type" : "object",
+            "description" : "Returns details about a message queue.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "queueName" : {
+                "type" : "string",
+                "description" : "The name of the queue."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "queueName" ]
           },
           "message.receive" : {
             "type" : "object",
@@ -4396,6 +4551,27 @@
               }
             },
             "required" : [ "key", "to" ]
+          },
+          "property.delete" : {
+            "type" : "object",
+            "description" : "Deletes one or more existing properties matching the given search pattern. Use this command with care!",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "pattern" : {
+                "type" : "string",
+                "description" : "The path key pattern of the properties to delete. All matching properties will be deleted!"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              }
+            },
+            "required" : [ "pattern" ]
           },
           "property.exists" : {
             "type" : "object",
@@ -5205,6 +5381,136 @@
             },
             "required" : [ ]
           },
+          "service.job.logs" : {
+            "type" : "object",
+            "description" : "Returns the logs of a service job in the cluster.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the service job."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
+          "service.job.start" : {
+            "type" : "object",
+            "description" : "Starts a new service job in the cluster. The job runs async. Use service.job.status and service.job.logs to check the result of the job.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the service job."
+              },
+              "image" : {
+                "type" : "string",
+                "description" : "The repo path of the image to be deployed. In case the image name starts with prefix 'pipeforce-registry/' the image will be loaded from the default PIPEFORCE registry for this namespace."
+              },
+              "imagePullSecret" : {
+                "type" : "string",
+                "description" : "The optional name of the registry secret to be used in case it is a private registry."
+              },
+              "imagePullPolicy" : {
+                "type" : "string",
+                "description" : "The policy how to handle non existing image. Can be one of: Always (pull image always from registry, to get latest), IfNotPresent (pull image from registry if not present), Never (pull image never from registry).",
+                "default" : "Always"
+              },
+              "env" : {
+                "type" : "string",
+                "description" : "Environment variables to be applied to the job service container."
+              },
+              "command" : {
+                "type" : "string",
+                "description" : "The list of command to execute on the service job container."
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "The list of args to be passed on to the service job container."
+              },
+              "replace" : {
+                "type" : "string",
+                "description" : "If true, an existing job with same name will be deleted before this new one is created. If false, an exception is thrown in case a job with same name already exists.",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
+          "service.job.status" : {
+            "type" : "object",
+            "description" : "Returns the status of a service job in the cluster.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the service job."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
+          "service.job.stop" : {
+            "type" : "object",
+            "description" : "Stops a service job in the cluster even if it is not finished yet.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the service job."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
           "service.start" : {
             "type" : "object",
             "description" : "Starts a new microservice in the cluster.",
@@ -5219,13 +5525,18 @@
                 "type" : "string",
                 "description" : "The repo path of the image to be deployed. If empty, no image will be deployed (just the service slot created). In case the image name starts with prefix 'pipeforce-registry/' the image will be loaded from the default PIPEFORCE registry for this namespace."
               },
+              "imagePullPolicy" : {
+                "type" : "string",
+                "description" : "The policy how to handle non existing image. Can be one of: Always (pull image always from registry, to get latest), IfNotPresent (pull image from registry if not present), Never (pull image never from registry).",
+                "default" : "Always"
+              },
               "port" : {
                 "type" : "number",
                 "description" : "The port the running service accepts requests."
               },
               "ingress" : {
                 "type" : "boolean",
-                "description" : "Create an ingress for this service?"
+                "description" : "Expose the given port of the service to the internet? The service is then reachable via HTTPS using the url https://[serviceName]-[namespace].pipeforce.net."
               },
               "imagePullSecret" : {
                 "type" : "string",
@@ -5233,7 +5544,24 @@
               },
               "env" : {
                 "type" : "string",
-                "description" : "Environment variables to be applied to the service container."
+                "description" : "Map of environment variables to be applied to the service container."
+              },
+              "command" : {
+                "type" : "string",
+                "description" : "The list of command to execute on the service job container."
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "The list of args to be passed on to the service job container."
+              },
+              "replicas" : {
+                "type" : "string",
+                "description" : "The number of stateless replicas (= scaling instances) of this service to be started in parallel in the cluster by default.",
+                "default" : "1"
+              },
+              "volumes" : {
+                "type" : "string",
+                "description" : "The list of paths inside the container to mount to persisted volumes. This will automatically create a persistent volume and stores the data in the given paths to this volume. By default, the volume will be kept even on stop and start of the container. See service.stop command."
               },
               "id" : {
                 "type" : "string",
@@ -5245,14 +5573,14 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
           },
           "service.status" : {
             "type" : "object",
-            "description" : "Returns the deployment status of the given service.",
+            "description" : "Returns the status info of the given PIPEFORCE managed service.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -5260,6 +5588,11 @@
                 "type" : "string",
                 "description" : "Name of the service. If null or empty, the status of all PIPEFORCE managed services in current namespace will be returned."
               },
+              "format" : {
+                "type" : "string",
+                "description" : "The format of the status output: How much status information must be returned? Can be one of compact, normal, full.",
+                "default" : "normal"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -5270,7 +5603,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -5285,6 +5618,11 @@
                 "type" : "string",
                 "description" : "The name of the microservice to be stopped."
               },
+              "deleteVolumes" : {
+                "type" : "string",
+                "description" : "If set to true, any volume declared on service.start will be deleted.",
+                "default" : "false"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -5295,7 +5633,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -5429,7 +5767,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "output" : {
                 "type" : "string",
@@ -5474,7 +5812,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "output" : {
                 "type" : "string",
@@ -5524,7 +5862,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "output" : {
                 "type" : "string",
@@ -5569,7 +5907,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "output" : {
                 "type" : "string",
@@ -5618,7 +5956,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "output" : {
                 "type" : "string",
@@ -5664,7 +6002,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "input" : {
                 "type" : "string",
