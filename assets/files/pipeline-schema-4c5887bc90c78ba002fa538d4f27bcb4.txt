@@ -6216,6 +6216,61 @@
             },
             "required" : [ "template" ]
           },
+          "transform.csv.json" : {
+            "type" : "object",
+            "description" : "Takes a CSV document in the body and converts it to a JSON. The CSV document must comply with the RFC4180 standard format.",
+            "inputType" : "Byte",
+            "outputType" : "Byte",
+            "properties" : {
+              "delimiter" : {
+                "type" : "string",
+                "description" : "WThe delimiter (separator) to separate the columns of the CSV",
+                "default" : ","
+              },
+              "hasHeadersLine" : {
+                "type" : "string",
+                "description" : "Does the first line of the input CSV contain the column header names?",
+                "default" : "true"
+              },
+              "rowsFormat" : {
+                "type" : "string",
+                "description" : "The JSON format of the rows section: arrays (= array with nested string arrays with each CSV line as such a new nested array), objects (= each CSV line will become a new JSON object in the rows array with the CSV headers as the field keys)",
+                "default" : "arrays"
+              },
+              "showColumnsCountField" : {
+                "type" : "string",
+                "description" : "Show the number of headers (columns) in element columnsCount?",
+                "default" : "true"
+              },
+              "showRowsCountField" : {
+                "type" : "string",
+                "description" : "Show the number of rows (values) in element rowsCount?",
+                "default" : "true"
+              },
+              "showHeadersField" : {
+                "type" : "string",
+                "description" : "Show the column header names in extra element headers? This is only shown if hasHeaders is true. In this case, the values array doesnt contain a first headers line.",
+                "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "transform.ftl" : {
             "type" : "object",
             "description" : "This transformer uses the FreeMarker template engine for its transformation. It expects the template to be in the body or in the template param, transforms it and puts the result  to the output (as a content object).",
