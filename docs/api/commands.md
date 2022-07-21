@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 16/07/2022 by CommandComplianceTest -->
+<!-- Generated: 21/07/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -8939,6 +8939,60 @@ http://host/api/v3/command/transform?iterate=<value>&groupBy=<value>&engine=<val
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## transform.csv.json
+----------   
+Takes a CSV document in the body and converts it to a JSON. The CSV document must comply with the RFC4180 standard format.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.csv.json)
+
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`delimiter` | String | false | , | WThe delimiter (separator) to separate the columns of the CSV
+`hasHeadersLine` | String | false | true | Does the first line of the input CSV contain the column header names?
+`rowsFormat` | String | false | arrays | The JSON format of the rows section: arrays (= array with nested string arrays with each CSV line as such a new nested array), objects (= each CSV line will become a new JSON object in the rows array with the CSV headers as the field keys)
+`showColumnsCountField` | String | false | true | Show the number of headers (columns) in element columnsCount?
+`showRowsCountField` | String | false | true | Show the number of rows (values) in element rowsCount?
+`showHeadersField` | String | false | true | Show the column header names in extra element headers? This is only shown if hasHeaders is true. In this case, the values array doesnt contain a first headers line.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.csv.json:  
+      delimiter: <value>  
+      hasHeadersLine: <value>  
+      rowsFormat: <value>  
+      showColumnsCountField: <value>  
+      showRowsCountField: <value>  
+      showHeadersField: <value>  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.csv.json?delimiter=<value>&hasHeadersLine=<value>&rowsFormat=<value>&showColumnsCountField=<value>&showRowsCountField=<value>&showHeadersField=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.csv.json delimiter=<value> hasHeadersLine=<value> rowsFormat=<value> showColumnsCountField=<value> showRowsCountField=<value> showHeadersField=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
