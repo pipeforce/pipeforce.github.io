@@ -8950,6 +8950,7 @@ Takes a CSV document in the body and converts it to a JSON. The CSV document mus
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.csv.json)
 
+**Alias:** pipe.command.transform.csv2json   
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
