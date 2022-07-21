@@ -124,7 +124,7 @@ Here is a full working chart configuration with static data:
 }
 ```
 
-Create a new property using the property editor, for example under ``global/app/myapp/reporting/piechart``:
+Create a new property using the property editor, for example under ``global/app/myapp/report/piechart``:
 
 ![](../img/reporting_new_piechart.png)
 

@@ -431,6 +431,12 @@ pi kdownload <SERVICE> <REMOTE_PATH> <LOCAL_PATH>
 pi kdownload hub /srv/ /Users/user1/
 ```
 
+:::caution For Windows users
+
+Make sure to not use backslashes `\` or drive letters like `C:`for example in your path. You have to rewrite a path like `C:\myfolder` to `C/myfolder` or simply `/myfolder`.
+
+:::
+
 ### pi kexec
 
 Executes a command inside a container within Kubernetes. Automatically selects the container by resolving the given service name.
@@ -475,3 +481,28 @@ pi ksync drive /Users/me/git/drive/ /var/www/html www-data:root
 
 This example (one-way) syncs any local changes to the remote container and applies a `chown`  with `www-data:root` recursively on the synced sources.
 
+:::caution For Windows users
+
+Make sure to not use backslashes `\` or drive letters like `C:`for example in your path. You have to rewrite a path like `C:\myfolder` to `C/myfolder` or simply `/myfolder`.
+
+:::
+
+### pi kupload
+
+Uploads a file or folder (recursively) from local file system to a container inside Kubernetes. Automatically selects the container by resolving the given service name.
+
+```bash
+pi kupload <SERVICE> <LOCAL_PATH> <REMOTE_PATH>
+```
+
+**Example:**
+
+```bash
+pi kupload hub /Users/user1/ /srv/ 
+```
+
+:::caution For Windows users
+
+Make sure to not use backslashes `\` or drive letters like `C:`for example in your path. You have to rewrite a path like `C:\myfolder` to `C/myfolder` or simply `/myfolder`.
+
+:::
