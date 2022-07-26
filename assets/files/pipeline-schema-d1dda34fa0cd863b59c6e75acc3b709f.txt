@@ -1606,7 +1606,7 @@
               },
               "cleanupBody" : {
                 "type" : "string",
-                "description" : "If true, deletes the content from the body after the content was saved to drive (default).",
+                "description" : "If true, deletes the content from the body after the content was saved to drive (default). Note: In case the body content is a stream, this stream will be empty even if this was set to false since streams can be processed only once and was processed by writing its data to drive here.",
                 "default" : "true"
               },
               "id" : {
@@ -6224,7 +6224,7 @@
             "properties" : {
               "delimiter" : {
                 "type" : "string",
-                "description" : "WThe delimiter (separator) to separate the columns of the CSV",
+                "description" : "The delimiter (separator) to separate the columns of the CSV",
                 "default" : ","
               },
               "hasHeadersLine" : {
@@ -6313,6 +6313,31 @@
               "if" : {
                 "type" : "string",
                 "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "transform.json.xml" : {
+            "type" : "object",
+            "description" : "Takes a JSON document or JSON string in the body and converts it to an XML document.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
               },
               "output" : {
                 "type" : "string",
@@ -6424,6 +6449,31 @@
               }
             },
             "required" : [ "model" ]
+          },
+          "transform.xml.json" : {
+            "type" : "object",
+            "description" : "Takes an XML document or XML string in the body and converts it to a JSON. By default, the PIPEFORCE XML to JSON conversion rules will be applied (see https://pipeforce.github.io/docs/guides/transformers/xml2json).",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
           },
           "translate" : {
             "type" : "object",
