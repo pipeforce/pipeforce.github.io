@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 21/07/2022 by CommandComplianceTest -->
+<!-- Generated: 25/07/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -2293,7 +2293,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `path` | String | true | null | The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file.
 `namingStrategy` | String | false | null | If defined, applies the given naming strategy to the name of the resource. If null or empty, no name strategy is applied.
-`cleanupBody` | String | false | true | If true, deletes the content from the body after the content was saved to drive (default).
+`cleanupBody` | String | false | true | If true, deletes the content from the body after the content was saved to drive (default). Note: In case the body content is a stream, this stream will be empty even if this was set to false since streams can be processed only once and was processed by writing its data to drive here.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 
@@ -8957,7 +8957,7 @@ Takes a CSV document in the body and converts it to a JSON. The CSV document mus
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`delimiter` | String | false | , | WThe delimiter (separator) to separate the columns of the CSV
+`delimiter` | String | false | , | The delimiter (separator) to separate the columns of the CSV
 `hasHeadersLine` | String | false | true | Does the first line of the input CSV contain the column header names?
 `rowsFormat` | String | false | arrays | The JSON format of the rows section: arrays (= array with nested string arrays with each CSV line as such a new nested array), objects (= each CSV line will become a new JSON object in the rows array with the CSV headers as the field keys)
 `showColumnsCountField` | String | false | true | Show the number of headers (columns) in element columnsCount?
@@ -9078,6 +9078,48 @@ http://host/api/v3/command/transform.html2docx?id=<value>&if=<value>&output=<val
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command transform.html2docx id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## transform.json.xml
+----------   
+Takes a JSON document or JSON string in the body and converts it to an XML document.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.json.xml)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.json.xml:  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.json.xml?id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.json.xml id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -9250,6 +9292,48 @@ http://host/api/v3/command/transform.wordtemplate?model=<value>&template=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command transform.wordtemplate model=<value> template=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## transform.xml.json
+----------   
+Takes an XML document or XML string in the body and converts it to a JSON. By default, the PIPEFORCE XML to JSON conversion rules will be applied (see https://pipeforce.github.io/docs/guides/transformers/xml2json).
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.xml.json)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - transform.xml.json:  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/transform.xml.json?id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command transform.xml.json id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
