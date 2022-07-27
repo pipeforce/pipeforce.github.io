@@ -5548,11 +5548,11 @@
               },
               "command" : {
                 "type" : "string",
-                "description" : "The list of command to execute on the service job container."
+                "description" : "The list of command to execute on the service container."
               },
               "args" : {
                 "type" : "string",
-                "description" : "The list of args to be passed on to the service job container."
+                "description" : "The list of args to be passed on to the service container."
               },
               "replicas" : {
                 "type" : "string",

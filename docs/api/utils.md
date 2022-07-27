@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 25/07/2022 16:16:10 by CommandComplianceTest -->
+<!-- Generated: 27/07/2022 16:21:17 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -1434,23 +1434,98 @@ text | ``object`` | The text to convert.
 @text.upperCase(text)  
 ```  
 
+### lastIndexOf(text,needle,offset)   
+Returns the index of last occurrence of needle in the given text.   
+
+#### Returns  
+``int`` - The index of needle inside text or -1 in case it was not found or input was null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to search for occurrence. 
+needle | ``object`` | The text to search for. 
+offset | ``int`` | The index to start search from. 
+
+
+#### Example  
+```  
+@text.lastIndexOf(text,needle,offset)  
+```  
+
+### indexOf(text,needle)   
+Returns the index of the first occurrence of needle in the given text.   
+
+#### Returns  
+``int`` - The index of first occurrence of needle inside text or -1 in case it was not found or input was null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to search for occurrence. 
+needle | ``object`` | The text to search for. 
+
+
+#### Example  
+```  
+@text.indexOf(text,needle)  
+```  
+
+### indexOf(text,needle,offset)   
+Returns the index of the first occurrence of needle in the given text.   
+
+#### Returns  
+``int`` - The index of first occurrence of needle inside text or -1 in case it was not found or input was null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to search for occurrence. 
+needle | ``object`` | The text to search for. 
+offset | ``int`` | The index to start search from. 
+
+
+#### Example  
+```  
+@text.indexOf(text,needle,offset)  
+```  
+
 ### prefix(text,stop)   
 Returns the part from the beginning of the given text up to the stop word.
 For example "Foo Bar" with stop word of " " would return "Foo" as prefix.   
 
 #### Returns  
-``string`` - The part of text up to the first occurence of the stop word.  
+``string`` - The part of text up to the first occurrence of the stop word.  
 
 #### Parameters  
 Name | Type | Description
 --- | --- | ---
-text | ``string`` | The text. 
-stop | ``string`` | The stop word. 
+text | ``object`` | The text. 
+stop | ``object`` | The stop word. 
 
 
 #### Example  
 ```  
 @text.prefix(text,stop)  
+```  
+
+### suffix(text,stop)   
+Returns the part from the stop word of the given text up to the end of the word.
+For example "Foo Bar" with stop word of " " would return "Bar" as suffix.   
+
+#### Returns  
+``string`` - The part of text from stop word up to end of the text.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text. 
+stop | ``object`` | The stop word. 
+
+
+#### Example  
+```  
+@text.suffix(text,stop)  
 ```  
 
 ### lowerCase(text)   
@@ -1491,7 +1566,7 @@ text | ``object`` | The text.
 Shorts the given string and adds ... at the end.   
 
 #### Returns  
-``string`` - The shorten string.  
+``string`` - The shortened text.  
 
 #### Parameters  
 Name | Type | Description
@@ -1598,7 +1673,7 @@ and converts links to href elements.
 #### Parameters  
 Name | Type | Description
 --- | --- | ---
-text | ``string`` | The text to convert to HTML. 
+text | ``object`` | The text to convert to HTML. 
 
 
 #### Example  
@@ -1608,7 +1683,7 @@ text | ``string`` | The text to convert to HTML.
 
 ### append(basetext,text)   
 Appends the given text to the given base text.
-If basetext is null, returns the appending text only.   
+If one of the parts is null or empty, returns the other part only, without "null" concatenation.   
 
 #### Returns  
 ``string`` - basetext + text  
@@ -1616,8 +1691,8 @@ If basetext is null, returns the appending text only.
 #### Parameters  
 Name | Type | Description
 --- | --- | ---
-basetext | ``string`` | The base text to append to. 
-text | ``string`` | The text to append. 
+basetext | ``object`` | The base text to append to. 
+text | ``object`` | The text to append. 
 
 
 #### Example  
@@ -1626,7 +1701,7 @@ text | ``string`` | The text to append.
 ```  
 
 ### concat(separator,collection)   
-Concats the given list of objects using the given separator.
+Concatenates the given list of objects using the given separator.
 Ignores null items.   
 
 #### Returns  
@@ -1644,8 +1719,8 @@ collection | ``object`` | The collection of items to concat.
 @text.concat(separator,collection)  
 ```  
 
-### concat(separator,collection)   
-Treats the given object as a list of objects and concats the items using the given separator.
+### concat(separator,items)   
+Treats the given items as a list of texts and concats these items using the given separator.
 Ignores null items.   
 
 #### Returns  
@@ -1655,16 +1730,16 @@ Ignores null items.
 Name | Type | Description
 --- | --- | ---
 separator | ``string`` | The separator between the items. 
-collection | ``object`` | The collection of items. 
+items | ``object`` | The collection of items. 
 
 
 #### Example  
 ```  
-@text.concat(separator,collection)  
+@text.concat(separator,items)  
 ```  
 
 ### commajoin(collection)   
-Same as &lbrace;@link #concat(String, Object)&rbrace; but with comma as default separator.   
+Same as #concat(separator, items) but with comma as default separator.   
 
 #### Returns  
 ``string`` - The comma separated string of concatenated items.  
@@ -1681,7 +1756,7 @@ collection | ``object`` | The collection of items to concatenate.
 ```  
 
 ### concatAndFormat(separator,collection,pel)   
-Similar to &lbrace;@link #concat(String, Object...)&rbrace; but additionally applies the given PEL expression on
+Similar to #concat(text1, Object...) but additionally applies the given PEL expression on
 each list entry before it gets concatenated. This is useful for example to convert each entry in
 the list before adding it to the resulting string. For example to remove whitespaces on each entry.   
 
@@ -1719,8 +1794,8 @@ prefix | ``string`` | The prefix to test
 @text.startsWith(text,prefix)  
 ```  
 
-### replaceAll(text,regexp,replacement)   
-Replace all occurrences of a substring (matching argument regex) with replacement string.   
+### replaceAll(text,needle,replacement)   
+Replace all occurrences of a needle text with replacement text.   
 
 #### Returns  
 ``string`` - The text with replacements applied.  
@@ -1728,14 +1803,164 @@ Replace all occurrences of a substring (matching argument regex) with replacemen
 #### Parameters  
 Name | Type | Description
 --- | --- | ---
-text | ``string`` | The text to apply replacements. 
-regexp | ``string`` | The regular expression matching all replacement sources 
+text | ``object`` | The text to apply replacements. 
+needle | ``string`` | The needle text matching all replacement sources. 
 replacement | ``string`` | The string to be substituted for each match. 
 
 
 #### Example  
 ```  
-@text.replaceAll(text,regexp,replacement)  
+@text.replaceAll(text,needle,replacement)  
+```  
+
+### substring(text,beginIndex)   
+Returns a substring from the given text,
+starting at beginIndex up to the end of the text.   
+
+#### Returns  
+``string`` - The substring from given text, null in case text is null or empty string in
+case text contains no such substring range.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to return substring from. 
+beginIndex | ``int`` | The 0-based index to start the substring (inclusive). 
+
+
+#### Example  
+```  
+@text.substring(text,beginIndex)  
+```  
+
+### substring(text,beginIndex,endIndex)   
+Returns a substring from the given text,
+starting at beginIndex up to endIndex.   
+
+#### Returns  
+``string`` - The substring from given text or empty string in case text contains no such substring range.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to return substring from. 
+beginIndex | ``int`` | The 0-based index to start the substring (inclusive). 
+endIndex | ``int`` | The 0-based index to end the substring (exclusive). 
+
+
+#### Example  
+```  
+@text.substring(text,beginIndex,endIndex)  
+```  
+
+### trim(text)   
+Removes any leading and ending whitespaces.   
+
+#### Returns  
+``string`` - The text with leading and ending whitespaces removed.
+If input text was null, null is returned here.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to remove any whitespaces from. 
+
+
+#### Example  
+```  
+@text.trim(text)  
+```  
+
+### isAllEmpty(text)   
+Returns true, if all of the given string values is empty: Is null, contains no characters or whitespaces only.
+If at least one of it is not empty, returns false.   
+
+#### Returns  
+``boolean`` - True, if all are empty.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The list of text items to check. 
+
+
+#### Example  
+```  
+@text.isAllEmpty(text)  
+```  
+
+### toAlphaNumeric(text)   
+Converts the given text string into a string which contains only the
+chars 0-9,a-z,A-Z and _. The conversion rule is:
+Umlauts will become their non-umlaut representation. For example ä
+becomes ae.
+Any other special characters become underscore. For example ? becomes
+_.   
+
+#### Returns  
+``string`` - The converted text or null in case input was null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to convert. 
+
+
+#### Example  
+```  
+@text.toAlphaNumeric(text)  
+```  
+
+### firstCharUpper(text)   
+Makes the first char of the given text to upper case.   
+
+#### Returns  
+``string`` - The text with first char to upper case or null in case input was null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to change. 
+
+
+#### Example  
+```  
+@text.firstCharUpper(text)  
+```  
+
+### firstCharLower(text)   
+Makes the first char of the given text to lower case.   
+
+#### Returns  
+``string`` - The text with first char to lower case or null in case input was null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to change. 
+
+
+#### Example  
+```  
+@text.firstCharLower(text)  
+```  
+
+### split(text,token)   
+Splits the given text into a list of items by given split token.   
+
+#### Returns  
+``list<string>`` - A list of split items or empty list in case input text or input token is null or empty.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to split to tokens. 
+token | ``object`` | The token to split the text with. 
+
+
+#### Example  
+```  
+@text.split(text,token)  
 ```  
 
  

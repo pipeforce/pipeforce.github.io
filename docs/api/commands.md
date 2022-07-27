@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 25/07/2022 by CommandComplianceTest -->
+<!-- Generated: 27/07/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -8089,8 +8089,8 @@ Name | Type | Required | Default | Description
 `ingress` | Boolean | false | null | Expose the given port of the service to the internet? The service is then reachable via HTTPS using the url https://[serviceName]-[namespace].pipeforce.net.
 `imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
 `env` | String | false | null | Map of environment variables to be applied to the service container.
-`command` | String | false | null | The list of command to execute on the service job container.
-`args` | String | false | null | The list of args to be passed on to the service job container.
+`command` | String | false | null | The list of command to execute on the service container.
+`args` | String | false | null | The list of args to be passed on to the service container.
 `replicas` | String | false | 1 | The number of stateless replicas (= scaling instances) of this service to be started in parallel in the cluster by default.
 `volumes` | String | false | null | The list of paths inside the container to mount to persisted volumes. This will automatically create a persistent volume and stores the data in the given paths to this volume. By default, the volume will be kept even on stop and start of the container. See service.stop command.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
