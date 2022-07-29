@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 27/07/2022 by CommandComplianceTest -->
+<!-- Generated: 29/07/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -1197,6 +1197,100 @@ http://host/api/v3/command/content.get?uri=<value>&id=<value>&if=<value>&output=
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command content.get uri=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## data.enrich
+----------   
+Enriches a given data object by adding / changing attributes on it.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.enrich)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`do` | String | true | null | A PEL which will be executed in order to enrich a selected field of the data object from input.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - data.enrich:  
+      do: <value>  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/data.enrich?do=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command data.enrich do=<value> id=<value> if=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## data.list.iterate
+----------   
+Iterates over a data list (like JSON array for example) and applies the given do-action on each entry matching given where-condition. If two lists a are given, iterates over both lists whereas listA will be the outer loop and listB will be the inner loop.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.iterate)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`listA` | String | false | null | The main list where data must be merged into. If null or empty, the value from input parameter will be used instead. If both are given, the value from listA has precedence.
+`listB` | String | false | null | The seconds list where data mast be read from. For each item in listA, this list will be fully iterated.
+`where` | String | false | null | Selects the iteration step in listA which must be elected for the do operation. If null or empty, any iteration step will be selected.
+`do` | String | true | null | A PEL which will be executed on a selected iteration item. The current iteration item from listA will be provided as itemA. The current iteration item from listB will be provided as itemB.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - data.list.iterate:  
+      listA: <value>  
+      listB: <value>  
+      where: <value>  
+      do: <value>  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/data.list.iterate?listA=<value>&listB=<value>&where=<value>&do=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command data.list.iterate listA=<value> listB=<value> where=<value> do=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

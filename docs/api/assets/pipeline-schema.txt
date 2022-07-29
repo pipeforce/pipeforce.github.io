@@ -847,6 +847,76 @@
             },
             "required" : [ "uri" ]
           },
+          "data.enrich" : {
+            "type" : "object",
+            "description" : "Enriches a given data object by adding / changing attributes on it.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "do" : {
+                "type" : "string",
+                "description" : "A PEL which will be executed in order to enrich a selected field of the data object from input."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "do" ]
+          },
+          "data.list.iterate" : {
+            "type" : "object",
+            "description" : "Iterates over a data list (like JSON array for example) and applies the given do-action on each entry matching given where-condition. If two lists a are given, iterates over both lists whereas listA will be the outer loop and listB will be the inner loop.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "listA" : {
+                "type" : "string",
+                "description" : "The main list where data must be merged into. If null or empty, the value from input parameter will be used instead. If both are given, the value from listA has precedence."
+              },
+              "listB" : {
+                "type" : "string",
+                "description" : "The seconds list where data mast be read from. For each item in listA, this list will be fully iterated."
+              },
+              "where" : {
+                "type" : "string",
+                "description" : "Selects the iteration step in listA which must be elected for the do operation. If null or empty, any iteration step will be selected."
+              },
+              "do" : {
+                "type" : "string",
+                "description" : "A PEL which will be executed on a selected iteration item. The current iteration item from listA will be provided as itemA. The current iteration item from listB will be provided as itemB."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "do" ]
+          },
           "data.mapping" : {
             "type" : "object",
             "description" : "Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required.",

@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 27/07/2022 16:21:17 by CommandComplianceTest -->
+<!-- Generated: 29/07/2022 14:56:17 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -1354,6 +1354,23 @@ key | ``string`` | The property key
 #### Example  
 ```  
 @property.value(key)  
+```  
+
+### values(pattern)   
+Returns the values of all properties matching the given key pattern.   
+
+#### Returns  
+``list<object>`` - A list of values of all properties matching the given key pattern.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+pattern | ``string`` | The property key pattern to match. 
+
+
+#### Example  
+```  
+@property.values(pattern)  
 ```  
 
 ### updateValue(key,value)   
