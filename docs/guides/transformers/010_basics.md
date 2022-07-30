@@ -143,7 +143,7 @@ And if a script (serverless function / lambda) is also not working for you, you 
 Do **not** use the command [`foreach`](../../api/commands#foreach) for data transformation iteration. This command was intended to implement the [enterprise recipient list pattern](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html) based on a given list as input, not for huge data transformation tasks. It would make it more complex and is optimized for command control flows, not for performing on a huge set of data. 
 :::
 
-:::tip Suggested toolings
+:::tip PIPEFORCE toolings
  - [`data.list.iterate`](../../api/commands#datalistiterate) command
  - [PEL projection](../../api/pel#projection-expression) command
  - [PEL selection](../../api/pel#selection-expression) command
@@ -179,6 +179,9 @@ A filter removes a selected set of data from a bigger set of data. So only a sub
 
 This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Filter.html). 
 
+:::tip PIPEFORCE toolings
+ - [`data.list.filter`](../../api/commands#datalistfilter) command 
+:::
 
 ### Sorter
 
@@ -193,6 +196,10 @@ In PIPEFORCE you can sort data lists using the TODO.
 ### Limitter
 
 A limitter limits a given data list to a maximum size. It can be seen as a special form of a filter.
+
+:::tip PIPEFORCE toolings
+ - [`data.list.limit`](../../api/commands#datalistlimit) command 
+:::
 
 
 ### Enricher
@@ -248,8 +255,20 @@ As you can see, you can access the input data in the `do` expression usin the va
 
 Another possibility is to use the `data.list.iterate` command in order to enrich the items of a list while iterating them. 
 
-:::tip Suggested toolings
+:::tip PIPEFORCE toolings
  - [`data.enrich`](../../api/commands#dataenrich) command 
  - [`data.list.iterate`](../../api/commands#datalistiterate) command
  - [`set`](../../api/commands#set) command
+:::
+
+### Mapper
+
+A mapper maps a given data structure into another data structure, so business logic is not required to handle this.
+
+![](../../img/eip_mapper.gif)
+
+This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingMapper.html). 
+
+:::tip PIPEFORCE toolings
+ - [`data.mapping`](../../api/commands#datamapping) command 
 :::

@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 29/07/2022 by CommandComplianceTest -->
+<!-- Generated: 30/07/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -1204,7 +1204,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## data.enrich
 ----------   
-Enriches a given data object by adding / changing attributes on it.
+Enriches a given data object by applying a given PEL expression on it.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=data.enrich)
 
@@ -1214,7 +1214,7 @@ Enriches a given data object by adding / changing attributes on it.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`do` | String | true | null | A PEL which will be executed in order to enrich a selected field of the data object from input.
+`do` | String | true | null | A PEL which will be executed in order to enrich a selected field of the data object from input. These variables will be provided in the PEL: headers (= the pipeline headers), vars (= the pipeline variables), body (= the pipeline body), input (= the input data)
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
@@ -1246,6 +1246,52 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+## data.list.filter
+----------   
+Iterates over a list of items given by input and removes all items matching the given criteria.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.filter)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`exclude` | String | true | null | A PEL which will be executed on each iteration item. If the expression results in a true value, the item will be removed from the list. Additionally to the default PEL variables, the variable item (= current iteration item, default name) will be provided.
+`iterItemName` | String | false | item | The name of the iteration item value, provided for  exclude
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - data.list.filter:  
+      exclude: <value>  
+      iterItemName: <value>  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/data.list.filter?exclude=<value>&iterItemName=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command data.list.filter exclude=<value> iterItemName=<value> id=<value> if=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
 ## data.list.iterate
 ----------   
 Iterates over a data list (like JSON array for example) and applies the given do-action on each entry matching given where-condition. If two lists a are given, iterates over both lists whereas listA will be the outer loop and listB will be the inner loop.
@@ -1260,8 +1306,11 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `listA` | String | false | null | The main list where data must be merged into. If null or empty, the value from input parameter will be used instead. If both are given, the value from listA has precedence.
 `listB` | String | false | null | The seconds list where data mast be read from. For each item in listA, this list will be fully iterated.
-`where` | String | false | null | Selects the iteration step in listA which must be elected for the do operation. If null or empty, any iteration step will be selected.
-`do` | String | true | null | A PEL which will be executed on a selected iteration item. The current iteration item from listA will be provided as itemA. The current iteration item from listB will be provided as itemB.
+`where` | String | false | null | Selects the iteration step in listA which must be elected for the do operation. If null or empty, any iteration step will be selected. Additionally to the default PEL variables, the variables itemA (= current iteration item of listA, default name) and itemB (= current iteration item of listB) will be provided.
+`do` | String | true | null | A PEL which will be executed on a where-selected iteration item. Additionally to the default PEL variables, the variables itemA (= current iteration item of listA, default name) and itemB (= current iteration item of listB, default name) will be provided. In case therethere is only one list provided from body or input param, only one iteration item will be provided with name 'item' as default name.
+`iterItemName` | String | false | item | The name of the iteration item value in case only single list has been provided via input or body.
+`iterItemNameA` | String | false | itemA | The name of the iteration item value of listA provided in the PEL parts
+`iterItemNameB` | String | false | itemB | The name of the iteration item value of listB provided in the PEL parts
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
@@ -1276,6 +1325,9 @@ pipeline:
       listB: <value>  
       where: <value>  
       do: <value>  
+      iterItemName: <value>  
+      iterItemNameA: <value>  
+      iterItemNameB: <value>  
       id: <value>  
       if: <value>  
       input: <value>  
@@ -1285,12 +1337,56 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.list.iterate?listA=<value>&listB=<value>&where=<value>&do=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.list.iterate?listA=<value>&listB=<value>&where=<value>&do=<value>&iterItemName=<value>&iterItemNameA=<value>&iterItemNameB=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.list.iterate listA=<value> listB=<value> where=<value> do=<value> id=<value> if=<value> input=<value> output=<value>  
+pi command data.list.iterate listA=<value> listB=<value> where=<value> do=<value> iterItemName=<value> iterItemNameA=<value> iterItemNameB=<value> id=<value> if=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## data.list.limit
+----------   
+Limits a given list of data to a specific size. Removes any item from the list those index is above given maxLength - 1.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.limit)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`maxLength` | String | false | null | Limits the data list from the input to the given max. length.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - data.list.limit:  
+      maxLength: <value>  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/data.list.limit?maxLength=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command data.list.limit maxLength=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -3935,7 +4031,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## iam.group.members
 ----------   
-Lists all users which are member of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+Lists all users which are member of the given group. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.members)
 
@@ -6976,7 +7072,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
 ## property.put
 ----------   
-Saves the value of a property. The property schema must exist in advance.
+Saves the value of a property. The property schema must exist in advance (no new property will be created).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.put)
 
@@ -7395,6 +7491,96 @@ http://host/api/v3/command/property.value.get?key=<value>&id=<value>&if=<value>&
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command property.value.get key=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## property.value.list.put
+----------   
+Saves a list of property values by iterating over this list and storing each value separately in the property store. Each value will be persisted in its own property. The path of this property will be calculated from baseKey/valueOf(primaryKeyField).The property schema for each key must exist in advance (no new properties will be created).
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.list.put)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`baseKey` | String | true | null | The base path key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property.
+`primaryKeyField` | String | false | null | The field name inside each value item which contains the primary key. Can be a string constant or a PEL. If it is a PEL, will be evaluated for each item in the list separately. The PEL has access to variables: headers (= headers of the pipeline), vars (= pipeline variables), body (= body of the pipeline), value (= the current iteration item value about to be saved).
+`iterItemName` | String | false | value | Changes the name of the iteration item value, provided for  primaryKeyField
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.value.list.put:  
+      baseKey: <value>  
+      primaryKeyField: <value>  
+      iterItemName: <value>  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.value.list.put?baseKey=<value>&primaryKeyField=<value>&iterItemName=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.value.list.put baseKey=<value> primaryKeyField=<value> iterItemName=<value> id=<value> if=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## property.value.put
+----------   
+Saves the value of a property. The property schema must exist in advance.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.put)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | The path key of the property to save the value to.
+`value` | String | false | null | The value of the property to save. May be null or empty.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.value.put:  
+      key: <value>  
+      value: <value>  
+      id: <value>  
+      if: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.value.put?key=<value>&value=<value>&id=<value>&if=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.value.put key=<value> value=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
