@@ -849,13 +849,13 @@
           },
           "data.enrich" : {
             "type" : "object",
-            "description" : "Enriches a given data object by adding / changing attributes on it.",
+            "description" : "Enriches a given data object by applying a given PEL expression on it.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "do" : {
                 "type" : "string",
-                "description" : "A PEL which will be executed in order to enrich a selected field of the data object from input."
+                "description" : "A PEL which will be executed in order to enrich a selected field of the data object from input. These variables will be provided in the PEL: headers (= the pipeline headers), vars (= the pipeline variables), body (= the pipeline body), input (= the input data)"
               },
               "id" : {
                 "type" : "string",
@@ -876,6 +876,40 @@
             },
             "required" : [ "do" ]
           },
+          "data.list.filter" : {
+            "type" : "object",
+            "description" : "Iterates over a list of items given by input and removes all items matching the given criteria.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "exclude" : {
+                "type" : "string",
+                "description" : "A PEL which will be executed on each iteration item. If the expression results in a true value, the item will be removed from the list. Additionally to the default PEL variables, the variable item (= current iteration item, default name) will be provided."
+              },
+              "iterItemName" : {
+                "type" : "string",
+                "description" : "The name of the iteration item value, provided for  exclude",
+                "default" : "item"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "exclude" ]
+          },
           "data.list.iterate" : {
             "type" : "object",
             "description" : "Iterates over a data list (like JSON array for example) and applies the given do-action on each entry matching given where-condition. If two lists a are given, iterates over both lists whereas listA will be the outer loop and listB will be the inner loop.",
@@ -892,11 +926,26 @@
               },
               "where" : {
                 "type" : "string",
-                "description" : "Selects the iteration step in listA which must be elected for the do operation. If null or empty, any iteration step will be selected."
+                "description" : "Selects the iteration step in listA which must be elected for the do operation. If null or empty, any iteration step will be selected. Additionally to the default PEL variables, the variables itemA (= current iteration item of listA, default name) and itemB (= current iteration item of listB) will be provided."
               },
               "do" : {
                 "type" : "string",
-                "description" : "A PEL which will be executed on a selected iteration item. The current iteration item from listA will be provided as itemA. The current iteration item from listB will be provided as itemB."
+                "description" : "A PEL which will be executed on a where-selected iteration item. Additionally to the default PEL variables, the variables itemA (= current iteration item of listA, default name) and itemB (= current iteration item of listB, default name) will be provided. In case therethere is only one list provided from body or input param, only one iteration item will be provided with name 'item' as default name."
+              },
+              "iterItemName" : {
+                "type" : "string",
+                "description" : "The name of the iteration item value in case only single list has been provided via input or body.",
+                "default" : "item"
+              },
+              "iterItemNameA" : {
+                "type" : "string",
+                "description" : "The name of the iteration item value of listA provided in the PEL parts",
+                "default" : "itemA"
+              },
+              "iterItemNameB" : {
+                "type" : "string",
+                "description" : "The name of the iteration item value of listB provided in the PEL parts",
+                "default" : "itemB"
               },
               "id" : {
                 "type" : "string",
@@ -916,6 +965,35 @@
               }
             },
             "required" : [ "do" ]
+          },
+          "data.list.limit" : {
+            "type" : "object",
+            "description" : "Limits a given list of data to a specific size. Removes any item from the list those index is above given maxLength - 1.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "maxLength" : {
+                "type" : "string",
+                "description" : "Limits the data list from the input to the given max. length."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
           },
           "data.mapping" : {
             "type" : "object",
@@ -2719,7 +2797,7 @@
           },
           "iam.group.members" : {
             "type" : "object",
-            "description" : "Lists all users which are member of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation",
+            "description" : "Lists all users which are member of the given group. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -4800,7 +4878,7 @@
           },
           "property.put" : {
             "type" : "object",
-            "description" : "Saves the value of a property. The property schema must exist in advance.",
+            "description" : "Saves the value of a property. The property schema must exist in advance (no new property will be created).",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -5120,6 +5198,69 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "key" ]
+          },
+          "property.value.list.put" : {
+            "type" : "object",
+            "description" : "Saves a list of property values by iterating over this list and storing each value separately in the property store. Each value will be persisted in its own property. The path of this property will be calculated from baseKey/valueOf(primaryKeyField).The property schema for each key must exist in advance (no new properties will be created).",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "baseKey" : {
+                "type" : "string",
+                "description" : "The base path key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property."
+              },
+              "primaryKeyField" : {
+                "type" : "string",
+                "description" : "The field name inside each value item which contains the primary key. Can be a string constant or a PEL. If it is a PEL, will be evaluated for each item in the list separately. The PEL has access to variables: headers (= headers of the pipeline), vars (= pipeline variables), body (= body of the pipeline), value (= the current iteration item value about to be saved)."
+              },
+              "iterItemName" : {
+                "type" : "string",
+                "description" : "Changes the name of the iteration item value, provided for  primaryKeyField",
+                "default" : "value"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "baseKey" ]
+          },
+          "property.value.put" : {
+            "type" : "object",
+            "description" : "Saves the value of a property. The property schema must exist in advance.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The path key of the property to save the value to."
+              },
+              "value" : {
+                "type" : "string",
+                "description" : "The value of the property to save. May be null or empty."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If not enabled, command will be skipped when pipeline is executed. By default it is enabled."
               }
             },
             "required" : [ "key" ]
