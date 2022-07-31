@@ -97,7 +97,37 @@ As you can see, in this example there are two lists: `listA` and `listB`. For ev
 ]
 ```
 
-You can also iterate only a single `listA` without any where condition, like this example shows:
+It is also possible to define multiple do-expressions to be executed on each iteration cycle. See this example, where additionally
+a new attribute `approved` with the current timestamp will be added on each "where-matching" entry:
+
+```yaml
+pipeline:
+    - data.list.iterate:
+        listA: [{"name": "Max", "allowed": false}, {"name": "Hennah", "allowed": false}]
+        listB:  [{"name": "Max", "age": 12}, {"name": "Hennah", "age": 23}]
+        where: "itemA.name == itemB.name and itemB.age > 18"
+        do: |
+          itemA.allowed = true;
+          itemA.approved = @date.timestamp();
+```
+
+As you can see, multiple do-expressions will be separated by a semicolon `;`. You can write them in one single line our in multiple lines using the pipe symbol `|`. The output will look like this:
+
+```json
+[
+    {
+        "name": "Max",
+        "allowed": false
+    },
+	{
+		"name": "Hennah",
+		"allowed": true,
+        "approved":  1659266178365
+	}
+]
+```
+
+You can also iterate only a single `listA` without any `where` condition, like this example shows: 
 
 ```yaml
 pipeline:
@@ -120,6 +150,21 @@ If the `where` parameter is missing, the `do` expression will be executed on any
 	}
 ]
 ```
+
+If-Then-Else conditions inside a `do` expression can be implemented using the ternary operator (`condition ? whenTrueAction : elseAction`). Let's rewrite the example from above  and replace the `where` parameter by a ternary operator inside the `do` parameter:
+
+```yaml
+pipeline:
+    - data.list.iterate:
+        listA: [{"name": "Max", "allowed": false}, {"name": "Hennah", "allowed": false}]
+        listB:  [{"name": "Max", "age": 12}, {"name": "Hennah", "age": 23}]
+        do: "(itemA.name == itemB.name and itemB.age > 18) ? itemA.allowed = true : ''"
+```
+
+:::tip
+In case no `elseAction` is requiredin the ternary operator, use an empty string `''` in order to indicate this.
+:::
+
 
 In case no `listA` parameter is given, the list is expected in the body or as optional parameter `input`, all input commands have in common.
 
@@ -271,4 +316,9 @@ This is a common pattern also mentioned by the [enterprise integration pattern c
 
 :::tip PIPEFORCE toolings
  - [`data.mapping`](../../api/commands#datamapping) command 
+ - [`data.list.iterate`](../../api/commands#datalistiterate) command 
 :::
+
+#### Mapping using data.list.iterate
+
+You can use the command `data.list.iterate` for data mapping.
