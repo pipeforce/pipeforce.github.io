@@ -26,6 +26,13 @@ mail.send
 ## Command Parameters
 Commands can have zero to many parameters. Whereas each parameter is a name-value pair. The parameters can be passed in different ways to the command, depending on the execution context you're working in. See execution examples below.
 
+```bash
+mail.send:
+  to: "some@email.com"
+  subject: "Hello"
+  message "Hello World!"
+```
+
 ## Executing a Command
 
 Commands can be executed in three different ways, called ***execution contexts***:
