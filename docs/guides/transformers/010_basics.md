@@ -111,7 +111,7 @@ pipeline:
           itemA.approved = @date.timestamp();
 ```
 
-As you can see, multiple do-expressions will be separated by a semicolon `;`. You can write them in one single line our in multiple lines using the pipe symbol `|`. The output will look like this:
+As you can see, multiple do-expressions will be separated by a semicolon `;`. You can write them in one single line, or in multiple lines using the pipe symbol `|`. The output will look like this:
 
 ```json
 [
@@ -162,7 +162,7 @@ pipeline:
 ```
 
 :::tip
-In case no `elseAction` is requiredin the ternary operator, use an empty string `''` in order to indicate this.
+In case no `elseAction` is required in the ternary operator, use an empty string `''` in order to indicate this.
 :::
 
 
@@ -170,6 +170,9 @@ In case no `listA` parameter is given, the list is expected in the body or as op
 
 :::tip
 Since the parameters `where` and `do` can only contain PEL expressions, you can write them optionally without `#{` and `}` for better readability as shown in these examples.
+:::
+:::warning
+Do **not** use the command [`foreach`](../../api/commands#foreach) for data transformation iteration. This command was intended to implement the [enterprise recipient list pattern](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html) based on a given list as input, not for huge data transformation tasks. It would make it more complex and is optimized for command control flows, not for performing on a huge set of data. 
 :::
 
 #### Iterate with PEL
@@ -183,10 +186,6 @@ For very complex data iteration tasks, you could also use the [`script.run`](../
 #### Iterate with custom microservice
 
 And if a script (serverless function / lambda) is also not working for you, you can write a custom microservice and run it inside PIEPFORCE. But this approach is outside of the scope of this data transformation section. See section [Microservices](../../microservices) for more details.
-
-:::warning
-Do **not** use the command [`foreach`](../../api/commands#foreach) for data transformation iteration. This command was intended to implement the [enterprise recipient list pattern](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html) based on a given list as input, not for huge data transformation tasks. It would make it more complex and is optimized for command control flows, not for performing on a huge set of data. 
-:::
 
 :::tip PIPEFORCE toolings
  - [`data.list.iterate`](../../api/commands#datalistiterate) command
@@ -214,38 +213,6 @@ For example you have multiple **Inventory Items** and you would like to aggregat
 ![](../../img/eip_aggregator.gif)
 
 This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html). 
-
-
-### Filter
-
-A filter removes a selected set of data from a bigger set of data. So only a subset of the origin data will pass to the target.
-
-![](../../img/eip_filter.gif)
-
-This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Filter.html). 
-
-:::tip PIPEFORCE toolings
- - [`data.list.filter`](../../api/commands#datalistfilter) command 
-:::
-
-### Sorter
-
-A sorter sorts a given data list based on some condition. This is also known as the **Resequencer pattern**.
-
-![](../../img/eip_sorter.gif)
-
-This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html). 
-
-In PIPEFORCE you can sort data lists using the TODO.
-
-### Limitter
-
-A limitter limits a given data list to a maximum size. It can be seen as a special form of a filter.
-
-:::tip PIPEFORCE toolings
- - [`data.list.limit`](../../api/commands#datalistlimit) command 
-:::
-
 
 ### Enricher
 
@@ -275,8 +242,6 @@ You could then have an enricher which resolves the zip code and adds the city na
     "city": "Los Angeles"
 }
 ```
-
-
 In PIPEFORCE there are multiple ways to enrich a data object. You can use for example the `data.enrich` command in order to enrich data at a certain point. See this example for this:
 
 ```yaml
@@ -305,6 +270,24 @@ Another possibility is to use the `data.list.iterate` command in order to enrich
  - [`data.list.iterate`](../../api/commands#datalistiterate) command
  - [`set`](../../api/commands#set) command
 :::
+### Filter
+
+A filter removes a selected set of data from a bigger set of data. So only a subset of the origin data will pass to the target.
+
+![](../../img/eip_filter.gif)
+
+This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Filter.html). 
+
+:::tip PIPEFORCE toolings
+ - [`data.list.filter`](../../api/commands#datalistfilter) command 
+:::
+### Limitter
+
+A limitter limits a given data list to a maximum size. It can be seen as a special form of a filter.
+
+:::tip PIPEFORCE toolings
+ - [`data.list.limit`](../../api/commands#datalistlimit) command 
+:::
 
 ### Mapper
 
@@ -322,3 +305,10 @@ This is a common pattern also mentioned by the [enterprise integration pattern c
 #### Mapping using data.list.iterate
 
 You can use the command `data.list.iterate` for data mapping.
+### Sorter
+
+A sorter sorts a given data list based on some condition. This is also known as the **Resequencer pattern**.
+
+![](../../img/eip_sorter.gif)
+
+This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html). 
