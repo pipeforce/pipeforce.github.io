@@ -4901,15 +4901,69 @@
             },
             "required" : [ "key" ]
           },
+          "property.query" : {
+            "type" : "object",
+            "description" : "Queries the properties from the backend by using a certain query language.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "language" : {
+                "type" : "string",
+                "description" : "The query language to be used."
+              },
+              "select" : {
+                "type" : "string",
+                "description" : "Selects the attributes / columns / scalars to return. If null or empty, and select all is used."
+              },
+              "from" : {
+                "type" : "string",
+                "description" : "Defines the properties by key patterns to be selected for the query. Multiple patterns must be separated by comma. Additionally, each pattern must be assigned to a variable using 'has varName'. For example global/app/** as all. This variable will used in the select and where clause."
+              },
+              "where" : {
+                "type" : "string",
+                "description" : "Defines the WHERE clause in order to filter the result based on the supported filter criteria. The syntax of the criteria depends on the selected query language."
+              },
+              "type" : {
+                "type" : "string",
+                "description" : "The property type to query for. If null, application/json will be used as default. If set to empty string or * all types will be selected.",
+                "default" : "application/json"
+              },
+              "params" : {
+                "type" : "string",
+                "description" : "A map of parameters an their values to be used in order to execute the query as prepared stament."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "language", "from" ]
+          },
           "property.schema.delete" : {
             "type" : "object",
-            "description" : "Deletes an existing property schema and its assigned value.",
+            "description" : "Deletes any existing property schema and its assigned value matching the given pattern or key.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The path key of the property to delete. If property with this key doesnt exist, nothing happens."
+                "description" : "The exact path key of the property to delete. If property with this key doesnt exist, nothing happens."
+              },
+              "pattern" : {
+                "type" : "string",
+                "description" : "The path key pattern of the properties to delete. All matching properties will be deleted!"
               },
               "id" : {
                 "type" : "string",
@@ -4920,7 +4974,7 @@
                 "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "key", "pattern" ]
           },
           "property.schema.put" : {
             "type" : "object",
