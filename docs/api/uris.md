@@ -146,7 +146,7 @@ As you might already know, a property has a structure like this:
 }
 ```
 
-For a full list of the attributes of a property, please refer to the [Property Store Guide](../guides/propertystore#what-is-a-property).
+For a full list of the attributes of a property, please refer to the [Property Store Guide](../propertystore#what-is-a-property).
 
 With a Property Filter, you can now select the part you would like to return in your URI:
 

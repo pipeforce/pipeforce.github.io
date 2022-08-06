@@ -75,7 +75,7 @@ In case you have more than one object type in your app, and you want to list all
 pi pipeline uri "property.list?filter=/**/global/app/myApp/object/*/v1/instance/*"
 ```
 
-**Note**: Be careful, since in this example it would return the instances from all objects of myApp. Learn more about filtering properties from the property store in this section [Property Store](../../guides/30_propertystore.md).
+**Note**: Be careful, since in this example it would return the instances from all objects of myApp. Learn more about filtering properties from the property store in this section [Property Store](propertystore).
 
 ## How to load and edit input data in a form
 

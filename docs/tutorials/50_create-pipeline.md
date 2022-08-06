@@ -88,7 +88,7 @@ In this first part of the tutorial we gonna execute an **ad-hoc pipeline**. To d
 
 ## 2 - Persist a pipeline
 
-Persisting a pipeline means “storing” a pipeline script at server side in the property store ([Property Store](../guides/propertystore) ) under a unique key. From there you can then load and execute it later by this unique key. Follow these steps to create such a persisted pipeline:
+Persisting a pipeline means “storing” a pipeline script at server side in the property store ([Property Store](../propertystore) ) under a unique key. From there you can then load and execute it later by this unique key. Follow these steps to create such a persisted pipeline:
 
 1.  Select LOW CODE → Workbench.
     

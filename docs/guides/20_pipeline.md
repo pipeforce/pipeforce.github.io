@@ -59,7 +59,7 @@ A pipeline file must end in this suffix to be detected correctly by your workspa
 
 #### Remote
 
-In case you have stored your pipeline at server side in the [Property Store](../guides/propertystore), then you can execute it using this call:
+In case you have stored your pipeline at server side in the [Property Store](../propertystore), then you can execute it using this call:
 
 ```bash
 pi pipeline remote global/app/myapp/pipeline/test

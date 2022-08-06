@@ -76,7 +76,7 @@ You can learn more about the CLI here: [Command Line Interface (CLI)](../api/cli
 
 This is a key-value distributed database, which stores all resources related to a business app. Whenever you submit form data, store configurations for apps, want to temporarily cache data, or need just a persistent storage, the property store is here for you.
 
-You can learn more about the property store here: [Property Store](../guides/propertystore)
+You can learn more about the property store here: [Property Store](../propertystore)
 
 ## 10 - Pipeline Engineer / The Low Coder
 
