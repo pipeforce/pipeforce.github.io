@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 01/08/2022 by CommandComplianceTest -->
+<!-- Generated: 06/08/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -7112,9 +7112,63 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+## property.query
+----------   
+Queries the properties from the backend by using a certain query language.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.query)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`language` | String | true | null | The query language to be used.
+`select` | String | false | null | Selects the attributes / columns / scalars to return. If null or empty, and select all is used.
+`from` | String | true | null | Defines the properties by key patterns to be selected for the query. Multiple patterns must be separated by comma. Additionally, each pattern must be assigned to a variable using 'has varName'. For example global/app/** as all. This variable will used in the select and where clause.
+`where` | String | false | null | Defines the WHERE clause in order to filter the result based on the supported filter criteria. The syntax of the criteria depends on the selected query language.
+`type` | String | false | application/json | The property type to query for. If null, application/json will be used as default. If set to empty string or * all types will be selected.
+`params` | String | false | null | A map of parameters an their values to be used in order to execute the query as prepared stament.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.query:  
+      language: <value>  
+      select: <value>  
+      from: <value>  
+      where: <value>  
+      type: <value>  
+      params: <value>  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.query?language=<value>&select=<value>&from=<value>&where=<value>&type=<value>&params=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.query language=<value> select=<value> from=<value> where=<value> type=<value> params=<value> id=<value> if=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
 ## property.schema.delete
 ----------   
-Deletes an existing property schema and its assigned value.
+Deletes any existing property schema and its assigned value matching the given pattern or key.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.delete)
 
@@ -7124,7 +7178,8 @@ Deletes an existing property schema and its assigned value.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The path key of the property to delete. If property with this key doesnt exist, nothing happens.
+`key` | String | true | null | The exact path key of the property to delete. If property with this key doesnt exist, nothing happens.
+`pattern` | String | true | null | The path key pattern of the properties to delete. All matching properties will be deleted!
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 
@@ -7134,6 +7189,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.schema.delete:  
       key: <value>  
+      pattern: <value>  
       id: <value>  
       if: <value>  
 ```  
@@ -7141,12 +7197,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.delete?key=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/property.schema.delete?key=<value>&pattern=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.delete key=<value> id=<value> if=<value>  
+pi command property.schema.delete key=<value> pattern=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

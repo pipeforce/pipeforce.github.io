@@ -192,18 +192,6 @@ And if a script (serverless function / lambda) is also not working for you, you 
  - [PEL projection](../../api/pel#projection-expression) command
  - [PEL selection](../../api/pel#selection-expression) command
 :::
-
-### Splitter
-
-A splitter splits a given data object into multiple data objects.
-
-For example you have a data object **order** which contains a list of **order items** and you would like to "extract" these order items from the order:
-
-![](../../img/eip_splitter.gif)
-
-This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Sequencer.html). 
-
-
 ### Aggregator
 
 An aggregator combines multiple data objects into a single data object.
@@ -270,6 +258,13 @@ Another possibility is to use the `data.list.iterate` command in order to enrich
  - [`data.list.iterate`](../../api/commands#datalistiterate) command
  - [`set`](../../api/commands#set) command
 :::
+### Deduplicator
+
+A deduplicator is a special form of a filter. It removes data duplicates from a given input.
+
+:::tip PIPEFORCE toolings
+ - [`data.list.filter`](../../api/commands#datalistfilter) command 
+:::
 ### Filter
 
 A filter removes a selected set of data from a bigger set of data. So only a subset of the origin data will pass to the target.
@@ -312,3 +307,12 @@ A sorter sorts a given data list based on some condition. This is also known as 
 ![](../../img/eip_sorter.gif)
 
 This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html). 
+### Splitter
+
+A splitter splits a given data object into multiple data objects.
+
+For example you have a data object **order** which contains a list of **order items** and you would like to "extract" these order items from the order:
+
+![](../../img/eip_splitter.gif)
+
+This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Sequencer.html). 
