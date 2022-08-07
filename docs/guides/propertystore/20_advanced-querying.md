@@ -1047,3 +1047,156 @@ use
 value::json ->> 'lastName' = :theName
 ```
 ::: 
+
+## Date and Time Ranges
+
+PostgreSQL offers a huge set of date and time functions and operations: https://www.postgresql.org/docs/11/functions-datetime.html.
+
+You can use them in the  [`property.query`](../../api/commands#propertyquery) command.
+
+Additionally, PIPEFORCE has many utils, which can help you to create date and time based queries. The most important functions can be found in the [@date](../../api/utils#date) util.
+
+Below you can find some query examples, how to use these tools with the [`property.query`](../../api/commands#propertyquery) command.
+
+**Return all properties created today**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created > :beginToday
+      params:
+        beginToday: "#{@date.beginOfDay(0)}"
+```
+
+**Return all properties created yesterday**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created BETWEEN :beginYesterday AND :beginToday
+      params:
+        beginYesterday: "#{@date.beginOfDay(-1)}"
+        beginToday: "#{@date.beginOfDay(0)}"
+```
+
+**Return all properties created this week**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created > :beginOfWeek
+      params:
+        beginOfWeek: "#{@date.beginOfWeek(0)}"
+```
+
+**Return all properties created last week**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created BETWEEN :beginLastWeek AND :beginThisWeek
+      params:
+        beginLastWeek: "#{@date.beginOfWeek(-1)}"
+        beginThisWeek: "#{@date.beginOfWeek(0)}"
+```
+
+**Return all properties created this month**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created > :beginThisMonth
+      params:
+        beginThisMonth: "#{@date.beginOfMonth(0)}"
+```
+
+**Return all properties created last month**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created BETWEEN :beginLastMonth AND :beginThisMonth
+      params:
+        beginLastMonth: "#{@date.beginOfMonth(-1)}"
+        beginThisMonth: "#{@date.beginOfMonth(0)}"
+```
+
+**Return all properties created in the last 6 months**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created > :begin6MonthsBefore
+      params:
+        begin6MonthsBefore: "#{@date.beginOfMonth(-6)}"
+```
+
+
+last 12 month = timestamp > @date.beginOfMonth(-12)
+
+
+**Return all properties created in the last 12 months**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created > :begin12MonthsBefore
+      params:
+        begin12MonthsBefore: "#{@date.beginOfMonth(-12)}"
+```
+
+**Return all properties created last year**
+
+```yaml
+pipeline:
+  - property.query:
+      select: |
+        *
+      from: |
+        global/**
+      where: |
+        created BETWEEN :beginLastYear AND :beginThisYear
+      params:
+        beginLastYear: "#{@date.beginOfYear(-1)}"
+        beginThisYear: "#{@date.beginOfYear(0)}"
+```

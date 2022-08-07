@@ -4907,7 +4907,7 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "language" : {
+              "dialect" : {
                 "type" : "string",
                 "description" : "The query language to be used."
               },
@@ -4949,7 +4949,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "language", "from" ]
+            "required" : [ "dialect", "from" ]
           },
           "property.schema.delete" : {
             "type" : "object",
@@ -5241,6 +5241,10 @@
                 "type" : "string",
                 "description" : "The key of the property to be returned."
               },
+              "includeUuidField" : {
+                "type" : "string",
+                "description" : "If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -5255,6 +5259,35 @@
               }
             },
             "required" : [ "key" ]
+          },
+          "property.value.list" : {
+            "type" : "object",
+            "description" : "Lists the values of all matching properties.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "pattern" : {
+                "type" : "string",
+                "description" : "The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this key. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'."
+              },
+              "includeUuidField" : {
+                "type" : "string",
+                "description" : "If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
           },
           "property.value.list.put" : {
             "type" : "object",
@@ -5274,6 +5307,10 @@
                 "type" : "string",
                 "description" : "Changes the name of the iteration item value, provided for  primaryKeyField",
                 "default" : "value"
+              },
+              "ignoreUuidField" : {
+                "type" : "string",
+                "description" : "If this parameter contains a non-empty value, and a property value is a JSON type, tries to remove the uuid field with given name, so it is not stored to database. If this parameter is set, but the JSON field doesn't exist or the property value is not a JSON, nothing happens."
               },
               "id" : {
                 "type" : "string",
@@ -5307,6 +5344,10 @@
               "value" : {
                 "type" : "string",
                 "description" : "The value of the property to save. May be null or empty."
+              },
+              "ignoreUuidField" : {
+                "type" : "string",
+                "description" : "If this parameter contains a non-empty value, and the property value is a JSON type, tries to remove the uuid field with given name, so it is not stored to database. If this parameter is set but the JSON field doesn't exist or the property value is not a JSON, nothing happens."
               },
               "id" : {
                 "type" : "string",

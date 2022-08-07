@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 06/08/2022 by CommandComplianceTest -->
+<!-- Generated: 07/08/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -7124,7 +7124,7 @@ Queries the properties from the backend by using a certain query language.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`language` | String | true | null | The query language to be used.
+`dialect` | String | true | null | The query language to be used.
 `select` | String | false | null | Selects the attributes / columns / scalars to return. If null or empty, and select all is used.
 `from` | String | true | null | Defines the properties by key patterns to be selected for the query. Multiple patterns must be separated by comma. Additionally, each pattern must be assigned to a variable using 'has varName'. For example global/app/** as all. This variable will used in the select and where clause.
 `where` | String | false | null | Defines the WHERE clause in order to filter the result based on the supported filter criteria. The syntax of the criteria depends on the selected query language.
@@ -7140,7 +7140,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - property.query:  
-      language: <value>  
+      dialect: <value>  
       select: <value>  
       from: <value>  
       where: <value>  
@@ -7155,12 +7155,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.query?language=<value>&select=<value>&from=<value>&where=<value>&type=<value>&params=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/property.query?dialect=<value>&select=<value>&from=<value>&where=<value>&type=<value>&params=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.query language=<value> select=<value> from=<value> where=<value> type=<value> params=<value> id=<value> if=<value> input=<value> output=<value>  
+pi command property.query dialect=<value> select=<value> from=<value> where=<value> type=<value> params=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7523,6 +7523,7 @@ Returns the value of a given property.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The key of the property to be returned.
+`includeUuidField` | String | false | null | If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
@@ -7533,6 +7534,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.value.get:  
       key: <value>  
+      includeUuidField: <value>  
       id: <value>  
       if: <value>  
       output: <value>  
@@ -7541,12 +7543,56 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.get?key=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/property.value.get?key=<value>&includeUuidField=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.get key=<value> id=<value> if=<value> output=<value>  
+pi command property.value.get key=<value> includeUuidField=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## property.value.list
+----------   
+Lists the values of all matching properties.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.list)
+
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`pattern` | String | false | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this key. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'.
+`includeUuidField` | String | false | null | If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.value.list:  
+      pattern: <value>  
+      includeUuidField: <value>  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/pipeline). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.value.list?pattern=<value>&includeUuidField=<value>&id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.value.list pattern=<value> includeUuidField=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7567,6 +7613,7 @@ Name | Type | Required | Default | Description
 `baseKey` | String | true | null | The base path key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property.
 `primaryKeyField` | String | false | null | The field name inside each value item which contains the primary key. Can be a string constant or a PEL. If it is a PEL, will be evaluated for each item in the list separately. The PEL has access to variables: headers (= headers of the pipeline), vars (= pipeline variables), body (= body of the pipeline), value (= the current iteration item value about to be saved).
 `iterItemName` | String | false | value | Changes the name of the iteration item value, provided for  primaryKeyField
+`ignoreUuidField` | String | false | null | If this parameter contains a non-empty value, and a property value is a JSON type, tries to remove the uuid field with given name, so it is not stored to database. If this parameter is set, but the JSON field doesn't exist or the property value is not a JSON, nothing happens.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
@@ -7580,6 +7627,7 @@ pipeline:
       baseKey: <value>  
       primaryKeyField: <value>  
       iterItemName: <value>  
+      ignoreUuidField: <value>  
       id: <value>  
       if: <value>  
       input: <value>  
@@ -7589,12 +7637,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.list.put?baseKey=<value>&primaryKeyField=<value>&iterItemName=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/property.value.list.put?baseKey=<value>&primaryKeyField=<value>&iterItemName=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.list.put baseKey=<value> primaryKeyField=<value> iterItemName=<value> id=<value> if=<value> input=<value> output=<value>  
+pi command property.value.list.put baseKey=<value> primaryKeyField=<value> iterItemName=<value> ignoreUuidField=<value> id=<value> if=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -7614,6 +7662,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The path key of the property to save the value to.
 `value` | String | false | null | The value of the property to save. May be null or empty.
+`ignoreUuidField` | String | false | null | If this parameter contains a non-empty value, and the property value is a JSON type, tries to remove the uuid field with given name, so it is not stored to database. If this parameter is set but the JSON field doesn't exist or the property value is not a JSON, nothing happens.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 
@@ -7624,6 +7673,7 @@ pipeline:
   - property.value.put:  
       key: <value>  
       value: <value>  
+      ignoreUuidField: <value>  
       id: <value>  
       if: <value>  
 ```  
@@ -7631,12 +7681,12 @@ Learn more: [Pipeline](../guides/pipeline).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.put?key=<value>&value=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/property.value.put?key=<value>&value=<value>&ignoreUuidField=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.put key=<value> value=<value> id=<value> if=<value>  
+pi command property.value.put key=<value> value=<value> ignoreUuidField=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 06/08/2022 11:12:17 by CommandComplianceTest -->
+<!-- Generated: 07/08/2022 17:44:12 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -630,8 +630,7 @@ the date formats can vary a lot.
 #### Parameters  
 Name | Type | Description
 --- | --- | ---
-dateString | ``string`` | A date string like 31.02.2012, 31.02.12, 2012/01/31, 31-01-12, 31-01-2012, 2012-01-31 23:59:59,
-                  or 2001-07-04T12:08:56.235-0700. 
+dateString | ``string`` | A date string like 31.02.2012, 31.02.12, 2012/01/31, 31-01-12, 31-01-2012, 2012-01-31 23:59:59,                   or 2001-07-04T12:08:56.235-0700. 
 
 
 #### Example  
@@ -750,6 +749,196 @@ dateTime | ``object`` | The date time object to be parsed.
 #### Example  
 ```  
 @date.parseToInstant(dateTime)  
+```  
+
+### beginOfYear(yearOffset)   
+Returns the epoch timestamp in millis of the beginning of the year relative to current year
+with respect of the user's preference for time zone.
+For example to get the timestamp of the beginning of the current year,
+you would set yearOffset=0. To get the beginning timestamp of
+last year, you would set yearOffset=-1. To get the beginning timestamp of
+next year, you would set yearOffset=1.   
+
+#### Returns  
+``long`` - The beginning of the year relative to current year as epoch millis,
+with hours, minutes, seconds and millis reset to 0.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+yearOffset | ``int`` | The years to be added (positive value) or subtracted (negative value) from current year. 
+
+
+#### Example  
+```  
+@date.beginOfYear(yearOffset)  
+```  
+
+### beginOfYear(timestamp,yearOffset)   
+Returns the epoch timestamp in millis of the beginning of the year relative to given timestamp
+with respect of the user's preference for time zone.
+For example to get the timestamp of the beginning of the current year,
+you would set timestamp=null, yearOffset=0. To get the beginning timestamp of
+last year, you would set timestamp=null, yearOffset=-1. To get the beginning timestamp of
+next year, you would set timestamp=null, yearOffset=1.   
+
+#### Returns  
+``long`` - The beginning of the year relative to given timestamp as epoch millis,
+with hours, minutes, seconds and millis reset to 0.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+timestamp | ``long`` | The epoch millis to calculate the beginning of the year from.                   If null, the current timestamp will be used. 
+yearOffset | ``int`` | The years to be added (positive value) or subtracted (negative value) from given year. 
+
+
+#### Example  
+```  
+@date.beginOfYear(timestamp,yearOffset)  
+```  
+
+### beginOfMonth(monthOffset)   
+Returns the epoch timestamp in millis of the beginning of the month relative to current month
+with respect of the user's preference for time zone.
+For example to get the timestamp of the beginning of the current month,
+you would set monthOffset=0. To get the beginning timestamp of
+last month, you would set monthOffset=-1. To get the beginning timestamp of
+next month, you would set monthOffset=1.   
+
+#### Returns  
+``long`` - The beginning of the month relative to current month as epoch millis,
+with hours, minutes, seconds and millis reset to 0.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+monthOffset | ``int`` | The months to be added (positive value) or subtracted (negative value) from current month. 
+
+
+#### Example  
+```  
+@date.beginOfMonth(monthOffset)  
+```  
+
+### beginOfMonth(timestamp,monthOffset)   
+Returns the epoch timestamp in millis of the beginning of the month relative to given timestamp
+with respect of the user's preference for time zone.
+For example to get the timestamp of the beginning of the current month,
+you would set timestamp=null, monthOffset=0. To get the beginning timestamp of
+last month, you would set timestamp=null, monthOffset=-1. To get the beginning timestamp of
+next month, you would set timestamp=null, monthOffset=1.   
+
+#### Returns  
+``long`` - The beginning of the month relative to given timestamp as epoch millis,
+with hours, minutes, seconds and millis reset to 0.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+timestamp | ``long`` | The epoch millis to calculate the beginning of the month from.                    If null, the current timestamp will be used. 
+monthOffset | ``int`` | The months to be added (positive value) or subtracted (negative value) from given month. 
+
+
+#### Example  
+```  
+@date.beginOfMonth(timestamp,monthOffset)  
+```  
+
+### beginOfWeek(weekStartDay,weekOffset)   
+Returns the epoch timestamp in millis of the beginning of the week relative to current week
+with respect of the user's preference for time zone.
+For example to get the timestamp of the beginning of the current week with Monday as start day,
+you would set weekStartDay=1, weekOffset=0. To get the beginning timestamp of
+last week, you would set weekStartDay=1, weekOffset=-1. To get the beginning timestamp of
+next week, you would set weekStartDay=1, weekOffset=1.   
+
+#### Returns  
+``long`` - The beginning of the week relative to current week as epoch millis,
+with hours, seconds and millis reset to 0.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+weekStartDay | ``integer`` | The start day of the week as int from Monday(1) to Sunday(7).                     If null or negative, Monday(1) is used. 
+weekOffset | ``int`` | The weeks to be added (positive value) or subtracted (negative value) from current week. 
+
+
+#### Example  
+```  
+@date.beginOfWeek(weekStartDay,weekOffset)  
+```  
+
+### beginOfWeek(timestamp,weekStartDay,weekOffset)   
+Returns the epoch timestamp in millis of the beginning of the week relative to given timestamp
+with respect of the user's preference for time zone.
+For example to get the timestamp of the beginning of the current week with Monday as start day,
+you would set timestamp=null, weekStartDay=null, weekOffset=0. To get the beginning timestamp of
+last week, you would set timestamp=null, weekStartDay=null, weekOffset=-1. To get the beginning timestamp of
+next week, you would set timestamp=null, weekStartDay=null, weekOffset=1.   
+
+#### Returns  
+``long`` - The beginning of the week relative to given timestamp as epoch millis, with hours, seconds
+and millis reset to 0.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+timestamp | ``long`` | The epoch millis to calculate the beginning of the week from.                     If null, the current timestamp will be used. 
+weekStartDay | ``integer`` | The start day of the week as int from Monday(1) to Sunday(7).                     If null or negative, Monday(1) is used. 
+weekOffset | ``int`` | The weeks to be added (positive value) or subtracted (negative value) from given week.                     If you would like to know the start date of the week before for example,                     you would set this to -1. And for two weeks before you would set it to -2, aso.                     And to detect the beginning  of the week of the given timestamp, you would set it to 0. 
+
+
+#### Example  
+```  
+@date.beginOfWeek(timestamp,weekStartDay,weekOffset)  
+```  
+
+### beginOfDay(dayOffset)   
+Returns the epoch timestamp in millis of the beginning of the day relative to current day
+with respect of the user's preference for time zone.
+For example to get the timestamp of the beginning of the current day,
+you would set dayOffset=0. To get the beginning timestamp of
+yesterday, you would set dayOffset=-1. To get the beginning timestamp of
+tomorrow, you would set dayOffset=1.   
+
+#### Returns  
+``long`` - The beginning of the day relative to given current day as epoch millis,
+with hours, seconds and millis reset to 0.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+dayOffset | ``int`` | The days to be added (positive value) or subtracted (negative value) from current day. 
+
+
+#### Example  
+```  
+@date.beginOfDay(dayOffset)  
+```  
+
+### beginOfDay(timestamp,dayOffset)   
+Returns the epoch timestamp in millis of the beginning of the day relative to given timestamp
+with respect of the user's preference for time zone.
+For example to get the timestamp of the beginning of the current day,
+you would set timestamp=null, dayOffset=0. To get the beginning timestamp of
+yesterday, you would set timestamp=null, dayOffset=-1. To get the beginning timestamp of
+tomorrow, you would set timestamp=null, dayOffset=1.   
+
+#### Returns  
+``long`` - The beginning of the day relative to given timestamp as epoch millis,
+with hours, seconds and millis reset to 0.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+timestamp | ``long`` | The epoch millis to calculate the beginning of the day from.                  If null, the current timestamp will be used. 
+dayOffset | ``int`` | The days to be added (positive value) or subtracted (negative value) from given day. 
+
+
+#### Example  
+```  
+@date.beginOfDay(timestamp,dayOffset)  
 ```  
 
  
