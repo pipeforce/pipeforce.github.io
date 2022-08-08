@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 07/08/2022 17:44:12 by CommandComplianceTest -->
+<!-- Generated: 08/08/2022 16:07:12 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -980,6 +980,177 @@ value | ``object`` | The number to format.
 #### Example  
 ```  
 @format.decimal(value)  
+```  
+
+ 
+##  @hash 
+----------  
+Provides utility functions inside a pipeline expression for simple hash handling.
+You can access the functions declared here in the PEL using <code>@hash</code>  
+
+### sha256(input)   
+Creates the SHA-256 hash from given input and returns it as hex string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+input | ``object`` | The input data to create a hash from. Can be a string, a byte array or a collection of strings. 
+
+
+#### Example  
+```  
+@hash.sha256(input)  
+```  
+
+### sha256Concat(separator,text)   
+Concatenates the given list of strings using the given separator and then calculates
+the hash SHA-256 of the concatenated string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+separator | ``string`` | The separator to be used to concat the string. If null, empty string will be used. 
+text | ``string`` | The text (list) to concat into a string. 
+
+
+#### Example  
+```  
+@hash.sha256Concat(separator,text)  
+```  
+
+### sha256Concat(separator,text)   
+Concatenates the given list of strings using the given separator and then calculates
+the hash SHA-256 of the concatenated string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+separator | ``string`` | The separator to be used to concat the string. If null, empty string will be used. 
+text | ``collection`` | The text (list) to concat into a string. 
+
+
+#### Example  
+```  
+@hash.sha256Concat(separator,text)  
+```  
+
+### md5(input)   
+Creates the MD5 hash from given input and returns it as hex string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+input | ``object`` | The input data to create a hash from. Can be a string, a byte array or a collection of strings. 
+
+
+#### Example  
+```  
+@hash.md5(input)  
+```  
+
+### md5Concat(separator,text)   
+Concatenates the given list of strings using the given separator and then calculates
+the hash MD5 of the concatenated string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+separator | ``string`` | The separator to be used to concat the string. If null, empty string will be used. 
+text | ``string`` | The text (list) to concat into a string. 
+
+
+#### Example  
+```  
+@hash.md5Concat(separator,text)  
+```  
+
+### md5Concat(separator,text)   
+Concatenates the given list of strings using the given separator and then calculates
+the hash MD5 of the concatenated string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+separator | ``string`` | The separator to be used to concat the string. If null, empty string will be used. 
+text | ``collection`` | The text (list) to concat into a string. 
+
+
+#### Example  
+```  
+@hash.md5Concat(separator,text)  
+```  
+
+### sha512(input)   
+Creates the SHA-512 hash from given input and returns it as hex string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+input | ``object`` | The input data to create a hash from. Can be a string, a byte array or a collection of strings. 
+
+
+#### Example  
+```  
+@hash.sha512(input)  
+```  
+
+### sha512Concat(separator,text)   
+Concatenates the given list of strings using the given separator and then calculates
+the hash SHA-512 of the concatenated string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+separator | ``string`` | The separator to be used to concat the string. If null, empty string will be used. 
+text | ``string`` | The text (list) to concat into a string. 
+
+
+#### Example  
+```  
+@hash.sha512Concat(separator,text)  
+```  
+
+### sha512Concat(separator,text)   
+Concatenates the given list of strings using the given separator and then calculates
+the hash SHA-512 of the concatenated string.   
+
+#### Returns  
+``string`` - The hash as hex string  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+separator | ``string`` | The separator to be used to concat the string. If null, empty string will be used. 
+text | ``collection`` | The text (list) to concat into a string. 
+
+
+#### Example  
+```  
+@hash.sha512Concat(separator,text)  
 ```  
 
  

@@ -1166,10 +1166,6 @@ pipeline:
         begin6MonthsBefore: "#{@date.beginOfMonth(-6)}"
 ```
 
-
-last 12 month = timestamp > @date.beginOfMonth(-12)
-
-
 **Return all properties created in the last 12 months**
 
 ```yaml
