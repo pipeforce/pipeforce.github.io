@@ -94,7 +94,7 @@ This is handy especially for smaller pipelines which you want to execute ad-hoc.
 
 ### Via HTTP
 
-You can execute a pipeline also by sending it via HTTP POST to the server. See this example:
+You can execute a pipeline also by sending it via HTTP POST to the server. See this HTTP scribble example:
 
 ```yaml
 POST /api/v3/pipeline HTTP/1.1 
@@ -114,8 +114,9 @@ This will do, by default, a synchron execution of the pipeline at server side. T
 Here is the PDF pipeline example from above, which is now executed using the `curl` tool (available on all Linux, Mac and Windows systems):
 
 ```bash
-curl -X POST "http://hub/api/v3/pipeline" 
-  -H "Content-Type: application/yaml" 
+curl -X POST "https://hub-ns.pipeforce.net/api/v3/pipeline" \
+  -H "Content-Type: application/yaml" \
+  -u "username:password" \
   --data-binary @- << EOF
 pipeline:
  - drive.read:
@@ -128,6 +129,41 @@ EOF
 ```
 
 With this flexibility, you can define a bash script and store it locally to execute this pipeline with a single command and without much configuration, setup or coding.
+
+#### Send the Body
+
+You can also send the pipeline body using this approach. See this example:
+
+```yaml
+pipeline:
+  - log:
+      message: "BODY: #{body.text}"
+
+body: {"text": "Hello World!"}
+```
+
+Note that the value of the body can be a primitive or a JSON without additional escaping required.
+
+Here is an example how to send this using `curl`:
+
+```bash
+curl -X POST "https://hub-ns.pipeforce.net/api/v3/pipeline" \
+  -H "Content-Type: application/yaml" \
+  -u "username:password" \
+  --data-binary @- << EOF
+pipeline:
+  - log:
+      message: "BODY: #{body.text}"
+
+body: {"text": "Hello World!"}
+EOF
+```
+
+The log output will be:
+
+```
+BODY: Hello World!
+```
 
 ## Pipeline Scopes
 
