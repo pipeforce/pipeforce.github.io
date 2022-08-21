@@ -6,7 +6,7 @@ Such reports can be used to give your users simple insights into your workflow d
 
 Similar to the forms framework, reports can be created using the low code section in the online workbench.
 
-In order to build reports, it is important that you're familiar with the concepts of [Pipelines](../guides/pipeline) and [Commands](../guides/command). If not, please follow the links to read more about these concepts and then come back to this guide.
+In order to build reports, it is important that you're familiar with the concepts of [Pipelines](../guides/commands_pipelines) and [Commands](../guides/commands_pipeline). If not, please follow the links to read more about these concepts and then come back to this guide.
 
 Each report always consists of two main components:
 

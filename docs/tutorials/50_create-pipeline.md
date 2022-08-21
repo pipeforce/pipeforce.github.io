@@ -27,7 +27,7 @@ A pipeline in PIPEFORCE is an easy to learn **low code script** which can do man
 
 It’s named “low code script”, because you are not required to do real coding inside such a pipeline script. You will mainly configure commands with parameters and combine them in a list. All commands in the list will then be executed one after the other.
 
-Because of its simplicity and power at the same time, the pipeline is one of the most important part in PIPEFORCE. In this tutorial, you will learn how to create and execute such a pipeline script. To learn more about pipelines in detail, see this section of the documentation: [Pipelines](../guides/pipeline)
+Because of its simplicity and power at the same time, the pipeline is one of the most important part in PIPEFORCE. In this tutorial, you will learn how to create and execute such a pipeline script. To learn more about pipelines in detail, see this section of the documentation: [Pipelines](../guides/10_commands_pipelines)
 
 ## 1 - Execute an ad-hoc pipeline
 
@@ -77,7 +77,7 @@ In this first part of the tutorial we gonna execute an **ad-hoc pipeline**. To d
         
     5.  can have optional parameters. In this case, you can specify them below the command after an additional indent using a tab.
         
-    6.  can exchange data with other commands. If you want to learn more about this, have a look here: [Pipeline](../guides/20_pipeline.md).
+    6.  can exchange data with other commands. If you want to learn more about this, have a look here: [Pipeline](../guides/10_commands_pipelines).
         
 12.  Now, let's execute this pipeline by pressing the RUN button.
     

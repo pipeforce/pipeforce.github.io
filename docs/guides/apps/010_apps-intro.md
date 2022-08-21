@@ -129,7 +129,7 @@ Each instance property will contain as value the data of the object instance whi
 
 This folder contains all pipeline configurations for the given app. A pipeline can be seen as the business logic part of an application.
 
-Find here more about pipelines: [../guides/pipeline](../guides/pipeline)
+Find more about pipelines [here](../guides/commands_pipeline)
 
 Each property name corresponds with the name of the pipeline and contains as value the pipeline configuration. For example:
 

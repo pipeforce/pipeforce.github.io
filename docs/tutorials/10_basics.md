@@ -46,7 +46,7 @@ A pipeline in PIPEFORCE is the “glue” between all elements of an business ap
 
 On the other hand, for more advanced users, there is always the option to “open-up” and create more complex solutions, in case the low-code approach isn’t enough. 
 
-You can learn more about pipelines here: [Pipelines](../guides/pipeline)
+You can learn more about pipelines here: [Pipelines](../guides/10_commands_pipelines)
 
 ## 5 - Command
 
