@@ -37,4 +37,4 @@ In case multiple documents are loaded into a pipeline, such documents are groupe
 | `path` | string | Returns the path to this collection, whereas `/` is returned in case it is the root collection. Example: `/rootCol/subCol`. |
 | `children` | ContentObject | Returns a list of all content objects which are contained in the collection. This can not only be a document, but also another content collection in case they are nested. |
 
-A Content Collection is also a Content Object and therefore it also has all attributes of the Content Object.
+A Content Collection is also a [Content Object](#) and therefore it also has all attributes of the Content Object.
