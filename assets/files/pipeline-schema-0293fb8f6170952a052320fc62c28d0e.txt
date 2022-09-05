@@ -3583,7 +3583,7 @@
             },
             "required" : [ ]
           },
-          "log" : {
+          "lo" : {
             "type" : "object",
             "description" : "Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body.",
             "inputType" : "JsonNode",
@@ -4276,6 +4276,35 @@
                 "type" : "number",
                 "description" : "Enforces that text is written at a specific line",
                 "default" : "0"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "pipeline.debug.statu" : {
+            "type" : "object",
+            "description" : "Returns the status of a running debugging session.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "sessionId" : {
+                "type" : "string",
+                "description" : "The debug session id. If null or empty, a new debugging session is created."
+              },
+              "pipelineKey" : {
+                "type" : "string",
+                "description" : "The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
               },
               "id" : {
                 "type" : "string",
@@ -6577,15 +6606,15 @@
             },
             "required" : [ ]
           },
-          "transform.ftl" : {
+          "transform.ft" : {
             "type" : "object",
-            "description" : "This transformer uses the FreeMarker template engine for its transformation. It expects the template to be in the body or in the template param, transforms it and puts the result  to the output (as a content object).",
+            "description" : "This transformer uses the FreeMarker template engine for its transformation.",
             "inputType" : "Byte",
             "outputType" : "Byte",
             "properties" : {
               "model" : {
                 "type" : "string",
-                "description" : "The model to be placed into the template scope. If null, the message is used as model"
+                "description" : "The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline."
               },
               "template" : {
                 "type" : "string",
