@@ -3583,7 +3583,7 @@
             },
             "required" : [ ]
           },
-          "lo" : {
+          "log" : {
             "type" : "object",
             "description" : "Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body.",
             "inputType" : "JsonNode",
@@ -4292,7 +4292,7 @@
             },
             "required" : [ ]
           },
-          "pipeline.debug.statu" : {
+          "pipeline.debug.status" : {
             "type" : "object",
             "description" : "Returns the status of a running debugging session.",
             "inputType" : "JsonNode",
@@ -6606,7 +6606,7 @@
             },
             "required" : [ ]
           },
-          "transform.ft" : {
+          "transform.ftl" : {
             "type" : "object",
             "description" : "This transformer uses the FreeMarker template engine for its transformation.",
             "inputType" : "Byte",
