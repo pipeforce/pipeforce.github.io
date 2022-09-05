@@ -71,7 +71,7 @@ An iterator "loops" over a given list of data (= iteration). During such an iter
 
 #### Iterate with command
 
-In PIPEFORCE you can use the [`data.list.iterate`](../../api/commands#datalistiterate) command in order to iterate over a list of data and apply transformation patterns at the same time. Here is an example:
+In PIPEFORCE you can use the [`data.list.iterate`](../../api/commands#datalistiterate-v1) command in order to iterate over a list of data and apply transformation patterns at the same time. Here is an example:
 
 ```yaml
 pipeline:
@@ -172,7 +172,7 @@ In case no `listA` parameter is given, the list is expected in the body or as op
 Since the parameters `where` and `do` can only contain PEL expressions, you can write them optionally without `#{` and `}` for better readability as shown in these examples.
 :::
 :::warning
-Do **not** use the command [`foreach`](../../api/commands#foreach) for data transformation iteration. This command was intended to implement the [enterprise recipient list pattern](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html) based on a given list as input, not for huge data transformation tasks. It would make it more complex and is optimized for command control flows, not for performing on a huge set of data. 
+Do **not** use the command [`foreach`](../../api/commands#foreach-v1) for data transformation iteration. This command was intended to implement the [enterprise recipient list pattern](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html) based on a given list as input, not for huge data transformation tasks. It would make it more complex and is optimized for command control flows, not for performing on a huge set of data. 
 :::
 
 #### Iterate with PEL
@@ -181,14 +181,14 @@ In some situations it is also handy to use directly the [PEL selection](../../ap
 
 #### Iterate with custom function
 
-For very complex data iteration tasks, you could also use the [`script.run`](../../api/commands#scriptrun) command and write a serverless function which iterates over the data. Since this approach requires knowledge about the scripting language and is usually not the best performing option, you should choose it only if there is no other option available to solve your iteration task.
+For very complex data iteration tasks, you could also use the [`script.run`](../../api/commands#scriptrun-v1) command and write a serverless function which iterates over the data. Since this approach requires knowledge about the scripting language and is usually not the best performing option, you should choose it only if there is no other option available to solve your iteration task.
 
 #### Iterate with custom microservice
 
 And if a script (serverless function / lambda) is also not working for you, you can write a custom microservice and run it inside PIEPFORCE. But this approach is outside of the scope of this data transformation section. See section [Microservices](../../microservices) for more details.
 
 :::tip PIPEFORCE toolings
- - [`data.list.iterate`](../../api/commands#datalistiterate) command
+ - [`data.list.iterate`](../../api/commands#datalistiterate-v1) command
  - [PEL projection](../../api/pel#projection-expression) command
  - [PEL selection](../../api/pel#selection-expression) command
 :::
@@ -254,16 +254,16 @@ As you can see, you can access the input data in the `do` expression usin the va
 Another possibility is to use the `data.list.iterate` command in order to enrich the items of a list while iterating them. 
 
 :::tip PIPEFORCE toolings
- - [`data.enrich`](../../api/commands#dataenrich) command 
- - [`data.list.iterate`](../../api/commands#datalistiterate) command
- - [`set`](../../api/commands#set) command
+ - [`data.enrich`](../../api/commands#dataenrich-v1) command 
+ - [`data.list.iterate`](../../api/commands#datalistiterate-v1) command
+ - [`set`](../../api/commands#set-v1) command
 :::
 ### Deduplicator
 
 A deduplicator is a special form of a filter. It removes data duplicates from a given input.
 
 :::tip PIPEFORCE toolings
- - [`data.list.filter`](../../api/commands#datalistfilter) command 
+ - [`data.list.filter`](../../api/commands#datalistfilter-v1) command 
 :::
 ### Filter
 
@@ -274,14 +274,14 @@ A filter removes a selected set of data from a bigger set of data. So only a sub
 This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Filter.html). 
 
 :::tip PIPEFORCE toolings
- - [`data.list.filter`](../../api/commands#datalistfilter) command 
+ - [`data.list.filter`](../../api/commands#datalistfilter-v1) command 
 :::
 ### Limitter
 
 A limitter limits a given data list to a maximum size. It can be seen as a special form of a filter.
 
 :::tip PIPEFORCE toolings
- - [`data.list.limit`](../../api/commands#datalistlimit) command 
+ - [`data.list.limit`](../../api/commands#datalistlimit-v1) command 
 :::
 
 ### Mapper
@@ -293,8 +293,8 @@ A mapper maps a given data structure into another data structure, so business lo
 This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingMapper.html). 
 
 :::tip PIPEFORCE toolings
- - [`data.mapping`](../../api/commands#datamapping) command 
- - [`data.list.iterate`](../../api/commands#datalistiterate) command 
+ - [`data.mapping`](../../api/commands#datamapping-v1) command 
+ - [`data.list.iterate`](../../api/commands#datalistiterate-v1) command 
 :::
 
 #### Mapping using data.list.iterate

@@ -2,11 +2,11 @@
 
 The transformer command `transform.xml.json` expects a XML document or string which complies with the [W3C XML](https://www.w3.org/TR/xml/) standard in the body or as `input` parameter of the command and converts it to a JSON document which can then be used for further processing.
 
-See the [commands reference](../../api/commands#transformxmljson) for details about the available parameters of this command.
+See the [commands reference](../../api/commands#transformxmljson-v1) for details about the available parameters of this command.
 
 It's also possible to convert a JSON document back to XML using the `transform.json.xml` command.
 
-See the [commands reference](../../api/commands#transformjsonxml) for details about the available parameters of this command.
+See the [commands reference](../../api/commands#transformjsonxml-v1) for details about the available parameters of this command.
 
 ## Introduction
 

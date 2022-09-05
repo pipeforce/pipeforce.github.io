@@ -23,11 +23,11 @@ You can find a all built-in commands in the [commands reference](../api/commands
 ### Command Name
 Each command has a unique name which is always written in lower case and follows the dot notation. Here are some examples of valid command names:
 
- - [`barcode.create`](../api/commands#barcodecreate)
- - [`data.list.iterate`](../api/commands#datalistiterate)
- - [`log`](../api/commands#log)
- - [`mail.send`](../api/commands#mailsend)   
- - [`property.put`](../api/commands#propertyput)
+ - [`barcode.create`](../api/commands#barcodecreate-v1)
+ - [`data.list.iterate`](../api/commands#datalistiterate-v1)
+ - [`log`](../api/commands#log-v1)
+ - [`mail.send`](../api/commands#mailsend-v1)   
+ - [`property.put`](../api/commands#propertyput-v1)
 
 
 As you can see, the command name is usually structured like this:
@@ -82,7 +82,7 @@ https://HUB/api/v3/command/<command.name>?<param1>=<value1>&<paramN>=<valueN>
 
 ##### GET
 
-Here is an example to execute the [`log`](../api/commands#log) command as HTTP GET request, and set its [`message`](../api/commands#log) parameter to a string value using a HTTP request parameter:
+Here is an example to execute the [`log`](../api/commands#log-v1) command as HTTP GET request, and set its [`message`](../api/commands#log-v1) parameter to a string value using a HTTP request parameter:
 
 ```yaml
 https://hub-trial.pipeforce.org/api/v3/command/log?message=HELLO
@@ -97,7 +97,7 @@ See [HTTP Execution Reference](#http-execution-reference) for an summary of all 
 
 ##### POST
 
-Here is an example to execute a single command as HTTP POST request, and set the `message` parameter to a [`log`](../api/commands#log) command using a HTTP POST data body in `curl`:
+Here is an example to execute a single command as HTTP POST request, and set the `message` parameter to a [`log`](../api/commands#log-v1) command using a HTTP POST data body in `curl`:
 
 ```bash
 curl -u "username:password" \
@@ -112,7 +112,7 @@ curl -u "username:password" \
 See [HTTP Execution Reference](#http-execution-reference) for an summary of all supported HTTP options here.
 
 #### Execute in CLI
-You can also use the [PIPEFORCE CLI](../guides/../api/cli.md) in order to execute a single Command. Here is an example to call the [`log`](../api/commands#log) command and set the `message` parameter accordingly:
+You can also use the [PIPEFORCE CLI](../guides/../api/cli) in order to execute a single Command. Here is an example to call the [`log`](../api/commands#log-v1) command and set the `message` parameter accordingly:
 
 ```bash
 pi command log message=HELLO
@@ -126,7 +126,7 @@ Beside **parameters**, a command can also consume and produce a **body**, simila
 
 Differently to parameters, the input body is typically a more complex document and/or bigger data stream which must be modified in some way. Therfore, it is passed-in and written-out via the body by default. 
 
-Here is an example to pass JSON data via body to a [`cache.put`](../api/commands#log) command using a HTTP POST request and the `curl` tool:
+Here is an example to pass JSON data via body to a [`cache.put`](../api/commands#log-v1) command using a HTTP POST request and the `curl` tool:
 
 ```bash
 curl -X POST 'https://hub-trial.pipeforce.org/api/v3/command/cache.put?key=someKey' \ 
@@ -718,3 +718,77 @@ BINARY DATA OF my.pdf
 ### Pipeline JSON
 
 All rules for the [Pipline YAML](#pipeline-yaml) also applies to the Pipeline JSON format. The only difference is to replace the header `Content-Type: application/yaml` with `Content-Type: application/json`.
+
+## Versioning
+
+Each command can be available and used in different versions in parallel in pipelines. This is to support downwards compatibilty in pipeline scripts. Which commands are availble in which versions can be found in the [commands reference docs](../api/commands).
+
+### Local version
+
+In order to use a specific version of a single command, you need to add it as suffix `:<version>` to the command name, whereas `<version>` needs to be replaced by the version to be used. For example `:v1`, `:v2`, `:v3`, aso. Here is an example to use the `log` command with exact version `v3` in a pipeline:
+
+```yaml
+pipeline:
+  - log:v3:
+      message: "Hello World!"   
+```
+
+Here, we use version `v4` of command `log`:
+
+```yaml
+pipeline:
+  - log:v4:
+      message: "Hello World!"   
+```
+
+If no version is specified, by default `v1` is used:
+
+```yaml
+pipeline:
+  - log:
+      message: "Hello World!"   
+```
+
+Is the same as:
+
+```yaml
+pipeline:
+  - log:v1:
+      message: "Hello World!"   
+```
+
+### Global version
+
+Instead of defining the version for each command, you can also set it globally for all commands of a pipeline using the header `version`. Example:
+
+```yaml
+headers:
+  version: v4
+pipeline:
+  - log:
+      message: "Hello World!"
+```
+
+In this case all commands defined in the pipeline will use version `v4` without the need of local definition.
+
+In case you combine the header `apiVersion` with local version on a command, the local one wins:
+
+```yaml
+headers:
+  version: v4
+pipeline:
+  - log:v5:
+      message: "Hello World!"
+```
+
+In this example, the `log` command is used with version `v5`. 
+
+### Version fallback
+
+Definig a version means you specify the highest version number to be used. If this version is not availble, the next lower available version is loaded instead. 
+
+In case you specify a version like `v5` for example, it will be tried to load the command with this exact version. In case no such command with this version exists, the next lower version will be looked up, like `v4` for example. If no command with this version exists, the next lower version `v3` is tried, aso. 
+
+### Default version
+
+In case no version is specified, the version `v1` is used by default.

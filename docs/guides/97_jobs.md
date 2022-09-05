@@ -5,7 +5,7 @@ use the concept of pipeline jobs in PIPEFORCE.
 
 ## Creating a Pipeline Job
 
-To register a pipeline job, you can use the [job](../api/commands#job) command.
+To register a pipeline job, you can use the [job](../api/commands#job-v1) command.
 
 Let's assume you have a pipeline like the one below which sends an email with current date and time:
 
@@ -93,7 +93,7 @@ using the hosted version of PIPEFORCE.
 
 ## List registered Pipeline Jobs
 
-In order to monitor the registered pipeline jobs, you can use the command [job.list](../api/commands#joblist). This will
+In order to monitor the registered pipeline jobs, you can use the command [job.list](../api/commands#joblist-v1). This will
 return a JSON with information about all currently registered pipeline jobs. Such a result can look like this:
 
 ```json
@@ -122,4 +122,4 @@ Only Pipeline Jobs are shown here and no system-internally jobs.
  - `created` = The time when this job was created in ISO-8061 format.
  - `running` = In case the job is currently actively running. If false, the job is registered, but paused.
 
-In case you would like to get information about a single job, you can use the [job.status](../api/commands#jobstatus) command instead.
+In case you would like to get information about a single job, you can use the [job.status](../api/commands#jobstatus-v1) command instead.

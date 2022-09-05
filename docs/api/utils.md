@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 21/08/2022 18:40:57 by CommandComplianceTest -->
+<!-- Generated: 05/09/2022 06:11:52 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -2338,6 +2338,26 @@ token | ``object`` | The token to split the text with.
 #### Example  
 ```  
 @text.split(text,token)  
+```  
+
+### matches(text,regexp)   
+Searches text for first regexp match.   
+
+#### Returns  
+``list<string>`` - On success, list with at least one item is returned. At index 0 the whole matched string is placed, and
+then from index 1, all regexp capturing groups are listed.
+An empty list is returned when no match.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``string`` | to search for matches 
+regexp | ``string`` | regular expression to use 
+
+
+#### Example  
+```  
+@text.matches(text,regexp)  
 ```  
 
  

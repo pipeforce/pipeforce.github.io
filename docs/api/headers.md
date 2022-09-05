@@ -46,7 +46,7 @@ Sometimes, it is necessary to change the default prefix `#{` of an expression to
 
 ### mocksEnabled
 
-In case this pipline contains command mocks using [``mock.command``](../api/commands#mockcommand), this header can switch on / off all mocks at once using a value of ``true`` or ``false``.                                                                                                     
+In case this pipline contains command mocks using [``mock.command``](../api/commands#mockcommand-v1), this header can switch on / off all mocks at once using a value of ``true`` or ``false``.                                                                                                     
 
 ### onCommandError
 

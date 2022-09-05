@@ -1,16 +1,16 @@
 # Advanced Querying 
 
 :::tip Summary
-PIPEFORCE allows to query properties very effectively in different ways. In case one of the simple approaches like `property.list` or `property.value.get` is not sufficient for your use case, you can use the command [`property.query`](../../api/commands#propertyquery) which allows for more advanced query options.
+PIPEFORCE allows to query properties very effectively in different ways. In case one of the simple approaches like `property.list` or `property.value.get` is not sufficient for your use case, you can use the command [`property.query`](../../api/commands#propertyquery-v1) which allows for more advanced query options.
 :::
 
 ## Introduction
 
- You can create advanced queries using the command [`property.query`](../../api/commands#propertyquery).
+ You can create advanced queries using the command [`property.query`](../../api/commands#propertyquery-v1).
 
 This powerful command allows you to create "SQL-style" filters for properties which can be evaluated directly in the database and therefore are in most cases scale much better compared to doing filtering in memory.
 
-Here is a first example using the command [`property.query`](../../api/commands#propertyquery), which loads "recursively" the value of all properties of the app `myapp`, being a JSON document with attribute `title` having a value which starts with the text `Admin` and converts the final result to a JSON in order to use it in the pipeline for further processing. As you can imagine, this usually becomes a very complex native query since recursive key filtering is combined with JSON path selections, conversions and a LIKE search. The command [`property.query`](../../api/commands#propertyquery) simplifies this a lot for you. The example will look like this:
+Here is a first example using the command [`property.query`](../../api/commands#propertyquery-v1), which loads "recursively" the value of all properties of the app `myapp`, being a JSON document with attribute `title` having a value which starts with the text `Admin` and converts the final result to a JSON in order to use it in the pipeline for further processing. As you can imagine, this usually becomes a very complex native query since recursive key filtering is combined with JSON path selections, conversions and a LIKE search. The command [`property.query`](../../api/commands#propertyquery-v1) simplifies this a lot for you. The example will look like this:
 
 ```yaml
 pipeline:
@@ -24,12 +24,12 @@ pipeline:
         value::json ->> 'title' LIKE 'Admin %'
 ```
 
-**`dialect`**: Depending on the parameter `dialect`, the command [`property.query`](../../api/commands#propertyquery) can be used with different language implementations. In this example the `postgres` language is used (which is currently the only implementation available). Therefore, you can use most of the native PostgreSQL syntax elements and functions as documented [here](https://www.postgresql.org/docs/11/functions-json.html). 
+**`dialect`**: Depending on the parameter `dialect`, the command [`property.query`](../../api/commands#propertyquery-v1) can be used with different language implementations. In this example the `postgres` language is used (which is currently the only implementation available). Therefore, you can use most of the native PostgreSQL syntax elements and functions as documented [here](https://www.postgresql.org/docs/11/functions-json.html). 
 
 **`type`**: If not specified otherwise by the optional parameter `type`, the expected property type is `application/json` by default. So only properties matching this type will automatically be selected for querying. 
 
 :::info
-Since in most cases, the [`property.query`](../../api/commands#propertyquery) command will be used in conjunction with querying JSON documents, if not stated otherwise, all sections below will assume the parameter `type` is left out (= set to its default value `application/json`). 
+Since in most cases, the [`property.query`](../../api/commands#propertyquery-v1) command will be used in conjunction with querying JSON documents, if not stated otherwise, all sections below will assume the parameter `type` is left out (= set to its default value `application/json`). 
 :::
 
 **`select`, `from`, `where`**: These parameters are based on the typical SQL query structure even if their value can differ from the ordinary SQL syntax, based on the selected `dialect`.
@@ -54,7 +54,7 @@ The attribute which used usually very often, is the `value` attribute since it c
 
 ## The `select` Parameter
 
-The parmeter `select` of the command [`property.query`](../../api/commands#propertyquery) defines the values, elements or aggregation results to be returned from a property, similar as it is in SQL. The difference to SQL is, that here it is also possible to select and aggregate values from JSON documents in the result set using a [special JSON syntax defined by PostgreSQL](https://www.postgresql.org/docs/11/functions-json.html).
+The parmeter `select` of the command [`property.query`](../../api/commands#propertyquery-v1) defines the values, elements or aggregation results to be returned from a property, similar as it is in SQL. The difference to SQL is, that here it is also possible to select and aggregate values from JSON documents in the result set using a [special JSON syntax defined by PostgreSQL](https://www.postgresql.org/docs/11/functions-json.html).
 
 **Example 1**
 
@@ -136,7 +136,7 @@ See the PostgreSQL documentation [Aggregate Functions](https://www.postgresql.or
 :::
 ## Convert to JSON
 
-Whenever you would like to do a JSON operation on a value using the [`property.query`](../../api/commands#propertyquery) command, you need to convert the value to a JSON type first. For this, PostgreSQL provides the data types [`json` and `jsonb`](https://www.postgresql.org/docs/11/datatype-json.html). 
+Whenever you would like to do a JSON operation on a value using the [`property.query`](../../api/commands#propertyquery-v1) command, you need to convert the value to a JSON type first. For this, PostgreSQL provides the data types [`json` and `jsonb`](https://www.postgresql.org/docs/11/datatype-json.html). 
 
 :::tip Hint
 While the type `json` does a "lighweight" conversion to JSON, `jsonb` is converting to a more powerful binary JSON version and therefore takes more space and is slower in conversion. At the other hand, some operations are only possible on the `jsonb` type. Additionally, some operations applied on `jsonb` are much faster, because of its optimized format. So it depends on your use-case which one to use. Check the [documentation](https://www.postgresql.org/docs/11/functions-json.html) which type supports which concrete operation.
@@ -603,7 +603,7 @@ jsonb_set('{"firstName": "Max"}'::jsonb, '{lastName}', to_jsonb('Meyers'::text),
 
 ## The `from` Parameter
 
-The `from` parameter of the command [`property.query`](../../api/commands#propertyquery) defines key patterns of those properties to return for further filtering. It is similar to the SQL `FROM`, but instead of tables, it selects properties. 
+The `from` parameter of the command [`property.query`](../../api/commands#propertyquery-v1) defines key patterns of those properties to return for further filtering. It is similar to the SQL `FROM`, but instead of tables, it selects properties. 
 
 The key patterns are checked whether the currently executing user has the permission to read from these (sub-) paths.
 
@@ -1013,7 +1013,7 @@ So you can access each of these fields (called "attributes") also in your querie
 
 ## Query Parameters
 
-The command [`property.query`](../../api/commands#propertyquery) also supports parameters ("prepared statements") so values coming from users are secured properly.
+The command [`property.query`](../../api/commands#propertyquery-v1) also supports parameters ("prepared statements") so values coming from users are secured properly.
 
 Here is an example how to define the parameters using the `params` keyword:
 
@@ -1052,11 +1052,11 @@ value::json ->> 'lastName' = :theName
 
 PostgreSQL offers a huge set of date and time functions and operations: https://www.postgresql.org/docs/11/functions-datetime.html.
 
-You can use them in the  [`property.query`](../../api/commands#propertyquery) command.
+You can use them in the  [`property.query`](../../api/commands#propertyquery-v1) command.
 
 Additionally, PIPEFORCE has many utils, which can help you to create date and time based queries. The most important functions can be found in the [@date](../../api/utils#date) util.
 
-Below you can find some query examples, how to use these tools with the [`property.query`](../../api/commands#propertyquery) command.
+Below you can find some query examples, how to use these tools with the [`property.query`](../../api/commands#propertyquery-v1) command.
 
 **Return all properties created today**
 

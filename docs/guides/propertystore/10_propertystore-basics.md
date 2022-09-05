@@ -8,7 +8,7 @@ slug: /propertystore
 
 ## What is the Property Store?
 
-The property store is the core database in PIPEFORCE to save all your application data. You can create, update, query and delete data on the property store using the  [`property.*`](../../../api/commands#property) commands. 
+The property store is the core database in PIPEFORCE to save all your application data. You can create, update, query and delete data on the property store using the  [`property.*`](../../../api/commands#property-v1) commands. 
 
 ## What is a Property?
 
@@ -206,7 +206,7 @@ The base64 encoding approach is only meant for small files, not bigger than a fe
 
 ## Create a Property
 
-To create a new property in the property store, you need to define a property schema first using the command [`property.schema.put`](../api/commands#propertyschemaput). Example:
+To create a new property in the property store, you need to define a property schema first using the command [`property.schema.put`](../api/commands#propertyschemaput-v1). Example:
 
 ```yaml
 pipeline:
@@ -227,7 +227,7 @@ pipeline:
       value: {"hello": "world"}
 ```
 ### Property created event
-Whenever you create a new a property, an event with key `property.created` is fired with the created property stored in `target` of the event object. This way you can listen in your pipelines for properties created newly. See the [reference documentation](../api/events#propertycreated) for details. Here is an example how to listen to such an event in a **persisted** pipeline:
+Whenever you create a new a property, an event with key `property.created` is fired with the created property stored in `target` of the event object. This way you can listen in your pipelines for properties created newly. See the [reference documentation](../api/events#propertycreated-v1) for details. Here is an example how to listen to such an event in a **persisted** pipeline:
 ```yaml
 pipeline:
   - event.listen:
@@ -240,7 +240,7 @@ This persisted pipeline gets automatically executed whever a new property with a
 
 ## Update a Property
 
-To change the **value** of the property, you can use the command [`property.put`](../api/commands#propertyput). The property must already exist beforehand. Example:
+To change the **value** of the property, you can use the command [`property.put`](../api/commands#propertyput-v1). The property must already exist beforehand. Example:
 
 ```yaml
 pipeline:
@@ -249,7 +249,7 @@ pipeline:
      value: {"new": "value"}
 ```
 
-In order to change the envelope data (attributes) of a property, you need to use the  [`property.schema.put`](../api/commands#propertyput) command:
+In order to change the envelope data (attributes) of a property, you need to use the  [`property.schema.put`](../api/commands#propertyput-v1) command:
 
 ```yaml
 pipeline:
@@ -258,7 +258,7 @@ pipeline:
      timeToLive: 5
 ```
 
-If you would like to change the key of an existing property, you can use the [`property.move`](../api/commands#propertymove) command:
+If you would like to change the key of an existing property, you can use the [`property.move`](../api/commands#propertymove-v1) command:
 
 ```yaml
 pipeline:
@@ -334,7 +334,7 @@ pipeline:
 If you want to query for property data, you have multiple options in PIPEFORCE.
 ### Listing properties
 
-One of the simplest approaches to query for multiple properties is by using the command  [`property.list`](../api/commands#propertylist). Example:
+One of the simplest approaches to query for multiple properties is by using the command  [`property.list`](../api/commands#propertylist-v1). Example:
 
 ```yaml
 pipeline:
@@ -390,7 +390,7 @@ This will return "recursively" all properties below the path `global/app/myapp/`
 
 ### Getting property value
 
-In case you would like to load only the value (payload) of a property but not its metadata, you can use the command [`property.value.get`](../api/commands#propertyvalueget). Example:
+In case you would like to load only the value (payload) of a property but not its metadata, you can use the command [`property.value.get`](../api/commands#propertyvalueget-v1). Example:
 
 ```yaml
 pipeline:

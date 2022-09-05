@@ -9,18 +9,18 @@ It's one of the most advanced and most widely used messaging broker in the world
 
 In order to send and receive messages to/from this messaging bus, you have two options:
 
-- Develop a microservice using a RabbitMQ client library and deploy it to PIPEFORCE using the [service.deploy](../api/commands#servicedeploy) command.
+- Develop a microservice using a RabbitMQ client library and deploy it to PIPEFORCE using the [service.deploy](../api/commands#servicedeploy-v1) command.
   For details about writing such a microservice which produces and consumes messages, see the
   section [messaging and microservices](microservices/messaging).
-- Write pipelines using the [message.receive](../api/commands#messagereceive)
-  and [message.send](../api/commands#messagesend) commands.
+- Write pipelines using the [message.receive](../api/commands#messagereceive-v1)
+  and [message.send](../api/commands#messagesend-v1) commands.
 
 This section will cover the second part: How to write pipelines which send and receive messages to/from the messaging
 bus.
 
 ## Receiving messages
 
-To receive messages in a pipeline, you can use the command [message.receive](../api/commands#messagereceive).
+To receive messages in a pipeline, you can use the command [message.receive](../api/commands#messagereceive-v1).
 
 Let's assume you have a pipeline, which sends an email like this:
 
@@ -171,7 +171,7 @@ The hash `#` matches any level of the message key regardless of the number of pe
 
 ## Sending messages
 
-To send messages in a pipeline, you can use the command [message.send](../api/commands#messagesend).
+To send messages in a pipeline, you can use the command [message.send](../api/commands#messagesend-v1).
 
 Here is an example:
 

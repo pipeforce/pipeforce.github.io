@@ -20,7 +20,7 @@ able to see it.
 
 In PIPEFORCE you have two options, creating a secret:
 
- - Using the command [`secret.put`](https://pipeforce.github.io/docs/api/commands#secretput)
+ - Using the command [`secret.put`](https://pipeforce.github.io/docs/api/commands#secretput-v1)
  - Using the web interface.
 
 ### Format patterns

@@ -68,7 +68,7 @@ and deploy automatically every time, a new push to GitHub happened (or on other 
 ## Logging a microservice
 
 Everything you log into the standard output of your microservice container can be later viewed by using 
-the command [log.list](https://pipeforce.github.io/docs/api/commands#loglist) and specifying the name under 
+the command [log.list](https://pipeforce.github.io/docs/api/commands#loglist-v1) and specifying the name under 
 which you have deployed the service. Example:
 
 ```yaml

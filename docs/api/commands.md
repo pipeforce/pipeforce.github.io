@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 21/08/2022 by CommandComplianceTest -->
+<!-- Generated: 05/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -20,12 +20,13 @@ pipeline:
       message: "The current date is: #{body}"  
 ```  
 
-## apidoc.commands
+## apidoc.commands ``v1``
 ----------   
 Returns the OpenAPI documentation of commands.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.commands)
+[Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.commands:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -45,6 +46,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -60,12 +63,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## apidoc.pel.utils
+## apidoc.pel.utils ``v1``
 ----------   
 Returns the OpenAPI documentation of PEL utils.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.pel.utils)
+[Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.pel.utils:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -85,6 +89,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -100,12 +106,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## app.install
+## app.install ``v1``
 ----------   
 Installs an app into the property store. The app can be located on GitHub or is provided as zip file content in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=app.install)
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.install:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -133,6 +140,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -148,12 +157,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## app.marketplace.search
+## app.marketplace.search ``v1``
 ----------   
 Searches the marketplace for apps ready to be installed. Note: This command is limited to max. 10 calls per minute.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=app.marketplace.search)
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.marketplace.search:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -193,6 +203,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -208,12 +220,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## app.uninstall
+## app.uninstall ``v1``
 ----------   
 Uninstalls the given app.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=app.uninstall)
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.uninstall:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -235,6 +248,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -250,12 +265,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## app.update
+## app.update ``v1``
 ----------   
 Deprecated. Use app.install with param update:true instead. Updates the given apps.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=app.update)
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.update:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -281,6 +297,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -296,12 +314,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## assert
+## assert ``v1``
 ----------   
 Evaluates a given PEL conditions and throws an error in case a condition is invalid.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=assert)
+[Try online.](https://try.pipeforce.org/#/commandform?command=assert:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -331,6 +350,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -346,12 +367,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.assert
+## workflow.assert ``v1``
 ----------   
 Applies asserts for a given workflow in the workflow service.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.assert)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.assert:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -379,6 +401,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -394,12 +418,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## barcode.create
+## barcode.create ``v1``
 ----------   
 Creates a barcode from a dynamic format.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=barcode.create)
+[Try online.](https://try.pipeforce.org/#/commandform?command=barcode.create:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -427,6 +452,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -442,12 +469,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## barcode.read
+## barcode.read ``v1``
 ----------   
 Reads a barcode from a dynamic PNG format. Expects the barcode image as content object in the body. Detects the barcode type automatically. By default returns the text extracted from the barcode in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=barcode.read)
+[Try online.](https://try.pipeforce.org/#/commandform?command=barcode.read:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -469,6 +497,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -484,12 +514,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## bean
+## bean ``v1``
 ----------   
 Executes a method on a Spring bean. Is only available for support users.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=bean)
+[Try online.](https://try.pipeforce.org/#/commandform?command=bean:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -513,6 +544,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -528,12 +561,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## body.delete
+## body.delete ``v1``
 ----------   
 Sets the value in the body to null. Deletes any existing value in the body. 
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=body.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=body.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -551,6 +585,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -566,12 +602,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## body.filter
+## body.filter ``v1``
 ----------   
 DEPRECATED. Converts the input body to JSON and then filters the input body and removes any properties not matching the given filter. Throws exception if input body cannot be converted to JSON.Does nothing, if input body is null or empty. If the first level of the body is a list, appliesthe filter to each element inside the list. This command can be used for example to filter outsensitive information or to shrink a big result set for performance reasons.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=body.filter)
+[Try online.](https://try.pipeforce.org/#/commandform?command=body.filter:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -593,6 +630,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -608,12 +647,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## cache.clear
+## cache.clear ``v1``
 ----------   
 Clears the underlying central cache and removes any entry those time to live has been expired. Can also be used to remove a single entry from the cache.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=cache.clear)
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.clear:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -633,6 +673,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -648,12 +690,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## cache.get
+## cache.get ``v1``
 ----------   
 Reads a value with given key from the cache and writes it into the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=cache.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -679,6 +722,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -694,12 +739,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## cache.info
+## cache.info ``v1``
 ----------   
 Returns information about the current state of the cache. Available for system and support users only.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=cache.info)
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.info:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -719,6 +765,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -734,12 +782,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## cache.list
+## cache.list ``v1``
 ----------   
 Lists ALL entries of the cache. Use with care!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=cache.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -759,6 +808,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -774,14 +825,15 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## cache.put
+## cache.put ``v1``
 ----------   
 Saves the given value under given key into a central cache.
 If no value param is given, uses the body as cache value.
 The max time to live of each entry is 120 min. The min time to live is 5 min. Default is 5 min.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=cache.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=cache.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -805,6 +857,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -820,12 +874,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## call
+## call ``v1``
 ----------   
 Calls a script and returns with the result in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=call)
+[Try online.](https://try.pipeforce.org/#/commandform?command=call:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -849,6 +904,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -864,12 +921,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## capture
+## capture ``v1``
 ----------   
 DEPREACTED (Use the cache.* commands instead). Captures the last pipe message and adds it into a list in the header under key {@link #HEADER_CAPTURED}. This is primarily for testing purposes but also can be used to create a snapshot of a certain pipeline state.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=capture)
+[Try online.](https://try.pipeforce.org/#/commandform?command=capture:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -887,6 +945,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -902,12 +962,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pipe.schema
+## pipe.schema ``v1``
 ----------   
 Returns the JSON schema for all built-in pipes.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -929,6 +990,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -944,12 +1007,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pipe.schema.v7
+## pipe.schema.v7 ``v1``
 ----------   
 Returns the V7 compliant JSON schema for all built-in pipes.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema.v7)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema.v7:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -969,6 +1033,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -984,12 +1050,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## config.get
+## config.get ``v1``
 ----------   
 Returns all admin config settings for a given group from the backend as a JSON in this format: {configKey:{value:someValue, canOverwrite:true|false}}. The attribute canOverwrite is only available if param includePermission is set.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=config.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=config.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1015,6 +1082,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1030,12 +1099,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## container.registry.delete
+## container.registry.delete ``v1``
 ----------   
 Deletes a container registry.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1057,6 +1127,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1072,12 +1144,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## container.registry.list
+## container.registry.list ``v1``
 ----------   
 Lists all container registries.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1097,6 +1170,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1112,12 +1187,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## container.registry.put
+## container.registry.put ``v1``
 ----------   
 Adds a new container registry.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=container.registry.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1145,6 +1221,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1160,12 +1238,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## content.get
+## content.get ``v1``
 ----------   
 Reads content from provided uri and puts the result back to body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=content.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=content.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -1187,6 +1266,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1202,12 +1283,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## data.enrich
+## data.enrich ``v1``
 ----------   
 Enriches a given data object by applying a given PEL expression on it.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=data.enrich)
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.enrich:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1231,6 +1313,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1246,12 +1330,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## data.list.filter
+## data.list.filter ``v1``
 ----------   
 Iterates over a list of items given by input and removes all items matching the given criteria.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.filter)
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.filter:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1277,6 +1362,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1292,12 +1379,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## data.list.iterate
+## data.list.iterate ``v1``
 ----------   
 Iterates over a data list (like JSON array for example) and applies the given do-action on each entry matching given where-condition. If two lists a are given, iterates over both lists whereas listA will be the outer loop and listB will be the inner loop.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.iterate)
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.iterate:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1333,6 +1421,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1348,12 +1438,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## data.list.limit
+## data.list.limit ``v1``
 ----------   
 Limits a given list of data to a specific size. Removes any item from the list those index is above given maxLength - 1.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.limit)
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.list.limit:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1377,6 +1468,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1392,12 +1485,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## data.mapping
+## data.mapping ``v1``
 ----------   
 Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=data.mapping)
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.mapping:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1421,6 +1515,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1436,12 +1532,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## data.transform
+## data.transform ``v1``
 ----------   
 This data transformer converts the input to an output format by applying the given template. By default the current message is provided as model inside the template context so you can access body, vars or headers similar to the default PEL approach.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=data.transform)
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.transform:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1473,6 +1570,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1488,12 +1587,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## datetime
+## datetime ``v1``
 ----------   
 Returns the current time at server side.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=datetime)
+[Try online.](https://try.pipeforce.org/#/commandform?command=datetime:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1515,6 +1615,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1530,12 +1632,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## datetime.zones
+## datetime.zones ``v1``
 ----------   
 Returns all official IANA time-zone names supported by this PIPEFORCE instance: http://www.iana.org/time-zones
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=datetime.zones)
+[Try online.](https://try.pipeforce.org/#/commandform?command=datetime.zones:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1555,6 +1658,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1570,12 +1675,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## decrypt
+## decrypt ``v1``
 ----------   
 Decrypts the data in the body using the defined encryption parameter. Puts the encrypted data back to the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=decrypt)
+[Try online.](https://try.pipeforce.org/#/commandform?command=decrypt:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1599,6 +1705,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1614,12 +1722,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## delivery.attachment.add
+## delivery.attachment.add ``v1``
 ----------   
 Adds a single attachment to an existing PIPEFORCE Secure Delivery. Note: Attachments can be added to deliveries only in state DRAFT.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.attachment.add)
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.attachment.add:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1647,6 +1756,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1662,12 +1773,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## delivery.create
+## delivery.create ``v1``
 ----------   
 Creates a new PIPEFORCE Secure Delivery and sets it in the target
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.create)
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.create:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1701,6 +1813,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1716,12 +1830,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## delivery.delete
+## delivery.delete ``v1``
 ----------   
 Deletes a given delivery.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1741,6 +1856,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1756,12 +1873,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## delivery.finalize
+## delivery.finalize ``v1``
 ----------   
 Finalizes an existing delivery. After finalized, only recipients can be added but message and attachments of delivery can not be changed any longer.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.finalize)
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.finalize:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1783,6 +1901,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1798,12 +1918,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## delivery.get
+## delivery.get ``v1``
 ----------   
 Returns an existing delivery.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1825,6 +1946,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1840,12 +1963,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## delivery.recipient.add
+## delivery.recipient.add ``v1``
 ----------   
 Adds recipients to an existing PIPEFORCE Secure Delivery. Note: Recipients can be added to deliveries only in state DRAFT or FINALIZED.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.recipient.add)
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.recipient.add:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1871,6 +1995,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1886,12 +2012,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## delivery.send
+## delivery.send ``v1``
 ----------   
 Sends a given PIPEFORCE Secure Delivery. If delivery is in status DRAFT it will be converted to FINALIZED before send.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.send)
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.send:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1915,6 +2042,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1930,12 +2059,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## delivery.update
+## delivery.update ``v1``
 ----------   
 Updates an existing PIPEFORCE Secure Delivery.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.update)
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.update:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -1971,6 +2101,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -1986,12 +2118,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## doc.api.pelutils
+## doc.api.pelutils ``v1``
 ----------   
 Returns the api doc for the available PEL utils.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=doc.api.pelutils)
+[Try online.](https://try.pipeforce.org/#/commandform?command=doc.api.pelutils:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2011,6 +2144,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2026,15 +2161,16 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## docusign
+## docusign ``v1``
 ----------   
 Requests a signature of the given document in the body 
 via email (remote signing) using DocuSign. See here: 
 https://developers.docusign.com/esign-rest-api/code-examples/code-example-request-a-signature-via-email
 Expects the to be signed document in the body with json.file encoding.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=docusign)
+[Try online.](https://try.pipeforce.org/#/commandform?command=docusign:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2068,6 +2204,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2083,12 +2221,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## document.understand
+## document.understand ``v1``
 ----------   
 Returns metadata for a given unstructured document like an invoice PDF for example. Expects the document to be in the body by default. Returns the result as JSON in the body (replacing any existing value in the body).
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=document.understand)
+[Try online.](https://try.pipeforce.org/#/commandform?command=document.understand:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2116,6 +2255,8 @@ pipeline:
       restUrl: <value>  
       filter: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2131,12 +2272,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.archive.save
+## drive.archive.save ``v1``
 ----------   
 Saves the content of the body to the given archive folder in Drive. The content of the body must be a single file. Verifies the integrity of the archive on write. Returns the final archive file name / path (without archive root path) into the output target.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.archive.save)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.archive.save:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -2160,6 +2302,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2175,12 +2319,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.copy
+## drive.copy ``v1``
 ----------   
 Copies a folder or file on Drive.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.copy)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.copy:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2202,6 +2347,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2217,12 +2364,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.delete
+## drive.delete ``v1``
 ----------   
 Deletes a file or folder on Drive. If resource doesnt exist, nothing happens.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2242,6 +2390,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2257,12 +2407,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.exists
+## drive.exists ``v1``
 ----------   
 Checks whether a resource in Drive exists. Puts the string true or false in the message body depending whether the resource exists.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.exists)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.exists:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2284,6 +2435,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2299,12 +2452,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.list
+## drive.list ``v1``
 ----------   
 Lists all resources from drive folder.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -2326,6 +2480,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2341,12 +2497,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.mkdir
+## drive.mkdir ``v1``
 ----------   
 Creates a new dir on Drive if it not already exists.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.mkdir)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.mkdir:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2368,6 +2525,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2383,12 +2542,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.move
+## drive.move ``v1``
 ----------   
 Moves a folder or file on Drive from one location into another.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.move)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.move:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2410,6 +2570,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2425,12 +2587,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.read
+## drive.read ``v1``
 ----------   
 Reads a file from drive and puts its content as a pipeline resource into the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.read)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.read:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -2454,6 +2617,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2469,12 +2634,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.save
+## drive.save ``v1``
 ----------   
 Saves the content of the body to one or more files in Drive. The content of the body can be a single pipeline resource or a pipeline resource collection. 
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.save)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.save:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -2498,6 +2664,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2513,12 +2681,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.share
+## drive.share ``v1``
 ----------   
 Shares a folder in Drive given by path to users given by recipients.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.share)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.share:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2558,6 +2727,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2573,12 +2744,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.tag
+## drive.tag ``v1``
 ----------   
 Adds or removes a WebDAV tag to a resource on drive.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.tag)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.tag:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2604,6 +2776,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2619,12 +2793,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## drive.upload.chunked
+## drive.upload.chunked ``v1``
 ----------   
 Supports chunked uploads of large files into the Drive endpoint. Expects an object in the body which can be converted to an input stream as the chunk data to be uploaded.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=drive.upload.chunked)
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.upload.chunked:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2650,6 +2825,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2665,12 +2842,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## encrypt
+## encrypt ``v1``
 ----------   
 Encrypts the data in the body using the defined encryption parameter and puts the encrypted datain the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=encrypt)
+[Try online.](https://try.pipeforce.org/#/commandform?command=encrypt:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2692,6 +2870,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2707,12 +2887,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## eval
+## eval ``v1``
 ----------   
 Executes a given pipeline expression with the message as context.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=eval)
+[Try online.](https://try.pipeforce.org/#/commandform?command=eval:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2732,6 +2913,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2747,12 +2930,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## event.listen
+## event.listen ``v1``
 ----------   
 Listening for events works like this: Add this command at the very first in your pipeline, define the event key you want to listen for and an optional filter expression. Then save this pipeline into the property store. This causes the system to automatically register this pipeline and execute it whenever an event with given key and matching filter is fired. Note: Only one event.listen command per pipeline is allowed and it needs to be the very first command in the pipeline. In the body of the pipeline the event object is provided and can be used for filtering for example.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=event.listen)
+[Try online.](https://try.pipeforce.org/#/commandform?command=event.listen:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2774,6 +2958,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2789,12 +2975,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## event.mapping.get
+## event.mapping.get ``v1``
 ----------   
 Returns all event key to pipeline key mappings.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=event.mapping.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=event.mapping.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2814,6 +3001,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2829,12 +3018,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## event.send
+## event.send ``v1``
 ----------   
 Sends a new event to inform listeners in pipelines and microservices.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=event.send)
+[Try online.](https://try.pipeforce.org/#/commandform?command=event.send:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2860,6 +3050,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2875,12 +3067,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## exit
+## exit ``v1``
 ----------   
 Exits the current pipeline flow and returns the current body state to the caller.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=exit)
+[Try online.](https://try.pipeforce.org/#/commandform?command=exit:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2900,6 +3093,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2915,12 +3110,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## finally
+## finally ``v1``
 ----------   
 Any command placed after this finally command will be executed even if the pipeline execution was quit using the exit command or by an exception.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=finally)
+[Try online.](https://try.pipeforce.org/#/commandform?command=finally:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2940,6 +3136,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -2955,12 +3153,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## foreach
+## foreach ``v1``
 ----------   
 Repeats the subsequent pipeline commands for each entry in a given list. By default the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end. The current iteration item is placed in vars.loop.item.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=foreach)
+[Try online.](https://try.pipeforce.org/#/commandform?command=foreach:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -2986,6 +3185,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3001,12 +3202,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## header.set
+## header.set ``v1``
 ----------   
 DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=header.set)
+[Try online.](https://try.pipeforce.org/#/commandform?command=header.set:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3024,6 +3226,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3039,12 +3243,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## htmlunit.website.form.find
+## htmlunit.website.form.find ``v1``
 ----------   
 Searches for a form on the page and sets is as vars.form model in PEL. If param 'select' is given, uses this PEL to find the form object. Otherwise tries to detect the form automatically by searching the page and using the first form found. Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.find)
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.find:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3064,6 +3269,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3079,12 +3286,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## htmlunit.website.form.input
+## htmlunit.website.form.input ``v1``
 ----------   
 Searches for an input element with given name and sets the given value on it. Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.input)
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.input:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3106,6 +3314,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3121,12 +3331,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## htmlunit.website.form.submit
+## htmlunit.website.form.submit ``v1``
 ----------   
 Searches for a submit button and clicks it. Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.submit)
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.form.submit:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3146,6 +3357,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3161,12 +3374,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## htmlunit.website.link.click
+## htmlunit.website.link.click ``v1``
 ----------   
 Searches for a link on current page and clicks it. Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.link.click)
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.link.click:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3186,6 +3400,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3201,12 +3417,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## htmlunit.website.open
+## htmlunit.website.open ``v1``
 ----------   
 Opens a website and sets it as 'vars.page' in PEL. Additionally sets the current browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.open)
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.open:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3226,6 +3443,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3241,12 +3460,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## htmlunit.website.scrap
+## htmlunit.website.scrap ``v1``
 ----------   
 Scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.scrap)
+[Try online.](https://try.pipeforce.org/#/commandform?command=htmlunit.website.scrap:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3268,6 +3488,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3283,12 +3505,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## http.delete
+## http.delete ``v1``
 ----------   
 Executes a DELETE HTTP call to the given url.Returns the result from the server in the message body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=http.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3320,6 +3543,8 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3335,12 +3560,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## http.get
+## http.get ``v1``
 ----------   
 Executes a GET HTTP call to the given url.Returns the result from the server in the message body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=http.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3372,6 +3598,8 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3387,12 +3615,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## http.patch
+## http.patch ``v1``
 ----------   
 Executes a PATCH HTTP call to the given url.Returns the result from the server in the message body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=http.patch)
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.patch:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3424,6 +3653,8 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3439,12 +3670,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## http.post
+## http.post ``v1``
 ----------   
 Executes a POST HTTP call to the given url.Returns the result from the server in the message body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=http.post)
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.post:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3476,6 +3708,8 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3491,12 +3725,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## http.put
+## http.put ``v1``
 ----------   
 Executes a PUT HTTP call to the given url.Returns the result from the server in the message body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=http.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3528,6 +3763,8 @@ pipeline:
       output: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3543,12 +3780,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.apitoken
+## iam.apitoken ``v1``
 ----------   
 Obtains the apitoken (= offline token) in exchange for user credentials provided and writes it into the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.apitoken)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.apitoken:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3572,6 +3810,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3587,12 +3827,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.authinfo
+## iam.authinfo ``v1``
 ----------   
 Adds header 'authUserId' - name of an user authenticated as a sender of the pipe message.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.authinfo)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.authinfo:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3610,6 +3851,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3625,12 +3868,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.authorize
+## iam.authorize ``v1``
 ----------   
 Authorizes pipeline execution and overwrites any existing authentication by this new, successful authentication. Additionally puts the successful authentication token on an internal stack. See iam.logout to pop from stack.Subsequent commands will be executed only if authorization was successful. Tries each existing parameter for authentication in this order. If multiple params are given, first existing one is used from this list: accessToken, refreshToken, basic, username+password. Throws exception and exits pipeline execution on first not matching login try.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.authorize)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.authorize:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3658,6 +3902,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3673,12 +3919,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.bruteforce.release
+## iam.bruteforce.release ``v1``
 ----------   
 Releases any bruteforce lock for the given user. If user is not locked, nothing happens.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.release)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.release:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3702,6 +3949,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3717,12 +3966,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.bruteforce.status
+## iam.bruteforce.status ``v1``
 ----------   
 Returns the bruteforce status for a single user
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.status)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.bruteforce.status:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3746,6 +3996,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3761,12 +4013,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.cache.clear
+## iam.cache.clear ``v1``
 ----------   
 Clears the security objects (and reloads roles where required). Note: Since this can be a heavy task and slow down the system, use it only in case really required!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.cache.clear)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.cache.clear:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3784,6 +4037,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3799,12 +4054,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.group.add.roles
+## iam.group.add.roles ``v1``
 ----------   
 Adds roles to a given group. Roles must exist beforehand.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.add.roles)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.add.roles:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3830,6 +4086,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3845,12 +4103,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.group.create
+## iam.group.create ``v1``
 ----------   
 Creates a new group and puts its uuid in the body under key groupUuid. Throws exception if group already exists.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.create)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.create:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3876,6 +4135,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3891,12 +4152,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.group.delete
+## iam.group.delete ``v1``
 ----------   
 Deletes the group with given uuid.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3918,6 +4180,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3933,12 +4197,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.group.list
+## iam.group.list ``v1``
 ----------   
 Lists all groups. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -3968,6 +4233,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -3983,12 +4250,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.group.list.names
+## iam.group.list.names ``v1``
 ----------   
 Lists all group names. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list.names)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.list.names:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4014,6 +4282,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4029,12 +4299,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.group.members
+## iam.group.members ``v1``
 ----------   
 Lists all users which are member of the given group. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.members)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.members:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4064,6 +4335,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4079,12 +4352,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.group.roles
+## iam.group.roles ``v1``
 ----------   
 Lists all effective role names, the given group is assigned to.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.roles)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.roles:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4114,6 +4388,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4129,12 +4405,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.realm.create
+## iam.realm.create ``v1``
 ----------   
 Creates a new realm. Sets the uuid in the body under key realmUuid. Throws exception if realm already exists. Expects a JSON in the body of this structure: https://www.keycloak.org/docs-api/11.0/rest-api/index.html#_realmrepresentation
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.realm.create)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.realm.create:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4154,6 +4431,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4169,12 +4448,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.role.add.composites
+## iam.role.add.composites ``v1``
 ----------   
 Adds existing composite roles to an existing role.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.add.composites)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.add.composites:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4198,6 +4478,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4213,12 +4495,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.role.create
+## iam.role.create ``v1``
 ----------   
 Creates a new role and puts its role uuid in the body under key roleUuid. Throws exception if role already exists.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.create)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.create:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4244,6 +4527,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4259,12 +4544,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.role.members
+## iam.role.members ``v1``
 ----------   
 Lists all users which are member of the given role. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.members)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.role.members:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4292,6 +4578,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4307,12 +4595,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.run.as
+## iam.run.as ``v1``
 ----------   
 Executes the subsequent pipeline as different user if following two conditions are met. 1. currently logged-in user has permission CAN_RUN_AS_SOURCE 2. requested user has permission CAN_RUN_AS_TARGET 
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.run.as)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.run.as:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4334,6 +4623,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4349,12 +4640,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.search
+## iam.search ``v1``
 ----------   
 Searches for specific entity in the IAM service matching the given filter. Returns the JSON representation of the given type as JSON array. See here for the representation types: https://www.keycloak.org/docs-api/11.0/rest-api/ .For example the type 'USER' would return a list of 'UserRepresentation'.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.search)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.search:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4382,6 +4674,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4397,12 +4691,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.token
+## iam.token ``v1``
 ----------   
 Obtains the full offline token response JSON in exchange for user credentials provided and writes into the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4426,6 +4721,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4441,12 +4738,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.token.logout
+## iam.token.logout ``v1``
 ----------   
 Logs out keycloak session associated with refreshToken and removes any refresh and access tokens from headers.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.logout)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.logout:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4466,6 +4764,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4481,12 +4781,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.token.refresh
+## iam.token.refresh ``v1``
 ----------   
 Enrich headers with accessToken obtained from authorization server using refreshToken and returns the tokenResponse in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.refresh)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.token.refresh:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4508,6 +4809,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4523,12 +4826,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.user.add.groups
+## iam.user.add.groups ``v1``
 ----------   
 Adds groups to a user by group id or name and returns the group ids added.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.groups)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.groups:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4554,6 +4858,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4569,12 +4875,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.user.add.roles
+## iam.user.add.roles ``v1``
 ----------   
 Adds roles to a given user. Roles must exist beforehand.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.roles)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.add.roles:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4600,6 +4907,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4615,12 +4924,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.user.create
+## iam.user.create ``v1``
 ----------   
 Creates a new user and returns its uuid in the body. Throws exception if user already exists.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.create)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.create:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4656,6 +4966,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4671,12 +4983,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.user.delete
+## iam.user.delete ``v1``
 ----------   
 Deletes the user with given uuid.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4698,6 +5011,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4713,12 +5028,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.user.get
+## iam.user.get ``v1``
 ----------   
 Looks up a user returns it in the body if exists. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4742,6 +5058,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4757,12 +5075,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.user.groups
+## iam.user.groups ``v1``
 ----------   
 Lists all groups, the given user is member of. By default, the response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_grouprepresentation
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.groups)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.groups:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4792,6 +5111,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4807,12 +5128,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.user.list
+## iam.user.list ``v1``
 ----------   
 Lists all users. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4842,6 +5164,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4857,12 +5181,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## iam.user.roles
+## iam.user.roles ``v1``
 ----------   
 Lists all effective role names, the given user is member of.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.roles)
+[Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.roles:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4892,6 +5217,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4907,12 +5234,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## if
+## if ``v1``
 ----------   
 Executes the subsequent pipeline only if given condition evaluates to true. By default the full pipeline until the end will be executed. To skip the pipes inside the if definition place the pipe if?end where the if should end.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=if)
+[Try online.](https://try.pipeforce.org/#/commandform?command=if:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4936,6 +5264,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4951,12 +5281,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## job
+## job ``v1``
 ----------   
 Schedules any subsequent commands of the current pipeline and executes it at the scheduled times.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=job)
+[Try online.](https://try.pipeforce.org/#/commandform?command=job:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -4978,6 +5309,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -4993,12 +5326,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## job.list
+## job.list ``v1``
 ----------   
 Lists all scheduled pipeline jobs.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=job.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=job.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5016,6 +5350,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5031,12 +5367,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## job.status
+## job.status ``v1``
 ----------   
 Returns the status of a given job or null in case the job doesnt exist.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=job.status)
+[Try online.](https://try.pipeforce.org/#/commandform?command=job.status:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5056,6 +5393,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5071,12 +5410,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## job.stop
+## job.stop ``v1``
 ----------   
 Stops the job with given id. Note: Usually it is not required to use this command. In order to stop and unregister a job, simply remove it from the pipeline or delete the pipeline.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=job.stop)
+[Try online.](https://try.pipeforce.org/#/commandform?command=job.stop:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5096,6 +5436,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5111,12 +5453,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## jpa.query
+## jpa.query ``v1``
 ----------   
 Executes a JPA query and returns the result as JSON in the body. NOTE: This pipe is primarily meant for support to monitor the system. Its not accessible by default accounts! This can change at any time without notice!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=jpa.query)
+[Try online.](https://try.pipeforce.org/#/commandform?command=jpa.query:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5138,6 +5481,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5153,12 +5498,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## log
+## lo ``v:v1``
 ----------   
 Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=log)
+[Try online.](https://try.pipeforce.org/#/commandform?command=lo:v:v1)
 
+**Version:** ``v:v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5174,7 +5520,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - log:  
+  - lo::v:v1  
       message: <value>  
       level: <value>  
       id: <value>  
@@ -5184,23 +5530,24 @@ Learn more: [Pipeline](../guides/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/lo?message=<value>&level=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log message=<value> level=<value> id=<value> if=<value>  
+pi command lo message=<value> level=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
-## log.list
+## log.list ``v1``
 ----------   
 Logs the given number of log lines from specified service.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=log.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5226,6 +5573,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5241,12 +5590,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## log.list.email
+## log.list.email ``v1``
 ----------   
 Returns the email audit log properties. Only available for developers, system or support users.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=log.list.email)
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.list.email:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5272,6 +5622,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5287,12 +5639,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## log.list.environment
+## log.list.environment ``v1``
 ----------   
 Logs the current environment properties. Only available for developers, system or support users.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=log.list.environment)
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.list.environment:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5314,6 +5667,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5329,12 +5684,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## log.search
+## log.search ``v1``
 ----------   
 Searches the cloud logs and returns the last 30 entries per request. Supports pagination toscroll thru the entries.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=log.search)
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.search:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5368,6 +5724,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5383,12 +5741,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## log.services
+## log.services ``v1``
 ----------   
 Returns all PIPEFORCE services for those logging is allowed / enabled.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=log.services)
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.services:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5408,6 +5767,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5423,12 +5784,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## log.severities
+## log.severities ``v1``
 ----------   
 Returns all severities (for example, DEBUG, INFO,...), supported by the logging system.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=log.severities)
+[Try online.](https://try.pipeforce.org/#/commandform?command=log.severities:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5448,6 +5810,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5463,12 +5827,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## mail.dump
+## mail.dump ``v1``
 ----------   
 Fetches new emails from given mail inbox and uploads them into a drive folder.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=mail.dump)
+[Try online.](https://try.pipeforce.org/#/commandform?command=mail.dump:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5504,6 +5869,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5519,12 +5886,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## mail.fetch
+## mail.fetch ``v1``
 ----------   
 Fetches new emails from given mail inbox and returns them as JSON in the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=mail.fetch)
+[Try online.](https://try.pipeforce.org/#/commandform?command=mail.fetch:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5554,6 +5922,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5569,13 +5939,14 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## mail.send
+## mail.send ``v1``
 ----------   
 Sends the given message as email. The message's subject and body will be used for in the email accordingly.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=mail.send)
+[Try online.](https://try.pipeforce.org/#/commandform?command=mail.send:v1)
 
 **Alias:** pipe.command.mail   
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5609,6 +5980,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5624,7 +5997,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## mail.verify
+## mail.verify ``v1``
 ----------   
  Protects any subsequent pipe commands: Pipeline is only executed 
  in case the caller has verified that he is the owner of given 
@@ -5641,9 +6014,10 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
  clicks after 10min on the link, no more entry in it. Execution fails. 
  User has to re-request the link.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=mail.verify)
+[Try online.](https://try.pipeforce.org/#/commandform?command=mail.verify:v1)
 
 **Alias:** pipe.command.email.verify   
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5669,6 +6043,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5684,12 +6060,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## map
+## map ``v1``
 ----------   
 DEPRECATED. Use the set command instead. Maps, calculates and converts data from fields of the input message to fields of the output message.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=map)
+[Try online.](https://try.pipeforce.org/#/commandform?command=map:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5709,6 +6086,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5724,12 +6103,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## memory.info
+## memory.info ``v1``
 ----------   
 Shows the current system info like memory consumption. Available for system, support and developer users only.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=memory.info)
+[Try online.](https://try.pipeforce.org/#/commandform?command=memory.info:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5749,6 +6129,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5764,12 +6146,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## message.info.queue.get
+## message.info.queue.get ``v1``
 ----------   
 Returns details about a message queue.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=message.info.queue.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.info.queue.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5789,6 +6172,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5804,12 +6189,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## message.receive
+## message.receive ``v1``
 ----------   
 Listens for cluster internal messages matching the given criteria. If matched, executes the pipeline commands below this command.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=message.receive)
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.receive:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5833,6 +6219,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5848,12 +6236,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## message.send
+## message.send ``v1``
 ----------   
 Sends a new message to the message service. Uses the pipeline message body as payload.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=message.send)
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.send:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5877,6 +6266,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5892,12 +6283,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## microsoft.teams.send
+## microsoft.teams.send ``v1``
 ----------   
 Sends a message to a Microsoft Teams channel.Note: This command needs an additional license + plugin. This is here only for documentation purposes. Ask support@pipeforce.io for more information.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=microsoft.teams.send)
+[Try online.](https://try.pipeforce.org/#/commandform?command=microsoft.teams.send:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5919,6 +6311,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5934,12 +6328,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## mock.command
+## mock.command ``v1``
 ----------   
 Mocks a given command of the current pipeline.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=mock.command)
+[Try online.](https://try.pipeforce.org/#/commandform?command=mock.command:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5967,6 +6362,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -5982,12 +6379,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pdf.create
+## pdf.create ``v1``
 ----------   
 Creates a new PDF with blank pages.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.create)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.create:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -6011,6 +6409,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6026,12 +6426,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pdf.merge
+## pdf.merge ``v1``
 ----------   
 Takes collection of pdfs that is expected in the body (as pipeline resource) and converts it into single pdf document.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.merge)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.merge:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -6053,6 +6454,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6068,12 +6471,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pdf.stamp
+## pdf.stamp ``v1``
 ----------   
 Writes both text or images to a pdf file under a specific layer. It expects the word pdf file as a pipeline resource in the body and transforms the result back also as a pipeline resource in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.stamp)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.stamp:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -6115,6 +6519,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6130,12 +6536,58 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pipeline.delete
+## pipeline.debug.statu ``v:v1``
+----------   
+Returns the status of a running debugging session.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.debug.statu:v:v1)
+
+**Version:** ``v:v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`sessionId` | String | false | null | The debug session id. If null or empty, a new debugging session is created.
+`pipelineKey` | String | false | null | The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipeline.debug.statu::v:v1  
+      sessionId: <value>  
+      pipelineKey: <value>  
+      id: <value>  
+      if: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](../guides/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipeline.debug.statu?sessionId=<value>&pipelineKey=<value>&id=<value>&if=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipeline.debug.statu sessionId=<value> pipelineKey=<value> id=<value> if=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## pipeline.delete ``v1``
 ----------   
 Deletes a persisted pipeline.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6155,6 +6607,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6170,12 +6624,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pipeline.get
+## pipeline.get ``v1``
 ----------   
 Returns all persisted pipelines matching the given name.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6197,6 +6652,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6212,12 +6669,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pipeline.put
+## pipeline.put ``v1``
 ----------   
 Persists a new pipeline to the system or updates an existing one. The pipeline yaml is expected in the body. Can be null. Returns the updated property in the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6239,6 +6697,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6254,12 +6714,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pipeline.run
+## pipeline.run ``v1``
 ----------   
 DEPRECATED. Use pipeline.start instead.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.run)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.run:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6279,6 +6740,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6294,12 +6757,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pipeline.start
+## pipeline.start ``v1``
 ----------   
 Loads and executes the persisted pipeline and returns its result in the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.start)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.start:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6323,6 +6787,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6338,12 +6804,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.app.config
+## property.app.config ``v1``
 ----------   
 Returns all config resources from apps the current user has access to (role CAN_APP_ is assigned) as a list into the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.app.config)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.app.config:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6365,6 +6832,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6380,12 +6849,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.attachment.chunk.get
+## property.attachment.chunk.get ``v1``
 ----------   
 Returns the chunk (content) of an attachment in the output. Returns empty body if chunk was not found.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Void``  
 **Output body type:** ``Byte[]``  
 **Parameters:** 
@@ -6411,6 +6881,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6426,12 +6898,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.attachment.chunk.put
+## property.attachment.chunk.put ``v1``
 ----------   
 Adds a chunk of data to the given attachment.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Void``  
 **Output body type:** ``Byte[]``  
 **Parameters:** 
@@ -6457,6 +6930,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6472,12 +6947,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.attachment.content
+## property.attachment.content ``v1``
 ----------   
 Returns the content of an property attachment as a byte stream content object into the output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.content)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.content:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Void``  
 **Output body type:** ``Byte[]``  
 **Parameters:** 
@@ -6501,6 +6977,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6516,12 +6994,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.attachment.delete
+## property.attachment.delete ``v1``
 ----------   
 Removes an attachment and its content from a property.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Void``  
 **Output body type:** ``Void``  
 **Parameters:** 
@@ -6543,6 +7022,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6558,12 +7039,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.attachment.get
+## property.attachment.get ``v1``
 ----------   
 Returns an attachment of a property (without content).
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Void``  
 **Output body type:** ``Byte[]``  
 **Parameters:** 
@@ -6587,6 +7069,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6602,12 +7086,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.attachment.list
+## property.attachment.list ``v1``
 ----------   
 Lists all attachments of a given property. The content is not part of this list. Use property.attachment.chunk.get in order to retrieve the content data.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6629,6 +7114,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6644,12 +7131,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.attachment.put
+## property.attachment.put ``v1``
 ----------   
 Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as a single chunk to the attachment and will replace any existing chunks. If no content is in body, chunks will not change at all if they exist.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Byte[]``  
 **Output body type:** ``Void``  
 **Parameters:** 
@@ -6675,6 +7163,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6690,12 +7180,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.attachment.put.uri
+## property.attachment.put.uri ``v1``
 ----------   
 Sets property attachment to be symlink to resource referenced by uri.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put.uri)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put.uri:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Void``  
 **Output body type:** ``Byte[]``  
 **Parameters:** 
@@ -6719,6 +7210,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6734,12 +7227,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.copy
+## property.copy ``v1``
 ----------   
 Copies a property from one key to another. If target property already exists, overwrites it. NOTE: Doesnt copy the attachments.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.copy)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.copy:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6761,6 +7255,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6776,12 +7272,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.delete
+## property.delete ``v1``
 ----------   
 Deletes one or more existing properties matching the given search pattern. Use this command with care!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6801,6 +7298,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6816,12 +7315,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.exists
+## property.exists ``v1``
 ----------   
 Checks whether a given property exists and returns the boolean result in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.exists)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.exists:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6843,6 +7343,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6858,12 +7360,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.import
+## property.import ``v1``
 ----------   
 Imports properties given as JSON document in the body into the property store.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.import)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.import:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6885,6 +7388,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6900,12 +7405,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.keys.children
+## property.keys.children ``v1``
 ----------   
 Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.keys.children)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.keys.children:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6927,6 +7433,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6942,12 +7450,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.keys
+## property.keys ``v1``
 ----------   
 Returns all property keys for a given pattern.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.keys)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.keys:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6969,6 +7478,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -6984,12 +7495,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.list
+## property.list ``v1``
 ----------   
 Lists all properties from the store.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7013,6 +7525,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7028,12 +7542,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.move
+## property.move ``v1``
 ----------   
 Moves a property from one key to another.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.move)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.move:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7055,6 +7570,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7070,12 +7587,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.put
+## property.put ``v1``
 ----------   
 Saves the value of a property. The property schema must exist in advance (no new property will be created).
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7097,6 +7615,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7112,12 +7632,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.query
+## property.query ``v1``
 ----------   
 Queries the properties from the backend by using a certain query language.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.query)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.query:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7151,6 +7672,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7166,12 +7689,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.schema.delete
+## property.schema.delete ``v1``
 ----------   
 Deletes any existing property schema and its assigned value matching the given pattern or key.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7193,6 +7717,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7208,12 +7734,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.schema.put
+## property.schema.put ``v1``
 ----------   
 Creates or updates a property schema. This command is intended for provisioning, admin and service tasks. Also consider property.put instead. Returns a result JSON indicating the result of the command which usually is one of: create, update or skip.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.schema.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7251,6 +7778,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7266,12 +7795,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.search
+## property.search ``v1``
 ----------   
 Returns all properties of given search criteria.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.search)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.search:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7305,6 +7835,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7320,12 +7852,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.send.delivery
+## property.send.delivery ``v1``
 ----------   
 Sends specified property including attachments as pipeforce delivery.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.send.delivery)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.send.delivery:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7359,6 +7892,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7374,12 +7909,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.tag.list
+## property.tag.list ``v1``
 ----------   
 Returns all tags for a given property in the body as JSON: {name1:value1, name2:value2}.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7401,6 +7937,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7416,12 +7954,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.tag.put
+## property.tag.put ``v1``
 ----------   
 Adds a tag to an existing property. Overwrites any existing one.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.tag.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7447,6 +7986,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7462,12 +8003,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.value.expression
+## property.value.expression ``v1``
 ----------   
 Executes the given expression on persisted properties and returns the matching ones. This type of search for properties is very powerful since it allows to search on any schemaless structures. But be aware it is low performing on a huge amount of properties.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.expression)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.expression:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7495,6 +8037,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7510,12 +8054,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.value.get
+## property.value.get ``v1``
 ----------   
 Returns the value of a given property.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7539,6 +8084,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7554,12 +8101,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.value.list
+## property.value.list ``v1``
 ----------   
 Lists the values of all matching properties.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7583,6 +8131,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7598,12 +8148,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.value.list.put
+## property.value.list.put ``v1``
 ----------   
 Saves a list of property values by iterating over this list and storing each value separately in the property store. Each value will be persisted in its own property. The path of this property will be calculated from baseKey/valueOf(primaryKeyField).The property schema for each key must exist in advance (no new properties will be created).
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.list.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.list.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7633,6 +8184,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7648,12 +8201,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## property.value.put
+## property.value.put ``v1``
 ----------   
 Saves the value of a property. The property schema must exist in advance.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.value.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7677,6 +8231,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7692,12 +8248,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## provision
+## provision ``v1``
 ----------   
 Executes a specific provision script targeted for a namespace.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=provision)
+[Try online.](https://try.pipeforce.org/#/commandform?command=provision:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7719,6 +8276,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7734,12 +8293,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## publicform.definition
+## publicform.definition ``v1``
 ----------   
 Composes full public form definition structure.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=publicform.definition)
+[Try online.](https://try.pipeforce.org/#/commandform?command=publicform.definition:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7761,6 +8321,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7776,12 +8338,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## publicform.submit
+## publicform.submit ``v1``
 ----------   
 Stores submitted public form data and attachments. All Form definitions are searched for matching id. Additionally form needs to be marked with 'public: true' property.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=publicform.submit)
+[Try online.](https://try.pipeforce.org/#/commandform?command=publicform.submit:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7803,6 +8366,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7818,12 +8383,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## resource
+## resource ``v1``
 ----------   
 Loads a resource depending on its resource protocol like classpath:, property: or alike.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=resource)
+[Try online.](https://try.pipeforce.org/#/commandform?command=resource:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7847,6 +8413,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7862,12 +8430,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## resource.save
+## resource.save ``v1``
 ----------   
 Expects a resource base64 encoded in the body and saves it as a resource to hub.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=resource.save)
+[Try online.](https://try.pipeforce.org/#/commandform?command=resource.save:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7887,6 +8456,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7902,12 +8473,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## rpa.website.close
+## rpa.website.close ``v1``
 ----------   
 Closes website and releases all used resources.Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.close)
+[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.close:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7925,6 +8497,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7940,12 +8514,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## rpa.website.open
+## rpa.website.open ``v1``
 ----------   
 Opens a website and sets its browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.open)
+[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.open:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -7965,6 +8540,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -7980,12 +8557,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## rpa.website.scrap
+## rpa.website.scrap ``v1``
 ----------   
 Scraps data from the current website and returns the result in the body.Note: The pipe is BETA and not intended to be used in production!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.scrap)
+[Try online.](https://try.pipeforce.org/#/commandform?command=rpa.website.scrap:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8005,6 +8583,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8020,12 +8600,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## schema.pipeline
+## schema.pipeline ``v1``
 ----------   
 Returns the V7 compliant JSON schema for all built-in pipes.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=schema.pipeline)
+[Try online.](https://try.pipeforce.org/#/commandform?command=schema.pipeline:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8045,6 +8626,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8060,12 +8643,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## script.run
+## script.run ``v1``
 ----------   
 Executes a given script at server side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, you cannot change it in the script.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=script.run)
+[Try online.](https://try.pipeforce.org/#/commandform?command=script.run:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8091,6 +8675,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8106,12 +8692,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## secret.delete
+## secret.delete ``v1``
 ----------   
 Deletes a credentials entry.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secret.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secret.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8131,6 +8718,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8146,12 +8735,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## secret.get
+## secret.get ``v1``
 ----------   
 Lists the metadata (not the secret payload itself) of all available secret entries.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secret.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secret.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8173,6 +8763,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8188,12 +8780,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## secret.put
+## secret.put ``v1``
 ----------   
 Creates a new credentials entry.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secret.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secret.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8219,6 +8812,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8234,12 +8829,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## server.info
+## server.info ``v1``
 ----------   
 Returns information about the current server. For example the version it is running under. Returns a flat JSON with these keys: status, namespace, domain, edition, stage, tag, build, version, versionMajor, versionMinor, versionBugfix
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=server.info)
+[Try online.](https://try.pipeforce.org/#/commandform?command=server.info:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8259,6 +8855,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8274,12 +8872,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## service.job.logs
+## service.job.logs ``v1``
 ----------   
 Returns the logs of a service job in the cluster.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.logs)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.logs:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8301,6 +8900,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8316,12 +8917,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## service.job.start
+## service.job.start ``v1``
 ----------   
 Starts a new service job in the cluster. The job runs async. Use service.job.status and service.job.logs to check the result of the job.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.start)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.start:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8357,6 +8959,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8372,12 +8976,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## service.job.status
+## service.job.status ``v1``
 ----------   
 Returns the status of a service job in the cluster.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.status)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.status:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8399,6 +9004,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8414,12 +9021,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## service.job.stop
+## service.job.stop ``v1``
 ----------   
 Stops a service job in the cluster even if it is not finished yet.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.stop)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.stop:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8441,6 +9049,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8456,12 +9066,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## service.start
+## service.start ``v1``
 ----------   
 Starts a new microservice in the cluster.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.start)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.start:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8503,6 +9114,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8518,12 +9131,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## service.status
+## service.status ``v1``
 ----------   
 Returns the status info of the given PIPEFORCE managed service.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.status)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.status:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8547,6 +9161,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8562,12 +9178,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## service.stop
+## service.stop ``v1``
 ----------   
 Stops a microservice from the cluster.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.stop)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.stop:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8591,6 +9208,8 @@ pipeline:
       if: <value>  
       credentials: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8606,12 +9225,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## set.body
+## set.body ``v1``
 ----------   
 Sets a value in the body. Overwrites any existing value in the body. The value to be set can be a constant or an expression.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=set.body)
+[Try online.](https://try.pipeforce.org/#/commandform?command=set.body:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8633,6 +9253,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8648,12 +9270,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## set
+## set ``v1``
 ----------   
 Sets a value in the pipe message. The value to be set can be a constant or an expression.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=set)
+[Try online.](https://try.pipeforce.org/#/commandform?command=set:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8681,6 +9304,8 @@ pipeline:
       output: <value>  
       input: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8696,12 +9321,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## set.var
+## set.var ``v1``
 ----------   
 Sets a value in the vars scope. Overwrites any existing var in the vars scope. The value to be set can be a constant or an expression.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=set.var)
+[Try online.](https://try.pipeforce.org/#/commandform?command=set.var:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8725,6 +9351,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8740,12 +9368,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## sftp.delete
+## sftp.delete ``v1``
 ----------   
 Deletes a file or folder on the SFTP server.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8777,6 +9406,8 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8792,12 +9423,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## sftp.download
+## sftp.download ``v1``
 ----------   
 Downloads a file from a SFTP server. The file is written as content object to output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.download)
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.download:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8829,6 +9461,8 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8844,12 +9478,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## sftp.list
+## sftp.list ``v1``
 ----------   
 Lists files of a given folder. If not filter parameter is used all files are returned. The result is written to output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.list)
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.list:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8883,6 +9518,8 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8898,12 +9535,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## sftp.mkdir
+## sftp.mkdir ``v1``
 ----------   
 Creates a new directory on the SFTP server.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.mkdir)
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.mkdir:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8935,6 +9573,8 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -8950,12 +9590,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## sftp.rename
+## sftp.rename ``v1``
 ----------   
 Renames a file or folder on the SFTP server.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.rename)
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.rename:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -8989,6 +9630,8 @@ pipeline:
       credentials: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9004,12 +9647,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## sftp.upload
+## sftp.upload ``v1``
 ----------   
 Uploads a file to a SFTP server. The file is expected to be in the input.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.upload)
+[Try online.](https://try.pipeforce.org/#/commandform?command=sftp.upload:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9041,6 +9685,8 @@ pipeline:
       credentials: <value>  
       input: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9056,12 +9702,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## slack.send
+## slack.send ``v1``
 ----------   
 Sends a text message via webhook url to Slack. Also see: https://api.slack.com/messaging/webhooks
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=slack.send)
+[Try online.](https://try.pipeforce.org/#/commandform?command=slack.send:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9083,6 +9730,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9098,12 +9747,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## sql.query
+## sql.query ``v1``
 ----------   
 Executes a (read-only) SQL query and returns the result as JSON in the body. NOTE: This command is primarily meant for developers and admins to monitor the system. It should not be used in production workflows! It can change at any time without notice!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=sql.query)
+[Try online.](https://try.pipeforce.org/#/commandform?command=sql.query:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9133,6 +9783,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9148,12 +9800,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## switch
+## switch ``v1``
 ----------   
 Evaluates each switch statement. Takes the value part of the first match and writes it to the given output. If no output is given, writes it to the body. Any param key will be the selection expression which needs to evaluate to a boolean true or false and any value will be the selected value.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=switch)
+[Try online.](https://try.pipeforce.org/#/commandform?command=switch:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9173,6 +9826,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9188,12 +9843,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## test.run
+## test.run ``v1``
 ----------   
 Runs all test scripts defined by given pattern.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=test.run)
+[Try online.](https://try.pipeforce.org/#/commandform?command=test.run:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9219,6 +9875,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9234,12 +9892,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## theme
+## theme ``v1``
 ----------   
 Returns the resources for a given theme in the body and enrich headers with appropriate Content-type. Caches the resources.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=theme)
+[Try online.](https://try.pipeforce.org/#/commandform?command=theme:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9263,6 +9922,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9278,12 +9939,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform
+## transform ``v1``
 ----------   
 This transformer converts the input to an output format by applying the given template engine. By default the current message is provided as model inside the template context so you can access body, vars or headers similar to the default PEL approach.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9315,6 +9977,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9330,13 +9994,14 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.csv.json
+## transform.csv.json ``v1``
 ----------   
 Takes a CSV document in the body and converts it to a JSON. The CSV document must comply with the RFC4180 standard format.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.csv.json)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.csv.json:v1)
 
 **Alias:** pipe.command.transform.csv2json   
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -9370,6 +10035,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9385,19 +10052,20 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.ftl
+## transform.ft ``v:v1``
 ----------   
-This transformer uses the FreeMarker template engine for its transformation. It expects the template to be in the body or in the template param, transforms it and puts the result  to the output (as a content object).
+This transformer uses the FreeMarker template engine for its transformation.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.ftl)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.ft:v:v1)
 
+**Version:** ``v:v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`model` | String | false | null | The model to be placed into the template scope. If null, the message is used as model
+`model` | String | false | null | The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline.
 `template` | String | false | null | The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9407,7 +10075,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - transform.ftl:  
+  - transform.ft::v:v1  
       model: <value>  
       template: <value>  
       id: <value>  
@@ -9418,23 +10086,24 @@ Learn more: [Pipeline](../guides/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.ftl?model=<value>&template=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/transform.ft?model=<value>&template=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.ftl model=<value> template=<value> id=<value> if=<value> output=<value>  
+pi command transform.ft model=<value> template=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
   
 
-## transform.html2docx
+## transform.html2docx ``v1``
 ----------   
 Takes html text that is expected in the body, (as pipeline resource) and converts it back to docx document and then writes to output.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.html2docx)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.html2docx:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -9454,6 +10123,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9469,12 +10140,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.json.xml
+## transform.json.xml ``v1``
 ----------   
 Takes a JSON document or JSON string in the body and converts it to an XML document.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.json.xml)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.json.xml:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9496,6 +10168,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9511,12 +10185,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.pdf2png
+## transform.pdf2png ``v1``
 ----------   
 Takes pdf that is expected in the body, (as pipeline resource) and converts it back to body (as pipeline resource) as a collection of png images.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.pdf2png)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.pdf2png:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -9538,6 +10213,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9553,12 +10230,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.png2pdf
+## transform.png2pdf ``v1``
 ----------   
 Takes collection of pngs that is expected in the body (as pipeline resource) and converts it back to body (as pipeline resource) to pdf document.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.png2pdf)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.png2pdf:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -9580,6 +10258,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9595,14 +10275,15 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.word2pdf
+## transform.word2pdf ``v1``
 ----------   
 DEPRECATED. Use microsoft.word.export.pdf instead. Takes a word file (.docx) that is expected in the 
 body and converts
 it to pdf and stores it back into the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.word2pdf)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.word2pdf:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -9624,6 +10305,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9639,12 +10322,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.wordtemplate
+## transform.wordtemplate ``v1``
 ----------   
 Transforms velocity template expressions in word files. It expects the template to be in the body or in thetemplate param, transforms it and puts the result back to the body as byte array content.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.wordtemplate)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.wordtemplate:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -9668,6 +10352,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9683,12 +10369,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.xml.json
+## transform.xml.json ``v1``
 ----------   
 Takes an XML document or XML string in the body and converts it to a JSON. By default, the PIPEFORCE XML to JSON conversion rules will be applied (see https://pipeforce.github.io/docs/guides/transformers/xml2json).
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.xml.json)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.xml.json:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9710,6 +10397,8 @@ pipeline:
       input: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9725,12 +10414,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## translate
+## translate ``v1``
 ----------   
 Translates the given text to the given target language. Expects the input by default in the body and writes the result by default back to the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=translate)
+[Try online.](https://try.pipeforce.org/#/commandform?command=translate:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9760,6 +10450,8 @@ pipeline:
       restUrl: <value>  
       filter: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9775,12 +10467,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## unzip
+## unzip ``v1``
 ----------   
 Unzips a given zipped content from the body and puts the uncompressed content into the output. Note: Currently only files in the root level of the zip are supported.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=unzip)
+[Try online.](https://try.pipeforce.org/#/commandform?command=unzip:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9800,6 +10493,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9815,12 +10510,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## validate.json
+## validate.json ``v1``
 ----------   
 Validates the JSON body of the message against a given JSON schema. See https://json-schema.org/. 
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=validate.json)
+[Try online.](https://try.pipeforce.org/#/commandform?command=validate.json:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9844,6 +10540,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9859,12 +10557,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## webhook.delete
+## webhook.delete ``v1``
 ----------   
 Deletes an existing webhook. If no such webhook exists, nothing happens.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.delete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.delete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9884,6 +10583,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9899,12 +10600,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## webhook.get
+## webhook.get ``v1``
 ----------   
 Returns all persisted webhooks as a list.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9926,6 +10628,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9941,12 +10645,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## webhook.put
+## webhook.put ``v1``
 ----------   
 Creates a new webhook or updates an existing one and returns its metadata.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -9972,6 +10677,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -9987,12 +10694,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## webhook.receive
+## webhook.receive ``v1``
 ----------   
 Runs a webhook identified by its uuid.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive)
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10014,6 +10722,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10029,12 +10739,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## webhook.receive.logs
+## webhook.receive.logs ``v1``
 ----------   
 Returns the receive logs of the given webhook. Note: This command is currently experimental and returns just dummy data.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive.logs)
+[Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive.logs:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10054,6 +10765,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10069,12 +10782,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.deploy
+## workflow.deploy ``v1``
 ----------   
 Deploys a given BPMN from the body or a given property into the underlying workflow engine.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deploy)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deploy:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10100,6 +10814,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10115,12 +10831,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.deployment.find
+## workflow.deployment.find ``v1``
 ----------   
 Finds all deployments from the workflow engine matching given parameters and puts them into the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deployment.find)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.deployment.find:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``Deployment``  
 **Parameters:** 
@@ -10144,6 +10861,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10159,14 +10878,15 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.event
+## workflow.event ``v1``
 ----------   
 Sends an event message to a message endpoint inside 
 a given workflow. As payload of the event message, 
 the current pipe message will be used as input.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.event)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.event:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10192,6 +10912,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10207,12 +10929,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.find.processinstances
+## workflow.find.processinstances ``v1``
 ----------   
 Returns all process instances matching the given criteria.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.find.processinstances)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.find.processinstances:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10234,6 +10957,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10249,12 +10974,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.history.tasks
+## workflow.history.tasks ``v1``
 ----------   
 Returns all finished tasks matching the given criteria.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.history.tasks)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.history.tasks:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10284,6 +11010,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10299,12 +11027,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.member.message
+## workflow.member.message ``v1``
 ----------   
 Sends a message to the given workflow member. In case the workflow member is not already added to the workflow model, adds a new entry to a given workflow model, which is usually a data model (JSON) with a single member structure like this: workflowModel.members[someUserId] whereas in this level user, taskUrl and shareUrl will be added if required.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.member.message)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.member.message:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10338,6 +11067,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10353,12 +11084,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.model.attachment.get
+## workflow.model.attachment.get ``v1``
 ----------   
 Returns property.attachment.content from process model property attachment.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.get)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.get:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10380,6 +11112,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10395,12 +11129,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.model.attachment.put
+## workflow.model.attachment.put ``v1``
 ----------   
 Does property.attachment.put to process model property attachment. 
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.put)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model.attachment.put:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10424,6 +11159,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10439,12 +11176,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.model
+## workflow.model ``v1``
 ----------   
 Utility command to easier workflow model handling.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.model:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10466,6 +11204,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10481,12 +11221,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.tasks.open
+## workflow.tasks.open ``v1``
 ----------   
 Returns all open tasks grouped by assignee. Returned parameters are dynamically and depend on the underlying workflow engine. Default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10514,6 +11255,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10529,12 +11272,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.tasks.open.reminder
+## workflow.tasks.open.reminder ``v1``
 ----------   
 Sends a reminder email to each assignee having open tasks matching given criteria.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open.reminder)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks.open.reminder:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10562,6 +11306,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10577,7 +11323,7 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.start
+## workflow.start ``v1``
 ----------   
 Starts a new instance of a process in the workflow engine. 
 The given pipe message will be serialized to JSON and
@@ -10585,8 +11331,9 @@ put as variable <code>pipeJson</code> into context of the
 process (process variables).
 Returns the input message unchanged.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.start)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.start:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10616,6 +11363,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10631,12 +11380,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.task.complete
+## workflow.task.complete ``v1``
 ----------   
 Completes a given workflow task and puts any resulting variable from the task in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.task.complete)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.task.complete:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10660,6 +11410,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10675,12 +11427,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.tasks
+## workflow.tasks ``v1``
 ----------   
 Returns all tasks for a given workflow. Returned parameters are dynamically and depend on the underlying workflow engine. Default result format is [{id:taskId, name:taskName, assignee:userId, created:createdDate, due:dueDate, tenant:tenantId}, ...]. For a detailed description about all returned attributes see the default implementation: https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.tasks:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10708,6 +11461,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10723,12 +11478,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.undeploy
+## workflow.undeploy ``v1``
 ----------   
 Undeploys a given BPMN from workflow engine.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.undeploy)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.undeploy:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10750,6 +11506,8 @@ pipeline:
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10765,12 +11523,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## workflow.users
+## workflow.users ``v1``
 ----------   
 Returns all users eligible to participate in given workflow.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.users)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.users:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10792,6 +11551,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
@@ -10807,12 +11568,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## zip
+## zip ``v1``
 ----------   
 Compresses a given content in the body and puts the compressed data into the output. If content is a content collection, puts all entries in the resulting zip file. Note: Currently a nested content collection is currently not supported! Any content entry must be at the root level.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=zip)
+[Try online.](https://try.pipeforce.org/#/commandform?command=zip:v1)
 
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -10836,6 +11598,8 @@ pipeline:
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  

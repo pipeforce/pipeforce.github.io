@@ -2,7 +2,7 @@
 
 The transformer command `transform.ftl` uses the template engine [FreeMarker](https://freemarker.apache.org/docs/index.html) in order to apply a transformation on a given model using a given template.
 
-See the [commands reference](../../api/commands#transformftl) for details about the available parameters of this command.
+See the [commands reference](../../api/commands#transformftl-v1) for details about the available parameters of this command.
 
 
 ## Example

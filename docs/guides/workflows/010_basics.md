@@ -209,7 +209,7 @@ Pipeline section is mandatory for execution of any application. It includes all 
              recurse: "true"     
         ```
 
-        Note: To get more details regarding this feature, please see: [drive.archive.save](../../api/commands#drivearchivesave)
+        Note: To get more details regarding this feature, please see: [drive.archive.save](../../api/commands#drivearchivesave-v1)
 
         Here, to create a directory, we need to run the pipeline as the system user, because only that user has the folder creation rights.
 
@@ -231,7 +231,7 @@ Pipeline section is mandatory for execution of any application. It includes all 
             value: "#{vars.formData.formAttachment.content}"
         ``` 
 
-        Note: To get more details regarding this feature, please see: [property.attachment.chunk.get](../../api/commands#propertyattachmentchunkget) 
+        Note: To get more details regarding this feature, please see: [property.attachment.chunk.get](../../api/commands#propertyattachmentchunkget-v1) 
 
     3. Save the file into drive
 
@@ -252,7 +252,7 @@ Pipeline section is mandatory for execution of any application. It includes all 
   
 Roles / Groups are created only by running the pipeline with system user only.
 
-Note: To get more details regarding this feature, please see: [property.attachment.chunk.get](../../api/commands#iamgroupcreate)
+Note: To get more details regarding this feature, please see: [property.attachment.chunk.get](../../api/commands#iamgroupcreate-v1)
         
 6.	Give permissions for accessing files to a role or a group.
 
@@ -293,7 +293,7 @@ Workflow model enables you to map your data from entry-form to your application 
 
 Here, we define all the variables in key:value pair and store it in our workflow model.
 
-Note: To get more details regarding this feature please see: [Workflow Model](../../api/commands#workflowmodel)
+Note: To get more details regarding this feature please see: [Workflow Model](../../api/commands#workflowmodel-v1)
 
 ### 5.	Save Workflow Model Into Schema
 
@@ -306,7 +306,7 @@ It enables you to save the entry-form data into a schema. Schema is a file where
     type: "application/json"      
 ``` 
 
-Note: To get more details regarding this feature, please see: [property.schema.put](../../api/commands#propertyschemaput)
+Note: To get more details regarding this feature, please see: [property.schema.put](../../api/commands#propertyschemaput-v1)
 
 ### 6.	Start Workflow
 
@@ -326,7 +326,7 @@ In this section, we define those variables which we process and use them in the 
 - body.delete:
 ``` 
 
-Note: To get more details regarding this feature, please see: [workflow.start](../../api/commands#workflowstart)
+Note: To get more details regarding this feature, please see: [workflow.start](../../api/commands#workflowstart-v1)
 
 You can access these process variables in the next pipeline as following: 
 
