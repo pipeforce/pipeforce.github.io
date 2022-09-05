@@ -5498,13 +5498,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## lo ``v:v1``
+## log ``v1``
 ----------   
 Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=lo:v:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=log:v1)
 
-**Version:** ``v:v1``  
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -5520,22 +5520,24 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - lo::v:v1  
+  - log:  
       message: <value>  
       level: <value>  
       id: <value>  
       if: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/lo?message=<value>&level=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command lo message=<value> level=<value> id=<value> if=<value>  
+pi command log message=<value> level=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -6536,13 +6538,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## pipeline.debug.statu ``v:v1``
+## pipeline.debug.status ``v1``
 ----------   
 Returns the status of a running debugging session.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.debug.statu:v:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.debug.status:v1)
 
-**Version:** ``v:v1``  
+**Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
 **Parameters:** 
@@ -6559,23 +6561,25 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - pipeline.debug.statu::v:v1  
+  - pipeline.debug.status:  
       sessionId: <value>  
       pipelineKey: <value>  
       id: <value>  
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.debug.statu?sessionId=<value>&pipelineKey=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/pipeline.debug.status?sessionId=<value>&pipelineKey=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.debug.statu sessionId=<value> pipelineKey=<value> id=<value> if=<value> output=<value>  
+pi command pipeline.debug.status sessionId=<value> pipelineKey=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -10052,13 +10056,13 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## transform.ft ``v:v1``
+## transform.ftl ``v1``
 ----------   
 This transformer uses the FreeMarker template engine for its transformation.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=transform.ft:v:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=transform.ftl:v1)
 
-**Version:** ``v:v1``  
+**Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
 **Parameters:** 
@@ -10075,23 +10079,25 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - transform.ft::v:v1  
+  - transform.ftl:  
       model: <value>  
       template: <value>  
       id: <value>  
       if: <value>  
       output: <value>  
 ```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
 Learn more: [Pipeline](../guides/commands_pipelines). 
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.ft?model=<value>&template=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/transform.ftl?model=<value>&template=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.ft model=<value> template=<value> id=<value> if=<value> output=<value>  
+pi command transform.ftl model=<value> template=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
