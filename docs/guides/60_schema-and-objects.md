@@ -1,6 +1,6 @@
-# Schema & Objects
+# JSON Schema
 
-**Objects** in PIPEFORCE are custom models that represent data of a specific app or process. For example, an `Invoice` or `Person` object. The structure of such objects can by defined using a Schema. Also forms need such a Schema for its field structure.
+**JSON Object** in PIPEFORCE is a custom model that represent data of a specific app or process. For example, an `Invoice` or `Person` object. The structure of such objects can by defined using a Schema. Also forms need such a Schema for its field structure.
 
 For example, before you can use a form, you need to know which “type of data” such a form produces: After a form was submitted, it creates a new dataset called an **object** and stores it into the property store. The structure of such an object (i.e. which fields it has) is defined in a JSON Schema.
 
@@ -10,16 +10,9 @@ See here for more details about the JSON schema specification: [https://json-sch
 
 PIPEFORCE Forms are built on top of JSON schema. Therefore, the first step to create a form is always to create a JSON schema configuration or using an existing one.
 
-:::caution
-Do not mix-up a schema with a form configuration. There is a clear separation of responsibilities of these two files:
-
-- Schema: It defines the data structure of an object.
-- Form Configuration: It defines a form to show the data structure of an object as (editable) form fields.
-:::
-
 But, also in other areas besides forms, it is meaningful to define a JSON Schema first before you start working with data models in your application.
 
-Here is an example of how such a JSON schema can look like defining an person object:
+Here is an example of how such a JSON schema can look like defining an `person` object:
 
 ```json
 {
@@ -71,7 +64,7 @@ You can overwrite this behaviour and set additional configurations for form fiel
 In order to have a clear separation between data structure and form layout, make sure that all layout specific settings go into the form configuration.
 :::
 
-Here is an example how a JSON schema is rendered to a default form:
+Here is an example how such a JSON schema is rendered to a default form:
 
 ![](../img/grafik-20201023-084022.png)
 
@@ -305,4 +298,52 @@ Valid: `https://google.com`
   },
   "required": ["name", "email"]
 }
+```
+
+## Validation via Command
+
+It's possible to validate a given JSON by applying a given JSON Schema using the command [`json.validate`](../api/commands#jsonvalidate-v1). For example:
+
+```yaml
+pipeline:
+  - json.validate:
+      schema: {
+          "type": "object",
+
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "age": {
+              "type": "number"
+            },
+            "gender": {
+              "type": "string",
+              "enum": ["male", "female", "neutral"]
+            }
+          }
+        }
+      input: {
+          "firstName": "Max", 
+          "lastName": "Smith", 
+          "age": 23, 
+          "gender": "male"
+        }
+```
+
+The values for `schema` and `input` can also come from a dynamic input like the property store for example. Here is an example to load the schema inline from the [property store](../guides/propertystore/propertystore-basics) using a [Custom URI](../api/uris):
+
+```yaml
+pipeline:
+  - json.validate:
+      schema: "uri:property:global/app/myapp/object/person/v1/schema"
+      input: {
+          "firstName": "Max", 
+          "lastName": "Smith", 
+          "age": 23, 
+          "gender": "male"
+        }
 ```

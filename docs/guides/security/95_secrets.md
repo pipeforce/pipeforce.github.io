@@ -52,7 +52,7 @@ In order to create a secret using the web interface: After login select `Secrets
 
 Then click on `Add Secret`, select the format of your secret, give it a unique name, set the secret and click `Add`.
 
-![](../img/add-secret.png)
+![](../../img/add-secret.png)
 
 ## Using a secret in your pipeline
 

@@ -2737,8 +2737,8 @@
               },
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",
@@ -2768,8 +2768,8 @@
             "properties" : {
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",
@@ -2811,8 +2811,8 @@
               },
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",
@@ -2854,8 +2854,8 @@
               },
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",
@@ -2976,8 +2976,8 @@
               },
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",
@@ -3041,8 +3041,8 @@
               },
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",
@@ -3332,8 +3332,8 @@
               },
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",
@@ -3375,8 +3375,8 @@
               },
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",
@@ -3418,8 +3418,8 @@
               },
               "max" : {
                 "type" : "number",
-                "description" : "The max number of entries to return. If set to a higher value than 1000, will be reset to 1000.",
-                "default" : "1000"
+                "description" : "The max number of entries to return. If set to a higher value than 100, will be reset to 100.",
+                "default" : "100"
               },
               "offset" : {
                 "type" : "number",

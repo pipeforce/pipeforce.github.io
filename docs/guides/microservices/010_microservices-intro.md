@@ -2,7 +2,7 @@
 id: basics
 
 title: Microservices
-sidebar_label: Microservices Basics
+sidebar_label: Basics
 slug: /microservices
 ---
 

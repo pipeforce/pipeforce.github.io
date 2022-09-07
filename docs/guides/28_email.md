@@ -1,121 +1,219 @@
-# Email
+# Emailing
 
-We can create templates (in html) for emails, and use them in our pipelines. Task Links can also be included into the emails through templates and pipelines.
+In PIPEFORCE you can send emails out-of-the-box using the [mail.send](../api/commands#mailsend-v1) command.
 
-## 1 - Create an email template
+Here is an example pipeline to use this command:
 
-1.  Login to the portal https://**NAMESPACE**.pipeforce.net
-    
-2.  Navigate to LOW CODE → Workbench
-    
-3.  Select the node of your app or [create a new one](../tutorials/create-app).
-    
-4.  Click the plus icon at the top of the tree.
-    
-5.  The new property view opens:
-    
-    1.  As property key, use: `global/app/YOUR_APP/template/email`, where you can replace YOUR_APP with your own app name
-        
-    2.  As mime type, use: `text/plain; type=template; format=freemarker`
-        
-6.  Click `SAVE`
-    
-7.  The new property has been created, and the content editor was opened for you.
-    
-8.  Now copy and paste this content into the editor, and overwrite any existing data there by this:
-
-```html
-<div>
-  <p>
-    <b>Hallo Controlling Team,</b>
-  </p>
-  <br/>
-
-  <p>
-    <b>A request was made. What would you like to do next?</b>
-  </p>
-</div>
-```
-
-9.  Click `SAVE`
-
-
-## 2 - Create an email pipeline
-    
-Now, we must create a pipeline where the emails' messages contain the content of this template.
-
-1.  Click the plus icon at the top of the tree.
-    
-2.  The new property view opens:
-    
-    1.  As property key, use: `global/app/YOUR_APP/pipeline/myPipeline`, where you can replace YOUR_APP with your own app name
-        
-    2.  As mime type, use: `application/yaml; type=pipeline`
-        
-3.  Click `SAVE`
-    
-4.  The new property has been created, and the content editor was opened for you.
-    
-5.  Now copy and paste this content into the editor, and overwrite any existing data there by this:
-
-```json
-  pipeline:
-  - mail.send:
-      to: "your@domain.tld"
-      subject: "Test email"
-      message: "uri:property:global/app/YOUR-APP/template/email"
-```
-
-6.  Replace `your@domain.tld` by your real email address.
-    
-7.  Click `SAVE` and then `RUN` to execute the pipeline.
-
-8.  After a while, you should have received an email like this:
-
-    ![](../img/email-template.PNG)
-
-Here, we created a simple pipeline where we send email where the message points to the template we created in the same app i.e. `uri:property:global/app/YOUR-APP/template/send-email`. Note that we must put `uri:property:` in the suffix of the template path here.
-
-
-## 3 - Set a link to a task in an email template
-
-We also have the power to add task links in the emails. For this, we update the above pipeline to this:
-
-```json
+```yaml
 pipeline:
-  - set.var:
-      key: "taskUrl"
-      value: "#{@instance.url('portal') + '/#/task'}"
+ - mail.send:
+    to: "recipient@domain.tld"
+    subject: "This is the subject"
+    message: |
+      Hello recipient,
+      this is an email sent from a pipeline.
+      Greetings
+```
+
+## Email Templates
+
+There are different possibilties in PIPEFORCE to set the email data dynamically.
+
+### Using PEL
+As usual, you can use the [Pipeline Expression Language (PEL)](../api/pel) in order to define placeholders in the command parameters. For example:
+
+
+```yaml
+vars:
+  name: "Sam"
+  email: "recipient@domain.tld"
+
+pipeline:
+ - mail.send:
+    to: "#{var.email}"
+    subject: "This is for #{var.name}"
+    message: |
+      Hello #{var.name},
+      this is an email sent from a pipeline.
+      Greetings
+```
+
+### Using a Transformer Command
+
+You can use a transformer command like [transform.ftl](../guides/transformers/freemarker) in order to render the message. For example:
+
+```yaml
+vars:
+  name: "Sam"
+  email: "recipient@domain.tld"
+
+pipeline:
+
+  - transform.ftl:
+      template: |
+        Hello ${var.name},
+        this is an email sent from a pipeline.
+        Greetings
+
   - mail.send:
-      to: "m.shahid@logabit.com"
-      subject: "Test email"
-      message: "uri:property:global/app/neel100/template/email"
-      model: "#{{taskUrl: vars.taskUrl}}"
+      to: "#{var.email}"
+      subject: "This is for #{var.name}"
 ```
 
-Click `SAVE`. 
+In this example, the message is rendered and then stored in the body using `transform.ftl`. The command `mail.send`
+then picks up the rendered message from the body and uses it as email message.
 
-Here, we define a variable which holds link to a task called "taskUrl". We pass this variable to the template using the "model" attribute. Now, we must update the previous template to this:
+And here is an example to load the template from the property store from location `global/app/myapp/template/email`:
 
-```html
-<div>
-  <p>
-    <b>Hallo Controlling Team,</b>
-  </p>
-  <br/>
+```yaml
+vars:
+  name: "Sam"
+  email: "recipient@domain.tld"
 
-  <p>
-    <b>A request was made. What would you like to do next?</b>
-  </p>
-  <br/>
+pipeline:
 
-  <a href="${taskUrl}"><b>See Task</b></a><br/>
-</div>
+  - transform.ftl:
+      template: "uri:property:global/app/myapp/template/email"
+
+  - mail.send:
+      to: "#{var.email}"
+      subject: "This is for #{var.name}"
 ```
 
-Click `SAVE`. 
+### Using a Custom URI
 
-Here, we used the `taskUrl` variable from the pipeline, so we can get link to the task in the email. 
-Now, go back to the pipeline and click `RUN` to execute the pipeline. This will generate an email containing a link like this:
+Instead of defining a separate transformer command in the pipeline, you can use a [Custom URI](../api/uris) which points inline to a template. For example:
 
-![](../img/email-template-link.PNG)
+```yaml
+vars:
+  name: "Sam"
+  email: "recipient@domain.tld"
+
+pipeline:
+
+  - mail.send:
+      to: "#{var.email}"
+      subject: "This is for #{var.name}"
+      message: "uri:property:global/app/myapp/template/email"
+```
+
+In this case, the `mail.send` command loads the template as property from location `global/app/myapp/template/email`, renders it and uses
+the result as email message. The variables `var`, `header` and `body` will be provided as default model to the template.
+
+You can replace these default template variables by your custom `model`:
+
+```yaml
+pipeline:
+
+  - mail.send:
+      to: "recipient@domain.tld"
+      subject: "This is a subject"
+      message: "uri:property:global/app/myapp/template/email"
+      model: {"name": "Sam"}
+```
+
+## Email Attachments
+
+In case you would like to add attachments, you can use the parameter `attachments` to do so.
+### From Body
+
+One approach is to load the attachments into a scope, like vars or the body first and then refer to them using a PEL inside the parameter `attachments`. For example:
+
+```yaml
+pipeline:
+  - drive.read:
+      path: "contract.docx"
+
+  - mail.send:
+      to: "recipient@domain.tld"
+      subject: "This is the contract"
+      message: "Hello, attached you can find the contract for your reference."
+      attachments: "#{body}"
+```
+
+In this example the file is first loaded (implicitely) to body using the command `drive.read` and then linked to the `attachments` parameter. You can place any [content object](../guides/contentobject) as attachment. 
+
+Using this approach it is also possible to create the attachments dynamically on-the-fly in the pipeline (for example by using a template engine) and then add them finally to the email.
+
+### From Custom URI
+
+Another approach to add attachments to an email is by using a [Custom URI](../api/uris) which points to the location of the attachments. For example:
+
+```yaml
+pipeline:
+
+  - mail.send:
+      ...
+      attachments: "uri:drive:contract-v1.docx, uri:drive:contract-v2.docx"
+```
+
+:::tip
+You can add multiple attachments by separating them by comma.
+:::
+
+
+## HTML Emails
+
+Emails are sent by default using a base HTML skeleton. Any message is placed as text inside this HTML skeleton. HTML tags will be escaped by default.
+
+In case you would like to format the text using HTML tags, you need to place the whole message inside a single HTML tag like `<p>` and `</p>` for example.
+
+Here is an example to place a HTML link and HTML bullet points in your email message:
+
+```yaml
+pipeline:
+
+  - mail.send:
+      to: "recipient@domain.tld"
+      subject: "This is the contract"
+      message: |
+        <p>Hello,
+        please click <a href="#">this link</a>.
+        <br/>
+        These are the reasons:
+        <ul>
+          <li>Clicking is fun</li>
+          <li>Test it</li>
+        </ul>
+        </p>
+```
+
+This will produce an email message output similar to this:
+
+![](../img/html-email.png)
+
+
+## Bulk Emails
+
+Sending multiple emails to multiple recipients with dynamic content can be done using the `mail.send` command in combination with the `foreach` command.
+
+```yaml
+vars:
+  recipients: [
+      {"name": "Sam Mayer", "email": "s.mayer@domain.tld"},
+      {"name": "Marissa Foley", "email": "m.foley@domain.tld"},
+    ]
+    
+pipeline:
+
+  - foreach:
+      in: "#{var.recipients}"
+      
+  - mail.send:
+      to: "#{var.loop.item.email}"
+      subject: "Letter to #{var.loop.item.name}"
+      message: |
+        Hello #{var.loop.item.name},
+        this is a letter for you.
+        Cheers
+      
+  - foreach:
+      end:
+```
+
+:::caution
+Depending on your license and/or environment, the number of allowed emails to be send per minute is restricted. 
+Please refer to your support in order to get information about this limit.
+In case you need to send a higher amount of emails, consider to use one of the email services and integrate
+their API using the `http.*` commands.
+:::

@@ -1,4 +1,4 @@
-# Content Object
+# Content Handling
 
 In order to process documents and other files using a pipeline, you first need to load such a file into the pipeline. After loading, the file is automatically converted into a format called "content object". This is a wrapper around a document which provides all required information for such a document, like its name size, mime type etc., for easier processing inside the pipeline. The content object provides these attributes:
 

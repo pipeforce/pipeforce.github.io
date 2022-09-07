@@ -1,4 +1,4 @@
-# Pipeline Jobs
+# Jobs
 
 Sometimes it is necessary that you trigger the commands in your pipeline after a certain time interval. For this you can
 use the concept of pipeline jobs in PIPEFORCE.

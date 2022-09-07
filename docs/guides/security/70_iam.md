@@ -31,7 +31,7 @@ https://iam-<NAMESPACE>.pipeforce.net
 
 Or by clicking IAM on the portal menu:
 
-![](../img/image-20211030-022903.png)
+![](../../img/image-20211030-022903.png)
 
 
 ## 2-Factor Authentication
@@ -45,21 +45,21 @@ Security related actions such as **resetting password** or **logging** **in** ca
 2.  Click on “My Profile”
     
 
-![](../img/my-profile.png)
+![](../../img/my-profile.png)
 
 3\. Click on “Authentification” (in German: Multiauthentifizierung)
 
-![](../img/auth.png)
+![](../../img/auth.png)
 
 4\. Follow the steps written there. When you have downloaded Google Authenticator, scanned the QR-Code, and entered the OTP (One-Time-Password), you will see this success result:
 
-![](../img/authe.png)
+![](../../img/authe.png)
 
 ### Log-in with 2FA
 
 When the user is entering both his username and password for login, another form will appear:
 
-![](../img/one-time-code.png)
+![](../../img/one-time-code.png)
 
 When seeing this, the user needs to open his Google Authentificator App and lookup the one-time password for his setup account. Note that this code is changing every 30 seconds. If you miss to enter in that time-window, you can simply use the next 30 second time window with a new code.
 
@@ -67,7 +67,7 @@ When seeing this, the user needs to open his Google Authentificator App and look
  
 Use “Forgot password” function in the login form:
 
-![](../img/login.png)
+![](../../img/login.png)
 
 1.  Wait for the reset link to be sent to your account email. Click on it.
     

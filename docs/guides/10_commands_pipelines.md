@@ -88,7 +88,7 @@ Here is an example to execute the [`log`](../api/commands#log-v1) command as HTT
 https://hub-trial.pipeforce.org/api/v3/command/log?message=HELLO
 ```
 :::tip Note
-- [Authentication](../guides/25_authorization.md) is not considered here for simplicity reasons.
+- [Authentication](../guides/security/authorization) is not considered here for simplicity reasons.
 - Replace ``http://hub-trial.pipeforce.org`` by the url of your target system.
 - In case you would like to use special characters like spaces, umlauts, `?` or `=` for example in your parameter value, you need to URL encode the URL as you would do with any such HTTP request. See Wikipedia for details: https://en.wikipedia.org/wiki/Percent-encoding 
 :::

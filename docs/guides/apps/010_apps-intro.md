@@ -2,7 +2,7 @@
 id: basics
 
 title: Apps
-sidebar_label: App Basics
+sidebar_label: Basics
 slug: /apps
 ---
 
