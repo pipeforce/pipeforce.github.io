@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 05/09/2022 19:43:20 by CommandComplianceTest -->
+<!-- Generated: 08/09/2022 17:33:30 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -581,6 +581,44 @@ locale | ``string`` | The locale to be used.
 #### Example  
 ```  
 @date.now(zoneId,locale)  
+```  
+
+### guessAndFormat(dateTimeString,outputFormat)   
+Tries to guess the given date time string format, converts it internally to a date-time object
+and formats it finally to a string output using the given output format pattern.   
+
+#### Returns  
+``string`` - The formatted date time string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+dateTimeString | ``string`` | The date-time string as input. 
+outputFormat | ``string`` | The output format pattern. 
+
+
+#### Example  
+```  
+@date.guessAndFormat(dateTimeString,outputFormat)  
+```  
+
+### format(inputDate,inputFormat,outputFormat)   
+Converts a given date string using the given inputFormat and converts it to the given outputFormat.   
+
+#### Returns  
+``string`` - The formatted date time string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+inputDate | ``string`` | The input date string. 
+inputFormat | ``string`` | The input format pattern. 
+outputFormat | ``string`` | The output format pattern. 
+
+
+#### Example  
+```  
+@date.format(inputDate,inputFormat,outputFormat)  
 ```  
 
 ### format(iso8601Date,format)   

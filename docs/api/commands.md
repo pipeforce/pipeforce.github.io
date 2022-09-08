@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 05/09/2022 by CommandComplianceTest -->
+<!-- Generated: 08/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -5959,12 +5959,13 @@ Name | Type | Required | Default | Description
 `from` | String | false | Systems default FROM setting. | The from email.
 `fromName` | String | false | Systems default FROM name setting. | The from name.
 `subject` | String | false | Systems default subject setting. | The subject.
-`model` | String | false | null | The optional model to be used in case subject and/or message point to a template.
 `message` | String | false | null | By default, the body is used as email message. If this param is set, it will be used as message instead. Can also be a PE which points to a value to be used as the mail message.
 `replyTo` | String | false | null | Reply-To email address is used when email receiver uses its mail client's 'reply' function. If not used,the from address is used automatically.
 `attachments` | String | false | null | Can be a comma separated list of URI Strings (e.g.: uri:drive:file1, uri:property:global/file2, uri:drive:file1, uri:classpath:pipeforce/file3). Also can point via PEL to a content object or a content collection. If the PEL points to an object differently to an uri or content object, serializes the value to string and attaches this as a text file.
+`model` | String | false | null | The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -5975,12 +5976,13 @@ pipeline:
       from: <value>  
       fromName: <value>  
       subject: <value>  
-      model: <value>  
       message: <value>  
       replyTo: <value>  
       attachments: <value>  
+      model: <value>  
       id: <value>  
       if: <value>  
+      output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5988,12 +5990,12 @@ Learn more: [Pipeline](../guides/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&subject=<value>&model=<value>&message=<value>&replyTo=<value>&attachments=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&subject=<value>&message=<value>&replyTo=<value>&attachments=<value>&model=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> model=<value> message=<value> replyTo=<value> attachments=<value> id=<value> if=<value>  
+pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> message=<value> replyTo=<value> attachments=<value> model=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -10069,8 +10071,8 @@ This transformer uses the FreeMarker template engine for its transformation.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`model` | String | false | null | The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline.
 `template` | String | false | null | The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template.
+`model` | String | false | null | The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
@@ -10080,8 +10082,8 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - transform.ftl:  
-      model: <value>  
       template: <value>  
+      model: <value>  
       id: <value>  
       if: <value>  
       output: <value>  
@@ -10092,12 +10094,12 @@ Learn more: [Pipeline](../guides/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.ftl?model=<value>&template=<value>&id=<value>&if=<value>&output=<value>  
+http://host/api/v3/command/transform.ftl?template=<value>&model=<value>&id=<value>&if=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.ftl model=<value> template=<value> id=<value> if=<value> output=<value>  
+pi command transform.ftl template=<value> model=<value> id=<value> if=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 
@@ -10516,11 +10518,61 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
-## validate.json ``v1``
+## json.validate ``v1``
 ----------   
-Validates the JSON body of the message against a given JSON schema. See https://json-schema.org/. 
+Validates the JSON document given in the body or the input parameter against the given JSON schema. See https://json-schema.org/. 
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=validate.json:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=json.validate:v1)
+
+**Alias:** command:validate.json:v1   
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`schema` | String | false | null | The JSON schema to be used for validation. Can be a string, a PEL or a custom uri pointing to the location of the schema.
+`version` | String | false | V7 | The version of the schema specification to be used.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - json.validate:  
+      schema: <value>  
+      version: <value>  
+      id: <value>  
+      if: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](../guides/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/json.validate?schema=<value>&version=<value>&id=<value>&if=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command json.validate schema=<value> version=<value> id=<value> if=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
+
+  
+
+## wait ``v1``
+----------   
+Waits a certain amount of time with next execution.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=wait:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -10529,9 +10581,7 @@ Validates the JSON body of the message against a given JSON schema. See https://
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`schema` | String | false | null | The name of the schema to be used for validation. Can be a name of a registered internal schema or a url pointing to a external location of a schema. If no schema is given, at least a check is done whether the body contains a valid JSON/YAML format.
-`version` | String | false | V7 | The version of the schema specification to be used. One of: V4, V6, V7
-`path` | String | false | null | A pipe expression pointing to the JSON inside the pipe message validation is required for. If missing, null or empty, the body is used by default.
+`ms` | String | false | 100 | The time to wait in milliseconds.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 
@@ -10539,10 +10589,8 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - validate.json:  
-      schema: <value>  
-      version: <value>  
-      path: <value>  
+  - wait:  
+      ms: <value>  
       id: <value>  
       if: <value>  
 ```  
@@ -10552,12 +10600,12 @@ Learn more: [Pipeline](../guides/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/validate.json?schema=<value>&version=<value>&path=<value>&id=<value>&if=<value>  
+http://host/api/v3/command/wait?ms=<value>&id=<value>&if=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command validate.json schema=<value> version=<value> path=<value> id=<value> if=<value>  
+pi command wait ms=<value> id=<value> if=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cli). 
 

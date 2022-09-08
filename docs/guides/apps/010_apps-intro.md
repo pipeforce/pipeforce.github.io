@@ -12,7 +12,7 @@ In PIPEFORCE, an app groups together resources like scripts, templates, configur
 
 Also see [this tutorial](../docs/tutorials/create-app) to learn how to create an app in PIPEFORCE.
 
-For each app, certain access rules can be specified. Apps can be installed, uninstalled, exported and imported. Furthermore, it is also possible to use staging and versioning for apps. They can be developed online using the workbench or offline using source code files and the [CLI](../../api/cli.md). You can think of apps also like “plug-ins” for PIPEFORCE.
+For each app, certain access rules can be specified. Apps can be installed, uninstalled, exported and imported. Furthermore, it is also possible to use staging and versioning for apps. They can be developed online using the workbench or offline using source code files and the [CLI](../../guides/cli). You can think of apps also like “plug-ins” for PIPEFORCE.
 
 ## App properties
 Typically, all properties (resources) of an app reside in the property store under the key path 
@@ -219,9 +219,9 @@ pi publish src/global/app/myapp
 
 This CLI command scans your local `myapp` folder and uploads only those resources which have been changed since the last upload or have been created since then.
 
-See here how to setup such a customization workspace: [Local Low-Code Workspace](../guides/local-workspace)
+See here how to setup such a customization workspace: [Local Low-Code Workspace](cli)
 
-See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](../api/cli) .
+See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](cli).
 
 ## Working with VS Code
 

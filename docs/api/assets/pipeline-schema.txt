@@ -3919,10 +3919,6 @@
                 "description" : "The subject.",
                 "default" : "Systems default subject setting."
               },
-              "model" : {
-                "type" : "string",
-                "description" : "The optional model to be used in case subject and/or message point to a template."
-              },
               "message" : {
                 "type" : "string",
                 "description" : "By default, the body is used as email message. If this param is set, it will be used as message instead. Can also be a PE which points to a value to be used as the mail message."
@@ -3935,6 +3931,10 @@
                 "type" : "string",
                 "description" : "Can be a comma separated list of URI Strings (e.g.: uri:drive:file1, uri:property:global/file2, uri:drive:file1, uri:classpath:pipeforce/file3). Also can point via PEL to a content object or a content collection. If the PEL points to an object differently to an uri or content object, serializes the value to string and attaches this as a text file."
               },
+              "model" : {
+                "type" : "string",
+                "description" : "The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -3942,6 +3942,10 @@
               "if" : {
                 "type" : "string",
                 "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "to" ]
@@ -6612,13 +6616,13 @@
             "inputType" : "Byte",
             "outputType" : "Byte",
             "properties" : {
-              "model" : {
-                "type" : "string",
-                "description" : "The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline."
-              },
               "template" : {
                 "type" : "string",
                 "description" : "The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template."
+              },
+              "model" : {
+                "type" : "string",
+                "description" : "The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline."
               },
               "id" : {
                 "type" : "string",
@@ -6873,24 +6877,50 @@
             },
             "required" : [ ]
           },
-          "validate.json" : {
+          "json.validate" : {
             "type" : "object",
-            "description" : "Validates the JSON body of the message against a given JSON schema. See https://json-schema.org/. ",
+            "description" : "Validates the JSON document given in the body or the input parameter against the given JSON schema. See https://json-schema.org/. ",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "schema" : {
                 "type" : "string",
-                "description" : "The name of the schema to be used for validation. Can be a name of a registered internal schema or a url pointing to a external location of a schema. If no schema is given, at least a check is done whether the body contains a valid JSON/YAML format."
+                "description" : "The JSON schema to be used for validation. Can be a string, a PEL or a custom uri pointing to the location of the schema."
               },
               "version" : {
                 "type" : "string",
-                "description" : "The version of the schema specification to be used. One of: V4, V6, V7",
+                "description" : "The version of the schema specification to be used.",
                 "default" : "V7"
               },
-              "path" : {
+              "id" : {
                 "type" : "string",
-                "description" : "A pipe expression pointing to the JSON inside the pipe message validation is required for. If missing, null or empty, the body is used by default."
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "wait" : {
+            "type" : "object",
+            "description" : "Waits a certain amount of time with next execution.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "ms" : {
+                "type" : "string",
+                "description" : "The time to wait in milliseconds.",
+                "default" : "100"
               },
               "id" : {
                 "type" : "string",
