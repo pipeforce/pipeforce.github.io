@@ -1,7 +1,9 @@
 
 # Events
 
-In PIPEFORCE, an event is represented by a JSON object with a certain structure like this:
+In PIPEFORCE, an event is a special form of a Message.
+
+It is an action which happened inside the hub service and is represented by a JSON object with a certain structure like this:
 
 ```json
 {
@@ -123,4 +125,4 @@ Note: Whenever you send a custom event, you need to prefix it with the reversed 
 
 ## Built-in events
 
-In order to get a reference about all built-in events, see the [Event Reference](../api/events.md)
+In order to get a reference about all built-in events, see the [Event Reference](../../api/events)

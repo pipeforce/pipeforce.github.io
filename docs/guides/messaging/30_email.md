@@ -1,6 +1,6 @@
 # Emailing
 
-In PIPEFORCE you can send emails out-of-the-box using the [mail.send](../api/commands#mailsend-v1) command.
+In PIPEFORCE you can send email messages out-of-the-box using the [mail.send](../api/commands#mailsend-v1) command.
 
 Here is an example pipeline to use this command:
 
@@ -180,7 +180,7 @@ pipeline:
 
 This will produce an email message output similar to this:
 
-![](../img/html-email.png)
+![](../../img/html-email.png)
 
 
 ## Bulk Emails

@@ -66,7 +66,7 @@ In order to have a clear separation between data structure and form layout, make
 
 Here is an example how such a JSON schema is rendered to a default form:
 
-![](../img/grafik-20201023-084022.png)
+![](../../img/grafik-20201023-084022.png)
 
 If such a default rendering is not sufficient for you, you can adjust the form layout in the form configuration.
 
@@ -82,7 +82,7 @@ If such a default rendering is not sufficient for you, you can adjust the form l
 
 By default, this shows-up as a date picker in the form.
 
-![](../img/calendar.png)   
+![](../../img/calendar.png)   
 
 ### Text
 
@@ -95,7 +95,7 @@ By default, this shows-up as a date picker in the form.
 This is meant for small amount of text. 
 By default, it renders to a single-line input field in the associated form.
  
-![](../img/my-text.png) 
+![](../../img/my-text.png) 
 
 ### List
 
@@ -110,7 +110,7 @@ By default, it renders to a single-line input field in the associated form.
 This is Meant for lists where only one element can be selected.  
 By default, it renders to a single-select drop-down in the associated form.
 
-![](../img/my-list.png) 
+![](../../img/my-list.png) 
 
 ### Multi-List
 
@@ -128,7 +128,7 @@ By default, it renders to a single-select drop-down in the associated form.
 This is meant for lists where multiple elements can be selected.  
 By default, it renders to a multi-select drop-down in the form.
 
-![](../img/multi-list.png)
+![](../../img/multi-list.png)
 
 ### Yes/No
 
@@ -145,7 +145,7 @@ By default, it renders to a checkbox in the form.
 You can overwrite the default layout and set the attribute `"render":"button"` in the form config in order to display this as a clickable button instead of a checkbox.
 :::
 
-![](../img/checkbox.png)
+![](../../img/checkbox.png)
 
 ### Number
 
@@ -157,7 +157,7 @@ You can overwrite the default layout and set the attribute `"render":"button"` i
 This is meant for number values.  
 By default, it renders to a number field in the form.
 
-![](../img/my-number.png)   
+![](../../img/my-number.png)   
 
 ### File
 
@@ -191,7 +191,7 @@ By default, it renders to a file picker in the form.
 You can change the default render type by using one of `"render":"filepicker"` or `"render":"pdfpreview"` in the form configuration.
 :::
 
-![](../img/my-file.png)               
+![](../../img/my-file.png)               
 
 ## Schema Validation Rules
 
@@ -302,7 +302,7 @@ Valid: `https://google.com`
 
 ## Validation via Command
 
-It's possible to validate a given JSON by applying a given JSON Schema using the command [`json.validate`](../api/commands#jsonvalidate-v1). For example:
+It's possible to validate a given JSON by applying a given JSON Schema using the command [`json.validate`](../../api/commands#jsonvalidate-v1). For example:
 
 ```yaml
 pipeline:
@@ -334,7 +334,7 @@ pipeline:
         }
 ```
 
-The values for `schema` and `input` can also come from a dynamic input like the property store for example. Here is an example to load the schema inline from the [property store](../guides/propertystore/propertystore-basics) using a [Custom URI](../api/uris):
+The values for `schema` and `input` can also come from a dynamic input like the property store for example. Here is an example to load the schema inline from the [property store](../../guides/propertystore/propertystore-basics) using a [Custom URI](../../api/uris):
 
 ```yaml
 pipeline:

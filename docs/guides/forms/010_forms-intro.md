@@ -10,7 +10,7 @@ In order to define a form in PIPEFORCE, you need a **JSON schema** and the **for
 
 ![](../../img/grafik-20201023-083314.png)
 
-The JSON **schema** (also called the “object schema”) defines the structure of a dataset and “tells” the form which fields to display that a user can fill-out. Learn more about the JSON Schema in this chapter: [Schema & Objects](../../guides/60_schema-and-objects.md).
+The JSON **schema** (also called the “object schema”) defines the structure of a dataset and “tells” the form which fields to display that a user can fill-out. Learn more about the JSON Schema in this chapter: [Schema & Objects](../../guides/forms/schema-and-objects).md).
 
 The **input** data is used in case an existing dataset needs to be edited. The form is pre-filled with some data, so the user can make changes, and save again.
 

@@ -28,7 +28,7 @@ pi help
 
 Below, you can find the description of the most important actions.
 
-## pi command
+## `pi command`
 
 This executes a single pipeline command at the server-side and returns the result.
 
@@ -56,7 +56,7 @@ Use the command `pi help command` to get the documentation of all available comm
 
 Or use the command `pi help command COMMAND_NAME` to get the documentation for a specific command.
 
-## pi delete
+## `pi delete`
 
 This deletes the remote resources inside a given app. It doesn’t delete any local resource.
 
@@ -80,7 +80,7 @@ This deletes all resources of the app `myapp`.
 This command deletes remote resources without the option to recover. So, be careful in using it!
 :::
 
-## pi get
+## `pi get`
 
 This downloads all resources of a given app, stores them into the local workspace in order to be able to edit them. If a local resource already exists, this asks for either to overwrite or to skip.
 
@@ -108,7 +108,7 @@ This downloads a single resource by its key:
 pi get global/app/myapp/pipeline/hello
 ```
 
-## pi help
+## `pi help`
 
 Thid lists all available CLI options or pipeline commands.
 
@@ -159,7 +159,7 @@ log:
   - "message"
 ```
 
-## pi list
+## `pi list`
 
 This lists all remote resources of a given path.
 
@@ -179,7 +179,7 @@ pi list global/app/myapp/*
 
 This lists all resources of the folder `myapp`, but not the resources inside any sub-folder.
 
-## pi new
+## `pi new`
 
 This creates a new resource based on a wizard.
 
@@ -219,7 +219,7 @@ And if you are inside a app folder, the app you want to create the resource for,
 ~ app/myapp> pi new pipeline
 ```
 
-## pi pipeline
+## `pi pipeline`
 
 This executes a a locally stored pipeline file, a remote pipeline or a pipeline uri. Which type of pipeline is detected by the pipeline argument:
 
@@ -292,7 +292,7 @@ The idea of a pipeline uri is to adhoc execute commands without the need to crea
 
 Also, see the CLI command `pi help command`, which lists all available pipeline commands and their description you can use to build pipelines and pipeline uris.
 
-## pi publish
+## `pi publish`
 
 This uploads your created or changed resources like pipeline or form configurations to the server.
 
@@ -345,7 +345,7 @@ This will publish all resources inside `src/gobal/app/myapp` recursively.
 
 For security reasons (for example, to not accidentally publish a huge path structure of your file system to the server), publish is only possible in case your current working dir is inside the workspace folder.
 
-## pi setup
+## `pi setup`
 
 This changes the settings of the CLI tool using a wizard and/or installs the CLI if not already done.
 
@@ -365,7 +365,7 @@ For more advanced users, you can use the advanced flag in order to be able to ad
 pi setup advanced
 ```
 
-## pi status
+## `pi status`
 
 This returns status information about the CLI.
 
@@ -375,7 +375,7 @@ This returns status information about the CLI.
 pi status
 ```
 
-## pi sync
+## `pi sync`
 
 This does a one-way-sync of files inside the local ``src`` folder to the server. It watches a given folder, and immediately syncs changes of files inside this folder to the server.
 
@@ -397,7 +397,7 @@ At the beginning of the sync, you will be asked whether you want to backup and c
 This is a one-way-sync from local to server. Changes made on the server-side will not be merged to your local sources. If you need such an approach, please refer to source managament tools like Git, for example, which have built-in merge conflict handling and concurrent editing features.
 :::
 
-## pi update
+## `pi update`
 
 This looks for an update of the CLI and installs it if a newer version exists.
 
@@ -409,7 +409,7 @@ pi update
 
 ## Kubernetes Commands
 
-Since version v3.0.13 the CLI also contains some useful commands in order to make it easier to work with the Kubernetes backend of PIPEFORCE. These commands are intended mainly for backend developers and DevOps.
+Since version v3.0.13 the CLI also contains some useful commands in order to make it easier to work with the Kubernetes backend of PIPEFORCE. These commands are intended mainly to simplify the development for backend developers and DevOps.
 
 In order to be able to use these extended commands, [kubectl](https://kubernetes.io/docs/tasks/tools/) must be installed and its current context must be configured in a way to successfully access to the Kubernetes cluster, the commands must be targeted to.
 
@@ -417,7 +417,7 @@ All commands specific to Kubernetes are prefixed with a **`k`** for example **`k
 
 All k-commands are executed inside the namespace of the currently active instance, selected by `pi setup` or `pi instance`.
 
-### pi kdownload
+### `pi kdownload`
 
 Downloads a file or folder (recursively) from a container inside Kubernetes to the local file system. Automatically selects the container by resolving the given service name.
 
@@ -437,7 +437,7 @@ Make sure to not use backslashes `\` or drive letters like `C:`for example in yo
 
 :::
 
-### pi kexec
+### `pi kexec`
 
 Executes a command inside a container within Kubernetes. Automatically selects the container by resolving the given service name.
 
@@ -451,7 +451,7 @@ pi kexec <SERVICE> -- <REMOTE_COMMAND>
 pi kexec hub -- ls -l
 ```
 
-### pi kpodname
+### `pi kpodname`
 
 Automatically detects the internal pod names for a given PIPEFORCE service name and returns them.
 
@@ -465,7 +465,7 @@ pi kpodname <SERVICE>
 pi kpodname hub
 ```
 
-### pi ksync
+### `pi ksync`
 
 Syncs file and folder changes (create, modify, delete) inside a local folder (recursively) with the remote folder in a container. Automatically selects the container by resolving the given service name.
 
@@ -487,7 +487,7 @@ Make sure to not use backslashes `\` or drive letters like `C:`for example in yo
 
 :::
 
-### pi kupload
+### `pi kupload`
 
 Uploads a file or folder (recursively) from local file system to a container inside Kubernetes. Automatically selects the container by resolving the given service name.
 

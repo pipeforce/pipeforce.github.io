@@ -5,15 +5,16 @@ sidebar_label: Getting Started
 
 # Getting Started
 
-Welcome to the PIPEFORCE Documentation.
+PIPEFORCE is a process automation and integration platform that is built entirely cloud-native. It runs inside a container orchestration environment like Kubernetes using microservices and messaging. Designed ground-up that way. It covers all aspects to create modern and best-of-breed enterprise solutions. It helps to create, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation, testing and life-cycle management. Everything on a single platform using low-code and custom microservices.
 
-PIPEFORCE is the first process automation and integration platform that is built entirely cloud-native. It runs 100% inside Kubernetes using microservices and messaging. Designed ground-up that way. It covers all aspects to create modern and best-of-breed enterprise solutions. It helps to create, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation on a single platform using low-code.
+![](img/pipeforce-overview.png)
 
 ## What is PIPEFORCE for?
 
 PIPEFORCE helps you to:
 
 - document
+- integrate
 - automate
 - train
 
@@ -29,9 +30,9 @@ business workflows within your company. Its an open platform which supports you 
 
 All of this in a fraction of time.
 
-PIPEFORCE believes that the digital success of new age enterprises lies in the ability to scale the development of digital solutions. We think that Low Code / No Code platforms are important here, but they won't solve all aspects. Instead, our goal is to give your employees digital superpower in their fields. We bring the experts closer together, so they can build business solutions to empower their company to cover the challenges of the digital age in a way and speed, that no others can do.
+We at PIPEFORCE believe that the digital success of new age enterprises lies in the ability to scale the development of digital solutions. We think that Low Code / No Code platforms are important here, but they won't solve all aspects. Instead, our goal is to give your employees digital superpower in their fields. We bring the experts closer together, so they can build business solutions to empower their company to cover the challenges of the digital age in a way and speed, that no others can do.
 
-PIPEFORCE helps enterprises to achieve digital superpower by clearly separating the responsibilities and defining the interfaces between:
+PIPEFORCE helps enterprises to achieve **digital superpower** by clearly separating the responsibilities and defining the interfaces between:
 
 - User
 - Admin

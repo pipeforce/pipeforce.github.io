@@ -1,8 +1,8 @@
-# Commands & Pipelines
+# 2. Commands & Pipelines
 
 One of the most important parts in PIPEFORCE are Commands and Pipelines. Using them, you can define  **flows** using **low-code** in order to execute workflows, to create, read, update and delete data, to transform it or to send messages to just name a few options here. 
 
-## Command
+## What is a Command? <a id='command'></a>
 
 Let's first start with the atomic part of a flow: The Command. A Command is a server-side component, which can be called remotely via HTTP using its [unique name](../api/commands). It takes an optional input  body, optional parameters, processes a certain task, and finally produces an optional output which is the response to the caller. Similar to HTTP and REST endpoints.
 
@@ -144,7 +144,7 @@ As you can see, the command parameter `key` has been set as request parameter he
 
 See [HTTP Execution Reference](#http-execution-reference) for an summary of all supported HTTP options here.
 
-## Pipeline
+## What is a Pipeline? <a id='pipeline'></a>
 
 Two or more [**commands**](../guides/command) can be chained to a flow, called a **Pipeline**. If such a pipeline gets executed, each command in it will be executed one after another, whereas the output message of the first command will become the input message of the next command, and so on. 
 

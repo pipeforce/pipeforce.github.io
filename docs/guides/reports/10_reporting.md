@@ -6,7 +6,7 @@ Such reports can be used to give your users simple insights into your workflow d
 
 Similar to the forms framework, reports can be created using the low code section in the online workbench.
 
-In order to build reports, it is important that you're familiar with the concepts of [Pipelines](../guides/commands_pipelines) and [Commands](../guides/commands_pipeline). If not, please follow the links to read more about these concepts and then come back to this guide.
+In order to build reports, it is important that you're familiar with the concepts of [Pipelines](../../guides/commands_pipelines) and [Commands](../../guides/commands_pipeline). If not, please follow the links to read more about these concepts and then come back to this guide.
 
 Each report always consists of two main components:
 
@@ -21,43 +21,43 @@ Here are some example charts which can be used inside PIPEFORCE:
 
 ### Vertical Bar Chart
 
-![](../img/chartjs_verticalbar.png)
+![](../../img/chartjs_verticalbar.png)
 
 ### Horizontal Bar Chart
 
-![](../img/chartjs_horizontalbar.png)
+![](../../img/chartjs_horizontalbar.png)
 
 ### Stacked Bar Chart
 
-![](../img/chartjs_stacked.png)
+![](../../img/chartjs_stacked.png)
 
 ### Line Chart
 
-![](../img/chartjs_line.png)
+![](../../img/chartjs_line.png)
 
 ### Line Chart (interpolating)
 
-![](../img/chartjs_interpolating.png)
+![](../../img/chartjs_interpolating.png)
 
 ### Bubble Chart
 
-![](../img/chartjs_bubble.png)
+![](../../img/chartjs_bubble.png)
 
 ### Doughnut Chart
 
-![](../img/chartjs_doughnut.png)
+![](../../img/chartjs_doughnut.png)
 
 ### Pie Chart
 
-![](../img/chartjs_pie.png)
+![](../../img/chartjs_pie.png)
 
 ### Polar Chart
 
-![](../img/chartjs_polar.png)
+![](../../img/chartjs_polar.png)
 
 ### Radar Chart
 
-![](../img/chartjs_radar.png)
+![](../../img/chartjs_radar.png)
 
 ## Creating a static chart
 
@@ -126,11 +126,11 @@ Here is a full working chart configuration with static data:
 
 Create a new property using the property editor, for example under ``global/app/myapp/report/piechart``:
 
-![](../img/reporting_new_piechart.png)
+![](../../img/reporting_new_piechart.png)
 
 Copy the configuration from above as content to this property and save it. Then go to ``All Apps -> myapp -> Pie chart example``. You should then see a static chart example which looks similar to this:
 
-![](../img/reporting_piechart.png)
+![](../../img/reporting_piechart.png)
 
 ## Creating a dynamic chart
 
@@ -148,7 +148,7 @@ As you can see, this pipeline simply returns the data part of the chart configur
 
 Lets save this pipeline under the app path you have stored the reporting configuration before, for example: ``global/app/myapp/pipeline/piechartdata``:
 
-![](../img/reporting_new_piechartdata.png)
+![](../../img/reporting_new_piechartdata.png)
 
 The last step is to link your chart configuration with your pipeline. To do so, replace your origin data section of your chart configuration:
 
@@ -185,7 +185,7 @@ This approach can also be used for the ``labels`` element to provide dynamic lab
 
 Sometimes collecting and preparing the data for a report can be a long running task which takes a lot of time and processing power. In this situations you should consider to cache your reporting data. 
 
-To do so, you can use the pipeline commands [``cache.get``](../api/commands.md#cacheget) and [``cache.put``](../api/commands.md#cacheput). Let's see the pipeline from the previous chapters extended by these caching commands:
+To do so, you can use the pipeline commands [``cache.get``](../../api/commands.md#cacheget) and [``cache.put``](../../api/commands.md#cacheput). Let's see the pipeline from the previous chapters extended by these caching commands:
 
 
 ```yaml
@@ -205,7 +205,7 @@ pipeline:
 
 ```
 
-As you can see, the command [``cache.get``](../api/commands.md#cacheget) at the beginning of the pipeline first looks-up an entry in the cache under key ``report:piechart``. In case such an entry exists, the pipeline will be exited. 
+As you can see, the command [``cache.get``](../../api/commands.md#cacheget) at the beginning of the pipeline first looks-up an entry in the cache under key ``report:piechart``. In case such an entry exists, the pipeline will be exited. 
 
 Otherwise the pipeline will be executed, the report data generated and stored in the body.
 

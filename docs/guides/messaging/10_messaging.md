@@ -1,4 +1,10 @@
-# Messaging
+---
+id: messaging
+
+title: 9. Messaging
+sidebar_label: Basics
+slug: /messaging
+---
 
 PIPEFORCE has a built-in messaging bus where application messages can be routed between microservices based on routing
 keys.
