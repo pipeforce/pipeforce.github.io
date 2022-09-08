@@ -50,7 +50,7 @@ In case this pipline contains command mocks using [``mock.command``](../api/comm
 
 ### onCommandError
 
-It is an ptional value to define what should happen if a single command in this pipeline has an error / exception. Possible values are:
+This is an optional value to define what should happen if a single command in this pipeline has an error / exception. Possible values are:
 
   * **`IGNORE`**: Only the exception message (not the full stacktrace) is logged as warn, but no exception is thrown. So, next command in the pipeline will be executed.
   * **`LOG`**: The full stacktrace of the exception is logged as an error, but no exception is thrown. So, next command in the pipeline will be executed.
