@@ -5,7 +5,11 @@ sidebar_label: Getting Started
 
 # Getting Started
 
-PIPEFORCE is a process automation and integration platform that is built entirely cloud-native. It runs inside a container orchestration environment like Kubernetes using microservices and messaging. Designed ground-up that way. It covers all aspects to create modern and best-of-breed enterprise solutions. It helps to create, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation, testing and life-cycle management. Everything on a single platform using low-code and custom microservices.
+**For standard processes, there is commodity software off the shelf. For everything beyond: PIPEFORCE.**
+
+PIPEFORCE is an enterprise-greade business process automation and application integration platform.  It is built entirely cloud-native and runs inside a container orchestration environment like Kubernetes using microservices and messaging. Designed ground-up that way. 
+
+It covers all aspects to create and integrate new age best-of-breed enterprise solutions. It helps to develop, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation and testing with full life-cycle management. Everything on a single platform which offers low-code and custom microservice development.
 
 ![](img/pipeforce-overview.png)
 

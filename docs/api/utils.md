@@ -4,7 +4,7 @@ sidebar_label: PEL Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 08/09/2022 17:33:30 by CommandComplianceTest -->
+<!-- Generated: 09/09/2022 18:02:38 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
 
@@ -353,6 +353,81 @@ value | ``object`` | The value to convert.
 #### Example  
 ```  
 @convert.toDecimal(value)  
+```  
+
+### toDecimal(value,decimalSymbol)   
+Converts the given value to a decimal number.   
+
+#### Returns  
+``bigdecimal`` - The value as decimal number ready for calculations.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The value to convert to decimal. 
+decimalSymbol | ``string`` | The decimal symbol to be used. Can be a comma , a dot . or a locale tag like de,                      en, fr for example. If null or empty, the locale tag of the currently logged-in user is used.                      If this is null, locale tag de is used as default. 
+
+
+#### Example  
+```  
+@convert.toDecimal(value,decimalSymbol)  
+```  
+
+### toDecimal(value,pattern,decimalSymbol)   
+Converts the given value to a decimal number by applying the given pattern and locale.   
+
+#### Returns  
+``bigdecimal`` - The value as decimal number ready for calculations.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The value to convert to decimal. 
+pattern | ``string`` | The decimal pattern to apply. For example: #.### 
+decimalSymbol | ``string`` | The decimal symbol to be used. Can be a comma , a dot . or a locale tag like de,                      en, fr for example. If null or empty, the locale tag of the currently logged-in user is used.                      If this is null, locale tag de is used as default. 
+
+
+#### Example  
+```  
+@convert.toDecimal(value,pattern,decimalSymbol)  
+```  
+
+### toDecimalString(value,pattern,decimalSymbol)   
+Formats a given number to a decimal string using the given decimal pattern and
+locale tag like de, en, fr aso.   
+
+#### Returns  
+``string`` - The decimal string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The decimal number to format to a string. 
+pattern | ``string`` | The decimal pattern like #.## for example. 
+decimalSymbol | ``string`` | The decimal symbol to be used. Can be a comma , a dot . or a locale tag like de,                      en, fr for example. If null or empty, the locale tag of the currently logged-in user is used.                      If this is null, locale tag de is used as default. 
+
+
+#### Example  
+```  
+@convert.toDecimalString(value,pattern,decimalSymbol)  
+```  
+
+### toDecimalString(value,decimalSymbol)   
+Formats a given number to a decimal string using the given locale tag like de, en, fr aso.   
+
+#### Returns  
+``string`` - The decimal string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The decimal number to format to a string. 
+decimalSymbol | ``string`` | The decimal symbol to be used. Can be a comma , a dot . or a locale tag like de,                      en, fr for example. If null or empty, the locale tag of the currently logged-in user is used.                      If this is null, locale tag de is used as default. 
+
+
+#### Example  
+```  
+@convert.toDecimalString(value,decimalSymbol)  
 ```  
 
  
