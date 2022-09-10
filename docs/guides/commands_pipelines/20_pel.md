@@ -69,7 +69,7 @@ Counter: 1
 
 ## Relational operators
 
-### Is equal (==)
+### Is equal `==`
 
 #### Example 1
 
@@ -85,7 +85,7 @@ Output:
 false
 ```
 
-### Is not equal (!=)
+### Is not equal `!=`
 
 #### Example 1
 
@@ -101,7 +101,7 @@ Output:
 true
 ```
 
-### Less than (<)
+### Less than `<`
 
 #### Example 1
 
@@ -131,7 +131,7 @@ Output:
 true
 ```
 
-### Less or equal than (<=)
+### Less or equal than `<=`
 
 #### Example 1
 
@@ -147,7 +147,7 @@ Output:
 true
 ```
 
-### Greater than (>)
+### Greater than `>`
 
 #### Example 1
 
@@ -163,7 +163,7 @@ Output:
 false
 ```
 
-### Greater or equal than (>=)
+### Greater or equal than `>=`
 
 #### Example 1
 
@@ -179,7 +179,7 @@ Output:
 true
 ```
 
-### Detect alphabetical order with <, >, <=, >=
+### Detect alphabetical order with `<`, `>`, `<=`, `>=`
 
 #### Example 1
 
@@ -195,7 +195,7 @@ Output:
 true
 ```
 
-### Regular expression matching (matches)
+### Regular expression matching `matches`
 
 #### Example 1
 
@@ -213,7 +213,7 @@ false
 
 ## Logical operators
 
-### and
+### `and`
 
 #### Example 1
 
@@ -229,7 +229,7 @@ Output:
 false
 ```
 
-### or
+### `or`
 
 #### Example 1
 
@@ -245,7 +245,7 @@ Output:
 true
 ```
 
-### not (!)
+### `not`,  `!`
 
 #### Example 1
 
@@ -260,10 +260,23 @@ Output:
 ```
 false
 ```
+#### Example 2
+
+```yaml
+pipeline:
+  - log:
+      message: "#{not true}"
+```
+
+Output:
+
+```
+false
+```
 
 ## Mathematical operators
 
-### Addition and subtraction
+### Addition `+` and subtraction `-`
 
 #### Example 1 - Addition
 
@@ -321,7 +334,7 @@ Output:
 Hello World!
 ```
 
-### Multiplication and division
+### Multiplication `*` and division `/`, `%`
 
 #### Example 1 - Multiplication
 
@@ -445,7 +458,7 @@ Output:
 13
 ```
 
-## Working with lists and maps
+## Working with lists `{,}` and maps `{:}`
 
 ### Creating a new list
 
@@ -667,7 +680,7 @@ Hobby: skateboard
 
 The PEL can be used to filter lists in an easy way. 
 
-### Selection Expression
+### Selection Expression `.?`
 
 With the selection syntax you can select a subset of items from a given collection to be returned as new collection by specifying a selection expression.
 
@@ -771,7 +784,7 @@ pipeline:
       message: "#{vars.data.?[person.name == 'Maggie Simpson']}"
 ```
 
-### Projection Expression
+### Projection Expression `.!`
 
 With the projection syntax you can select specific property values out from a collection of objects.
 

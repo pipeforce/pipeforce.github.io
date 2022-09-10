@@ -1,27 +1,27 @@
 ---
-title: PEL Utils Reference
-sidebar_label: PEL Utils
+title: Pipeline Functions Reference
+sidebar_label: Pipeline Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 09/09/2022 18:02:38 by CommandComplianceTest -->
+<!-- Generated: 10/09/2022 07:29:07 by CommandComplianceTest -->
 
-Reference documentation of [Pipeline Expression Language (PEL)](pel) utils (PEL Utils).  
+Reference documentation of [Pipeline Expression Language (PEL)](pel) Functions.  
 
 
 
-Example usage of the ``@date`` util inside a PEL expression :  
+Example usage of the ``@date`` function inside a PEL expression :  
 ```yaml  
 pipeline:  
   - log:  
       message: "The current date is: #{@date.now()}"  
 ```  
 
-Use the [online workbench](https://try.pipeforce.org) to get auto-completion for PEL utils:  
+Use the [online workbench](https://try.pipeforce.org) to get auto-completion for Pipeline Functions:  
 
 ![](../img/workbench-completion-utils.png)  
 
-##  @calc 
+## `@calc` 
 ----------  
 Provides utility functions inside a pipeline expression for simple calculations of lists.
 You can access the functions declared here in the PEL using <code>@calc</code>
@@ -65,7 +65,7 @@ list | ``object`` | The list of numbers.
 ```  
 
  
-##  @content 
+## `@content` 
 ----------  
 Provides utility functions inside a pipeline expression for creation and managing of content objects.
 You can access the functions declared here in the PEL using <code>@content</code>  
@@ -118,7 +118,7 @@ uri | ``string`` | The uri to be used for the content object
 ```  
 
  
-##  @convert 
+## `@convert` 
 ----------  
 Provides utility functions inside a pipeline expression for simple conversion and encoding tasks.
 You can access the functions declared here in the PEL using <code>@convert</code>  
@@ -431,7 +431,7 @@ decimalSymbol | ``string`` | The decimal symbol to be used. Can be a comma , a d
 ```  
 
  
-##  @data 
+## `@data` 
 ----------  
 Provides utility functions inside a pipeline expression for simple CRUD and transformation data operations.
 You can access the functions declared here in the PEL using <code>@data</code>  
@@ -592,7 +592,7 @@ attribute | ``string`` | The attribute name to search for.
 ```  
 
  
-##  @date 
+## `@date` 
 ----------  
 Provides utility functions inside a pipeline expression for simple date and time handling.
 You can access the functions declared here in the PEL using <code>@date</code>  
@@ -1055,48 +1055,7 @@ dayOffset | ``int`` | The days to be added (positive value) or subtracted (negat
 ```  
 
  
-##  @format 
-----------  
-Provides utility functions inside a pipeline expression for formatting values.  
-
-### decimal(value,pattern)   
-Formats the given number as decimal.   
-
-#### Returns  
-``string`` - The formatted string.  
-
-#### Parameters  
-Name | Type | Description
---- | --- | ---
-value | ``object`` | The number to format. 
-pattern | ``string`` | The pattern to be applied. 
-
-
-#### Example  
-```  
-@format.decimal(value,pattern)  
-```  
-
-### decimal(value)   
-Formats the given number as decimal.
-Uses as default the 0.00 format pattern.   
-
-#### Returns  
-``string`` - The formatted string.  
-
-#### Parameters  
-Name | Type | Description
---- | --- | ---
-value | ``object`` | The number to format. 
-
-
-#### Example  
-```  
-@format.decimal(value)  
-```  
-
- 
-##  @hash 
+## `@hash` 
 ----------  
 Provides utility functions inside a pipeline expression for simple hash handling.
 You can access the functions declared here in the PEL using <code>@hash</code>  
@@ -1267,7 +1226,7 @@ text | ``collection`` | The text (list) to concat into a string.
 ```  
 
  
-##  @iam 
+## `@iam` 
 ----------  
 Provides utility functions inside a pipeline expression for accessing IAM information.
 You can access the functions declared here in the PEL using <code>@iam</code>  
@@ -1324,7 +1283,7 @@ email | ``string`` | The email of the user.
 ```  
 
  
-##  @instance 
+## `@instance` 
 ----------  
 Provides utility functions inside a pipeline expression to return information about the current instance.
 You can access the functions declared here in the PEL using <code>@instance</code>  
@@ -1529,9 +1488,9 @@ image | ``string`` | The image name to be prefixed by the repo.
 ```  
 
  
-##  @json 
+## `@json` 
 ----------  
-Provides addon functions inside a pipe expression in order to read and change JSON documents.
+Provides functions inside a pipeline expression in order to read and change JSON documents.
 You can access the functions declared here in the PEL using <code>@json</code>  
 
 ### load(source)   
@@ -1571,7 +1530,7 @@ query | ``string`` | The query to be applied.
 ```  
 
  
-##  @list 
+## `@list` 
 ----------  
 Provides utility functions inside a pipeline expression for simple lists handling.
 You can access the functions declared here in the PEL using <code>@list</code>  
@@ -1747,7 +1706,7 @@ Creates a new empty list.
 ```  
 
  
-##  @path 
+## `@path` 
 ----------  
 Provides utility functions inside a pipeline expression for simple path calculations.
 You can access the functions declared here in the PEL using <code>@path</code>  
@@ -1807,9 +1766,9 @@ path | ``string`` | The path string.
 ```  
 
  
-##  @property 
+## `@property` 
 ----------  
-Provides addon functions inside a pipe expression in order to read properties from the property store.
+Provides functions inside a pipeline expression in order to read properties from the property store.
 You can access the functions declared here in the PEL using <code>@property</code>  
 
 ### value(key)   
@@ -1902,7 +1861,7 @@ key | ``string`` | The property key with optional fragment reference in form 'gl
 ```  
 
  
-##  @text 
+## `@text` 
 ----------  
 Provides utility functions inside a pipeline expression for simple calculations of lists.
 You can access the functions declared here in the PEL using <code>@calc</code>  
@@ -2474,7 +2433,7 @@ regexp | ``string`` | regular expression to use
 ```  
 
  
-##  @uri 
+## `@uri` 
 ----------  
 Provides utility functions inside a pipeline expression for simple uri resolving.
 You can access the functions declared here in the PEL using <code>@uri</code>  
@@ -2503,7 +2462,7 @@ uri | ``string`` | The uri to be resolved.
 ```  
 
  
-##  @user 
+## `@user` 
 ----------  
 Provides utility functions inside a pipeline expression for simple handling of the currently logged-in user.
 You can access the functions declared here in the PEL using <code>@user</code>  
@@ -2715,9 +2674,9 @@ See &lbrace;@link ZoneId#getAvailableZoneIds()&rbrace; and here: http://www.iana
 ```  
 
  
-##  @xml 
+## `@xml` 
 ----------  
-Provides addon functions inside a pipeline expression in order to read and change XML documents.
+Provides functions inside a pipeline expression in order to read and change XML documents.
 You can access the functions declared here in the PEL using <code>@xml</code>  
 
 ### xpath(document,xpath)   
