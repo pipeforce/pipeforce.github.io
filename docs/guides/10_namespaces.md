@@ -16,7 +16,7 @@ Each PIPEFORCE namespace contains of multiple services to run your solutions. De
 
 Usually these services are by default available within your namespace and can be accessed from the internet. They are therefore called "public" services:
 
- - **Hub** : This is the core service which manages and executes [Commands & Pipelines](commands_pipelines). Can be accessed via: `https://mycompany-hub.pipeforce.net`. 
+ - **Hub** : This is the core service which manages and executes [Commands & Pipelines](../commands_pipelines). Can be accessed via: `https://mycompany-hub.pipeforce.net`. 
  - **Portal**: A single page application which hosts the user and developer UI. Can be accessed via: `https://mycompany.pipeforce.net`. 
  - **Drive**: A data room application to store, edit and share documents and files. Can be accessed via: `https://mycompany-drive.pipeforce.net`. 
  - **IAM**: An identity and access management system to manage users, groups, permissions and logins. Can be accessed via: `https://mycompany-iam.pipeforce.net`. 

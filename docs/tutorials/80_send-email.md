@@ -89,7 +89,7 @@ In this step, you will learn how to add attachments to such an email pipeline. F
 
 ## 3 - Extra: Set from + dynamic text in emails
 
-Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPEFORCE to do so, is by using the [Pipeline Expression Language (PEL)](../api/pel). In this step, we will simply add the currently logged-in user as the from email field, so that the recipient can easily reply to you with the current date and time in the email text using PEL:
+Sometimes it is necessary to put dynamic text to emails. The easiest way in PIPEFORCE to do so, is by using the [Pipeline Expression Language (PEL)](../guides/commands_pipelines/pel). In this step, we will simply add the currently logged-in user as the from email field, so that the recipient can easily reply to you with the current date and time in the email text using PEL:
 
 1.  Change your pipeline send-email to this:
     
@@ -128,4 +128,4 @@ In order to get auto-completion for available PEL utils in the online editor, si
 
 References:
 
-[PEL Utils Reference](../api/utils.md)
+[Pipeline Functions Reference](../api/functions.md)

@@ -12,7 +12,7 @@ One of the most important parts in PIPEFORCE are Commands and Pipelines. Using t
 
 ## What is a Command? 
 
-Let's first start with the atomic part of a flow: The Command. A Command is a server-side component, which can be called remotely via HTTP using its [unique name](../../api/commands). It takes an optional input  body, optional parameters, processes a certain task, and finally produces an optional output which is the response to the caller. Similar to HTTP and REST endpoints.
+Let's first start with the atomic part of a flow: The Command. A Command is a server-side component, which can be called remotely via HTTP using its [unique name](api/commands). It takes an optional input  body, optional parameters, processes a certain task, and finally produces an optional output which is the response to the caller. Similar to HTTP and REST endpoints.
 
 The main difference of Commands compared to REST is, that multiple Commands can optionally be connected like "LEGO" bricks. They will be called one after another at serverside, whereas the output of one command becomes the input of the next command, aso. If you would like to learn more about this approach, see the concept of a [Pipeline](#pipeline) below. 
 
@@ -26,16 +26,16 @@ There are many different commands for different tasks in PIPEFORCE available. Fo
 - connect to other systems, and read / write data 
 - and much more...
 
-You can find a all built-in commands in the [commands reference](../../api/commands).
+You can find a all built-in commands in the [commands reference](api/commands).
 
 ### Command Name
 Each command has a unique name which is always written in lower case and follows the dot notation. Here are some examples of valid command names:
 
- - [`barcode.create`](../../api/commands#barcodecreate-v1)
- - [`data.list.iterate`](../../api/commands#datalistiterate-v1)
- - [`log`](../../api/commands#log-v1)
- - [`mail.send`](../../api/commands#mailsend-v1)   
- - [`property.put`](../../api/commands#propertyput-v1)
+ - [`barcode.create`](api/commands#barcodecreate-v1)
+ - [`data.list.iterate`](api/commands#datalistiterate-v1)
+ - [`log`](api/commands#log-v1)
+ - [`mail.send`](api/commands#mailsend-v1)   
+ - [`property.put`](api/commands#propertyput-v1)
 
 
 As you can see, the command name is usually structured like this:
@@ -49,7 +49,7 @@ These are for example invalid command names:
  - `dataEntity`
  - `my command`
 
-The full list of available commands and their names can be found in the [commands reference](../../api/commands).
+The full list of available commands and their names can be found in the [commands reference](api/commands).
 
 :::tip Command Names vs. REST Resource Names
 Even if many command names do have a similar resource-based semantic like HTTP GET, POST or PUT as REST do, they do not follow this approach 100%, since a Command is not always bound do a single resource and can be bound to actions or can be chained instead. Therefore, the operation type of a command is defined by its name, not by a method header. For example: `property.put` or `config.get` to name just a few.
@@ -84,19 +84,19 @@ https://HUB/api/v3/command/<command.name>?<param1>=<value1>&<paramN>=<valueN>
 ```
 :::tip Note
 - Replace ``HUB`` by the hub host name of your instance (for example `hub-mycompany.pipeforce.net`).
-- Replace ``<command.name>`` by the [name](../../api/commands) of the command you would like to execute.
-- Replace ``<param1>``,``<value1>`` and ``<paramN>``,``<valueN>`` by the optional [parameters](../../api/commands) of your command.
+- Replace ``<command.name>`` by the [name](api/commands) of the command you would like to execute.
+- Replace ``<param1>``,``<value1>`` and ``<paramN>``,``<valueN>`` by the optional [parameters](api/commands) of your command.
 :::
 
 ##### GET
 
-Here is an example to execute the [`log`](../../api/commands#log-v1) command as HTTP GET request, and set its [`message`](../../api/commands#log-v1) parameter to a string value using a HTTP request parameter:
+Here is an example to execute the [`log`](api/commands#log-v1) command as HTTP GET request, and set its [`message`](api/commands#log-v1) parameter to a string value using a HTTP request parameter:
 
 ```yaml
 https://hub-trial.pipeforce.org/api/v3/command/log?message=HELLO
 ```
 :::tip Note
-- [Authentication](../../guides/security/authorization) is not considered here for simplicity reasons.
+- [Authentication](guides/security/authorization) is not considered here for simplicity reasons.
 - Replace ``http://hub-trial.pipeforce.org`` by the url of your target system.
 - In case you would like to use special characters like spaces, umlauts, `?` or `=` for example in your parameter value, you need to URL encode the URL as you would do with any such HTTP request. See Wikipedia for details: https://en.wikipedia.org/wiki/Percent-encoding 
 :::
@@ -105,7 +105,7 @@ See [HTTP Execution Reference](#http-execution-reference) for an summary of all 
 
 ##### POST
 
-Here is an example to execute a single command as HTTP POST request, and set the `message` parameter to a [`log`](../../api/commands#log-v1) command using a HTTP POST data body in `curl`:
+Here is an example to execute a single command as HTTP POST request, and set the `message` parameter to a [`log`](api/commands#log-v1) command using a HTTP POST data body in `curl`:
 
 ```bash
 curl -u "username:password" \
@@ -113,14 +113,14 @@ curl -u "username:password" \
 ```
 
 :::tip Note
-- Authentication is done here by using basic authentication in the `Authorization` header. See [Authorization](../../api/headers) and the `-u` switch of the `curl` terminal command for details.
+- Authentication is done here by using basic authentication in the `Authorization` header. See [Authorization](api/headers) and the `-u` switch of the `curl` terminal command for details.
 - Replace ``http://hub-trial.pipeforce.org`` by the url of your target system.
 :::
 
 See [HTTP Execution Reference](#http-execution-reference) for an summary of all supported HTTP options here.
 
 #### Execute in CLI
-You can also use the [PIPEFORCE CLI](../../api/cli) in order to execute a single Command. Here is an example to call the [`log`](../../api/commands#log-v1) command and set the `message` parameter accordingly:
+You can also use the [PIPEFORCE CLI](cli) in order to execute a single Command. Here is an example to call the [`log`](api/commands#log-v1) command and set the `message` parameter accordingly:
 
 ```bash
 pi command log message=HELLO
@@ -134,7 +134,7 @@ Beside **parameters**, a command can also consume and produce a **body**, simila
 
 Differently to parameters, the input body is typically a more complex document and/or bigger data stream which must be modified in some way. Therfore, it is passed-in and written-out via the body by default. 
 
-Here is an example to pass JSON data via body to a [`cache.put`](../../api/commands#log-v1) command using a HTTP POST request and the `curl` tool:
+Here is an example to pass JSON data via body to a [`cache.put`](api/commands#log-v1) command using a HTTP POST request and the `curl` tool:
 
 ```bash
 curl -X POST 'https://hub-trial.pipeforce.org/api/v3/command/cache.put?key=someKey' \ 
@@ -146,7 +146,7 @@ curl -X POST 'https://hub-trial.pipeforce.org/api/v3/command/cache.put?key=someK
 As you can see, the command parameter `key` has been set as request parameter here and in the HTTP POST body a JSON string is set using the `-d` switch of `curl`. This JSON will become the input body (data) for the `cache.put` command. In order to automatically parse this JSON string into a JSON instance and use it as such in the command, you can optionally specify the `Content-Type: application/json` header.
 
 :::tip Note
-- Authentication is done here by using the `Authorization` header. See [Authorization](../../api/headers#authorization) for details.
+- Authentication is done here by using the `Authorization` header. See [Authorization](api/headers#authorization) for details.
 - Replace ``http://hub-trial.pipeforce.org`` by the url of your target system.
 :::
 
@@ -156,7 +156,7 @@ See [HTTP Execution Reference](#http-execution-reference) for an summary of all 
 
 ## What is a Pipeline?
 
-Two or more [**commands**](../../guides/command) can be chained to a flow, called a **Pipeline**. If such a pipeline gets executed, each command in it will be executed one after another, whereas the output message of the first command will become the input message of the next command, and so on. 
+Two or more [Commands](#command) can be chained to a flow, called a **Pipeline**. If such a pipeline gets executed, each command in it will be executed one after another, whereas the output message of the first command will become the input message of the next command, and so on. 
 
 ![](../../img/pipe-chain.drawio.png)
 
@@ -185,7 +185,7 @@ pipeline:
   - log
 ```
 
-As long as you do not use any [Pipeline Expression Syntax](../../api/pel), you can write parameter values also without any quotes. Optionally, you can use single quotes for parameter values:
+As long as you do not use any [Pipeline Expression Syntax](guides/commands_pipelines/pel), you can write parameter values also without any quotes. Optionally, you can use single quotes for parameter values:
 
 ```yaml
 pipeline:
@@ -334,7 +334,7 @@ Since version 7.0 of PIPEFORCE was released, the Online Workbench is available. 
 
 #### Execute in CLI
 
-Another approach to execute a pipeline is by using the CLI: [Command Line Interface (CLI)](../../api/cli).
+Another approach to execute a pipeline is by using the CLI: [Command Line Interface (CLI)](cli).
 
 ##### Execute local pipeline file
 
@@ -352,7 +352,7 @@ A pipeline file must end in this suffix to be detected correctly by your workspa
 
 ##### Execute persisted remote pipeline
 
-In case you have stored your pipeline at server side in the [Property Store](../../propertystore), then you can execute it using this call:
+In case you have stored your pipeline at server side in the [Property Store](propertystore), then you can execute it using this call:
 
 ```bash
 pi pipeline remote global/app/myapp/pipeline/test
@@ -395,11 +395,11 @@ All sections except `pipeline` are optional in a pipeline script. Even if not ex
 
 The headers section is optional. A header is a name-value pair to define "global configuration" hints and configurations for the given pipeline. Only text is allowed as content i.e. no complex objects like JSON. It is not meant to be changed during pipeline processing, even this is possible for rare cases.
 
-Whether and which headers are required depends on the pipeline and its commands. There are some default headers in order to configure the pipeline processing. See the [headers reference](../../api/headers) for details.
+Whether and which headers are required depends on the pipeline and its commands. There are some default headers in order to configure the pipeline processing. See the [headers reference](api/headers) for details.
 
-It is similar to HTTP Request headers: [https://en.wikipedia.org/wiki/List\_of\_HTTP\_header\_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
+It is similar to [HTTP Request Headers](https://en.wikipedia.org/wiki/List\_of\_HTTP\_header\_fields).
 
-You can read and set values in the headers section using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../../api/pel).
+You can read and set values in the headers section using the [Pipeline Expression Language (PEL)](guides/commands_pipelines/pel).
 
 ### `vars`
 
@@ -409,15 +409,15 @@ Values can also be complex objects and documents like JSON for example.
 
 Values can be changed during pipeline processing.
 
-You can access values in the vars scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../../api/pel).
+You can access values in the vars scope using the [Pipeline Expression Language (PEL)](guides/commands_pipelines/pel).
 
 ### `pipeline`
 
 The pipeline section is mandatory and lists all commands which must be executed in given order.
 
-See the [commands reference](../../api/commands) for details about the default commands.
+See the [commands reference](api/commands) for details about the default commands.
 
-You can set dynamic parameter values on commands using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../../api/pel).
+You can set dynamic parameter values on commands using the [Pipeline Expression Language (PEL)](guides/commands_pipelines/pel).
 
 ### `body`
 
@@ -427,7 +427,7 @@ In case a command returns a value, by default, it will write this value to the b
 
 It's also possible to define an initial value for the body in the pipeline. If no such initial value is set, the body is initally `null`.
 
-You can access values in the body scope using the Pipeline Expression Language (PEL). See here: [Pipeline Expression Language (PEL)](../../api/pel).
+You can access values in the body scope using the [Pipeline Expression Language (PEL)](guides/commands_pipelines/pel).
 
 ### Pipeline as JSON
 
@@ -630,7 +630,7 @@ Setting | Description
 Endpoint: | `/api/v3/command/{command.name}?param1=value1&param2=value2`
 HTTP Method: | `POST`
 Request params: | Become the params of the command.
-Request body: |  Contains HTTP multipart sections as described by the IETF specification: https://www.ietf.org/rfc/rfc2388.txt. All parts will be treated as file attachments and will be converted to a [content collection](../../guides/contentobject#collection) which in term is then provided as body to the command. 
+Request body: |  Contains HTTP multipart sections as described by the IETF specification: https://www.ietf.org/rfc/rfc2388.txt. All parts will be treated as file attachments and will be converted to a [content collection](guides/contentobject#collection) which in term is then provided as body to the command. 
 Content-Type: | `multipart/form-data`
 
 ### Pipeline YAML
@@ -700,7 +700,7 @@ Setting | Description
 Endpoint: | `/api/v3/pipeline`
 HTTP Method: | `POST`
 Request params: | *Ignored*
-Request body: | Contains HTTP multipart sections as described by the IETF specification: https://www.ietf.org/rfc/rfc2388.txt. **The very first part must be the pipeline**. All following parts will be treated as file attachments and will be converted to a [content collection](../../guides/contentobject#collection) which in term is then provided as body to the pipeline. 
+Request body: | Contains HTTP multipart sections as described by the IETF specification: https://www.ietf.org/rfc/rfc2388.txt. **The very first part must be the pipeline**. All following parts will be treated as file attachments and will be converted to a [content collection](guides/contentobject#collection) which in term is then provided as body to the pipeline. 
 Content-Type: | `multipart/form-data`
 
 Here’s an example of such an HTTP multipart request as defined by the HTTP specification. This example does multiple steps in one request: It uploads a PDF, puts a new text on the PDF and then stores it at server side:

@@ -48,7 +48,7 @@ This documentation is mainly for Low Code and Professional Developers. If you ar
 
 If you are a Low Code Developer or a Professional Developer and new to PIPEFORCE, we recommend you to walk through the [Tutorials](tutorials/basics) section first. After this you should have a good base understanding of PIPEFORCE.
 
-In the [Guides](guides/command) section you can find deep diving documentation about concepts and technologies, that PIPEFORCE is using.
+In the [Guides](commands_pipelines) section you can find deep diving documentation about concepts and technologies, that PIPEFORCE is using.
 
 In the [API](api/commands) section you can find reference documentation for PIPEFORCE.
 

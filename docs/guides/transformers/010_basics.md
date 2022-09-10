@@ -45,19 +45,19 @@ Especially these topics are worth a read in this context:
 
 See the [reference documentation](../../api/pel) for details about the PEL syntax.
 
-### PEL Utils
+### Pipeline Functions
 
-Additionally to the PEL core syntax, there are utility methods available which also can help you to simplify your data transformation tasks. 
+Additionally to the Pipeline Expression core syntax, there are [Pipeline Functions](../../guides/commands_pipelines/functions) available which also can help you to simplify your data transformation tasks. 
 For data transformation these utils could be of special interest:
 
- - [@calc](../../api/utils#calc) - For number crunching.
- - [@convert](../../api/utils#convert) - For convertion tasks (for example from decimal to int).
- - [@data](../../api/utils#data) - For data information and alter tasks.
- - [@date](../../api/utils#date) - Formatting date and time data.
- - [@list](../../api/utils#list) - Read and edit lists.
- - [@text](../../api/utils#text) - Text utilities in order to change and test text data.
+ - [@calc](../../api/functions#calc) - For number crunching.
+ - [@convert](../../api/functions#convert) - For convertion tasks (for example from decimal to int).
+ - [@data](../../api/functions#data) - For data information and alter tasks.
+ - [@date](../../api/functions#date) - Formatting date and time data.
+ - [@list](../../api/functions#list) - Read and edit lists.
+ - [@text](../../api/functions#text) - Text utilities in order to change and test text data.
   
-See the [reference documentation](../../api/utils) for a full list of the available PEL utils.
+See the [reference documentation](../../api/functions) for a full list of the available Pipeline Functions.
 
 ## Transformation Patterns
 
