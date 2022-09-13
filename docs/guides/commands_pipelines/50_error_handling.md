@@ -253,3 +253,9 @@ The optional parameters of the `RETRY` action are:
 -  `wait`: The time to wait in seconds before the next retry starts. Defaults to `3` seconds.
  - `times`: The number of retries before giving up and executing the `then` action. Defaults to `1`.
  - `then`: The final action to do in case the error still occurs after the given amount of retries. Can be one of `IGNORE`, `LOG`, `THROW` or `ROLLBACK`. Defaults to `THROW`.
+
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::
