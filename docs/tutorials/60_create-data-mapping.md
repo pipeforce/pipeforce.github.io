@@ -167,3 +167,8 @@ Let's see in this tutorial, how to implement this conversion task by using a pip
     
 
 **Congrats, you have created your first data mapping rules in PIPEFORCE!**
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

@@ -262,3 +262,8 @@ When executing via CLI or command, the result will always be a test run report i
 You can run all of your remote tests also online using the Test Console. To do so, login to PIPEFORCE with your developer account and then in the `LOW CODE` section click on `Test Console` and then `Run Tests`. The test result is finally shown as a test report like this example shows:
 
 ![](../../img/test-console.png)
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

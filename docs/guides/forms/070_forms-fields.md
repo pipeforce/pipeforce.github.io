@@ -267,3 +267,8 @@ Tip: Be aware, that you have to configure a layout for your form in order to sho
 ## Show attachments in a task form
 
 This functionality will be available with PIPEFORCE Version 8.0. Documentation will be added after release.
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

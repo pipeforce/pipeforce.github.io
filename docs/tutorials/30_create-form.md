@@ -135,3 +135,8 @@ Now we are going to change the layout of your form a bit. To do so, we add a cus
 :::tip 
 If you have two monitors, its very handy to show the resulting form in the browser on one monitor, while editing its schema and layout in another monitor. This way you can very easily change, publish and then refresh your browser to see the changes.
 :::
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

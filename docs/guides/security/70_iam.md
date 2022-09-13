@@ -74,3 +74,8 @@ Use “Forgot password” function in the login form:
 2.  Authenticator Setup is showing - there you need to copy the QR code again to reconfigure 2-factor authentification. 
 **Attention**: Google Authenticator App will ask you to overwrite your former configuration. You need to confirm it.
 
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::
+

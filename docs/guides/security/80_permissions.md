@@ -159,3 +159,8 @@ For more information about the available `iam.*` commands, see the commands' das
 ## Anonymous User
 
 In case a user is not logged-in, the system handles this automatically as `anonymousUser` with no roles/permissions and no groups assigned to it. Such a user can only execute a very limited set of public commands.
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

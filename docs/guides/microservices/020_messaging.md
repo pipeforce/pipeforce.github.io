@@ -135,3 +135,8 @@ Message / Event Key | Description
 `usagelog.created` | A new usagelog entry was created in the property store. See UsageLogCreatedEvent.java for implementation details.
 `webhook.<name_of_webhook>` | In case a webhook call has been occurred. The <name_of_webhook> depends on the setup. You can use the pattern webhook.# to listen to all webhooks.
 Depends on key param of command event.send. | Furthermore whenever the command event.send is called, the payload of this event is also forwarded to the default hub topic using the key param of this command as the messaging key and the body as the payload of the message.
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

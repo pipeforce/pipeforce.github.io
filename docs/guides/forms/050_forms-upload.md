@@ -102,3 +102,8 @@ pipeline:
 Whenever you listen to an event, PIPEFORCE automatically places the event object to the body.
 In case of a `property.created` event, this contains information about the property and its attachments.
 :::
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

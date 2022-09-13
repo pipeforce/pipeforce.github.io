@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 10/09/2022 by CommandComplianceTest -->
+<!-- Generated: 13/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](../guides/command).  
 
@@ -11669,3 +11669,8 @@ Learn more: [Command Line Interface (CLI)](../guides/cli) | [CLI Reference](./cl
 
   
 
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

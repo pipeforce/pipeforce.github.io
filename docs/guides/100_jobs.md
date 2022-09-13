@@ -123,3 +123,8 @@ Only Pipeline Jobs are shown here and no system-internally jobs.
  - `running` = In case the job is currently actively running. If false, the job is registered, but paused.
 
 In case you would like to get information about a single job, you can use the [job.status](../api/commands#jobstatus-v1) command instead.
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

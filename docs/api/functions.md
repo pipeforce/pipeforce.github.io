@@ -4,7 +4,7 @@ sidebar_label: Pipeline Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 10/09/2022 07:29:07 by CommandComplianceTest -->
+<!-- Generated: 13/09/2022 09:33:31 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) Functions.  
 
@@ -2716,3 +2716,8 @@ xpath | ``string`` | The expression to be applied.
 ```  
 
  
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

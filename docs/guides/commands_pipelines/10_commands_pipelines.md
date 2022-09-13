@@ -729,3 +729,7 @@ BINARY DATA OF my.pdf
 
 All rules for the [Pipline YAML](#pipeline-yaml) also applies to the Pipeline JSON format. The only difference is to replace the header `Content-Type: application/yaml` with `Content-Type: application/json`.
 
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

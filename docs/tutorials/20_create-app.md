@@ -91,3 +91,9 @@ Staging is the process of hiding an application from the production context unti
     
 *   **Staging by namespace**  
     There are two separate namespaces: development and production. In the development namespace, apps are developed. Also services like databases or other microservices can be seen in this namespace. Once development and testing is finished, the app will copied to the production namespace. The advantage here is that the two namespaces separate each app and its environment from each other. Chances are very low that development on an app will affect the apps in production. The downside is that there is much more effort to put such an app from development to production stage. Staging by namespace requires at least two Enterprise instances or a Corporate license.
+
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

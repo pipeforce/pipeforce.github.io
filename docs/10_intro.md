@@ -55,3 +55,8 @@ In the [API](api/commands) section you can find reference documentation for PIPE
 In case you don't have a PIPEFORCE account yet, we highly recommend you to create one first, so you can try out all examples and tutorials live. It's a matter of seconds to create a free account here:
 
  **https://try.pipeforce.org**
+
+ ## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

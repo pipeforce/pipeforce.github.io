@@ -21,3 +21,8 @@ The PIPEFORCE portal has also an online BPMN designer built-in, so an offline to
 | 5.0.0 | Windows 64bit | [camunda-modeler-5.0.0-win-x64.zip](https://downloads.camunda.cloud/release/camunda-modeler/5.0.0/camunda-modeler-5.0.0-win-x64.zip) |
 | 5.0.0  | Windows 32bit | [camunda-modeler-5.0.0-win-ia32.zip](https://downloads.camunda.cloud/release/camunda-modeler/5.0.0/camunda-modeler-5.0.0-win-ia32.zip) |
 | 5.0.0  | Mac OS | [camunda-modeler-5.0.0-mac.zip](https://downloads.camunda.cloud/release/camunda-modeler/5.0.0/camunda-modeler-5.0.0-mac.zip) |
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

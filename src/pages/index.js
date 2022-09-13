@@ -29,7 +29,7 @@ function HomepageHeader() {
         </div>
       </div> */}
 
-        <span className={styles.message}><b>Open</b> framework for <b>process automation</b> and <b>data integration</b> in <b>Kubernetes</b>.</span>
+        <span className={styles.message}>Open framework for <b>Hyperautomation</b> and <b>Application Integration</b> in Kubernetes.</span>
         <br /><br />
         <p className="hero__subtitle">Documentation space for <b>Low Coders</b> and <b>Professional Developers</b>.</p>
         <br />

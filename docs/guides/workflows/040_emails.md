@@ -207,3 +207,8 @@ The new task form of the Reviewer should now look like this:
 If you now start the workflow, you are able to see the requester email in the task form of the Reviewer.
 
 For more guide on email pipelines and templates, please see: **[Email Pipelines](../email)**
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

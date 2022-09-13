@@ -38,3 +38,8 @@ In case multiple documents are loaded into a pipeline, such documents are groupe
 | `children` | ContentObject | Returns a list of all content objects which are contained in the collection. This can not only be a document, but also another content collection in case they are nested. |
 
 A Content Collection is also a [Content Object](#) and therefore it also has all attributes of the Content Object.
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

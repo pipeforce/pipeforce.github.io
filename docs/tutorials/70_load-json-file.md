@@ -157,3 +157,8 @@ When you load an external file in a pipeline, in most cases, it will be placed i
 
 In case you want to parse an external file in order to analyse and/or transform its content for example, you need to convert the data property of the content object to the target format you like, which is usually JSON. You can use the PEL and the convert util for example:  
 `#{convert.toJSON(body.data)}`
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::

@@ -69,3 +69,8 @@ In order to change the color of an element, use one of the color names from thes
 Below, you can find a preview of icons. To get the full list and name of all possible icons, go to [https://material.io/resources/icons](https://material.io/resources/icons), and search for the icon you need.
 
 ![](../../img/material-icons.png)![](../../img/material-icons1.png)
+
+## Report an Issue
+:::tip Your help is needed!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+:::
