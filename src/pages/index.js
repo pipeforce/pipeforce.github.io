@@ -31,7 +31,7 @@ function HomepageHeader() {
 
         <span className={styles.message}>Open framework for <b>Hyperautomation</b> and <b>Application Integration</b> in Kubernetes.</span>
         <br /><br />
-        <p className="hero__subtitle">Documentation space for <b>Low Coders</b> and <b>Professional Developers</b>.</p>
+        <p className="hero__subtitle">Welcome to the <b>Low Code</b> and <b>Development</b> documentation space!</p>
         <br />
         <div className={styles.buttons}>
           <Link
