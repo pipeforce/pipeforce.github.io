@@ -1,8 +1,8 @@
 # Tutorial 11: Create a PDF stamp
 
-**Tutorial 11 Estimated time:** 10 min.
+**Estimated time:** 10 min.
 
-## Tutorial 11 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher + DMS module
     

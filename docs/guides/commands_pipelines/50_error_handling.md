@@ -2,7 +2,7 @@
 
 In case an error occurs during execution of a command, the execution of the command and/or the according pipeline stops by default and an error message is sent back to the caller. You have different options to adjust this default behaviour.
 
-## Stop execution (default)
+## Stop (default)
 
 If you would like to stop execuction of the command and/or the pipeline in case an error occurs, you need to set the `action` of the pipeline header `onError` to `THROW`. In this case, the full stacktrace message about the error will be logged and after this, the execution of the command and/or the pipeline will stop. 
 
@@ -58,7 +58,7 @@ pipeline:
     paramB: valueB
 ```
 
-## Ignore error
+## Ignore
 
 In order to ignore the error, you can set the `action` of the pipeline header `onError` to `IGNORE`. In this case, a short message about the error will be logged and after this, the pipeline will go on with the next command. Here is an example to set this header globally for all commands in a pipeline:
 
@@ -110,7 +110,7 @@ pipeline:
 
 In case you specify `onError` as Pipeline header **and** as Command parameter, the parameter will have precendence.
 
-## Ignore but log error
+## Ignore + log stacktrace
 
 In order to ignore the error, but log the full stacktrace with all detail information, you can set the `action` of the pipeline header `onError` to `LOG`. In this case, the full stacktrace message about the error will be logged and after this, the pipeline will go on with the next command. Here is an example to set this header in a pipeline:
 
@@ -198,7 +198,7 @@ In case you specify `onError` as Pipeline header **and** as Command parameter, t
 
 There is no short form for this action.
 
-## Retry execution
+## Retry
 
 It's also possible to retry a command after an error has been occured, executing it. In this case, after the `wait` amount of seconds, the command will be re-executed the configured amount of `times`. And finally, if the error still exists, a final action will be executed, defined by `then`. Here is an example to set this header in a pipeline:
 

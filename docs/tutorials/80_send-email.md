@@ -1,8 +1,8 @@
 # Tutorial 8: Send an Email
 
-**Tutorial 8 Estimated time:** 10 min.
+**Estimated time:** 10 min.
 
-## Tutorial 8 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher + DMS module (optional)
     

@@ -1,8 +1,8 @@
 # Tutorial 10: Create a Webhook
 
-**Tutorial 10 Estimated time:** 15 min.
+**Estimated time:** 15 min.
 
-## Tutorial 10 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher.
     

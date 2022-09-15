@@ -1,8 +1,8 @@
 # Tutorial 9: Send Teams Message
 
-**Tutorial 9 Estimated time:** 10 min.
+**Estimated time:** 10 min.
 
-## Tutorial 9 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     

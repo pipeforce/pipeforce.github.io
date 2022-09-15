@@ -1,8 +1,8 @@
 # Tutorial 3: Create a Form
 
-**Tutorial 3 Estimated time:** 30 min.
+**Estimated time:** 30 min.
 
-## Tutorial 3 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     

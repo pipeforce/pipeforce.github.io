@@ -4,7 +4,7 @@ sidebar_label: Pipeline Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 13/09/2022 16:49:33 by CommandComplianceTest -->
+<!-- Generated: 14/09/2022 13:42:21 by CommandComplianceTest -->
 
 Reference documentation of [Pipeline Expression Language (PEL)](pel) Functions.  
 
@@ -23,8 +23,8 @@ Use the [online workbench](https://try.pipeforce.org) to get auto-completion for
 
 ## `@calc` 
 ----------  
-Provides utility functions inside a pipeline expression for simple calculations of lists.
-You can access the functions declared here in the PEL using <code>@calc</code>
+Provides utility functions inside a pipeline expression for simple calculations of lists.  
+You can access the functions declared here in the PEL using <code>@calc</code>  
 Note: This is a public interface. Methods exposed here can be accessed by external developers in the pipelines!  
 
 ### sum(list)   
@@ -67,7 +67,7 @@ list | ``object`` | The list of numbers.
  
 ## `@content` 
 ----------  
-Provides utility functions inside a pipeline expression for creation and managing of content objects.
+Provides utility functions inside a pipeline expression for creation and managing of content objects.  
 You can access the functions declared here in the PEL using <code>@content</code>  
 
 ### newCollection(uris)   
@@ -120,7 +120,7 @@ uri | ``string`` | The uri to be used for the content object
  
 ## `@convert` 
 ----------  
-Provides utility functions inside a pipeline expression for simple conversion and encoding tasks.
+Provides utility functions inside a pipeline expression for simple conversion and encoding tasks.  
 You can access the functions declared here in the PEL using <code>@convert</code>  
 
 ### toBase64(value)   
@@ -433,7 +433,7 @@ decimalSymbol | ``string`` | The decimal symbol to be used. Can be a comma , a d
  
 ## `@data` 
 ----------  
-Provides utility functions inside a pipeline expression for simple CRUD and transformation data operations.
+Provides utility functions inside a pipeline expression for simple CRUD and transformation data operations.  
 You can access the functions declared here in the PEL using <code>@data</code>  
 
 ### set(data,path,value)   
@@ -594,7 +594,7 @@ attribute | ``string`` | The attribute name to search for.
  
 ## `@date` 
 ----------  
-Provides utility functions inside a pipeline expression for simple date and time handling.
+Provides utility functions inside a pipeline expression for simple date and time handling.  
 You can access the functions declared here in the PEL using <code>@date</code>  
 
 ### now()   
@@ -1057,7 +1057,7 @@ dayOffset | ``int`` | The days to be added (positive value) or subtracted (negat
  
 ## `@hash` 
 ----------  
-Provides utility functions inside a pipeline expression for simple hash handling.
+Provides utility functions inside a pipeline expression for simple hash handling.  
 You can access the functions declared here in the PEL using <code>@hash</code>  
 
 ### sha256(input)   
@@ -1228,7 +1228,7 @@ text | ``collection`` | The text (list) to concat into a string.
  
 ## `@iam` 
 ----------  
-Provides utility functions inside a pipeline expression for accessing IAM information.
+Provides utility functions inside a pipeline expression for accessing IAM information.  
 You can access the functions declared here in the PEL using <code>@iam</code>  
 
 ### userByUuid(userUuid)   
@@ -1285,7 +1285,7 @@ email | ``string`` | The email of the user.
  
 ## `@instance` 
 ----------  
-Provides utility functions inside a pipeline expression to return information about the current instance.
+Provides utility functions inside a pipeline expression to return information about the current instance.  
 You can access the functions declared here in the PEL using <code>@instance</code>  
 
 ### domain()   
@@ -1490,7 +1490,7 @@ image | ``string`` | The image name to be prefixed by the repo.
  
 ## `@json` 
 ----------  
-Provides functions inside a pipeline expression in order to read and change JSON documents.
+Provides functions inside a pipeline expression in order to read and change JSON documents.  
 You can access the functions declared here in the PEL using <code>@json</code>  
 
 ### load(source)   
@@ -1532,7 +1532,7 @@ query | ``string`` | The query to be applied.
  
 ## `@list` 
 ----------  
-Provides utility functions inside a pipeline expression for simple lists handling.
+Provides utility functions inside a pipeline expression for simple lists handling.  
 You can access the functions declared here in the PEL using <code>@list</code>  
 
 ### first(value)   
@@ -1708,7 +1708,7 @@ Creates a new empty list.
  
 ## `@path` 
 ----------  
-Provides utility functions inside a pipeline expression for simple path calculations.
+Provides utility functions inside a pipeline expression for simple path calculations.  
 You can access the functions declared here in the PEL using <code>@path</code>  
 
 ### join(pathItems)   
@@ -1768,7 +1768,7 @@ path | ``string`` | The path string.
  
 ## `@property` 
 ----------  
-Provides functions inside a pipeline expression in order to read properties from the property store.
+Provides functions inside a pipeline expression in order to read properties from the property store.  
 You can access the functions declared here in the PEL using <code>@property</code>  
 
 ### value(key)   
@@ -1863,7 +1863,7 @@ key | ``string`` | The property key with optional fragment reference in form 'gl
  
 ## `@text` 
 ----------  
-Provides utility functions inside a pipeline expression for simple calculations of lists.
+Provides utility functions inside a pipeline expression for simple calculations of lists.  
 You can access the functions declared here in the PEL using <code>@calc</code>  
 
 ### upperCase(text)   
@@ -2083,7 +2083,8 @@ text | ``object`` | The text to detect the language for.
 ```  
 
 ### random(size)   
-Creates a random string of given size.   
+Creates a random alphanumeric string of given size. Characters will be used from
+a set of Latin alphabetic characters (a-z, A-Z) and the digits 0-9. No special chars.   
 
 #### Returns  
 ``string`` - The random string.  
@@ -2100,10 +2101,12 @@ size | ``int`` | The length of the random string.
 ```  
 
 ### uuid()   
-Creates a new uuid and returns it as hexadecimal string.   
+Creates a new uuid with 32 digits and returns it as hexadecimal string.
+For example: 66a637cc-19fc-4145-98c5-1a1b0bf010be
+See RFC for specification: https://datatracker.ietf.org/doc/html/rfc4122   
 
 #### Returns  
-``string`` - The random uuid.  
+``string`` - The new random uuid.  
 
 
 
@@ -2435,7 +2438,7 @@ regexp | ``string`` | regular expression to use
  
 ## `@uri` 
 ----------  
-Provides utility functions inside a pipeline expression for simple uri resolving.
+Provides utility functions inside a pipeline expression for simple uri resolving.  
 You can access the functions declared here in the PEL using <code>@uri</code>  
 
 ### resolve(uri)   
@@ -2464,7 +2467,7 @@ uri | ``string`` | The uri to be resolved.
  
 ## `@user` 
 ----------  
-Provides utility functions inside a pipeline expression for simple handling of the currently logged-in user.
+Provides utility functions inside a pipeline expression for simple handling of the currently logged-in user.  
 You can access the functions declared here in the PEL using <code>@user</code>  
 
 ### username()   
@@ -2676,7 +2679,7 @@ See &lbrace;@link ZoneId#getAvailableZoneIds()&rbrace; and here: http://www.iana
  
 ## `@xml` 
 ----------  
-Provides functions inside a pipeline expression in order to read and change XML documents.
+Provides functions inside a pipeline expression in order to read and change XML documents.  
 You can access the functions declared here in the PEL using <code>@xml</code>  
 
 ### xpath(document,xpath)   
@@ -2719,5 +2722,5 @@ xpath | ``string`` | The expression to be applied.
 
 ## Report an Issue
 :::tip Your help is needed!
-In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues/new). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
+In case you're missing something on this page, you found an error or you have an idea for improvement, please [click here to create a new issue](https://github.com/pipeforce/pipeforce.github.io/issues). Another way to contribute is, to click **Edit this page** below and directly add your changes in GitHub. Many thanks for your contribution in order to improve PIPEFORCE!
 :::

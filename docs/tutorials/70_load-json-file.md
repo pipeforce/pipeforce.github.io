@@ -1,8 +1,8 @@
 # Tutorial 7: Load a JSON file
 
-**Tutorial 7 Estimated time:** 10 min.
+**Estimated time:** 10 min.
 
-## Tutorial 7 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     

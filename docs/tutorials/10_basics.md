@@ -1,6 +1,6 @@
 # Tutorial 1: Basics
 
-**Tutorial 1 Estimated time:** 10 min.
+**Estimated time:** 10 min.
 
 ## Pipeforce - Intro
 

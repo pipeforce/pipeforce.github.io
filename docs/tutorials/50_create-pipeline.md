@@ -1,8 +1,8 @@
 # Tutorial 5: Create a Pipeline
 
-**Tutorial 5 Estimated time:** 20 min.
+**Estimated time:** 20 min.
 
-## Tutorial 5 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     

@@ -1,8 +1,8 @@
 # Tutorial 2: Create an App
 
-**Tutorial 2 Estimated time:** 15 min.
+**Estimated time:** 15 min.
 
-## Tutorial 2 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     

@@ -1,8 +1,8 @@
 # Tutorial 6: Data Mapping
 
-**Tutorial 6 Estimated time:** 10 min.
+**Estimated time:** 10 min.
 
-## Tutorial 6 - Prerequisites
+## Prerequisites
 
 *   PIPEFORCE Enterprise 7.0 or higher
     
