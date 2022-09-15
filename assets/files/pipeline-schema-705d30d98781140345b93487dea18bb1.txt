@@ -114,7 +114,7 @@
           },
           "app.install" : {
             "type" : "object",
-            "description" : "Installs an app into the property store.\n The app can be located on GitHub or is provided as zip file content in the body.",
+            "description" : "Installs an app into the property store. The app can be located on GitHub or is provided as zip file content in the body.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
