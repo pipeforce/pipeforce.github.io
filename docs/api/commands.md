@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 14/09/2022 by CommandComplianceTest -->
+<!-- Generated: 15/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -19,6 +19,16 @@ pipeline:
   - log:  
       message: "The current date is: #{body}"  
 ```  
+
+## Common Parameters
+
+All commands do have these optional parameters in common:
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | `null` | The optional id of the command. Must be unique within the pipeline. Can be used for example in testing in order to mock certain commands and to refer to them afterwards.
+`if` | Boolean | false | `true` | This parameter can disable (`false`) / enable (`true`) the execution of the command. Can be a static boolean value or a PE to be evaluated. If this value is set to `false`, negative number, `null` or empty string, the command is disabled and will be skipped in a pipeline. By default it is set to `true` = command is enabled and will be executed.
+`onError` | String, JSON | false | `THROW` | Defines the action in case an error happens when executing this command. Default is `THROW`: Stops execution and reports the error to the caller. This parameter can also be set for all commands in the header. If set additionally as header, the parameter value has precedence over the header value. Other possibilities are: `IGNORE`, `LOG`, `RETRY` and `ROLLBACK`. For more information see [Error Handling for Commands and Pipelines](/docs/guides/commands_pipelines/error_handling).  
 
 ## apidoc.commands ``v1``
 ----------   
@@ -112,8 +122,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## app.install ``v1``
 ----------   
-Installs an app into the property store.  
- The app can be located on GitHub or is provided as zip file content in the body.
+Installs an app into the property store. The app can be located on GitHub or is provided as zip file content in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=app.install:v1)
 
