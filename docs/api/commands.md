@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 15/09/2022 by CommandComplianceTest -->
+<!-- Generated: 19/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -28,6 +28,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `id` | String | false | `null` | The optional id of the command. Must be unique within the pipeline. Can be used for example in testing in order to mock certain commands and to refer to them afterwards.
 `if` | Boolean | false | `true` | This parameter can disable (`false`) / enable (`true`) the execution of the command. Can be a static boolean value or a PE to be evaluated. If this value is set to `false`, negative number, `null` or empty string, the command is disabled and will be skipped in a pipeline. By default it is set to `true` = command is enabled and will be executed.
+`eval` | String | false | `null` | This parameter defines an optional [Pipeline Expression](/docs/guides/commands_pipelines/pel) to be evaluated after the command execution has been finished. This is handy for cleanup-tasks, validity checks or data transformations.
 `onError` | String, JSON | false | `THROW` | Defines the action in case an error happens when executing this command. Default is `THROW`: Stops execution and reports the error to the caller. This parameter can also be set for all commands in the header. If set additionally as header, the parameter value has precedence over the header value. Other possibilities are: `IGNORE`, `LOG`, `RETRY` and `ROLLBACK`. For more information see [Error Handling for Commands and Pipelines](/docs/guides/commands_pipelines/error_handling).  
 
 ## apidoc.commands ``v1``
@@ -46,6 +47,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -56,6 +58,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -64,12 +67,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/apidoc.commands?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/apidoc.commands?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command apidoc.commands id=<value> if=<value> onError=<value> output=<value>  
+pi command apidoc.commands id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -91,6 +94,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -101,6 +105,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -109,12 +114,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/apidoc.pel.utils?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/apidoc.pel.utils?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command apidoc.pel.utils id=<value> if=<value> onError=<value> output=<value>  
+pi command apidoc.pel.utils id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -140,6 +145,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -154,6 +160,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -162,12 +169,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.install?overwrite=<value>&github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/app.install?overwrite=<value>&github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.install overwrite=<value> github=<value> branch=<value> runTests=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command app.install overwrite=<value> github=<value> branch=<value> runTests=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -200,6 +207,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -220,6 +228,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -228,12 +237,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.marketplace.search?sort=<value>&order=<value>&results=<value>&page=<value>&license=<value>&searchString=<value>&searchInName=<value>&searchInDesc=<value>&searchInReadme=<value>&searchInTopics=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/app.marketplace.search?sort=<value>&order=<value>&results=<value>&page=<value>&license=<value>&searchString=<value>&searchInName=<value>&searchInDesc=<value>&searchInReadme=<value>&searchInTopics=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.marketplace.search sort=<value> order=<value> results=<value> page=<value> license=<value> searchString=<value> searchInName=<value> searchInDesc=<value> searchInReadme=<value> searchInTopics=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command app.marketplace.search sort=<value> order=<value> results=<value> page=<value> license=<value> searchString=<value> searchInName=<value> searchInDesc=<value> searchInReadme=<value> searchInTopics=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -256,6 +265,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -267,6 +277,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -275,12 +286,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.uninstall?appKey=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/app.uninstall?appKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.uninstall appKey=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command app.uninstall appKey=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -305,6 +316,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -318,6 +330,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -326,12 +339,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.update?github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/app.update?github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.update github=<value> branch=<value> runTests=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command app.update github=<value> branch=<value> runTests=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -359,6 +372,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -374,6 +388,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -381,12 +396,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/assert?true=<value>&false=<value>&body.equals=<value>&equals=<value>&value=<value>&message=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/assert?true=<value>&false=<value>&body.equals=<value>&equals=<value>&value=<value>&message=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command assert true=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value> id=<value> if=<value> onError=<value>  
+pi command assert true=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -413,6 +428,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -427,6 +443,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -434,12 +451,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.assert?hasPassed=<value>&hasNotPassed=<value>&processFinished=<value>&throwException=<value>&processInstanceId=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/workflow.assert?hasPassed=<value>&hasNotPassed=<value>&processFinished=<value>&throwException=<value>&processInstanceId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.assert hasPassed=<value> hasNotPassed=<value> processFinished=<value> throwException=<value> processInstanceId=<value> id=<value> if=<value> onError=<value>  
+pi command workflow.assert hasPassed=<value> hasNotPassed=<value> processFinished=<value> throwException=<value> processInstanceId=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -465,6 +482,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -479,6 +497,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -487,12 +506,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/barcode.create?text=<value>&width=<value>&height=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/barcode.create?text=<value>&width=<value>&height=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command barcode.create text=<value> width=<value> height=<value> format=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command barcode.create text=<value> width=<value> height=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -514,6 +533,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -525,6 +545,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -534,12 +555,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/barcode.read?id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/barcode.read?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command barcode.read id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command barcode.read id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -563,6 +584,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -575,6 +597,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -583,12 +606,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/bean?name=<value>&method=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/bean?name=<value>&method=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command bean name=<value> method=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command bean name=<value> method=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -610,6 +633,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -619,6 +643,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -626,12 +651,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/body.delete?id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/body.delete?id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command body.delete id=<value> if=<value> onError=<value>  
+pi command body.delete id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -655,6 +680,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -666,6 +692,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -673,12 +700,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command body.filter properties=<value> removeKey=<value> id=<value> if=<value> onError=<value>  
+pi command body.filter properties=<value> removeKey=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -701,6 +728,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -711,6 +739,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -718,12 +747,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.clear?key=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/cache.clear?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.clear key=<value> id=<value> if=<value> onError=<value>  
+pi command cache.clear key=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -748,6 +777,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -761,6 +791,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -769,12 +800,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.get?key=<value>&remove=<value>&exit=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/cache.get?key=<value>&remove=<value>&exit=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.get key=<value> remove=<value> exit=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command cache.get key=<value> remove=<value> exit=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -797,6 +828,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -807,6 +839,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -814,12 +847,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.info?key=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/cache.info?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.info key=<value> id=<value> if=<value> onError=<value>  
+pi command cache.info key=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -841,6 +874,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -851,6 +885,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -859,12 +894,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.list?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/cache.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.list id=<value> if=<value> onError=<value> output=<value>  
+pi command cache.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -891,6 +926,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -903,6 +939,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -910,12 +947,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/cache.put?timeToLive=<value>&key=<value>&value=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/cache.put?timeToLive=<value>&key=<value>&value=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command cache.put timeToLive=<value> key=<value> value=<value> id=<value> if=<value> onError=<value>  
+pi command cache.put timeToLive=<value> key=<value> value=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -939,6 +976,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -951,6 +989,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -959,12 +998,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/call?uri=<value>&args=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/call?uri=<value>&args=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command call uri=<value> args=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command call uri=<value> args=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -986,6 +1025,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -995,6 +1035,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -1002,12 +1043,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/capture?id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/capture?id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command capture id=<value> if=<value> onError=<value>  
+pi command capture id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1030,6 +1071,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1041,6 +1083,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1049,12 +1092,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipe.schema?pipe=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pipe.schema?pipe=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipe.schema pipe=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command pipe.schema pipe=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1076,6 +1119,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1086,6 +1130,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1094,12 +1139,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipe.schema.v7?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pipe.schema.v7?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipe.schema.v7 id=<value> if=<value> onError=<value> output=<value>  
+pi command pipe.schema.v7 id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1124,6 +1169,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1137,6 +1183,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1145,12 +1192,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/config.get?group=<value>&key=<value>&includePermission=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/config.get?group=<value>&key=<value>&includePermission=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command config.get group=<value> key=<value> includePermission=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command config.get group=<value> key=<value> includePermission=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1173,6 +1220,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -1184,6 +1232,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1192,12 +1241,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/container.registry.delete?url=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/container.registry.delete?url=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command container.registry.delete url=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command container.registry.delete url=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1219,6 +1268,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -1229,6 +1279,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1237,12 +1288,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/container.registry.list?id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/container.registry.list?id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command container.registry.list id=<value> if=<value> onError=<value> credentials=<value>  
+pi command container.registry.list id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1268,6 +1319,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -1282,6 +1334,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1290,12 +1343,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/container.registry.put?url=<value>&username=<value>&password=<value>&email=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/container.registry.put?url=<value>&username=<value>&password=<value>&email=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command container.registry.put url=<value> username=<value> password=<value> email=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command container.registry.put url=<value> username=<value> password=<value> email=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1318,6 +1371,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1329,6 +1383,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1337,12 +1392,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/content.get?uri=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/content.get?uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command content.get uri=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command content.get uri=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1365,6 +1420,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1377,6 +1433,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1386,12 +1443,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.enrich?do=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.enrich?do=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.enrich do=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command data.enrich do=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1415,6 +1472,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1428,6 +1486,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1437,12 +1496,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.list.filter?exclude=<value>&iterItemName=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.list.filter?exclude=<value>&iterItemName=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.list.filter exclude=<value> iterItemName=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command data.list.filter exclude=<value> iterItemName=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1471,6 +1530,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1489,6 +1549,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1498,12 +1559,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.list.iterate?listA=<value>&listB=<value>&where=<value>&do=<value>&iterItemName=<value>&iterItemNameA=<value>&iterItemNameB=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.list.iterate?listA=<value>&listB=<value>&where=<value>&do=<value>&iterItemName=<value>&iterItemNameA=<value>&iterItemNameB=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.list.iterate listA=<value> listB=<value> where=<value> do=<value> iterItemName=<value> iterItemNameA=<value> iterItemNameB=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command data.list.iterate listA=<value> listB=<value> where=<value> do=<value> iterItemName=<value> iterItemNameA=<value> iterItemNameB=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1526,6 +1587,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1538,6 +1600,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1547,12 +1610,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.list.limit?maxLength=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.list.limit?maxLength=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.list.limit maxLength=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command data.list.limit maxLength=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1575,6 +1638,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1587,6 +1651,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1596,12 +1661,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.mapping?rules=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.mapping?rules=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.mapping rules=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command data.mapping rules=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1628,6 +1693,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1644,6 +1710,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1653,12 +1720,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command data.transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1681,6 +1748,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1692,6 +1760,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1700,12 +1769,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/datetime?format=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/datetime?format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command datetime format=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command datetime format=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1727,6 +1796,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1737,6 +1807,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1745,12 +1816,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/datetime.zones?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/datetime.zones?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command datetime.zones id=<value> if=<value> onError=<value> output=<value>  
+pi command datetime.zones id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1773,6 +1844,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -1785,6 +1857,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -1794,12 +1867,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/decrypt?password=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/decrypt?password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command decrypt password=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command decrypt password=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1825,6 +1898,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1839,6 +1913,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1847,12 +1922,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.attachment.add?deliveryUuid=<value>&name=<value>&mimeType=<value>&length=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/delivery.attachment.add?deliveryUuid=<value>&name=<value>&mimeType=<value>&length=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.attachment.add deliveryUuid=<value> name=<value> mimeType=<value> length=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command delivery.attachment.add deliveryUuid=<value> name=<value> mimeType=<value> length=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1881,6 +1956,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1898,6 +1974,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1906,12 +1983,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.create?subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/delivery.create?subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.create subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command delivery.create subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1934,6 +2011,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -1944,6 +2022,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -1951,12 +2030,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.delete?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/delivery.delete?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.delete deliveryUuid=<value> id=<value> if=<value> onError=<value>  
+pi command delivery.delete deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1979,6 +2058,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -1990,6 +2070,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -1998,12 +2079,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.finalize?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/delivery.finalize?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.finalize deliveryUuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command delivery.finalize deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2026,6 +2107,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2037,6 +2119,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2045,12 +2128,204 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.get?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/delivery.get?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.get deliveryUuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command delivery.get deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## delivery.inbox.details ``v1``
+----------   
+Returns the details of a given inbox Delivery.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.inbox.details:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`deliveryUuid` | String | true | null | The uuid of the delivery.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.inbox.details:  
+      deliveryUuid: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.inbox.details?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.inbox.details deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## delivery.inbox.list ``v1``
+----------   
+Lists all deliveries for the currently logged-in user.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.inbox.list:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.inbox.list:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.inbox.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.inbox.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## delivery.outbox.delete ``v1``
+----------   
+Deletes a delivery from the currently logged-in users outbox.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.outbox.delete:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`deliveryUuid` | String | true | null | The uuid of the delivery.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.outbox.delete:  
+      deliveryUuid: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.outbox.delete?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.outbox.delete deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## delivery.outbox.list ``v1``
+----------   
+Lists all deliveries sent by the currently logged-in user.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.outbox.list:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.outbox.list:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.outbox.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.outbox.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2075,6 +2350,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2088,6 +2364,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2096,12 +2373,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.recipient.add?deliveryUuid=<value>&email=<value>&locale=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/delivery.recipient.add?deliveryUuid=<value>&email=<value>&locale=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.recipient.add deliveryUuid=<value> email=<value> locale=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command delivery.recipient.add deliveryUuid=<value> email=<value> locale=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2125,6 +2402,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2137,6 +2415,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2145,12 +2424,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.send?deliveryUuid=<value>&recipients=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/delivery.send?deliveryUuid=<value>&recipients=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.send deliveryUuid=<value> recipients=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command delivery.send deliveryUuid=<value> recipients=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2180,6 +2459,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2198,6 +2478,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2206,12 +2487,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2233,6 +2514,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2243,6 +2525,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2251,12 +2534,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/doc.api.pelutils?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/doc.api.pelutils?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command doc.api.pelutils id=<value> if=<value> onError=<value> output=<value>  
+pi command doc.api.pelutils id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2288,6 +2571,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2305,6 +2589,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2313,12 +2598,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/docusign?signerEmail=<value>&signerName=<value>&ccEmail=<value>&ccName=<value>&subject=<value>&accessToken=<value>&accountId=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/docusign?signerEmail=<value>&signerName=<value>&ccEmail=<value>&ccName=<value>&subject=<value>&accessToken=<value>&accountId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command docusign signerEmail=<value> signerName=<value> ccEmail=<value> ccName=<value> subject=<value> accessToken=<value> accountId=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command docusign signerEmail=<value> signerName=<value> ccEmail=<value> ccName=<value> subject=<value> accessToken=<value> accountId=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2340,6 +2625,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `apiKey` | String | false | null | The alternative API key to connect to the service. If null or empty, the default one will be used, as defined by the default backend settings.
@@ -2354,6 +2640,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
       apiKey: <value>  
@@ -2366,12 +2653,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/document.understand?id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
+http://host/api/v3/command/document.understand?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command document.understand id=<value> if=<value> onError=<value> input=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
+pi command document.understand id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2395,6 +2682,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2407,6 +2695,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2415,12 +2704,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/drive.archive.save?path=<value>&namingPattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.archive.save path=<value> namingPattern=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command drive.archive.save path=<value> namingPattern=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2444,6 +2733,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -2455,6 +2745,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -2462,12 +2753,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.copy?path=<value>&to=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/drive.copy?path=<value>&to=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.copy path=<value> to=<value> id=<value> if=<value> onError=<value>  
+pi command drive.copy path=<value> to=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2490,6 +2781,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -2500,6 +2792,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -2507,12 +2800,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.delete?path=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/drive.delete?path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.delete path=<value> id=<value> if=<value> onError=<value>  
+pi command drive.delete path=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2535,6 +2828,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2546,6 +2840,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2554,12 +2849,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.exists?path=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/drive.exists?path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.exists path=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command drive.exists path=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2582,6 +2877,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2593,6 +2889,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2601,12 +2898,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.list?path=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/drive.list?path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.list path=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command drive.list path=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2630,6 +2927,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -2641,6 +2939,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -2648,12 +2947,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.mkdir?path=<value>&recurse=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/drive.mkdir?path=<value>&recurse=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.mkdir path=<value> recurse=<value> id=<value> if=<value> onError=<value>  
+pi command drive.mkdir path=<value> recurse=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2677,6 +2976,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -2688,6 +2988,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -2695,12 +2996,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.move?path=<value>&to=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/drive.move?path=<value>&to=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.move path=<value> to=<value> id=<value> if=<value> onError=<value>  
+pi command drive.move path=<value> to=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2724,6 +3025,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2736,6 +3038,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2744,12 +3047,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.read?path=<value>&append=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/drive.read?path=<value>&append=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.read path=<value> append=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command drive.read path=<value> append=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2774,6 +3077,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -2786,6 +3090,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -2793,12 +3098,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanupBody=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanupBody=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value> id=<value> if=<value> onError=<value>  
+pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2830,6 +3135,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2850,6 +3156,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -2858,12 +3165,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.share?to=<value>&type=<value>&path=<value>&permission=<value>&subject=<value>&message=<value>&model=<value>&expires=<value>&password=<value>&invite=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/drive.share?to=<value>&type=<value>&path=<value>&permission=<value>&subject=<value>&message=<value>&model=<value>&expires=<value>&password=<value>&invite=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.share to=<value> type=<value> path=<value> permission=<value> subject=<value> message=<value> model=<value> expires=<value> password=<value> invite=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command drive.share to=<value> type=<value> path=<value> permission=<value> subject=<value> message=<value> model=<value> expires=<value> password=<value> invite=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2889,6 +3196,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -2902,6 +3210,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -2909,12 +3218,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.tag?path=<value>&tagname=<value>&tagvalue=<value>&remove=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/drive.tag?path=<value>&tagname=<value>&tagvalue=<value>&remove=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.tag path=<value> tagname=<value> tagvalue=<value> remove=<value> id=<value> if=<value> onError=<value>  
+pi command drive.tag path=<value> tagname=<value> tagvalue=<value> remove=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2940,6 +3249,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -2953,6 +3263,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -2960,12 +3271,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.upload.chunked?action=<value>&uuid=<value>&path=<value>&index=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/drive.upload.chunked?action=<value>&uuid=<value>&path=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.upload.chunked action=<value> uuid=<value> path=<value> index=<value> id=<value> if=<value> onError=<value>  
+pi command drive.upload.chunked action=<value> uuid=<value> path=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2988,6 +3299,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -2999,6 +3311,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -3007,12 +3320,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/encrypt?password=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/encrypt?password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command encrypt password=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command encrypt password=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3035,6 +3348,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3045,6 +3359,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3052,12 +3367,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/error?message=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/error?message=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command error message=<value> id=<value> if=<value> onError=<value>  
+pi command error message=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3080,6 +3395,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3090,6 +3406,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3097,12 +3414,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/eval?expr=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/eval?expr=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command eval expr=<value> id=<value> if=<value> onError=<value>  
+pi command eval expr=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3126,6 +3443,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3137,6 +3455,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3144,12 +3463,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/event.listen?key=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/event.listen?key=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command event.listen key=<value> filter=<value> id=<value> if=<value> onError=<value>  
+pi command event.listen key=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3171,6 +3490,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -3181,6 +3501,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -3189,12 +3510,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/event.mapping.get?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/event.mapping.get?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command event.mapping.get id=<value> if=<value> onError=<value> output=<value>  
+pi command event.mapping.get id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3220,6 +3541,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3233,6 +3555,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3240,12 +3563,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/event.send?key=<value>&traceId=<value>&payload=<value>&async=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/event.send?key=<value>&traceId=<value>&payload=<value>&async=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command event.send key=<value> traceId=<value> payload=<value> async=<value> id=<value> if=<value> onError=<value>  
+pi command event.send key=<value> traceId=<value> payload=<value> async=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3268,6 +3591,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3278,6 +3602,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3285,12 +3610,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/exit?if=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/exit?if=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command exit if=<value> id=<value> if=<value> onError=<value>  
+pi command exit if=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3313,6 +3638,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3323,6 +3649,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3330,12 +3657,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/finally?do=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/finally?do=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command finally do=<value> id=<value> if=<value> onError=<value>  
+pi command finally do=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3343,10 +3670,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## foreach ``v1``
 ----------   
-Repeats the subsequent pipeline commands for each entry in a given list. By default the full pipeline until the end will be repeated. To repeat only a subset, place the command foreach?end where the foreach iteration should end. The current iteration item is placed in vars.loop.item.
+Splits a given set of data and repeats the subsequent commands for each entry in a given list until location of `foreach.end` command. The current iteration item can be accessed using the path `vars.[as]` or `vars.loop.[as].item`. The current iteration index can be accessed using the path `vars.loop.[as].index`. In order to find out whether current iteration index is odd or even, use `vars.loop.[as].even`. Whereas [as] stands for the name given by the [as] parameter. Note: Even if not an error, you should prefer to set the `as` parameter for every `foreach` command. Not using it is discouraged and support for not using it will be removed in future versions.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=foreach:v1)
 
+**Alias:** command:split:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -3354,13 +3682,15 @@ Repeats the subsequent pipeline commands for each entry in a given list. By defa
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`in` | String | false | null | Default parameter which points to a list of items to be iterated over. Each iteration item is placed by default under vars.loop.item an can be accessed as such inside the iteration loop.
-`item` | String | false | null | Contains an optional expression which will be evaluated for each iteration. The current iteration item at vars.loop.item will be overwritten by the result of this expression.
-`loopName` | String | false | loop | The name of the current loop object in the vars scope. By default this is 'loop' which results in 'vars.loop.item' then for accessing the current loop item. With this attribute you can change this for example to 'iteration' so you can access the loop iterm under 'vars.iteration.item'. The loop object contains attributes for the current loop like item = the current iteration item, index = the current iteration index.
-`end` | String | false | null | Signals the end of a for each loop.
+`in` | String | false | null | Default parameter which points to a list of items to be iterated over. Each iteration item is placed under `vars.loop.[as].item` and `vars.[as]` whereas `[as]` will be replaced by the name given by the `as` parameter.
+`loopName` | String | false | loop | *Deprecated.* Use parameter `as` instead. This parameter is only here for downwards compatibility and will be removed in one of the next releases. If `as` parameter is null or empty, this parameter gets checked. And if not null or empty,  it will change the default loop context name in the vars scope from `vars.loop` to `vars.[loopName]`, so you can access the current iteration item using `vars.[loopName].item`.
+`as` | String | false | null | For each iteration/split, puts the current iteration item into the vars scope under this name. If this parameter is null or empty, the item wont be additionally exposed to vars scope. Additionally puts the current loop context under the variable name `vars.loop.NAME.item` whereas `NAME` is the value of this `as` parameter. For example, if you set `as` to `myitem`, then you can access the item using the path `vars.loop.myitem.item` or `vars.myitem`.The loop context contains these objects for each iteration: `item` = The current iteration item. In case the iteration input is a map or a JSON, you can access the key of the item using `item.key` and the value using `item.value`.`index` = The current 0-based iteration index. `even` = A boolean value whether current iteration index is even or not. This is useful for example for layouting.
+`item` | String | false | null | *Deprecated*. Contains an optional expression which will be evaluated for each iteration to extract or prepare the iteration item. The result of this expression will be placed as iteration item.
+`end` | String | false | null | *Deprecated*. Use the foreach.end command instead. Signals the end of a for each loop.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3368,12 +3698,14 @@ Name | Type | Required | Default | Description
 pipeline:  
   - foreach:  
       in: <value>  
-      item: <value>  
       loopName: <value>  
+      as: <value>  
+      item: <value>  
       end: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3381,12 +3713,58 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/foreach?in=<value>&item=<value>&loopName=<value>&end=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/foreach?in=<value>&loopName=<value>&as=<value>&item=<value>&end=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command foreach in=<value> item=<value> loopName=<value> end=<value> id=<value> if=<value> onError=<value>  
+pi command foreach in=<value> loopName=<value> as=<value> item=<value> end=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## foreach.end ``v1``
+----------   
+Defines the end of a foreach loop.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=foreach.end:v1)
+
+**Alias:** command:split.end:v1   
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - foreach.end:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/foreach.end?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command foreach.end id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3408,6 +3786,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3417,6 +3796,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3424,12 +3804,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/header.set?id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/header.set?id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command header.set id=<value> if=<value> onError=<value>  
+pi command header.set id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3452,6 +3832,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3462,6 +3843,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3469,12 +3851,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.form.find?select=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/htmlunit.website.form.find?select=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.form.find select=<value> id=<value> if=<value> onError=<value>  
+pi command htmlunit.website.form.find select=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3498,6 +3880,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3509,6 +3892,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3516,12 +3900,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.form.input?value=<value>&select=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/htmlunit.website.form.input?value=<value>&select=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.form.input value=<value> select=<value> id=<value> if=<value> onError=<value>  
+pi command htmlunit.website.form.input value=<value> select=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3544,6 +3928,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3554,6 +3939,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3561,12 +3947,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.form.submit?select=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/htmlunit.website.form.submit?select=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.form.submit select=<value> id=<value> if=<value> onError=<value>  
+pi command htmlunit.website.form.submit select=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3589,6 +3975,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3599,6 +3986,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3606,12 +3994,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.link.click?select=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/htmlunit.website.link.click?select=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.link.click select=<value> id=<value> if=<value> onError=<value>  
+pi command htmlunit.website.link.click select=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3634,6 +4022,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3644,6 +4033,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3651,12 +4041,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.open?url=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/htmlunit.website.open?url=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.open url=<value> id=<value> if=<value> onError=<value>  
+pi command htmlunit.website.open url=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3680,6 +4070,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -3691,6 +4082,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3698,12 +4090,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/htmlunit.website.scrap?xpath=<value>&select=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/htmlunit.website.scrap?xpath=<value>&select=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command htmlunit.website.scrap xpath=<value> select=<value> id=<value> if=<value> onError=<value>  
+pi command htmlunit.website.scrap xpath=<value> select=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3729,6 +4121,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3745,6 +4138,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -3755,12 +4149,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.delete?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.delete?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.delete url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> input=<value> output=<value> credentials=<value>  
+pi command http.delete url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3786,6 +4180,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3802,6 +4197,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -3812,12 +4208,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.get?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.get?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.get url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> input=<value> output=<value> credentials=<value>  
+pi command http.get url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3843,6 +4239,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3859,6 +4256,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -3869,12 +4267,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.patch?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.patch?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.patch url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> input=<value> output=<value> credentials=<value>  
+pi command http.patch url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3900,6 +4298,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3916,6 +4315,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -3926,12 +4326,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.post?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.post?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.post url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> input=<value> output=<value> credentials=<value>  
+pi command http.post url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3957,6 +4357,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
@@ -3973,6 +4374,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
       credentials: <value>  
@@ -3983,12 +4385,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&body=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.put url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> input=<value> output=<value> credentials=<value>  
+pi command http.put url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4012,6 +4414,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4024,6 +4427,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4032,12 +4436,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.apitoken?username=<value>&password=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.apitoken?username=<value>&password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.apitoken username=<value> password=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.apitoken username=<value> password=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4059,6 +4463,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -4068,6 +4473,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -4075,12 +4481,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.authinfo?id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/iam.authinfo?id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.authinfo id=<value> if=<value> onError=<value>  
+pi command iam.authinfo id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4107,6 +4513,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -4121,6 +4528,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -4128,12 +4536,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.authorize?accessToken=<value>&refreshToken=<value>&basic=<value>&username=<value>&password=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/iam.authorize?accessToken=<value>&refreshToken=<value>&basic=<value>&username=<value>&password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.authorize accessToken=<value> refreshToken=<value> basic=<value> username=<value> password=<value> id=<value> if=<value> onError=<value>  
+pi command iam.authorize accessToken=<value> refreshToken=<value> basic=<value> username=<value> password=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4157,6 +4565,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4169,6 +4578,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4177,12 +4587,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.bruteforce.release?username=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.bruteforce.release?username=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.bruteforce.release username=<value> uuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.bruteforce.release username=<value> uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4206,6 +4616,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4218,6 +4629,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4226,12 +4638,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.bruteforce.status?username=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.bruteforce.status?username=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.bruteforce.status username=<value> uuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.bruteforce.status username=<value> uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4253,6 +4665,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -4262,6 +4675,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -4269,12 +4683,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.cache.clear?id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/iam.cache.clear?id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.cache.clear id=<value> if=<value> onError=<value>  
+pi command iam.cache.clear id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4299,6 +4713,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4312,6 +4727,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4320,12 +4736,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.add.roles?groupUuid=<value>&roleNames=<value>&groupName=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.group.add.roles?groupUuid=<value>&roleNames=<value>&groupName=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.add.roles groupUuid=<value> roleNames=<value> groupName=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.group.add.roles groupUuid=<value> roleNames=<value> groupName=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4350,6 +4766,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4363,6 +4780,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4371,12 +4789,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.create?name=<value>&roleNames=<value>&attributes=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.group.create?name=<value>&roleNames=<value>&attributes=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.create name=<value> roleNames=<value> attributes=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.group.create name=<value> roleNames=<value> attributes=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4399,6 +4817,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4410,6 +4829,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4418,12 +4838,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.group.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.delete uuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.group.delete uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4450,6 +4870,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4465,6 +4886,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4473,12 +4895,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.list?filter=<value>&sortByName=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.group.list?filter=<value>&sortByName=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.list filter=<value> sortByName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.group.list filter=<value> sortByName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4503,6 +4925,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4516,6 +4939,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4524,12 +4948,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.list.names?max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.group.list.names?max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.list.names max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.group.list.names max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4556,6 +4980,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4571,6 +4996,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4579,12 +5005,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.members?name=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.group.members?name=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.members name=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.group.members name=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4611,6 +5037,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4626,6 +5053,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4634,12 +5062,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.group.roles?groupName=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.group.roles?groupName=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.group.roles groupName=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.group.roles groupName=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4661,6 +5089,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4671,6 +5100,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4679,12 +5109,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.realm.create?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.realm.create?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.realm.create id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.realm.create id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4708,6 +5138,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4720,6 +5151,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4728,12 +5160,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.role.add.composites?roleName=<value>&composites=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.role.add.composites?roleName=<value>&composites=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.role.add.composites roleName=<value> composites=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.role.add.composites roleName=<value> composites=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4758,6 +5190,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4771,6 +5204,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4779,12 +5213,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.role.create?name=<value>&composites=<value>&attributes=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.role.create?name=<value>&composites=<value>&attributes=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.role.create name=<value> composites=<value> attributes=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.role.create name=<value> composites=<value> attributes=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4810,6 +5244,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4824,6 +5259,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4832,12 +5268,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.role.members?roleName=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.role.members?roleName=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.role.members roleName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.role.members roleName=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4861,6 +5297,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -4872,6 +5309,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -4879,12 +5317,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.run.as?username=<value>&caching=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/iam.run.as?username=<value>&caching=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.run.as username=<value> caching=<value> id=<value> if=<value> onError=<value>  
+pi command iam.run.as username=<value> caching=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4910,6 +5348,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4924,6 +5363,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4932,12 +5372,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.search?type=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.search?type=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.search type=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.search type=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4961,6 +5401,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -4973,6 +5414,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -4981,12 +5423,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.token?username=<value>&password=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.token?username=<value>&password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.token username=<value> password=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.token username=<value> password=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5009,6 +5451,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -5019,6 +5462,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5026,12 +5470,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.token.logout?refreshToken=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/iam.token.logout?refreshToken=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.token.logout refreshToken=<value> id=<value> if=<value> onError=<value>  
+pi command iam.token.logout refreshToken=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5054,6 +5498,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5065,6 +5510,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5073,12 +5519,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.token.refresh?refreshToken=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.token.refresh?refreshToken=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.token.refresh refreshToken=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.token.refresh refreshToken=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5103,6 +5549,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5116,6 +5563,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5124,12 +5572,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.add.groups?uuid=<value>&groupNames=<value>&groupIds=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.user.add.groups?uuid=<value>&groupNames=<value>&groupIds=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.add.groups uuid=<value> groupNames=<value> groupIds=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.user.add.groups uuid=<value> groupNames=<value> groupIds=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5154,6 +5602,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5167,6 +5616,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5175,12 +5625,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.add.roles?userUuid=<value>&username=<value>&roleNames=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.user.add.roles?userUuid=<value>&username=<value>&roleNames=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.add.roles userUuid=<value> username=<value> roleNames=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.user.add.roles userUuid=<value> username=<value> roleNames=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5210,6 +5660,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5228,6 +5679,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5236,12 +5688,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.create?name=<value>&email=<value>&firstName=<value>&lastName=<value>&groupNames=<value>&roleNames=<value>&password=<value>&attributes=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.user.create?name=<value>&email=<value>&firstName=<value>&lastName=<value>&groupNames=<value>&roleNames=<value>&password=<value>&attributes=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.create name=<value> email=<value> firstName=<value> lastName=<value> groupNames=<value> roleNames=<value> password=<value> attributes=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.user.create name=<value> email=<value> firstName=<value> lastName=<value> groupNames=<value> roleNames=<value> password=<value> attributes=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5264,6 +5716,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5275,6 +5728,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5283,12 +5737,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.user.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.delete uuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.user.delete uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5296,7 +5750,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## iam.user.get ``v1``
 ----------   
-Looks up a user returns it in the body if exists. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+Looks up a user returns it in the body if exists. The response is a JSON array of these entities: https://www.keycloak.org/docs-api/15.0/rest-api/#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.user.get:v1)
 
@@ -5312,6 +5766,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5324,6 +5779,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5332,12 +5788,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.get?username=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.user.get?username=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.get username=<value> uuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.user.get username=<value> uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5364,6 +5820,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5379,6 +5836,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5387,12 +5845,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.groups?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.user.groups?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.groups username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.user.groups username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5419,6 +5877,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5434,6 +5893,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5442,12 +5902,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.list?includeGroups=<value>&includeRoles=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.user.list?includeGroups=<value>&includeRoles=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.list includeGroups=<value> includeRoles=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.user.list includeGroups=<value> includeRoles=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5474,6 +5934,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5489,6 +5950,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5497,12 +5959,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/iam.user.roles?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/iam.user.roles?username=<value>&uuid=<value>&max=<value>&offset=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command iam.user.roles username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command iam.user.roles username=<value> uuid=<value> max=<value> offset=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5510,7 +5972,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## if ``v1``
 ----------   
-Executes the subsequent pipeline only if given condition evaluates to true. By default the full pipeline until the end will be executed. To skip the pipes inside the if definition place the pipe if?end where the if should end.
+Executes the subsequent pipeline only if given condition evaluates to true. Otherwise, jumps to the end of this block given by the `if.end` command. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=if:v1)
 
@@ -5521,12 +5983,13 @@ Executes the subsequent pipeline only if given condition evaluates to true. By d
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`true` | String | false | null | Default parameter which points to the expression which must evaluate to true. Only one of true or false param is allowed.
-`end` | String | false | null | Defines the end of of the if pipe. If not set, the full pipeline till its end is executed. 
-`else` | String | false | null | Defines the else part of the if statement. If value of if evaluates to false, the section right after this else statement is executed until the if?end statement or the end of the pipeline. 
+`true` | String | false | null | The expression which must evaluate to true in order to execute the if block. Otherwise execution flow jumps to the `if.end` command.
+`end` | String | false | null | *Deprecated*. Use command `if.end` instead. Defines the end of of the if command block. 
+`else` | String | false | null | *Deprecated*. Use the command `if.else` instead. Defines the else part of the if statement. If value of if evaluates to `false`, the section right after this else statement is executed until the `if.end` command. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -5539,6 +6002,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5546,12 +6010,102 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/if?true=<value>&end=<value>&else=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/if?true=<value>&end=<value>&else=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command if true=<value> end=<value> else=<value> id=<value> if=<value> onError=<value>  
+pi command if true=<value> end=<value> else=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## if.else ``v1``
+----------   
+Executes all commands below this command up to the `if.end` command in case initial `if` command did not execute its containing command block.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=if.else:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - if.else:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/if.else?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command if.else id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## if.end ``v1``
+----------   
+Defines the end of an `if` command.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=if.end:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - if.end:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/if.end?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command if.end id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5575,6 +6129,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -5586,6 +6141,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5593,12 +6149,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/job?schedule=<value>&stop=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/job?schedule=<value>&stop=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command job schedule=<value> stop=<value> id=<value> if=<value> onError=<value>  
+pi command job schedule=<value> stop=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5620,6 +6176,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -5629,6 +6186,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5636,12 +6194,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/job.list?id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/job.list?id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command job.list id=<value> if=<value> onError=<value>  
+pi command job.list id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5664,6 +6222,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -5674,6 +6233,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5681,12 +6241,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/job.status?pipelineKey=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/job.status?pipelineKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command job.status pipelineKey=<value> id=<value> if=<value> onError=<value>  
+pi command job.status pipelineKey=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5709,6 +6269,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -5719,6 +6280,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5726,12 +6288,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/job.stop?pipelineKey=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/job.stop?pipelineKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command job.stop pipelineKey=<value> id=<value> if=<value> onError=<value>  
+pi command job.stop pipelineKey=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5754,6 +6316,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5765,6 +6328,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5773,12 +6337,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/jpa.query?query=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/jpa.query?query=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command jpa.query query=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command jpa.query query=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5802,6 +6366,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -5813,6 +6378,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5820,12 +6386,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log message=<value> level=<value> id=<value> if=<value> onError=<value>  
+pi command log message=<value> level=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5850,6 +6416,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5863,6 +6430,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5871,12 +6439,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.list?service=<value>&lines=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/log.list?service=<value>&lines=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.list service=<value> lines=<value> format=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command log.list service=<value> lines=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5901,6 +6469,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5914,6 +6483,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5922,12 +6492,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.list.email?auditId=<value>&createdAfter=<value>&createdBefore=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/log.list.email?auditId=<value>&createdAfter=<value>&createdBefore=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.list.email auditId=<value> createdAfter=<value> createdBefore=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command log.list.email auditId=<value> createdAfter=<value> createdBefore=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5950,6 +6520,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -5961,6 +6532,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -5969,12 +6541,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.list.environment?interpolate=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/log.list.environment?interpolate=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.list.environment interpolate=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command log.list.environment interpolate=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6003,6 +6575,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6020,6 +6593,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6028,12 +6602,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.search?service=<value>&severity=<value>&messageFilter=<value>&typeFilter=<value>&startDateTime=<value>&endDateTime=<value>&nextPageToken=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/log.search?service=<value>&severity=<value>&messageFilter=<value>&typeFilter=<value>&startDateTime=<value>&endDateTime=<value>&nextPageToken=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.search service=<value> severity=<value> messageFilter=<value> typeFilter=<value> startDateTime=<value> endDateTime=<value> nextPageToken=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command log.search service=<value> severity=<value> messageFilter=<value> typeFilter=<value> startDateTime=<value> endDateTime=<value> nextPageToken=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6055,6 +6629,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6065,6 +6640,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6073,12 +6649,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.services?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/log.services?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.services id=<value> if=<value> onError=<value> output=<value>  
+pi command log.services id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6100,6 +6676,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6110,6 +6687,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6118,12 +6696,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log.severities?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/log.severities?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log.severities id=<value> if=<value> onError=<value> output=<value>  
+pi command log.severities id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6153,6 +6731,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6171,6 +6750,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6179,12 +6759,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.dump?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&driveUsername=<value>&drivePassword=<value>&path=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/mail.dump?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&driveUsername=<value>&drivePassword=<value>&path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.dump protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> driveUsername=<value> drivePassword=<value> path=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command mail.dump protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> driveUsername=<value> drivePassword=<value> path=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6211,6 +6791,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6226,6 +6807,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6234,12 +6816,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6270,6 +6852,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6288,6 +6871,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6296,12 +6880,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&subject=<value>&message=<value>&replyTo=<value>&attachments=<value>&model=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/mail.send?to=<value>&from=<value>&fromName=<value>&subject=<value>&message=<value>&replyTo=<value>&attachments=<value>&model=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> message=<value> replyTo=<value> attachments=<value> model=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command mail.send to=<value> from=<value> fromName=<value> subject=<value> message=<value> replyTo=<value> attachments=<value> model=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6341,6 +6925,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -6354,6 +6939,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -6361,12 +6947,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.verify?email=<value>&email.whitelist=<value>&email.blacklist=<value>&challenge=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/mail.verify?email=<value>&email.whitelist=<value>&email.blacklist=<value>&challenge=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.verify email=<value> email.whitelist=<value> email.blacklist=<value> challenge=<value> id=<value> if=<value> onError=<value>  
+pi command mail.verify email=<value> email.whitelist=<value> email.blacklist=<value> challenge=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6389,6 +6975,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -6399,6 +6986,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -6406,12 +6994,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/map?reverse=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/map?reverse=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command map reverse=<value> id=<value> if=<value> onError=<value>  
+pi command map reverse=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6433,6 +7021,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6443,6 +7032,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6451,12 +7041,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/memory.info?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/memory.info?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command memory.info id=<value> if=<value> onError=<value> output=<value>  
+pi command memory.info id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6479,6 +7069,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -6489,6 +7080,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -6496,12 +7088,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/message.info.queue.get?queueName=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/message.info.queue.get?queueName=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command message.info.queue.get queueName=<value> id=<value> if=<value> onError=<value>  
+pi command message.info.queue.get queueName=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6526,6 +7118,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -6538,6 +7131,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -6545,12 +7139,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command message.receive key=<value> exchange=<value> queue=<value> id=<value> if=<value> onError=<value>  
+pi command message.receive key=<value> exchange=<value> queue=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6575,6 +7169,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -6587,6 +7182,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -6594,12 +7190,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/message.send?key=<value>&exchange=<value>&payload=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/message.send?key=<value>&exchange=<value>&payload=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command message.send key=<value> exchange=<value> payload=<value> id=<value> if=<value> onError=<value>  
+pi command message.send key=<value> exchange=<value> payload=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6623,6 +7219,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -6634,6 +7231,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -6641,12 +7239,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/microsoft.teams.send?url=<value>&message=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command microsoft.teams.send url=<value> message=<value> id=<value> if=<value> onError=<value>  
+pi command microsoft.teams.send url=<value> message=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6673,6 +7271,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -6687,6 +7286,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -6694,12 +7294,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mock.command?enabled=<value>&command=<value>&when=<value>&thenSetBody=<value>&thenSetVar=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/mock.command?enabled=<value>&command=<value>&when=<value>&thenSetBody=<value>&thenSetVar=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mock.command enabled=<value> command=<value> when=<value> thenSetBody=<value> thenSetVar=<value> id=<value> if=<value> onError=<value>  
+pi command mock.command enabled=<value> command=<value> when=<value> thenSetBody=<value> thenSetVar=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6723,6 +7323,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6735,6 +7336,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6743,12 +7345,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pdf.create?pages=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pdf.create?pages=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pdf.create pages=<value> format=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command pdf.create pages=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6771,6 +7373,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6782,6 +7385,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6790,12 +7394,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pdf.merge?name=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pdf.merge?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pdf.merge name=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command pdf.merge name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6828,6 +7432,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6849,6 +7454,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6857,12 +7463,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pdf.stamp?text=<value>&textSize=<value>&textColor=<value>&image=<value>&pages=<value>&position=<value>&layer=<value>&opacity=<value>&degree=<value>&margin=<value>&lineNo=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pdf.stamp?text=<value>&textSize=<value>&textColor=<value>&image=<value>&pages=<value>&position=<value>&layer=<value>&opacity=<value>&degree=<value>&margin=<value>&lineNo=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pdf.stamp text=<value> textSize=<value> textColor=<value> image=<value> pages=<value> position=<value> layer=<value> opacity=<value> degree=<value> margin=<value> lineNo=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command pdf.stamp text=<value> textSize=<value> textColor=<value> image=<value> pages=<value> position=<value> layer=<value> opacity=<value> degree=<value> margin=<value> lineNo=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6886,6 +7492,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6898,6 +7505,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6906,12 +7514,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.debug.status?sessionId=<value>&pipelineKey=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pipeline.debug.status?sessionId=<value>&pipelineKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.debug.status sessionId=<value> pipelineKey=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command pipeline.debug.status sessionId=<value> pipelineKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6934,6 +7542,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -6944,6 +7553,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -6951,12 +7561,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.delete?name=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/pipeline.delete?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.delete name=<value> id=<value> if=<value> onError=<value>  
+pi command pipeline.delete name=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -6979,6 +7589,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -6990,6 +7601,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -6998,12 +7610,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.get?name=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pipeline.get?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.get name=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command pipeline.get name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7026,6 +7638,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7037,6 +7650,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7045,12 +7659,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.put?name=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pipeline.put?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.put name=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command pipeline.put name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7073,6 +7687,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7083,6 +7698,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7090,12 +7706,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.run?name=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/pipeline.run?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.run name=<value> id=<value> if=<value> onError=<value>  
+pi command pipeline.run name=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7119,6 +7735,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7131,6 +7748,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7139,12 +7757,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.start?key=<value>&vars=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/pipeline.start?key=<value>&vars=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.start key=<value> vars=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command pipeline.start key=<value> vars=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7167,6 +7785,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7178,6 +7797,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7186,12 +7806,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.app.config?appNames=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.app.config?appNames=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.app.config appNames=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.app.config appNames=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7216,6 +7836,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7229,6 +7850,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7237,12 +7859,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.chunk.get?key=<value>&name=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.chunk.get?key=<value>&name=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.chunk.get key=<value> name=<value> index=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.attachment.chunk.get key=<value> name=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7268,6 +7890,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7281,6 +7904,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7288,12 +7912,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.chunk.put?key=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.attachment.chunk.put?key=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.chunk.put key=<value> name=<value> index=<value> content=<value> id=<value> if=<value> onError=<value>  
+pi command property.attachment.chunk.put key=<value> name=<value> index=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7317,6 +7941,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7329,6 +7954,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7337,12 +7963,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.content?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.content?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.content key=<value> name=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.attachment.content key=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7366,6 +7992,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7377,6 +8004,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7384,12 +8012,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.delete?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.attachment.delete?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.delete key=<value> name=<value> id=<value> if=<value> onError=<value>  
+pi command property.attachment.delete key=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7413,6 +8041,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7425,6 +8054,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7433,12 +8063,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.get?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.get?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.get key=<value> name=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.attachment.get key=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7461,6 +8091,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7472,6 +8103,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7480,12 +8112,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.list?key=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.list?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.list key=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.attachment.list key=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7511,6 +8143,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7524,6 +8157,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7531,12 +8165,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put?key=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.attachment.put?key=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put key=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value> onError=<value>  
+pi command property.attachment.put key=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7561,6 +8195,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7573,6 +8208,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7580,12 +8216,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put.uri?key=<value>&name=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.attachment.put.uri?key=<value>&name=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put.uri key=<value> name=<value> uri=<value> id=<value> if=<value> onError=<value>  
+pi command property.attachment.put.uri key=<value> name=<value> uri=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7609,6 +8245,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7620,6 +8257,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7627,12 +8265,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.copy?key=<value>&to=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.copy?key=<value>&to=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.copy key=<value> to=<value> id=<value> if=<value> onError=<value>  
+pi command property.copy key=<value> to=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7655,6 +8293,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7665,6 +8304,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7672,12 +8312,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.delete?pattern=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.delete?pattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.delete pattern=<value> id=<value> if=<value> onError=<value>  
+pi command property.delete pattern=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7700,6 +8340,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7711,6 +8352,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7719,12 +8361,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.exists?key=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.exists?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.exists key=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.exists key=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7747,6 +8389,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7758,6 +8401,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7766,12 +8410,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.import?strategy=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.import?strategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.import strategy=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.import strategy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7794,6 +8438,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7805,6 +8450,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7813,12 +8459,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.keys.children?pattern=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.keys.children?pattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.keys.children pattern=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.keys.children pattern=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7841,6 +8487,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7852,6 +8499,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7860,12 +8508,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.keys?pattern=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.keys?pattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.keys pattern=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.keys pattern=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7889,6 +8537,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -7901,6 +8550,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -7909,12 +8559,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.list pattern=<value> filter=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.list pattern=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7938,6 +8588,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7949,6 +8600,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7956,12 +8608,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.move?key=<value>&to=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.move?key=<value>&to=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.move key=<value> to=<value> id=<value> if=<value> onError=<value>  
+pi command property.move key=<value> to=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7985,6 +8637,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -7996,6 +8649,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8003,12 +8657,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.put?key=<value>&value=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.put?key=<value>&value=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.put key=<value> value=<value> id=<value> if=<value> onError=<value>  
+pi command property.put key=<value> value=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8036,6 +8690,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -8053,6 +8708,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -8062,12 +8718,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.query?dialect=<value>&select=<value>&from=<value>&where=<value>&type=<value>&params=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/property.query?dialect=<value>&select=<value>&from=<value>&where=<value>&type=<value>&params=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.query dialect=<value> select=<value> from=<value> where=<value> type=<value> params=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command property.query dialect=<value> select=<value> from=<value> where=<value> type=<value> params=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8091,6 +8747,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8102,6 +8759,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8109,12 +8767,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.delete?key=<value>&pattern=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.schema.delete?key=<value>&pattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.delete key=<value> pattern=<value> id=<value> if=<value> onError=<value>  
+pi command property.schema.delete key=<value> pattern=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8146,6 +8804,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8165,6 +8824,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8172,12 +8832,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value> onError=<value>  
+pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8206,6 +8866,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8223,6 +8884,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -8231,12 +8893,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.search?keyFilter=<value>&valueFilter=<value>&typeFilter=<value>&offset=<value>&page=<value>&maxResults=<value>&info=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.search?keyFilter=<value>&valueFilter=<value>&typeFilter=<value>&offset=<value>&page=<value>&maxResults=<value>&info=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.search keyFilter=<value> valueFilter=<value> typeFilter=<value> offset=<value> page=<value> maxResults=<value> info=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.search keyFilter=<value> valueFilter=<value> typeFilter=<value> offset=<value> page=<value> maxResults=<value> info=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8265,6 +8927,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8282,6 +8945,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -8290,12 +8954,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.send.delivery?key=<value>&message=<value>&privacyLevel=<value>&model=<value>&subject=<value>&includeProperty=<value>&recipients=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.send.delivery?key=<value>&message=<value>&privacyLevel=<value>&model=<value>&subject=<value>&includeProperty=<value>&recipients=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.send.delivery key=<value> message=<value> privacyLevel=<value> model=<value> subject=<value> includeProperty=<value> recipients=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.send.delivery key=<value> message=<value> privacyLevel=<value> model=<value> subject=<value> includeProperty=<value> recipients=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8318,6 +8982,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8329,6 +8994,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -8337,12 +9003,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.tag.list?key=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.tag.list?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.tag.list key=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.tag.list key=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8368,6 +9034,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8381,6 +9048,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8388,12 +9056,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.tag.put?key=<value>&tags=<value>&name=<value>&value=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.tag.put?key=<value>&tags=<value>&name=<value>&value=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.tag.put key=<value> tags=<value> name=<value> value=<value> id=<value> if=<value> onError=<value>  
+pi command property.tag.put key=<value> tags=<value> name=<value> value=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8419,6 +9087,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8433,6 +9102,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -8441,12 +9111,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.expression?select=<value>&from=<value>&where=<value>&aggregate=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.value.expression?select=<value>&from=<value>&where=<value>&aggregate=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8470,6 +9140,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8482,6 +9153,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -8490,12 +9162,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.get?key=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.value.get?key=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.get key=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.value.get key=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8519,6 +9191,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8531,6 +9204,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -8539,12 +9213,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.list?pattern=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/property.value.list?pattern=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.list pattern=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command property.value.list pattern=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8570,6 +9244,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -8585,6 +9260,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -8594,12 +9270,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.list.put?baseKey=<value>&primaryKeyField=<value>&iterItemName=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/property.value.list.put?baseKey=<value>&primaryKeyField=<value>&iterItemName=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.list.put baseKey=<value> primaryKeyField=<value> iterItemName=<value> ignoreUuidField=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command property.value.list.put baseKey=<value> primaryKeyField=<value> iterItemName=<value> ignoreUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8624,6 +9300,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8636,6 +9313,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8643,12 +9321,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.put?key=<value>&value=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/property.value.put?key=<value>&value=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.put key=<value> value=<value> ignoreUuidField=<value> id=<value> if=<value> onError=<value>  
+pi command property.value.put key=<value> value=<value> ignoreUuidField=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8672,6 +9350,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8683,6 +9362,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8690,12 +9370,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/provision?module=<value>&path=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/provision?module=<value>&path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command provision module=<value> path=<value> id=<value> if=<value> onError=<value>  
+pi command provision module=<value> path=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8719,6 +9399,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8730,6 +9411,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8737,12 +9419,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/publicform.definition?id=<value>&id=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/publicform.definition?id=<value>&id=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command publicform.definition id=<value> id=<value> id=<value> if=<value> onError=<value>  
+pi command publicform.definition id=<value> id=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8766,6 +9448,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8777,6 +9460,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8784,12 +9468,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/publicform.submit?value=<value>&id=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/publicform.submit?value=<value>&id=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command publicform.submit value=<value> id=<value> id=<value> if=<value> onError=<value>  
+pi command publicform.submit value=<value> id=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8813,6 +9497,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -8825,6 +9510,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -8833,12 +9519,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/resource?path=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/resource?path=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command resource path=<value> uri=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command resource path=<value> uri=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8861,6 +9547,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8871,6 +9558,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8878,12 +9566,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/resource.save?path=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/resource.save?path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command resource.save path=<value> id=<value> if=<value> onError=<value>  
+pi command resource.save path=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8905,6 +9593,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8914,6 +9603,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8921,12 +9611,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/rpa.website.close?id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/rpa.website.close?id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command rpa.website.close id=<value> if=<value> onError=<value>  
+pi command rpa.website.close id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8949,6 +9639,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -8959,6 +9650,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8966,12 +9658,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/rpa.website.open?url=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/rpa.website.open?url=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command rpa.website.open url=<value> id=<value> if=<value> onError=<value>  
+pi command rpa.website.open url=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8994,6 +9686,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -9004,6 +9697,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -9011,12 +9705,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/rpa.website.scrap?xpath=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/rpa.website.scrap?xpath=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command rpa.website.scrap xpath=<value> id=<value> if=<value> onError=<value>  
+pi command rpa.website.scrap xpath=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9038,6 +9732,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -9048,6 +9743,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9056,12 +9752,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/schema.pipeline?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/schema.pipeline?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command schema.pipeline id=<value> if=<value> onError=<value> output=<value>  
+pi command schema.pipeline id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9086,6 +9782,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -9099,6 +9796,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9107,12 +9805,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command script.run script=<value> path=<value> language=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command script.run script=<value> path=<value> language=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9135,6 +9833,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -9145,6 +9844,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -9152,12 +9852,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secret.delete?name=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/secret.delete?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secret.delete name=<value> id=<value> if=<value> onError=<value>  
+pi command secret.delete name=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9180,6 +9880,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -9191,6 +9892,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9199,12 +9901,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secret.get?name=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/secret.get?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secret.get name=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command secret.get name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9230,6 +9932,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -9243,6 +9946,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -9250,12 +9954,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secret.put?format=<value>&name=<value>&secret=<value>&timeToLive=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/secret.put?format=<value>&name=<value>&secret=<value>&timeToLive=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secret.put format=<value> name=<value> secret=<value> timeToLive=<value> id=<value> if=<value> onError=<value>  
+pi command secret.put format=<value> name=<value> secret=<value> timeToLive=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9277,6 +9981,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -9287,6 +9992,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9295,12 +10001,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/server.info?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/server.info?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command server.info id=<value> if=<value> onError=<value> output=<value>  
+pi command server.info id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9323,6 +10029,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -9334,6 +10041,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9342,12 +10050,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.job.logs?name=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/service.job.logs?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.job.logs name=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command service.job.logs name=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9377,6 +10085,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -9395,6 +10104,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9403,12 +10113,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.job.start?name=<value>&image=<value>&imagePullSecret=<value>&imagePullPolicy=<value>&env=<value>&command=<value>&args=<value>&replace=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/service.job.start?name=<value>&image=<value>&imagePullSecret=<value>&imagePullPolicy=<value>&env=<value>&command=<value>&args=<value>&replace=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.job.start name=<value> image=<value> imagePullSecret=<value> imagePullPolicy=<value> env=<value> command=<value> args=<value> replace=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command service.job.start name=<value> image=<value> imagePullSecret=<value> imagePullPolicy=<value> env=<value> command=<value> args=<value> replace=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9431,6 +10141,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -9442,6 +10153,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9450,12 +10162,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.job.status?name=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/service.job.status?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.job.status name=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command service.job.status name=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9478,6 +10190,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -9489,6 +10202,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9497,12 +10211,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.job.stop?name=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/service.job.stop?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.job.stop name=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command service.job.stop name=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9535,6 +10249,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -9556,6 +10271,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9564,12 +10280,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.start?name=<value>&image=<value>&imagePullPolicy=<value>&port=<value>&ingress=<value>&imagePullSecret=<value>&env=<value>&command=<value>&args=<value>&replicas=<value>&volumes=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/service.start?name=<value>&image=<value>&imagePullPolicy=<value>&port=<value>&ingress=<value>&imagePullSecret=<value>&env=<value>&command=<value>&args=<value>&replicas=<value>&volumes=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.start name=<value> image=<value> imagePullPolicy=<value> port=<value> ingress=<value> imagePullSecret=<value> env=<value> command=<value> args=<value> replicas=<value> volumes=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command service.start name=<value> image=<value> imagePullPolicy=<value> port=<value> ingress=<value> imagePullSecret=<value> env=<value> command=<value> args=<value> replicas=<value> volumes=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9593,6 +10309,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -9605,6 +10322,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9613,12 +10331,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.status?name=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/service.status?name=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.status name=<value> format=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command service.status name=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9642,6 +10360,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
@@ -9654,6 +10373,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -9662,12 +10382,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.stop?name=<value>&deleteVolumes=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>  
+http://host/api/v3/command/service.stop?name=<value>&deleteVolumes=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.stop name=<value> deleteVolumes=<value> id=<value> if=<value> onError=<value> credentials=<value>  
+pi command service.stop name=<value> deleteVolumes=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9691,6 +10411,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -9702,6 +10423,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -9709,12 +10431,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/set.body?value=<value>&format=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/set.body?value=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command set.body value=<value> format=<value> id=<value> if=<value> onError=<value>  
+pi command set.body value=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9739,6 +10461,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
@@ -9753,6 +10476,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
       input: <value>  
 ```  
@@ -9762,12 +10486,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/set?value=<value>&to=<value>&mapping=<value>&id=<value>&if=<value>&onError=<value>&output=<value>&input=<value>  
+http://host/api/v3/command/set?value=<value>&to=<value>&mapping=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command set value=<value> to=<value> mapping=<value> id=<value> if=<value> onError=<value> output=<value> input=<value>  
+pi command set value=<value> to=<value> mapping=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9792,6 +10516,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -9804,6 +10529,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -9811,12 +10537,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/set.var?key=<value>&value=<value>&format=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/set.var?key=<value>&value=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command set.var key=<value> value=<value> format=<value> id=<value> if=<value> onError=<value>  
+pi command set.var key=<value> value=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9843,6 +10569,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -9859,6 +10586,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -9868,12 +10596,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> credentials=<value> output=<value>  
+pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9900,6 +10628,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -9916,6 +10645,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -9925,12 +10655,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> credentials=<value> output=<value>  
+pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9958,6 +10688,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -9975,6 +10706,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -9984,12 +10716,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.list?path=<value>&filter=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.list?path=<value>&filter=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.list path=<value> filter=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> credentials=<value> output=<value>  
+pi command sftp.list path=<value> filter=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10016,6 +10748,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -10032,6 +10765,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -10041,12 +10775,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> credentials=<value> output=<value>  
+pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10074,6 +10808,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -10091,6 +10826,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
       output: <value>  
 ```  
@@ -10100,12 +10836,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> credentials=<value> output=<value>  
+pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10132,6 +10868,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
@@ -10148,6 +10885,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       credentials: <value>  
       input: <value>  
 ```  
@@ -10157,12 +10895,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&credentials=<value>&input=<value>  
+http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> credentials=<value> input=<value>  
+pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10186,6 +10924,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -10197,6 +10936,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -10204,12 +10944,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/slack.send?url=<value>&text=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/slack.send?url=<value>&text=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command slack.send url=<value> text=<value> id=<value> if=<value> onError=<value>  
+pi command slack.send url=<value> text=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10236,6 +10976,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10251,6 +10992,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10259,12 +11001,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sql.query?query=<value>&datasource=<value>&columnName=<value>&dataField=<value>&columnField=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/sql.query?query=<value>&datasource=<value>&columnName=<value>&dataField=<value>&columnField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sql.query query=<value> datasource=<value> columnName=<value> dataField=<value> columnField=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command sql.query query=<value> datasource=<value> columnName=<value> dataField=<value> columnField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10286,6 +11028,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10296,6 +11039,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10304,12 +11048,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/switch?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/switch?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command switch id=<value> if=<value> onError=<value> output=<value>  
+pi command switch id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10335,6 +11079,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -10348,6 +11093,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -10355,12 +11101,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&reportFormat=<value>&excludeMethods=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&reportFormat=<value>&excludeMethods=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command test.run locations=<value> includeMethods=<value> reportFormat=<value> excludeMethods=<value> id=<value> if=<value> onError=<value>  
+pi command test.run locations=<value> includeMethods=<value> reportFormat=<value> excludeMethods=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10384,6 +11130,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10396,6 +11143,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10404,12 +11152,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/theme?clearCache=<value>&resource=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/theme?clearCache=<value>&resource=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command theme clearCache=<value> resource=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command theme clearCache=<value> resource=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10436,6 +11184,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -10452,6 +11201,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -10461,12 +11211,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/transform?iterate=<value>&groupBy=<value>&engine=<value>&modelName=<value>&template=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command transform iterate=<value> groupBy=<value> engine=<value> modelName=<value> template=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10495,6 +11245,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -10512,6 +11263,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -10521,12 +11273,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.csv.json?delimiter=<value>&hasHeadersLine=<value>&rowsFormat=<value>&showColumnsCountField=<value>&showRowsCountField=<value>&showHeadersField=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/transform.csv.json?delimiter=<value>&hasHeadersLine=<value>&rowsFormat=<value>&showColumnsCountField=<value>&showRowsCountField=<value>&showHeadersField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.csv.json delimiter=<value> hasHeadersLine=<value> rowsFormat=<value> showColumnsCountField=<value> showRowsCountField=<value> showHeadersField=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command transform.csv.json delimiter=<value> hasHeadersLine=<value> rowsFormat=<value> showColumnsCountField=<value> showRowsCountField=<value> showHeadersField=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10550,6 +11302,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10562,6 +11315,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10570,12 +11324,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.ftl?template=<value>&model=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/transform.ftl?template=<value>&model=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.ftl template=<value> model=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command transform.ftl template=<value> model=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10597,6 +11351,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10607,6 +11362,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10615,12 +11371,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.html2docx?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/transform.html2docx?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.html2docx id=<value> if=<value> onError=<value> output=<value>  
+pi command transform.html2docx id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10642,6 +11398,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -10653,6 +11410,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -10662,12 +11420,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.json.xml?id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/transform.json.xml?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.json.xml id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command transform.json.xml id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10690,6 +11448,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10701,6 +11460,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10709,12 +11469,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.pdf2png?dpi=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/transform.pdf2png?dpi=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.pdf2png dpi=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command transform.pdf2png dpi=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10737,6 +11497,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10748,6 +11509,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10756,12 +11518,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.png2pdf?dpi=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/transform.png2pdf?dpi=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.png2pdf dpi=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command transform.png2pdf dpi=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10786,6 +11548,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10797,6 +11560,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10805,12 +11569,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.word2pdf?path=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/transform.word2pdf?path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.word2pdf path=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command transform.word2pdf path=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10834,6 +11598,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10846,6 +11611,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10854,12 +11620,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.wordtemplate?model=<value>&template=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/transform.wordtemplate?model=<value>&template=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.wordtemplate model=<value> template=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command transform.wordtemplate model=<value> template=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10881,6 +11647,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -10892,6 +11659,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -10901,12 +11669,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.xml.json?id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/transform.xml.json?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.xml.json id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command transform.xml.json id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10930,6 +11698,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `apiKey` | String | false | null | The alternative API key to connect to the service. If null or empty, the default one will be used, as defined by the default backend settings.
 `restUrl` | String | false | null | The URL to be called by the command. If null or empty, the default url will be used as defined in the backend.
@@ -10945,6 +11714,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
       apiKey: <value>  
       restUrl: <value>  
@@ -10956,12 +11726,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/translate?text=<value>&targetLanguage=<value>&id=<value>&if=<value>&onError=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
+http://host/api/v3/command/translate?text=<value>&targetLanguage=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command translate text=<value> targetLanguage=<value> id=<value> if=<value> onError=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
+pi command translate text=<value> targetLanguage=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10983,6 +11753,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10993,6 +11764,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11001,12 +11773,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/unzip?id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/unzip?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command unzip id=<value> if=<value> onError=<value> output=<value>  
+pi command unzip id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11031,6 +11803,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
@@ -11044,6 +11817,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       input: <value>  
       output: <value>  
 ```  
@@ -11053,12 +11827,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/json.validate?schema=<value>&version=<value>&id=<value>&if=<value>&onError=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/json.validate?schema=<value>&version=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command json.validate schema=<value> version=<value> id=<value> if=<value> onError=<value> input=<value> output=<value>  
+pi command json.validate schema=<value> version=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11081,6 +11855,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -11091,6 +11866,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -11098,12 +11874,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/wait?ms=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/wait?ms=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command wait ms=<value> id=<value> if=<value> onError=<value>  
+pi command wait ms=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11126,6 +11902,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -11136,6 +11913,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -11143,12 +11921,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/webhook.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.delete uuid=<value> id=<value> if=<value> onError=<value>  
+pi command webhook.delete uuid=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11171,6 +11949,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11182,6 +11961,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11190,12 +11970,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.get?uuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/webhook.get?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.get uuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command webhook.get uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11220,6 +12000,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11233,6 +12014,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11241,12 +12023,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11270,6 +12052,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -11281,6 +12064,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -11288,12 +12072,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.receive uuid=<value> token=<value> id=<value> if=<value> onError=<value>  
+pi command webhook.receive uuid=<value> token=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11316,6 +12100,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -11326,6 +12111,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -11333,12 +12119,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.receive.logs?token=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/webhook.receive.logs?token=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.receive.logs token=<value> id=<value> if=<value> onError=<value>  
+pi command webhook.receive.logs token=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11363,6 +12149,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11376,6 +12163,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11384,12 +12172,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKey=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11413,6 +12201,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11425,6 +12214,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11433,12 +12223,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.deployment.find?name=<value>&id=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.deployment.find?name=<value>&id=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.deployment.find name=<value> id=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.deployment.find name=<value> id=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11465,6 +12255,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11478,6 +12269,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11486,12 +12278,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=<value>&messageName=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=<value>&messageName=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11514,6 +12306,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11525,6 +12318,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11533,12 +12327,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.find.processinstances?processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.find.processinstances?processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.find.processinstances processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.find.processinstances processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11565,6 +12359,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11580,6 +12375,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11588,12 +12384,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.history.tasks?dueBefore=<value>&assignee=<value>&includeVariables=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.history.tasks?dueBefore=<value>&assignee=<value>&includeVariables=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.history.tasks dueBefore=<value> assignee=<value> includeVariables=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.history.tasks dueBefore=<value> assignee=<value> includeVariables=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11623,6 +12419,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -11640,6 +12437,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -11647,12 +12445,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.member.message?workflowModel=<value>&userId=<value>&username=<value>&resourcePath=<value>&taskUrl=<value>&subject=<value>&message=<value>&model=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/workflow.member.message?workflowModel=<value>&userId=<value>&username=<value>&resourcePath=<value>&taskUrl=<value>&subject=<value>&message=<value>&model=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.member.message workflowModel=<value> userId=<value> username=<value> resourcePath=<value> taskUrl=<value> subject=<value> message=<value> model=<value> id=<value> if=<value> onError=<value>  
+pi command workflow.member.message workflowModel=<value> userId=<value> username=<value> resourcePath=<value> taskUrl=<value> subject=<value> message=<value> model=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11676,6 +12474,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -11687,6 +12486,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -11694,12 +12494,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.model.attachment.get?processInstanceId=<value>&fileName=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/workflow.model.attachment.get?processInstanceId=<value>&fileName=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.model.attachment.get processInstanceId=<value> fileName=<value> id=<value> if=<value> onError=<value>  
+pi command workflow.model.attachment.get processInstanceId=<value> fileName=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11724,6 +12524,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -11736,6 +12537,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -11743,12 +12545,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<value>&fileName=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/workflow.model.attachment.put?processInstanceId=<value>&fileName=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value> contentType=<value> id=<value> if=<value> onError=<value>  
+pi command workflow.model.attachment.put processInstanceId=<value> fileName=<value> contentType=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11771,6 +12573,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11782,6 +12585,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11790,12 +12594,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.model?mappings=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.model?mappings=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.model mappings=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.model mappings=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11821,6 +12625,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11835,6 +12640,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11843,12 +12649,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.tasks.open?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.tasks.open?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.tasks.open dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.tasks.open dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11874,6 +12680,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11888,6 +12695,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11896,12 +12704,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.tasks.open.reminder?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.tasks.open.reminder?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.tasks.open.reminder dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.tasks.open.reminder dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11932,6 +12740,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11947,6 +12756,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -11955,12 +12765,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.start?key=<value>&businessKey=<value>&variables=<value>&workflowModelInstanceKey=<value>&workflowStartedBy=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.start?key=<value>&businessKey=<value>&variables=<value>&workflowModelInstanceKey=<value>&workflowStartedBy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.start key=<value> businessKey=<value> variables=<value> workflowModelInstanceKey=<value> workflowStartedBy=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.start key=<value> businessKey=<value> variables=<value> workflowModelInstanceKey=<value> workflowStartedBy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11984,6 +12794,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -11996,6 +12807,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -12004,12 +12816,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.task.complete?taskId=<value>&variables=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.task.complete?taskId=<value>&variables=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.task.complete taskId=<value> variables=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.task.complete taskId=<value> variables=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12035,6 +12847,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -12049,6 +12862,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -12057,12 +12871,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.tasks?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.tasks?dueBefore=<value>&assignee=<value>&processInstanceId=<value>&processInstanceBusinessKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.tasks dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.tasks dueBefore=<value> assignee=<value> processInstanceId=<value> processInstanceBusinessKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12086,6 +12900,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 
 
 **Pipeline example:**  
@@ -12097,6 +12912,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -12104,12 +12920,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.undeploy?name=<value>&onError=<value>&id=<value>&if=<value>&onError=<value>  
+http://host/api/v3/command/workflow.undeploy?name=<value>&onError=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.undeploy name=<value> onError=<value> id=<value> if=<value> onError=<value>  
+pi command workflow.undeploy name=<value> onError=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12132,6 +12948,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -12143,6 +12960,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -12151,12 +12969,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.users?processDefinitionId=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/workflow.users?processDefinitionId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.users processDefinitionId=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command workflow.users processDefinitionId=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12180,6 +12998,7 @@ Name | Type | Required | Default | Description
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -12192,6 +13011,7 @@ pipeline:
       id: <value>  
       if: <value>  
       onError: <value>  
+      eval: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -12200,12 +13020,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/zip?name=<value>&level=<value>&id=<value>&if=<value>&onError=<value>&output=<value>  
+http://host/api/v3/command/zip?name=<value>&level=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command zip name=<value> level=<value> id=<value> if=<value> onError=<value> output=<value>  
+pi command zip name=<value> level=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

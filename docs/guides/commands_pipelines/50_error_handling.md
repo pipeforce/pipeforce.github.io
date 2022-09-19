@@ -17,9 +17,9 @@ headers:
   onError: {"action": "THROW"}
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -30,9 +30,9 @@ headers:
   onError: "THROW"
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -40,10 +40,10 @@ You can specify this also as parameter per command:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
     onError: {"action": "THROW"}
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -51,10 +51,10 @@ Or in short:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
     onError: "THROW"
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -67,9 +67,9 @@ headers:
   onError: {"action": "IGNORE"}
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -80,9 +80,9 @@ headers:
   onError: "IGNORE"
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -90,10 +90,10 @@ You can specify this also as parameter per command:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
     onError: {"action": "IGNORE"}
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -101,10 +101,10 @@ Or in short:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
     onError: "IGNORE"
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -119,9 +119,9 @@ headers:
   onError: {"action": "LOG"}
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -132,9 +132,9 @@ headers:
   onError: "LOG"
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -142,10 +142,10 @@ You can specify this also as parameter per command:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
     onError: {"action": "LOG"}
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -153,10 +153,10 @@ Or in short:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
     onError: "LOG"
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -175,9 +175,9 @@ headers:
   onError: {"action": "ROLLBACK",  "pipeline": "uri:property:global/app/myapp/pipeline/rollback"}
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -187,10 +187,10 @@ You can specify this also as parameter per command:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
     onError: {"action": "ROLLBACK",  "pipeline": "uri:property:global/app/myapp/pipeline/rollback"}
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -207,9 +207,9 @@ headers:
   onError: {"action": "RETRY", "times": 3,  "wait": 2,  "then": {"action": "THROW"} }
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -220,9 +220,9 @@ headers:
   onError: {"action": "RETRY", "times": 3,  "wait": 2,  "then": "THROW" }
 
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -230,10 +230,10 @@ You can specify this also as parameter per command:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
       onError: {"action": "RETRY", "times": 3,  "wait": 2,  "then": {"action": "THROW"} }
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -241,10 +241,10 @@ Or shorter:
 
 ```yaml
 pipeline:
-  commandA:
+  command.a:
     paramA: valueA
       onError: {"action": "RETRY", "times": 3,  "wait": 2,  "then": "THROW" }
-  commandB:
+  command.b:
     paramB: valueB
 ```
 
@@ -260,6 +260,22 @@ The optional parameters of the `RETRY` action are:
  - `times`: The number of retries before giving up and executing the `then` action. Defaults to `1`.
  - `then`: The final action to do in case the error still occurs after the given amount of retries. Can be one of `IGNORE`, `LOG`, `THROW` or `ROLLBACK`. Defaults to `THROW`.
 
+## Finally
+
+Sometimes it is necessary to do some tasks at the very end of a pipeline, even if an error has been occurred. For example to cleanup data. In such a case you can use the [`finally`](/docs/api/commands#finally-v1) command: Every command which is defined after the `finally` command will be executed in any case at the very and of a pipeline. Here is an example:
+
+```yaml
+pipeline:
+
+  - command.with.error:
+
+  - finally:
+
+  - mail.send:
+      to: admin@company.com
+      subject: "Pipeline finished"
+      message: "Pipeline finished with result: #{body}"
+```
 
 ## Report an Issue
 :::tip Your help is needed!

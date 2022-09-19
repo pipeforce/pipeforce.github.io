@@ -7,7 +7,7 @@ sidebar_label: Getting Started
 
 **For standard processes, there is commodity software off the shelf. For everything beyond: PIPEFORCE.**
 
-PIPEFORCE is an enterprise-greade business process automation and application integration platform.  It is built entirely cloud-native and runs inside a container orchestration environment like Kubernetes using microservices and messaging. Designed ground-up that way. 
+PIPEFORCE is an enterprise-grade business process automation and application integration platform. It is built entirely cloud-native and runs inside a container orchestration environment like Kubernetes using microservices and messaging. Designed ground-up that way. 
 
 It covers all aspects to create and integrate new age best-of-breed enterprise solutions. It helps to develop, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation and testing with full life-cycle management. Everything on a single platform which offers low-code and custom microservice development.
 
@@ -17,24 +17,27 @@ It covers all aspects to create and integrate new age best-of-breed enterprise s
 
 PIPEFORCE helps you to:
 
-- document
-- integrate
-- automate
-- train
+- integrate applications
+- automate processes
+- build and orchestrate microservices
+- automate testing of complex solutions
+- monitor and report processes and messages
+- document workflows
+- train processes with users
 
-business workflows within your company. Its an open platform which supports you to
+within your company. Its an open platform which supports you for example to:
 
-- integrate (connect) different Systems and APIs with simple to use connectors and pipelines
-- do data migration, transformation, cleansing and enrichment using data pipelines
-- build any business apps using a forms and lists framework
+- integrate (connect) different Systems and APIs with standardized connectors and pipelines
+- do data migration, transformation, cleansing and enrichment using [enterprise integration patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/)
+- build business apps using a forms and lists framework
 - design, discuss and implement standardized BPMN workflows using an online designer
-- automate tasks und flows using the built-in RPA toolings and workflows
+- automate tasks und flows using the built-in toolings or connect to external RPA toolings such as UIPath
 - define a clear model for separation of people's responsbilities 
 - define a clear development and deployment model 
 
-All of this in a fraction of time.
+All of this on a single platform and in a fraction of time.
 
-We at PIPEFORCE believe that the digital success of new age enterprises lies in the ability to scale the development of digital solutions. We think that Low Code / No Code platforms are important here, but they won't solve all aspects. Instead, our goal is to give your employees digital superpower in their fields. We bring the experts closer together, so they can build business solutions to empower their company to cover the challenges of the digital age in a way and speed, that no others can do.
+We at PIPEFORCE believe that the digital success of new age enterprises lies in the ability to scale the development of digital solutions. We think that Low Code / No Code platforms are important here, but they won't solve all aspects. Instead, our goal is to give your employees digital superpower in their fields. The platform brings the experts closer together, so they can build business solutions to empower their company to cover the challenges of the digital age in a way and speed, that no others can do.
 
 PIPEFORCE helps enterprises to achieve **digital superpower** by clearly separating the responsibilities and defining the interfaces between:
 

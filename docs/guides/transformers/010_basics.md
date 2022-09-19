@@ -13,7 +13,7 @@ PIPEFORCE offers a huge set of tools to do transformation of data structures. Th
  - The `transform.*` commands
  - The `data.*` commands
  - The Pipeline Expression Language (PEL)
- - The PEL Utils like `@data` or `@convert`
+ - The Pipeline Functions like `@data` or `@convert`
 
 You should get familiar with all of the toolings listed here in order to make the right choice to solve your data transformation task most effectively.
 
@@ -65,13 +65,27 @@ There are many different ways of data transformation. In order to have a common 
 
 Most of them are also mentioned as part of the well-known [enterprise integration patterns](https://www.enterpriseintegrationpatterns.com/eaipatterns.html) which can be seen as a "defacto-standard" in the data and message integration world.
 
-### Iterator
+### Splitter / Iterator
 
-An iterator "loops" over a given list of data (= iteration). During such an iteration, data in the list can be read, extracted and/or changed.
+A splitter splits a given data object into multiple data objects. Each data object can then processed separately.
 
-#### Iterate with command
+For example you have a data object **order** which contains a list of **order items** and you would like to "extract" these order items from the order and process each order item separately:
 
-In PIPEFORCE you can use the [`data.list.iterate`](../../api/commands#datalistiterate-v1) command in order to iterate over a list of data and apply transformation patterns at the same time. Here is an example:
+![](../../img/eip_splitter.gif)
+
+This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Sequencer.html). 
+
+This approach is sometimes also called **Iterator**. Looping over a given set of data objects is also called **iterating** over the items.
+
+#### Iterate with command `data.list.iterate`
+
+In PIPEFORCE you can use the [`data.list.iterate`](../../api/commands#datalistiterate-v1) command in order to iterate over a list of data and apply transformation patterns at the same time. 
+
+:::tip Note
+This command is optimized for huge data iteration cycles and it doesn't add command execution counts for each cycle. So you should prefer this approach whenever possible.
+:::
+
+Here is an example:
 
 ```yaml
 pipeline:
@@ -171,9 +185,10 @@ In case no `listA` parameter is given, the list is expected in the body or as op
 :::tip
 Since the parameters `where` and `do` can only contain PEL expressions, you can write them optionally without `#{` and `}` for better readability as shown in these examples.
 :::
-:::warning
-Do **not** use the command [`foreach`](../../api/commands#foreach-v1) for data transformation iteration. This command was intended to implement the [enterprise recipient list pattern](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html) based on a given list as input, not for huge data transformation tasks. It would make it more complex and is optimized for command control flows, not for performing on a huge set of data. 
-:::
+
+#### Iterate with command `foreach`
+
+
 
 #### Iterate with PEL
 
@@ -192,9 +207,9 @@ And if a script (serverless function / lambda) is also not working for you, you 
  - [PEL projection](../../api/pel#projection-expression) command
  - [PEL selection](../../api/pel#selection-expression) command
 :::
-### Aggregator
+### Aggregator / Merger
 
-An aggregator combines multiple data objects into a single data object.
+An aggregator combines multiple data objects into a single data object. Sometimes it is also called a **Merger** since it "merges" data objects into a single data object.
 
 For example you have multiple **Inventory Items** and you would like to aggregate them together into one **Inventory Order** data object:
 
@@ -260,7 +275,7 @@ Another possibility is to use the `data.list.iterate` command in order to enrich
 :::
 ### Deduplicator
 
-A deduplicator is a special form of a filter. It removes data duplicates from a given input.
+A deduplicator is a special form of a [filter](#filter). It removes data duplicates from a given input.
 
 :::tip PIPEFORCE toolings
  - [`data.list.filter`](../../api/commands#datalistfilter-v1) command 
@@ -278,7 +293,7 @@ This is a common pattern also mentioned by the [enterprise integration pattern c
 :::
 ### Limitter
 
-A limitter limits a given data list to a maximum size. It can be seen as a special form of a filter.
+A limitter limits a given data list to a maximum size. It can be seen as a special form of a [filter](#filter).
 
 :::tip PIPEFORCE toolings
  - [`data.list.limit`](../../api/commands#datalistlimit-v1) command 
@@ -307,15 +322,6 @@ A sorter sorts a given data list based on some condition. This is also known as 
 ![](../../img/eip_sorter.gif)
 
 This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html). 
-### Splitter
-
-A splitter splits a given data object into multiple data objects.
-
-For example you have a data object **order** which contains a list of **order items** and you would like to "extract" these order items from the order:
-
-![](../../img/eip_splitter.gif)
-
-This is a common pattern also mentioned by the [enterprise integration pattern collection](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Sequencer.html). 
 
 ## Report an Issue
 :::tip Your help is needed!

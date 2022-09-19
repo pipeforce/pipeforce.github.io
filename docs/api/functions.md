@@ -1,12 +1,12 @@
 ---
-title: Pipeline Functions Reference
-sidebar_label: Pipeline Functions
+title: Built-In Functions Reference
+sidebar_label: Built-In Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 15/09/2022 10:59:35 by CommandComplianceTest -->
+<!-- Generated: 19/09/2022 18:33:52 by CommandComplianceTest -->
 
-Reference documentation of [Pipeline Expression Language (PEL)](pel) Functions.  
+Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Functions.  
 
 
 
