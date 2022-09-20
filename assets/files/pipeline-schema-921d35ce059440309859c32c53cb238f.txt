@@ -2814,6 +2814,88 @@
             },
             "required" : [ ]
           },
+          "function.call" : {
+            "type" : "object",
+            "description" : "Calls a defined custom function by its name.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the function to call."
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "The optional args to the function as name-value pairs."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "function" : {
+            "type" : "object",
+            "description" : "Defines a custom function inside a pipeline. Such a function can then be re-used by calling the command `function.call`.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The optional name of the function. If given, the function will be registered under this name an can be re-called using the command `function.call`."
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "The args to the function as name-value pairs. If this function will be re-called, these args will be default args which can be overwritten by the caller."
+              },
+              "flow" : {
+                "type" : "string",
+                "description" : "If set to true, the function will be called by the pipeline flow even if `name` parameter is set."
+              },
+              "do" : {
+                "type" : "string",
+                "description" : "The function body to be executed as PEL."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "header.set" : {
             "type" : "object",
             "description" : "DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2",
