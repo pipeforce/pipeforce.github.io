@@ -40,9 +40,8 @@ pipeline:
       args:
         firstName: "Some"
       do: |
-        firstName + ' ' + lastName
+        firstName + ' ' + var.lastName
 ```
-
 ## Calling a function
 
 In order to call a function from another position in the pipeline, you have to first declare it using the command `function` and to define a name for the function unique inside the pipelie using the parameter `name`.
