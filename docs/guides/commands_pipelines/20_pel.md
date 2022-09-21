@@ -31,40 +31,54 @@ Output:
 ```
 Result: 2
 ```
+## Accessing Sopes
 
-Its also possible to access the values from one of the pipeline scopes (`headers`, `vars` and `body`), like shown in this example for `vars`:
+Inside a Pipeline Expression, you can access the values of the pipeline scopes like `headers`, `vars` and `body`. These scopes are provided as implicity objects and therefore they're available inside any Pipeline Expression.
+
+Let's assume, you have defined a variable `counter` and you would like to access this counter in your expression, then you could write an expression like this:
+
+```
+#{vars.counter}
+```
+
+Or as (both are doing the same):
+
+```
+#{var.counter}
+```
+
+Here is an example of a pipeline which uses this expression and outputs the value of `counter` to the body:
 
 ```yaml
 vars:
-  counter: 0
+  counter: 12
+
 pipeline:
-  - log:
-      message: "Counter = #{vars.counter + 1}"
+  - body.set:
+      value: "The counter is: #{var.counter}"
 ```
 
-Output:
+This will result in an output like this:
 
 ```
-Counter = 1
+The counter is: 12
 ```
 
-You can also set values using a PEL in combination with the `set` command:
+Similar you could fo with the `headers` scope:
 
 ```yaml
-vars:
-  counter: 0
+headers:
+  contentType: "text/plain"
+
 pipeline:
-  - set:
-      value: "#{vars.counter + 1}"
-      output: "#{vars.counter}"
-  - log:
-      message: "Counter = #{vars.counter}"
+  - body.set:
+      value: "The type is: #{header.contentType}"
 ```
 
-Output:
+This will result in an output like this:
 
 ```
-Counter: 1
+The type is: text/plain
 ```
 
 ## Relational operators
