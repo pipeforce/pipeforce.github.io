@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 21/09/2022 by CommandComplianceTest -->
+<!-- Generated: 22/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -5651,7 +5651,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | true | null | The unique username as uuid.
 `groupNames` | String | false | null | The group names to join. If not given, groupIds is required.
-`groupIds` | String | false | null | The group ids to join. If not given, groupIds is required.
+`groupIds` | String | false | null | The group ids to join. If not given, groupNames is required.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
