@@ -4231,7 +4231,7 @@
               },
               "groupIds" : {
                 "type" : "string",
-                "description" : "The group ids to join. If not given, groupIds is required."
+                "description" : "The group ids to join. If not given, groupNames is required."
               },
               "id" : {
                 "type" : "string",
