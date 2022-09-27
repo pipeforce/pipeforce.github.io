@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 22/09/2022 by CommandComplianceTest -->
+<!-- Generated: 27/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -7221,6 +7221,7 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The routing key pattern to listen for.
 `exchange` | String | false | null | The exchange to be used. If null, the default exchange will be used.
 `queue` | String | false | null | The queue to receive messages from. If null, the default queue will be used.
+`maxBatchSize` | String | false | null | Collects messages up to the given maxBatchSize in bytes and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each messages as single call.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -7234,6 +7235,7 @@ pipeline:
       key: <value>  
       exchange: <value>  
       queue: <value>  
+      maxBatchSize: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -7245,12 +7247,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&maxBatchSize=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command message.receive key=<value> exchange=<value> queue=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command message.receive key=<value> exchange=<value> queue=<value> maxBatchSize=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

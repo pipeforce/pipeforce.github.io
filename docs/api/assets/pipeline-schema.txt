@@ -5411,6 +5411,10 @@
                 "type" : "string",
                 "description" : "The queue to receive messages from. If null, the default queue will be used."
               },
+              "maxBatchSize" : {
+                "type" : "string",
+                "description" : "Collects messages up to the given maxBatchSize in bytes and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each messages as single call."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."

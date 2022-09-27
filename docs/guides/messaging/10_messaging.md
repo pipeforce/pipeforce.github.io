@@ -6,10 +6,10 @@ sidebar_label: Basics
 slug: /messaging
 ---
 
-PIPEFORCE has a built-in messaging bus where application messages can be routed between microservices based on routing
-keys.
+PIPEFORCE has a built-in messaging system, where application messages can be routed between microservices based on conditions like routing
+keys for example.
 
-As internal message broker RabbitMQ is used: https://www.rabbitmq.com/documentation.html
+By default, as internal message broker RabbitMQ is used: https://www.rabbitmq.com/documentation.html
 
 It's one of the most advanced and most widely used messaging broker in the world.
 
@@ -22,7 +22,7 @@ In order to send and receive messages to/from this messaging bus, you have two o
   and [message.send](../api/commands#messagesend-v1) commands.
 
 This section will cover the second part: How to write pipelines which send and receive messages to/from the messaging
-bus.
+system.
 
 ## Receiving messages
 
