@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 27/09/2022 by CommandComplianceTest -->
+<!-- Generated: 29/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -8592,6 +8592,7 @@ Returns all property keys for a given pattern.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pattern` | String | true | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. 
+`includeTrashed` | String | false | false | Include also properties moved to trash bin in the search?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -8604,6 +8605,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.keys:  
       pattern: <value>  
+      includeTrashed: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -8616,12 +8618,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.keys?pattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.keys?pattern=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.keys pattern=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.keys pattern=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8642,6 +8644,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pattern` | String | false | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this key. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'.
 `filter` | String | false | null | This parameter is deprecated. Use param 'pattern' instead.
+`includeTrashed` | String | false | false | Include also properties moved to trash bin?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -8655,6 +8658,7 @@ pipeline:
   - property.list:  
       pattern: <value>  
       filter: <value>  
+      includeTrashed: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -8667,12 +8671,116 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.list?pattern=<value>&filter=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.list pattern=<value> filter=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.list pattern=<value> filter=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## property.lock.create ``v1``
+----------   
+Creates a lock on a given property. In case someone tries to change or delete a locked property without being part of the exclusive guild, an exception is thrown.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.lock.create:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | The key of the property to lock.
+`type` | String | false | global | The type of the lock for which range the lock is exclusive. One of: `user`, `role`, `group`, `namespace`, `global` or 'trash'. If null, empty or different from the types mentioned here, the lock will be global by default.
+`ttl` | String | false | null | The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after a some minutes. Writing to the property instead works immediately after the `ttl` has been expired. 
+`uuid` | String | false | null | In case the lock is of type `user`, this parameter must contain the uuid of the user this lock is exclusive to. This parameter is mandatory in case this is a user exclusive lock.
+`name` | String | false | null | In case the lock is of type `role` or `group`, this parameter is mandatory and defines the name of the role or group, this lock is exclusive to. In case the type of the lock is `namespace`, this parameter is optional. If given, this name is used as namespace to create the lock for, otherwise the current namespace of the instance is used. In case the type of the lock is `global`, this parameter will be ignored.
+`details` | String | false | null | Some optional data to be set on the lock.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.lock.create:  
+      key: <value>  
+      type: <value>  
+      ttl: <value>  
+      uuid: <value>  
+      name: <value>  
+      details: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.lock.create?key=<value>&type=<value>&ttl=<value>&uuid=<value>&name=<value>&details=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.lock.create key=<value> type=<value> ttl=<value> uuid=<value> name=<value> details=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## property.lock.remove ``v1``
+----------   
+Removes a lock from a given property.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.lock.remove:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | The key of the property to remove the lock from.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.lock.remove:  
+      key: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.lock.remove?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.lock.remove key=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8971,6 +9079,7 @@ Name | Type | Required | Default | Description
 `page` | Integer | false | null | The 1-based index of the page to return. Does the offset calculation automatically. If this param is given, offset will be ignored.
 `maxResults` | Integer | false | 30 | The number of results to return. Note: The maximum is 100 results per call because of performance reasons. In case there are more results, use the offset and pagination to retrieve them. If this parameter is set to a value > 100 it will be reset to 100.
 `info` | Boolean | false | false | If set to true, the result will also include information about the request. This is useful for example for pagination.
+`includeTrashed` | Boolean | false | false | Include the properties moved to trash bin in the search?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -8989,6 +9098,7 @@ pipeline:
       page: <value>  
       maxResults: <value>  
       info: <value>  
+      includeTrashed: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -9001,12 +9111,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.search?keyFilter=<value>&valueFilter=<value>&typeFilter=<value>&offset=<value>&page=<value>&maxResults=<value>&info=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.search?keyFilter=<value>&valueFilter=<value>&typeFilter=<value>&offset=<value>&page=<value>&maxResults=<value>&info=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.search keyFilter=<value> valueFilter=<value> typeFilter=<value> offset=<value> page=<value> maxResults=<value> info=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.search keyFilter=<value> valueFilter=<value> typeFilter=<value> offset=<value> page=<value> maxResults=<value> info=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9192,6 +9302,7 @@ Name | Type | Required | Default | Description
 `from` | String | true | null | Specifies the properties to be loaded for the search. Can be a relative or absolute property wildcard key path. For example: 'global/object/invoice/*
 `where` | String | false | null | Specifies a selection filter to return only the properties those values match the given where filter. For example: invoice.amount > 50 would select only those properties having a field invoice.amount with value bigger than 50. If null, no where filter is applied and all properties values will be selected.
 `aggregate` | String | false | null | Defines an expression to be applied on the final result. For example to count all values or to transform them. If null or empty, no aggregation will be applied.
+`includeTrashed` | String | false | false | Should properties moved to trash bin included in this search?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9207,6 +9318,7 @@ pipeline:
       from: <value>  
       where: <value>  
       aggregate: <value>  
+      includeTrashed: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -9219,12 +9331,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.expression?select=<value>&from=<value>&where=<value>&aggregate=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.value.expression?select=<value>&from=<value>&where=<value>&aggregate=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.value.expression select=<value> from=<value> where=<value> aggregate=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9985,6 +10097,7 @@ Lists the metadata (not the secret payload itself) of all available secret entri
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of a single credentials to return. If null or empty, all credentials will be returned.
+`includeTrashed` | String | false | false | Also include the secret properties moved to trash bin in the list search?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9997,6 +10110,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - secret.get:  
       name: <value>  
+      includeTrashed: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -10009,12 +10123,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secret.get?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secret.get?name=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secret.get name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secret.get name=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
