@@ -6406,6 +6406,11 @@
                 "type" : "string",
                 "description" : "The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. "
               },
+              "includeTrashed" : {
+                "type" : "string",
+                "description" : "Include also properties moved to trash bin in the search?",
+                "default" : "false"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6443,6 +6448,11 @@
                 "type" : "string",
                 "description" : "This parameter is deprecated. Use param 'pattern' instead."
               },
+              "includeTrashed" : {
+                "type" : "string",
+                "description" : "Include also properties moved to trash bin?",
+                "default" : "false"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6465,6 +6475,85 @@
               }
             },
             "required" : [ ]
+          },
+          "property.lock.create" : {
+            "type" : "object",
+            "description" : "Creates a lock on a given property. In case someone tries to change or delete a locked property without being part of the exclusive guild, an exception is thrown.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property to lock."
+              },
+              "type" : {
+                "type" : "string",
+                "description" : "The type of the lock for which range the lock is exclusive. One of: `user`, `role`, `group`, `namespace`, `global` or 'trash'. If null, empty or different from the types mentioned here, the lock will be global by default.",
+                "default" : "global"
+              },
+              "ttl" : {
+                "type" : "string",
+                "description" : "The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after a some minutes. Writing to the property instead works immediately after the `ttl` has been expired. "
+              },
+              "uuid" : {
+                "type" : "string",
+                "description" : "In case the lock is of type `user`, this parameter must contain the uuid of the user this lock is exclusive to. This parameter is mandatory in case this is a user exclusive lock."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "In case the lock is of type `role` or `group`, this parameter is mandatory and defines the name of the role or group, this lock is exclusive to. In case the type of the lock is `namespace`, this parameter is optional. If given, this name is used as namespace to create the lock for, otherwise the current namespace of the instance is used. In case the type of the lock is `global`, this parameter will be ignored."
+              },
+              "details" : {
+                "type" : "string",
+                "description" : "Some optional data to be set on the lock."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "key" ]
+          },
+          "property.lock.remove" : {
+            "type" : "object",
+            "description" : "Removes a lock from a given property.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property to remove the lock from."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "key" ]
           },
           "property.move" : {
             "type" : "object",
@@ -6727,6 +6816,11 @@
                 "description" : "If set to true, the result will also include information about the request. This is useful for example for pagination.",
                 "default" : "false"
               },
+              "includeTrashed" : {
+                "type" : "boolean",
+                "description" : "Include the properties moved to trash bin in the search?",
+                "default" : "false"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6902,6 +6996,11 @@
               "aggregate" : {
                 "type" : "string",
                 "description" : "Defines an expression to be applied on the final result. For example to count all values or to transform them. If null or empty, no aggregation will be applied."
+              },
+              "includeTrashed" : {
+                "type" : "string",
+                "description" : "Should properties moved to trash bin included in this search?",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
@@ -7432,6 +7531,11 @@
               "name" : {
                 "type" : "string",
                 "description" : "The name of a single credentials to return. If null or empty, all credentials will be returned."
+              },
+              "includeTrashed" : {
+                "type" : "string",
+                "description" : "Also include the secret properties moved to trash bin in the list search?",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
