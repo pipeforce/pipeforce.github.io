@@ -33,6 +33,14 @@ pipeline:
 This will create the default lock of type `user` on a property with key `global/app/myapp/data/mydata`.
 This lock will be automatically set as exclusive to the currently logged-in user. 
 
+### Technical Background
+
+What happens in case a lock must be created for a Property in the backend?
+
+1. The property attribute `locked` will be set to true. In case the lock is if type `trash`, additionally the attribute `trashed` will be set to true. See [Property Attributes](docs/propertystore#property-attributes).
+2. A new tag with name `property.lock` will be created and assigned to the locked property. The value of the tag will be set to the [lock tag](#getting-a-property-lock) in JSON format.
+3. Any write access to a property in the backend will check whether the property is locked or not and if so, whether the lock must take in effect or not. In case the lock is in effect, an exception is thrown.
+   
 ### Lock exclusive to user
 
 A lock exclusive to a user allows only this particular user to alter the property.
