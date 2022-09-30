@@ -27,6 +27,8 @@ Each property has multiple attributes (the envelope data). The most important on
 | `created`      | A unix epoch timestamp in millis when this property was created. <br/><br/>Example value: `1613397114448`
 | `updated`     | A unix epoch timestamp in millis when this property was updated last or `null` in case it was never updated after creation. <br/><br/>Example value: `null`
 | `timeToLive`  | The time to live (ttl) in minutes of this property since creation. If the time to live has been expired, the property is eligable to be deleted. Usually one of the next cleanup jobs will then delete this property. There is no guarantee that the property is deleted exactly after this time has expired. If the value of **timeToLive** is `0` or `null` (default), the property will never be deleted. <br/><br/>Example value: `5`
+| `locked`       | A boolean value indicating whether this property has a lock assigned. In case a lock is assigned, the property can only be altered by the user or group, this lock is exclusive to. See section [Property Locking](/docs/guides/propertystore/property_locks) for more details.
+| `trashed`       | A boolean value indicating whether this property has been moved to the trash bin. See section [Trash Bin](/docs/guides/propertystore/trash_bin) for more details.
 ### Property Key
 
 Every property has a unique **key**. Such a property key is structured in an **hierarchical way** and has this base structure:
