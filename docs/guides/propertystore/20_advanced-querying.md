@@ -1,4 +1,4 @@
-# Advanced Querying 
+# JSON Querying 
 
 :::tip Summary
 PIPEFORCE allows to query properties very effectively in different ways. In case one of the simple approaches like `property.list` or `property.value.get` is not sufficient for your use case, you can use the command [`property.query`](../../api/commands#propertyquery-v1) which allows for more advanced query options.
@@ -6,9 +6,11 @@ PIPEFORCE allows to query properties very effectively in different ways. In case
 
 ## Introduction
 
- You can create advanced queries using the command [`property.query`](../../api/commands#propertyquery-v1).
+ You can create advanced JSON queries using the command [`property.query`](../../api/commands#propertyquery-v1).
 
-This powerful command allows you to create "SQL-style" filters for properties which can be evaluated directly in the database and therefore are in most cases scale much better compared to doing filtering in memory.
+This powerful command allows you to create "SQL-style" filters and joins for properties which can be evaluated directly in the database and therefore are in most cases scale much better compared to doing it in memory.
+
+Even if also possible to run queries which are not related to JSON at all, most use-cases are related to JSON documents. Therefore, this will be the focus of these documentation pages.
 
 Here is a first example using the command [`property.query`](../../api/commands#propertyquery-v1), which loads "recursively" the value of all properties of the app `myapp`, being a JSON document with attribute `title` having a value which starts with the text `Admin` and converts the final result to a JSON in order to use it in the pipeline for further processing. As you can imagine, this usually becomes a very complex native query since recursive key filtering is combined with JSON path selections, conversions and a LIKE search. The command [`property.query`](../../api/commands#propertyquery-v1) simplifies this a lot for you. The example will look like this:
 

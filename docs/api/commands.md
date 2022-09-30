@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 29/09/2022 by CommandComplianceTest -->
+<!-- Generated: 30/09/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -8398,6 +8398,8 @@ Deletes one or more existing properties matching the given search pattern. Use t
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pattern` | String | true | null | The path key pattern of the properties to delete. All matching properties will be deleted!
+`trashBin` | String | false | false | In case this parameter is set to true, the property wont be removed but moved to the trash bin instead (= flagged with trash lock).
+`trashBinTimeToLive` | String | false | null | The time in millis after the property must be removed from bin and fully deleted. If set to null or empty, the system defaults will apply for final deleting trashed properties. This is typically a value between 30 and 90 days.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -8409,6 +8411,8 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.delete:  
       pattern: <value>  
+      trashBin: <value>  
+      trashBinTimeToLive: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -8420,12 +8424,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.delete?pattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.delete?pattern=<value>&trashBin=<value>&trashBinTimeToLive=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.delete pattern=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.delete pattern=<value> trashBin=<value> trashBinTimeToLive=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8734,6 +8738,53 @@ http://host/api/v3/command/property.lock.create?key=<value>&type=<value>&ttl=<va
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command property.lock.create key=<value> type=<value> ttl=<value> uuid=<value> name=<value> details=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## property.lock.get ``v1``
+----------   
+Returns the lock tag for a given property. In case there is no lock for this property, null is returned.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.lock.get:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | The key of the property to return the lock tag for.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.lock.get:  
+      key: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.lock.get?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.lock.get key=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
