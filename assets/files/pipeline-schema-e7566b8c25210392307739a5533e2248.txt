@@ -6277,6 +6277,15 @@
                 "type" : "string",
                 "description" : "The path key pattern of the properties to delete. All matching properties will be deleted!"
               },
+              "trashBin" : {
+                "type" : "string",
+                "description" : "In case this parameter is set to true, the property wont be removed but moved to the trash bin instead (= flagged with trash lock).",
+                "default" : "false"
+              },
+              "trashBinTimeToLive" : {
+                "type" : "string",
+                "description" : "The time in millis after the property must be removed from bin and fully deleted. If set to null or empty, the system defaults will apply for final deleting trashed properties. This is typically a value between 30 and 90 days."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6506,6 +6515,35 @@
               "details" : {
                 "type" : "string",
                 "description" : "Some optional data to be set on the lock."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "key" ]
+          },
+          "property.lock.get" : {
+            "type" : "object",
+            "description" : "Returns the lock tag for a given property. In case there is no lock for this property, null is returned.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property to return the lock tag for."
               },
               "id" : {
                 "type" : "string",
