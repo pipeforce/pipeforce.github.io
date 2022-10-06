@@ -8,7 +8,9 @@ slug: /apps
 
 ## What is an App?
 
-In PIPEFORCE, an app groups together resources like scripts, templates, configurations and others to solve a certain business task. Any pipeline, form or workflow etc. are part of exactly one app.
+In PIPEFORCE, an app groups together resources like scripts, templates, configurations and others to solve a certain business task. Any pipeline, form or workflow etc. is part of exactly one app.
+
+An app can be shared with others on the marketplace.
 
 Also see [this tutorial](../docs/tutorials/create-app) to learn how to create an app in PIPEFORCE.
 
