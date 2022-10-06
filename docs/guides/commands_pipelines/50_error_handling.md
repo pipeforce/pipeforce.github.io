@@ -1,5 +1,7 @@
 # Error Handling
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 8.5</p>
+
 In case an error occurs during execution of a command, the execution of the command and/or the according pipeline stops by default and an error message is sent back to the caller. You have different options to adjust this default behaviour.
 
 ## Stop (default)

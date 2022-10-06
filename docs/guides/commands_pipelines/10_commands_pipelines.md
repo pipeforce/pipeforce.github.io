@@ -6,6 +6,8 @@ sidebar_label: Basics
 slug: /commands_pipelines
 ---
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 1.0</p>
+
 One of the most important parts in PIPEFORCE are Commands and Pipelines. Using them, you can define  **flows** using **low-code** in order to execute workflows, to create, read, update and delete data, to transform it or to send messages to just name a few options here. 
 
 <a id='command'></a>

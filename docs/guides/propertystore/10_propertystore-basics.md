@@ -6,6 +6,8 @@ sidebar_label: Basics
 slug: /propertystore
 ---
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 3.0</p>
+
 ## What is the Property Store?
 
 The property store is the core database in PIPEFORCE to save all your application data. You can create, update, query and delete data on the property store using the  [`property.*`](../../../api/commands#property-v1) commands. 

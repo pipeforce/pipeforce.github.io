@@ -1,4 +1,5 @@
 # Trash Bin
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 8.5</p>
 
 ## What is a Trash Bin?
 

@@ -6,6 +6,8 @@ sidebar_label: Basics
 slug: /forms-basics
 ---
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 4.0</p>
+
 In order to define a form in PIPEFORCE, you need a **JSON schema** and the **form configuration**.
 
 ![](../../img/grafik-20201023-083314.png)

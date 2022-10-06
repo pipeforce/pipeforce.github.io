@@ -1,5 +1,7 @@
 # Emailing
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 3.0</p>
+
 In PIPEFORCE you can send email messages out-of-the-box using the [mail.send](../api/commands#mailsend-v1) command.
 
 Here is an example pipeline to use this command:

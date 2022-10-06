@@ -1,4 +1,5 @@
 # Custom Functions
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 8.5</p>
 
 Inside a [Pipeline ](/docs/commands_pipelines#pipeline) you can declare a custom function using the command [`function`](/docs/api/commands#function-v1) and reuse it by calling the command [`function.call`](/docs/api/commands#functioncall-v1).
 

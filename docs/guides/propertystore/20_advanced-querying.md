@@ -1,4 +1,5 @@
 # JSON Querying 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 8.5</p>
 
 :::tip Summary
 PIPEFORCE allows to query properties very effectively in different ways. In case one of the simple approaches like `property.list` or `property.value.get` is not sufficient for your use case, you can use the command [`property.query`](../../api/commands#propertyquery-v1) which allows for more advanced query options.

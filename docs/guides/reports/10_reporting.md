@@ -1,4 +1,5 @@
 # Reporting
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 7.0</p>
 
 PIPEFORCE comes with powerful reporting capabilities. 
 

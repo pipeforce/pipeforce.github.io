@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 30/09/2022 by CommandComplianceTest -->
+<!-- Generated: 06/10/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -2153,6 +2153,7 @@ Returns the details of a given inbox Delivery.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `deliveryUuid` | String | true | null | The uuid of the delivery.
+`recipientEmail` | String | false | null | The email of the recipient. If not specified request user email is used
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -2165,6 +2166,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - delivery.inbox.details:  
       deliveryUuid: <value>  
+      recipientEmail: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -2177,12 +2179,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/delivery.inbox.details?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/delivery.inbox.details?deliveryUuid=<value>&recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command delivery.inbox.details deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command delivery.inbox.details deliveryUuid=<value> recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2279,6 +2281,55 @@ http://host/api/v3/command/delivery.outbox.delete?deliveryUuid=<value>&id=<value
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command delivery.outbox.delete deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## delivery.outbox.details ``v1``
+----------   
+Returns the details of a given outbox Delivery.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.outbox.details:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`deliveryUuid` | String | true | null | The uuid of the delivery.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.outbox.details:  
+      deliveryUuid: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.outbox.details?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.outbox.details deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7221,7 +7272,9 @@ Name | Type | Required | Default | Description
 `key` | String | true | null | The routing key pattern to listen for.
 `exchange` | String | false | null | The exchange to be used. If null, the default exchange will be used.
 `queue` | String | false | null | The queue to receive messages from. If null, the default queue will be used.
-`maxBatchSize` | String | false | null | Collects messages up to the given maxBatchSize in bytes and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. Maximum value can be 200KB (204800).
+`deleteQueue` | String | false | false | Also delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!
+`maxBatchSize` | String | false | null | Collects messages up to the given maxBatchSize in bytes and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. Maximum value can be 200KB (204800). If this parameter is used together with `maxBatchItems` the one which matches first is considered.
+`maxBatchItems` | String | false | null | Collects the amount of messages up to the given number of maxBatchItems and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. If this parameter is used together with `maxBatchSize` the one which matches first is considered.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -7235,7 +7288,9 @@ pipeline:
       key: <value>  
       exchange: <value>  
       queue: <value>  
+      deleteQueue: <value>  
       maxBatchSize: <value>  
+      maxBatchItems: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -7247,12 +7302,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&maxBatchSize=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&deleteQueue=<value>&maxBatchSize=<value>&maxBatchItems=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command message.receive key=<value> exchange=<value> queue=<value> maxBatchSize=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command message.receive key=<value> exchange=<value> queue=<value> deleteQueue=<value> maxBatchSize=<value> maxBatchItems=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

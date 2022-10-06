@@ -1,4 +1,5 @@
 # Versioning
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 8.5</p>
 
 Each command can be available and used in different versions in parallel in pipelines. This is to support downwards compatibilty in pipeline scripts. Which commands are availble in which versions can be found in the [commands reference docs](../../api/commands).
 

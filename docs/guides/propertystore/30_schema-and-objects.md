@@ -1,4 +1,5 @@
 # JSON Schema
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 6.0</p>
 
 **JSON Object** in PIPEFORCE is a custom model that represent data of a specific app or process. For example, an `Invoice` or `Person` object. The structure of such objects can by defined using a Schema. Also forms need such a Schema for its field structure.
 

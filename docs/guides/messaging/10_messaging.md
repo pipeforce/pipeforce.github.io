@@ -6,6 +6,8 @@ sidebar_label: Basics
 slug: /messaging
 ---
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 7.0</p>
+
 PIPEFORCE has a built-in messaging system, where application messages can be routed between microservices based on conditions like routing
 keys for example.
 

@@ -1,4 +1,6 @@
 # Elasticsearch
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 8.5</p>
+
 
 PIPEFORCE comes with an "out-of-the-box" integration into Elasticsearch. There is no need to install and maintain agents or toolings like Logstash or Filebeat for example to monitor services, manged by PIPEFORCE. Though, you can if you have the requirements to do so.
 

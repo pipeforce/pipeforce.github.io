@@ -1,5 +1,7 @@
 # Microservice Messaging
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 7.0</p>
+
 The preferred way each microservice inside PIPEFORCE can communicate with each other is by using messaging, whereas
 RabbitMQ is the message broker by default.
 

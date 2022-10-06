@@ -6,6 +6,8 @@ sidebar_label: Basics
 slug: /microservices
 ---
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 7.0</p>
+
 In PIPEFORCE, you have two main possibilities to write a business application:
 
  - Using low code inside an app.

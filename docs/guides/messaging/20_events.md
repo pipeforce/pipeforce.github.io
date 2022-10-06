@@ -1,6 +1,8 @@
 
 # Events
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 6.0</p>
+
 In PIPEFORCE, an event is a special form of a Message.
 
 It is an action which happened inside the hub service and is represented by a JSON object with a certain structure like this:

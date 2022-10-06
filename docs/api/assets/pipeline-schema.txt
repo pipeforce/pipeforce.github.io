@@ -1645,6 +1645,10 @@
                 "type" : "string",
                 "description" : "The uuid of the delivery."
               },
+              "recipientEmail" : {
+                "type" : "string",
+                "description" : "The email of the recipient. If not specified request user email is used"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -1700,6 +1704,39 @@
           "delivery.outbox.delete" : {
             "type" : "object",
             "description" : "Deletes a delivery from the currently logged-in users outbox.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "deliveryUuid" : {
+                "type" : "string",
+                "description" : "The uuid of the delivery."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "deliveryUuid" ]
+          },
+          "delivery.outbox.details" : {
+            "type" : "object",
+            "description" : "Returns the details of a given outbox Delivery.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -5411,9 +5448,18 @@
                 "type" : "string",
                 "description" : "The queue to receive messages from. If null, the default queue will be used."
               },
+              "deleteQueue" : {
+                "type" : "string",
+                "description" : "Also delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!",
+                "default" : "false"
+              },
               "maxBatchSize" : {
                 "type" : "string",
-                "description" : "Collects messages up to the given maxBatchSize in bytes and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. Maximum value can be 200KB (204800)."
+                "description" : "Collects messages up to the given maxBatchSize in bytes and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. Maximum value can be 200KB (204800). If this parameter is used together with `maxBatchItems` the one which matches first is considered."
+              },
+              "maxBatchItems" : {
+                "type" : "string",
+                "description" : "Collects the amount of messages up to the given number of maxBatchItems and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. If this parameter is used together with `maxBatchSize` the one which matches first is considered."
               },
               "id" : {
                 "type" : "string",

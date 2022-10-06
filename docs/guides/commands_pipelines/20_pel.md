@@ -1,5 +1,7 @@
 # Pipeline Expression Language
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 3.0</p>
+
 The **Pipeline Expression Language (PEL)** or just *PE (Pipeline Expression)* is a powerful expression language that is used inside a pipeline to dynamically calculate and set values. It can be used for data mapping and to dynamically calculate, set and change values at processing time of a pipeline. This gives you a huge flexibility in your pipeline.
 
 Typically a PE starts with `#{` and ends with `}` and is placed in the value part of headers, variables or command parameters. It uses late binding: It will be executed only in case the according entry (header, variable or command parameter) is referenced somewhere.

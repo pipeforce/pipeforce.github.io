@@ -1,5 +1,7 @@
 # Controlling Pipeline Flow
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 4.0</p>
+
 In its basic form, a [Pipeline](/docs/commands_pipelines#pipeline) is executed as a linear flow of [Commands](/docs/commands_pipelines#command) whereas each Command is executed one after another, from start to its end. 
 
 Sometimes, it is necessary to change this linear flow dynamically, depending on given conditions. PIPEFORCE offers different toolings to controll the flow inside a pipeline dynamically. Most of these toolings are also implemented as commands and therefore can be used like any other commands.

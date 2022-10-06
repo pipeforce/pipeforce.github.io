@@ -1,5 +1,7 @@
 # Webhooks
 
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 6.0</p>
+
 A webhook is a unique url of your system which is communicated to external services. In case these external services call the webhook url, this triggers an action on your target server.
 
 In PIPEFORCE, you can create **custom** webhooks and link them to predefined pipelines. When called, it produces an internal event message which in turn can execute a pipeline using the commands [`event.listen`](/docs/api/commands#eventlisten-v1) or [`message.receive`](/docs/api/commands#messagereceive-v1).

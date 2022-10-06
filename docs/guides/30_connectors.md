@@ -1,10 +1,11 @@
 # 3. Connectors
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 1.0</p>
 
 ## What is a connector?
 
 A **connector** is a component which connects to an external service via an API and can exechange data with such a service.
 
-In PIPEFORCE, connectors are implemented using [Commands](../guides/commands_pipelines#command). So, a Command can be in a role of a connector.
+In PIPEFORCE, connectors are implemented using [Commands](/docs/commands_pipelines). So, a Command can be in a role of a connector.
 
 There are many such built-in connectors. Some examples:
 
