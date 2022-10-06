@@ -29,15 +29,13 @@ function HomepageHeader() {
         </div>
       </div> */}
 
-        <span className={styles.message}>Open framework for <b>Process Automation</b> and <b>Application Integration</b> on Kubernetes.</span>
+        <span className={styles.message}>Next generation <b>Process Automation</b> and <b>Application Integration</b>.</span>
         <br /><br />
-        <p className="hero__subtitle">Welcome to the <b>Low Code</b> and <b>Development</b> documentation space!</p>
-        <br />
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Getting Started
+            Documentation
           </Link>
           &nbsp; &nbsp;
           <Link
