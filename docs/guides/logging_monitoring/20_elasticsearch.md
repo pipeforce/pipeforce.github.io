@@ -4,7 +4,11 @@
 
 PIPEFORCE comes with an "out-of-the-box" integration into Elasticsearch. There is no need to install and maintain agents or toolings like Logstash or Filebeat for example to monitor services, manged by PIPEFORCE. Though, you can if you have the requirements to do so.
 
-If setup correctly, any microservice managed by PIPEFORCE is reporting automatically its logs and other metrics to Elasticsearch. Furthermore, any process messages can be forwarded to Elastic in order to build powerful dashboards and to perform extensive analyses inlcuding machine learning approaches.
+![](../../img/elasticsearch.jpg)
+
+If setup correctly, any microservice managed by PIPEFORCE is reagurily scanned for new logs and other metrics. These data will then be provided to a log queue. Finally, this queue will be consumed by a pipeline which uploads the logs to Elasticsearch. The pipeline can be customized to fit your needs.
+
+Furthermore, any process and business messages can also be forwarded to Elastic this way in order to build powerful dashboards and to perform extensive analyses inlcuding machine learning approaches.
 
 ## Prerequisites
 
