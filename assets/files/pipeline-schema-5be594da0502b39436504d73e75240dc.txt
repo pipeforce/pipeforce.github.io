@@ -5981,7 +5981,7 @@
           },
           "property.attachment.chunk.get" : {
             "type" : "object",
-            "description" : "Returns the chunk (content) of an attachment in the output. Returns empty body if chunk was not found.",
+            "description" : "Returns the chunk (content) of an attachment in the output as input stream. Returns empty body if chunk was not found.",
             "inputType" : "Void",
             "outputType" : "Byte[]",
             "properties" : {
@@ -6218,7 +6218,7 @@
               },
               "content" : {
                 "type" : "string",
-                "description" : "The content to add as first chunk. Note: If a PEL is set here must evaluate to a string or byte array. If null, an empty attachment with no chunks is created. "
+                "description" : "The content to add. If null, an empty attachment with no chunks is created. "
               },
               "contentType" : {
                 "type" : "string",
