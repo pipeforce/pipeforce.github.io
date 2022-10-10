@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 09/10/2022 by CommandComplianceTest -->
+<!-- Generated: 10/10/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -7982,7 +7982,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## property.attachment.chunk.get ``v1``
 ----------   
-Returns the chunk (content) of an attachment in the output. Returns empty body if chunk was not found.
+Returns the chunk (content) of an attachment in the output as input stream. Returns empty body if chunk was not found.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.get:v1)
 
@@ -8301,7 +8301,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The key of the property containing the attachment.
 `name` | String | true | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
-`content` | String | false | null | The content to add as first chunk. Note: If a PEL is set here must evaluate to a string or byte array. If null, an empty attachment with no chunks is created. 
+`content` | String | false | null | The content to add. If null, an empty attachment with no chunks is created. 
 `contentType` | String | false | null | The content type to be used for this attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.

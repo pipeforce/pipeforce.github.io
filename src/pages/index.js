@@ -31,7 +31,7 @@ function HomepageHeader() {
 
         <span className={styles.message}>Turnkey cloud-native platform for <b>Process Automation</b> and <b>Application Integration</b>.</span>
         <br /><br />
-        <p className="hero__subtitle">Develop business solutions combining low code workflows, function as a service and microservices.</p>
+        <p className="hero__subtitle">Develop message-driven business solutions in no time. Combine low code, FaaS and microservices the way you need it.</p>
         <br />
         <div className={styles.buttons}>
           <Link
