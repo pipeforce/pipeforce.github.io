@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 06/10/2022 by CommandComplianceTest -->
+<!-- Generated: 09/10/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -8035,7 +8035,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## property.attachment.chunk.put ``v1``
 ----------   
-Adds a chunk of data to the given attachment.
+Adds a chunk of data to the given attachment. Note: A chunk may not be bigger than 10MB. Otherwise, it gets rejected from the backend.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.put:v1)
 
@@ -8288,7 +8288,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## property.attachment.put ``v1``
 ----------   
-Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as a single chunk to the attachment and will replace any existing chunks. If no content is in body, chunks will not change at all if they exist.
+Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as chunks to the attachment and will replace any existing chunks.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put:v1)
 

@@ -29,8 +29,10 @@ function HomepageHeader() {
         </div>
       </div> */}
 
-        <span className={styles.message}>Next generation <b>Process Automation</b> and <b>Application Integration</b>.</span>
+        <span className={styles.message}>Turnkey cloud-native platform for <b>Process Automation</b> and <b>Application Integration</b>.</span>
         <br /><br />
+        <p className="hero__subtitle">Develop business solutions combining low code workflows, function as a service and microservices.</p>
+        <br />
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
