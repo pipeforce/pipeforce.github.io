@@ -6023,7 +6023,7 @@
           },
           "property.attachment.chunk.put" : {
             "type" : "object",
-            "description" : "Adds a chunk of data to the given attachment.",
+            "description" : "Adds a chunk of data to the given attachment. Note: A chunk may not be bigger than 10MB. Otherwise, it gets rejected from the backend.",
             "inputType" : "Void",
             "outputType" : "Byte[]",
             "properties" : {
@@ -6204,7 +6204,7 @@
           },
           "property.attachment.put" : {
             "type" : "object",
-            "description" : "Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as a single chunk to the attachment and will replace any existing chunks. If no content is in body, chunks will not change at all if they exist.",
+            "description" : "Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as chunks to the attachment and will replace any existing chunks.",
             "inputType" : "Byte[]",
             "outputType" : "Void",
             "properties" : {
