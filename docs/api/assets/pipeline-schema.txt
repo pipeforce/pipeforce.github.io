@@ -6019,7 +6019,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "key", "name" ]
           },
           "property.attachment.chunk.put" : {
             "type" : "object",
@@ -6212,6 +6212,10 @@
                 "type" : "string",
                 "description" : "The key of the property containing the attachment."
               },
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the property containing the attachment. If this is given, key param is ignored"
+              },
               "name" : {
                 "type" : "string",
                 "description" : "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one."
@@ -6239,9 +6243,13 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key", "name" ]
+            "required" : [ "name" ]
           },
           "property.attachment.put.uri" : {
             "type" : "object",
@@ -6860,6 +6868,10 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "key" ]
@@ -9285,7 +9297,7 @@
               },
               "uuid" : {
                 "type" : "string",
-                "description" : "The id (=token) of an existing webhook. If given, tries to update this webhook instead of creating a new one."
+                "description" : "The id (=token) of an existing webhook. If given, tries to update this webhook. In case new such webhook exists, creates a new one with given token."
               },
               "id" : {
                 "type" : "string",

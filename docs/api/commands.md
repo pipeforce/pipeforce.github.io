@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 10/10/2022 by CommandComplianceTest -->
+<!-- Generated: 11/10/2022 by CommandComplianceTest -->
 
 Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
 
@@ -7994,7 +7994,7 @@ Returns the chunk (content) of an attachment in the output as input stream. Retu
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The key of the property this attachment belongs to.
-`name` | String | false | null | The name of the attachment this chunk belongs to.
+`name` | String | true | null | The name of the attachment this chunk belongs to.
 `index` | String | false | 0 | The index of the chunk to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -8299,7 +8299,8 @@ Adds an attachment to a property or updates an existing one. Overwrites any exis
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property containing the attachment.
+`key` | String | false | null | The key of the property containing the attachment.
+`uuid` | String | false | null | The uuid of the property containing the attachment. If this is given, key param is ignored
 `name` | String | true | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
 `content` | String | false | null | The content to add. If null, an empty attachment with no chunks is created. 
 `contentType` | String | false | null | The content type to be used for this attachment.
@@ -8307,6 +8308,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -8314,6 +8316,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.put:  
       key: <value>  
+      uuid: <value>  
       name: <value>  
       content: <value>  
       contentType: <value>  
@@ -8321,6 +8324,7 @@ pipeline:
       if: <value>  
       onError: <value>  
       eval: <value>  
+      output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -8328,12 +8332,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put?key=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.attachment.put?key=<value>&uuid=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put key=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.attachment.put key=<value> uuid=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9127,6 +9131,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -9147,6 +9152,7 @@ pipeline:
       if: <value>  
       onError: <value>  
       eval: <value>  
+      output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -9154,12 +9160,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12324,7 +12330,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `eventKey` | String | true | null | Id of the event to be fired when hook was called.
 `pipeline` | String | false | null | DEPRECATED. Stored pipeline reference key.
-`uuid` | String | false | null | The id (=token) of an existing webhook. If given, tries to update this webhook instead of creating a new one.
+`uuid` | String | false | null | The id (=token) of an existing webhook. If given, tries to update this webhook. In case new such webhook exists, creates a new one with given token.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.

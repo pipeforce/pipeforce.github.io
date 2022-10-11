@@ -604,15 +604,16 @@ curl -u "username:password" \
 
 #### With Body
 
-In case you would like to execute a single Command with a body, you have these options:
+In case you would like to execute a single Command with body data, you have these options:
 
 Settings | Description 
 -- | -- 
 Endpoint: | `/api/v3/command/{command.name}?param1=value1&param2=value2`
 HTTP Method: | `POST`
 Request params: | Become the params of the command.
-Request body: | Becomes the body of the command.
-Content-Type: | Optionally set to the type of the body content.
+Request body: | Becomes the body of the command. If `Content-Type` header is set to `application/json`, it will be provided as a JSON object in the body. If this header is missing or has a different value, a [content object](/docs/guides/contentobject) is instead provided in the body pointing to the body data.
+Content-Type: | Optionally. If set to `application/json` the body will be parsed to a JSON object and provided to the command body. In all other cases or if this header is missing, the body data is provided as [content object](/docs/guides/contentobject).
+Content-Length: | Mandatory in case the `Content-Type` is different from `application/json`.
 
 Example:
 
@@ -623,16 +624,16 @@ curl -u 'username:password' \
   -d '{"name": "someValue"}'
 ```
 
-#### Single Command with File Upload
+#### With Multipart Body
 
-In case you would like to execute a single Command with one or more files uploaded and provided in the body, you can use these settings:
+In case you would like to execute a single Command with multiple parts (files) uploaded and provided in the body, you can use these settings:
 
 Setting | Description  
 -- | -- 
 Endpoint: | `/api/v3/command/{command.name}?param1=value1&param2=value2`
 HTTP Method: | `POST`
 Request params: | Become the params of the command.
-Request body: |  Contains HTTP multipart sections as described by the IETF specification: https://www.ietf.org/rfc/rfc2388.txt. All parts will be treated as file attachments and will be converted to a [content collection](guides/contentobject#collection) which in term is then provided as body to the command. 
+Request body: |  Contains HTTP multipart sections with parameter name `file` as described by the IETF specification: https://www.ietf.org/rfc/rfc2388.txt. All parts will be treated as file attachments and will be converted to a [content collection](guides/contentobject#collection) which in term is then provided as body to the command. 
 Content-Type: | `multipart/form-data`
 
 ### Pipeline YAML
