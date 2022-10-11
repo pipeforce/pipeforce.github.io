@@ -581,9 +581,7 @@ Beside completion for available commands and their parameters, it also supports 
 
 This section summarizes the different options to execute Commands an Pipelines using the HTTP endpoints.
 
-### Single Command
-
-#### Without Body
+### Single Command (No Body)
 
 In case you would like to execute a single Command without a body, use these settings:
 
@@ -602,7 +600,7 @@ curl -u "username:password" \
   -X GET "https://hub-trial.pipeforce.org/api/v3/command/log?message=HELLO"
 ```
 
-#### With Body
+### Single Command (With Body)
 
 In case you would like to execute a single Command with body data, you have these options:
 
@@ -624,7 +622,7 @@ curl -u 'username:password' \
   -d '{"name": "someValue"}'
 ```
 
-#### With Multipart Body
+### Single Command (Multipart Body)
 
 In case you would like to execute a single Command with multiple parts (files) uploaded and provided in the body, you can use these settings:
 
@@ -636,9 +634,7 @@ Request params: | Become the params of the command.
 Request body: |  Contains HTTP multipart sections with parameter name `file` as described by the IETF specification: https://www.ietf.org/rfc/rfc2388.txt. All parts will be treated as file attachments and will be converted to a [content collection](guides/contentobject#collection) which in term is then provided as body to the command. 
 Content-Type: | `multipart/form-data`
 
-### Pipeline YAML
-
-#### Without Body
+### Pipeline YAML (No Body)
 
 In case you would like to execute a pipeline YAML script without body, you can use these settings:
 
@@ -667,7 +663,7 @@ pipeline:
 EOF
 ```
 
-#### With Body (embedded in YAML)
+### Pipeline YAML (Embedded Body)
 
 In case you would like to execute a pipeline YAML script with body, you can use these settings:
 
@@ -694,7 +690,11 @@ body: {"text": "Hello World!"}
 EOF
 ```
 
-#### With File Upload (multipart)
+### Pipeline YAML (With Body)
+
+Since a pipeline request with body data always requires at least two parts (pipeline part and at least one data part) in the request body, see [Pipeline YAML (Multipart Body)](#pipeline-yaml-multipart-body) below. 
+
+### Pipeline YAML (Multipart Body)
 
 In order to upload files with the pipeline, use these settings:
 
