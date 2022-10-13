@@ -6,18 +6,11 @@ sidebar_label: Commands
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
 <!-- Generated: 13/10/2022 by CommandComplianceTest -->
 
-HTTP API docs of these commands can be found here: [PIPEFORCE HTTP API](http://docs.pipeforce.io/api.html)  
-
-Also see: **[Pipeline Guide](/docs/commands_pipelines#pipeline)** | **[Command Guide](/docs/commands_pipelines#command)**  
-
-Example usage of chained commands in a pipeline with [PEL](/docs/guides/commands_pipelines/pel) to access the body:  
-```yaml  
-pipeline:  
-  - datetime:  
-      format: "dd/MM/yyyy"  
-  - log:  
-      message: "The current date is: #{body}"  
-```  
+:::tip Also see 
+ - [Introduction to Commands & Pipelines](/docs/commands_pipelines)
+ - [Introduction to HTTP API](/docs/guides/commands_pipelines/http_api)
+ - [PIPEFORCE HTTP API Reference](http://docs.pipeforce.io/api.html)
+:::
 
 ## Common Parameters
 
