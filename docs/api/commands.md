@@ -6,11 +6,209 @@ sidebar_label: Commands
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
 <!-- Generated: 13/10/2022 by CommandComplianceTest -->
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::tip Also see 
  - [Introduction to Commands & Pipelines](/docs/commands_pipelines)
  - [Introduction to HTTP API](/docs/guides/commands_pipelines/http_api)
  - [PIPEFORCE HTTP API Reference](http://docs.pipeforce.io/api.html)
 :::
+
+### Example 1: Execute a command via HTTP
+
+In case you would like to execute a single command, you could run it like this:
+
+
+<Tabs>
+<TabItem value="curl" label="Curl">
+
+```bash
+curl -u 'username:password' \
+  'https://hub-<your-domain>/api/v3/command/message.send?key=slack&payload=HELLO'
+```
+
+</TabItem>
+<TabItem value="http" label="HTTP">
+
+```
+GET /api/v3/command/message.send?key=slack&payload=HELLO HTTP/1.1
+Host: hub-<your-domain>
+Authorization: Basic cGFzc3dvcmQ6dXNlcm5hbWU=
+```
+
+</TabItem>
+<TabItem value="nodejs" label="NodeJs">
+
+```js
+var axios = require('axios');
+
+var config = {
+  method: 'get',
+  url: 'https://hub-<your-domain>/api/v3/command/message.send?key=slack&payload=HELLO',
+  headers: { 
+    'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU='
+  }
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+import requests
+
+url = "https://hub-<your-domain>/api/v3/command/message.send?key=slack&payload=HELLO"
+
+payload = {}
+headers = {
+  'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU='
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```js
+HttpResponse<String> response = Unirest.get("https://hub-<your-domain>/api/v3/command/message.send?key=slack&payload=HELLO")
+  .header("Authorization", "Basic cGFzc3dvcmQ6dXNlcm5hbWU=")
+  .asString();
+```
+
+</TabItem>
+</Tabs>
+
+This example simply sends a new message to the message broker with key `slack` and with message payload `HELLO`.
+
+### Example 2: Execute a pipeline via HTTP
+
+In case you would like to execute multiple commands, embedded in a pipeline YAML script, you can run this:
+
+<Tabs>
+<TabItem value="curl" label="Curl">
+
+```bash
+curl -u 'username:password' \
+  -X POST "https://hub-<your-domain>/api/v3/pipeline" \
+  -H "Content-Type: application/yaml" \
+  --data-binary @- << EOF
+pipeline:
+ - drive.read:
+     path: /my.pdf
+ - pdf.stamp:
+     text: "Hello World!"
+ - drive.save:
+     path: /my-stamped.pdf
+EOF
+```
+
+</TabItem>
+<TabItem value="http" label="HTTP">
+
+```
+POST /api/v3/pipeline HTTP/1.1
+Host: hub-<your-domain>
+Content-Type: application/yaml
+Authorization: Basic cGFzc3dvcmQ6dXNlcm5hbWU=
+Content-Length: 143
+
+pipeline:
+    - drive.read:
+        path: /my.pdf
+    - pdf.stamp:
+        text: "Hello World!"
+    - drive.save:
+        path: /my-stamped.pdf
+```
+
+</TabItem>
+<TabItem value="nodejs" label="NodeJs">
+
+```js
+var axios = require('axios');
+var data = "pipeline:\n" +
+            "    - drive.read:\n" +
+            "        path: /my.pdf\n" +
+            "    - pdf.stamp:\n" +
+            "        text: \"Hello World!\"\n" +
+            "    - drive.save:\n" +
+            "        path: /my-stamped.pdf";
+
+var config = {
+  method: 'post',
+  url: 'https://hub-<your-domain>/api/v3/pipeline',
+  headers: { 
+    'Content-Type': 'application/yaml', 
+    'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU='
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+import requests
+
+url = "https://hub-<your-domain>/api/v3/pipeline"
+
+payload = """pipeline:
+  - drive.read:       
+      path: /my.pdf    
+  - pdf.stamp:        
+      text: "Hello World!"    
+  - drive.save:        
+      path: "/my-stamped.pdf" """
+
+headers = {
+  'Content-Type': 'application/yaml',
+  'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU='
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```js
+HttpResponse<String> response = Unirest.post("https://hub-<your-domain>/api/v3/pipeline")
+  .header("Content-Type", "application/yaml")
+  .header("Authorization", "Basic cGFzc3dvcmQ6dXNlcm5hbWU=")
+  .body("pipeline:\n" +
+            "    - drive.read:\n" +
+            "        path: /my.pdf\n" +
+            "    - pdf.stamp:\n" +
+            "        text: \"Hello World!\"\n" +
+            "    - drive.save:\n" +
+            "        path: /my-stamped.pdf")
+  .asString();
+```
+
+</TabItem>
+</Tabs>
 
 ## Common Parameters
 
