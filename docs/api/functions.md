@@ -4,7 +4,7 @@ sidebar_label: Built-In Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 11/10/2022 17:14:16 by CommandComplianceTest -->
+<!-- Generated: 13/10/2022 09:06:53 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Functions.  
 
@@ -2433,6 +2433,26 @@ regexp | ``string`` | regular expression to use
 #### Example  
 ```  
 @text.matches(text,regexp)  
+```  
+
+### escapeCsvValue(value)   
+Returns a String value for a CSV column enclosed in double quotes, if required.
+If the value contains a comma, newline or double quote, then the String value is returned enclosed in double quotes.
+Any double quote characters in the value are escaped with another double quote.
+If the value does not contain a comma, newline or double quote, then the String value is returned unchanged.   
+
+#### Returns  
+``string`` - value embeddable into csv column  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``string`` | input text to escape 
+
+
+#### Example  
+```  
+@text.escapeCsvValue(value)  
 ```  
 
  

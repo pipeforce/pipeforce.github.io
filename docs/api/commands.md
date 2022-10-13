@@ -1,14 +1,13 @@
 ---
-title: Commands API Reference
+title: Commands Reference
 sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 11/10/2022 by CommandComplianceTest -->
+<!-- Generated: 13/10/2022 by CommandComplianceTest -->
 
-Reference documentation of all built-in [Commands](/docs/commands_pipelines).  
+HTTP API docs of these commands can be found here: [PIPEFORCE HTTP API](http://docs.pipeforce.io/api.html)  
 
-Download pipeline and commands schema: **[pipeline-schema.json](./assets/pipeline-schema.txt)**  
 Also see: **[Pipeline Guide](/docs/commands_pipelines#pipeline)** | **[Command Guide](/docs/commands_pipelines#command)**  
 
 Example usage of chained commands in a pipeline with [PEL](/docs/guides/commands_pipelines/pel) to access the body:  
@@ -8288,7 +8287,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## property.attachment.put ``v1``
 ----------   
-Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as chunks to the attachment and will replace any existing chunks.
+Adds one ore more attachments to a property. Overwrites / updates any existing attachments with same name. In order to add an attachment without any data, use the params of this command to specify it.In case there is a content object in the body, and it has no name assigned, its data will be added as chunk to this attachment.In case there is a content object in the body, and it has a name, a new attachment will be created using this name and the data from this content object added as chunk.The same applies to a list of content objects in a content collection.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put:v1)
 
@@ -8299,11 +8298,11 @@ Adds an attachment to a property or updates an existing one. Overwrites any exis
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | false | null | The key of the property containing the attachment.
-`uuid` | String | false | null | The uuid of the property containing the attachment. If this is given, key param is ignored
-`name` | String | true | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
-`content` | String | false | null | The content to add. If null, an empty attachment with no chunks is created. 
-`contentType` | String | false | null | The content type to be used for this attachment.
+`key` | String | false | null | The key of the property containing the attachments.
+`uuid` | String | false | null | The uuid of the property containing the attachments. If this is given, key param is ignored.
+`name` | String | false | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
+`content` | String | false | null | The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false.
+`contentType` | String | false | null | The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.

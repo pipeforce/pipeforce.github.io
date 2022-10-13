@@ -69,15 +69,20 @@ const config = {
             type: 'doc',
             docId: 'api/commands',
             position: 'left',
-            label: 'API',
+            label: 'Commands',
           },
+          {
+            href: 'http://docs.pipeforce.io/api.html',
+            position: 'left',
+            label: 'HTTP API',
+          },
+          /**{to: '/blog', label: 'News', position: 'left'},**/
           {
             type: 'doc',
             docId: 'downloads',
-            position: 'left',
+            position: 'right',
             label: 'Downloads',
           },
-          /**{to: '/blog', label: 'News', position: 'left'},**/
           {
             position: 'right',
             href: 'https://logabit.atlassian.net/servicedesk/customer/portals',

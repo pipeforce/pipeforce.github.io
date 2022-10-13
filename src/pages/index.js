@@ -39,7 +39,7 @@ function HomepageHeader() {
             to="/docs/intro">
             Documentation
           </Link>
-          &nbsp; &nbsp;
+          &nbsp; &nbsp; 
           <Link
             className="button button--primary-light button--lg"
             to="https://try.pipeforce.org">

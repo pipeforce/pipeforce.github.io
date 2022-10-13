@@ -8,6 +8,12 @@ slug: /commands_pipelines
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 1.0</p>
 
+:::tip Also see 
+ - [Introduction to HTTP API](/docs/guides/commands_pipelines/http_api)
+ - [PIPEFORCE HTTP API Reference](http://docs.pipeforce.io/api.html)
+ - [Commands Reference](/docs/api/commands)
+:::
+
 One of the most important parts in PIPEFORCE are Commands and Pipelines. Using them, you can define  **flows** using **low-code** in order to execute workflows, to create, read, update and delete data, to transform it or to send messages to just name a few options here. 
 
 <a id='command'></a>

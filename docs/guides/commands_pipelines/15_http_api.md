@@ -4,6 +4,12 @@ sidebar_label: HTTP API
 ---
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 1.0</p>
 
+:::tip Also see 
+ - [Introduction to Commands & Pipelines](/docs/commands_pipelines)
+ - [PIPEFORCE HTTP API Reference](http://docs.pipeforce.io/api.html)
+ - [Commands Reference](/docs/api/commands)
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -17,6 +23,7 @@ import TabItem from '@theme/TabItem';
    - A chain of Commands using a Pipeline script
 
 Below, these two options will be explained in more detail.
+
 
 ## HTTP API for single commands calls 
 
@@ -402,6 +409,7 @@ In order to execute a pipeline script on the backend, you need to send via HTTP 
 |*is set to*|*is set to*|*is set to*|*will become*|*is*|
 |`POST`|`application/json`|A JSON pipeline document.|`null` or the value set by the `body` section of the pipeline.|A pipeline set as JSON from the request body. 
 |`POST`|`application/yaml`|A YAML pipeline document.|`null` or the value set by the `body` section of the pipeline.|A pipeline set as YAML from the request body. See examples with [no body](#example-5-no-body) and [embedded body](#example-6-with-body-embedded).
+|`POST`|*None*|A YAML pipeline document (same as with `application/yaml`).|`null` or the value set by the `body` section of the pipeline.|A pipeline set as YAML from the request body. Any other format in the body will throw an `400` bad request error.
 |`POST`|`multipart/form-data`|One part with `name="pipeline"` with a YAML pipeline and one or more parts with `name="file"` in the content disposition header. See [how HTTP multipart works](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST).|Content Collection referencing all `file`parts. |A pipeline set as YAML from the `pipeline` part and with a content collection in the body created from all `file` parts of the request body. See [Example](#example-8-with-multipart-body).
 
 :::warning Note

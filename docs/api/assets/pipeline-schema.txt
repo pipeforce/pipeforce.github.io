@@ -6204,17 +6204,17 @@
           },
           "property.attachment.put" : {
             "type" : "object",
-            "description" : "Adds an attachment to a property or updates an existing one. Overwrites any existing attachment with same name. If there is content in the body, it will be added as chunks to the attachment and will replace any existing chunks.",
+            "description" : "Adds one ore more attachments to a property. Overwrites / updates any existing attachments with same name. In order to add an attachment without any data, use the params of this command to specify it.In case there is a content object in the body, and it has no name assigned, its data will be added as chunk to this attachment.In case there is a content object in the body, and it has a name, a new attachment will be created using this name and the data from this content object added as chunk.The same applies to a list of content objects in a content collection.",
             "inputType" : "Byte[]",
             "outputType" : "Void",
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property containing the attachment."
+                "description" : "The key of the property containing the attachments."
               },
               "uuid" : {
                 "type" : "string",
-                "description" : "The uuid of the property containing the attachment. If this is given, key param is ignored"
+                "description" : "The uuid of the property containing the attachments. If this is given, key param is ignored."
               },
               "name" : {
                 "type" : "string",
@@ -6222,11 +6222,11 @@
               },
               "content" : {
                 "type" : "string",
-                "description" : "The content to add. If null, an empty attachment with no chunks is created. "
+                "description" : "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false."
               },
               "contentType" : {
                 "type" : "string",
-                "description" : "The content type to be used for this attachment."
+                "description" : "The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set."
               },
               "id" : {
                 "type" : "string",
@@ -6249,7 +6249,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "name" ]
+            "required" : [ ]
           },
           "property.attachment.put.uri" : {
             "type" : "object",
