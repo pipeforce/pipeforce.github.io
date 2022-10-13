@@ -2,31 +2,26 @@
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 6.0</p>
 
-A webhook is a unique url of your system which is communicated to external services. In case these external services call the webhook url, this triggers an action on your target server.
+A webhook is a unique url pointing to PIPEFORCE which can be called by an external system. In case the external system calls the webhook url, this can trigger any custom action inside PIPEFORCE.
 
-In PIPEFORCE, you can create **custom** webhooks and link them to predefined pipelines. When called, it produces an internal event message which in turn can execute a pipeline using the commands [`event.listen`](/docs/api/commands#eventlisten-v1) or [`message.receive`](/docs/api/commands#messagereceive-v1).
-
-:::info
-Replace any url **``https://hub-try.pipeforce.org``** from the examples shown on this page by the url of [your PIPEFORCE instance](/docs/guides/namespaces).
-:::
-    
-The url of such an PIPEFORCE webhook has a format similar to this:
+ The url of such an webhook, which gets called by the external system, has a format similar to this:
 
 ```
-https://hub-try.pipeforce.org/api/v3/command/webhook.receive?token=<token>
+https://hub-<your-domain>/api/v3/command/webhook.receive?token=<token>
 ```
-
 :::info
 *   Replace `<token>` by the token of your webhook. See below to get such an token.
 *   The token is sometimes also referred to as the **uuid**, the unique id, of a webhook. 
-*   It's also possible to place the `token` param as request header (recommended, because it is more secure).
+*   It's also possible to place the `token` param as request header instead (recommended, because it is more secure).
 :::
+
+You can create multiple **custom** webhooks and urls. When called, it produces an internal message, pipelines can listen to using [`event.listen`](/docs/api/commands#eventlisten-v1) or [`message.receive`](/docs/api/commands#messagereceive-v1). This way you can connect a webhook to multiple pipelines:
+
+![](../../img/webhook-queues.jpg)
 
 ## Create a Webhook
 
-Before some external service can call your webhook, you have to create and endpoint for it. 
-
-You can create such a webhook using the command [`webhook.put`](/docs/api/commands#webhookput-v1). Here is an example using it in a pipeline:
+Before some external service can call your webhook, you have to create and endpoint for it. You can create such a webhook using the command [`webhook.put`](/docs/api/commands#webhookput-v1). Here is an example using it in a pipeline:
 
 ```yaml
 pipeline:
@@ -34,11 +29,19 @@ pipeline:
       eventKey: "webhook.lead.created"
 ```
 
-Alternatively, you can use the CLI to create the Webhook:
+Or you can use the CLI to create the Webhook:
 
 ```
 pi command webhook.put eventKey=webhook.lead.created
 ```
+
+The possible parameters to create a webhook are:
+
+- `eventKey` = The key, the pipelines will listen to (required).
+- `payloadHandling` = What to do with the payload, before it is send to the messaging queues. Possible values are:
+  - `raw` = The payload will be send without any conversion.
+  - `base64` = The payload will be encoded to base64 (default).
+  - `ignore` = No payload will be send with the webhook message even if specified in the request.
 
 As `eventKey` define the internal unique name of the webhook. It's good practise that this name is lower case, grouped by periods and starts with prefix `webhook.`. The result after executing the [`webhook.put`](/docs/api/commands#webhookput-v1) command is a JSON document like this:
 
@@ -47,6 +50,7 @@ As `eventKey` define the internal unique name of the webhook. It's good practise
   "eventKey": "webhook.lead.created",
   "webhookUrl": "https://hub-try.pipeforce.org/api/v3/webhook.receive?token=a29a4f16-989d-48c8-ab54-7b6150733ba1",
   "uuid": "a29a4f16-989d-48c8-ab54-7b6150733ba1",
+  "payloadHandling": "base64"
   ...
 }
 ```
@@ -95,10 +99,22 @@ pipeline:
 
 The input body of the [`event.listen`](/docs/api/commands#eventlisten-v1) command is the payload of the event message submitted from the outside caller.
 
-In case the sender has sent some payload in the body of the webhook request, this payload is made available for you as base64 encoded string in the `origin` field of the event. To access this data, you have to convert this value as shown in this example:
+In case the sender has sent some payload in the body of the webhook request, this payload is made available for you by default as base64 encoded string in the `origin` field of the event. To access this data, you have to convert this value as shown in this example:
 
 ```
 #{@convert.fromBase64(body.origin)}
+```
+
+In case the payload is a serializable format like a string or a JSON document for example, you can set `payloadHandling` to `raw` for the webhook. In this case, it is not needed to convert the payload from base64, so you can use it directly:
+
+```yaml
+pipeline:
+ - event.listen:
+     eventKey: webhook.lead.created
+ - mail:
+     to: name@company.tld
+     subject: "New lead was created!"
+     body: "#{body.origin}"
 ```
 
 For security reasons, by default, the webhook pipeline is executed with very limited `anonymousUser` privileges. So, make sure that you use only commands in your pipeline which can be executed by this user. In case you need more privileges, you can use the [`iam.run.as`](/docs/api/commands#iamrunas-v1) command to switch to the privileges of the given user before executing the command. See the IAM portal for the permissions (or roles) of a given user. Also see [Groups, Roles, and Permissions](/docs/guides/security/permissions) for more details on user privileges / permissions.
@@ -155,8 +171,9 @@ You can also delete a Webhook by using the Portal in the "Webhooks" section.
 It is also possible to send files as a playload with a webhook. To do so, execute the request as multipart POST with the body formatted as `multipart/form-data`. For example:
 
 ```
-POST /api/v3/command/webhook.receive?uuid=abcdef HTTP/1.1 
-Host: hub-<NS>.pipefore.net
+POST /api/v3/command/webhook.receive HTTP/1.1 
+token: abcdefgh
+Host: hub-<your-domain>
 Content-Type: multipart/form-data;boundary="boundary" 
 
 --boundary 
@@ -169,6 +186,10 @@ Content-Disposition: form-data; name="file"; filename="fileB.pdf"
 <CONTENT FILE fileB.pdf GOES HERE...>
 --boundary--
 ```
+
+:::warning
+The overall length of a webhook payload is limited to 500KB!
+::: 
 
 More information about multipart POST requests can be found here: [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)
 

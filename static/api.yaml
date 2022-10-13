@@ -25162,13 +25162,19 @@ paths:
       - name: "pipeline"
         in: "query"
         required: false
-        description: "DEPRECATED. Stored pipeline reference key."
+        description: "DEPRECATED: Link to pipeline via messaging instead."
         schema:
           type: "string"
       - name: "uuid"
         in: "query"
         required: false
         description: "The id (=token) of an existing webhook. If given, tries to update this webhook. In case new such webhook exists, creates a new one with given token."
+        schema:
+          type: "string"
+      - name: "payloadHandling"
+        in: "query"
+        required: false
+        description: "How to handle the payload before it gets published into the message bus? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging)."
         schema:
           type: "string"
       - name: "id"
@@ -25223,13 +25229,19 @@ paths:
       - name: "pipeline"
         in: "query"
         required: false
-        description: "DEPRECATED. Stored pipeline reference key."
+        description: "DEPRECATED: Link to pipeline via messaging instead."
         schema:
           type: "string"
       - name: "uuid"
         in: "query"
         required: false
         description: "The id (=token) of an existing webhook. If given, tries to update this webhook. In case new such webhook exists, creates a new one with given token."
+        schema:
+          type: "string"
+      - name: "payloadHandling"
+        in: "query"
+        required: false
+        description: "How to handle the payload before it gets published into the message bus? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging)."
         schema:
           type: "string"
       - name: "id"
