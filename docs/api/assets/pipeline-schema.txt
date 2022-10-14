@@ -5979,9 +5979,51 @@
             },
             "required" : [ ]
           },
+          "property.attachment.chunk.content" : {
+            "type" : "object",
+            "description" : "Returns the content (data) of a chunk of an attachment in the output as input stream. Returns empty body if chunk was not found.",
+            "inputType" : "Void",
+            "outputType" : "Byte[]",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property this attachment belongs to."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the attachment this chunk belongs to."
+              },
+              "index" : {
+                "type" : "string",
+                "description" : "The index of the chunk to return.",
+                "default" : "0"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "key", "name" ]
+          },
           "property.attachment.chunk.get" : {
             "type" : "object",
-            "description" : "Returns the chunk (content) of an attachment in the output as input stream. Returns empty body if chunk was not found.",
+            "description" : "Returns the metadata of an chunk of an attachment. Throws error in case property or attachment doesn't exist. Return null in case no chunk exists at given index.",
             "inputType" : "Void",
             "outputType" : "Byte[]",
             "properties" : {

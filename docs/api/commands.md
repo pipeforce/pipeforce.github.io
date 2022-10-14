@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 13/10/2022 by CommandComplianceTest -->
+<!-- Generated: 14/10/2022 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -8170,9 +8170,62 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## property.attachment.chunk.content ``v1``
+----------   
+Returns the content (data) of a chunk of an attachment in the output as input stream. Returns empty body if chunk was not found.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.content:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``Void``  
+**Output body type:** ``Byte[]``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | The key of the property this attachment belongs to.
+`name` | String | true | null | The name of the attachment this chunk belongs to.
+`index` | String | false | 0 | The index of the chunk to return.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.chunk.content:  
+      key: <value>  
+      name: <value>  
+      index: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.chunk.content?key=<value>&name=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.chunk.content key=<value> name=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## property.attachment.chunk.get ``v1``
 ----------   
-Returns the chunk (content) of an attachment in the output as input stream. Returns empty body if chunk was not found.
+Returns the metadata of an chunk of an attachment. Throws error in case property or attachment doesn't exist. Return null in case no chunk exists at given index.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.chunk.get:v1)
 
