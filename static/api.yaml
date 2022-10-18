@@ -15865,94 +15865,28 @@ paths:
   /api/v3/command/pipeline.run:
     get:
       parameters:
-      - name: "name"
-        in: "query"
-        required: true
-        description: "The name of the pipeline to load and execute."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "DEPRECATED. Use pipeline.start instead. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "name"
-        in: "query"
-        required: true
-        description: "The name of the pipeline to load and execute."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/pipeline.start:
-    get:
-      parameters:
       - name: "key"
         in: "query"
         required: true
         description: "The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
         schema:
           type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        description: "DEPRECATED. Use param key instead. The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
+        schema:
+          type: "string"
       - name: "vars"
         in: "query"
         required: false
         description: "A variables map to be put on this pipeline. Note: Any var in this map will overwrite the var in the target pipeline vars scope."
+        schema:
+          type: "string"
+      - name: "headers"
+        in: "query"
+        required: false
+        description: "A headers map to be put on this pipeline. Note: Any header in this map will overwrite the header in the target pipeline headers scope."
         schema:
           type: "string"
       - name: "id"
@@ -16004,10 +15938,22 @@ paths:
         description: "The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
         schema:
           type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        description: "DEPRECATED. Use param key instead. The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
+        schema:
+          type: "string"
       - name: "vars"
         in: "query"
         required: false
         description: "A variables map to be put on this pipeline. Note: Any var in this map will overwrite the var in the target pipeline vars scope."
+        schema:
+          type: "string"
+      - name: "headers"
+        in: "query"
+        required: false
+        description: "A headers map to be put on this pipeline. Note: Any header in this map will overwrite the header in the target pipeline headers scope."
         schema:
           type: "string"
       - name: "id"
@@ -17346,6 +17292,108 @@ paths:
         in: "query"
         required: true
         description: "The path key of the property to check for. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/property.get:
+    get:
+      parameters:
+      - name: "key"
+        in: "query"
+        required: false
+        description: "The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or key is mandatory."
+        schema:
+          type: "string"
+      - name: "uuid"
+        in: "query"
+        required: false
+        description: "The uuid of the property. If this parameter is given, parameter key is ignored. On of uuid or key is mandatory."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns the property with given key. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "key"
+        in: "query"
+        required: false
+        description: "The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or key is mandatory."
+        schema:
+          type: "string"
+      - name: "uuid"
+        in: "query"
+        required: false
+        description: "The uuid of the property. If this parameter is given, parameter key is ignored. On of uuid or key is mandatory."
         schema:
           type: "string"
       - name: "id"

@@ -27,19 +27,23 @@ Below, these two options will be explained in more detail.
 
 ## HTTP API for single commands calls 
 
- You can call a single command using a HTTP request with the endpoint `/api/v3/command/{name}` whereas `{name}` needs to be replaced by the name of the command. The optional request parameters will become the command parameters. See [here](/docs/api/commands) for a reference of all built-in commands and their parameters. Using the request header `Content-Type` and the request body, you can optionally set the message body for the command.
+ You can call a single command using a HTTP request with the endpoint 
+ ```
+ /api/v3/command/<name>
+ ``` 
+ Whereas `<name>` needs to be replaced by the name of the command. The optional request parameters will become the command parameters. See [here](/docs/api/commands) for a reference of all built-in commands and their parameters. Using the request header `Content-Type` and the request body, you can optionally set the message body for the command.
 
 ### HTTP Methods 
 
-In order to execute a command on the backend, you need to send a HTTP request to the endpoint `/api/v3/command/{name}` by using one of these HTTP options:
+In order to execute a command on the backend, you need to send a HTTP request to the endpoint `/api/v3/command/<name>` by using one of these HTTP options:
 
 |HTTP Method|`Content-Type` |Request Body|Message Body|Execution|
 |---|---|---|-----|---|
 |*is set to*|*is set to*|*is set to*|*will become*|*is*|
-|`GET`|*None*|*None* |*None*|A single command given by `{name}` with parameters set from request parameters and a `null` body. See [Example](#example-1-no-body).
-|`POST`|`application/json`|A JSON data document|A parsed JSON data object|A single command given by `{name}` with parameters set from request parameters and the JSON object in the body. See [Example](#example-2-with-json-in-body).
-|`POST`|*Any*|Any (binary) data format as specified by the `Content-Type` Note: Additionally the header `Content-Length` is mandatory in this case. |[Content Object](/docs/guides/contentobject) referencing the data in the request body as a stream.|A single command given by `{name}` with parameters set from request parameters and a content object in the body. This is the most effective way of uploading large data to a command. See [Example](#example-3-with-binary-data-in-body)
-|`POST`|`multipart/form-data`|One or more parts with `name="file"` in the content disposition header. See [how HTTP multipart works](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST). |[Content Collection](/docs/guides/contentobject) with each entry referencing a part data.|A single command given by `{name}` with parameters set from request parameters and a content collection in the body. See [Example](#example-4-with-multipart-body)
+|`GET`|*None*|*None* |*None*|A single command given by `<name>` with parameters set from request parameters and a `null` body. See [Example](#example-1-no-body).
+|`POST`|`application/json`|A JSON data document|A parsed JSON data object|A single command given by `<name>` with parameters set from request parameters and the JSON object in the body. See [Example](#example-2-with-json-in-body).
+|`POST`|*Any*|Any (binary) data format as specified by the `Content-Type` Note: Additionally the header `Content-Length` is mandatory in this case. |[Content Object](/docs/guides/contentobject) referencing the data in the request body as a stream.|A single command given by `<name>` with parameters set from request parameters and a content object in the body. This is the most effective way of uploading large data to a command. See [Example](#example-3-with-binary-data-in-body)
+|`POST`|`multipart/form-data`|One or more parts with `name="file"` in the content disposition header. See [how HTTP multipart works](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST). |[Content Collection](/docs/guides/contentobject) with each entry referencing a part data.|A single command given by `<name>` with parameters set from request parameters and a content collection in the body. See [Example](#example-4-with-multipart-body)
 
 
 ### Example 1: No body
@@ -396,9 +400,13 @@ HttpResponse<String> response = Unirest.post("https://hub-try.pipeforce.org/api/
 
 This example will upload two files `my1.pdf` and `my2.pdf` and add them as attachments to the property with key `some/key`. For more details, how multipart HTTP POST requests work, see the [Mozilla Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST).
 
-## HTTP API for pipeline calls
+## HTTP API for adhoc pipeline calls
 
-  Another option to call the backend is to define a chain of multiple commands to be executed in a pipeline script and run this pipeline script by a single HTTP `POST` to `/api/v3/pipeline`. Again by using the request header `Content-Type` and the request body, you can optionally set the body data for the pipeline.
+  Another option to call the backend is to define a chain of commands to be executed in an adhoc pipeline and run this by sending it via HTTP `POST` request to 
+  ```
+  /api/v3/pipeline
+  ```
+  Again by using the request header `Content-Type` and the request body, you can optionally set the body data for the pipeline.
 
 ### HTTP Methods
 
@@ -409,6 +417,7 @@ In order to execute a pipeline script on the backend, you need to send via HTTP 
 |*is set to*|*is set to*|*is set to*|*will become*|*is*|
 |`POST`|`application/json`|A JSON pipeline document.|`null` or the value set by the `body` section of the pipeline.|A pipeline set as JSON from the request body. 
 |`POST`|`application/yaml`|A YAML pipeline document.|`null` or the value set by the `body` section of the pipeline.|A pipeline set as YAML from the request body. See examples with [no body](#example-5-no-body) and [embedded body](#example-6-with-body-embedded).
+|`POST`|`application/x-www-form-urlencoded`|The pipeline as URL encoded request query string whereas the key of each parameter is the command name and the value defines the parameters to the command. Key and value must be separated by a colon `:`. Multiple command parameters are separated by semicolon `;`. Example (before url encoding): `log=message:'Hello World!';level:INFO`|`null`|A pipeline set as URL encoded query string from the request body. See example with [url encoded query](#example-7-with-url-encoded-pipeline).
 |`POST`|*None*|A YAML pipeline document (same as with `application/yaml`).|`null` or the value set by the `body` section of the pipeline.|A pipeline set as YAML from the request body. Any other format in the body will throw an `400` bad request error.
 |`POST`|`multipart/form-data`|One part with `name="pipeline"` with a YAML pipeline and one or more parts with `name="file"` in the content disposition header. See [how HTTP multipart works](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST).|Content Collection referencing all `file`parts. |A pipeline set as YAML from the `pipeline` part and with a content collection in the body created from all `file` parts of the request body. See [Example](#example-8-with-multipart-body).
 
@@ -637,9 +646,103 @@ HttpResponse<String> response = Unirest.post("https://hub-try.pipeforce.org/api/
 </Tabs>
 
 
-### Example 7: With body
+### Example 7: With url encoded pipeline  
 
-Since a pipeline request with body data always requires at least two parts (pipeline part and at least one data part) in the request body, see [Pipeline YAML (Multipart Body)](#pipeline-yaml-multipart-body) below. 
+In this example, a simple adhoc pipeline is called using an [url encoded query string](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST). 
+
+The query string before encoding looks like this:
+
+```
+datetime=format:dd.MM.YY&set.body=value:"Today is: #{body}"
+```
+ - Multiple commands are separated by `&`.
+ - The query parameter name is the command name (for example `datetime`).
+ - The query parameter value specify the parameters to the command as `<key>:<value>` pairs. The value can optionally be put into 'single' or "double" quotes.
+ - Multiple `<key>:<value>` pairs must be separated by `;`
+
+Below you can find the example with the url encoded query string (only values parts must be encoded!):
+ 
+<Tabs>
+<TabItem value="curl" label="Curl">
+
+```bash
+curl -u 'username:password' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -X POST 'https://hub-<your-domain>/api/v3/pipeline' \
+  -d 'datetime=format%3Add.MM.YY&set.body=value%3A%20%22Today%20is%3A%20%23%7Bbody%7D%22'
+```
+
+</TabItem>
+<TabItem value="http" label="HTTP">
+
+```
+POST /api/v3/pipeline HTTP/1.1
+Host: hub-<your-domain>
+Authorization: Basic cGFzc3dvcmQ6dXNlcm5hbWU=
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 82
+
+datetime=format%3Add.MM.YY&set.body=value%3A%20%22Today%20is%3A%20%23%7Bbody%7D%22
+```
+
+</TabItem>
+<TabItem value="nodejs" label="NodeJs">
+
+```js
+var axios = require('axios');
+var data = 'datetime=format%3Add.MM.YY&set.body=value%3A%20%22Today%20is%3A%20%23%7Bbody%7D%22';
+
+var config = {
+  method: 'post',
+  url: 'https://hub-<your-domain>/api/v3/pipeline',
+  headers: { 
+    'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU=', 
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+import requests
+import json
+
+url = "https://hub-<your-domain>/api/v3/pipeline"
+
+payload = "datetime=format%3Add.MM.YY&set.body=value%3A%20%22Today%20is%3A%20%23%7Bbody%7D%22"
+headers = {
+  'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU=',
+  'Content-Type': 'application/x-www-form-urlencoded'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```js
+HttpResponse<String> response = Unirest.post("https://hub-<your-domain>/api/v3/pipeline")
+  .header("Authorization", "Basic cGFzc3dvcmQ6dXNlcm5hbWU=")
+  .header("Content-Type", "application/x-www-form-urlencoded")
+  .body("datetime=format%3Add.MM.YY&set.body=value%3A%20%22Today%20is%3A%20%23%7Bbody%7D%22")
+  .asString();
+```
+
+</TabItem>
+</Tabs>
 
 ### Example 8: With multipart body
 
@@ -764,6 +867,112 @@ HttpResponse<String> response = Unirest.post("https://hub-try.pipeforce.org/api/
 :::tip Note
 Note that the pipeline has the part name `pipeline` and one or more files must all have the name `file`.
 :::
+
+## HTTP API for persisted pipeline calls
+
+It is also possible to load and execute a pipline stored in the property store by sending a HTTP POST request to 
+
+```
+/api/v3/pipeline:<key>
+```
+Whereas `<key>` must be replaced by the property key of the pipeline to be executed.
+
+Instead of using the property key, you can also set the uuid of the pipeline property:
+
+```
+/api/v3/pipeline:uuid:<uuid>
+```
+
+Whereas `<uuid>` must be replaced by the uuid of the pipeline property to be loaded and executed. This approach has the advantage that it will work even if the pipeline has been moved / renamed to a different key.
+
+Any request parameter given will be set as variables to the pipeline.
+
+In case there is a body in the request, it will be set as body to the pipeline. If header `ContentType` is set to `application/json` the body will be parsed to a JSON object and provided as such as pipeline body. Otherwise, the body will be provided as [content object](/docs/guides/contentobject).
+
+### HTTP Methods
+
+In order to execute a persisted pipeline on the backend, you need to send a HTTP POST request to the endpoint `/api/v3/pipeline:<key>` or `/api/v3/pipeline:uuid:<uuid>` by using one of these HTTP options:
+
+|HTTP Method|`Content-Type` |Request Body|Message Body|Execution|
+|---|---|---|-----|---|
+|*is set to*|*is set to*|*is set to*|*will become*|*is*|
+|`POST`|`application/json`|A JSON data document.|The JSON data document parsed to a JSON instance. | The persisted pipeline loaded from the property store using its key or uuid.
+|`POST`|*Any*|Any data.|The data from the body provided as a content object|The persisted pipeline loaded from the property store using its key or uuid.
+|`POST`|*None*|*None*|`null`|The persisted pipeline loaded from the property store using its key or uuid.
+
+
+### Example 9: Execute persisted pipeline
+
+In this example a pipeline persisted under key `global/app/myapp/pipeline/mypipeline` will be loaded and executed at the backend without any body an request parameters:
+
+<Tabs>
+<TabItem value="curl" label="Curl">
+
+```bash
+curl -u 'username:password' \
+  -X POST 'https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/mypipeline'
+```
+
+</TabItem>
+<TabItem value="http" label="HTTP">
+
+```
+POST /api/v3/pipeline:global/app/myapp/pipeline/mypipeline HTTP/1.1 
+Host: hub-<your-domain>
+```
+
+</TabItem>
+<TabItem value="nodejs" label="NodeJs">
+
+```js
+var axios = require('axios');
+var FormData = require('form-data');
+
+var config = {
+  method: 'post',
+  url: 'https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/mypipeline',
+  headers: { 
+    'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU='
+  }
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+import requests
+
+url = "https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/mypipeline"
+
+headers = {
+  'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU='
+}
+
+response = requests.request("POST", url, headers=headers)
+
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```js
+HttpResponse<String> response = Unirest.post("https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/mypipeline")
+  .header("Authorization", "Basic cGFzc3dvcmQ6dXNlcm5hbWU=")
+  .asString();
+```
+
+</TabItem>
+</Tabs>
 
 ## Report an Issue
 :::tip Your help is needed!

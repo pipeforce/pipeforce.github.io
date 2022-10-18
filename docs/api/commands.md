@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 14/10/2022 by CommandComplianceTest -->
+<!-- Generated: 18/10/2022 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -8025,57 +8025,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## pipeline.run ``v1``
 ----------   
-DEPRECATED. Use pipeline.start instead.
+Loads and executes the persisted pipeline and returns its result in the output.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.run:v1)
 
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`name` | String | true | null | The name of the pipeline to load and execute.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - pipeline.run:  
-      name: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/pipeline.run?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command pipeline.run name=<value> id=<value> if=<value> onError=<value> eval=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## pipeline.start ``v1``
-----------   
-Loads and executes the persisted pipeline and returns its result in the output.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.start:v1)
-
+**Alias:** command:pipeline.start:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -8084,7 +8038,9 @@ Loads and executes the persisted pipeline and returns its result in the output.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified.
+`name` | String | false | null | DEPRECATED. Use param key instead. The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified.
 `vars` | String | false | null | A variables map to be put on this pipeline. Note: Any var in this map will overwrite the var in the target pipeline vars scope.
+`headers` | String | false | null | A headers map to be put on this pipeline. Note: Any header in this map will overwrite the header in the target pipeline headers scope.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -8095,9 +8051,11 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - pipeline.start:  
+  - pipeline.run:  
       key: <value>  
+      name: <value>  
       vars: <value>  
+      headers: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -8110,12 +8068,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.start?key=<value>&vars=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/pipeline.run?key=<value>&name=<value>&vars=<value>&headers=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.start key=<value> vars=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command pipeline.run key=<value> name=<value> vars=<value> headers=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8781,6 +8739,57 @@ http://host/api/v3/command/property.exists?key=<value>&id=<value>&if=<value>&onE
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command property.exists key=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## property.get ``v1``
+----------   
+Returns the property with given key.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.get:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | false | null | The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or key is mandatory.
+`uuid` | String | false | null | The uuid of the property. If this parameter is given, parameter key is ignored. On of uuid or key is mandatory.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.get:  
+      key: <value>  
+      uuid: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.get?key=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.get key=<value> uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
