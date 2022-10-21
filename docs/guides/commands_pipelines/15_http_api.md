@@ -650,17 +650,44 @@ HttpResponse<String> response = Unirest.post("https://hub-try.pipeforce.org/api/
 
 In this example, a simple adhoc pipeline is called using an [url encoded query string](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST). 
 
-The query string before encoding looks like this:
+Let's assume you have're having a pipeline like this:
+
+```yaml
+pipeline:
+  - datetime:
+      format: dd.MM.YY
+  - set.body:
+      value: "Today is: #{body}"
+```
+
+You can rewrite it to a query string like this (not url encoded):
 
 ```
 datetime=format:dd.MM.YY&set.body=value:"Today is: #{body}"
 ```
- - Multiple commands are separated by `&`.
- - The query parameter name is the command name (for example `datetime`).
- - The query parameter value specify the parameters to the command as `<key>:<value>` pairs. The value can optionally be put into 'single' or "double" quotes.
- - Multiple `<key>:<value>` pairs must be separated by `;`
 
-Below you can find the example with the url encoded query string (only values parts must be encoded!):
+ - The query parameter key becomes the command name (for example `datetime`).
+ - The query parameter value specifies the parameters to the command in the format of `<key>:<value>` pairs. The value part of such a parameter can optionally be put into 'single' or "double" quotes. Examples:
+   - `log=message:HELLO WORLD`
+   - `log='HELLO WORLD'`
+   - `log="HELLO WORLD"`
+ - Multiple `<key>:<value>` pairs must be separated by `;`. Example:
+   - `log='HELLO WORLD';level=INFO`
+ - Multiple commands must be separated by `&`. Examples:
+   - `log='HELLO WORLD';level=INFO&datetime`
+   - `log='HELLO WORLD';level=INFO&datetime=format:dd.MM.YY`
+ - Finally, values need to be URL encoded. Example:
+   - `datetime=format:dd.MM.YY` encodes to `datetime=format%3Add.MM.YY`
+
+For more details about the `application/x-www-url-encoded` content type in the HTTP standard see for example: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST
+
+After url encoding the values of this query, it looks like this:
+
+```
+datetime=format%3Add.MM.YY&set.body=value%3A%20%22Today%20is%3A%20%23%7Bbody%7D%2
+```
+
+Below you can find the execution examples using this url encoded query string:
  
 <Tabs>
 <TabItem value="curl" label="Curl">
