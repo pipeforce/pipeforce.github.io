@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 18/10/2022 by CommandComplianceTest -->
+<!-- Generated: 21/10/2022 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -6746,7 +6746,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## log.list ``v1``
 ----------   
-Logs the given number of log lines from specified service.
+Returns the given number of log lines from specified service.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.list:v1)
 
@@ -12582,8 +12582,8 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `eventKey` | String | true | null | Id of the event to be fired when hook was called.
 `pipeline` | String | false | null | DEPRECATED: Link to pipeline via messaging instead.
-`uuid` | String | false | null | The id (=token) of an existing webhook. If given, tries to update this webhook. In case new such webhook exists, creates a new one with given token.
-`payloadHandling` | String | false | base64 | How to handle the payload before it gets published into the message bus? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging).
+`uuid` | String | false | null | The id (=token) of an existing webhook. If given, tries to update this webhook. In case no such webhook exists, creates a new one with given token.
+`payload` | String | false | base64 | How to handle the payload before it gets published into the message broker? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging).
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -12598,7 +12598,7 @@ pipeline:
       eventKey: <value>  
       pipeline: <value>  
       uuid: <value>  
-      payloadHandling: <value>  
+      payload: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -12611,12 +12611,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<value>&payloadHandling=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/webhook.put?eventKey=<value>&pipeline=<value>&uuid=<value>&payload=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> payloadHandling=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command webhook.put eventKey=<value> pipeline=<value> uuid=<value> payload=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

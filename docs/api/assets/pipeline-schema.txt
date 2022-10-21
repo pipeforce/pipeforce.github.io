@@ -4890,7 +4890,7 @@
           },
           "log.list" : {
             "type" : "object",
-            "description" : "Logs the given number of log lines from specified service.",
+            "description" : "Returns the given number of log lines from specified service.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9355,11 +9355,11 @@
               },
               "uuid" : {
                 "type" : "string",
-                "description" : "The id (=token) of an existing webhook. If given, tries to update this webhook. In case new such webhook exists, creates a new one with given token."
+                "description" : "The id (=token) of an existing webhook. If given, tries to update this webhook. In case no such webhook exists, creates a new one with given token."
               },
-              "payloadHandling" : {
+              "payload" : {
                 "type" : "string",
-                "description" : "How to handle the payload before it gets published into the message bus? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging).",
+                "description" : "How to handle the payload before it gets published into the message broker? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging).",
                 "default" : "base64"
               },
               "id" : {
