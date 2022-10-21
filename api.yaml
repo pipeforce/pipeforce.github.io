@@ -13225,7 +13225,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Logs the given number of log lines from specified service. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns the given number of log lines from specified service. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -25330,13 +25330,13 @@ paths:
       - name: "uuid"
         in: "query"
         required: false
-        description: "The id (=token) of an existing webhook. If given, tries to update this webhook. In case new such webhook exists, creates a new one with given token."
+        description: "The id (=token) of an existing webhook. If given, tries to update this webhook. In case no such webhook exists, creates a new one with given token."
         schema:
           type: "string"
-      - name: "payloadHandling"
+      - name: "payload"
         in: "query"
         required: false
-        description: "How to handle the payload before it gets published into the message bus? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging)."
+        description: "How to handle the payload before it gets published into the message broker? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging)."
         schema:
           type: "string"
       - name: "id"
@@ -25397,13 +25397,13 @@ paths:
       - name: "uuid"
         in: "query"
         required: false
-        description: "The id (=token) of an existing webhook. If given, tries to update this webhook. In case new such webhook exists, creates a new one with given token."
+        description: "The id (=token) of an existing webhook. If given, tries to update this webhook. In case no such webhook exists, creates a new one with given token."
         schema:
           type: "string"
-      - name: "payloadHandling"
+      - name: "payload"
         in: "query"
         required: false
-        description: "How to handle the payload before it gets published into the message bus? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging)."
+        description: "How to handle the payload before it gets published into the message broker? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging)."
         schema:
           type: "string"
       - name: "id"
