@@ -1630,6 +1630,96 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/cache.has:
+    get:
+      parameters:
+      - name: "key"
+        in: "query"
+        required: false
+        description: "Checks, if cache has entry with given key. If yes, puts true in the output. Otherwise false."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Checks if cache has given entry Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "key"
+        in: "query"
+        required: false
+        description: "Checks, if cache has entry with given key. If yes, puts true in the output. Otherwise false."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/cache.info:
     get:
       parameters:
@@ -3895,12 +3985,6 @@ paths:
         description: "Delete the delivery attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted."
         schema:
           type: "string"
-      - name: "attachments"
-        in: "query"
-        required: false
-        description: "The list of attachment file names or a list of JSON objects to be added to this delivery."
-        schema:
-          type: "string"
       - name: "notifySender"
         in: "query"
         required: false
@@ -3978,12 +4062,6 @@ paths:
         in: "query"
         required: false
         description: "Delete the delivery attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted."
-        schema:
-          type: "string"
-      - name: "attachments"
-        in: "query"
-        required: false
-        description: "The list of attachment file names or a list of JSON objects to be added to this delivery."
         schema:
           type: "string"
       - name: "notifySender"
@@ -6994,7 +7072,13 @@ paths:
       - name: "filter"
         in: "query"
         required: false
-        description: "An optional PEL to execute the pipeline only in case the filter applies."
+        description: "DEPRECATED: Use parameter `selector` instead. An optional PEL to execute the pipeline only in case the filter applies."
+        schema:
+          type: "string"
+      - name: "selector"
+        in: "query"
+        required: false
+        description: "Selects the message to be passed to this listener. Can be a PEL or a selector expression. Note: For performance reasons, using the body payload for filtering is not allowed here and will throw an exception. Use headers for filtering instead. If this parameter is set, filter will be ignored."
         schema:
           type: "string"
       - name: "id"
@@ -7043,7 +7127,13 @@ paths:
       - name: "filter"
         in: "query"
         required: false
-        description: "An optional PEL to execute the pipeline only in case the filter applies."
+        description: "DEPRECATED: Use parameter `selector` instead. An optional PEL to execute the pipeline only in case the filter applies."
+        schema:
+          type: "string"
+      - name: "selector"
+        in: "query"
+        required: false
+        description: "Selects the message to be passed to this listener. Can be a PEL or a selector expression. Note: For performance reasons, using the body payload for filtering is not allowed here and will throw an exception. Use headers for filtering instead. If this parameter is set, filter will be ignored."
         schema:
           type: "string"
       - name: "id"
@@ -14668,7 +14758,13 @@ paths:
       - name: "deleteQueue"
         in: "query"
         required: false
-        description: "Also delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!"
+        description: "DEPRECATED. Use parameter managed instead. Delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!"
+        schema:
+          type: "string"
+      - name: "managed"
+        in: "query"
+        required: false
+        description: "Auto-manage queue creation. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete."
         schema:
           type: "string"
       - name: "maxBatchSize"
@@ -14741,7 +14837,13 @@ paths:
       - name: "deleteQueue"
         in: "query"
         required: false
-        description: "Also delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!"
+        description: "DEPRECATED. Use parameter managed instead. Delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!"
+        schema:
+          type: "string"
+      - name: "managed"
+        in: "query"
+        required: false
+        description: "Auto-manage queue creation. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete."
         schema:
           type: "string"
       - name: "maxBatchSize"
@@ -23602,7 +23704,25 @@ paths:
       - name: "resource"
         in: "query"
         required: true
-        description: "The type of resource to be loaded. Must be one of: background, logo, pipeforce-logo. If null or invalid value, falls back to default value."
+        description: "The name of resource to be loaded. If it starts with a slash / tries to load the resource from the default location with given name. If resource is one of the default names like: background, logo, pipeforce-logo, tries to load the default resource for these names. If null or invalid value, falls back to default value."
+        schema:
+          type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        description: "The name of the theme. If not given, the default theme will be used as configured."
+        schema:
+          type: "string"
+      - name: "contentType"
+        in: "query"
+        required: false
+        description: "The content type to be returned as fallback in case there is none defined at backend side for the requested resource. If this param is missing, it will be tried to guess the type automatically. If the type could not be guessed, returns application/octet-stream by default."
+        schema:
+          type: "string"
+      - name: "ref"
+        in: "query"
+        required: false
+        description: "The optional referrer id to this resource request."
         schema:
           type: "string"
       - name: "id"
@@ -23635,7 +23755,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Returns the resources for a given theme in the body and enrich headers with appropriate Content-type. Caches the resources. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns the resources for a given theme in the body and enrich headers with appropriate Content-type. Caches the resources where applicable. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -23657,7 +23777,25 @@ paths:
       - name: "resource"
         in: "query"
         required: true
-        description: "The type of resource to be loaded. Must be one of: background, logo, pipeforce-logo. If null or invalid value, falls back to default value."
+        description: "The name of resource to be loaded. If it starts with a slash / tries to load the resource from the default location with given name. If resource is one of the default names like: background, logo, pipeforce-logo, tries to load the default resource for these names. If null or invalid value, falls back to default value."
+        schema:
+          type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        description: "The name of the theme. If not given, the default theme will be used as configured."
+        schema:
+          type: "string"
+      - name: "contentType"
+        in: "query"
+        required: false
+        description: "The content type to be returned as fallback in case there is none defined at backend side for the requested resource. If this param is missing, it will be tried to guess the type automatically. If the type could not be guessed, returns application/octet-stream by default."
+        schema:
+          type: "string"
+      - name: "ref"
+        in: "query"
+        required: false
+        description: "The optional referrer id to this resource request."
         schema:
           type: "string"
       - name: "id"
