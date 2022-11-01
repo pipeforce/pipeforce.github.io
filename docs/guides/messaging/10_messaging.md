@@ -11,24 +11,22 @@ slug: /messaging
 PIPEFORCE has a built-in messaging system, where application messages can be routed between microservices based on conditions like routing
 keys for example.
 
-By default, as internal message broker RabbitMQ is used: https://www.rabbitmq.com/documentation.html
+By default, as internal message broker RabbitMQ is used as a service module: https://www.rabbitmq.com/documentation.html. It's one of the most advanced and most widely used messaging broker in the world.
 
-It's one of the most advanced and most widely used messaging broker in the world.
-
-In order to send and receive messages to/from this messaging bus, you have two options:
+In order to send and receive messages to/from this messaging broker, you have two options:
 
 - Develop a microservice using a RabbitMQ client library and deploy it to PIPEFORCE using the [service.deploy](../api/commands#servicedeploy-v1) command.
   For details about writing such a microservice which produces and consumes messages, see the
   section [messaging and microservices](microservices/messaging).
-- Write pipelines using the [message.receive](../api/commands#messagereceive-v1)
-  and [message.send](../api/commands#messagesend-v1) commands.
+- Write a pipeline using the [message.receive](../api/commands#messagereceive-v1)
+  and [message.send](../api/commands#messagesend-v1) commands and let PIPEORCE manage connections, exchanges, queues, bindings and consumers for you.
 
 This section will cover the second part: How to write pipelines which send and receive messages to/from the messaging
-system.
+broker.
 
 ## Receiving messages
 
-To receive messages in a pipeline, you can use the command [message.receive](../api/commands#messagereceive-v1).
+Receiving messages in a pipeline is simple: Use the command [message.receive](../api/commands#messagereceive-v1) and specify the message key of interest. After you have stored the pipeline, it will be executed every time this key occurs. No need to manage connections, queues, bindings or similar.
 
 Let's assume you have a pipeline, which sends an email like this:
 
@@ -41,14 +39,13 @@ pipeline:
       message: "Hello, a new sales order has been created!"
 ```
 
-Now you would like to listen for new sales orders on the messaging bus. Every time a new such sales order has been
+Now you would like to listen for new sales orders. Every time a new such sales order has been
 created, we would like to send this email.
 
-Let's assume, the unique messaging key `sales.order.created` was defined and communicated accordingly by the integration
-team. This can be freely designed by the development team.
+Let's assume, the unique messaging key `sales.order.created` was defined for this.
 
 With this information we can now extend our pipeline easily to listen to messages with this key and automatically send
-an email:
+an email, every time such a message appears:
 
 ```yaml
 pipeline:
@@ -63,23 +60,33 @@ pipeline:
 ```
 
 As you can see, we added the command `message.receive` at the very beginning. It's important that this command is always
-at the very beginning and its the only `message.receive` command in the pipeline. Any command below `message.receive`
+at the very beginning and its the only `message.receive` command in the pipeline. After the pipeline has been stored in the property stores, Any command below `message.receive`
 will then be executed every time a message with the given key appears.
 
-As soon as you save the pipeline to the property store, a new queue, a binding and a consumer will be automatically
-created for you.
+After you stored it, the pipeline then starts to listen: Any time a message with key `sales.order.created` happens, this pipeline will be informed about this and executes any command below `message.receive`. So in this example this will send a new email any time this message happens.
 
-The pipeline then starts to listen: Any time a message with key `sales.order.created` happens in the messaging bus, this
-pipeline will be informed about this and executes any command below `message.receive`.
+### Managed Queue
 
-:::caution
-Whenever you delete a pipeline with a `message.receive` command in it, the according messaging queue, bindings and
-consumers will also automatically be deleted. The same is true in case you remove the `message.receive` command
-from the pipeline. In case you rename the pipeline or change parameters of the command, the old queue, binding and
-consumer will be replaced by a new one. So make sure to change such a pipeline only in development mode, never in production.
+PIPEFORCE can manage the creation, registration and deletion of exchanges, consumers, queues and bindings automatically for you.
+
+As soon as you save a pipeline containing a `message.receive` command to the property store, by default a new queue with a name given by parameter `queue` will be automatically created for you, if not already exists. In case no `queue` parameter is given, the queue name will be automtically derived from the pipeline name (= default name).
+
+Additionally, a binding and a consumer listening to the given message key will be automatically created for you and linked with the queue. So no queue, binding or consumer management is required by default.
+
+If you delete or change a `message.receive` command inside a pipeline, the according consumer will be removed, but the queue and bindings will not be deleted by default. 
+
+:::tip How to change the default?
+You can change this default behaviour by using the parameter `managed` which can be set to these values:
+
+- `false` = No message entities like queues and bindings will be created or deleted automatically. You have to manage all of this by your own (not recommended).
+- `create` = This is the default. In this case, the queue will be created automatically in case it doesn't exist yet. But it **wont** be altered or deleted automatically aftwards.
+- `delete` = In this case, the queue will be deleted in case the `message.receive` command has been changed or removed from the pipeline or the pipeline got deleted. The creation of queue and bindings is **not** automated.
+- `create,delete` = This combines automation of creation and deletion as described above.
+
+Regardless of the parameter `managed`, the creation, deletion and scaling of the according consumer is always done automatically.
 :::
 
-### Accessing payload
+### Accessing Payload
 
 It's also possible to send data with any message, it's called the **payload**.
 
@@ -116,7 +123,7 @@ So let's use this payload in order to send more information with our email, like
           Customer: #{body.customer}
 ```
 
-### Using wildcard keys
+### Using Wildcard Keys
 
 In some situations you probably would like to listen to all messages of a certain type. So lets assume you would like to
 be informed about any sales order changes in the sales department and let's assume the integration team publishes all
@@ -177,7 +184,18 @@ pipeline:
 
 The hash `#` matches any level of the message key regardless of the number of periods (sections) in it.
 
-## Sending messages
+### Batched Messages
+
+Sometimes it is required to execute the message listener only for a bunch of messages, not for each single one. This is useful for example for performance reasons in case you have a lot of tiny messages or in case the target accepts only groups of messages. For this you can use the messaging batching feature of PIPEFORCE using these parameters on the `message.receive` command:
+
+- `maxBatchSize`: Buffers messages up to the given size in bytes and then processes this pipeline with all of these messages. The messages will be provided as array to the body. The maximum size is 200KB (204800).
+- `maxBatchItems`: Buffers the amount of messages up to the given number and then processes this pipeline with all of these messages. The messages will be provided as array to the body.
+
+If both parameters are given, the one which matches first is considered.
+
+The messages in the buffer are not acknowledged until they got delivered to the pipeline. 
+
+## Sending Messages
 
 To send messages in a pipeline, you can use the command [message.send](../api/commands#messagesend-v1).
 
@@ -188,7 +206,7 @@ pipeline:
 
   - message.send: 
      key: "sales.order.created"
-     paloyad: |
+     payload: |
        {
           "id": "someSalesOrderId",
           "date": "23.05.2022, 13:45",
@@ -197,7 +215,7 @@ pipeline:
         }
 ```
 
-In case the parameter `payload` is missing, the current body content of the pipeline is used as payload.
+The `payload` can also be set to `null` or empty string in case the message has no payload at all. In case the parameter `payload` is missing, the current body content of the pipeline is used as payload.
 
 This sends a new message with key `sales.order.created` and the given payload to the default exchange.
 

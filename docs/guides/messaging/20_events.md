@@ -3,6 +3,8 @@
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 6.0</p>
 
+## The Event Object
+
 In PIPEFORCE, an event is a special form of a Message.
 
 It is an action which happened inside the hub service and is represented by a JSON object with a certain structure like this:
@@ -13,6 +15,7 @@ It is an action which happened inside the hub service and is represented by a JS
   "namespace": "string",
   "payload": {JSON},
   "async": true|false,
+  "traceId": "string",
   "headers": {
     "key": "value",
     ...
@@ -22,7 +25,7 @@ It is an action which happened inside the hub service and is represented by a JS
 
 This event JSON object is automatically provided to you in the `body` of the pipeline and can be accessed from there by a pipeline expression (PE).
 
-## eventKey
+### `eventKey`
 
 Contains a unique key for this event type. The event keys are typically written in a lower case and dot notation, where each part is separated by a dot.
 
@@ -47,30 +50,36 @@ Custom events (not part of the built-in events) must be prefixed with the revers
 com.company.eventname
 ```
 
-## namespace
+### `namespace`
 
 The namespace (= tenant) where this event happened. If null or empty, the event was fired by a global instance.
 
-## payload
+### `payload`
 
-The optional payload of the event as JSON object. The structure of this payload depends on the event type.
+The optional payload of the event as JSON object. Can be `null` in case the event doesn't contain any additional data. The structure of this payload depends on the event type and the `Content-Type` header.
 
-**Note:** Every event also has the virtual properties `origin` and `target`, where each term inside the `payload` (if there exists any) points to the `origin` or `target` properties. Virtual means, that these properties are not serialized to JSON and can only be accessed by a pipeline expression (PE). This is handy for filters, since no null check for `payload` is necessary here.
+#### `origin` and `target`
 
-So these paths point to the same, whereas the left part will never raise a null exception:
+In case the event represents a change of data in the system, usually the attributes `origin` and `target` are placed inside `payload`, whereas:
 
-*   `origin = payload.origin` (the origin value **BEFORE** an event happened)
-    
-*   `target = payload.target` (the final value **AFTER** an event happened)
-    
+ - `origin`: Contains the origin value **BEFORE** the change happened or null, if there was no origin value.
+ - `target`: Contains the final value **AFTER** the change happened.
 
-It depends on the event whether `origin` and / or `target` is provided and which structure they have. Please consult the documentation for the certain event.
+Let's consider for example the event type [`property.moved`](../../api/events#propertymoved):
+ - `origin` contains here the origin property key before the move. For example: `"origin": "global/app/myapp/old"`
+ - `target` contains here the final key, the property was moved to. For example: `"target":"global/app/myapp/new"`. 
 
-## async
+It depends on the event type whether `origin` and / or `target` is provided inside `payload` and which structure they have. Consult the [documentation for the certain event types](../../api/events) to learn more about the available built-in event types.
+
+### `async`
 
 It is `true`, in case this event was sent in an asynchronous way. Otherwise, it is `false`.
 
-## headers
+### `traceId`
+
+This contains a unique id in order to identify the message flow in logs and reports. Any message, origin to this message or successor to this message will contain this id.
+
+### `headers`
 
 These are optional name-value-pairs to describe the event. It is a good practice to filter events based on header values and avoid filtering on payload for better performance.
 
@@ -125,7 +134,7 @@ Every time this pipeline gets executed, it will send a new event with key `com.c
 
 Note: Whenever you send a custom event, you need to prefix it with the reversed internet address of your company. In this example it is `com.company`. Otherwise, it could be that your event gets dropped or causes an exception.
 
-## Built-in events
+## Built-in event types
 
 In order to get a reference about all built-in events, see the [Event Reference](../../api/events)
 

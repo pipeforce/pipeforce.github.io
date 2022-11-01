@@ -661,6 +661,39 @@
             },
             "required" : [ "key" ]
           },
+          "cache.has" : {
+            "type" : "object",
+            "description" : "Checks if cache has given entry",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "Checks, if cache has entry with given key. If yes, puts true in the output. Otherwise false."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "cache.info" : {
             "type" : "object",
             "description" : "Returns information about the current state of the cache. Available for system and support users only.",
@@ -1507,10 +1540,6 @@
                 "type" : "string",
                 "description" : "Delete the delivery attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted.",
                 "default" : "0"
-              },
-              "attachments" : {
-                "type" : "string",
-                "description" : "The list of attachment file names or a list of JSON objects to be added to this delivery."
               },
               "notifySender" : {
                 "type" : "string",
@@ -2633,7 +2662,11 @@
               },
               "filter" : {
                 "type" : "string",
-                "description" : "An optional PEL to execute the pipeline only in case the filter applies."
+                "description" : "DEPRECATED: Use parameter `selector` instead. An optional PEL to execute the pipeline only in case the filter applies."
+              },
+              "selector" : {
+                "type" : "string",
+                "description" : "Selects the message to be passed to this listener. Can be a PEL or a selector expression. Note: For performance reasons, using the body payload for filtering is not allowed here and will throw an exception. Use headers for filtering instead. If this parameter is set, filter will be ignored."
               },
               "id" : {
                 "type" : "string",
@@ -5450,8 +5483,13 @@
               },
               "deleteQueue" : {
                 "type" : "string",
-                "description" : "Also delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!",
+                "description" : "DEPRECATED. Use parameter managed instead. Delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!",
                 "default" : "false"
+              },
+              "managed" : {
+                "type" : "string",
+                "description" : "Auto-manage queue creation. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete.",
+                "default" : "create"
               },
               "maxBatchSize" : {
                 "type" : "string",
@@ -8704,7 +8742,7 @@
           },
           "theme" : {
             "type" : "object",
-            "description" : "Returns the resources for a given theme in the body and enrich headers with appropriate Content-type. Caches the resources.",
+            "description" : "Returns the resources for a given theme in the body and enrich headers with appropriate Content-type. Caches the resources where applicable.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -8714,8 +8752,20 @@
               },
               "resource" : {
                 "type" : "string",
-                "description" : "The type of resource to be loaded. Must be one of: background, logo, pipeforce-logo. If null or invalid value, falls back to default value.",
+                "description" : "The name of resource to be loaded. If it starts with a slash / tries to load the resource from the default location with given name. If resource is one of the default names like: background, logo, pipeforce-logo, tries to load the default resource for these names. If null or invalid value, falls back to default value.",
                 "default" : "logo"
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the theme. If not given, the default theme will be used as configured."
+              },
+              "contentType" : {
+                "type" : "string",
+                "description" : "The content type to be returned as fallback in case there is none defined at backend side for the requested resource. If this param is missing, it will be tried to guess the type automatically. If the type could not be guessed, returns application/octet-stream by default."
+              },
+              "ref" : {
+                "type" : "string",
+                "description" : "The optional referrer id to this resource request."
               },
               "id" : {
                 "type" : "string",

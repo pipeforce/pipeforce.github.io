@@ -2,7 +2,7 @@
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 3.0</p>
 
-Inside a [Pipeline Expression](../guides/../commands_pipelines/pel) you can access a huge library of functions, which can additionaly simplify your work. Such utility functions are called **Built-In Functions**. See the [reference docs](../../api/functions) for a full list of all available functions. If you're missing a function there, please [drop a note](https://github.com/pipeforce/pipeforce.github.io/issues/new).
+Inside a [Pipeline Expression](../guides/../commands_pipelines/pel) you can access a huge library of functions, which can additionaly simplify your integration and automation tasks. Such utility functions are called **Built-In Functions**. See the [reference docs](../../api/functions) for a full list of all available functions. If you're missing a function there, please [drop a note](https://github.com/pipeforce/pipeforce.github.io/issues/new).
 
 ## Usage
 

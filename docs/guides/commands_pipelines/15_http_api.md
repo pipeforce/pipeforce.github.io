@@ -650,7 +650,7 @@ HttpResponse<String> response = Unirest.post("https://hub-try.pipeforce.org/api/
 
 In this example, a simple adhoc pipeline is called using an [url encoded query string](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST). 
 
-Let's assume you have're having a pipeline like this:
+Suppose you have a pipeline that looks like this:
 
 ```yaml
 pipeline:
@@ -681,7 +681,7 @@ datetime=format:dd.MM.YY&set.body=value:"Today is: #{body}"
 
 For more details about the `application/x-www-url-encoded` content type in the HTTP standard see for example: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST
 
-After url encoding the values of this query, it looks like this:
+After the values have been url encoded, the query string looks like this:
 
 ```
 datetime=format%3Add.MM.YY&set.body=value%3A%20%22Today%20is%3A%20%23%7Bbody%7D%2

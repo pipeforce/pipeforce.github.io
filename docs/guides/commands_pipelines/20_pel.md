@@ -2,11 +2,17 @@
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 3.0</p>
 
-The **Pipeline Expression Language (PEL)** or just *PE (Pipeline Expression)* is a powerful expression language that is used inside a pipeline to dynamically calculate and set values. It can be used for data mapping and to dynamically calculate, set and change values at processing time of a pipeline. This gives you a huge flexibility in your pipeline.
+The **Pipeline Expression Language (PEL)** or just *PE (Pipeline Expression)* is a powerful and easy to learn expression language based on [Spring EL](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#expressions) and adds additional features to this widely used "defacto-standard" expression language. It can be used inside a pipeline to dynamically calculate and set values. For data mapping, transformation and to dynamically calculate, set and change values at processing time of a pipeline.
 
-Typically a PE starts with `#{` and ends with `}` and is placed in the value part of headers, variables or command parameters. It uses late binding: It will be executed only in case the according entry (header, variable or command parameter) is referenced somewhere.
+:::tip Note
+The Pipeline Expression Language is optional. You do not need it for basic tasks. But it gives you additional flexibility and power to automate and integrate nearly any process since it is optimized exactly for this. So it is wise to learn at least the basics of it. Typically, it is easier to learn than a programming language. 
 
-Here is a simple example of a PE, placed inside the value of a command parameter:
+**It depends on your basic knowdlegde, but in average it is a matter of about 15-30 minutes to understand and use the basic concepts of this powerful expression language.** 
+:::
+
+## Basics
+
+Typically a PE starts with `#{` and ends with `}`. Here is a simple example of a PE, placed inside the value of a command parameter:
 
 ```yaml
 pipeline:
@@ -20,7 +26,7 @@ Output:
 2
 ```
 
-It also supports interpolation in order to use the PEL like a template language inside a text string. So string concatenation is done for you:
+A PE can be placed in the value part of pipeline headers and values, in parameter values of most commands and in the body of a pipeline. It uses *late binding*: It will be executed only in case the according entry (header, variable, command parameter, ...) is referenced somewhere. It also supports interpolation in order to use the PEL like a template language inside a text string. So string concatenation can be done like this:
 
 ```yaml
 pipeline:
@@ -642,7 +648,7 @@ To access a list/array, you can use the index operator \[\]:
 #{person.hobbies[0]}
 ```
 
-#### Example 1
+### Example 
 
 In this more advanced example, there are different things to mention:
 
@@ -656,7 +662,6 @@ In this more advanced example, there are different things to mention:
     
 5.  There are comments in the configuration. A comment line starts with `#`.
     
-
 See the official YAML documentation about how to deal with multi-line values. Here is a good summary: [https://yaml-multiline.info/](https://yaml-multiline.info/)
 
 ```yaml
@@ -691,6 +696,42 @@ Name:  Bart Simpson
 Age:   12
 Hobby: skateboard
 ```
+
+### Avoid NullPointerException
+
+In case you would like to access a property of an object which doesn't exist, a `NullPointerException` will be thrown, indicating that the object you're trying to access doesn't exist. Let's see this example which will result in such an exception:
+
+```yaml
+vars:
+  data: null
+pipeline:
+  set.body:
+    value: "#{vars.data.name}"
+```
+
+This will throw an exception since the object `data` is `null` and therfore the property `name` cannot be loaded.
+
+In order to return `null` instead of throwing an exception, you can use the safe navigation operator `?.`. This example will not throw an exception. Instead, it will simply put `null` into the body:
+
+```yaml
+vars:
+  data: null
+pipeline:
+  set.body:
+    value: "#{vars.data?.name}"
+```
+
+It is also possible to use this operator on nested properties:
+
+```yaml
+vars:
+  data: null
+pipeline:
+  set.body:
+    value: "#{vars.data?.deep?.deeper?.value}"
+```
+
+This example will also put `null` into the body instead of throwing a `NullPointerException`.
 
 ## Filtering
 
@@ -891,6 +932,12 @@ pipeline:
   - log:
       message: "#{vars.data.![person.name]}"
 ```
+
+## Functions
+
+There are many built-in functions available which additionally can simplify your automation and integration tasks. See chapter [Built-In Functions](/docs/guides/commands_pipelines/functions) for more details.
+
+If you would like to create your own functions instead, see chapter [Custom Functions](/docs/guides/commands_pipelines/custom_functions).
 
 ## Report an Issue
 :::tip Your help is needed!
