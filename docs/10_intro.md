@@ -47,7 +47,7 @@ PIPEFORCE helps enterprises to achieve **digital superpower** by clearly separat
 - Professional Developer
 - DevOp
 
-This documentation is mainly for Low Code and Professional Developers. If you are looking for user or admin manuals, please refer to the [Support pages](https://logabit.atlassian.net/servicedesk/customer/portals).
+This documentation is mainly for Low Coders and Professional Developers. If you are looking for user or admin manuals, please refer to the [Support pages](https://logabit.atlassian.net/servicedesk/customer/portals).
 
 If you are a Low Code Developer or a Professional Developer and new to PIPEFORCE, we recommend you to walk through the [Tutorials](tutorials/basics) section first. After this you should have a good base understanding of PIPEFORCE.
 
