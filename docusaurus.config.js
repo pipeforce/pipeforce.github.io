@@ -16,11 +16,10 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'pipeforce', // Usually your GitHub org/user name.
   projectName: 'website', // Usually your repo name.
-  trailingSlash: false,
-
+  
   presets: [
     [
-      '@docusaurus/preset-classic',
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
@@ -34,11 +33,10 @@ const config = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        },
+        }
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
