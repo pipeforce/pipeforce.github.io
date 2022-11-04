@@ -16,7 +16,8 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'pipeforce', // Usually your GitHub org/user name.
   projectName: 'website', // Usually your repo name.
-  
+  trailingSlash: false,
+
   presets: [
     [
       'classic',
@@ -25,6 +26,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/pipeforce/pipeforce.github.io/edit/master/',
+          docLayoutComponent: require.resolve('./src/components/DocsLayout.jsx')
         },
         blog: {
           showReadingTime: true,
@@ -33,7 +35,7 @@ const config = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        }
+        },
       }),
     ],
   ],
