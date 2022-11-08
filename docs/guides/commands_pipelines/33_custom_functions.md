@@ -41,7 +41,7 @@ pipeline:
       args:
         firstName: "Some"
       do: |
-        firstName + ' ' + var.lastName
+        firstName + ' ' + vars.lastName
 ```
 ## Calling a function
 
@@ -140,10 +140,10 @@ pipeline:
       name: "concatNames"
       args:
         firstName: "HELLO"
-      output: var.functionResult
+      output: vars.functionResult
 
   - set.body:
-      value: "Result in variable functionResult: #{var.functionResult}"
+      value: "Result in variable functionResult: #{vars.functionResult}"
 
 ```
 

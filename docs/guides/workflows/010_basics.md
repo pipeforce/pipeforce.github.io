@@ -158,7 +158,7 @@ Pipeline section is mandatory for execution of any application. It includes all 
        pipeline:
          - event.listen:
              key: "property.created"
-             filter: "#{body.target.key.contains('global/app/travelexpense/object.travelexpense/v1/instance')}"
+             filter: "#{body.payload.target.key.contains('global/app/travelexpense/object.travelexpense/v1/instance')}"
        ```
 
        Note: To get more details regarding this feature, please see: [Events](../../api/events)
@@ -171,10 +171,10 @@ Pipeline section is mandatory for execution of any application. It includes all 
        pipeline:
          - event.listen:
              key: "property.created"
-             filter: "#{body.target.key.contains('global/app/travelexpense/object.travelexpense/v1/instance')}"
+             filter: "#{body.payload.target.key.contains('global/app/travelexpense/object.travelexpense/v1/instance')}"
          - set.var:
              key: "formData"
-             value: "#{@convert.toMap(body.target.value)}"
+             value: "#{@convert.toMap(body.payload.target.value)}"
        ```                                                                                
        Note: To get more details regarding this feature, please see: [Convert](../../api/functions#convert)
 	
@@ -184,7 +184,7 @@ Pipeline section is mandatory for execution of any application. It includes all 
        pipeline:
          - event.listen:
              key: "property.created"
-             filter: "#{body.target.key.contains('global/app/travelexpense/object.travelexpense/v1/instance')}"
+             filter: "#{body.payload.target.key.contains('global/app/travelexpense/object.travelexpense/v1/instance')}"
          - set:
              value: "#{@user.firstName()?: ''}"
              output: "#{vars.creatorFirstName}"
@@ -227,7 +227,7 @@ Pipeline section is mandatory for execution of any application. It includes all 
 
         ```yaml
         - property.attachment.content:
-            key: "#{body.target.key}"
+            key: "#{body.payload.target.key}"
             value: "#{vars.formData.formAttachment.content}"
         ``` 
 

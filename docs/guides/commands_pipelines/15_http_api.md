@@ -926,6 +926,9 @@ In order to execute a persisted pipeline on the backend, you need to send a HTTP
 |`POST`|`application/json`|A JSON data document.|The JSON data document parsed to a JSON instance. | The persisted pipeline loaded from the property store using its key or uuid.
 |`POST`|*Any*|Any data.|The data from the body provided as a content object|The persisted pipeline loaded from the property store using its key or uuid.
 |`POST`|*None*|*None*|`null`|The persisted pipeline loaded from the property store using its key or uuid.
+|`PUT`|`application/json`|A JSON pipeline.|*None*|The pipeline given as JSON in the request body will be converted and stored as YAML property with key given by `<key>` from request path. In case a pipeline with such key already exists, updates the existing one.
+|`PUT`|`application/yaml`|A YAML pipeline.|*None*|The pipeline given as YAML in the request body will be stored as YAML property with key given by `<key>` from request path. In case a pipeline with such key already exists, updates the existing one.
+|`PUT`|`application/x-www-form-urlencoded`|An url encoded pipeline URI.|*None*|The pipeline given as url encoded pipeline URI in the request body will be converted and stored as YAML property with key given by `<key>` from request path. In case a pipeline with such key already exists, updates the existing one.
 
 
 ### Example 9: Execute persisted pipeline
@@ -995,6 +998,96 @@ response = requests.request("POST", url, headers=headers)
 ```js
 HttpResponse<String> response = Unirest.post("https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/mypipeline")
   .header("Authorization", "Basic cGFzc3dvcmQ6dXNlcm5hbWU=")
+  .asString();
+```
+
+</TabItem>
+</Tabs>
+
+### Example 10: Store a pipeline
+
+In this example a new persisted pipeline will be created under key `global/app/myapp/pipeline/newpipeline`.
+
+<Tabs>
+<TabItem value="curl" label="Curl">
+
+```bash
+curl -u 'username:password' \
+  -h 'Content-Type: application/yaml' \
+  -X PUT 'https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/newpipeline' \
+  --data-raw 'pipeline:
+    - log:
+        message: "HELLO WORLD!"'
+```
+
+</TabItem>
+<TabItem value="http" label="HTTP">
+
+```
+PUT /api/v3/pipeline:global/app/myapp/pipeline/newpipeline HTTP/1.1 
+Host: hub-<your-domain>
+Content-Type: application/yaml
+Authorization: Basic cGFzc3dvcmQ6dXNlcm5hbWU=
+Content-Length: 52
+
+pipeline:
+    - log:
+        message: "HELLO WORLD!"
+```
+
+</TabItem>
+<TabItem value="nodejs" label="NodeJs">
+
+```js
+var axios = require('axios');
+var data = 'pipeline:\n    - log:\n        message: "HELLO WORLD!"';
+
+var config = {
+  method: 'put',
+  url: 'https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/newpipeline',
+  headers: { 
+    'Content-Type': 'application/yaml',
+    'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU='
+  },
+  data: data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+import requests
+
+url = "https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/mypipeline"
+payload = "pipeline:\n    - log:\n        message: \"HELLO WORLD!\""
+
+headers = {
+  'Content-Type': 'application/yaml',
+  'Authorization': 'Basic cGFzc3dvcmQ6dXNlcm5hbWU='
+}
+
+response = requests.request("PUT", url, headers=headers, data=payload)
+
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```js
+HttpResponse<String> response = Unirest.post("https://hub-<your-domain>/api/v3/pipeline:global/app/myapp/pipeline/newpipeline")
+  .header("Content-Type", "application/yaml")
+  .header("Authorization", "Basic cGFzc3dvcmQ6dXNlcm5hbWU=")
+  .body("pipeline:\n    - log:\n        message: \"HELLO WORLD!\"")
   .asString();
 ```
 

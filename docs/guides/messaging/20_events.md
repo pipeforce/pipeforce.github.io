@@ -110,10 +110,10 @@ Besides the event key, each event can also be filtered by its properties. So a p
 pipeline:
  - event.listen:
      key: webhook.salesforce.lead.created
-     filter: "#{body.target.CountryCode == 'DE'}"
+     filter: "#{body.payload.target.CountryCode == 'DE'}"
  - mail:
      to: sales@company.tld
-     subject: New lead created in #{body.target.CountryCode}!
+     subject: New lead created in #{body.payload.target.CountryCode}!
 ```
 
 In the `filter` parameter you can place a pipeline expression (PE). If this expression evaluates with `true`, all subsequent commands after `event.listen` will be executed.

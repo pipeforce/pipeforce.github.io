@@ -2,9 +2,11 @@
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 6.0</p>
 
-A webhook is a unique url pointing to PIPEFORCE which can be called by an external system. In case the external system calls the webhook url, this can trigger any custom action inside PIPEFORCE.
+A webhook is a unique HTTP URL in PIPEFORCE which can be called by an external system. In case the external system calls the webhook url, this will trigger any custom action inside PIPEFORCE.
 
- The url of such an webhook, which gets called by the external system, has a format similar to this:
+This is a very effective and straight forward possibility to integrate external systems into PIPEFORCE using a push / listening approach, with a very low requirements barrier to the caller system. Nearly every modern system can be integrated this way.
+
+The URL of such an webhook, which gets called by the external system, has a format similar to this:
 
 ```
 https://hub-<your-domain>/api/v3/command/webhook.receive?token=<token>
@@ -15,7 +17,7 @@ https://hub-<your-domain>/api/v3/command/webhook.receive?token=<token>
 *   It's also possible to place the `token` param as request header instead (recommended, because it is more secure).
 :::
 
-You can create multiple **custom** webhooks and urls. When called, it produces an internal message, pipelines can listen to using [`event.listen`](/docs/api/commands#eventlisten-v1) or [`message.receive`](/docs/api/commands#messagereceive-v1). This way you can connect a webhook to multiple pipelines:
+You can create and manage multiple **custom** webhooks and URLs each with individuall settings. When called, a webhook will be validated first and then an internal message gets produced, pipelines can listen to using [`event.listen`](/docs/api/commands#eventlisten-v1) or [`message.receive`](/docs/api/commands#messagereceive-v1). This way you can make sure, webhooks comply with a given set of rules before they will be passed across multiple pipelines,queues and optional microservices:
 
 ![](../../img/webhook-queues.jpg)
 
@@ -38,10 +40,11 @@ pi command webhook.put eventKey=webhook.lead.created
 The possible parameters to create a webhook are:
 
 - `eventKey` = The key, the pipelines will listen to (required).
-- `payloadHandling` = What to do with the payload, before it is send to the messaging queues. Possible values are:
+- `payloadType` = (optional) What to do with the payload, before it is send to the messaging queues. Possible values are:
   - `raw` = The payload will be send without any conversion.
   - `base64` = The payload will be encoded to base64 (default).
   - `ignore` = No payload will be send with the webhook message even if specified in the request.
+- `maxPayloadLength` = (optional) The max allowed number of bytes in the payload (body) of the webhook. If bigger, the webhook will be rejected. Default value is `512000` (500KB). The maximum possible value for this is `4194304` (4MB).
 
 As `eventKey` define the internal unique name of the webhook. It's good practise that this name is lower case, grouped by periods and starts with prefix `webhook.`. The result after executing the [`webhook.put`](/docs/api/commands#webhookput-v1) command is a JSON document like this:
 
@@ -50,7 +53,7 @@ As `eventKey` define the internal unique name of the webhook. It's good practise
   "eventKey": "webhook.lead.created",
   "webhookUrl": "https://hub-try.pipeforce.org/api/v3/webhook.receive?token=a29a4f16-989d-48c8-ab54-7b6150733ba1",
   "uuid": "a29a4f16-989d-48c8-ab54-7b6150733ba1",
-  "payloadHandling": "base64"
+  "payloadType": "base64",
   ...
 }
 ```
@@ -80,7 +83,7 @@ After you have setup the Webhook successfully, it can be triggered (called) from
 `https://hub-try.pipeforce.org/api/v3/command/webhook.receive?token=abcdef`
 
 :::warning
-In order to secure the **token** in your url, you should always prefer a **HTTPS** connection between the two systems (which is by default always the case in PIPEFORCE), and send the `token` parameter in the body of a **POST** request, or as **HTTP Header** instead of a request parameter. PIPEFORCE supports all three methods. But it depends on the caller of the webhook, which approach it supports.
+In order to secure the **token** in your url, you should always prefer a **HTTPS** connection between the two systems (which is by default always the case in PIPEFORCE), and send the `token` parameter in the body of a **POST** request, or as **HTTP Header** instead of a request parameter. PIPEFORCE supports all three methods. But it depends on the caller of the webhook, whether it is capable of supporting this.
 :::
 
 ## Link a Webhook to a Pipeline
@@ -94,7 +97,7 @@ pipeline:
  - mail:
      to: name@company.tld
      subject: "New lead was created!"
-     body: "#{@convert.fromBase64(body.origin)}"
+     body: "#{@convert.fromBase64(body.payload.origin)}"
 ```
 
 The input body of the [`event.listen`](/docs/api/commands#eventlisten-v1) command is the payload of the event message submitted from the outside caller.
@@ -102,7 +105,7 @@ The input body of the [`event.listen`](/docs/api/commands#eventlisten-v1) comman
 In case the sender has sent some payload in the body of the webhook request, this payload is made available for you by default as base64 encoded string in the `origin` field of the event. To access this data, you have to convert this value as shown in this example:
 
 ```
-#{@convert.fromBase64(body.origin)}
+#{@convert.fromBase64(body.payload)}
 ```
 
 In case the payload is a serializable format like a string or a JSON document for example, you can set `payloadHandling` to `raw` for the webhook. In this case, it is not needed to convert the payload from base64, so you can use it directly:
@@ -114,7 +117,7 @@ pipeline:
  - mail:
      to: name@company.tld
      subject: "New lead was created!"
-     body: "#{body.origin}"
+     body: "#{body.payload}"
 ```
 
 For security reasons, by default, the webhook pipeline is executed with very limited `anonymousUser` privileges. So, make sure that you use only commands in your pipeline which can be executed by this user. In case you need more privileges, you can use the [`iam.run.as`](/docs/api/commands#iamrunas-v1) command to switch to the privileges of the given user before executing the command. See the IAM portal for the permissions (or roles) of a given user. Also see [Groups, Roles, and Permissions](/docs/guides/security/permissions) for more details on user privileges / permissions.
@@ -188,10 +191,54 @@ Content-Disposition: form-data; name="file"; filename="fileB.pdf"
 ```
 
 :::warning
-The overall length of a webhook payload is limited to 500KB!
+The maximum length of a webhook payload is limited to 4MB overall! So if you need to send a bigger payload consider to use one of the authorized commands instead or the secure delivery feature.
 ::: 
 
 More information about multipart POST requests can be found here: [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)
+
+## Logging and Tracing of Webhooks
+
+Each webhook execution will be logged using the last 6 chars of the uuid/token (shortened for for security and performance reasons) in combination with a random traceId. For example, a webhook with a uuid/token like this:
+
+```
+ba4825b6-6718-42f3-a400-ce08a16936bd
+```
+
+Will result in a log entry like this:
+
+```
+Webhook [6936bd:efg35ee]: OK
+```
+
+The left part before the colon `:` is the shortened webhook uuid/token. The right part is a random id generated newly for each webhook call. So multiple calls of same webhook can be monitored separately.
+
+This traceId is also returned to the caller of the webhook by using the command [`webhook.receive`](/docs/api/commands#webhookreceive-v1) so he can refer to this exact call when required: 
+
+```json
+{
+  "status": "OK",
+  "traceId": "6936bd:efg35ee"
+}
+```
+
+Additionally, it will also be set to the initial message sent by the webhook call:
+
+```json
+{
+  "traceId": "6936bd:efg35ee",
+  ... 
+}
+```
+
+This way you can trace a webhook all the way across different queues, pipelines and microservices.
+
+For example, if you would like to follow all traces of a given webhook, search for the last 6 characters of the webhook uuid/token like `6936bd` in all logs and you should find all traces of a given webbhook ordered by the time of their executions.
+
+If you would like to follow only a certain webhook call instead, use the fully qualified traceId like `6936bd:efg35ee` for example and search for it. You should find all traces related to exactly this single webhook call.
+
+:::tip Note
+Note that the traceId is not 100% collision free. In order to avoid monitoring collisions with the random traceId, you should combine any monitoring query with a time range filter. Especially in case you're expecting a huge amount of requests for a given Webhook.
+:::
 
 ## Report an Issue
 :::tip Your help is needed!

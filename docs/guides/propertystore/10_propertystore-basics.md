@@ -10,7 +10,7 @@ slug: /propertystore
 
 ## What is the Property Store?
 
-The property store is the core database in PIPEFORCE to save all your application data. You can create, update, query and delete data on the property store using the  [`property.*`](../../../api/commands#property-v1) commands. 
+The property store is an powerful key-value database inside PIPEFORCE to save your application data like sources, attachments or JSON data for example. You can create, update, query and delete data on the property store using the  [`property.*`](../../../api/commands#property-v1) commands. 
 
 ## What is a Property?
 
@@ -22,9 +22,10 @@ Each property has multiple attributes (the envelope data). The most important on
 
 | Attribute     | Description 
 | ---           | ---         
-| `key`         | The unique, absolute key path of the property. This value can change over time, for example, if a property was moved to another virtual location. <br/><br/>Example value: `/pipeforce/enterprise/global/app/myapp/data/hello`|
-| `uuid`        | A unqiue identificator of the property. Differently to `key`, once created, this **will never change**.  <br/><br/>Example value: `333a38e7-9188-4135-b87b-3d890f676445`|  
+| `key`         | The unique, absolute key path of the property. This value can change over time, for example, if a property was moved to another 
 | `value`       | This attribute contains the payload of the property as string. <br/><br/>Example value: `{\"hello\": \"world\"}`
+virtual location. <br/><br/>Example value: `/pipeforce/enterprise/global/app/myapp/data/hello`|
+| `uuid`        | A unqiue identificator of the property. Differently to `key`, once created, this **will never change**.  <br/><br/>Example value: `333a38e7-9188-4135-b87b-3d890f676445`|  
 | `type`        | This attribute contains the mime type of the value. If this attribute is ```null```, it is expected that the mime type of the value is of the default type: `text/plain`. <br/><br/>Example value: `application/json`
 | `created`      | A unix epoch timestamp in millis when this property was created. <br/><br/>Example value: `1613397114448`
 | `updated`     | A unix epoch timestamp in millis when this property was updated last or `null` in case it was never updated after creation. <br/><br/>Example value: `null`
@@ -231,12 +232,12 @@ pipeline:
       value: {"hello": "world"}
 ```
 ### Property created event
-Whenever you create a new a property, an event with key `property.created` is fired with the created property stored in `target` of the event object. This way you can listen in your pipelines for properties created newly. See the [reference documentation](../api/events#propertycreated-v1) for details. Here is an example how to listen to such an event in a **persisted** pipeline:
+Whenever you create a new a property, an event with key `property.created` is fired with the created property stored in `payload.target` of the event object. This way you can listen in your pipelines for properties created newly. See the [reference documentation](../api/events#propertycreated-v1) for details. Here is an example how to listen to such an event in a **persisted** pipeline:
 ```yaml
 pipeline:
   - event.listen:
       key: "property.created"
-      filter: "#{body.target.key.contains('global/app/myapp/data/mydata')}"
+      filter: "#{body.payload.target.key.contains('global/app/myapp/data/mydata')}"
 
   # Do something here
 ```
@@ -285,7 +286,7 @@ Whenever you update a property value or one of its other attributes, an event wi
 pipeline:
   - event.listen:
       key: "property.updated"
-      filter: "#{body.origin.key.contains('global/app/myapp/data/mydata')}"
+      filter: "#{body.payload.origin.key.contains('global/app/myapp/data/mydata')}"
 
   # Do something here
 ```
@@ -297,7 +298,7 @@ Whenever you move a property by changing its origin key, an event with key `prop
 pipeline:
   - event.listen:
       key: "property.moved"
-      filter: "#{body.origin.contains('global/app/myapp/data/mydata')}"
+      filter: "#{body.payload.origin.contains('global/app/myapp/data/mydata')}"
 
   # Do something here
 ```
@@ -324,12 +325,12 @@ pipeline:
 This example will delete all properties of the app `myapp` recursively.
 ### Property deleted event
 
-Whenever you delete a property, an event with key `property.deleted` is fired with the origin property stored in `origin` of the event object. This way you can listen in your pipelines for property deletions. See the [reference documentation](../api/events#propertydeleted) for details. Here is an example how to listen to such an event in a **persisted** pipeline:
+Whenever you delete a property, an event with key `property.deleted` is fired with the origin property stored in `payload.origin` of the event object. This way you can listen in your pipelines for property deletions. See the [reference documentation](../api/events#propertydeleted) for details. Here is an example how to listen to such an event in a **persisted** pipeline:
 ```yaml
 pipeline:
   - event.listen:
       key: "property.deleted"
-      filter: "#{body.origin.key.contains('global/app/myapp/data/mydata')}"
+      filter: "#{body.payload.origin.key.contains('global/app/myapp/data/mydata')}"
 
   # Do something here
 ```
