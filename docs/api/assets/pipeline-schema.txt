@@ -3113,7 +3113,7 @@
           },
           "htmlunit.website.open" : {
             "type" : "object",
-            "description" : "Opens a website and sets it as 'vars.page' in PEL. Additionally sets the current browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!",
+            "description" : "Opens a website and sets it as 'vars.page' in PEL. Additionally sets the current browser instance as 'vars.browser'. Note: The pipe is BETA and not intended to be used in production!",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -5536,6 +5536,20 @@
                 "type" : "string",
                 "description" : "The payload to be send in the message. If parameter is missing, the message body will be used as payload."
               },
+              "headers" : {
+                "type" : "string",
+                "description" : "The headers to be send with the message. Values in here will overwrite any already existing header values."
+              },
+              "encoding" : {
+                "type" : "string",
+                "description" : "The encoding of the message payload.",
+                "default" : "UTF-8"
+              },
+              "contentType" : {
+                "type" : "string",
+                "description" : "Sets the content type of the message payload.",
+                "default" : "application/json"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -7558,7 +7572,7 @@
           },
           "rpa.website.open" : {
             "type" : "object",
-            "description" : "Opens a website and sets its browser instance as 'var.browser'. Note: The pipe is BETA and not intended to be used in production!",
+            "description" : "Opens a website and sets its browser instance as 'vars.browser'. Note: The pipe is BETA and not intended to be used in production!",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -7792,6 +7806,460 @@
               }
             },
             "required" : [ "format", "name", "secret" ]
+          },
+          "secure.transfer.attachment.chunk.put" : {
+            "type" : "object",
+            "description" : "Creates a new attachment..",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the outbox transfer to add the chunk to."
+              },
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property this attachment belongs to."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the attachment this chunk belongs to."
+              },
+              "index" : {
+                "type" : "string",
+                "description" : "The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment."
+              },
+              "content" : {
+                "type" : "string",
+                "description" : "The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "key", "name" ]
+          },
+          "secure.transfer.attachment.delete" : {
+            "type" : "object",
+            "description" : "Creates a new attachment..",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the outbox transfer to delete the attachment from."
+              },
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property containing the attachment."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the attachment to be deleted."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "key", "name" ]
+          },
+          "secure.transfer.inbox.download" : {
+            "type" : "object",
+            "description" : "Downloads the content of an attachment or a group of attachments.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the inbox transfer to return. "
+              },
+              "filenames" : {
+                "type" : "string",
+                "description" : "A list of one or more attachment filenames to be downloaded. If this list is null or empty, all files of the inbox will be downloaded as single zip file. If only one file is defined, this file is downloaded plain. If there is more than one file defined, downloads all of these files as a single zip."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.attachment.put" : {
+            "type" : "object",
+            "description" : "Creates a new attachment..",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the property containing the attachments. If this is given, key param is ignored."
+              },
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property containing the attachments."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one."
+              },
+              "content" : {
+                "type" : "string",
+                "description" : "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false."
+              },
+              "contentType" : {
+                "type" : "string",
+                "description" : "The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.finalize" : {
+            "type" : "object",
+            "description" : "Finalizes a given secure transfer outbox.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the transfer outbox to finalize. "
+              },
+              "sendEmails" : {
+                "type" : "string",
+                "description" : "Should the emails to the recipients created and send on this finalize?"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.inbox.auth" : {
+            "type" : "object",
+            "description" : "Creates and verifies a magic link download token to access a given inbox transfer.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "email" : {
+                "type" : "string",
+                "description" : "The uuid of the secure transfer outbox, the user needs access to."
+              },
+              "token" : {
+                "type" : "string",
+                "description" : "The token, sent to the recipient after he requested it."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.inbox.get" : {
+            "type" : "object",
+            "description" : "Returns an inbox transfer by uuid.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the inbox transfer tp return. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.inbox.list" : {
+            "type" : "object",
+            "description" : "Lists all inbox transfers targeted to the currently logged-in user.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.outbox.delete" : {
+            "type" : "object",
+            "description" : "Deletes an outbox transfer.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.outbox.list" : {
+            "type" : "object",
+            "description" : "Lists all outbox transfers created by the currently logged-in user.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.put" : {
+            "type" : "object",
+            "description" : "Creates or updates a PIPEFORCE Secure Transfer with DRAFT status and saves it.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the transfer in the outbox to update. If null or empty, a new one will be created."
+              },
+              "subject" : {
+                "type" : "string",
+                "description" : "The subject of the transfer or null (in order to set it later)."
+              },
+              "message" : {
+                "type" : "string",
+                "description" : "The message of the transfer or null (in order to set it later)"
+              },
+              "recipients" : {
+                "type" : "string",
+                "description" : "A comma separated list of email recipients or null (in order to add it later). Also PEL is supported here."
+              },
+              "expiresOn" : {
+                "type" : "string",
+                "description" : "Delete the transfer attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted.",
+                "default" : "0"
+              },
+              "notifySender" : {
+                "type" : "string",
+                "description" : "If true, notifies sender when recipients have downloaded delivery.",
+                "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.recipient.put" : {
+            "type" : "object",
+            "description" : "Adds a new recipient to a secure transfer.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the transfer in the outbox to add the recipient to. "
+              },
+              "email" : {
+                "type" : "string",
+                "description" : "The email of the recipient to add."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
           },
           "server.info" : {
             "type" : "object",
@@ -8695,6 +9163,134 @@
             },
             "required" : [ ]
           },
+          "terms.delete" : {
+            "type" : "object",
+            "description" : "Deletes a terms by its name.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the terms to delete."
+              },
+              "locale" : {
+                "type" : "string",
+                "description" : "The locale of the terms to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "terms.get" : {
+            "type" : "object",
+            "description" : "Returns a terms by its name.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the terms to return."
+              },
+              "locale" : {
+                "type" : "string",
+                "description" : "The locale of the terms to return."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "terms.put" : {
+            "type" : "object",
+            "description" : "Adds a new terms entry to the property store.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the terms"
+              },
+              "locale" : {
+                "type" : "string",
+                "description" : "The locale of the terms"
+              },
+              "anonymousAccess" : {
+                "type" : "string",
+                "description" : "Can the terms be loaded by non-authenticated users?",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
+          },
           "test.run" : {
             "type" : "object",
             "description" : "Runs all test scripts defined by given pattern.",
@@ -9407,10 +10003,15 @@
                 "type" : "string",
                 "description" : "The id (=token) of an existing webhook. If given, tries to update this webhook. In case no such webhook exists, creates a new one with given token."
               },
-              "payload" : {
+              "payloadType" : {
                 "type" : "string",
                 "description" : "How to handle the payload before it gets published into the message broker? Possible values are: `raw` (use the payload as it is), `base64` (encode it base64, = default), `outbound` (save the payload into a tmp cache and refer to it using an outbound url), `ignore` (do not send the payload into the messaging).",
                 "default" : "base64"
+              },
+              "maxPayloadLength" : {
+                "type" : "string",
+                "description" : "The max. length of the payload of this webhook in bytes. If this webhook is called with content in body bigger than this, an exception will be thrown.",
+                "default" : "512000"
               },
               "id" : {
                 "type" : "string",

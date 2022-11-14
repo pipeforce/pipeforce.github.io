@@ -32,10 +32,10 @@ vars:
 
 pipeline:
  - mail.send:
-    to: "#{var.email}"
-    subject: "This is for #{var.name}"
+    to: "#{vars.email}"
+    subject: "This is for #{vars.name}"
     message: |
-      Hello #{var.name},
+      Hello #{vars.name},
       this is an email sent from a pipeline.
       Greetings
 ```
@@ -53,13 +53,13 @@ pipeline:
 
   - transform.ftl:
       template: |
-        Hello ${var.name},
+        Hello ${vars.name},
         this is an email sent from a pipeline.
         Greetings
 
   - mail.send:
-      to: "#{var.email}"
-      subject: "This is for #{var.name}"
+      to: "#{vars.email}"
+      subject: "This is for #{vars.name}"
 ```
 
 In this example, the message is rendered and then stored in the body using `transform.ftl`. The command `mail.send`
@@ -78,8 +78,8 @@ pipeline:
       template: "uri:property:global/app/myapp/template/email"
 
   - mail.send:
-      to: "#{var.email}"
-      subject: "This is for #{var.name}"
+      to: "#{vars.email}"
+      subject: "This is for #{vars.name}"
 ```
 
 ### Using a Custom URI
@@ -94,8 +94,8 @@ vars:
 pipeline:
 
   - mail.send:
-      to: "#{var.email}"
-      subject: "This is for #{var.name}"
+      to: "#{vars.email}"
+      subject: "This is for #{vars.name}"
       message: "uri:property:global/app/myapp/template/email"
 ```
 
@@ -199,13 +199,13 @@ vars:
 pipeline:
 
   - foreach:
-      in: "#{var.recipients}"
+      in: "#{vars.recipients}"
       
   - mail.send:
-      to: "#{var.loop.item.email}"
-      subject: "Letter to #{var.loop.item.name}"
+      to: "#{vars.loop.item.email}"
+      subject: "Letter to #{vars.loop.item.name}"
       message: |
-        Hello #{var.loop.item.name},
+        Hello #{vars.loop.item.name},
         this is a letter for you.
         Cheers
       

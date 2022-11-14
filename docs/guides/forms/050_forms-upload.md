@@ -79,12 +79,12 @@ pipeline:
   # Listen for the form submit since it will cause a new property entry
   - event.listen:
       key: "property.created"
-      filter: "#{body.target.key.contains('global/app/upload-example/data/uploadform')}"
+      filter: "#{body.payload.target.key.contains('global/app/upload-example/data/uploadform')}"
 
   # Load the file content from the property attachment
   - property.attachment.content:
-      key: "#{body.target.key}" # Property key
-      name: "#{body.target.value.myFile.content}" # Contains the name of the file
+      key: "#{body.payload.target.key}" # Property key
+      name: "#{body.payload.target.value.myFile.content}" # Contains the name of the file
       
   # Do something with uploaded content
   - transform.csv.json:

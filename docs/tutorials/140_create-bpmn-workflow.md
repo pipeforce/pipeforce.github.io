@@ -393,15 +393,15 @@ pipeline:
 
   - event.listen:
       key: "property.created"
-      filter: "#{body.target.key.contains('global/app/YOUR_APP/object/vacationrequest/v1/instance')}"
+      filter: "#{body.payload.target.key.contains('global/app/YOUR_APP/object/vacationrequest/v1/instance')}"
 
   - set.var:
       key: "formData"
-      value: "#{@property.lazy(body.target.key)}"
+      value: "#{@property.lazy(body.payload.target.key)}"
 
   - workflow.start:
       key: "YOUR_APP_vacation-request"
-      workflowModelInstanceKey: "#{body.target.key}"
+      workflowModelInstanceKey: "#{body.payload.target.key}"
       variables: "#{{
         'vacationStartDate': @date.parseToInstant(vars.formData['vacationStartDate']),
         'vacationEndDate': @date.parseToInstant(vars.formData['vacationEndDate'])
@@ -410,7 +410,7 @@ pipeline:
 
 **Tip:** Make sure to replace YOUR\_APP by the name of your app.
 
-As you can see in the pipeline above, we introduced in this section the concept of Workflow Model with: `workflowModelInstanceKey: "#{body.target.key}"`. We recommend to use this approach to work with values and variables of an workflow in a more structured way.
+As you can see in the pipeline above, we introduced in this section the concept of Workflow Model with: `workflowModelInstanceKey: "#{body.payload.target.key}"`. We recommend to use this approach to work with values and variables of an workflow in a more structured way.
 
 ### Adapt the workflow model
 
@@ -442,15 +442,15 @@ pipeline:
 
   - event.listen:
       key: "property.created"
-      filter: "#{body.target.key.contains('global/app/YOUR_APP/object/vacationrequest/v1/instance')}"
+      filter: "#{body.payload.target.key.contains('global/app/YOUR_APP/object/vacationrequest/v1/instance')}"
 
   - set.var:
       key: "formData"
-      value: "#{@property.lazy(body.target.key)}"
+      value: "#{@property.lazy(body.payload.target.key)}"
 
   - workflow.start:
       key: "YOUR_APP_vacation-request"
-      workflowModelInstanceKey: "#{body.target.key}"
+      workflowModelInstanceKey: "#{body.payload.target.key}"
       variables: "#{{
         'vacationStartDate': @date.parseToInstant(vars.formData['vacationStartDate']),
         'vacationEndDate': @date.parseToInstant(vars.formData['vacationEndDate']),

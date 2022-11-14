@@ -49,12 +49,6 @@ Let's assume, you have defined a variable `counter` and you would like to access
 #{vars.counter}
 ```
 
-Or as (both are doing the same):
-
-```
-#{var.counter}
-```
-
 Here is an example of a pipeline which uses this expression and outputs the value of `counter` to the body:
 
 ```yaml
@@ -63,7 +57,7 @@ vars:
 
 pipeline:
   - body.set:
-      value: "The counter is: #{var.counter}"
+      value: "The counter is: #{vars.counter}"
 ```
 
 This will result in an output like this:
@@ -80,7 +74,7 @@ headers:
 
 pipeline:
   - body.set:
-      value: "The type is: #{header.contentType}"
+      value: "The type is: #{headers.contentType}"
 ```
 
 This will result in an output like this:

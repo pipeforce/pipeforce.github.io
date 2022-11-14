@@ -114,7 +114,7 @@ Here’s an example how such a file could look like:
   "title": "Person",
   "description": "The person form.",
   "schema": "property.list?filter=global/app/myApp/object/person/v1/schema",
-  "output": "global/app/myApp/object/person/v1/instance/%23%7Bvars.property.uuid%7D"
+  "output": "global/app/myApp/object/person/v1/instance/%23%7Bvar.property.uuid%7D"
 }
 ```
 
@@ -124,7 +124,7 @@ The `description` is optional and describes the intention of the form.
 
 The `schema` defines a command which is called to retrieve the JSON schema for this form.
 
-The `output` defines the path in the property store where to store the data. The part `%23%7Bvars.property.uuid%7D` is the url encoded version of `#{vars.property.uuid}`, which is a PE to return the uuid of the property to form its path.
+The `output` defines the path in the property store where to store the data. The part `%23%7Bvar.property.uuid%7D` is the url encoded version of `#{var.property.uuid}`, which is a PE to return the uuid of the property to form its path.
 
 Note: In version >= 7.0, it is no longer required to specify the attributes `schema` and `output`, since the form will automatically detect these values.
 

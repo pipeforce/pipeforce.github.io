@@ -50,14 +50,14 @@ pipeline:
 
   - log:
       message: "Document loaded from my.doc."
-      if: "#{var.logging == 'debug'}"
+      if: "#{vars.logging == 'debug'}"
 
   - drive.save:
       path: "folder/my.doc"
 
   - log:
       message: "Document stored to folder/my.doc."
-      if: "#{var.logging == 'debug'}"
+      if: "#{vars.logging == 'debug'}"
       
 ```
 
@@ -95,18 +95,18 @@ vars:
 pipeline:
 
   - if:
-      true: "#{var.name != ''}"
+      true: "#{vars.name != ''}"
 
   - if:
-      true: "#{var.age > 21}"
+      true: "#{vars.age > 21}"
 
   - log:
-      message: "#{var.name} may have a drink..."
+      message: "#{vars.name} may have a drink..."
 
   - if.else:
 
   - log:
-      message: "#{var.name} is too young to have a drink..."
+      message: "#{vars.name} is too young to have a drink..."
 
   - if.end:
 
@@ -131,11 +131,11 @@ vars:
 pipeline:
 
   - foreach:
-      in: "#{var.people}"
+      in: "#{vars.people}"
       as: "person"
 
   - log:
-      message: "Hello #{var.person}"
+      message: "Hello #{vars.person}"
 
   - foreach.end:
 
@@ -151,15 +151,15 @@ vars:
 pipeline:
 
   - foreach:
-      in: "#{var.people}"
+      in: "#{vars.people}"
       as: person
 
   - foreach:
-      in: "#{var.activities}"
+      in: "#{vars.activities}"
       as: activity
 
   - eval:
-      expr: "#{@list.add(body, var.person + ' could do: ' + var.activity)}"
+      expr: "#{@list.add(body, vars.person + ' could do: ' + vars.activity)}"
 
   - foreach.end:
 
@@ -192,13 +192,13 @@ vars:
 pipeline:
 
   - foreach:
-      in: "#{var.people}"
+      in: "#{vars.people}"
       as: person
 
   - foreach:
-      in: "#{var.activities}"
+      in: "#{vars.activities}"
       as: activity
-      eval: "#{@list.add(body, var.person + ' could do: ' + var.activity)}"
+      eval: "#{@list.add(body, vars.person + ' could do: ' + vars.activity)}"
 
   - foreach.end:
 
@@ -218,15 +218,15 @@ vars:
 pipeline:
 
   - foreach:
-      in: "#{var.people}"
+      in: "#{vars.people}"
       as: person
 
   - foreach:
-      in: "#{var.activities}"
+      in: "#{vars.activities}"
       as: activity
 
   - if:
-      true: "#{var.person.age < 18 and var.activity == 'clubbing'}"
+      true: "#{vars.person.age < 18 and vars.activity == 'clubbing'}"
 
   - set.var:
       key: "allowed"
@@ -239,7 +239,7 @@ pipeline:
       value: ""
 
   - if.end:
-      eval: "#{@list.add(body, var.person.name + ' could ' + var.allowed + 'do: ' + var.activity)}"
+      eval: "#{@list.add(body, vars.person.name + ' could ' + vars.allowed + 'do: ' + vars.activity)}"
 
   - foreach.end:
 
