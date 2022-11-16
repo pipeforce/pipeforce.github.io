@@ -7809,21 +7809,17 @@
           },
           "secure.transfer.attachment.chunk.put" : {
             "type" : "object",
-            "description" : "Creates a new attachment..",
+            "description" : "Adds a chunk of data to an existing secure transfer attachment given by outboxUuid and name parameter.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "uuid" : {
+              "outboxUuid" : {
                 "type" : "string",
                 "description" : "The uuid of the outbox transfer to add the chunk to."
               },
-              "key" : {
-                "type" : "string",
-                "description" : "The key of the property this attachment belongs to."
-              },
               "name" : {
                 "type" : "string",
-                "description" : "The name of the attachment this chunk belongs to."
+                "description" : "The name of the attachment inside the outbox this chunk belongs to."
               },
               "index" : {
                 "type" : "string",
@@ -7850,21 +7846,17 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key", "name" ]
+            "required" : [ "name" ]
           },
           "secure.transfer.attachment.delete" : {
             "type" : "object",
-            "description" : "Creates a new attachment..",
+            "description" : "Deletes an attachment from an secure transfer outbox. Including its content!",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "uuid" : {
+              "outboxUuid" : {
                 "type" : "string",
                 "description" : "The uuid of the outbox transfer to delete the attachment from."
-              },
-              "key" : {
-                "type" : "string",
-                "description" : "The key of the property containing the attachment."
               },
               "name" : {
                 "type" : "string",
@@ -7887,70 +7879,29 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key", "name" ]
-          },
-          "secure.transfer.inbox.download" : {
-            "type" : "object",
-            "description" : "Downloads the content of an attachment or a group of attachments.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "uuid" : {
-                "type" : "string",
-                "description" : "The uuid of the inbox transfer to return. "
-              },
-              "filenames" : {
-                "type" : "string",
-                "description" : "A list of one or more attachment filenames to be downloaded. If this list is null or empty, all files of the inbox will be downloaded as single zip file. If only one file is defined, this file is downloaded plain. If there is more than one file defined, downloads all of these files as a single zip."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ ]
+            "required" : [ "outboxUuid", "name" ]
           },
           "secure.transfer.attachment.put" : {
             "type" : "object",
-            "description" : "Creates a new attachment..",
+            "description" : "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "uuid" : {
+              "outboxUuid" : {
                 "type" : "string",
-                "description" : "The uuid of the property containing the attachments. If this is given, key param is ignored."
-              },
-              "key" : {
-                "type" : "string",
-                "description" : "The key of the property containing the attachments."
+                "description" : "The uuid of the outbox transfer to add the attachment to.If null or empty, a new one will be created."
               },
               "name" : {
                 "type" : "string",
                 "description" : "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one."
               },
-              "content" : {
-                "type" : "string",
-                "description" : "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false."
-              },
               "contentType" : {
                 "type" : "string",
                 "description" : "The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set."
+              },
+              "content" : {
+                "type" : "string",
+                "description" : "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false."
               },
               "id" : {
                 "type" : "string",
@@ -7968,9 +7919,9 @@
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               },
-              "output" : {
+              "input" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
               }
             },
             "required" : [ ]
@@ -8018,13 +7969,54 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "email" : {
+              "outboxUuid" : {
                 "type" : "string",
                 "description" : "The uuid of the secure transfer outbox, the user needs access to."
               },
+              "email" : {
+                "type" : "string",
+                "description" : "The email of the recipient to create the token for."
+              },
               "token" : {
                 "type" : "string",
-                "description" : "The token, sent to the recipient after he requested it."
+                "description" : "The magic token, sent to the recipient after he requested it."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "secure.transfer.inbox.download" : {
+            "type" : "object",
+            "description" : "Downloads the content of an attachment or a group of attachments.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "inboxUuid" : {
+                "type" : "string",
+                "description" : "The uuid of the inbox transfer to return."
+              },
+              "filenames" : {
+                "type" : "string",
+                "description" : "A list of one or more attachment filenames to be downloaded (comma separated or PEL list object). If this list is null or empty, all files of the inbox will be downloaded as single zip file. If only one file is defined, this file is downloaded plain. If there is more than one file defined, downloads all of these files as a single zip."
               },
               "id" : {
                 "type" : "string",
@@ -8080,7 +8072,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ ]
+            "required" : [ "uuid" ]
           },
           "secure.transfer.inbox.list" : {
             "type" : "object",
@@ -8117,6 +8109,39 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the transfer in the outbox to delete. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "uuid" ]
+          },
+          "secure.transfer.outbox.list" : {
+            "type" : "object",
+            "description" : "Lists all outbox transfers created by the currently logged-in user.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -8140,12 +8165,16 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.outbox.list" : {
+          "secure.transfer.outbox.preview" : {
             "type" : "object",
-            "description" : "Lists all outbox transfers created by the currently logged-in user.",
+            "description" : "Returns the preview for a given outbox, if supported by security settings.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the outbox transfer to return. "
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."

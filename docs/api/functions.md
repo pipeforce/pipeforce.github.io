@@ -4,7 +4,7 @@ sidebar_label: Built-In Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 08/11/2022 15:13:18 by CommandComplianceTest -->
+<!-- Generated: 16/11/2022 11:03:52 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Functions.  
 
@@ -62,6 +62,63 @@ list | ``object`` | The list of numbers.
 #### Example  
 ```  
 @calc.avg(list)  
+```  
+
+### round(value,scale,mode)   
+Rounds input to scale number of digits. Multiple rounding strategies can be applied.   
+
+#### Returns  
+``bigdecimal`` - The rounded value as BigDecimal.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The value to round. BigDecimal, double, float, integer and long are supported. 
+scale | ``integer`` | The scale to round to. Positive value scales in fraction part, negative in integer. 
+mode | ``string`` | One of UP, DOWN, CEILING, FLOOR, HALF_UP, HALF_DOWN, HALF_EVEN, UNNECESSARY can be used. For details              see https://docs.oracle.com/javase/7/docs/api/java/math/RoundingMode.html 
+
+
+#### Example  
+```  
+@calc.round(value,scale,mode)  
+```  
+
+### roundUp(value,scale)   
+Rounds input to scale number of digits up.
+See also &lbrace;@link CalcFunctions#round(Object, Integer, String)&rbrace; for more options.   
+
+#### Returns  
+``bigdecimal`` - The rounded value as BigDecimal.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The value to round. BigDecimal, double, float, integer and long are supported. 
+scale | ``integer`` | The scale to round to. Positive value scales in fraction part, negative in integer. 
+
+
+#### Example  
+```  
+@calc.roundUp(value,scale)  
+```  
+
+### roundDown(value,scale)   
+Rounds input to scale number of digits down.
+See also &lbrace;@link CalcFunctions#round(Object, Integer, String)&rbrace; for more options.   
+
+#### Returns  
+``bigdecimal`` - The rounded value as BigDecimal.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+value | ``object`` | The value to round. BigDecimal, double, float, integer and long are supported. 
+scale | ``integer`` | The scale to round to. Positive value scales in fraction part, negative in integer. 
+
+
+#### Example  
+```  
+@calc.roundDown(value,scale)  
 ```  
 
  

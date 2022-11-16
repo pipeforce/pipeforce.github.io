@@ -10,7 +10,7 @@ slug: /propertystore
 
 ## What is the Property Store?
 
-The property store is an powerful key-value database inside PIPEFORCE to save your application data like sources, attachments or JSON data for example. You can create, update, query and delete data on the property store using the  [`property.*`](../../../api/commands#property-v1) commands. 
+The property store is a powerful key-value database inside PIPEFORCE to save your application data like sources, attachments or JSON data for example. You can create, update, query and delete data on the property store using the  [`property.*`](../../../api/commands#property-v1) commands. 
 
 ## What is a Property?
 
@@ -22,9 +22,8 @@ Each property has multiple attributes (the envelope data). The most important on
 
 | Attribute     | Description 
 | ---           | ---         
-| `key`         | The unique, absolute key path of the property. This value can change over time, for example, if a property was moved to another 
-| `value`       | This attribute contains the payload of the property as string. <br/><br/>Example value: `{\"hello\": \"world\"}`
-virtual location. <br/><br/>Example value: `/pipeforce/enterprise/global/app/myapp/data/hello`|
+| `key`         | The unique, absolute key path of the property. This value can change over time, for example, if a property was moved to another virtual location. <br/><br/>Example value: `/pipeforce/enterprise/global/app/myapp/data/hello`| 
+| `value`       | This attribute contains the payload of the property as string. <br/><br/>Example value: `{\"hello\": \"world\"}`|
 | `uuid`        | A unqiue identificator of the property. Differently to `key`, once created, this **will never change**.  <br/><br/>Example value: `333a38e7-9188-4135-b87b-3d890f676445`|  
 | `type`        | This attribute contains the mime type of the value. If this attribute is ```null```, it is expected that the mime type of the value is of the default type: `text/plain`. <br/><br/>Example value: `application/json`
 | `created`      | A unix epoch timestamp in millis when this property was created. <br/><br/>Example value: `1613397114448`
