@@ -5044,7 +5044,7 @@
           },
           "log.search" : {
             "type" : "object",
-            "description" : "Searches the cloud logs and returns the last 30 entries per request. Supports pagination toscroll thru the entries.",
+            "description" : "Searches the cloud logs and returns the last 30 entries per request. Supports pagination toscroll thru the entries. Does not return log.search log entries in order to not repeat itself.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -8136,6 +8136,39 @@
             },
             "required" : [ "uuid" ]
           },
+          "secure.transfer.outbox.get" : {
+            "type" : "object",
+            "description" : "Returns the outbox by given uuid.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the transfer outbox to return."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "uuid" ]
+          },
           "secure.transfer.outbox.list" : {
             "type" : "object",
             "description" : "Lists all outbox transfers created by the currently logged-in user.",
@@ -8216,6 +8249,10 @@
                 "type" : "string",
                 "description" : "The message of the transfer or null (in order to set it later)"
               },
+              "locale" : {
+                "type" : "string",
+                "description" : "The locale to be used for this secure transfer system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used."
+              },
               "recipients" : {
                 "type" : "string",
                 "description" : "A comma separated list of email recipients or null (in order to add it later). Also PEL is supported here."
@@ -8223,7 +8260,7 @@
               "expiresOn" : {
                 "type" : "string",
                 "description" : "Delete the transfer attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted.",
-                "default" : "0"
+                "default" : "null"
               },
               "notifySender" : {
                 "type" : "string",
@@ -8253,15 +8290,15 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.recipient.put" : {
+          "secure.transfer.recipient.delete" : {
             "type" : "object",
-            "description" : "Adds a new recipient to a secure transfer.",
+            "description" : "Removes a recipient from a given secure transfer outbox. Note: This is only possible in case this transfer is in status DRAFT.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "uuid" : {
+              "outboxUuid" : {
                 "type" : "string",
-                "description" : "The uuid of the transfer in the outbox to add the recipient to. "
+                "description" : "The uuid of the transfer outbox to add the recipient to."
               },
               "email" : {
                 "type" : "string",
@@ -8288,7 +8325,48 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ ]
+            "required" : [ "outboxUuid", "email" ]
+          },
+          "secure.transfer.recipient.put" : {
+            "type" : "object",
+            "description" : "Adds a new recipient to a secure transfer. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "outboxUuid" : {
+                "type" : "string",
+                "description" : "The uuid of the transfer outbox to add the recipient to."
+              },
+              "email" : {
+                "type" : "string",
+                "description" : "The email of the recipient to add."
+              },
+              "locale" : {
+                "type" : "string",
+                "description" : "The locale to be used for this recipient like de, en or fr for example."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "outboxUuid", "email" ]
           },
           "server.info" : {
             "type" : "object",
