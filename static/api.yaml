@@ -21391,7 +21391,7 @@ paths:
         description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
-      description: "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.attachment.chunk.put. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -21871,6 +21871,12 @@ paths:
   /api/v3/command/secure.transfer.inbox.list:
     get:
       parameters:
+      - name: "recipientEmail"
+        in: "query"
+        required: false
+        description: "The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -21901,7 +21907,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Lists all inbox transfers targeted to the currently logged-in user. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Lists all inbox transfers targeted to a given recipient. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -21914,6 +21920,12 @@ paths:
                 - type: "object"
     post:
       parameters:
+      - name: "recipientEmail"
+        in: "query"
+        required: false
+        description: "The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false

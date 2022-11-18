@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 17/11/2022 by CommandComplianceTest -->
+<!-- Generated: 18/11/2022 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -11110,7 +11110,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## secure.transfer.attachment.put ``v1``
 ----------   
-Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body.
+Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.attachment.chunk.put.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.attachment.put:v1)
 
@@ -11369,7 +11369,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## secure.transfer.inbox.list ``v1``
 ----------   
-Lists all inbox transfers targeted to the currently logged-in user.
+Lists all inbox transfers targeted to a given recipient.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.list:v1)
 
@@ -11380,6 +11380,7 @@ Lists all inbox transfers targeted to the currently logged-in user.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
+`recipientEmail` | String | false | null | The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11391,6 +11392,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - secure.transfer.inbox.list:  
+      recipientEmail: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11403,12 +11405,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.inbox.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.inbox.list?recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.inbox.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.inbox.list recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

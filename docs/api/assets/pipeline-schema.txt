@@ -7883,7 +7883,7 @@
           },
           "secure.transfer.attachment.put" : {
             "type" : "object",
-            "description" : "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body.",
+            "description" : "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.attachment.chunk.put.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -8076,10 +8076,14 @@
           },
           "secure.transfer.inbox.list" : {
             "type" : "object",
-            "description" : "Lists all inbox transfers targeted to the currently logged-in user.",
+            "description" : "Lists all inbox transfers targeted to a given recipient.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "recipientEmail" : {
+                "type" : "string",
+                "description" : "The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
