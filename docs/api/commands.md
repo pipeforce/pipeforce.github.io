@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 18/11/2022 by CommandComplianceTest -->
+<!-- Generated: 20/11/2022 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -2233,63 +2233,6 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## delivery.create ``v2``
-----------   
-Creates a new PIPEFORCE Secure Delivery and sets it in the target
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.create:v2)
-
-**Version:** ``v2``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`subject` | String | false | null | The subject of the delivery. If null or empty, the default subject will be used.
-`message` | String | false | null | The message of the delivery. If null or empty, the default message will be used.
-`privacyLevel` | Integer | false | 1 | The privacy level to send the delivery. Must be one of 1, 2, 3 or 4.
-`recipients` | String | false | null | A comma separated list of email recipients. Also PEL is supported here.
-`deleteAfter` | String | false | 0 | Delete the delivery attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted.
-`notifySender` | String | false | true | If true, notifies sender when recipients have downloaded delivery.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - delivery.create::v2  
-      subject: <value>  
-      message: <value>  
-      privacyLevel: <value>  
-      recipients: <value>  
-      deleteAfter: <value>  
-      notifySender: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/delivery.create?subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command delivery.create subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> notifySender=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
 ## delivery.delete ``v1``
 ----------   
 Deletes a given delivery.
@@ -2322,51 +2265,6 @@ pipeline:
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/delivery.delete?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command delivery.delete deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## delivery.delete ``v2``
-----------   
-Deletes a given delivery.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.delete:v2)
-
-**Version:** ``v2``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`deliveryUuid` | String | true | null | The uuid of the delivery to delete.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - delivery.delete::v2  
-      deliveryUuid: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-```  
 Learn more: [Pipeline](/docs/commands_pipelines). 
 
 **URL example:**  
@@ -2416,53 +2314,6 @@ pipeline:
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/delivery.finalize?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command delivery.finalize deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## delivery.finalize ``v2``
-----------   
-Finalizes an existing delivery. After finalized, only recipients can be added but message and attachments of delivery can not be changed any longer.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.finalize:v2)
-
-**Version:** ``v2``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`deliveryUuid` | String | true | null | The uuid of the delivery to finalize.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - delivery.finalize::v2  
-      deliveryUuid: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
 Learn more: [Pipeline](/docs/commands_pipelines). 
 
 **URL example:**  
@@ -2578,55 +2429,6 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## delivery.inbox.details ``v2``
-----------   
-Returns the details of a given inbox Delivery.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.inbox.details:v2)
-
-**Version:** ``v2``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`deliveryUuid` | String | true | null | The uuid of the delivery.
-`recipientEmail` | String | false | null | The email of the recipient. If not specified request user email is used
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - delivery.inbox.details::v2  
-      deliveryUuid: <value>  
-      recipientEmail: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/delivery.inbox.details?deliveryUuid=<value>&recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command delivery.inbox.details deliveryUuid=<value> recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
 ## delivery.inbox.list ``v1``
 ----------   
 Lists all deliveries for the currently logged-in user.
@@ -2659,51 +2461,6 @@ pipeline:
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/delivery.inbox.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command delivery.inbox.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## delivery.inbox.list ``v2``
-----------   
-Lists all deliveries for the currently logged-in user.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.inbox.list:v2)
-
-**Version:** ``v2``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - delivery.inbox.list::v2  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
 Learn more: [Pipeline](/docs/commands_pipelines). 
 
 **URL example:**  
@@ -2817,53 +2574,6 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## delivery.outbox.details ``v2``
-----------   
-Returns the details of a given outbox Delivery.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.outbox.details:v2)
-
-**Version:** ``v2``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`deliveryUuid` | String | true | null | The uuid of the delivery.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - delivery.outbox.details::v2  
-      deliveryUuid: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/delivery.outbox.details?deliveryUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command delivery.outbox.details deliveryUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
 ## delivery.outbox.list ``v1``
 ----------   
 Lists all deliveries sent by the currently logged-in user.
@@ -2896,51 +2606,6 @@ pipeline:
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/delivery.outbox.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command delivery.outbox.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## delivery.outbox.list ``v2``
-----------   
-Lists all deliveries sent by the currently logged-in user.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.outbox.list:v2)
-
-**Version:** ``v2``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - delivery.outbox.list::v2  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
 Learn more: [Pipeline](/docs/commands_pipelines). 
 
 **URL example:**  
@@ -3108,67 +2773,6 @@ pipeline:
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&message=<value>&privacyLevel=<value>&recipients=<value>&deleteAfter=<value>&attachments=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## delivery.update ``v2``
-----------   
-Updates an existing PIPEFORCE Secure Delivery.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.update:v2)
-
-**Version:** ``v2``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`deliveryUuid` | String | false | null | The uuid of an existing delivery to be updated with values from the params. Any existing value will be overwritten by parameter set on this command. If null or empty, a new delivery will be created and initialized with values from params. Note: Deliveries can only be fully updated in DRAFT state. In FINALIZED state, only recipients can be updated.
-`subject` | String | false | null | The subject of the delivery. If null or empty, this attribute wont be updated.. Overwrites any existing value.
-`message` | String | false | null | The message of the delivery. If null or empty, this attribute wont be updated. Overwrites any existing value.
-`privacyLevel` | Integer | false | 1 | The privacy level to send the delivery. Must be one of 1, 2, 3 or 4. Overwrites any existing value. If null or empty, this attribute wont be updated.
-`recipients` | String | false | null | A comma separated list of email recipients. Overwrites any existing recipients. If null or empty, this attribute wont be updated.
-`deleteAfter` | String | false | 0 | Delete the delivery attachments after this date and time given as unix timestamp in millis. If 0 or negative, delivery will never be deleted. If null or empty, this attribute wont be updated. If set overwrites any existing value.
-`attachments` | String | false | null | The attachments to be set to this delivery. Overwrites any existing attachments. If null or empty, this attribute wont be updated.
-`notifySender` | String | false | true | If true, notifies sender when recipients have downloaded delivery. If null or empty, this attribute wont be updated.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - delivery.update::v2  
-      deliveryUuid: <value>  
-      subject: <value>  
-      message: <value>  
-      privacyLevel: <value>  
-      recipients: <value>  
-      deleteAfter: <value>  
-      attachments: <value>  
-      notifySender: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
 Learn more: [Pipeline](/docs/commands_pipelines). 
 
 **URL example:**  
@@ -11006,214 +10610,6 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## secure.transfer.attachment.chunk.put ``v1``
-----------   
-Adds a chunk of data to an existing secure transfer attachment given by outboxUuid and name parameter.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.attachment.chunk.put:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`outboxUuid` | String | false | null | The uuid of the outbox transfer to add the chunk to.
-`name` | String | true | null | The name of the attachment inside the outbox this chunk belongs to.
-`index` | String | false | null | The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment.
-`content` | String | false | null | The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - secure.transfer.attachment.chunk.put:  
-      outboxUuid: <value>  
-      name: <value>  
-      index: <value>  
-      content: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/secure.transfer.attachment.chunk.put?outboxUuid=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command secure.transfer.attachment.chunk.put outboxUuid=<value> name=<value> index=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## secure.transfer.attachment.delete ``v1``
-----------   
-Deletes an attachment from an secure transfer outbox. Including its content!
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.attachment.delete:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`outboxUuid` | String | true | null | The uuid of the outbox transfer to delete the attachment from.
-`name` | String | true | null | The name of the attachment to be deleted.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - secure.transfer.attachment.delete:  
-      outboxUuid: <value>  
-      name: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/secure.transfer.attachment.delete?outboxUuid=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command secure.transfer.attachment.delete outboxUuid=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## secure.transfer.attachment.put ``v1``
-----------   
-Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.attachment.chunk.put.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.attachment.put:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`outboxUuid` | String | false | null | The uuid of the outbox transfer to add the attachment to.If null or empty, a new one will be created.
-`name` | String | false | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
-`contentType` | String | false | null | The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set.
-`content` | String | false | null | The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - secure.transfer.attachment.put:  
-      outboxUuid: <value>  
-      name: <value>  
-      contentType: <value>  
-      content: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      input: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/secure.transfer.attachment.put?outboxUuid=<value>&name=<value>&contentType=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command secure.transfer.attachment.put outboxUuid=<value> name=<value> contentType=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## secure.transfer.finalize ``v1``
-----------   
-Finalizes a given secure transfer outbox.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.finalize:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`uuid` | String | false | null | The uuid of the transfer outbox to finalize. 
-`sendEmails` | String | false | null | Should the emails to the recipients created and send on this finalize?
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - secure.transfer.finalize:  
-      uuid: <value>  
-      sendEmails: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/secure.transfer.finalize?uuid=<value>&sendEmails=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command secure.transfer.finalize uuid=<value> sendEmails=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
 ## secure.transfer.inbox.auth ``v1``
 ----------   
 Creates and verifies a magic link download token to access a given inbox transfer.
@@ -11227,9 +10623,10 @@ Creates and verifies a magic link download token to access a given inbox transfe
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`outboxUuid` | String | false | null | The uuid of the secure transfer outbox, the user needs access to.
-`email` | String | false | null | The email of the recipient to create the token for.
-`token` | String | false | null | The magic token, sent to the recipient after he requested it.
+`outboxUuid` | String | true | null | The uuid of the secure transfer outbox, the user needs access to.
+`recipientEmail` | String | true | null | The email of the recipient to create the token for.
+`cookieToken` | String | false | null | In order to improve security, set a cookie value in your browser (client) and make sure on second call of this command, the cookie token is read from client and put into this command. This way you can make sure, that the client which sends the magic token is the same as theone who initially requested it. This token is optional.
+`magicToken` | String | false | null | The magic token, sent to the recipient (via email) after he requested it.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11242,8 +10639,9 @@ Name | Type | Required | Default | Description
 pipeline:  
   - secure.transfer.inbox.auth:  
       outboxUuid: <value>  
-      email: <value>  
-      token: <value>  
+      recipientEmail: <value>  
+      cookieToken: <value>  
+      magicToken: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11256,12 +10654,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.inbox.auth?outboxUuid=<value>&email=<value>&token=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.inbox.auth?outboxUuid=<value>&recipientEmail=<value>&cookieToken=<value>&magicToken=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.inbox.auth outboxUuid=<value> email=<value> token=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.inbox.auth outboxUuid=<value> recipientEmail=<value> cookieToken=<value> magicToken=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11280,6 +10678,7 @@ Downloads the content of an attachment or a group of attachments.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
+`outboxUuid` | String | false | null | The uuid of the outbox transfer to return.
 `inboxUuid` | String | false | null | The uuid of the inbox transfer to return.
 `filenames` | String | false | null | A list of one or more attachment filenames to be downloaded (comma separated or PEL list object). If this list is null or empty, all files of the inbox will be downloaded as single zip file. If only one file is defined, this file is downloaded plain. If there is more than one file defined, downloads all of these files as a single zip.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -11293,6 +10692,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - secure.transfer.inbox.download:  
+      outboxUuid: <value>  
       inboxUuid: <value>  
       filenames: <value>  
       id: <value>  
@@ -11307,12 +10707,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.inbox.download?inboxUuid=<value>&filenames=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.inbox.download?outboxUuid=<value>&inboxUuid=<value>&filenames=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.inbox.download inboxUuid=<value> filenames=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.inbox.download outboxUuid=<value> inboxUuid=<value> filenames=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11331,7 +10731,7 @@ Returns an inbox transfer by uuid.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`uuid` | String | true | null | The uuid of the inbox transfer tp return. 
+`inboxUuid` | String | true | null | The uuid of the inbox transfer to return. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11343,7 +10743,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - secure.transfer.inbox.get:  
-      uuid: <value>  
+      inboxUuid: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11356,12 +10756,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.inbox.get?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.inbox.get?inboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.inbox.get uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.inbox.get inboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11380,7 +10780,7 @@ Lists all inbox transfers targeted to a given recipient.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`recipientEmail` | String | false | null | The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed.
+`recipientEmail` | String | false | null | The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed. This parameter can only be set in case the logged-in user has admin, developer or support permissions. Otherwise, an exception is thrown.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11416,6 +10816,163 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## secure.transfer.outbox.attachment.chunk.put ``v1``
+----------   
+Adds a chunk of data to an existing secure transfer attachment given by outboxUuid and name parameter.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.chunk.put:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`outboxUuid` | String | false | null | The uuid of the outbox transfer to add the chunk to.
+`name` | String | true | null | The name of the attachment inside the outbox this chunk belongs to.
+`index` | String | false | null | The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment.
+`content` | String | false | null | The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - secure.transfer.outbox.attachment.chunk.put:  
+      outboxUuid: <value>  
+      name: <value>  
+      index: <value>  
+      content: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/secure.transfer.outbox.attachment.chunk.put?outboxUuid=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command secure.transfer.outbox.attachment.chunk.put outboxUuid=<value> name=<value> index=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## secure.transfer.outbox.attachment.delete ``v1``
+----------   
+Deletes an attachment from an secure transfer outbox. Including its content!
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.delete:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`outboxUuid` | String | true | null | The uuid of the outbox transfer to delete the attachment from.
+`name` | String | true | null | The name of the attachment to be deleted.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - secure.transfer.outbox.attachment.delete:  
+      outboxUuid: <value>  
+      name: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/secure.transfer.outbox.attachment.delete?outboxUuid=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command secure.transfer.outbox.attachment.delete outboxUuid=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## secure.transfer.outbox.attachment.put ``v1``
+----------   
+Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.outbox.attachment.chunk.put.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.put:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`outboxUuid` | String | false | null | The uuid of the outbox transfer to add the attachment to.If null or empty, a new one will be created.
+`name` | String | false | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
+`contentType` | String | false | null | The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set.
+`content` | String | false | null | The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - secure.transfer.outbox.attachment.put:  
+      outboxUuid: <value>  
+      name: <value>  
+      contentType: <value>  
+      content: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/secure.transfer.outbox.attachment.put?outboxUuid=<value>&name=<value>&contentType=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command secure.transfer.outbox.attachment.put outboxUuid=<value> name=<value> contentType=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## secure.transfer.outbox.delete ``v1``
 ----------   
 Deletes an outbox transfer.
@@ -11429,7 +10986,7 @@ Deletes an outbox transfer.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`uuid` | String | true | null | The uuid of the transfer in the outbox to delete. 
+`outboxUuid` | String | true | null | The uuid of the transfer in the outbox to delete. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11441,7 +10998,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - secure.transfer.outbox.delete:  
-      uuid: <value>  
+      outboxUuid: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11454,12 +11011,63 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.outbox.delete?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.delete uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.outbox.delete outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## secure.transfer.outbox.finalize ``v1``
+----------   
+Finalizes a given secure transfer outbox.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.finalize:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`outboxUuid` | String | false | null | The uuid of the transfer outbox to finalize. 
+`sendEmails` | String | false | null | Should the emails to the recipients created and send on this finalize?
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - secure.transfer.outbox.finalize:  
+      outboxUuid: <value>  
+      sendEmails: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/secure.transfer.outbox.finalize?outboxUuid=<value>&sendEmails=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command secure.transfer.outbox.finalize outboxUuid=<value> sendEmails=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11478,7 +11086,7 @@ Returns the outbox by given uuid.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`uuid` | String | true | null | The uuid of the transfer outbox to return.
+`outboxUuid` | String | true | null | The uuid of the transfer outbox to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11490,7 +11098,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - secure.transfer.outbox.get:  
-      uuid: <value>  
+      outboxUuid: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11503,12 +11111,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.get?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.outbox.get?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.get uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.outbox.get outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11516,7 +11124,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## secure.transfer.outbox.list ``v1``
 ----------   
-Lists all outbox transfers created by the currently logged-in user.
+Lists all outbox transfer items created by the currently logged-in user.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.list:v1)
 
@@ -11574,7 +11182,7 @@ Returns the preview for a given outbox, if supported by security settings.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`uuid` | String | false | null | The uuid of the outbox transfer to return. 
+`outboxUuid` | String | false | null | The uuid of the outbox transfer to return. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11586,7 +11194,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - secure.transfer.outbox.preview:  
-      uuid: <value>  
+      outboxUuid: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11599,22 +11207,22 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.preview?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.outbox.preview?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.preview uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.outbox.preview outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.put ``v1``
+## secure.transfer.outbox.put ``v1``
 ----------   
 Creates or updates a PIPEFORCE Secure Transfer with DRAFT status and saves it.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.put:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.put:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -11623,7 +11231,7 @@ Creates or updates a PIPEFORCE Secure Transfer with DRAFT status and saves it.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`uuid` | String | false | null | The uuid of the transfer in the outbox to update. If null or empty, a new one will be created.
+`outboxUuid` | String | false | null | The uuid of the transfer in the outbox to update. If null or empty, a new one will be created.
 `subject` | String | false | null | The subject of the transfer or null (in order to set it later).
 `message` | String | false | null | The message of the transfer or null (in order to set it later)
 `locale` | String | false | null | The locale to be used for this secure transfer system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used.
@@ -11640,8 +11248,8 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.put:  
-      uuid: <value>  
+  - secure.transfer.outbox.put:  
+      outboxUuid: <value>  
       subject: <value>  
       message: <value>  
       locale: <value>  
@@ -11660,22 +11268,22 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.put?uuid=<value>&subject=<value>&message=<value>&locale=<value>&recipients=<value>&expiresOn=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.outbox.put?outboxUuid=<value>&subject=<value>&message=<value>&locale=<value>&recipients=<value>&expiresOn=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.put uuid=<value> subject=<value> message=<value> locale=<value> recipients=<value> expiresOn=<value> notifySender=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.outbox.put outboxUuid=<value> subject=<value> message=<value> locale=<value> recipients=<value> expiresOn=<value> notifySender=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.recipient.delete ``v1``
+## secure.transfer.outbox.recipient.delete ``v1``
 ----------   
 Removes a recipient from a given secure transfer outbox. Note: This is only possible in case this transfer is in status DRAFT.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.recipient.delete:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.delete:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -11685,7 +11293,7 @@ Removes a recipient from a given secure transfer outbox. Note: This is only poss
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `outboxUuid` | String | true | null | The uuid of the transfer outbox to add the recipient to.
-`email` | String | true | null | The email of the recipient to add.
+`recipientEmail` | String | true | null | The email of the recipient to add.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11696,9 +11304,9 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.recipient.delete:  
+  - secure.transfer.outbox.recipient.delete:  
       outboxUuid: <value>  
-      email: <value>  
+      recipientEmail: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11711,22 +11319,22 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.recipient.delete?outboxUuid=<value>&email=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.outbox.recipient.delete?outboxUuid=<value>&recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.recipient.delete outboxUuid=<value> email=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.outbox.recipient.delete outboxUuid=<value> recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.recipient.put ``v1``
+## secure.transfer.outbox.recipient.put ``v1``
 ----------   
 Adds a new recipient to a secure transfer. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.recipient.put:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.put:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -11736,8 +11344,8 @@ Adds a new recipient to a secure transfer. If a recipient with given email alrea
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `outboxUuid` | String | true | null | The uuid of the transfer outbox to add the recipient to.
-`email` | String | true | null | The email of the recipient to add.
-`locale` | String | false | null | The locale to be used for this recipient like de, en or fr for example.
+`recipientEmail` | String | true | null | The email of the recipient to add.
+`recipientLocale` | String | false | null | The locale to be used for this recipient like de, en or fr for example.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11748,10 +11356,10 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.recipient.put:  
+  - secure.transfer.outbox.recipient.put:  
       outboxUuid: <value>  
-      email: <value>  
-      locale: <value>  
+      recipientEmail: <value>  
+      recipientLocale: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11764,12 +11372,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.recipient.put?outboxUuid=<value>&email=<value>&locale=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.outbox.recipient.put?outboxUuid=<value>&recipientEmail=<value>&recipientLocale=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.recipient.put outboxUuid=<value> email=<value> locale=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.outbox.recipient.put outboxUuid=<value> recipientEmail=<value> recipientLocale=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
