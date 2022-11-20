@@ -3985,6 +3985,12 @@ paths:
         description: "Delete the delivery attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted."
         schema:
           type: "string"
+      - name: "attachments"
+        in: "query"
+        required: false
+        description: "The list of attachment file names or a list of JSON objects to be added to this delivery."
+        schema:
+          type: "string"
       - name: "notifySender"
         in: "query"
         required: false
@@ -4062,6 +4068,12 @@ paths:
         in: "query"
         required: false
         description: "Delete the delivery attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted."
+        schema:
+          type: "string"
+      - name: "attachments"
+        in: "query"
+        required: false
+        description: "The list of attachment file names or a list of JSON objects to be added to this delivery."
         schema:
           type: "string"
       - name: "notifySender"
@@ -21130,7 +21142,427 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.attachment.chunk.put:
+  /api/v3/command/secure.transfer.inbox.auth:
+    get:
+      parameters:
+      - name: "outboxUuid"
+        in: "query"
+        required: true
+        description: "The uuid of the secure transfer outbox, the user needs access to."
+        schema:
+          type: "string"
+      - name: "recipientEmail"
+        in: "query"
+        required: true
+        description: "The email of the recipient to create the token for."
+        schema:
+          type: "string"
+      - name: "cookieToken"
+        in: "query"
+        required: false
+        description: "In order to improve security, set a cookie value in your browser (client) and make sure on second call of this command, the cookie token is read from client and put into this command. This way you can make sure, that the client which sends the magic token is the same as theone who initially requested it. This token is optional."
+        schema:
+          type: "string"
+      - name: "magicToken"
+        in: "query"
+        required: false
+        description: "The magic token, sent to the recipient (via email) after he requested it."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Creates and verifies a magic link download token to access a given inbox transfer. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "outboxUuid"
+        in: "query"
+        required: true
+        description: "The uuid of the secure transfer outbox, the user needs access to."
+        schema:
+          type: "string"
+      - name: "recipientEmail"
+        in: "query"
+        required: true
+        description: "The email of the recipient to create the token for."
+        schema:
+          type: "string"
+      - name: "cookieToken"
+        in: "query"
+        required: false
+        description: "In order to improve security, set a cookie value in your browser (client) and make sure on second call of this command, the cookie token is read from client and put into this command. This way you can make sure, that the client which sends the magic token is the same as theone who initially requested it. This token is optional."
+        schema:
+          type: "string"
+      - name: "magicToken"
+        in: "query"
+        required: false
+        description: "The magic token, sent to the recipient (via email) after he requested it."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/secure.transfer.inbox.download:
+    get:
+      parameters:
+      - name: "outboxUuid"
+        in: "query"
+        required: false
+        description: "The uuid of the outbox transfer to return."
+        schema:
+          type: "string"
+      - name: "inboxUuid"
+        in: "query"
+        required: false
+        description: "The uuid of the inbox transfer to return."
+        schema:
+          type: "string"
+      - name: "filenames"
+        in: "query"
+        required: false
+        description: "A list of one or more attachment filenames to be downloaded (comma separated or PEL list object). If this list is null or empty, all files of the inbox will be downloaded as single zip file. If only one file is defined, this file is downloaded plain. If there is more than one file defined, downloads all of these files as a single zip."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Downloads the content of an attachment or a group of attachments. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "outboxUuid"
+        in: "query"
+        required: false
+        description: "The uuid of the outbox transfer to return."
+        schema:
+          type: "string"
+      - name: "inboxUuid"
+        in: "query"
+        required: false
+        description: "The uuid of the inbox transfer to return."
+        schema:
+          type: "string"
+      - name: "filenames"
+        in: "query"
+        required: false
+        description: "A list of one or more attachment filenames to be downloaded (comma separated or PEL list object). If this list is null or empty, all files of the inbox will be downloaded as single zip file. If only one file is defined, this file is downloaded plain. If there is more than one file defined, downloads all of these files as a single zip."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/secure.transfer.inbox.get:
+    get:
+      parameters:
+      - name: "inboxUuid"
+        in: "query"
+        required: true
+        description: "The uuid of the inbox transfer to return. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns an inbox transfer by uuid. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "inboxUuid"
+        in: "query"
+        required: true
+        description: "The uuid of the inbox transfer to return. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/secure.transfer.inbox.list:
+    get:
+      parameters:
+      - name: "recipientEmail"
+        in: "query"
+        required: false
+        description: "The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed. This parameter can only be set in case the logged-in user has admin, developer or support permissions. Otherwise, an exception is thrown."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Lists all inbox transfers targeted to a given recipient. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "recipientEmail"
+        in: "query"
+        required: false
+        description: "The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed. This parameter can only be set in case the logged-in user has admin, developer or support permissions. Otherwise, an exception is thrown."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/secure.transfer.outbox.attachment.chunk.put:
     get:
       parameters:
       - name: "outboxUuid"
@@ -21244,7 +21676,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.attachment.delete:
+  /api/v3/command/secure.transfer.outbox.attachment.delete:
     get:
       parameters:
       - name: "outboxUuid"
@@ -21334,7 +21766,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.attachment.put:
+  /api/v3/command/secure.transfer.outbox.attachment.put:
     get:
       parameters:
       - name: "outboxUuid"
@@ -21391,7 +21823,7 @@ paths:
         description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
-      description: "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.attachment.chunk.put. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.outbox.attachment.chunk.put. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -21460,10 +21892,100 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.finalize:
+  /api/v3/command/secure.transfer.outbox.delete:
     get:
       parameters:
-      - name: "uuid"
+      - name: "outboxUuid"
+        in: "query"
+        required: true
+        description: "The uuid of the transfer in the outbox to delete. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deletes an outbox transfer. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "outboxUuid"
+        in: "query"
+        required: true
+        description: "The uuid of the transfer in the outbox to delete. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/secure.transfer.outbox.finalize:
+    get:
+      parameters:
+      - name: "outboxUuid"
         in: "query"
         required: false
         description: "The uuid of the transfer outbox to finalize. "
@@ -21518,7 +22040,7 @@ paths:
                 - type: "object"
     post:
       parameters:
-      - name: "uuid"
+      - name: "outboxUuid"
         in: "query"
         required: false
         description: "The uuid of the transfer outbox to finalize. "
@@ -21562,496 +22084,10 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.inbox.auth:
-    get:
-      parameters:
-      - name: "outboxUuid"
-        in: "query"
-        required: false
-        description: "The uuid of the secure transfer outbox, the user needs access to."
-        schema:
-          type: "string"
-      - name: "email"
-        in: "query"
-        required: false
-        description: "The email of the recipient to create the token for."
-        schema:
-          type: "string"
-      - name: "token"
-        in: "query"
-        required: false
-        description: "The magic token, sent to the recipient after he requested it."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Creates and verifies a magic link download token to access a given inbox transfer. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "outboxUuid"
-        in: "query"
-        required: false
-        description: "The uuid of the secure transfer outbox, the user needs access to."
-        schema:
-          type: "string"
-      - name: "email"
-        in: "query"
-        required: false
-        description: "The email of the recipient to create the token for."
-        schema:
-          type: "string"
-      - name: "token"
-        in: "query"
-        required: false
-        description: "The magic token, sent to the recipient after he requested it."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/secure.transfer.inbox.download:
-    get:
-      parameters:
-      - name: "inboxUuid"
-        in: "query"
-        required: false
-        description: "The uuid of the inbox transfer to return."
-        schema:
-          type: "string"
-      - name: "filenames"
-        in: "query"
-        required: false
-        description: "A list of one or more attachment filenames to be downloaded (comma separated or PEL list object). If this list is null or empty, all files of the inbox will be downloaded as single zip file. If only one file is defined, this file is downloaded plain. If there is more than one file defined, downloads all of these files as a single zip."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Downloads the content of an attachment or a group of attachments. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "inboxUuid"
-        in: "query"
-        required: false
-        description: "The uuid of the inbox transfer to return."
-        schema:
-          type: "string"
-      - name: "filenames"
-        in: "query"
-        required: false
-        description: "A list of one or more attachment filenames to be downloaded (comma separated or PEL list object). If this list is null or empty, all files of the inbox will be downloaded as single zip file. If only one file is defined, this file is downloaded plain. If there is more than one file defined, downloads all of these files as a single zip."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/secure.transfer.inbox.get:
-    get:
-      parameters:
-      - name: "uuid"
-        in: "query"
-        required: true
-        description: "The uuid of the inbox transfer tp return. "
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Returns an inbox transfer by uuid. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "uuid"
-        in: "query"
-        required: true
-        description: "The uuid of the inbox transfer tp return. "
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/secure.transfer.inbox.list:
-    get:
-      parameters:
-      - name: "recipientEmail"
-        in: "query"
-        required: false
-        description: "The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Lists all inbox transfers targeted to a given recipient. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "recipientEmail"
-        in: "query"
-        required: false
-        description: "The email of the recipient to list the inbox for. If this param is missing, the inboxes for the currently logged-in user will be listed."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/secure.transfer.outbox.delete:
-    get:
-      parameters:
-      - name: "uuid"
-        in: "query"
-        required: true
-        description: "The uuid of the transfer in the outbox to delete. "
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Deletes an outbox transfer. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "uuid"
-        in: "query"
-        required: true
-        description: "The uuid of the transfer in the outbox to delete. "
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
   /api/v3/command/secure.transfer.outbox.get:
     get:
       parameters:
-      - name: "uuid"
+      - name: "outboxUuid"
         in: "query"
         required: true
         description: "The uuid of the transfer outbox to return."
@@ -22100,7 +22136,7 @@ paths:
                 - type: "object"
     post:
       parameters:
-      - name: "uuid"
+      - name: "outboxUuid"
         in: "query"
         required: true
         description: "The uuid of the transfer outbox to return."
@@ -22171,7 +22207,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Lists all outbox transfers created by the currently logged-in user. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Lists all outbox transfer items created by the currently logged-in user. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -22219,7 +22255,7 @@ paths:
   /api/v3/command/secure.transfer.outbox.preview:
     get:
       parameters:
-      - name: "uuid"
+      - name: "outboxUuid"
         in: "query"
         required: false
         description: "The uuid of the outbox transfer to return. "
@@ -22268,7 +22304,7 @@ paths:
                 - type: "object"
     post:
       parameters:
-      - name: "uuid"
+      - name: "outboxUuid"
         in: "query"
         required: false
         description: "The uuid of the outbox transfer to return. "
@@ -22306,10 +22342,10 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.put:
+  /api/v3/command/secure.transfer.outbox.put:
     get:
       parameters:
-      - name: "uuid"
+      - name: "outboxUuid"
         in: "query"
         required: false
         description: "The uuid of the transfer in the outbox to update. If null or empty, a new one will be created."
@@ -22394,7 +22430,7 @@ paths:
                 - type: "object"
     post:
       parameters:
-      - name: "uuid"
+      - name: "outboxUuid"
         in: "query"
         required: false
         description: "The uuid of the transfer in the outbox to update. If null or empty, a new one will be created."
@@ -22468,7 +22504,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.recipient.delete:
+  /api/v3/command/secure.transfer.outbox.recipient.delete:
     get:
       parameters:
       - name: "outboxUuid"
@@ -22477,7 +22513,7 @@ paths:
         description: "The uuid of the transfer outbox to add the recipient to."
         schema:
           type: "string"
-      - name: "email"
+      - name: "recipientEmail"
         in: "query"
         required: true
         description: "The email of the recipient to add."
@@ -22532,7 +22568,7 @@ paths:
         description: "The uuid of the transfer outbox to add the recipient to."
         schema:
           type: "string"
-      - name: "email"
+      - name: "recipientEmail"
         in: "query"
         required: true
         description: "The email of the recipient to add."
@@ -22570,7 +22606,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.recipient.put:
+  /api/v3/command/secure.transfer.outbox.recipient.put:
     get:
       parameters:
       - name: "outboxUuid"
@@ -22579,13 +22615,13 @@ paths:
         description: "The uuid of the transfer outbox to add the recipient to."
         schema:
           type: "string"
-      - name: "email"
+      - name: "recipientEmail"
         in: "query"
         required: true
         description: "The email of the recipient to add."
         schema:
           type: "string"
-      - name: "locale"
+      - name: "recipientLocale"
         in: "query"
         required: false
         description: "The locale to be used for this recipient like de, en or fr for example."
@@ -22640,13 +22676,13 @@ paths:
         description: "The uuid of the transfer outbox to add the recipient to."
         schema:
           type: "string"
-      - name: "email"
+      - name: "recipientEmail"
         in: "query"
         required: true
         description: "The email of the recipient to add."
         schema:
           type: "string"
-      - name: "locale"
+      - name: "recipientLocale"
         in: "query"
         required: false
         description: "The locale to be used for this recipient like de, en or fr for example."
