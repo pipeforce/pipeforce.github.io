@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 20/11/2022 by CommandComplianceTest -->
+<!-- Generated: 29/11/2022 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -4789,6 +4789,55 @@ http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command http.put url=<value> service=<value> headers=<value> body=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## http.response ``v1``
+----------   
+Prepares the HTTP response in case this pipeline is executed in an HTTP context. In case the pipeline is not running inside HTTP, nothing happens in executing this command.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.response:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`status` | String | false | null | The status code to be set
+`headers` | String | false | null | The headers to be add. 
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - http.response:  
+      status: <value>  
+      headers: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/http.response?status=<value>&headers=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command http.response status=<value> headers=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -13371,7 +13420,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## json.validate ``v1``
 ----------   
-Validates the JSON document given in the body or the input parameter against the given JSON schema. See https://json-schema.org/. 
+Validates the syntax of the JSON document given in the body or the input parameter. Can additionally validate the JSON using the given JSON schema. See https://json-schema.org/. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=json.validate:v1)
 
@@ -13383,8 +13432,9 @@ Validates the JSON document given in the body or the input parameter against the
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`schema` | String | false | null | The JSON schema to be used for validation. Can be a string, a PEL or a custom uri pointing to the location of the schema.
+`schema` | String | false | null | The JSON schema to be used for schema validation. Can be a string, a PEL or a custom uri pointing to the location of the schema. In case no schema is defined, only a JSON syntax validation is performed.
 `version` | String | false | V7 | The version of the schema specification to be used.
+`throwException` | String | false | false | If `true`, an exception is thrown in case of an syntax or schema validation error and the pipeline execution will be stopped. If set to `false`, the validation result will be returned as JSON in the output having the fields `status` and `message` whereas `status` can be one of `error` or `ok`. In case of an validation error, all validation errors will be put into the `message` field.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -13399,6 +13449,7 @@ pipeline:
   - json.validate:  
       schema: <value>  
       version: <value>  
+      throwException: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -13412,12 +13463,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/json.validate?schema=<value>&version=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/json.validate?schema=<value>&version=<value>&throwException=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command json.validate schema=<value> version=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command json.validate schema=<value> version=<value> throwException=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

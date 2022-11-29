@@ -4,7 +4,7 @@ sidebar_label: Built-In Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 20/11/2022 11:47:40 by CommandComplianceTest -->
+<!-- Generated: 29/11/2022 16:50:03 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Functions.  
 
@@ -2592,7 +2592,7 @@ permissionKeys | ``string`` | A list of permission keys (roles) to check for.
 
 ### displayName()   
 Returns the default display name of the logged-in user which is the first non-empty value of:
-firstName lastName, username, email, uuid.   
+firstName lastName, email, uuid. Note: Doesn't return the username for security reasons.   
 
 #### Returns  
 ``string`` - The display name.  

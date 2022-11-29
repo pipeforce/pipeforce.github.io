@@ -3442,6 +3442,39 @@
             },
             "required" : [ ]
           },
+          "http.response" : {
+            "type" : "object",
+            "description" : "Prepares the HTTP response in case this pipeline is executed in an HTTP context. In case the pipeline is not running inside HTTP, nothing happens in executing this command.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "status" : {
+                "type" : "string",
+                "description" : "The status code to be set"
+              },
+              "headers" : {
+                "type" : "string",
+                "description" : "The headers to be add. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
           "iam.apitoken" : {
             "type" : "object",
             "description" : "Obtains the apitoken (= offline token) in exchange for user credentials provided and writes it into the output.",
@@ -9976,18 +10009,23 @@
           },
           "json.validate" : {
             "type" : "object",
-            "description" : "Validates the JSON document given in the body or the input parameter against the given JSON schema. See https://json-schema.org/. ",
+            "description" : "Validates the syntax of the JSON document given in the body or the input parameter. Can additionally validate the JSON using the given JSON schema. See https://json-schema.org/. ",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "schema" : {
                 "type" : "string",
-                "description" : "The JSON schema to be used for validation. Can be a string, a PEL or a custom uri pointing to the location of the schema."
+                "description" : "The JSON schema to be used for schema validation. Can be a string, a PEL or a custom uri pointing to the location of the schema. In case no schema is defined, only a JSON syntax validation is performed."
               },
               "version" : {
                 "type" : "string",
                 "description" : "The version of the schema specification to be used.",
                 "default" : "V7"
+              },
+              "throwException" : {
+                "type" : "string",
+                "description" : "If `true`, an exception is thrown in case of an syntax or schema validation error and the pipeline execution will be stopped. If set to `false`, the validation result will be returned as JSON in the output having the fields `status` and `message` whereas `status` can be one of `error` or `ok`. In case of an validation error, all validation errors will be put into the `message` field.",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
