@@ -927,6 +927,21 @@ pipeline:
       message: "#{vars.data.![person.name]}"
 ```
 
+## Ternary Operator (If-Then-Else)
+The ternary operator can be used to define a if-then-else condition in your expression as one line.
+
+```yaml
+pipeline:
+  - set.body:
+      value: "#{10 > 100 ? 'condition is true' : 'condition is false'}"
+```
+
+This example would output `condition is false` in the body. As you can see, the part left of the question mark `?` defines the condition to be evaluated. If this condition evaluates to `true`, then the part left of the colon `:` is executed. Otherwise the right part:
+
+```
+condition ? trueExpression : falseExpression
+```
+
 ## Functions
 
 There are many built-in functions available which additionally can simplify your automation and integration tasks. See chapter [Built-In Functions](/docs/guides/commands_pipelines/functions) for more details.
