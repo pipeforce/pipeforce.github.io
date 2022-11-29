@@ -9238,6 +9238,96 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/http.response:
+    get:
+      parameters:
+      - name: "status"
+        in: "query"
+        required: false
+        description: "The status code to be set"
+        schema:
+          type: "string"
+      - name: "headers"
+        in: "query"
+        required: false
+        description: "The headers to be add. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Prepares the HTTP response in case this pipeline is executed in an HTTP context. In case the pipeline is not running inside HTTP, nothing happens in executing this command. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "status"
+        in: "query"
+        required: false
+        description: "The status code to be set"
+        schema:
+          type: "string"
+      - name: "headers"
+        in: "query"
+        required: false
+        description: "The headers to be add. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/iam.apitoken:
     get:
       parameters:
@@ -27076,13 +27166,19 @@ paths:
       - name: "schema"
         in: "query"
         required: false
-        description: "The JSON schema to be used for validation. Can be a string, a PEL or a custom uri pointing to the location of the schema."
+        description: "The JSON schema to be used for schema validation. Can be a string, a PEL or a custom uri pointing to the location of the schema. In case no schema is defined, only a JSON syntax validation is performed."
         schema:
           type: "string"
       - name: "version"
         in: "query"
         required: false
         description: "The version of the schema specification to be used."
+        schema:
+          type: "string"
+      - name: "throwException"
+        in: "query"
+        required: false
+        description: "If `true`, an exception is thrown in case of an syntax or schema validation error and the pipeline execution will be stopped. If set to `false`, the validation result will be returned as JSON in the output having the fields `status` and `message` whereas `status` can be one of `error` or `ok`. In case of an validation error, all validation errors will be put into the `message` field."
         schema:
           type: "string"
       - name: "id"
@@ -27121,7 +27217,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Validates the JSON document given in the body or the input parameter against the given JSON schema. See https://json-schema.org/.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Validates the syntax of the JSON document given in the body or the input parameter. Can additionally validate the JSON using the given JSON schema. See https://json-schema.org/.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -27137,13 +27233,19 @@ paths:
       - name: "schema"
         in: "query"
         required: false
-        description: "The JSON schema to be used for validation. Can be a string, a PEL or a custom uri pointing to the location of the schema."
+        description: "The JSON schema to be used for schema validation. Can be a string, a PEL or a custom uri pointing to the location of the schema. In case no schema is defined, only a JSON syntax validation is performed."
         schema:
           type: "string"
       - name: "version"
         in: "query"
         required: false
         description: "The version of the schema specification to be used."
+        schema:
+          type: "string"
+      - name: "throwException"
+        in: "query"
+        required: false
+        description: "If `true`, an exception is thrown in case of an syntax or schema validation error and the pipeline execution will be stopped. If set to `false`, the validation result will be returned as JSON in the output having the fields `status` and `message` whereas `status` can be one of `error` or `ok`. In case of an validation error, all validation errors will be put into the `message` field."
         schema:
           type: "string"
       - name: "id"
