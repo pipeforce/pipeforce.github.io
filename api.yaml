@@ -22084,7 +22084,7 @@ paths:
       - name: "sendEmails"
         in: "query"
         required: false
-        description: "Should the emails to the recipients created and send on this finalize?"
+        description: "Should the notification emails to the recipients created and send on this finalize?"
         schema:
           type: "string"
       - name: "id"
@@ -22117,7 +22117,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Finalizes a given secure transfer outbox. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Finalizes a given secure transfer outbox: Creates inboxes for each recipient and sends notification email to each by default. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -22139,7 +22139,7 @@ paths:
       - name: "sendEmails"
         in: "query"
         required: false
-        description: "Should the emails to the recipients created and send on this finalize?"
+        description: "Should the notification emails to the recipients created and send on this finalize?"
         schema:
           type: "string"
       - name: "id"
@@ -22696,6 +22696,108 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/secure.transfer.outbox.recipient.email.send:
+    get:
+      parameters:
+      - name: "outboxUuid"
+        in: "query"
+        required: true
+        description: "The uuid of the outbox item."
+        schema:
+          type: "string"
+      - name: "recipientEmail"
+        in: "query"
+        required: true
+        description: "The email of the recipient to send the notification to."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "(Re-) sends the secure transfer notification email to the recipient. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "outboxUuid"
+        in: "query"
+        required: true
+        description: "The uuid of the outbox item."
+        schema:
+          type: "string"
+      - name: "recipientEmail"
+        in: "query"
+        required: true
+        description: "The email of the recipient to send the notification to."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/secure.transfer.outbox.recipient.put:
     get:
       parameters:
@@ -22715,6 +22817,18 @@ paths:
         in: "query"
         required: false
         description: "The locale to be used for this recipient like de, en or fr for example."
+        schema:
+          type: "string"
+      - name: "sendEmail"
+        in: "query"
+        required: false
+        description: "Should be an email sent to the recipient?"
+        schema:
+          type: "string"
+      - name: "enabled"
+        in: "query"
+        required: false
+        description: "Is the recipient enabled = can download the transfer?"
         schema:
           type: "string"
       - name: "id"
@@ -22776,6 +22890,18 @@ paths:
         in: "query"
         required: false
         description: "The locale to be used for this recipient like de, en or fr for example."
+        schema:
+          type: "string"
+      - name: "sendEmail"
+        in: "query"
+        required: false
+        description: "Should be an email sent to the recipient?"
+        schema:
+          type: "string"
+      - name: "enabled"
+        in: "query"
+        required: false
+        description: "Is the recipient enabled = can download the transfer?"
         schema:
           type: "string"
       - name: "id"
@@ -25420,7 +25546,7 @@ paths:
       - name: "locale"
         in: "query"
         required: false
-        description: "The locale of the terms to return."
+        description: "The locale of the terms to return. If this param missing, the default locale will be used."
         schema:
           type: "string"
       - name: "id"
@@ -25459,7 +25585,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Returns a terms by its name. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns a terms by its name and locale. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -25481,9 +25607,99 @@ paths:
       - name: "locale"
         in: "query"
         required: false
-        description: "The locale of the terms to return."
+        description: "The locale of the terms to return. If this param missing, the default locale will be used."
         schema:
           type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/terms.list:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns all terms. The name and and locale, each. But not the text. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
       - name: "id"
         in: "query"
         required: false
@@ -25537,10 +25753,16 @@ paths:
         description: "The locale of the terms"
         schema:
           type: "string"
-      - name: "anonymousAccess"
+      - name: "text"
         in: "query"
         required: false
-        description: "Can the terms be loaded by non-authenticated users?"
+        description: "The terms text. If this parameter is missing, the value from the body will be used."
+        schema:
+          type: "string"
+      - name: "system"
+        in: "query"
+        required: false
+        description: "Is it a system term? Attention: Cannot be deleted via commands!"
         schema:
           type: "string"
       - name: "id"
@@ -25604,10 +25826,130 @@ paths:
         description: "The locale of the terms"
         schema:
           type: "string"
-      - name: "anonymousAccess"
+      - name: "text"
         in: "query"
         required: false
-        description: "Can the terms be loaded by non-authenticated users?"
+        description: "The terms text. If this parameter is missing, the value from the body will be used."
+        schema:
+          type: "string"
+      - name: "system"
+        in: "query"
+        required: false
+        description: "Is it a system term? Attention: Cannot be deleted via commands!"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/terms.text.get:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the terms to return."
+        schema:
+          type: "string"
+      - name: "locale"
+        in: "query"
+        required: false
+        description: "The locale of the terms to return."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns the terms text by its name and locale. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the terms to return."
+        schema:
+          type: "string"
+      - name: "locale"
+        in: "query"
+        required: false
+        description: "The locale of the terms to return."
         schema:
           type: "string"
       - name: "id"
