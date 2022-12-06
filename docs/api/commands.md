@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 29/11/2022 by CommandComplianceTest -->
+<!-- Generated: 06/12/2022 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -11073,7 +11073,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## secure.transfer.outbox.finalize ``v1``
 ----------   
-Finalizes a given secure transfer outbox.
+Finalizes a given secure transfer outbox: Creates inboxes for each recipient and sends notification email to each by default.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.finalize:v1)
 
@@ -11085,7 +11085,7 @@ Finalizes a given secure transfer outbox.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `outboxUuid` | String | false | null | The uuid of the transfer outbox to finalize. 
-`sendEmails` | String | false | null | Should the emails to the recipients created and send on this finalize?
+`sendEmails` | String | false | true | Should the notification emails to the recipients created and send on this finalize?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11379,6 +11379,57 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## secure.transfer.outbox.recipient.email.send ``v1``
+----------   
+(Re-) sends the secure transfer notification email to the recipient.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.email.send:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`outboxUuid` | String | true | null | The uuid of the outbox item.
+`recipientEmail` | String | true | null | The email of the recipient to send the notification to.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - secure.transfer.outbox.recipient.email.send:  
+      outboxUuid: <value>  
+      recipientEmail: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/secure.transfer.outbox.recipient.email.send?outboxUuid=<value>&recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command secure.transfer.outbox.recipient.email.send outboxUuid=<value> recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## secure.transfer.outbox.recipient.put ``v1``
 ----------   
 Adds a new recipient to a secure transfer. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported.
@@ -11395,6 +11446,8 @@ Name | Type | Required | Default | Description
 `outboxUuid` | String | true | null | The uuid of the transfer outbox to add the recipient to.
 `recipientEmail` | String | true | null | The email of the recipient to add.
 `recipientLocale` | String | false | null | The locale to be used for this recipient like de, en or fr for example.
+`sendEmail` | String | false | null | Should be an email sent to the recipient?
+`enabled` | String | false | true | Is the recipient enabled = can download the transfer?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11409,6 +11462,8 @@ pipeline:
       outboxUuid: <value>  
       recipientEmail: <value>  
       recipientLocale: <value>  
+      sendEmail: <value>  
+      enabled: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11421,12 +11476,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.recipient.put?outboxUuid=<value>&recipientEmail=<value>&recipientLocale=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.outbox.recipient.put?outboxUuid=<value>&recipientEmail=<value>&recipientLocale=<value>&sendEmail=<value>&enabled=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.recipient.put outboxUuid=<value> recipientEmail=<value> recipientLocale=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.outbox.recipient.put outboxUuid=<value> recipientEmail=<value> recipientLocale=<value> sendEmail=<value> enabled=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12581,7 +12636,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## terms.get ``v1``
 ----------   
-Returns a terms by its name.
+Returns a terms by its name and locale.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=terms.get:v1)
 
@@ -12593,7 +12648,7 @@ Returns a terms by its name.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the terms to return.
-`locale` | String | false | null | The locale of the terms to return.
+`locale` | String | false | null | The locale of the terms to return. If this param missing, the default locale will be used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -12632,6 +12687,55 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## terms.list ``v1``
+----------   
+Returns all terms. The name and and locale, each. But not the text.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=terms.list:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - terms.list:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/terms.list?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command terms.list id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## terms.put ``v1``
 ----------   
 Adds a new terms entry to the property store.
@@ -12647,7 +12751,8 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the terms
 `locale` | String | false | null | The locale of the terms
-`anonymousAccess` | String | false | false | Can the terms be loaded by non-authenticated users?
+`text` | String | false | null | The terms text. If this parameter is missing, the value from the body will be used.
+`system` | String | false | false | Is it a system term? Attention: Cannot be deleted via commands!
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -12662,7 +12767,8 @@ pipeline:
   - terms.put:  
       name: <value>  
       locale: <value>  
-      anonymousAccess: <value>  
+      text: <value>  
+      system: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -12676,12 +12782,65 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/terms.put?name=<value>&locale=<value>&anonymousAccess=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/terms.put?name=<value>&locale=<value>&text=<value>&system=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command terms.put name=<value> locale=<value> anonymousAccess=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command terms.put name=<value> locale=<value> text=<value> system=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## terms.text.get ``v1``
+----------   
+Returns the terms text by its name and locale.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=terms.text.get:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | true | null | The name of the terms to return.
+`locale` | String | false | null | The locale of the terms to return.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - terms.text.get:  
+      name: <value>  
+      locale: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/terms.text.get?name=<value>&locale=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command terms.text.get name=<value> locale=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

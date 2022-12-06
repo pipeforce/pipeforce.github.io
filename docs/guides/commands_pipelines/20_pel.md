@@ -928,7 +928,7 @@ pipeline:
 ```
 
 ## Ternary Operator (If-Then-Else)
-The ternary operator can be used to define a if-then-else condition in your expression as one line.
+The ternary operator can be used to define an if-then-else condition in your expression in a single line.
 
 ```yaml
 pipeline:

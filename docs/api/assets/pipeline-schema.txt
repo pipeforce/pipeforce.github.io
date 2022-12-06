@@ -8150,7 +8150,7 @@
           },
           "secure.transfer.outbox.finalize" : {
             "type" : "object",
-            "description" : "Finalizes a given secure transfer outbox.",
+            "description" : "Finalizes a given secure transfer outbox: Creates inboxes for each recipient and sends notification email to each by default.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -8160,7 +8160,8 @@
               },
               "sendEmails" : {
                 "type" : "string",
-                "description" : "Should the emails to the recipients created and send on this finalize?"
+                "description" : "Should the notification emails to the recipients created and send on this finalize?",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -8376,6 +8377,43 @@
             },
             "required" : [ "outboxUuid", "recipientEmail" ]
           },
+          "secure.transfer.outbox.recipient.email.send" : {
+            "type" : "object",
+            "description" : "(Re-) sends the secure transfer notification email to the recipient.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "outboxUuid" : {
+                "type" : "string",
+                "description" : "The uuid of the outbox item."
+              },
+              "recipientEmail" : {
+                "type" : "string",
+                "description" : "The email of the recipient to send the notification to."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "outboxUuid", "recipientEmail" ]
+          },
           "secure.transfer.outbox.recipient.put" : {
             "type" : "object",
             "description" : "Adds a new recipient to a secure transfer. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported.",
@@ -8393,6 +8431,15 @@
               "recipientLocale" : {
                 "type" : "string",
                 "description" : "The locale to be used for this recipient like de, en or fr for example."
+              },
+              "sendEmail" : {
+                "type" : "string",
+                "description" : "Should be an email sent to the recipient?"
+              },
+              "enabled" : {
+                "type" : "string",
+                "description" : "Is the recipient enabled = can download the transfer?",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -9362,7 +9409,7 @@
           },
           "terms.get" : {
             "type" : "object",
-            "description" : "Returns a terms by its name.",
+            "description" : "Returns a terms by its name and locale.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9372,7 +9419,7 @@
               },
               "locale" : {
                 "type" : "string",
-                "description" : "The locale of the terms to return."
+                "description" : "The locale of the terms to return. If this param missing, the default locale will be used."
               },
               "id" : {
                 "type" : "string",
@@ -9401,6 +9448,39 @@
             },
             "required" : [ "name" ]
           },
+          "terms.list" : {
+            "type" : "object",
+            "description" : "Returns all terms. The name and and locale, each. But not the text.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "terms.put" : {
             "type" : "object",
             "description" : "Adds a new terms entry to the property store.",
@@ -9415,10 +9495,55 @@
                 "type" : "string",
                 "description" : "The locale of the terms"
               },
-              "anonymousAccess" : {
+              "text" : {
                 "type" : "string",
-                "description" : "Can the terms be loaded by non-authenticated users?",
+                "description" : "The terms text. If this parameter is missing, the value from the body will be used."
+              },
+              "system" : {
+                "type" : "string",
+                "description" : "Is it a system term? Attention: Cannot be deleted via commands!",
                 "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "terms.text.get" : {
+            "type" : "object",
+            "description" : "Returns the terms text by its name and locale.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the terms to return."
+              },
+              "locale" : {
+                "type" : "string",
+                "description" : "The locale of the terms to return."
               },
               "id" : {
                 "type" : "string",

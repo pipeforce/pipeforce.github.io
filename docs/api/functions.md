@@ -4,7 +4,7 @@ sidebar_label: Built-In Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 29/11/2022 16:50:03 by CommandComplianceTest -->
+<!-- Generated: 06/12/2022 17:14:39 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Functions.  
 
@@ -1584,6 +1584,23 @@ query | ``string`` | The query to be applied.
 #### Example  
 ```  
 @json.path(json,query)  
+```  
+
+### stringify(json)   
+Converts the given JSON or map object into a JSON string.   
+
+#### Returns  
+``string`` - The JSON string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+json | ``object`` | The JSON object to be converted to a string. 
+
+
+#### Example  
+```  
+@json.stringify(json)  
 ```  
 
  
