@@ -85,7 +85,7 @@ You can define as webhook event key, any string you want. As best practise, we s
 
 Now you will link the external caller with your pipeline by creating a webhook object. To do so, follow these steps:
 
-1.  Navigate to LOW CODE → Commands.
+1.  Navigate to LOW CODE → Documentation → Commands.
     
 2.  Search for webhook.put here and click it.
     
