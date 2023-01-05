@@ -4,7 +4,7 @@ sidebar_label: Built-In Functions
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 06/12/2022 17:14:39 by CommandComplianceTest -->
+<!-- Generated: 23/12/2022 16:57:39 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Functions.  
 
@@ -1935,6 +1935,35 @@ key | ``string`` | The property key with optional fragment reference in form 'gl
 ```  
 
  
+## `@resolve` 
+----------  
+Provides utility functions inside a pipeline expression for simple uri resolving.  
+You can access the functions declared here in the PEL using <code>@uri</code>  
+
+### uri(uri)   
+Resolves the given uri to its object representation. Supported uri schemes:
+<ul>
+    <li><code>uri:user:</code>Resolves to an user object.</li>
+    <li><code>uri:pipeline:</code>Resolves the given path, pointing to a persisted pipeline, executes it
+    and returns the body result.</li>
+    <li><code>uri:property:</code> Resolves the given property key path and returns it from the storage.</li>
+</ul>   
+
+#### Returns  
+``object`` - The object representation of the uri.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+uri | ``string`` | The uri to be resolved. 
+
+
+#### Example  
+```  
+@resolve.uri(uri)  
+```  
+
+ 
 ## `@text` 
 ----------  
 Provides utility functions inside a pipeline expression for simple calculations of lists.  
@@ -2533,16 +2562,11 @@ value | ``string`` | input text to escape
 ## `@uri` 
 ----------  
 Provides utility functions inside a pipeline expression for simple uri resolving.  
-You can access the functions declared here in the PEL using <code>@uri</code>  
+You can access the functions declared here in the PEL using <code>@uri</code>.  
+Note: This function library is deprecated. Use <code>@resolve</code> instead!  
 
 ### resolve(uri)   
-Resolves the given uri to its object representation. Supported uri schemes:
-<ul>
-    <li><code>uri:user:</code>Resolves to an user object.</li>
-    <li><code>uri:pipeline:</code>Resolves the given path, pointing to a persisted pipeline, executes it
-    and returns the body result.</li>
-    <li><code>uri:property:</code> Resolves the given property key path and returns it from the storage.</li>
-</ul>   
+Note: This function is deprecated. Use `@resolve.uri` instead.   
 
 #### Returns  
 ``object`` - The object representation of the uri.  

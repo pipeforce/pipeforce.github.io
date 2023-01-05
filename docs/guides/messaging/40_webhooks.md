@@ -182,13 +182,17 @@ Content-Type: multipart/form-data;boundary="boundary"
 --boundary 
 Content-Disposition: form-data; name="file"; filename="fileA.pdf" 
 
-<CONTENT FILE fileA.pdf GOES HERE...>
+CONTENT OF FILE fileA.pdf GOES HERE...
 --boundary 
 Content-Disposition: form-data; name="file"; filename="fileB.pdf" 
 
-<CONTENT FILE fileB.pdf GOES HERE...>
+CONTENT OF FILE fileB.pdf GOES HERE...
 --boundary--
 ```
+
+:::note
+Make sure to set the `name` parameter to `file` for each `Content-Disposition` part. Otherwise, the backend will ignore the part.
+:::
 
 :::warning
 The maximum length of a webhook payload is limited to 4MB overall! So if you need to send a bigger payload consider to use one of the authorized commands instead or the secure delivery feature.

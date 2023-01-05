@@ -43,8 +43,114 @@ And in this example, a custom uri is used inside a PEL util instead:
 ```yaml
 pipeline:
     - set.body:
-        value: "#{@uri.resolve('$uri:drive:/someFolder/document.json')}"
+        value: "#{@resolve.uri('$uri:drive:/someFolder/document.json')}"
 ```
+
+## Resolving an URI
+
+You have multiple options to resolve an URI: Resolving an URI means, loading
+the content this URI is pointing to.
+
+### By command
+
+In case you use a URI as parameter to a supporting command, this URI will automatically resolved
+to its content data by this command, as you could see by the previous example:
+
+```yaml
+pipeline:
+    - mails.send:
+        to: recipient@mail.tld
+        subject: "Hello!"
+        message": Hello World!"
+        attachments: "$uri:property:global/app/myapp/resources/file"
+```
+
+### By `resolve` command
+
+In order to explicitely resolve an URI, there is a special command `resolve` for this, which can resolve any URI and returns the content of it.
+
+You can use it in a pipeline like this:
+```yaml
+pipeline:
+    - resolve:
+        uri: "$uri:property:gloabl/app/myapp/config/app"
+```
+
+This example will return you the full property (metdata + value) of the given property path. For example like this:
+
+```json
+{
+    "checksum": "sha-256=38334e50687bc68125e3b66121311a0bd1b848b8fa36c85dfe189d84313c5582",
+    "key": "/pipeforce/ns/global/app/myapp/config/app",
+    "uuid": "cc059f6e-fa6a-4ad8-bc51-04a85e33b965",
+    "locked": false,
+    "trashed": false,
+    "value": "{ \"title\": \"My App\", ...}",
+    "defaultValue": null,
+    "type": "application/json",
+    "created": 1669907722095,
+    "updated": 1671171893712,
+    "timeToLive": null
+}
+```
+
+In order to return only the value of a property, add a property filter with `@` at the end (see below for more details about this). For example:
+
+```yaml
+pipeline:
+    - resolve:
+        uri: "$uri:property:gloabl/app/myapp/config/app@value"
+```
+
+This will the return only the value part of the property as JSON:
+
+```json
+{
+    "title": "My App",
+    "description": "This is my app",
+    "icon": "assignment",
+    "tags": [
+        "myapp"
+    ],
+    ...
+}
+```
+
+And if you would like return only the `title` text of the property value, you can use the `#` symbol which filters the value of a property, in case it is a JSON document (more about this in the description for Property URI below). For example: 
+
+```yaml
+pipeline:
+    - resolve:
+        uri: "$uri:property:gloabl/app/myapp/config/app#title"
+```
+
+This would return:
+
+```
+My App
+```
+
+:::info Note
+In case you use the `#` symbol or any other symbol reserved by a GET request URL, you need to decode the uri parameter. Alternatively you can send
+the uri in a POST request, `form-data` encoded in the body. In this case, no encoding is required.
+:::
+
+Here is an example how to use this command with `curl` on the terminal with URI encoded parameter (the symbol `#` is encoded to `%23`):
+
+```bash
+curl -X GET -u username:password 'https://hub-ns.pipeforce.net/api/v3/command/resolve?uri=$uri:property:gloabl/app/myapp/config/app%23title'
+```
+
+### By the `@resolve` functions 
+
+Another possibility inside a pipeline is to use the `@resolve.uri` function:
+
+```yaml
+pipeline:
+    - log:
+        message: "Content is: #{@resolve.uri('$uri:property:gloabl/app/myapp/config/app@value')}"
+```
+
 
 ## Drive URI
 
@@ -82,7 +188,7 @@ To execute this pipeline and to output this hello world example, you could execu
 ```yaml
 pipeline:
     - log:
-        message: "Output: #{@uri.resolve('$uri:pipeline:global/app/myapp/pipeline/hello')}"
+        message: "Output: #{@resolve.uri('$uri:pipeline:global/app/myapp/pipeline/hello')}"
 ```
 
 This will create a log-entry like this:
@@ -104,7 +210,7 @@ Example:
 ```yaml
 pipeline:
     - set.body:
-        value: "#{@uri.resolve('$uri:property:global/app/myapp/object/person')}"
+        value: "#{@resolve.uri('$uri:property:global/app/myapp/object/person')}"
 ```
 
 ### Property Filter
@@ -153,13 +259,13 @@ With a Property Filter, you can now select the part you would like to return in 
 ```yaml
 pipeline:
     - log:
-        message: "Num. of attachments: #{@uri.resolve('$uri:property:global/app/myapp/object/person@attachments.size()')}"
+        message: "Num. of attachments: #{@resolve.uri('$uri:property:global/app/myapp/object/person@attachments.size()')}"
 ```
 As you can see in this example, you can count the number of attachments of the property with a single URI call.
 
 ### Value Filter
 
-In case the value of a property is of the type ``application/json``, you can apply a value filter in order to return just a subset from the JSON value.
+In case the value of a property is of type ``application/json``, you can apply a filter on **the value** in order to return just a subset from the JSON value.
 
 ```
 $uri:property:[PATH]#[VALUE_PEL]
@@ -190,7 +296,7 @@ We can use a Value Filter in the URI in order to directly return the name of the
 ```yaml
 pipeline:
     - log:
-        message: "Name: #{@uri.resolve('$uri:property:path/to/person#name')}"
+        message: "Name: #{@resolve.uri('$uri:property:path/to/person#name')}"
 ```
 
 Which will log a message like this:
@@ -204,7 +310,7 @@ It's possible to use the full power of the PEL to filter, for example:
 ```yaml
 pipeline:
     - log:
-        message: "Number of hobbies: #{@uri.resolve('$uri:property:path/to/person#hobbies.size()')}"
+        message: "Number of hobbies: #{@resolve.uri('$uri:property:path/to/person#hobbies.size()')}"
 ```
 
 Which will log a message like this:
@@ -232,7 +338,7 @@ For example:
 ```yaml
 pipeline:
     - set.body:
-        value: "#{@uri.resolve('$uri:user:maria')}"
+        value: "#{@resolve.uri('$uri:user:maria')}"
 ```
 
 This will return the user-info data similar to this:
@@ -253,7 +359,7 @@ The same is true when using the uuid of the user:
 ```yaml
 pipeline:
     - set.body:
-        value: "#{@uri.resolve('$uri:user:uuid=someUuid')}"
+        value: "#{@resolve.uri('$uri:user:uuid=someUuid')}"
 ```
 
 ## Report an Issue

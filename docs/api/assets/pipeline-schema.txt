@@ -1065,7 +1065,7 @@
           },
           "content.get" : {
             "type" : "object",
-            "description" : "Reads content from provided uri and puts the result back to body.",
+            "description" : "Deprecated. Use resolve command instead. Reads content from provided uri and puts the result back to body.",
             "inputType" : "Byte",
             "outputType" : "Byte",
             "properties" : {
@@ -1734,6 +1734,31 @@
             },
             "required" : [ ]
           },
+          "delivery.migration" : {
+            "type" : "object",
+            "description" : "It returns migrated UUIDs in return body",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
           "delivery.outbox.delete" : {
             "type" : "object",
             "description" : "Deletes a delivery from the currently logged-in users outbox.",
@@ -1967,6 +1992,31 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "dev.null" : {
+            "type" : "object",
+            "description" : "This command simply reads the body (if there is any) and sends its content to '/dev/null'. It is mainly for testing purposes.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
             "required" : [ ]
@@ -3444,7 +3494,7 @@
           },
           "http.response" : {
             "type" : "object",
-            "description" : "Prepares the HTTP response in case this pipeline is executed in an HTTP context. In case the pipeline is not running inside HTTP, nothing happens in executing this command.",
+            "description" : "Prepares the HTTP response in case this pipeline is executed in an HTTP request context. In case the pipeline is not running inside an HTTP request context, nothing happens in executing this command. Note: In case the pipeline was initiated by an HTTP request, you can access the request headers using the headers scope: headers.request.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -3888,7 +3938,7 @@
           },
           "iam.group.members" : {
             "type" : "object",
-            "description" : "Lists all users which are member of the given group. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation",
+            "description" : "Lists all users which are member of any of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -6047,6 +6097,51 @@
             },
             "required" : [ ]
           },
+          "property.attachment.checksum" : {
+            "type" : "object",
+            "description" : "Calculates and verifies the checksum of a property attachment. Calculating the checksum of an attachment using this command also means closing it, so that no more chunks can be added. The checksum of an attachment is calculated by concatenating the MD5 of all chunks into a single MD5 digest.",
+            "inputType" : "Byte[]",
+            "outputType" : "Void",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property containing the attachments."
+              },
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the property containing the attachments. If this is given, key param is ignored."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the attachment to be checked. "
+              },
+              "checksum" : {
+                "type" : "string",
+                "description" : "The checksum to be used for verification. If not given, no verification is done, but checksum of attachment is calculated and stored anyhow."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "property.attachment.chunk.content" : {
             "type" : "object",
             "description" : "Returns the content (data) of a chunk of an attachment in the output as input stream. Returns empty body if chunk was not found.",
@@ -7464,7 +7559,7 @@
           },
           "publicform.definition" : {
             "type" : "object",
-            "description" : "Composes full public form definition structure.",
+            "description" : "Returns the form configuration of public form given by id. The schema path in the config will be automatically resolved and contains finally the resolved schema JSON.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -7493,9 +7588,38 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
               "value" : {
                 "type" : "string",
-                "description" : "The value of the property."
+                "description" : "The value data of the form as JSON."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "id", "value" ]
+          },
+          "resolve" : {
+            "type" : "object",
+            "description" : "Resolves a given PIPEFORCE uri to its content and returns it. For example $uri:property:global/app/myapp/pipeline/foo will return the full property of the pipeline foo. Also see: https://docs.pipeforce.org/docs/api/uris",
+            "inputType" : "Byte",
+            "outputType" : "Byte",
+            "properties" : {
+              "uri" : {
+                "type" : "string",
+                "description" : "The PIPEFORCE uri of the content to resolve."
               },
               "id" : {
                 "type" : "string",
@@ -7512,9 +7636,13 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "value", "id" ]
+            "required" : [ "uri" ]
           },
           "resource" : {
             "type" : "object",

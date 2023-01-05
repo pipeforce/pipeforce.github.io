@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 06/12/2022 by CommandComplianceTest -->
+<!-- Generated: 23/12/2022 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -1595,7 +1595,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## content.get ``v1``
 ----------   
-Reads content from provided uri and puts the result back to body.
+Deprecated. Use resolve command instead. Reads content from provided uri and puts the result back to body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=content.get:v1)
 
@@ -2476,6 +2476,51 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## delivery.migration ``v1``
+----------   
+It returns migrated UUIDs in return body
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=delivery.migration:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - delivery.migration:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/delivery.migration?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command delivery.migration id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## delivery.outbox.delete ``v1``
 ----------   
 Deletes a delivery from the currently logged-in users outbox.
@@ -2783,6 +2828,51 @@ http://host/api/v3/command/delivery.update?deliveryUuid=<value>&subject=<value>&
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command delivery.update deliveryUuid=<value> subject=<value> message=<value> privacyLevel=<value> recipients=<value> deleteAfter=<value> attachments=<value> notifySender=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## dev.null ``v1``
+----------   
+This command simply reads the body (if there is any) and sends its content to '/dev/null'. It is mainly for testing purposes.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=dev.null:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - dev.null:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/dev.null?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command dev.null id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4796,7 +4886,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## http.response ``v1``
 ----------   
-Prepares the HTTP response in case this pipeline is executed in an HTTP context. In case the pipeline is not running inside HTTP, nothing happens in executing this command.
+Prepares the HTTP response in case this pipeline is executed in an HTTP request context. In case the pipeline is not running inside an HTTP request context, nothing happens in executing this command. Note: In case the pipeline was initiated by an HTTP request, you can access the request headers using the headers scope: headers.request.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.response:v1)
 
@@ -5408,7 +5498,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## iam.group.members ``v1``
 ----------   
-Lists all users which are member of the given group. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
+Lists all users which are member of any of the given groups. The response is a JSON array with these entities: https://www.keycloak.org/docs-api/5.0/rest-api/index.html#_userrepresentation
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=iam.group.members:v1)
 
@@ -8236,6 +8326,61 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## property.attachment.checksum ``v1``
+----------   
+Calculates and verifies the checksum of a property attachment. Calculating the checksum of an attachment using this command also means closing it, so that no more chunks can be added. The checksum of an attachment is calculated by concatenating the MD5 of all chunks into a single MD5 digest.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.checksum:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``Byte[]``  
+**Output body type:** ``Void``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | false | null | The key of the property containing the attachments.
+`uuid` | String | false | null | The uuid of the property containing the attachments. If this is given, key param is ignored.
+`name` | String | false | null | The name of the attachment to be checked. 
+`checksum` | String | false | null | The checksum to be used for verification. If not given, no verification is done, but checksum of attachment is calculated and stored anyhow.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.attachment.checksum:  
+      key: <value>  
+      uuid: <value>  
+      name: <value>  
+      checksum: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.attachment.checksum?key=<value>&uuid=<value>&name=<value>&checksum=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.attachment.checksum key=<value> uuid=<value> name=<value> checksum=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## property.attachment.chunk.content ``v1``
 ----------   
 Returns the content (data) of a chunk of an attachment in the output as input stream. Returns empty body if chunk was not found.
@@ -10075,7 +10220,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## publicform.definition ``v1``
 ----------   
-Composes full public form definition structure.
+Returns the form configuration of public form given by id. The schema path in the config will be automatically resolved and contains finally the resolved schema JSON.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=publicform.definition:v1)
 
@@ -10086,7 +10231,6 @@ Composes full public form definition structure.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`id` | String | true | null | The public form id.
 `id` | String | true | null | The public form id.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -10100,7 +10244,6 @@ pipeline:
   - publicform.definition:  
       id: <value>  
       id: <value>  
-      id: <value>  
       if: <value>  
       onError: <value>  
       eval: <value>  
@@ -10111,12 +10254,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/publicform.definition?id=<value>&id=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/publicform.definition?id=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command publicform.definition id=<value> id=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command publicform.definition id=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10135,8 +10278,8 @@ Stores submitted public form data and attachments. All Form definitions are sear
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`value` | String | true | null | The value of the property.
 `id` | String | true | null | The public form id.
+`value` | String | true | null | The value data of the form as JSON.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -10147,8 +10290,8 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - publicform.submit:  
-      value: <value>  
       id: <value>  
+      value: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -10160,12 +10303,61 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/publicform.submit?value=<value>&id=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/publicform.submit?id=<value>&value=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command publicform.submit value=<value> id=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command publicform.submit id=<value> value=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## resolve ``v1``
+----------   
+Resolves a given PIPEFORCE uri to its content and returns it. For example $uri:property:global/app/myapp/pipeline/foo will return the full property of the pipeline foo. Also see: https://docs.pipeforce.org/docs/api/uris
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=resolve:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`uri` | String | true | null | The PIPEFORCE uri of the content to resolve.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - resolve:  
+      uri: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/resolve?uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command resolve uri=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10665,6 +10857,7 @@ Creates and verifies a magic link download token to access a given inbox transfe
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.auth:v1)
 
+**Alias:** command:secretsend.inbox.auth:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -10720,6 +10913,7 @@ Downloads the content of an attachment or a group of attachments.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.download:v1)
 
+**Alias:** command:secretsend.inbox.download:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -10773,6 +10967,7 @@ Returns an inbox transfer by uuid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.get:v1)
 
+**Alias:** command:secretsend.inbox.get:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -10822,6 +11017,7 @@ Lists all inbox transfers targeted to a given recipient.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.list:v1)
 
+**Alias:** command:secretsend.inbox.list:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -10871,6 +11067,7 @@ Adds a chunk of data to an existing secure transfer attachment given by outboxUu
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.chunk.put:v1)
 
+**Alias:** command:secretsend.outbox.attachment.chunk.put:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -10924,6 +11121,7 @@ Deletes an attachment from an secure transfer outbox. Including its content!
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.delete:v1)
 
+**Alias:** command:secretsend.outbox.attachment.delete:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -10973,6 +11171,7 @@ Creates a new attachment and adds it to the given secure transfer outbox. The co
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.put:v1)
 
+**Alias:** command:secretsend.outbox.attachment.put:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11028,6 +11227,7 @@ Deletes an outbox transfer.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.delete:v1)
 
+**Alias:** command:secretsend.outbox.delete:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11077,6 +11277,7 @@ Finalizes a given secure transfer outbox: Creates inboxes for each recipient and
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.finalize:v1)
 
+**Alias:** command:secretsend.outbox.finalize:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11128,6 +11329,7 @@ Returns the outbox by given uuid.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.get:v1)
 
+**Alias:** command:secretsend.outbox.get:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11177,6 +11379,7 @@ Lists all outbox transfer items created by the currently logged-in user.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.list:v1)
 
+**Alias:** command:secretsend.outbox.list:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11224,6 +11427,7 @@ Returns the preview for a given outbox, if supported by security settings.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.preview:v1)
 
+**Alias:** command:secretsend.outbox.preview:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11273,6 +11477,7 @@ Creates or updates a PIPEFORCE Secure Transfer with DRAFT status and saves it.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.put:v1)
 
+**Alias:** command:secretsend.outbox.put:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11334,6 +11539,7 @@ Removes a recipient from a given secure transfer outbox. Note: This is only poss
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.delete:v1)
 
+**Alias:** command:secretsend.outbox.recipient.delete:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11385,6 +11591,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.email.send:v1)
 
+**Alias:** command:secretsend.outbox.recipient.email.send:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11436,6 +11643,7 @@ Adds a new recipient to a secure transfer. If a recipient with given email alrea
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.put:v1)
 
+**Alias:** command:secretsend.outbox.recipient.put:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
