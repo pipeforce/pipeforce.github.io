@@ -217,7 +217,7 @@ Now, its time to activate the workflow and execute it. To do so, follow these st
 
 1.  Click `DEPLOY` to deploy the current state of the BPMN to the workflow engine.
     
-2.  In the left main menu, go to SERVICES → Tasks.
+2.  In the left main menu, go to SERVICES → My Tasks.
 
 3.  Click on the "Workflow" button (to the right of the search bar):
 
