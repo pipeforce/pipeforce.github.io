@@ -115,11 +115,11 @@ Persisting a pipeline means “storing” a pipeline script at server side in th
 
 ## 3 - Execute a persisted pipeline
 
-After you have persisted a pipeline, you can execute it by calling it using its unique property key. There are many different possibilities in PIPEFORCE to do so. In this step, you will learn how to do it using the command `pipeline.start`:
+After you have persisted a pipeline, you can execute it by calling it using its unique property key. There are many different possibilities in PIPEFORCE to do so. In this step, you will learn how to do it using the command `pipeline.run`:
 
 1.  Select LOW CODE → Commands.
     
-2.  Search for the command `pipeline.start` and click it.
+2.  Search for the command `pipeline.run` and click it.
     
 3.  In the parameter field `key`, copy the key of the pipeline you have created before, for example like this:  
     
