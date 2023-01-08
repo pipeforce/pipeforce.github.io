@@ -69,28 +69,28 @@ After you stored it, the pipeline then starts to listen: Any time a message with
 
 PIPEFORCE can manage the creation, registration and deletion of exchanges, consumers, queues and bindings automatically for you.
 
-As soon as you save a pipeline containing a `message.receive` command to the property store, by default a new queue with a name given by parameter `queue` will be automatically created for you, if not already exists. In case no `queue` parameter is given, the queue name will be automtically derived from the pipeline name (= default name).
+As soon as you save a pipeline containing a `message.receive` command to the property store, by default a new queue with a name given by parameter `queue` will be automatically created for you, if not already exists. In case no `queue` parameter is given, the queue name will be automtically derived from the pipeline name (= default name). This default name has the format `APPNAME_pipline_PIPELINENAME`, whereas `APPNAME` will be replaced by the name of the app, the pipeline resides in and `PIPELINENAME` by the name of the pipeline which contains the `message.receive` command.
 
 Additionally, a binding and a consumer listening to the given message key will be automatically created for you and linked with the queue. So no queue, binding or consumer management is required by default.
 
-If you delete or change a `message.receive` command inside a pipeline, the according consumer will be removed, but the queue and bindings will not be deleted by default. 
+If you delete or change a `message.receive` command inside a pipeline, the according consumer will be removed, but the queue and bindings will **not** be deleted by default. 
 
 :::tip How to change the default?
-You can change this default behaviour by using the parameter `managed` which can be set to these values:
+You can change this default behaviour by using the parameter `manageQueue` which can be set to these values:
 
 - `false` = No message entities like queues and bindings will be created or deleted automatically. You have to manage all of this by your own (not recommended).
-- `create` = This is the default. In this case, the queue will be created automatically in case it doesn't exist yet. But it **wont** be altered or deleted automatically aftwards.
+- `create` = This is the default. In this case, the queue will be created automatically in case it doesn't exist yet and the bindings will be attached to it. But it **wont** be altered or deleted automatically aftwards.
 - `delete` = In this case, the queue will be deleted in case the `message.receive` command has been changed or removed from the pipeline or the pipeline got deleted. The creation of queue and bindings is **not** automated.
 - `create,delete` = This combines automation of creation and deletion as described above.
 
-Regardless of the parameter `managed`, the creation, deletion and scaling of the according consumer is always done automatically.
+Regardless of the parameter `manageQueue`, the creation, deletion and scaling of the according **consumer** is always done automatically.
 :::
 
 ### Accessing Payload
 
-It's also possible to send data with any message, it's called the **payload**.
+It's also possible to send message with additional data: Which is called the **payload**.
 
-Let's assume, the data structure of such a sales order was defined by the integration team and looks like this:
+Let's assume, the data structure of a sales order was defined by the integration team and looks like this:
 
 ```json
 {
@@ -101,8 +101,7 @@ Let's assume, the data structure of such a sales order was defined by the integr
 }
 ```
 
-This is the payload of a message. Such a payload will be automatically provided in the pipeline body to all commands
-below `message.receive`.
+This is the payload of a message. Such a payload will be automatically provided in the pipeline body to all commands below `message.receive`.
 
 So let's use this payload in order to send more information with our email, like this:
 
@@ -122,6 +121,17 @@ So let's use this payload in order to send more information with our email, like
           Amount:   #{body.amount}
           Customer: #{body.customer}
 ```
+
+:::tip Non JSON payload
+In case you're sending a message in a **non** JSON format, for example as a simple text string `Hello World!`, it will be internally wrapped into a JSON envelope using this structure:
+```json
+{
+  "status": 200,
+  "valueType": "string",
+  "value": "Hello World!"
+}
+```
+:::
 
 ### Using Wildcard Keys
 
@@ -215,9 +225,31 @@ pipeline:
         }
 ```
 
+This example sends a new message with key `sales.order.created` and the given JSON document as payload to the default exchange. By default, the content type of the payload is `application/json`. You can change this by using the parameter `contentType`. In case the payload is different from a JSON document, it will be automatically wrapped into a JSON envelope in order to make sure, the consumers can always expect a valid JSON. The structure of this JSON envelope looks like this example:
+
+```json
+{
+  "status": 200,
+  "valueType": "string",
+  "value": "Hello World!"
+}
+```
+
+The field `status` status indicates whether the value is OK or not. In case there was some problem with the value (for example too big, conversion error or similar), this will be indicated here. The status code is similar to the HTTP status codes. In cases of an error status, also the field `statusMessage` is used which has more information about the error occured.
+
+The field `valueType` specifies the content type of the `value` field which can be one of the default JSON types like:
+
+- `string`
+- `object`
+- `integer`
+- `number`
+- `boolean`
+- `array`
+
+Or any specific content type, defined by the `contentType` parameter of the command `message.send`.
+
 The `payload` can also be set to `null` or empty string in case the message has no payload at all. In case the parameter `payload` is missing, the current body content of the pipeline is used as payload.
 
-This sends a new message with key `sales.order.created` and the given payload to the default exchange.
 
 ## Report an Issue
 :::tip Your help is needed!
