@@ -13,7 +13,7 @@
 
 ## Webhook - Intro
 
-Webhooks are very essential parts for connecting with external systems. A webhook is a unique URL, that external systems can call. In PIPEFORCE, when a webhook URL is called, it is linked to a pipeline internally, which then gets executed.
+Webhooks are a very essential concept for connecting with external systems. A webhook is a URL with a unique token, external systems can call. In PIPEFORCE, if such a webhook URL is called, it is linked to a pipeline internally, which then gets executed.
 
 In this tutorial, you will learn how to setup and execute such a webhook.
 
@@ -38,7 +38,7 @@ In this step, we are going to create the pipeline which will be executed wheneve
     
 5.  The **new property** view opens:
     
-    1.  As a property key, use the value `global/app/MY_APP/pipeline/webhook`. Replace `MY_APP` with the name of the app you created before, for example `myapp24`. **Do use only lower case letters and don’t use special characters or spaces!**
+    1.  As a property key, use the value `global/app/MY_APP/pipeline/mywebhook`. Replace `MY_APP` with the name of the app you created before, for example `myapp24`. **Do use only lower case letters and don’t use special characters or spaces!**
         
     2.  As mime type, select `application/yaml; type=pipeline`.
         
@@ -51,8 +51,8 @@ In this step, we are going to create the pipeline which will be executed wheneve
     ```yaml
     pipeline:
       - mail.send:
-          to: you@domain.tld
-          subject: Webhook executed
+          to: "you@domain.tld"
+          subject: "Webhook executed"
     ```
     
 9.  Make sure to replace you@domain.tld by your email address. Whenever the webhook is executed, an email will be send to this address.
@@ -63,65 +63,57 @@ In this step, we are going to create the pipeline which will be executed wheneve
     
 12.  The pipeline should be successfully executed. After a few seconds, you should receive an email in your inbox with subject `Webhook executed`.
     
-13.  Now add another command to the pipeline as shown in this listing:
+13.  Now add the command `event.listen` to the pipeline as shown in this listing:
     
     ```yaml
     pipeline:
+
       - event.listen:
-          key: webhook.tutorial
+          key: "webhook.tutorial"
+
       - mail.send:
-          to: you@domain.tld
-          subject: Webhook executed
+          to: "you@domain.tld"
+          subject: "Webhook executed"
     ```
     
-14.  As you can see, the command event.listen has been added. This command makes sure that this pipeline is executed whenever a webhook has been received with event key `webhook.tutorial`. So, it listens only to this specific webhook.
+14.  The command `event.listen` makes sure that this pipeline is executed whenever a webhook has been received with event key `webhook.tutorial`. So, it listens only to this specific webhook.
     
 
-:::note 
-You can define as webhook event key, any string you want. As best practise, we suggest you to use always lower case letters and prefix the key with `webhook.`. Furthermore, use the period `.` as separator, for example `webhook.sendmail`, `webhook.order.create`, and so on.
+:::tip TIP 
+You can define as webhook event key any string you want. As best practise, we suggest you to use always lower case letters and prefix the key with `webhook.`. Furthermore, use the period `.` as separator, for example `webhook.sendmail`, `webhook.order.create`, and so on.
 :::
 
 ## 2 - Create the webhook
 
-Now you will link the external caller with your pipeline by creating a webhook object. To do so, follow these steps:
+Now you will link the external caller to your pipeline by creating a webhook configuration. To do so, you have two options:
 
-1.  Navigate to LOW CODE → Documentation → Commands.
+ 1. Using the command [`webhook.put`](/docs/api/commands#webhookput-v1) 
+ 2. Using the Portal
+
+In this tutorial we will use the latter one: Creating a webhook configuration using the Web Portal.
+
+1.  Login to your PIPEFORCE portal.
+2.  Navigate to **LOW CODE → Webhooks**.
+3.  Click **ADD WEBHOOK**. A dialog should open, similar to this:
+    ![](../img/webhook-add-dialog.png)
+4.  Use these values to create a webhook configuration and click **ADD** afterwards:
+    1. EventKey: `webhook.tutorial`
+    2.  Payload type: `ignore` 
+    3.  Max. payload length: `0`
     
-2.  Search for webhook.put here and click it.
-    
-3.  In the form, set the field key to `webhook.tutorial`, and click submit. The result should look similar to this screenshot:  
-    
-    ![](../img/grafik-20210720-145538.png)
-4.  Now, a new webhook was created and linked using the event key `webhook.tutorial`. Every pipeline, which listens to this event key, will be executed when the webhook is called.
-    
-5.  Copy the webhook url for the next step.
+5.  A new entry was created in the list of webhooks. Click on it and copy the URL for the next step.
     
 
 ## 3 - Execute the webhook
 
-1.  Copy the webhook url from the result of the previous step.
+1.  Copy the webhook url with the token parameter from the result of the previous step.
     
-2.  Open your browser, paste this url and open it.
+2.  Open your browser or Postman, paste this url and execute it.
     
-3.  You should see a blank page without any error message.
+3.  After a few seconds, you should receive an email to your inbox.
     
-4.  After a few seconds, you should receive an email to your inbox.
-    
-5.  The webhook url is the url you can register in external systems to call your pipeline externally. Since this url calls your system, make sure that only you and the external system knows it.
-    
-
-:::tip
-
-*   **Edit an existing webhook**  
-    To edit a webhook, get the uuid of this webhook, and execute the command `webhook.put` again with this uuid as parameter.
-    
-*   **List all webhooks or a single one**  
-    To list all existing webhooks, execute the command `webhook.get`. To list a single webhook, use its uuid as filter.
-    
-*   **Delete a webhook**  
-    To delete a webhook, execute the command `webhook.delete`.
-
-:::
+   
+The webhook url is the url you can register in external systems to call your pipeline externally. Since this url calls your system, make sure that only you and the external system knows it.
     
 
 **Congrats, you have created your first webhook with PIPEFORCE!**
