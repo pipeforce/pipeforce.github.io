@@ -91,8 +91,8 @@ Now we are going to change the layout of your form a bit. To do so, we add a cus
     {
       "title": "Add person",
       "description": "Add a new person",
-      "schema": "property.list?filter=global/app/myapp42/object/person/v1/schema",
-      "output": "global/app/myapp42/object/person/v1/instance/%23%7Bvar.property.uuid%7D",
+      "schema": "$uri:property:global/app/myapp42/object/person/v1/schema",
+      "output": "$uri:property:global/app/myapp42/object/person/v1/instance/#{property.uuid}",
         "layout": {
           "orientation": "vertical",
           "items": [
