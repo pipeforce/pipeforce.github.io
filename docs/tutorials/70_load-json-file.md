@@ -69,7 +69,7 @@ So the question to solve in this tutorial is, how you can load an external JSON 
       - drive.read:
           path: "person.json"
       - set.body:
-          value: "#{@convert.toJson(body)}"
+          value: "#{@json.stringify(body)}"
     ```
     
 5.  RUN the pipeline, and you should see as output, the content object with meta information about the file:
