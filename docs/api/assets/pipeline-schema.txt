@@ -122,7 +122,7 @@
           },
           "app.install" : {
             "type" : "object",
-            "description" : "Installs an app into the property store. The app can be located on GitHub or is provided as zip file content in the body.",
+            "description" : "Installs an app into the property store. The app can be located on GitHub or can be provided as zip file content in the body. If app is located in a private GitHub repo, the param secret must be set or the default secret github-default-readonly must exist which will be used as fallback in case no secret is set as param here.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -133,7 +133,7 @@
               },
               "github" : {
                 "type" : "string",
-                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
               },
               "branch" : {
                 "type" : "string",
@@ -143,6 +143,11 @@
                 "type" : "boolean",
                 "description" : "Run the tests of the app after installation?",
                 "default" : "false"
+              },
+              "async" : {
+                "type" : "boolean",
+                "description" : "Run the installation async?",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -162,7 +167,11 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -240,6 +249,10 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -272,7 +285,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -285,7 +298,7 @@
             "properties" : {
               "github" : {
                 "type" : "string",
-                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
               },
               "branch" : {
                 "type" : "string",
@@ -295,6 +308,11 @@
                 "type" : "boolean",
                 "description" : "Run the tests of the app after installation?",
                 "default" : "false"
+              },
+              "async" : {
+                "type" : "boolean",
+                "description" : "Run the installation async?",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -314,7 +332,11 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -588,6 +610,39 @@
               }
             },
             "required" : [ ]
+          },
+          "browserstack" : {
+            "type" : "object",
+            "description" : "Runs a selenium test remotely in browserstack.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "capabilities" : {
+                "type" : "string",
+                "description" : "The selenium capabilities"
+              },
+              "remoteWebDriverUrl" : {
+                "type" : "string",
+                "description" : "The url of the remote selenium service"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "capabilities", "remoteWebDriverUrl" ]
           },
           "cache.clear" : {
             "type" : "object",
@@ -984,7 +1039,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -1013,7 +1068,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -1058,7 +1113,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -2938,19 +2993,15 @@
             },
             "required" : [ ]
           },
-          "function.call" : {
+          "function.delete" : {
             "type" : "object",
-            "description" : "Calls a defined custom function by its name.",
+            "description" : "Undeploys a function from the FaaS backend.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "name" : {
                 "type" : "string",
-                "description" : "The name of the function to call."
-              },
-              "args" : {
-                "type" : "string",
-                "description" : "The optional args to the function as name-value pairs."
+                "description" : "The name of the function to undeploy."
               },
               "id" : {
                 "type" : "string",
@@ -2975,27 +3026,15 @@
             },
             "required" : [ ]
           },
-          "function" : {
+          "function.get" : {
             "type" : "object",
-            "description" : "Defines a custom function inside a pipeline. Such a function can then be re-used by calling the command `function.call`.",
+            "description" : "Returns all deployed functions or a specific one.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "name" : {
                 "type" : "string",
-                "description" : "The optional name of the function. If given, the function will be registered under this name an can be re-called using the command `function.call`."
-              },
-              "args" : {
-                "type" : "string",
-                "description" : "The args to the function as name-value pairs. If this function will be re-called, these args will be default args which can be overwritten by the caller."
-              },
-              "flow" : {
-                "type" : "string",
-                "description" : "If set to true, the function will be called by the pipeline flow even if `name` parameter is set."
-              },
-              "do" : {
-                "type" : "string",
-                "description" : "The function body to be executed as PEL."
+                "description" : "The name of the function to return. If null or empty, all deployed functions will be returned."
               },
               "id" : {
                 "type" : "string",
@@ -3019,6 +3058,89 @@
               }
             },
             "required" : [ ]
+          },
+          "function.put" : {
+            "type" : "object",
+            "description" : "Deploys a new function to the FaaS backend. Expects the function code in the body or input of the command.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the function to deploy."
+              },
+              "code" : {
+                "type" : "string",
+                "description" : "The code of the function to deploy."
+              },
+              "language" : {
+                "type" : "string",
+                "description" : "The language of the function (currently only python is supported).",
+                "default" : "python"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "function.run" : {
+            "type" : "object",
+            "description" : "Executes a function given by name on the FaaS backend.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the function to run."
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "The arguments to be passed to the function. Must be serializable to JSON."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
           },
           "header.set" : {
             "type" : "object",
@@ -3275,7 +3397,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -3328,7 +3450,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -3381,7 +3503,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -3434,7 +3556,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -3487,7 +3609,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -3521,6 +3643,50 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
+          "i18n.messages" : {
+            "type" : "object",
+            "description" : "Returns the i18n messages of given app, context and locale.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "app" : {
+                "type" : "string",
+                "description" : "The app which contains the i18n messages.",
+                "default" : "common"
+              },
+              "context" : {
+                "type" : "string",
+                "description" : "The context of the i18n messages.",
+                "default" : "default"
+              },
+              "locale" : {
+                "type" : "string",
+                "description" : "The locale of the i18n message. For example: en, de, fr and so on.",
+                "default" : "en"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5245,6 +5411,88 @@
             },
             "required" : [ ]
           },
+          "macro" : {
+            "type" : "object",
+            "description" : "Defines a custom macro inside a pipeline. Such a macro can then be re-used by calling the command `macro.run`.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The optional name of the macro. If given, the macro will be registered under this name an can be re-called using the command `macro.run`."
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "The args to the macro as name-value pairs. If this macro will be re-called, these args will be default args which can be overwritten by the caller."
+              },
+              "flow" : {
+                "type" : "string",
+                "description" : "If set to true, the macro will be called by the pipeline flow even if `name` parameter is set."
+              },
+              "do" : {
+                "type" : "string",
+                "description" : "The macro body to be executed as PEL."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "macro.run" : {
+            "type" : "object",
+            "description" : "Calls a defined macro by its name.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the macro to call."
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "The optional args to the macro as name-value pairs."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "mail.dump" : {
             "type" : "object",
             "description" : "Fetches new emails from given mail inbox and uploads them into a drive folder.",
@@ -5566,17 +5814,21 @@
               },
               "queue" : {
                 "type" : "string",
-                "description" : "The queue to receive messages from. If null, the default queue will be used."
+                "description" : "The name of the queue to receive messages from. If null, the default queue name will be used."
               },
               "deleteQueue" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use parameter managed instead. Delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!",
                 "default" : "false"
               },
+              "manageQueue" : {
+                "type" : "string",
+                "description" : "Auto-manage queue. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete.",
+                "default" : "create"
+              },
               "managed" : {
                 "type" : "string",
-                "description" : "Auto-manage queue creation. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete.",
-                "default" : "create"
+                "description" : "DEPRECATED. Use param manageQueue instead."
               },
               "maxBatchSize" : {
                 "type" : "string",
@@ -7402,7 +7654,7 @@
           },
           "property.value.list" : {
             "type" : "object",
-            "description" : "Lists the values of all matching properties.",
+            "description" : "Lists only the values of all matching properties in an array.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -7413,6 +7665,10 @@
               "includeUuidField" : {
                 "type" : "string",
                 "description" : "If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter."
+              },
+              "includeKeyField" : {
+                "type" : "string",
+                "description" : "If the resulting property value is a JSON object, adds the property key at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter."
               },
               "id" : {
                 "type" : "string",
@@ -8649,7 +8905,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -8712,7 +8968,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -8745,7 +9001,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -8778,7 +9034,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -8853,7 +9109,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -8891,7 +9147,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -8929,7 +9185,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -9095,7 +9351,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               },
               "output" : {
                 "type" : "string",
@@ -9148,7 +9404,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               },
               "output" : {
                 "type" : "string",
@@ -9206,7 +9462,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               },
               "output" : {
                 "type" : "string",
@@ -9259,7 +9515,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               },
               "output" : {
                 "type" : "string",
@@ -9316,7 +9572,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               },
               "output" : {
                 "type" : "string",
@@ -9370,7 +9626,7 @@
               },
               "credentials" : {
                 "type" : "string",
-                "description" : "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+                "description" : "DEPRECATED. Use param secret instead. "
               },
               "input" : {
                 "type" : "string",

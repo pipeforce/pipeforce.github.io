@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 23/12/2022 by CommandComplianceTest -->
+<!-- Generated: 21/01/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -317,7 +317,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## app.install ``v1``
 ----------   
-Installs an app into the property store. The app can be located on GitHub or is provided as zip file content in the body.
+Installs an app into the property store. The app can be located on GitHub or can be provided as zip file content in the body. If app is located in a private GitHub repo, the param secret must be set or the default secret github-default-readonly must exist which will be used as fallback in case no secret is set as param here.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=app.install:v1)
 
@@ -329,14 +329,16 @@ Installs an app into the property store. The app can be located on GitHub or is 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `overwrite` | Boolean | false | false | What to do if app with this key already exists? If true, the existing app will be uninstalled and replaced by this new version. Otherwise, an attempt to install an existing app will cause an error.
-`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead.
+`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead.
 `branch` | String | false | null | The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given.
 `runTests` | Boolean | false | false | Run the tests of the app after installation?
+`async` | Boolean | false | true | Run the installation async?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -347,11 +349,13 @@ pipeline:
       github: <value>  
       branch: <value>  
       runTests: <value>  
+      async: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
       eval: <value>  
       credentials: <value>  
+      secret: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -359,12 +363,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.install?overwrite=<value>&github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
+http://host/api/v3/command/app.install?overwrite=<value>&github=<value>&branch=<value>&runTests=<value>&async=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.install overwrite=<value> github=<value> branch=<value> runTests=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
+pi command app.install overwrite=<value> github=<value> branch=<value> runTests=<value> async=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -399,6 +403,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -420,6 +425,7 @@ pipeline:
       onError: <value>  
       eval: <value>  
       output: <value>  
+      secret: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -427,12 +433,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.marketplace.search?sort=<value>&order=<value>&results=<value>&page=<value>&license=<value>&searchString=<value>&searchInName=<value>&searchInDesc=<value>&searchInReadme=<value>&searchInTopics=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/app.marketplace.search?sort=<value>&order=<value>&results=<value>&page=<value>&license=<value>&searchString=<value>&searchInName=<value>&searchInDesc=<value>&searchInReadme=<value>&searchInTopics=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.marketplace.search sort=<value> order=<value> results=<value> page=<value> license=<value> searchString=<value> searchInName=<value> searchInDesc=<value> searchInReadme=<value> searchInTopics=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command app.marketplace.search sort=<value> order=<value> results=<value> page=<value> license=<value> searchString=<value> searchInName=<value> searchInDesc=<value> searchInReadme=<value> searchInTopics=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -456,7 +462,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -500,14 +506,16 @@ Deprecated. Use app.install with param update:true instead. Updates the given ap
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead.
+`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead.
 `branch` | String | false | null | The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given.
 `runTests` | Boolean | false | false | Run the tests of the app after installation?
+`async` | Boolean | false | true | Run the installation async?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -517,11 +525,13 @@ pipeline:
       github: <value>  
       branch: <value>  
       runTests: <value>  
+      async: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
       eval: <value>  
       credentials: <value>  
+      secret: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -529,12 +539,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.update?github=<value>&branch=<value>&runTests=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
+http://host/api/v3/command/app.update?github=<value>&branch=<value>&runTests=<value>&async=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.update github=<value> branch=<value> runTests=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
+pi command app.update github=<value> branch=<value> runTests=<value> async=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -896,6 +906,55 @@ http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command body.filter properties=<value> removeKey=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## browserstack ``v1``
+----------   
+Runs a selenium test remotely in browserstack.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=browserstack:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`capabilities` | String | true | null | The selenium capabilities
+`remoteWebDriverUrl` | String | true | null | The url of the remote selenium service
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - browserstack:  
+      capabilities: <value>  
+      remoteWebDriverUrl: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/browserstack?capabilities=<value>&remoteWebDriverUrl=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command browserstack capabilities=<value> remoteWebDriverUrl=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1460,7 +1519,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -1508,7 +1567,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -1559,7 +1618,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -4152,11 +4211,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## function.call ``v1``
+## function.delete ``v1``
 ----------   
-Calls a defined custom function by its name.
+Undeploys a function from the FaaS backend.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=function.call:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=function.delete:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -4165,8 +4224,7 @@ Calls a defined custom function by its name.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`name` | String | false | null | The name of the function to call.
-`args` | String | false | null | The optional args to the function as name-value pairs.
+`name` | String | false | null | The name of the function to undeploy.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -4177,9 +4235,8 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - function.call:  
+  - function.delete:  
       name: <value>  
-      args: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -4192,22 +4249,22 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/function.call?name=<value>&args=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/function.delete?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command function.call name=<value> args=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command function.delete name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## function ``v1``
+## function.get ``v1``
 ----------   
-Defines a custom function inside a pipeline. Such a function can then be re-used by calling the command `function.call`.
+Returns all deployed functions or a specific one.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=function:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=function.get:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -4216,10 +4273,7 @@ Defines a custom function inside a pipeline. Such a function can then be re-used
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`name` | String | false | null | The optional name of the function. If given, the function will be registered under this name an can be re-called using the command `function.call`.
-`args` | String | false | null | The args to the function as name-value pairs. If this function will be re-called, these args will be default args which can be overwritten by the caller.
-`flow` | String | false | null | If set to true, the function will be called by the pipeline flow even if `name` parameter is set.
-`do` | String | false | null | The function body to be executed as PEL.
+`name` | String | false | null | The name of the function to return. If null or empty, all deployed functions will be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -4230,11 +4284,8 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - function:  
+  - function.get:  
       name: <value>  
-      args: <value>  
-      flow: <value>  
-      do: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -4247,12 +4298,118 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/function?name=<value>&args=<value>&flow=<value>&do=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/function.get?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command function name=<value> args=<value> flow=<value> do=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command function.get name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## function.put ``v1``
+----------   
+Deploys a new function to the FaaS backend. Expects the function code in the body or input of the command.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=function.put:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of the function to deploy.
+`code` | String | false | null | The code of the function to deploy.
+`language` | String | false | python | The language of the function (currently only python is supported).
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - function.put:  
+      name: <value>  
+      code: <value>  
+      language: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/function.put?name=<value>&code=<value>&language=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command function.put name=<value> code=<value> language=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## function.run ``v1``
+----------   
+Executes a function given by name on the FaaS backend.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=function.run:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | true | null | The name of the function to run.
+`args` | String | false | null | The arguments to be passed to the function. Must be serializable to JSON.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - function.run:  
+      name: <value>  
+      args: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/function.run?name=<value>&args=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command function.run name=<value> args=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4612,7 +4769,7 @@ Name | Type | Required | Default | Description
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -4671,7 +4828,7 @@ Name | Type | Required | Default | Description
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -4730,7 +4887,7 @@ Name | Type | Required | Default | Description
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -4789,7 +4946,7 @@ Name | Type | Required | Default | Description
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -4848,7 +5005,7 @@ Name | Type | Required | Default | Description
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -4928,6 +5085,59 @@ http://host/api/v3/command/http.response?status=<value>&headers=<value>&id=<valu
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command http.response status=<value> headers=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## i18n.messages ``v1``
+----------   
+Returns the i18n messages of given app, context and locale.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=i18n.messages:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`app` | String | false | common | The app which contains the i18n messages.
+`context` | String | false | default | The context of the i18n messages.
+`locale` | String | false | en | The locale of the i18n message. For example: en, de, fr and so on.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - i18n.messages:  
+      app: <value>  
+      context: <value>  
+      locale: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/i18n.messages?app=<value>&context=<value>&locale=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command i18n.messages app=<value> context=<value> locale=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7244,6 +7454,112 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## macro ``v1``
+----------   
+Defines a custom macro inside a pipeline. Such a macro can then be re-used by calling the command `macro.run`.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=macro:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The optional name of the macro. If given, the macro will be registered under this name an can be re-called using the command `macro.run`.
+`args` | String | false | null | The args to the macro as name-value pairs. If this macro will be re-called, these args will be default args which can be overwritten by the caller.
+`flow` | String | false | null | If set to true, the macro will be called by the pipeline flow even if `name` parameter is set.
+`do` | String | false | null | The macro body to be executed as PEL.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - macro:  
+      name: <value>  
+      args: <value>  
+      flow: <value>  
+      do: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/macro?name=<value>&args=<value>&flow=<value>&do=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command macro name=<value> args=<value> flow=<value> do=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## macro.run ``v1``
+----------   
+Calls a defined macro by its name.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=macro.run:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`name` | String | false | null | The name of the macro to call.
+`args` | String | false | null | The optional args to the macro as name-value pairs.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - macro.run:  
+      name: <value>  
+      args: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/macro.run?name=<value>&args=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command macro.run name=<value> args=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## mail.dump ``v1``
 ----------   
 Fetches new emails from given mail inbox and uploads them into a drive folder.
@@ -7651,9 +7967,10 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | true | null | The routing key pattern to listen for.
 `exchange` | String | false | null | The exchange to be used. If null, the default exchange will be used.
-`queue` | String | false | null | The queue to receive messages from. If null, the default queue will be used.
+`queue` | String | false | null | The name of the queue to receive messages from. If null, the default queue name will be used.
 `deleteQueue` | String | false | false | DEPRECATED. Use parameter managed instead. Delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!
-`managed` | String | false | create | Auto-manage queue creation. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete.
+`manageQueue` | String | false | create | Auto-manage queue. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete.
+`managed` | String | false | null | DEPRECATED. Use param manageQueue instead.
 `maxBatchSize` | String | false | null | Collects messages up to the given maxBatchSize in bytes and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. Maximum value can be 200KB (204800). If this parameter is used together with `maxBatchItems` the one which matches first is considered.
 `maxBatchItems` | String | false | null | Collects the amount of messages up to the given number of maxBatchItems and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. If this parameter is used together with `maxBatchSize` the one which matches first is considered.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -7670,6 +7987,7 @@ pipeline:
       exchange: <value>  
       queue: <value>  
       deleteQueue: <value>  
+      manageQueue: <value>  
       managed: <value>  
       maxBatchSize: <value>  
       maxBatchItems: <value>  
@@ -7684,12 +8002,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&deleteQueue=<value>&managed=<value>&maxBatchSize=<value>&maxBatchItems=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&deleteQueue=<value>&manageQueue=<value>&managed=<value>&maxBatchSize=<value>&maxBatchItems=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command message.receive key=<value> exchange=<value> queue=<value> deleteQueue=<value> managed=<value> maxBatchSize=<value> maxBatchItems=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command message.receive key=<value> exchange=<value> queue=<value> deleteQueue=<value> manageQueue=<value> managed=<value> maxBatchSize=<value> maxBatchItems=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10012,7 +10330,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## property.value.list ``v1``
 ----------   
-Lists the values of all matching properties.
+Lists only the values of all matching properties in an array.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.value.list:v1)
 
@@ -10025,6 +10343,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `pattern` | String | false | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this key. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'.
 `includeUuidField` | String | false | null | If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter.
+`includeKeyField` | String | false | null | If the resulting property value is a JSON object, adds the property key at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -10038,6 +10357,7 @@ pipeline:
   - property.value.list:  
       pattern: <value>  
       includeUuidField: <value>  
+      includeKeyField: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -10050,12 +10370,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.list?pattern=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.value.list?pattern=<value>&includeUuidField=<value>&includeKeyField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.list pattern=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.value.list pattern=<value> includeUuidField=<value> includeKeyField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11760,7 +12080,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -11816,7 +12136,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -11872,7 +12192,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -11921,7 +12241,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -11980,7 +12300,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -12040,7 +12360,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -12091,7 +12411,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -12300,7 +12620,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -12359,7 +12679,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -12419,7 +12739,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -12479,7 +12799,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -12539,7 +12859,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -12599,7 +12919,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
 
