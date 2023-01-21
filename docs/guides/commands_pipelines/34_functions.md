@@ -73,6 +73,15 @@ The the result of such a call is always a JSON in the PIPEFORCE result format, w
 
 You can then use the returned value for further processing inside your pipeline.
 
+Another option to execute a function is using the util `@function.run(name, args)`. It is similar to the command `function.run`. For example:
+
+```yaml
+pipeline:
+  - set.var:
+      name: "resultFromFunction"
+      value: "#{@function.run('hello', null)}"
+```
+
 # Script with multiple functions
 
 By default each script contains only one function of name `function`. You can also declare multiple functions inside such a script with custom names. For example:

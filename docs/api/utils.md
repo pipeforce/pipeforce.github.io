@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 21/01/2023 20:52:38 by CommandComplianceTest -->
+<!-- Generated: 21/01/2023 21:30:04 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -1109,6 +1109,30 @@ dayOffset | ``int`` | The days to be added (positive value) or subtracted (negat
 #### Example  
 ```  
 @date.beginOfDay(timestamp,dayOffset)  
+```  
+
+ 
+## `@function` 
+----------  
+Provides utility functions inside a pipeline expression in order to access functions.  
+You can access the methods declared here in the PEL using <code>@function</code>  
+
+### run(name,args)   
+Executes the FaaS function with given name and passes the given args to it.   
+
+#### Returns  
+``jsonnode`` - The result of the function in PIPEFORCE result format.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+name | ``string`` | The name of the function to run. 
+args | ``object`` | The optional args to be passed to the function or null. 
+
+
+#### Example  
+```  
+@function.run(name,args)  
 ```  
 
  
