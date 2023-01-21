@@ -1,22 +1,22 @@
-# Built-In Functions
+# Utils
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 3.0</p>
 
-Inside a [Pipeline Expression](../guides/../commands_pipelines/pel) you can access a huge library of functions, which can additionaly simplify your integration and automation tasks. Such utility functions are called **Built-In Functions**. See the [reference docs](../../api/functions) for a full list of all available functions. If you're missing a function there, please [drop a note](https://github.com/pipeforce/pipeforce.github.io/issues/new).
+Inside a [Pipeline Expression](../guides/../commands_pipelines/pel) you can access a huge library of built-in PEL utils, which can additionaly simplify your integration and automation tasks. See the [reference docs](../../api/utils) for a full list of all available utils. If you're missing a util there, please [drop a note](https://github.com/pipeforce/pipeforce.github.io/issues/new).
 
 ## Usage
 
-Such a function is always embedded inside a Pipeline Expression and has a structure like this:
+Such a util is always embedded inside a Pipeline Expression and has a structure like this:
 
 ```
-@group.function(args...)
+@util.method(args...)
 ```
 
-Whereas you need to replace `group` by the util group name, `function` by the function method name and `args` by the optional arguments to the function you would like to execute. 
+Whereas you need to replace `util` by the util name, `method` by the method name you would like to call and `args` by the optional arguments to the method you would like to execute. 
 
 ### Examples for `@date`
 
-Here is an example to return the current date using such a function without any argument:
+Here is an example to return the current date using such a util without any argument:
 
 ```
 @date.now()
@@ -62,7 +62,7 @@ GERMAN
 
 
 ## Auto-completion
-In case you're working with the Online Workbench you can get auto-completion of all [Pipeline Functions](../../api/functions.md) out-of-the-box:
+In case you're working with the Online Workbench you can get auto-completion of all [Utils](../../api/utils.md) out-of-the-box:
 
 ![](../../img/workbench-completion-utils.png)  
 

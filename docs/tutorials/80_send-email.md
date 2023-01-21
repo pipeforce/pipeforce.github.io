@@ -128,7 +128,7 @@ In order to get auto-completion for available PEL utils in the online editor, si
 
 References:
 
-[Pipeline Functions Reference](../api/functions.md)
+[Pipeline Utils Reference](../api/utils.md)
 
 ## Report an Issue
 :::tip Your help is needed!

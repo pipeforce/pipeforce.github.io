@@ -130,13 +130,13 @@ Let's see in this tutorial, how to implement this conversion task by using a pip
         age >= 18                   -> customer.isLegalAge,
         ```
         
-    7.  The fourth rule executes the pipeline util [`@date`](../api/functions#@date), in order to return the current date. Then, it writes this value to the new field `mappingDate` at top level of the output:
+    7.  The fourth rule executes the pipeline util [`@date`](../api/utils#@date), in order to return the current date. Then, it writes this value to the new field `mappingDate` at top level of the output:
         
         ```
         @date.now()                 -> mappingDate,
         ```
         
-    8.  The last rule is similar to the previous one and calls the pipeline util [`@user`](../api/functions#@user), in order to return the username of the currently logged-in user. Then, it writes the result to the new field `mappedBy` at the top level of the output:
+    8.  The last rule is similar to the previous one and calls the pipeline util [`@user`](../api/utils#@user), in order to return the username of the currently logged-in user. Then, it writes the result to the new field `mappedBy` at the top level of the output:
         
         ```
         @user.username()            -> mappedBy

@@ -176,7 +176,7 @@ Pipeline section is mandatory for execution of any application. It includes all 
              key: "formData"
              value: "#{@convert.toMap(body.payload.target.value)}"
        ```                                                                                
-       Note: To get more details regarding this feature, please see: [Convert](../../api/functions#convert)
+       Note: To get more details regarding this feature, please see: [Convert](../../api/utils#convert)
 	
 3.	Initialize the variables: Set the values of variables and update / save them e.g. 
 

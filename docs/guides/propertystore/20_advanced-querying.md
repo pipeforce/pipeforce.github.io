@@ -1057,7 +1057,7 @@ PostgreSQL offers a huge set of date and time functions and operations: https://
 
 You can use them in the  [`property.query`](../../api/commands#propertyquery-v1) command.
 
-Additionally, PIPEFORCE has many utils, which can help you to create date and time based queries. The most important functions can be found in the [@date](../../api/functions#date) util.
+Additionally, PIPEFORCE has many utils, which can help you to create date and time based queries. The most important utils can be found in the [@date](../../api/utils#date) util.
 
 Below you can find some query examples, how to use these tools with the [`property.query`](../../api/commands#propertyquery-v1) command.
 
