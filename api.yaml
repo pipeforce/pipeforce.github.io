@@ -184,7 +184,7 @@ paths:
       - name: "github"
         in: "query"
         required: false
-        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
         schema:
           type: "string"
       - name: "branch"
@@ -197,6 +197,12 @@ paths:
         in: "query"
         required: false
         description: "Run the tests of the app after installation?"
+        schema:
+          type: "boolean"
+      - name: "async"
+        in: "query"
+        required: false
+        description: "Run the installation async?"
         schema:
           type: "boolean"
       - name: "id"
@@ -226,10 +232,16 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
-      description: "Installs an app into the property store. The app can be located on GitHub or is provided as zip file content in the body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        schema:
+          type: "string"
+      description: "Installs an app into the property store. The app can be located on GitHub or can be provided as zip file content in the body. If app is located in a private GitHub repo, the param secret must be set or the default secret github-default-readonly must exist which will be used as fallback in case no secret is set as param here. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -251,7 +263,7 @@ paths:
       - name: "github"
         in: "query"
         required: false
-        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
         schema:
           type: "string"
       - name: "branch"
@@ -264,6 +276,12 @@ paths:
         in: "query"
         required: false
         description: "Run the tests of the app after installation?"
+        schema:
+          type: "boolean"
+      - name: "async"
+        in: "query"
+        required: false
+        description: "Run the installation async?"
         schema:
           type: "boolean"
       - name: "id"
@@ -293,7 +311,13 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
         schema:
           type: "string"
       tags:
@@ -389,6 +413,12 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
         schema:
           type: "string"
       description: "Searches the marketplace for apps ready to be installed. \nNote: This command is limited to max. 10 calls per minute. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -494,6 +524,12 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        schema:
+          type: "string"
       tags:
       - "Commands API"
   /api/v3/command/app.uninstall:
@@ -532,7 +568,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Uninstalls the given app. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -581,7 +617,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -592,7 +628,7 @@ paths:
       - name: "github"
         in: "query"
         required: false
-        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
         schema:
           type: "string"
       - name: "branch"
@@ -605,6 +641,12 @@ paths:
         in: "query"
         required: false
         description: "Run the tests of the app after installation?"
+        schema:
+          type: "boolean"
+      - name: "async"
+        in: "query"
+        required: false
+        description: "Run the installation async?"
         schema:
           type: "boolean"
       - name: "id"
@@ -634,7 +676,13 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
         schema:
           type: "string"
       description: "Deprecated. Use app.install with param update:true instead. Updates the given apps. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -653,7 +701,7 @@ paths:
       - name: "github"
         in: "query"
         required: false
-        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
         schema:
           type: "string"
       - name: "branch"
@@ -666,6 +714,12 @@ paths:
         in: "query"
         required: false
         description: "Run the tests of the app after installation?"
+        schema:
+          type: "boolean"
+      - name: "async"
+        in: "query"
+        required: false
+        description: "Run the installation async?"
         schema:
           type: "boolean"
       - name: "id"
@@ -695,7 +749,13 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
         schema:
           type: "string"
       tags:
@@ -1412,6 +1472,96 @@ paths:
         description: "Can only be applied, if the result is a list and contains elements with a single property each. For example: [{name: foo}, {name: bar}]. If set to true, removes the key from the property and converts the result to a simple list like: [foo, bar]. If the result is not a list or elements in the list contain more than one property, this param is ignored."
         schema:
           type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/browserstack:
+    get:
+      parameters:
+      - name: "capabilities"
+        in: "query"
+        required: true
+        description: "The selenium capabilities"
+        schema:
+          type: "string"
+      - name: "remoteWebDriverUrl"
+        in: "query"
+        required: true
+        description: "The url of the remote selenium service"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Runs a selenium test remotely in browserstack. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "capabilities"
+        in: "query"
+        required: true
+        description: "The selenium capabilities"
+        schema:
+          type: "string"
+      - name: "remoteWebDriverUrl"
+        in: "query"
+        required: true
+        description: "The url of the remote selenium service"
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -2464,7 +2614,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Deletes a container registry. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -2513,7 +2663,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -2548,7 +2698,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Lists all container registries. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -2591,7 +2741,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -2650,7 +2800,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Adds a new container registry. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -2717,7 +2867,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -7834,19 +7984,13 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/function.call:
+  /api/v3/command/function.delete:
     get:
       parameters:
       - name: "name"
         in: "query"
         required: false
-        description: "The name of the function to call."
-        schema:
-          type: "string"
-      - name: "args"
-        in: "query"
-        required: false
-        description: "The optional args to the function as name-value pairs."
+        description: "The name of the function to undeploy."
         schema:
           type: "string"
       - name: "id"
@@ -7879,7 +8023,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Calls a defined custom function by its name. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Undeploys a function from the FaaS backend. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -7895,13 +8039,7 @@ paths:
       - name: "name"
         in: "query"
         required: false
-        description: "The name of the function to call."
-        schema:
-          type: "string"
-      - name: "args"
-        in: "query"
-        required: false
-        description: "The optional args to the function as name-value pairs."
+        description: "The name of the function to undeploy."
         schema:
           type: "string"
       - name: "id"
@@ -7936,31 +8074,13 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/function:
+  /api/v3/command/function.get:
     get:
       parameters:
       - name: "name"
         in: "query"
         required: false
-        description: "The optional name of the function. If given, the function will be registered under this name an can be re-called using the command `function.call`."
-        schema:
-          type: "string"
-      - name: "args"
-        in: "query"
-        required: false
-        description: "The args to the function as name-value pairs. If this function will be re-called, these args will be default args which can be overwritten by the caller."
-        schema:
-          type: "string"
-      - name: "flow"
-        in: "query"
-        required: false
-        description: "If set to true, the function will be called by the pipeline flow even if `name` parameter is set."
-        schema:
-          type: "string"
-      - name: "do"
-        in: "query"
-        required: false
-        description: "The function body to be executed as PEL."
+        description: "The name of the function to return. If null or empty, all deployed functions will be returned."
         schema:
           type: "string"
       - name: "id"
@@ -7993,7 +8113,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Defines a custom function inside a pipeline. Such a function can then be re-used by calling the command `function.call`. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns all deployed functions or a specific one. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -8009,25 +8129,7 @@ paths:
       - name: "name"
         in: "query"
         required: false
-        description: "The optional name of the function. If given, the function will be registered under this name an can be re-called using the command `function.call`."
-        schema:
-          type: "string"
-      - name: "args"
-        in: "query"
-        required: false
-        description: "The args to the function as name-value pairs. If this function will be re-called, these args will be default args which can be overwritten by the caller."
-        schema:
-          type: "string"
-      - name: "flow"
-        in: "query"
-        required: false
-        description: "If set to true, the function will be called by the pipeline flow even if `name` parameter is set."
-        schema:
-          type: "string"
-      - name: "do"
-        in: "query"
-        required: false
-        description: "The function body to be executed as PEL."
+        description: "The name of the function to return. If null or empty, all deployed functions will be returned."
         schema:
           type: "string"
       - name: "id"
@@ -8052,6 +8154,234 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/function.put:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: false
+        description: "The name of the function to deploy."
+        schema:
+          type: "string"
+      - name: "code"
+        in: "query"
+        required: false
+        description: "The code of the function to deploy."
+        schema:
+          type: "string"
+      - name: "language"
+        in: "query"
+        required: false
+        description: "The language of the function (currently only python is supported)."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deploys a new function to the FaaS backend. Expects the function code in the body or input of the command. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: false
+        description: "The name of the function to deploy."
+        schema:
+          type: "string"
+      - name: "code"
+        in: "query"
+        required: false
+        description: "The code of the function to deploy."
+        schema:
+          type: "string"
+      - name: "language"
+        in: "query"
+        required: false
+        description: "The language of the function (currently only python is supported)."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/function.run:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the function to run."
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "The arguments to be passed to the function. Must be serializable to JSON."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Executes a function given by name on the FaaS backend. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the function to run."
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "The arguments to be passed to the function. Must be serializable to JSON."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       - name: "output"
@@ -8686,7 +9016,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Executes a DELETE HTTP call to the given url.Returns the result from the server in the message body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -8765,7 +9095,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -8836,7 +9166,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Executes a GET HTTP call to the given url.Returns the result from the server in the message body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -8915,7 +9245,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -8986,7 +9316,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Executes a PATCH HTTP call to the given url.Returns the result from the server in the message body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -9065,7 +9395,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -9136,7 +9466,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Executes a POST HTTP call to the given url.Returns the result from the server in the message body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -9215,7 +9545,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -9286,7 +9616,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Executes a PUT HTTP call to the given url.Returns the result from the server in the message body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -9365,7 +9695,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -9456,6 +9786,120 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/i18n.messages:
+    get:
+      parameters:
+      - name: "app"
+        in: "query"
+        required: false
+        description: "The app which contains the i18n messages."
+        schema:
+          type: "string"
+      - name: "context"
+        in: "query"
+        required: false
+        description: "The context of the i18n messages."
+        schema:
+          type: "string"
+      - name: "locale"
+        in: "query"
+        required: false
+        description: "The locale of the i18n message. For example: en, de, fr and so on."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns the i18n messages of given app, context and locale. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "app"
+        in: "query"
+        required: false
+        description: "The app which contains the i18n messages."
+        schema:
+          type: "string"
+      - name: "context"
+        in: "query"
+        required: false
+        description: "The context of the i18n messages."
+        schema:
+          type: "string"
+      - name: "locale"
+        in: "query"
+        required: false
+        description: "The locale of the i18n message. For example: en, de, fr and so on."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
       tags:
@@ -14134,6 +14578,234 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/macro:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: false
+        description: "The optional name of the macro. If given, the macro will be registered under this name an can be re-called using the command `macro.run`."
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "The args to the macro as name-value pairs. If this macro will be re-called, these args will be default args which can be overwritten by the caller."
+        schema:
+          type: "string"
+      - name: "flow"
+        in: "query"
+        required: false
+        description: "If set to true, the macro will be called by the pipeline flow even if `name` parameter is set."
+        schema:
+          type: "string"
+      - name: "do"
+        in: "query"
+        required: false
+        description: "The macro body to be executed as PEL."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Defines a custom macro inside a pipeline. Such a macro can then be re-used by calling the command `macro.run`. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: false
+        description: "The optional name of the macro. If given, the macro will be registered under this name an can be re-called using the command `macro.run`."
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "The args to the macro as name-value pairs. If this macro will be re-called, these args will be default args which can be overwritten by the caller."
+        schema:
+          type: "string"
+      - name: "flow"
+        in: "query"
+        required: false
+        description: "If set to true, the macro will be called by the pipeline flow even if `name` parameter is set."
+        schema:
+          type: "string"
+      - name: "do"
+        in: "query"
+        required: false
+        description: "The macro body to be executed as PEL."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/macro.run:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: false
+        description: "The name of the macro to call."
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "The optional args to the macro as name-value pairs."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Calls a defined macro by its name. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: false
+        description: "The name of the macro to call."
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "The optional args to the macro as name-value pairs."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/mail.dump:
     get:
       parameters:
@@ -14986,7 +15658,7 @@ paths:
       - name: "queue"
         in: "query"
         required: false
-        description: "The queue to receive messages from. If null, the default queue will be used."
+        description: "The name of the queue to receive messages from. If null, the default queue name will be used."
         schema:
           type: "string"
       - name: "deleteQueue"
@@ -14995,10 +15667,16 @@ paths:
         description: "DEPRECATED. Use parameter managed instead. Delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!"
         schema:
           type: "string"
+      - name: "manageQueue"
+        in: "query"
+        required: false
+        description: "Auto-manage queue. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete."
+        schema:
+          type: "string"
       - name: "managed"
         in: "query"
         required: false
-        description: "Auto-manage queue creation. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete."
+        description: "DEPRECATED. Use param manageQueue instead."
         schema:
           type: "string"
       - name: "maxBatchSize"
@@ -15065,7 +15743,7 @@ paths:
       - name: "queue"
         in: "query"
         required: false
-        description: "The queue to receive messages from. If null, the default queue will be used."
+        description: "The name of the queue to receive messages from. If null, the default queue name will be used."
         schema:
           type: "string"
       - name: "deleteQueue"
@@ -15074,10 +15752,16 @@ paths:
         description: "DEPRECATED. Use parameter managed instead. Delete the queue if this receive listener got removed or changed? Note: If this value is set to false, you have to track and cleanup queues manually, those are no longer in use!"
         schema:
           type: "string"
+      - name: "manageQueue"
+        in: "query"
+        required: false
+        description: "Auto-manage queue. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete."
+        schema:
+          type: "string"
       - name: "managed"
         in: "query"
         required: false
-        description: "Auto-manage queue creation. Possible values are: `false` = Queue must be created and deleted manually. `create` = Queue will be created if not exists (default). `delete` = Queue will be deleted automatically if this command get removed or changed. `create,delete` = Combines create and delete."
+        description: "DEPRECATED. Use param manageQueue instead."
         schema:
           type: "string"
       - name: "maxBatchSize"
@@ -20041,6 +20725,12 @@ paths:
         description: "If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter."
         schema:
           type: "string"
+      - name: "includeKeyField"
+        in: "query"
+        required: false
+        description: "If the resulting property value is a JSON object, adds the property key at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -20071,7 +20761,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Lists the values of all matching properties. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Lists only the values of all matching properties in an array. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -20094,6 +20784,12 @@ paths:
         in: "query"
         required: false
         description: "If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter."
+        schema:
+          type: "string"
+      - name: "includeKeyField"
+        in: "query"
+        required: false
+        description: "If the resulting property value is a JSON object, adds the property key at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter."
         schema:
           type: "string"
       - name: "id"
@@ -23398,7 +24094,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Returns the logs of a service job in the cluster. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -23447,7 +24143,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -23530,7 +24226,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Starts a new service job in the cluster. The job runs async. Use service.job.status and service.job.logs to check the result of the job. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -23621,7 +24317,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -23662,7 +24358,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Returns the status of a service job in the cluster. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -23711,7 +24407,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -23752,7 +24448,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Stops a service job in the cluster even if it is not finished yet. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -23801,7 +24497,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -23902,7 +24598,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Starts a new microservice in the cluster. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -24011,7 +24707,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -24058,7 +24754,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Returns the status info of the given PIPEFORCE managed service. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -24113,7 +24809,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -24160,7 +24856,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Stops a microservice from the cluster. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -24215,7 +24911,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       tags:
@@ -24598,7 +25294,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -24677,7 +25373,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -24748,7 +25444,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -24827,7 +25523,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -24904,7 +25600,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -24989,7 +25685,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -25060,7 +25756,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -25139,7 +25835,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -25216,7 +25912,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -25301,7 +25997,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "output"
@@ -25372,7 +26068,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "input"
@@ -25451,7 +26147,7 @@ paths:
       - name: "credentials"
         in: "query"
         required: false
-        description: "Refers to the name of a stored credentials secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       - name: "input"
