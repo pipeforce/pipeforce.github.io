@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 21/01/2023 20:34:46 by CommandComplianceTest -->
+<!-- Generated: 21/01/2023 20:52:38 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -1347,7 +1347,6 @@ You can access the functions declared here in the PEL using <code>@instance</cod
 
 ### env(name)   
 Returns the value of the environment variable with given name.
-<p>
 Note that access to environment variables containing one of these substrings (case-insensitive) in the name
 will be accessibly only by systemuser:
 <ul>
