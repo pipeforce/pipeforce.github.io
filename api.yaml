@@ -8176,7 +8176,7 @@ paths:
       - name: "code"
         in: "query"
         required: false
-        description: "The code of the function to deploy."
+        description: "The code of the function to deploy. Can also be a custom uri starting with $uri:... . In this case the function code will be loaded from this uri and then deployed."
         schema:
           type: "string"
       - name: "language"
@@ -8237,7 +8237,7 @@ paths:
       - name: "code"
         in: "query"
         required: false
-        description: "The code of the function to deploy."
+        description: "The code of the function to deploy. Can also be a custom uri starting with $uri:... . In this case the function code will be loaded from this uri and then deployed."
         schema:
           type: "string"
       - name: "language"
@@ -8290,7 +8290,7 @@ paths:
       - name: "args"
         in: "query"
         required: false
-        description: "The arguments to be passed to the function. Must be serializable to JSON."
+        description: "The arguments to be passed to the function. Must be serializable to JSON. Can also be a custom uri starting with $uri: pointing to a document which is a JSON document or can be converted to a JSON. "
         schema:
           type: "string"
       - name: "id"
@@ -8351,7 +8351,7 @@ paths:
       - name: "args"
         in: "query"
         required: false
-        description: "The arguments to be passed to the function. Must be serializable to JSON."
+        description: "The arguments to be passed to the function. Must be serializable to JSON. Can also be a custom uri starting with $uri: pointing to a document which is a JSON document or can be converted to a JSON. "
         schema:
           type: "string"
       - name: "id"
