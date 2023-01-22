@@ -61,11 +61,11 @@ pipeline:
 
 ## Execute a function
 
-Once a function has been deployed, it can be called from inside any pipeline using the command  `function.call` as this example shows:
+Once a function has been deployed, it can be called from inside any pipeline using the command  `function.run` as this example shows:
 
 ```yaml
 pipeline:
-  - function.call:
+  - function.run:
       name: "yourapp.helloworld"
       args: {"name": "Max"}
 ```
@@ -74,7 +74,7 @@ The `args` parameter is optional. If given, it must be a JSON document or an obj
 
 ```yaml
 pipeline:
-  - function.call:
+  - function.run:
       name: "yourapp.helloworld"
       args: "$uri:property:global/app/myapp/data/myjsonargs"
 ```
@@ -148,7 +148,7 @@ In order to call the specific function `hello`, you can use this command call:
 
 ```yaml
 pipeline:
-  - function.call:
+  - function.run:
       name: "myapp.utils:hello"
 ```
 
