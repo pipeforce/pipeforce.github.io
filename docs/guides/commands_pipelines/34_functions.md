@@ -79,7 +79,7 @@ pipeline:
       args: "$uri:property:global/app/myapp/data/myjsonargs"
 ```
 
-The the result of such a call is always a JSON in the PIPEFORCE result format, which looks like this:
+The result of such a call is always a JSON in the PIPEFORCE result format, which looks like this:
 
 ```json
 {
@@ -107,13 +107,26 @@ pipeline:
       value: "#{@function.run('hello')}"
 ```
 
-Or with args:
+Here is an example to pass all vars as args to the function, all at once:
 
 ```yaml
+vars:
+  text: "Hello World!"
 pipeline:
-  - set.var:
-      name: "resultFromFunction"
-      value: "#{@function.run('hello', vars.someArgsData)}"
+  - set.body:
+      value: "#{@function.run('hello', vars)}"
+```
+
+You can then pick the var value from inside the function:
+
+```python
+def function(text):
+    return "This var value was passed in: " + text
+```
+
+This will put this text to the body:
+````
+This var value was passed in: Hello World!
 ```
 
 # Script with multiple functions
