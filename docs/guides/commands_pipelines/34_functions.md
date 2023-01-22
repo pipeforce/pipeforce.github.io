@@ -22,13 +22,20 @@ The first step is to declare the function. The easiest way is to create a new pr
 The value of this property must be a valid Python script with a single function with name `function` in it:
 
 ```python
-def function(args):
-  return "Hello World: " + args['name']
+def function(name):
+  return "Hello World: " + name
+```
+
+In case you would like to get the whole JSON into the function, use the variable args `**kwargs`:
+
+```python
+def function(**kwargs):
+  return "Hello World: " + kwargs['name']
 ```
 
 After you have saved this property in the property editor, it automatically gets deployed to the FaaS backend using the app name and the script name as the module name of the function to be called later. In this example this would be `yourapp.helloworld`. This is also true in case you edit or rename the property. If you delete the property, it will also be undeployed from the FaaS backend automatically for you.
 
-It's important that the function name is `function` in this approach and it has exactly one single argument. The name of the argument doesn't matter. This argument will be a dict and contains the parameters passed to this function from outside. In case no parameters are passed to the function from external, this argument is set to `None`.
+It's important that the function name is `function` in this approach. The name of the arguments must match the field names of the JSON to be passed to this function. 
 
 Alternatively, you can use the command `function.put` in order to declare and deploy a Python function more flexible. See this example:
 
@@ -37,11 +44,20 @@ pipeline:
   - function.put:
       name: "foo.helloworld"
       code: |
-        def function(args):
-          return "Hello World: " + args['name']
+        def function(name):
+          return "Hello World: " + name
 ```
 
 Using this approach, you can define any function module name you like.
+
+For parameter `code` you can also set a custom uri pointing to the script to be deployed. Example:
+
+```yaml
+pipeline:
+  - function.put:
+      name: "foo.helloworld"
+      code: "$uri:property:global/app/myapp/function/hello"
+```
 
 ## Execute a function
 
@@ -52,6 +68,15 @@ pipeline:
   - function.call:
       name: "yourapp.helloworld"
       args: {"name": "Max"}
+```
+
+The `args` parameter is optional. If given, it must be a JSON document or an object which can be converted to JSON. This parameter can also be a custom uri pointing to the value to be passed as argument. Example:
+
+```yaml
+pipeline:
+  - function.call:
+      name: "yourapp.helloworld"
+      args: "$uri:property:global/app/myapp/data/myjsonargs"
 ```
 
 The the result of such a call is always a JSON in the PIPEFORCE result format, which looks like this:
@@ -79,7 +104,16 @@ Another option to execute a function is using the util `@function.run(name, args
 pipeline:
   - set.var:
       name: "resultFromFunction"
-      value: "#{@function.run('hello', null)}"
+      value: "#{@function.run('hello')}"
+```
+
+Or with args:
+
+```yaml
+pipeline:
+  - set.var:
+      name: "resultFromFunction"
+      value: "#{@function.run('hello', vars.someArgsData)}"
 ```
 
 # Script with multiple functions

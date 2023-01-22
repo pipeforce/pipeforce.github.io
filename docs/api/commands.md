@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 21/01/2023 by CommandComplianceTest -->
+<!-- Generated: 22/01/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -4323,7 +4323,7 @@ Deploys a new function to the FaaS backend. Expects the function code in the bod
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | false | null | The name of the function to deploy.
-`code` | String | false | null | The code of the function to deploy.
+`code` | String | false | null | The code of the function to deploy. Can also be a custom uri starting with $uri:... . In this case the function code will be loaded from this uri and then deployed.
 `language` | String | false | python | The language of the function (currently only python is supported).
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -4376,7 +4376,7 @@ Executes a function given by name on the FaaS backend.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name of the function to run.
-`args` | String | false | null | The arguments to be passed to the function. Must be serializable to JSON.
+`args` | String | false | null | The arguments to be passed to the function. Must be serializable to JSON. Can also be a custom uri starting with $uri: pointing to a document which is a JSON document or can be converted to a JSON. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
