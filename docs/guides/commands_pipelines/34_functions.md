@@ -2,9 +2,9 @@
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0 (beta)</p>
 
-PIPEFORCE has an advanced mechanism to execute Python functions as part of a pipeline execution. This way you can use the full power of this popular scripting language inside your pipelines.
+PIPEFORCE has an advanced mechanism to execute [Python](https://www.python.org/doc/) functions as part of a pipeline execution. This way you can use the full power of this popular scripting language inside your pipelines.
 
-The Python functions will be executed by a FaaS service inside PIPEFORCE so the developer is not in charge of setting up and maintain a Python runtime environment. This approach is also known as Function as a Service (FaaS): You just send a Python function to the service and receive the calculated result. You do not care about any interpreter, image deployment or scalability issues.
+The [Python functions]((https://www.w3schools.com/python/python_functions.asp)) will be executed by a FaaS service inside PIPEFORCE so the developer is not in charge of setting up and maintain a Python runtime environment. This approach is also known as Function as a Service (FaaS): You just send a Python function to the service and receive the calculated result. You do not care about any interpreter, image deployment or scalability issues.
 
 This approach opens a lot of new possibilities, such as for example:
 
@@ -14,6 +14,11 @@ This approach opens a lot of new possibilities, such as for example:
 - And many more...
 
 Since the FaaS services are stateless inside PIPEFORCE, it is possible to scale the execution of the Python scripts automatically and nearly unlimited. Since it is possible to run multiple of such FaaS execution services. Only the resources available to your cluster set the limit.
+
+Here are some documentation references to Python:
+
+- [Official Python Documentation](https://www.python.org/doc/)
+- [Intro to Python Functions](https://www.w3schools.com/python/python_functions.asp)
 
 ## Declare a function
 
