@@ -19,10 +19,29 @@ automatically provided inside your microservice and can be used to connect to th
 
 - `PIPEFORCE_MESSAGING_HOST` = The cluster-internal hostname of the messaging service.
 - `PIPEFORCE_MESSAGING_PORT` = The cluster-internal port of the messaging service.
-- `PIPEFORCE_MESSAGING_USERNAME` = The default messaging username for connecting internally.
-- `PIPEFORCE_MESSAGING_PASSWORD` = The default messaging password for connecting internally.
 
-How to setup your client in order to connect, depends on your programming language the RabbitMQ client.
+Additionally to these variables, you need to set the `PIPEFORCE_MESSAGING_USERNAME` and `PIPEFORCE_MESSAGING_PASSWORD` along with your `service.start` command using the custom uri prefix `$uri:secret`:
+
+1. Create a new secret in your secret store with name `pipeforce-messaging-username` and type `secret-text` and set the RabbitMQ username you would like to use to connect.
+2. 1. Create a new secret in your secret store with name `pipeforce-messaging-password` and type `secret-text` and set the RabbitMQ password you would like to use to connect.
+
+Start your container using these env variables pointing to the secret store. Example:
+
+```yaml
+pipeline:
+    - service.start:
+        name: "myservice"
+        image: "some/image"
+        env:
+            PIPEFORCE_MESSAGING_USERNAME: "$uri:secret:pipeforce-messaging-username"
+            PIPEFORCE_MESSAGING_PASSWORD: "$uri:secret:pipeforce-messaging-password"
+```
+
+This way, the senstive values will be passed to your container without the requirement to store them into code or refer from external systems.
+
+Iin case you're using one of the custom service templates from PIPEFORCE, messaging will be automatically setup for you using the ENV variables mentioned before.
+
+In case you're using your own framework, how to setup your client in order to connect, depends on your programming language the RabbitMQ client.
 See the official documentation: https://www.rabbitmq.com/devtools.html
 
 The next step is to create the queues required by your service. See the Default Queue Naming guide below.
