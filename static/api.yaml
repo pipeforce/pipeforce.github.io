@@ -24622,7 +24622,7 @@ paths:
       - name: "env"
         in: "query"
         required: false
-        description: "Map of environment variables to be applied to the service container."
+        description: "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName'."
         schema:
           type: "string"
       - name: "command"
@@ -24731,7 +24731,7 @@ paths:
       - name: "env"
         in: "query"
         required: false
-        description: "Map of environment variables to be applied to the service container."
+        description: "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName'."
         schema:
           type: "string"
       - name: "command"

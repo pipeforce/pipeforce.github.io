@@ -9101,7 +9101,7 @@
               },
               "env" : {
                 "type" : "string",
-                "description" : "Map of environment variables to be applied to the service container."
+                "description" : "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName'."
               },
               "command" : {
                 "type" : "string",

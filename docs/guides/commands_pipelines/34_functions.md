@@ -125,7 +125,7 @@ def function(text):
 ```
 
 This will put this text to the body:
-````
+```
 This var value was passed in: Hello World!
 ```
 

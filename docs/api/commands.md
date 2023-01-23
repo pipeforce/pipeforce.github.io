@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 22/01/2023 by CommandComplianceTest -->
+<!-- Generated: 23/01/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12338,7 +12338,7 @@ Name | Type | Required | Default | Description
 `port` | Integer | false | null | The port the running service accepts requests.
 `ingress` | Boolean | false | null | Expose the given port of the service to the internet? The service is then reachable via HTTPS using the url https://[serviceName]-[namespace].pipeforce.net.
 `imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
-`env` | String | false | null | Map of environment variables to be applied to the service container.
+`env` | String | false | null | Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName'.
 `command` | String | false | null | The list of command to execute on the service container.
 `args` | String | false | null | The list of args to be passed on to the service container.
 `replicas` | String | false | 1 | The number of stateless replicas (= scaling instances) of this service to be started in parallel in the cluster by default.
