@@ -67,6 +67,47 @@ Step 2-4 are typically automated by using a CI/CD tool like Jenkins, CircleCI, T
 Furthermore, we suggest managing your source code using GitHub and connect your CI/CD tool, so it starts to build, test
 and deploy automatically every time, a new push to GitHub happened (or on other triggers like merging or tagging).
 
+### Implicit Environment Variables
+
+Every time a service is started using the `service.start` command, also some implicit variables will be automatically passed to this container and can be accessed via the environment variables inside the container.
+
+These implicit variables are:
+
+- `PIPEFORCE_DOMAIN` = The domain name used for the PIPEFORCE instance. For example `customer.pipeforce.net`.
+- `PIPEFORCE_HUB_URL` = The cluster internal url of the hub service.
+- `PIPEFORCE_NAMESPACE` = The namespace of the instance this services runs inside.
+- `PIPEFORCE_SERVICE` = The name of this custom service inside PIPEFORCE. 
+- `PIPEFORCE_MESSAGING_HOST` = The messaging host to connect to in order to register a RabbitMQ listener.
+- `PIPEFORCE_MESSAGING_PORT` = The messaging host to connect to in order to register a RabbitMQ listener.
+- `PIPEFORCE_MESSAGING_DEFAULT_DLQ` = The default dead letter queue used for RabbitMQ messaging.
+- `PIPEFORCE_MESSAGING_DEFAULT_TOPIC` = The default messaging topic used for RabbitMQ messaging.
+
+Additionally to these default environment variables, you can also set your custom ones by using the parameter `env` on the command `service.start`:
+
+```yaml
+pipeline:
+  - service.start:
+      name: myservice
+      image: myimage
+      env:
+        MY_ENV: "myCustomValue"
+```
+
+#### Passing secrets as ENV
+
+In case you would like to set secret values to environment variables, you should create such secrets in the secret store inside PIPEFORCE and refer to them, using the custom uri prefix `$uri:secret:`. For example:
+
+```yaml
+pipeline:
+  - service.start:
+      name: myservice
+      image: myimage
+      env:
+        MY_SECRET_ENV: "$uri:secret-mysecret"
+```
+
+On startup of the service, the secret will be read from the secret store and passed to the container. This way it is not required to store the secret in code.
+
 ## Logging a microservice
 
 Everything you log into the standard output of your microservice container can be later viewed by using 

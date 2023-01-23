@@ -188,7 +188,7 @@ In order to list all deployed functions, you can use the command `functions.get`
 
 ```yaml
 pipeline:
-  - function.get:
+  - function.get
 ````
 
 This will return a list of all functions with additional metadata. For example:
