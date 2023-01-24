@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 23/01/2023 16:34:30 by CommandComplianceTest -->
+<!-- Generated: 24/01/2023 18:34:47 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -646,6 +646,32 @@ attribute | ``string`` | The attribute name to search for.
 #### Example  
 ```  
 @data.has(data,attribute)  
+```  
+
+### emptyObject()   
+Returns a new empty object (map).   
+
+#### Returns  
+``map`` - A new, empty object (map).  
+
+
+
+#### Example  
+```  
+@data.emptyObject()  
+```  
+
+### emptyList()   
+Returns a new empty list.   
+
+#### Returns  
+``list`` - A new, empty list.  
+
+
+
+#### Example  
+```  
+@data.emptyList()  
 ```  
 
  

@@ -321,20 +321,22 @@ Let's see an example first:
 ```yaml
 body: {
         "firstName": "Max  ",
-        "lastName": " Smith ",
+        "lastName": "smith",
         "age": 48,
         "birthDate": "01/12/1977",
+        "hobbies": ["hiking", "biking"],
         "type": "customer"
     }
 
 pipeline:
     - data.mapping:
         rules: |
-            firstName   -> person.firstName,
-            lastName    -> person.surname,
-            age         -> person.age,
-            birthDate   -> person.dateOfBirth,
-            type        -> person.type
+            body.firstName   -> person.firstName,
+            body.lastName    -> person.surname,
+            body.age         -> person.age,
+            body.birthDate   -> person.dateOfBirth,
+            body.hobbies     -> person.hobbies,
+            body.type        -> person.type
 ```
 
 This example sets a JSON document in the body, then it applies the given mapping rules and writes by default the result as a new JSON in the body (replacing the initial JSON).
@@ -347,17 +349,24 @@ The left part of the mapping rule (left side of the arrow) is the input path (wh
 inputPath -> outputPath
 ```
 
-By default all mapping rules in inputPath are relative to the value given by `input` parameter. The same is true for `outputPath`, these rules are relative to the `output` parameter. If such a parameter is not given, the rule is by default relative to the body (so no prefix `body.` necessary).
+All mapping rules in `inputPath` are relative to the value given by `input` parameter. By default, this value is the current pipeline message. 
+
+The `output` parameter points to the location, where the mapping results should be written to. This is by default the body of the pipeline message.
 
 The final mapping result in the body will look like this:
 ```json
 {
-	"person": {
-		"firstName": "Max  ",
-		"surname": " Smith ",
-		"age": 48,
-		"dateOfBirth": "01/12/1977"
-	}
+    "person": {
+        "firstName": "Max  ",
+        "surname": "smith",
+        "age": 48,
+        "dateOfBirth": "01/12/1977",
+        "hobbies": [
+            "hiking",
+            "biking"
+        ],
+        "type": "customer"
+    }
 }
 ```
 As you can see, the applied mapping rules resulted in these changes:
@@ -369,58 +378,75 @@ As you can see, the applied mapping rules resulted in these changes:
  - The field `type` was only nested inside `person`.
 
 
-Now lets assume we would like to only change the structure of the JSON we would like to change the values in parallel to the mapping. You can do so by applying the Pipeline Expression on the input path. For example:
+Now lets assume we would like to change the values in parallel to the mapping. You can do so by applying Pipeline Expressions on the input path. For example:
 
 ```yaml
 body: {
         "firstName": "Max  ",
-        "lastName": " Smith ",
+        "lastName": "smith",
         "age": 48,
         "birthDate": "01/12/1977",
+        "hobbies": ["hiking", "biking"],
         "type": "customer"
     }
 
 pipeline:
     - data.mapping:
         rules: |
-            @text.trim(firstName)   -> person.firstName,
-            @text.trim(lastName)    -> person.surname,
-            age                     -> person.age,
-            birthDate               -> person.dateOfBirth,
-            @text.upperCase(type)   -> person.type,
-            age > 18                -> person.adult
+            @text.trim(body.firstName)           -> person.firstName,
+            @text.firstCharUpper(body.lastName)  -> person.surname,
+            body.age                             -> person.age,
+            body.birthDate                       -> person.dateOfBirth,
+            body.hobbies[0]                      -> person.primaryHobby,
+            @text.upperCase(body.type)           -> person.type,
+            body.age > 18                        -> person.adult,
+            "male"                               -> person.gender,
+            @data.emptyList()                    -> person.myList,
+            @data.emptyObject()                  -> person.myObject
 ```
 
 The result JSON of this pipeline after execution will look like this:
 
 ```json
 {
-	"person": {
-		"firstName": "Max",
-		"surname": "Smith",
-		"age": 48,
-		"dateOfBirth": "01/12/1977",
-		"type": "CUSTOMER",
-        "adult": true
-	}
+    "person": {
+        "firstName": "Max",
+        "surname": "Smith",
+        "age": 48,
+        "dateOfBirth": "01/12/1977",
+        "primaryHobby": "hiking",
+        "type": "CUSTOMER",
+        "adult": true,
+        "gender": "male",
+        "myList": [],
+        "myObject": {}
+    }
 }
 ```
 
-As you can see, additionally, the fields `firstName` and `surname` contain now trimmed values (whitspaces removed), the field `type` was converted to upper case and a new field `person.adult` was added with the result of the expression `age > 18`.
+As you can see, the nested mapping below `person` was kept. Additionally: 
+- the field `firstName` was trimmed from whitespaces
+- the field `surname` contain now the first char upper case 
+- the first item of the array `hobbies` was selected and set to new element `person.primaryHobby`.
+- the field `type` was converted to upper case and a new field `person.adult` was added with the result of the expression `age > 18` 
+- the constant string `male` was set to the new field `person.gender`
+- a new, empty list was added in new field `person.myList`
+- a new, empty object was added in new field `person.myObject`.
 
-By default the mapping result is gets written to the body. If you would like it to a variable instead, you can use the `output` parameter:
+By default the mapping result gets written to the body. If you would like write to a variable instead, you can use the `output` parameter:
 
-```
+```yaml
 vars:
     mappingResult: null
 pipeline:
     - data.mapping:
         rules: |
             ...
-        output: "#{vars.mappingResult"}
+        output: "#{vars.mappingResult}"
 ```
 
 Make sure that the output target was created before since this helps for better readability.
+
 
 #### Mapping with command data.list.iterate
 
