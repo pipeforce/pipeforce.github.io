@@ -347,6 +347,8 @@ The left part of the mapping rule (left side of the arrow) is the input path (wh
 inputPath -> outputPath
 ```
 
+By default all mapping rules in inputPath are relative to the value given by `input` parameter. The same is true for `outputPath`, these rules are relative to the `output` parameter. If such a parameter is not given, the rule is by default relative to the body (so no prefix `body.` necessary).
+
 The final mapping result in the body will look like this:
 ```json
 {
