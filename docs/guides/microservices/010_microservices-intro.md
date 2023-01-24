@@ -103,7 +103,7 @@ pipeline:
       name: myservice
       image: myimage
       env:
-        MY_SECRET_ENV: "$uri:secret-mysecret"
+        MY_SECRET_ENV: "$uri:secret:mysecret"
 ```
 
 On startup of the service, the secret will be read from the secret store and passed to the container. This way it is not required to store the secret in code.

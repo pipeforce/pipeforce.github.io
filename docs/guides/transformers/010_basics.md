@@ -312,9 +312,117 @@ This is a common pattern also mentioned by the [enterprise integration pattern c
  - [`data.list.iterate`](../../api/commands#datalistiterate-v1) command 
 :::
 
-#### Mapping using data.list.iterate
+#### Mapping with data.mapping
 
-You can use the command `data.list.iterate` for data mapping.
+The command `data.mapping` can be used to apply simple data mappings inline in a pipeline. Optionally also the Pipeline Expression Language can be used for additional data transformations.
+
+Let's see an example first:
+
+```yaml
+body: {
+        "firstName": "Max  ",
+        "lastName": " Smith ",
+        "age": 48,
+        "birthDate": "01/12/1977",
+        "type": "customer"
+    }
+
+pipeline:
+    - data.mapping:
+        rules: |
+            firstName   -> person.firstName,
+            lastName    -> person.surname,
+            age         -> person.age,
+            birthDate   -> person.dateOfBirth,
+            type        -> person.type
+```
+
+This example sets a JSON document in the body, then it applies the given mapping rules and writes by default the result as a new JSON in the body (replacing the initial JSON).
+
+As you can see, every mapping rule is placed in a separate line, each ending with a comma (except the last one).
+
+The left part of the mapping rule (left side of the arrow) is the input path (where to read the data from). The right part of the mapping rule (right side of the arrow) is the output path (where to write the data to):
+
+``` 
+inputPath -> outputPath
+```
+
+The final mapping result in the body will look like this:
+```json
+{
+	"person": {
+		"firstName": "Max  ",
+		"surname": " Smith ",
+		"age": 48,
+		"dateOfBirth": "01/12/1977"
+	}
+}
+```
+As you can see, the applied mapping rules resulted in these changes:
+
+ - The input field `firstName` was nested inside the new element `person`. The field name `firstName` was not changed.
+ - The input field `lastName` was also mapped to the nested element `person`. Additionally it was renamed from `firstName` to `surname`.
+ - The field `age` was nested inside `person` without any change.
+ - And the input field `birthDate` was nested inside `person` and renamed to `dateOfBirth`.
+ - The field `type` was only nested inside `person`.
+
+
+Now lets assume we would like to only change the structure of the JSON we would like to change the values in parallel to the mapping. You can do so by applying the Pipeline Expression on the input path. For example:
+
+```yaml
+body: {
+        "firstName": "Max  ",
+        "lastName": " Smith ",
+        "age": 48,
+        "birthDate": "01/12/1977",
+        "type": "customer"
+    }
+
+pipeline:
+    - data.mapping:
+        rules: |
+            @text.trim(firstName)   -> person.firstName,
+            @text.trim(lastName)    -> person.surname,
+            age                     -> person.age,
+            birthDate               -> person.dateOfBirth,
+            @text.upperCase(type)   -> person.type,
+            age > 18                -> person.adult
+```
+
+The result JSON of this pipeline after execution will look like this:
+
+```json
+{
+	"person": {
+		"firstName": "Max",
+		"surname": "Smith",
+		"age": 48,
+		"dateOfBirth": "01/12/1977",
+		"type": "CUSTOMER",
+        "adult": true
+	}
+}
+```
+
+As you can see, additionally, the fields `firstName` and `surname` contain now trimmed values (whitspaces removed), the field `type` was converted to upper case and a new field `person.adult` was added with the result of the expression `age > 18`.
+
+By default the mapping result is gets written to the body. If you would like it to a variable instead, you can use the `output` parameter:
+
+```
+vars:
+    mappingResult: null
+pipeline:
+    - data.mapping:
+        rules: |
+            ...
+        output: "#{vars.mappingResult"}
+```
+
+Make sure that the output target was created before since this helps for better readability.
+
+#### Mapping with command data.list.iterate
+
+You can also use the command `data.list.iterate` for data mapping. Examples see above.
 ### Sorter
 
 A sorter sorts a given data list based on some condition. This is also known as the **Resequencer pattern**.
