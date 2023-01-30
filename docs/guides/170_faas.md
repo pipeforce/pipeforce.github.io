@@ -8,9 +8,9 @@ sidebar_label: 17. Python Functions
 
 PIPEFORCE has an advanced mechanism to execute [Python](https://www.python.org/doc/) functions as part of a pipeline execution. This way you can use the full power of this popular scripting language inside your pipelines.
 
-The [Python functions]((https://www.w3schools.com/python/python_functions.asp)) will be executed by a FaaS service inside PIPEFORCE so the developer is not in charge of setting up and maintain a Python runtime environment. This approach is also known as Function as a Service (FaaS): You just send a Python function to the service and receive the calculated result. You do not care about any interpreter, image deployment or scalability issues.
+The [Python functions]((https://www.w3schools.com/python/python_functions.asp)) will be executed by a backend service inside PIPEFORCE so the developer is not in charge of setting up and maintain a Python runtime environment. This approach is also known as Function as a Service (FaaS) or Lambda: You just send a Python function to the service and receive the calculated result. You do not care about any interpreter, image deployment, scalability issues or any other task related to the execution side.
 
-This approach opens a lot of new possibilities, such as for example:
+This approach opens a lot of new possibilities to pipelines and your applications, such as for example:
 
 - Create a set of libraries of functions for your custom needs and re-use them from anywhere inside your app pipelines.
 - Write advanced tests using a Python testing framework.
@@ -344,6 +344,34 @@ pipeline:
 
 In case the sufix is missing, the default function name `function` will be expected to exist inside the code.
 
+## Calling Commands and Pipelines
+
+In some cases it is necessary to callback PIPEFORCE hub and execute commands or pipelines from inside a Python function. For example if you would like to lookup some data from the property store, trigger automations or send messages to name just a few use cases.
+
+This can be done, by simply defining the named argument `pipeforce` in your function signature. In case such an argument exists, the FaaS service automatically injects a new instance of `PipeforceClient` with it so it can be used inside your function. This client is already setup with 
+current authentication and tracing features so no need for you to configure this.
+
+In this example we will use the auto-injected `pipeforce` client in order to load a property value from the property store:
+
+```python
+def hello(pipeforce: PipeforceClient):
+  return pipeforce.run_command("property.value.get", {"key": "global/app/hello/data/text"})
+```
+
+The `PipeforceClient` injected here is part of the official [Python SDK library for PIPEFORCE](https://pypi.org/project/pipeforce-sdk-python/). 
+
+See [here](/sdk-python/index.html) for developer documentation of the SDK.
+
+You can call this function from inside your pipeline as usual:
+
+```yaml
+pipeline:
+  - function.run:
+      name: myapp.myfunction:hello
+```
+
+Note: We did not specify any args in the `function.run` command since the `pipeforce` argument will be automatically set by the FaaS service.
+
 ## Show deployed functions
 
 ### Return all functions
@@ -451,17 +479,29 @@ def on_undeploy():
     return "Script is about to be undeployed..."
 ```
 
-## Install Packages
+## Install Packages 
 
-You can also install dependencies for your Python scripts from the [PyPi](https://pypi.org/) package index. To do so, use the `service.util` module inside the `on_deploy` hook. For example:
+### `on_requirements`
+
+You can also install dependencies for your Python scripts from the [PyPi](https://pypi.org/) package index. To do so, declare a function `on_requirements()` without any args and return a list of requirements to be installed. For example:
 
 ```python
-def on_deploy():
-  pipeforce.faas.util.package_install('jinja')
+def on_requirements():
+  return [
+    "pytz==2022.7.1",
+    "requests"
+  ]
 ```
+
+On deployment, this function will be auto-executed and each requirement from the list will be installed using `pip`. 
 
 :::tip Note
 If you install a package, this package will be available for all scripts deployed to the same FaaS instance.
+:::
+
+:::caution 
+Since the `on_requirements()` function is called **before** any requirement is installed, it is not possible to
+use such a requirement from the list inside this function.
 :::
 
 ## Undeploy a function
