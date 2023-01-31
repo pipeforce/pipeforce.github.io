@@ -24334,7 +24334,7 @@ paths:
       - name: "env"
         in: "query"
         required: false
-        description: "Environment variables to be applied to the job service container."
+        description: "Environment variables to be applied to the job service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'."
         schema:
           type: "string"
       - name: "command"
@@ -24425,7 +24425,7 @@ paths:
       - name: "env"
         in: "query"
         required: false
-        description: "Environment variables to be applied to the job service container."
+        description: "Environment variables to be applied to the job service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'."
         schema:
           type: "string"
       - name: "command"
@@ -24700,7 +24700,7 @@ paths:
       - name: "env"
         in: "query"
         required: false
-        description: "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName'."
+        description: "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'."
         schema:
           type: "string"
       - name: "command"
@@ -24809,7 +24809,7 @@ paths:
       - name: "env"
         in: "query"
         required: false
-        description: "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName'."
+        description: "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'."
         schema:
           type: "string"
       - name: "command"
@@ -27199,10 +27199,10 @@ paths:
         description: "A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs."
         schema:
           type: "string"
-      - name: "includeMethods"
+      - name: "functionIncludePattern"
         in: "query"
         required: false
-        description: "A PE which defines the test methods to be included. The selected method name is provided as variable: methodName."
+        description: "A PE which defines the test functions to be included. The selected method name is provided as variable: functionName."
         schema:
           type: "string"
       - name: "reportFormat"
@@ -27211,10 +27211,10 @@ paths:
         description: "The format of the resulting test report. Possible values: json (default), junit"
         schema:
           type: "string"
-      - name: "excludeMethods"
+      - name: "functionExcludePattern"
         in: "query"
         required: false
-        description: "A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored."
+        description: "A PE which defines the test functions to be excluded from the list of included test functions. The function method name is provided as variable: functionName. By default all test functions, ending in IT will be ignored."
         schema:
           type: "string"
       - name: "id"
@@ -27260,10 +27260,10 @@ paths:
         description: "A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs."
         schema:
           type: "string"
-      - name: "includeMethods"
+      - name: "functionIncludePattern"
         in: "query"
         required: false
-        description: "A PE which defines the test methods to be included. The selected method name is provided as variable: methodName."
+        description: "A PE which defines the test functions to be included. The selected method name is provided as variable: functionName."
         schema:
           type: "string"
       - name: "reportFormat"
@@ -27272,10 +27272,10 @@ paths:
         description: "The format of the resulting test report. Possible values: json (default), junit"
         schema:
           type: "string"
-      - name: "excludeMethods"
+      - name: "functionExcludePattern"
         in: "query"
         required: false
-        description: "A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored."
+        description: "A PE which defines the test functions to be excluded from the list of included test functions. The function method name is provided as variable: functionName. By default all test functions, ending in IT will be ignored."
         schema:
           type: "string"
       - name: "id"
