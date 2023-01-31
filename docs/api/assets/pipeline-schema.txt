@@ -8993,7 +8993,7 @@
               },
               "env" : {
                 "type" : "string",
-                "description" : "Environment variables to be applied to the job service container."
+                "description" : "Environment variables to be applied to the job service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'."
               },
               "command" : {
                 "type" : "string",
@@ -9130,7 +9130,7 @@
               },
               "env" : {
                 "type" : "string",
-                "description" : "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName'."
+                "description" : "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'."
               },
               "command" : {
                 "type" : "string",
@@ -10023,22 +10023,22 @@
               "locations" : {
                 "type" : "string",
                 "description" : "A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs.",
-                "default" : "global/app/*/test/*, global/app/*/script/*"
+                "default" : "global/app/*/function/**"
               },
-              "includeMethods" : {
+              "functionIncludePattern" : {
                 "type" : "string",
-                "description" : "A PE which defines the test methods to be included. The selected method name is provided as variable: methodName.",
-                "default" : "methodName.startsWith('test')"
+                "description" : "A PE which defines the test functions to be included. The selected method name is provided as variable: functionName.",
+                "default" : "functionName.startsWith('test_')"
               },
               "reportFormat" : {
                 "type" : "string",
                 "description" : "The format of the resulting test report. Possible values: json (default), junit",
                 "default" : "json"
               },
-              "excludeMethods" : {
+              "functionExcludePattern" : {
                 "type" : "string",
-                "description" : "A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored.",
-                "default" : "methodName.endsWith('IT')"
+                "description" : "A PE which defines the test functions to be excluded from the list of included test functions. The function method name is provided as variable: functionName. By default all test functions, ending in IT will be ignored.",
+                "default" : "functionName.endsWith('IT')"
               },
               "id" : {
                 "type" : "string",

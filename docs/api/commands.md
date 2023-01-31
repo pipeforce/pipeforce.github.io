@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 30/01/2023 by CommandComplianceTest -->
+<!-- Generated: 31/01/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12222,7 +12222,7 @@ Name | Type | Required | Default | Description
 `image` | String | false | null | The repo path of the image to be deployed. In case the image name starts with prefix 'pipeforce-registry/' the image will be loaded from the default PIPEFORCE registry for this namespace.
 `imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
 `imagePullPolicy` | String | false | Always | The policy how to handle non existing image. Can be one of: Always (pull image always from registry, to get latest), IfNotPresent (pull image from registry if not present), Never (pull image never from registry).
-`env` | String | false | null | Environment variables to be applied to the job service container.
+`env` | String | false | null | Environment variables to be applied to the job service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'.
 `command` | String | false | null | The list of command to execute on the service job container.
 `args` | String | false | null | The list of args to be passed on to the service job container.
 `replace` | String | false | false | If true, an existing job with same name will be deleted before this new one is created. If false, an exception is thrown in case a job with same name already exists.
@@ -12385,7 +12385,7 @@ Name | Type | Required | Default | Description
 `port` | Integer | false | null | The port the running service accepts requests.
 `ingress` | Boolean | false | null | Expose the given port of the service to the internet? The service is then reachable via HTTPS using the url https://[serviceName]-[namespace].pipeforce.net.
 `imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
-`env` | String | false | null | Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName'.
+`env` | String | false | null | Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'.
 `command` | String | false | null | The list of command to execute on the service container.
 `args` | String | false | null | The list of args to be passed on to the service container.
 `replicas` | String | false | 1 | The number of stateless replicas (= scaling instances) of this service to be started in parallel in the cluster by default.
@@ -13481,10 +13481,10 @@ Runs all test scripts defined by given pattern.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`locations` | String | false | global/app/*/test/*, global/app/*/script/* | A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs.
-`includeMethods` | String | false | methodName.startsWith('test') | A PE which defines the test methods to be included. The selected method name is provided as variable: methodName.
+`locations` | String | false | global/app/*/function/** | A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs.
+`functionIncludePattern` | String | false | functionName.startsWith('test_') | A PE which defines the test functions to be included. The selected method name is provided as variable: functionName.
 `reportFormat` | String | false | json | The format of the resulting test report. Possible values: json (default), junit
-`excludeMethods` | String | false | methodName.endsWith('IT') | A PE which defines the test methods to be excluded. The selected method name is provided as variable: methodName. By default all integration tests, ending in IT will be ignored.
+`functionExcludePattern` | String | false | functionName.endsWith('IT') | A PE which defines the test functions to be excluded from the list of included test functions. The function method name is provided as variable: functionName. By default all test functions, ending in IT will be ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -13496,9 +13496,9 @@ Name | Type | Required | Default | Description
 pipeline:  
   - test.run:  
       locations: <value>  
-      includeMethods: <value>  
+      functionIncludePattern: <value>  
       reportFormat: <value>  
-      excludeMethods: <value>  
+      functionExcludePattern: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -13510,12 +13510,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/test.run?locations=<value>&includeMethods=<value>&reportFormat=<value>&excludeMethods=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/test.run?locations=<value>&functionIncludePattern=<value>&reportFormat=<value>&functionExcludePattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command test.run locations=<value> includeMethods=<value> reportFormat=<value> excludeMethods=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command test.run locations=<value> functionIncludePattern=<value> reportFormat=<value> functionExcludePattern=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

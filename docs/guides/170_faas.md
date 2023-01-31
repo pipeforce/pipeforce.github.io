@@ -360,7 +360,7 @@ def hello(pipeforce: PipeforceClient):
 
 The `PipeforceClient` injected here is part of the official [Python SDK library for PIPEFORCE](https://pypi.org/project/pipeforce-sdk-python/). 
 
-See [here](/sdk-python/index.html) for developer documentation of the SDK.
+See <a href="/sdk-python/index.html" target="_blank">here</a> for the developer API documentation of the SDK.
 
 You can call this function from inside your pipeline as usual:
 

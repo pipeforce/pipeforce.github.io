@@ -6,36 +6,31 @@ In any system, testing workflows and integrations is a very complex task because
 
 PIPEFORCE has many toolings and best practises to simplify testing.
 
-## Testing JavaScript
+## Testing Functions (since 9.0.0)
 
-You can test your JavaScript scripts located inside `global/app/youapp/script` by creating a function starting with name `test`. Inside this method you can define your test asserts. In case such a test assert has been failed, throw an exception. 
-
-:::note Best Practise
-It's good practise to embed the test method directly inside the origin JavaScript source under test. This makes it easier to test and debug using your local development environment as well as to run the test remote.
-:::
+You can test your function by creating another function starting with name `test_`. Inside this function you can define your test asserts. In case such a test assert has been failed, throw an exception. 
 
 Example:
 
-```javascript
-function helloWorld() {
+```python
+def  helloworld():
+    return "Hello World!"
 
-    return "Hello World!";
-}
-
-function testHelloWorld() {
+def test_helloworld():
 
     // Your test goes here...
 
-    var result = helloWorld();
-    if(result != "Hello World!") {
-        throw "Expected 'Hello World!' but was: " + result;
-    }
-}
+    result = helloWorld()
+    if result != "Hello World!"
+        raise Exception("Expected 'Hello World!' but was: " + result)
+  
 ```
 
-## Testing Pipelines
+When you call the command `test.run`, it will automatically pick up all functions starting with `test_` and execute them. More details about `test.run` see below.
 
-In order to test pipelines, it is best practise to create a JavaScript inside the `global/app/yourapp/test` folder which has the same name as the pipeline but ends with `.test.pi.js`:
+## Testing Pipelines (deprecated, will be dropped in 9.0)
+
+You can also use functions in order to test pipelines, it is best practise to create a JavaScript inside the `global/app/yourapp/test` folder which has the same name as the pipeline but ends with `.test.pi.js`:
 
  - `myapp`
    - `pipeline`
@@ -259,7 +254,7 @@ When executing via CLI or command, the result will always be a test run report i
 
 ### Online Test Console
 
-You can run all of your remote tests also online using the Test Console. To do so, login to PIPEFORCE with your developer account and then in the `LOW CODE` section click on `Test Console` and then `Run Tests`. The test result is finally shown as a test report like this example shows:
+You can run all of your remote tests also online using the **Tests** view. To do so, login to PIPEFORCE with your developer account and then in the `LOW CODE` section click on `Tests` and then `Run Tests`. The test result is finally shown as a test report like this example shows:
 
 ![](../../img/test-console.png)
 
