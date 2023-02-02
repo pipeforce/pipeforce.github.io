@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 01/02/2023 by CommandComplianceTest -->
+<!-- Generated: 02/02/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -926,6 +926,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `maxTokens` | Integer | false | 500 | The maximum number of tokens to return in the response.
 `secret` | String | false | bot-apitoken | The name of the secret which contains the token to connect to the bot backend. If not given as parameter will lookup in the secret store using the default name.
+`engine` | String | false | null | The backend Bot implementation and model to be used. If not given, the default engine will be used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -940,6 +941,7 @@ pipeline:
   - bot.prompt:  
       maxTokens: <value>  
       secret: <value>  
+      engine: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -953,12 +955,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/bot.prompt?maxTokens=<value>&secret=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/bot.prompt?maxTokens=<value>&secret=<value>&engine=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command bot.prompt maxTokens=<value> secret=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command bot.prompt maxTokens=<value> secret=<value> engine=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1311,7 +1313,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## call ``v1``
 ----------   
-Calls a script and returns with the result in the body.
+Calls a pipeline script and returns with the result in the body. Note: Since version 9.0, JavaScript calls are no longer supported.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=call:v1)
 
@@ -11116,7 +11118,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## script.run ``v1``
 ----------   
-Executes a given script at server side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, you cannot change it in the script.
+Removed. This command is not longer supported. Consider to use function.run instead.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=script.run:v1)
 
@@ -11127,9 +11129,6 @@ Executes a given script at server side and sets the return value of the script i
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`script` | String | false | null | The script to be executed.
-`path` | String | false | null | The path to the script to be loaded Currently only the protocol property: is supported which points to a property in the property store and loads its value as script.
-`language` | String | false | js | The script language to be used. Possible values: js, groovy.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11141,9 +11140,6 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - script.run:  
-      script: <value>  
-      path: <value>  
-      language: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11156,12 +11152,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/script.run?script=<value>&path=<value>&language=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/script.run?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command script.run script=<value> path=<value> language=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command script.run id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

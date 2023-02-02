@@ -627,6 +627,10 @@
                 "description" : "The name of the secret which contains the token to connect to the bot backend. If not given as parameter will lookup in the secret store using the default name.",
                 "default" : "bot-apitoken"
               },
+              "engine" : {
+                "type" : "string",
+                "description" : "The backend Bot implementation and model to be used. If not given, the default engine will be used."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -890,7 +894,7 @@
           },
           "call" : {
             "type" : "object",
-            "description" : "Calls a script and returns with the result in the body.",
+            "description" : "Calls a pipeline script and returns with the result in the body. Note: Since version 9.0, JavaScript calls are no longer supported.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -8181,23 +8185,10 @@
           },
           "script.run" : {
             "type" : "object",
-            "description" : "Executes a given script at server side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, you cannot change it in the script.",
+            "description" : "Removed. This command is not longer supported. Consider to use function.run instead.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
-              "script" : {
-                "type" : "string",
-                "description" : "The script to be executed."
-              },
-              "path" : {
-                "type" : "string",
-                "description" : "The path to the script to be loaded Currently only the protocol property: is supported which points to a property in the property store and loads its value as script."
-              },
-              "language" : {
-                "type" : "string",
-                "description" : "The script language to be used. Possible values: js, groovy.",
-                "default" : "js"
-              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."

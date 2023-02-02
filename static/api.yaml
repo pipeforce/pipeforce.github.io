@@ -1513,6 +1513,12 @@ paths:
         description: "The name of the secret which contains the token to connect to the bot backend. If not given as parameter will lookup in the secret store using the default name."
         schema:
           type: "string"
+      - name: "engine"
+        in: "query"
+        required: false
+        description: "The backend Bot implementation and model to be used. If not given, the default engine will be used."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -1572,6 +1578,12 @@ paths:
         in: "query"
         required: false
         description: "The name of the secret which contains the token to connect to the bot backend. If not given as parameter will lookup in the secret store using the default name."
+        schema:
+          type: "string"
+      - name: "engine"
+        in: "query"
+        required: false
+        description: "The backend Bot implementation and model to be used. If not given, the default engine will be used."
         schema:
           type: "string"
       - name: "id"
@@ -2287,7 +2299,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Calls a script and returns with the result in the body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Calls a pipeline script and returns with the result in the body. Note: Since version 9.0, JavaScript calls are no longer supported. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -22141,24 +22153,6 @@ paths:
   /api/v3/command/script.run:
     get:
       parameters:
-      - name: "script"
-        in: "query"
-        required: false
-        description: "The script to be executed."
-        schema:
-          type: "string"
-      - name: "path"
-        in: "query"
-        required: false
-        description: "The path to the script to be loaded Currently only the protocol property: is supported which points to a property in the property store and loads its value as script."
-        schema:
-          type: "string"
-      - name: "language"
-        in: "query"
-        required: false
-        description: "The script language to be used. Possible values: js, groovy."
-        schema:
-          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -22189,7 +22183,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Executes a given script at server side and sets the return value of the script in the output in order to be further processed inside the pipeline. Note: The script must define a function called <code>command()</code>. Optionally, the implicit object <code>pi</code> can be used to access the current message <code>pi.message</code> or the logger <code>pi.log</code>. The <code>pi.message</code> is immutable. This means, you cannot change it in the script. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Removed. This command is not longer supported. Consider to use function.run instead. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -22202,24 +22196,6 @@ paths:
                 - type: "object"
     post:
       parameters:
-      - name: "script"
-        in: "query"
-        required: false
-        description: "The script to be executed."
-        schema:
-          type: "string"
-      - name: "path"
-        in: "query"
-        required: false
-        description: "The path to the script to be loaded Currently only the protocol property: is supported which points to a property in the property store and loads its value as script."
-        schema:
-          type: "string"
-      - name: "language"
-        in: "query"
-        required: false
-        description: "The script language to be used. Possible values: js, groovy."
-        schema:
-          type: "string"
       - name: "id"
         in: "query"
         required: false

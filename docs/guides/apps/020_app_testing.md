@@ -6,7 +6,9 @@ In any system, testing workflows and integrations is a very complex task because
 
 PIPEFORCE has many toolings and best practises to simplify testing.
 
-## Testing Functions (since 9.0.0)
+## Testing Functions 
+
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0</p>
 
 You can test your function by creating another function starting with name `test_`. Inside this function you can define your test asserts. In case such a test assert has been failed, throw an exception. 
 
@@ -27,6 +29,61 @@ def test_helloworld():
 ```
 
 When you call the command `test.run`, it will automatically pick up all functions starting with `test_` and execute them. More details about `test.run` see below.
+
+## Automated UI Testing
+
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0</p>
+
+Using Functions, you can automate the testing of Web interfaces using a remote Selenium service.
+
+PIPEFORCE has built-in support for the UI testing service [BrowserStack](https://www.browserstack.com/).
+
+In order to use this service, you have to create a (paid) BrowserStack account first.
+
+Then login to the PIPEFORCE portal and create a new secret `test-browserstack-username` of type `secret-text` and paste your `BROWSERSTACK_USERNAME` as value (you can find it in your BrowserStack account).
+
+Create another secret with name `test-browserstack-access-key` and of type `secret-text` and paste your `BROWSERSTACK_ACCESS_KEY` as value (you can find it in your BrowserStack account as well).
+
+Now, you can write functions with BrowserStack tests. Here is an example:
+
+```python
+
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from pipeforce_sdk import BrowserStackTest, PipeforceClient
+
+
+def test_portal_login(pipeforce: PipeforceClient):
+
+    bs = BrowserStackTest(pipeforce)
+    driver: WebDriver = bs.driver
+
+    driver.get(pipeforce.config.PIPEFORCE_URL)
+    WebDriverWait(driver, 10).until(EC.title_contains(pipeforce.config.PIPEFORCE_NAMESPACE))
+
+    driver.quit()
+
+```
+
+Note that the `selenium` and `pipeforce_sdk` packages are already part of the FaaS backend. So no need for you to install them via `on_requirements`.
+
+In this example test function you can see that at first a `BrowserStackTest` class is created. This encapsulates all login and setup steps for you.
+
+Then the Selenium driver is retrieved and a the current portal URL is loaded.
+
+After some wait it is checked, whether the loaded page contains the PIPEFORCE namespace as title.
+
+Finally, the driver is stopped.
+
+After you have saved your script in the property store, it will be automatically deployed to the FaaS backend.
+
+Then you can run the test using the `Test` section in the portal or by using the `test.run` command (see above).
+
+After the test run, you can see the result also in your [BrowserStack Dashboard](https://automate.browserstack.com/dashboard/).
+
+For more details about what and how you can test using Selenium, see the [Official Online Documentation](https://www.selenium.dev/documentation/webdriver/).
 
 ## Testing Pipelines (deprecated, will be dropped in 9.0)
 
