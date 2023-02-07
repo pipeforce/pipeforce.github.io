@@ -22,18 +22,18 @@ Each property has multiple attributes (the envelope data). The most important on
 
 | Attribute     | Description 
 | ---           | ---         
-| `key`         | The unique, absolute key path of the property. This value can change over time, for example, if a property was moved to another virtual location. <br/><br/>Example value: `/pipeforce/enterprise/global/app/myapp/data/hello`| 
-| `value`       | This attribute contains the payload of the property as string. <br/><br/>Example value: `{\"hello\": \"world\"}`|
-| `uuid`        | A unqiue identificator of the property. Differently to `key`, once created, this **will never change**.  <br/><br/>Example value: `333a38e7-9188-4135-b87b-3d890f676445`|  
+| `path`         | The unique, absolute path of the property. This value can change over time, for example, if a property was moved to another virtual location. <br/><br/>Example value: `/pipeforce/enterprise/global/app/myapp/data/hello`. <br/><br/> Note: Since version 9.0 this attribute was renamed from `key` to `path`. For backwards compatibility, both attributes will be provided, but `key` is deprecated and will be removed in one of the next releases.| 
+| `value`       | This attribute contains the payload of the property serialized as string. <br/><br/>Example value: `{\"hello\": \"world\"}`. <br/><br/>Note: If you need to store a huge amount of binary data, consider to use [property attachments](/docs/guides/propertystore/attachments) instead.|
+| `uuid`        | A unqiue identificator of the property. Differently to `path`, once created, this **will never change**.  <br/><br/>Example value: `333a38e7-9188-4135-b87b-3d890f676445`|  
 | `type`        | This attribute contains the mime type of the value. If this attribute is ```null```, it is expected that the mime type of the value is of the default type: `text/plain`. <br/><br/>Example value: `application/json`
 | `created`      | A unix epoch timestamp in millis when this property was created. <br/><br/>Example value: `1613397114448`
 | `updated`     | A unix epoch timestamp in millis when this property was updated last or `null` in case it was never updated after creation. <br/><br/>Example value: `null`
 | `timeToLive`  | The time to live (ttl) in minutes of this property since creation. If the time to live has been expired, the property is eligable to be deleted. Usually one of the next cleanup jobs will then delete this property. There is no guarantee that the property is deleted exactly after this time has expired. If the value of **timeToLive** is `0` or `null` (default), the property will never be deleted. <br/><br/>Example value: `5`
 | `locked`       | A boolean value indicating whether this property has a lock assigned. In case a lock is assigned, the property can only be altered by the user or group, this lock is exclusive to. See section [Property Locking](/docs/guides/propertystore/property_locks) for more details.
 | `trashed`       | A boolean value indicating whether this property has been moved to the trash bin. See section [Trash Bin](/docs/guides/propertystore/trash_bin) for more details.
-### Property Key
+### Property Path
 
-Every property has a unique **key**. Such a property key is structured in an **hierarchical way** and has this base structure:
+Every property has a unique **path**. Such a property path is structured in an **hierarchical way** and has this base structure:
 
 ```
 /pipeforce/<namespace>/<localPath>
@@ -43,17 +43,17 @@ For example:
 /pipeforce/mynamespace/global/app/myapp/config/app
 ```
 
-Every property belongs to a certain namespace. If such a key starts with a slash `/` at the beginning, it is interpreted as absolute. Meaning, it must start with `/pipeforce` followed by the namespace, this property belongs to. Properties are always stored with their absolute key in the property store.
+Every property belongs to a certain namespace. If such a path starts with a slash `/` at the beginning, it is interpreted as absolute. Meaning, it must start with `/pipeforce` followed by the namespace, this property belongs to. Properties are always stored with their absolute paths in the property store.
 
-At runtime, property keys can be defined and interpreted relatively. Here is an example of an relative key of a property:
+At runtime, property paths can be defined and interpreted relatively. Here is an example of an relative path of a property:
 
 ```bash
 global/app/myapp/config/app
 ```
 
-Relative property keys do not start with a slash. They do not contain information about the current namespace. This information is automatically added when a property is loaded or stored.
+Relative property paths do not start with a slash. They do not contain information about the current namespace. This information is automatically added when a property is loaded or stored.
 
-:::tip Why property key?
+:::tip Why property path?
 
  - It defines the **unqiue path** of a property in a tree structure. 
  - It makes it **easier to query** a nested subset of properties "recursively" using path patterns.
@@ -63,27 +63,27 @@ Relative property keys do not start with a slash. They do not contain informatio
 
 :::
 
-### Property Key Pattern
+### Property Path Pattern
 
-Since the key of a property is similar to a path in a tree, it is possible to use path matching techniques in order to easily find and load a nsted subset of properties "recursively" from the store. By default, PIPEFORCE uses the so called "ant-style" path matcher. This matcher uses the following rules, applied to a key:
+Since the path of a property is similar to a path in a file tree, it is possible to use path matching techniques in order to easily find and load a nested subset of properties "recursively" from the store. By default, PIPEFORCE uses the so called "ant-style" path matcher. This matcher uses the following rules, applied to a path:
 
 
- - The double asterisk `**` matches any character in the key at given position.
- - The single asterisk `*` matches zero or more charachters inside a "directory" of the key (up to the next slash `/`).
+ - The double asterisk `**` matches any character in the path at given position.
+ - The single asterisk `*` matches zero or more charachters inside a "directory" of the path (up to the next slash `/`).
 
-The asterisk `*` is often also called **wildcard**. A property key containing wildcards are called a **key pattern** or **path pattern**.
+The asterisk `*` is often also called **wildcard**. A property path containing wildcards are called a **path pattern**.
 
 **Example 1**
 ```
 global/app/myapp/**
 ```
-This key pattern will select all properties having a key starting with `global/app/myapp` at **any sublevel**. So it will match these keys:
+This path pattern will select all properties having a path starting with `global/app/myapp` at **any sublevel**. So it will match these paths:
 ```
 global/app/myapp/config/app
 global/app/myapp/pipeline/mypipeline
 global/app/myapp/sub1/sub2/sub3/sub4/sub5/sub6/file
 ```
-But it won't mach these keys:
+But it won't mach these paths:
 ```
 global/app/ontherapp/config/app
 global/something
@@ -93,13 +93,13 @@ tmp/data
 ```
 global/app/myapp/*
 ```
-This key pattern will select all properties having a key starting with `global/app/myapp` inside **this level** (meaning inside the "directory" `myapp`) but **not** at any sublevel. So it will match these keys:
+This path pattern will select all properties having a path starting with `global/app/myapp` inside **this level** (meaning inside the "directory" `myapp`) but **not** at any sublevel. So it will match these paths:
 ```
 global/app/myapp/file1
 global/app/myapp/file2
 global/app/myapp/another
 ```
-But it won't match these keys:
+But it won't match these paths:
 ```
 global/app/myapp/config/app
 global/app/ontherapp/config/app
@@ -112,13 +112,13 @@ It is also possible to combine multiple wildcards inside a pattern.
 ```
 global/app/*/data/**
 ```
-This key pattern will match any key starting with prefix `global/app`, followed by any app name (without any slash), followed by `/data/`, followed by any further charachters at any level. It will match these keys:
+This path pattern will match any path starting with prefix `global/app`, followed by any app name (without any slash), followed by `/data/`, followed by any further charachters at any level. It will match these paths:
 ```
 global/app/myapp/data/user
 global/app/ontherapp/data/user
 global/app/third/data/folder/file
 ```
-But it won't match these keys:
+But it won't match these paths:
 ```
 global/app/myapp/config/app
 tmp/data
@@ -128,12 +128,12 @@ tmp/data
 ```
 *
 ```
-This pattern would match any relative key at top level, but not any sub-level. So it will match these keys:
+This pattern would match any relative path at top level, but not any sub-level. So it will match these paths:
 ```
 resourceA
 resourceB
 ```
-But it won't match these keys:
+But it won't match these paths:
 ```
 folder/file1
 folder/folder2/file2
@@ -142,7 +142,7 @@ folder/folder2/file2
 ```
 **
 ```
-This pattern will match anything at any level. So it will match these keys:
+This pattern will match anything at any level. So it will match these paths:
 
 ```
 resourceA
@@ -150,7 +150,7 @@ resourceB
 folder/file1
 folder/folder2/file2
 ```
-There is no key, this pattern will not match.
+There is no path, this pattern will not match.
 
 :::warning
 Since the catch-all pattern `**` (without any additional path information) will match anything, it should be used very rarely. It can cause huge performance impacts. Because of this reason, the catch-all is not everywhere allowed. So think twice before using it.
@@ -215,18 +215,18 @@ To create a new property in the property store, you need to define a property sc
 ```yaml
 pipeline:
   - property.schema.put:
-      key: "global/app/myapp/data/mydata"
+      path: "global/app/myapp/data/mydata"
       type: "application/json"
 ```
 
-This schema defines the base envelope data for the new property like its `key`, `uuid` and `type`. After the schema has been created, the property payload can be added and edited.
+This schema defines the base envelope data for the new property like its `path`, `uuid` and `type`. After the schema has been created, the property payload can be added and edited.
 
 To simplify these steps, you can create the schema and add the payload value in one single step:
 
 ```yaml
 pipeline:
   - property.schema.put:
-      key: "global/app/myapp/data/mydata"
+      path: "global/app/myapp/data/mydata"
       type: "application/json"
       value: {"hello": "world"}
 ```
@@ -236,11 +236,11 @@ Whenever you create a new a property, an event with key `property.created` is fi
 pipeline:
   - event.listen:
       key: "property.created"
-      filter: "#{body.payload.target.key.contains('global/app/myapp/data/mydata')}"
+      filter: "#{body.payload.target.path.contains('global/app/myapp/data/mydata')}"
 
   # Do something here
 ```
-This persisted pipeline gets automatically executed whever a new property with a key containing `global/app/myapp/data/mydata` has been created.
+This persisted pipeline gets automatically executed whever a new property with a path containing `global/app/myapp/data/mydata` has been created.
 
 ## Update a Property
 
@@ -249,7 +249,7 @@ To change the **value** of the property, you can use the command [`property.put`
 ```yaml
 pipeline:
  - property.put: 
-     key: "global/app/myapp/data/mydata"
+     path: "global/app/myapp/data/mydata"
      value: {"new": "value"}
 ```
 
@@ -258,16 +258,16 @@ In order to change the envelope data (attributes) of a property, you need to use
 ```yaml
 pipeline:
  - property.schema.put: 
-     key: "global/app/myapp/data/mydata"
+     path: "global/app/myapp/data/mydata"
      timeToLive: 5
 ```
 
-If you would like to change the key of an existing property, you can use the [`property.move`](../api/commands#propertymove-v1) command:
+If you would like to change the path of an existing property, you can use the [`property.move`](../api/commands#propertymove-v1) command:
 
 ```yaml
 pipeline:
  - property.move: 
-     key: "global/app/myapp/data/mydata"
+     path: "global/app/myapp/data/mydata"
      to: "global/app/myapp/data/newlocation"
 ```
 
@@ -285,14 +285,14 @@ Whenever you update a property value or one of its other attributes, an event wi
 pipeline:
   - event.listen:
       key: "property.updated"
-      filter: "#{body.payload.origin.key.contains('global/app/myapp/data/mydata')}"
+      filter: "#{body.payload.origin.path.contains('global/app/myapp/data/mydata')}"
 
   # Do something here
 ```
 
 ### Property moved event
 
-Whenever you move a property by changing its origin key, an event with key `property.moved` is fired with the origin key property stored in `origin` of the event object and the final key of the property in `target`. This way you can listen in your pipelines for property movements. See the [reference documentation](../api/events#propertymoved) for details. Here is an example how to listen to such an event in a **persisted** pipeline:
+Whenever you move a property by changing its origin path, an event with key `property.moved` is fired with the origin path of the property stored in `origin` of the event object and the final path of the property in `target`. This way you can listen in your pipelines for property movements. See the [reference documentation](../api/events#propertymoved) for details. Here is an example how to listen to such an event in a **persisted** pipeline:
 ```yaml
 pipeline:
   - event.listen:
@@ -307,7 +307,7 @@ In order to delete a property from the property store, you can use the command `
 ```yaml
 pipeline:
  - property.schema.delete:
-     key: "global/app/myapp/data/mydata"
+     path: "global/app/myapp/data/mydata"
 ```
 
 :::warning
@@ -329,7 +329,7 @@ Whenever you delete a property, an event with key `property.deleted` is fired wi
 pipeline:
   - event.listen:
       key: "property.deleted"
-      filter: "#{body.payload.origin.key.contains('global/app/myapp/data/mydata')}"
+      filter: "#{body.payload.origin.path.contains('global/app/myapp/data/mydata')}"
 
   # Do something here
 ```
@@ -350,7 +350,7 @@ This command will return a result similar to the result shown below, which descr
 
 ```json
 {
-  "key": "/pipeforce/enterprise/global/app/myapp/pipeline/helloworld",
+  "path": "/pipeforce/enterprise/global/app/myapp/pipeline/helloworld",
   "uuid": "529a38e7-9188-4135-b87b-3d890f6764f3",
   "value": "pipeline:\n  - log:        \n      message: \"Hello World\"",
   "defaultValue": null,
@@ -360,7 +360,7 @@ This command will return a result similar to the result shown below, which descr
   "timeToLive": null,
 }
 ```
-You can also use a key pattern in order to load multiple properties matching this key pattern. This example will load all properties inside the `pipeline` folder:
+You can also use a path pattern in order to load multiple properties matching this path pattern. This example will load all properties inside the `pipeline` folder:
 ```yaml
 pipeline:
   - property.list:
@@ -370,7 +370,7 @@ This will return "recursively" all properties below the path `global/app/myapp/`
 ```
 [
   {
-    "key": "...",
+    "path": "...",
     "uuid": "...",
     "value": "...",
     "defaultValue": null,
@@ -380,7 +380,7 @@ This will return "recursively" all properties below the path `global/app/myapp/`
     "timeToLive": null,
   },
   {
-    "key": "...",
+    "path": "...",
     "uuid": "...",
     "value": "...",
     "defaultValue": null,
@@ -399,7 +399,7 @@ In case you would like to load only the value (payload) of a property but not it
 ```yaml
 pipeline:
   - property.value.get:
-      key: "global/app/myapp/pipeline/helloworld"
+      path: "global/app/myapp/pipeline/helloworld"
 ```
 
 ### Advanced Querying

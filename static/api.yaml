@@ -17205,8 +17205,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
+        description: "The path of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
         schema:
           type: "string"
       - name: "name"
@@ -17272,8 +17278,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
+        description: "The path of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
         schema:
           type: "string"
       - name: "name"
@@ -17422,13 +17434,19 @@ paths:
       - name: "key"
         in: "query"
         required: false
-        description: "The key of the property containing the attachments."
+        description: "Depreacted. Use path instead. The key of the property containing the attachments."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: false
+        description: "The path of the property containing the attachments."
         schema:
           type: "string"
       - name: "uuid"
         in: "query"
         required: false
-        description: "The uuid of the property containing the attachments. If this is given, key param is ignored."
+        description: "The uuid of the property containing the attachments. If this is given, path param is ignored."
         schema:
           type: "string"
       - name: "name"
@@ -17489,13 +17507,19 @@ paths:
       - name: "key"
         in: "query"
         required: false
-        description: "The key of the property containing the attachments."
+        description: "Depreacted. Use path instead. The key of the property containing the attachments."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: false
+        description: "The path of the property containing the attachments."
         schema:
           type: "string"
       - name: "uuid"
         in: "query"
         required: false
-        description: "The uuid of the property containing the attachments. If this is given, key param is ignored."
+        description: "The uuid of the property containing the attachments. If this is given, path param is ignored."
         schema:
           type: "string"
       - name: "name"
@@ -17548,7 +17572,13 @@ paths:
       - name: "key"
         in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: true
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -17609,7 +17639,13 @@ paths:
       - name: "key"
         in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: true
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -17661,8 +17697,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -17722,8 +17764,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -17775,8 +17823,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -17836,8 +17890,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -17889,8 +17949,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -17944,8 +18010,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -17991,8 +18063,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property containing the attachment."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property containing the attachment."
+        description: "The path of the property containing the attachment."
         schema:
           type: "string"
       - name: "name"
@@ -18040,8 +18118,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property containing the attachment."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property containing the attachment."
+        description: "The path of the property containing the attachment."
         schema:
           type: "string"
       - name: "name"
@@ -18081,8 +18165,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -18136,8 +18226,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -18183,8 +18279,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to list its attachments for."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property to list its attachments for."
+        description: "The path of the property to list its attachments for."
         schema:
           type: "string"
       - name: "id"
@@ -18232,8 +18334,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to list its attachments for."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property to list its attachments for."
+        description: "The path of the property to list its attachments for."
         schema:
           type: "string"
       - name: "id"
@@ -18274,7 +18382,13 @@ paths:
       - name: "key"
         in: "query"
         required: false
-        description: "The key of the property containing the attachments."
+        description: "Deprecated. Use path instead. The key of the property containing the attachments."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: false
+        description: "The path of the property containing the attachments."
         schema:
           type: "string"
       - name: "uuid"
@@ -18347,7 +18461,13 @@ paths:
       - name: "key"
         in: "query"
         required: false
-        description: "The key of the property containing the attachments."
+        description: "Deprecated. Use path instead. The key of the property containing the attachments."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: false
+        description: "The path of the property containing the attachments."
         schema:
           type: "string"
       - name: "uuid"
@@ -18411,8 +18531,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -18466,8 +18592,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property this attachment belongs to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property this attachment belongs to."
+        description: "The path of the property this attachment belongs to."
         schema:
           type: "string"
       - name: "name"
@@ -18513,8 +18645,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
-        required: true
-        description: "The origin path key of the property.Otherwise a new entry is created."
+        required: false
+        description: "Deprecated. Use path instead. The origin key of the property.Otherwise a new entry is created."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: false
+        description: "The origin path of the property.Otherwise a new entry is created."
         schema:
           type: "string"
       - name: "to"
@@ -18562,8 +18700,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
-        required: true
-        description: "The origin path key of the property.Otherwise a new entry is created."
+        required: false
+        description: "Deprecated. Use path instead. The origin key of the property.Otherwise a new entry is created."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: false
+        description: "The origin path of the property.Otherwise a new entry is created."
         schema:
           type: "string"
       - name: "to"
@@ -18604,7 +18748,7 @@ paths:
       - name: "pattern"
         in: "query"
         required: true
-        description: "The path key pattern of the properties to delete. All matching properties will be deleted!"
+        description: "The path pattern of the properties to delete. All matching properties will be deleted!"
         schema:
           type: "string"
       - name: "trashBin"
@@ -18659,7 +18803,7 @@ paths:
       - name: "pattern"
         in: "query"
         required: true
-        description: "The path key pattern of the properties to delete. All matching properties will be deleted!"
+        description: "The path pattern of the properties to delete. All matching properties will be deleted!"
         schema:
           type: "string"
       - name: "trashBin"
@@ -18705,8 +18849,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to check for. "
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The path key of the property to check for. "
+        description: "The path of the property to check for. "
         schema:
           type: "string"
       - name: "id"
@@ -18754,8 +18904,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to check for. "
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The path key of the property to check for. "
+        description: "The path of the property to check for. "
         schema:
           type: "string"
       - name: "id"
@@ -18796,7 +18952,13 @@ paths:
       - name: "key"
         in: "query"
         required: false
-        description: "The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or key is mandatory."
+        description: "Deprecated. Use path instead. The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or path is mandatory."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: false
+        description: "The relative or absolute (with namespace) property path. If uuid is given, this parameter is ignored. One of of uuid or path is mandatory."
         schema:
           type: "string"
       - name: "uuid"
@@ -18851,7 +19013,13 @@ paths:
       - name: "key"
         in: "query"
         required: false
-        description: "The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or key is mandatory."
+        description: "Deprecated. Use path instead. The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or path is mandatory."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: false
+        description: "The relative or absolute (with namespace) property path. If uuid is given, this parameter is ignored. One of of uuid or path is mandatory."
         schema:
           type: "string"
       - name: "uuid"
@@ -18898,7 +19066,7 @@ paths:
       - name: "strategy"
         in: "query"
         required: false
-        description: "Defines what to do if a property with same key already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. "
+        description: "Defines what to do if a property with same path already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. "
         schema:
           type: "string"
       - name: "id"
@@ -18947,199 +19115,7 @@ paths:
       - name: "strategy"
         in: "query"
         required: false
-        description: "Defines what to do if a property with same key already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. "
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/property.keys.children:
-    get:
-      parameters:
-      - name: "pattern"
-        in: "query"
-        required: true
-        description: "The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. "
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "pattern"
-        in: "query"
-        required: true
-        description: "The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. "
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/property.keys:
-    get:
-      parameters:
-      - name: "pattern"
-        in: "query"
-        required: true
-        description: "The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. "
-        schema:
-          type: "string"
-      - name: "includeTrashed"
-        in: "query"
-        required: false
-        description: "Include also properties moved to trash bin in the search?"
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Returns all property keys for a given pattern. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "pattern"
-        in: "query"
-        required: true
-        description: "The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. "
-        schema:
-          type: "string"
-      - name: "includeTrashed"
-        in: "query"
-        required: false
-        description: "Include also properties moved to trash bin in the search?"
+        description: "Defines what to do if a property with same path already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. "
         schema:
           type: "string"
       - name: "id"
@@ -19293,8 +19269,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to lock."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property to lock."
+        description: "The path of the property to lock."
         schema:
           type: "string"
       - name: "type"
@@ -19366,8 +19348,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to lock."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property to lock."
+        description: "The path of the property to lock."
         schema:
           type: "string"
       - name: "type"
@@ -19432,7 +19420,13 @@ paths:
       - name: "key"
         in: "query"
         required: true
-        description: "The key of the property to return the lock tag for."
+        description: "Deprecated. Use path instead. The key of the property to return the lock tag for."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: true
+        description: "The path of the property to return the lock tag for."
         schema:
           type: "string"
       - name: "id"
@@ -19475,7 +19469,13 @@ paths:
       - name: "key"
         in: "query"
         required: true
-        description: "The key of the property to return the lock tag for."
+        description: "Deprecated. Use path instead. The key of the property to return the lock tag for."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: true
+        description: "The path of the property to return the lock tag for."
         schema:
           type: "string"
       - name: "id"
@@ -19509,8 +19509,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to remove the lock from."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property to remove the lock from."
+        description: "The path of the property to remove the lock from."
         schema:
           type: "string"
       - name: "id"
@@ -19552,8 +19558,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to remove the lock from."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property to remove the lock from."
+        description: "The path of the property to remove the lock from."
         schema:
           type: "string"
       - name: "id"
@@ -19587,8 +19599,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
-        required: true
+        required: false
         description: "The origin path key of the property.Otherwise a new entry is created."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: true
+        description: "Deprecated. Use path instead. The origin path key of the property.Otherwise a new entry is created."
         schema:
           type: "string"
       - name: "to"
@@ -19636,8 +19654,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
-        required: true
+        required: false
         description: "The origin path key of the property.Otherwise a new entry is created."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
+        required: true
+        description: "Deprecated. Use path instead. The origin path key of the property.Otherwise a new entry is created."
         schema:
           type: "string"
       - name: "to"
@@ -19672,13 +19696,211 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/property.path.children:
+    get:
+      parameters:
+      - name: "pattern"
+        in: "query"
+        required: true
+        description: "The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "pattern"
+        in: "query"
+        required: true
+        description: "The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. "
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/property.path.list:
+    get:
+      parameters:
+      - name: "pattern"
+        in: "query"
+        required: true
+        description: "The key pattern of the properties to search for. Also supports path pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. "
+        schema:
+          type: "string"
+      - name: "includeTrashed"
+        in: "query"
+        required: false
+        description: "Include also properties moved to trash bin in the search?"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns all property paths for a given pattern. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "pattern"
+        in: "query"
+        required: true
+        description: "The key pattern of the properties to search for. Also supports path pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. "
+        schema:
+          type: "string"
+      - name: "includeTrashed"
+        in: "query"
+        required: false
+        description: "Include also properties moved to trash bin in the search?"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/property.put:
     get:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
+        description: "The path of the property to save. If property with this path already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
         schema:
           type: "string"
       - name: "value"
@@ -19726,8 +19948,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
+        description: "The path of the property to save. If property with this path already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
         schema:
           type: "string"
       - name: "value"
@@ -19930,13 +20158,13 @@ paths:
       - name: "key"
         in: "query"
         required: true
-        description: "The exact path key of the property to delete. If property with this key doesnt exist, nothing happens."
+        description: "Deprecated. Use pattern instead. The exact path key of the property to delete. If property with this key doesnt exist, nothing happens."
         schema:
           type: "string"
       - name: "pattern"
         in: "query"
         required: true
-        description: "The path key pattern of the properties to delete. All matching properties will be deleted!"
+        description: "The path key pattern of the single property or the properties to delete. All matching properties will be deleted!"
         schema:
           type: "string"
       - name: "id"
@@ -19979,13 +20207,13 @@ paths:
       - name: "key"
         in: "query"
         required: true
-        description: "The exact path key of the property to delete. If property with this key doesnt exist, nothing happens."
+        description: "Deprecated. Use pattern instead. The exact path key of the property to delete. If property with this key doesnt exist, nothing happens."
         schema:
           type: "string"
       - name: "pattern"
         in: "query"
         required: true
-        description: "The path key pattern of the properties to delete. All matching properties will be deleted!"
+        description: "The path key pattern of the single property or the properties to delete. All matching properties will be deleted!"
         schema:
           type: "string"
       - name: "id"
@@ -20018,6 +20246,12 @@ paths:
     get:
       parameters:
       - name: "key"
+        in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to save. If property with key already exists, it will be updated. Otherwise, a new entry is created."
+        schema:
+          type: "string"
+      - name: "path"
         in: "query"
         required: true
         description: "The path key of the property to save. If property with key already exists, it will be updated. Otherwise a new entry is created."
@@ -20122,6 +20356,12 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to save. If property with key already exists, it will be updated. Otherwise, a new entry is created."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
         description: "The path key of the property to save. If property with key already exists, it will be updated. Otherwise a new entry is created."
         schema:
@@ -20217,8 +20457,14 @@ paths:
       parameters:
       - name: "keyFilter"
         in: "query"
+        required: false
+        description: "Deprecated. USe path instead. They key pattern to pre-select the properties to search in."
+        schema:
+          type: "string"
+      - name: "pathFilter"
+        in: "query"
         required: true
-        description: "They key pattern to pre-select the properties to search in."
+        description: "They path pattern to pre-select the properties to search in."
         schema:
           type: "string"
       - name: "valueFilter"
@@ -20308,8 +20554,14 @@ paths:
       parameters:
       - name: "keyFilter"
         in: "query"
+        required: false
+        description: "Deprecated. USe path instead. They key pattern to pre-select the properties to search in."
+        schema:
+          type: "string"
+      - name: "pathFilter"
+        in: "query"
         required: true
-        description: "They key pattern to pre-select the properties to search in."
+        description: "They path pattern to pre-select the properties to search in."
         schema:
           type: "string"
       - name: "valueFilter"
@@ -20553,8 +20805,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to list the tags for."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The path key of the property to list the tags for."
+        description: "The path of the property to list the tags for."
         schema:
           type: "string"
       - name: "id"
@@ -20602,8 +20860,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to list the tags for."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The path key of the property to list the tags for."
+        description: "The path of the property to list the tags for."
         schema:
           type: "string"
       - name: "id"
@@ -20643,8 +20907,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to add the tag to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The path key of the property to add the tag to."
+        description: "The path of the property to add the tag to."
         schema:
           type: "string"
       - name: "tags"
@@ -20704,8 +20974,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The path key of the property to add the tag to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The path key of the property to add the tag to."
+        description: "The path of the property to add the tag to."
         schema:
           type: "string"
       - name: "tags"
@@ -20895,8 +21171,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to be returned."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property to be returned."
+        description: "The path of the property to be returned."
         schema:
           type: "string"
       - name: "includeUuidField"
@@ -20950,8 +21232,14 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to be returned."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
-        description: "The key of the property to be returned."
+        description: "The path of the property to be returned."
         schema:
           type: "string"
       - name: "includeUuidField"
@@ -21112,7 +21400,13 @@ paths:
       - name: "baseKey"
         in: "query"
         required: true
-        description: "The base path key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property."
+        description: "Deprecated. Use basePath instead. The base key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property."
+        schema:
+          type: "string"
+      - name: "basePath"
+        in: "query"
+        required: true
+        description: "The base path (= folder) of the properties to save. At the end of this path, the primary path will be appended for each value in the list in order to save it in its property."
         schema:
           type: "string"
       - name: "primaryKeyField"
@@ -21185,7 +21479,13 @@ paths:
       - name: "baseKey"
         in: "query"
         required: true
-        description: "The base path key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property."
+        description: "Deprecated. Use basePath instead. The base key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property."
+        schema:
+          type: "string"
+      - name: "basePath"
+        in: "query"
+        required: true
+        description: "The base path (= folder) of the properties to save. At the end of this path, the primary path will be appended for each value in the list in order to save it in its property."
         schema:
           type: "string"
       - name: "primaryKeyField"
@@ -21249,6 +21549,12 @@ paths:
       parameters:
       - name: "key"
         in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to save the value to."
+        schema:
+          type: "string"
+      - name: "path"
+        in: "query"
         required: true
         description: "The path key of the property to save the value to."
         schema:
@@ -21303,6 +21609,12 @@ paths:
     post:
       parameters:
       - name: "key"
+        in: "query"
+        required: false
+        description: "Deprecated. Use path instead. The key of the property to save the value to."
+        schema:
+          type: "string"
+      - name: "path"
         in: "query"
         required: true
         description: "The path key of the property to save the value to."

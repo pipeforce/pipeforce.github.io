@@ -28,7 +28,7 @@ Here are some documentation references to Python:
 
 The first step is to declare and deploy the function. 
 
-#### Auto deployment
+### Auto deployment
 
 The easiest way is to let PIPEFORCE manage the deployment of function scripts for you.
 
@@ -47,7 +47,20 @@ After you have saved this property in the property editor, it automatically gets
 In case a function is called using the command `function.run` and the function could not be found in the FaaS backend (for example because the backend did auto-rescale), it will be tried to auto-install this script from the property store. Therefore, you should store the script code always in the property store. More information can be found in the section about executing a function below.
 :::
 
-#### Manual deployment
+#### Skip auto-deployment
+
+In some situations you dont want to auto-deploy a function script from inside the `/function` property folder. To do so, add the keyword `pipeforce-faas:auto-deploy=false` (without any whitespaces) in the header comments. For example:
+
+```python
+# pipeforce-faas:auto-deploy=false
+
+def function():
+  return "Hello World"
+```
+
+In this case, this script will be excluded by any auto-deployment approaches. Manual deployment is still possible.
+
+### Manual deployment
 
 Alternatively, you can use the command `function.put` in order to declare and deploy a Python function manually. See this example:
 
@@ -77,7 +90,15 @@ Make sure to always define a module prefix to your function name like `myapp.` w
 Be aware that scripts deployed manually using `function.put` must also be managed by yourself. In case the FaaS container in the backend automatically re-scales, it could be that your functions deployed there are gone. So you have to re-deploy them also manually. Therefore, if possible, instead of doing a manual deployment using `function.put` **prefer to save your scripts in the property store and let PIPEFORCE automatically manage the deployment for you**.
 :::
 
+### Undeploy a function
 
+In order to undeploy a function, you can use the command `function.delete`. For example:
+
+```yaml
+pipeline:
+  - function.delete:
+      name: "myapp.utils"
+```
 
 ## Execute a function
 
@@ -117,7 +138,7 @@ pipeline:
       value: "#{@function.run('myapp.helloworld')}"
 ```
 
-#### Auto deployment
+### Auto deploy on execution
 
 In case `function.run` is called and the function was not found in the FaaS backend, it will be tried to automatically deploy it from the property store. Since the path in the property store is derived from the function script name, it is important to keep the source of the functions in the property store always under the path `global/app/myapp/function/` whereas `myapp` must be replaced by the prefix of your function call.
 
@@ -504,15 +525,90 @@ Since the `on_requirements()` function is called **before** any requirement is i
 use such a requirement from the list inside this function.
 :::
 
-## Undeploy a function
+## Best Practises
 
-In order to undeploy a function, you can use the command `function.delete`. For example:
+You can develop your Python functions in many differnt ways and you should choose the way, which works best for you. In this section we would
+like to show you some of our best practises how to write Python Functions as a Service very effectively. Pick the ideas you like here for your own workflow.
 
-```yaml
-pipeline:
-  - function.delete:
-      name: "myapp.utils"
+### Development
+
+Create a new project folder and initialize it as a PIPEFORCE app by calling the command `pi init` on your terminal using the PIPEFORCE CLI tool. This will create the required folder structure for you.
+
+Then inside this folder create a new app by calling `pi new app`.
+
+Then open the project folder with the IDE of your coice. We sugesst to develop the Python functions locally using an advanced IDE of your choice like Microsoft Visual Studio Code or IntellJ for example.
+
+Go to your newly created app folder and create a new sub folder `function` in it.
+
+Then create a Python script inside this folder. For example `hello.py` with a script code like this:
+
+```python
+def function():
+  return "Hello"
 ```
+
+Finally, you can deploy your function to the FaaS backend by calling `pi publish`. This will install your function in the PIEPFORCE backend and makes it available to the other components in PIPEFORCE.
+
+You can execute your function from inside any pipeline then by using the command `function.run`.
+
+### Testing
+
+We highly recommend to always develop your functions first locally and write tests for them as part of the development process. Only after all local test runs haven been passsed, deploy your function to the backend.
+
+What works here best for us, is putting the test functions also into the same FaaS Python script.
+
+See this example in order to add some test functions:
+
+
+```python
+def function():
+    return "Hello"
+
+
+def test_function_is_hello():
+    result = function()
+    assert result == "Hello"
+
+
+def test_function_is_world():
+    result = function()
+    assert result == "World"
+
+
+if __name__ == "__main__":
+    test_function_is_hello()
+    test_function_is_world()
+```
+
+As you can see, we added two test functions here. Each of it starts with prefix `test_`. Additionaly we added an advice in order to run these test functions whenever the script is directly executed. This way you can run an debug your script locally in your IDE or by calling it directly from your local terminal:
+
+```
+python hello.py
+```
+
+Instead of calling each test function inside the `__main__` advice (which is sometimes the only possible way in case you cannot install additional packages), we recommend to execute a unit testing framework like `pytest` for example in order to pick-up and execute all of your test functions automatically for you:
+
+```
+pip install pytest
+```
+
+After you have installed `pytest` you can run all your test functions using a command in your terminal like this:
+
+```
+pytest hello.py
+```
+
+The tool `pytest` will automatically execute all functions starting with prefix  `test_`. In this case, you do not need the `__main__` section any longer.
+
+Once the function has been deployed to PIPEFORCE, you can run the test functions online by using the command `test.run` or in the *Test* section of the PIPEFORCE WebUI.
+
+### Source Code Control
+
+One last thing we would like to recommend to you is using a source code control system like GitHub in order to manage different versions of your scripts and share them with other developers in your team easily.
+
+To do so, you can create a new repository for your whole project folder and commit anything into this repo.
+
+Hint: PIPEFORCE allows to install apps directly from GitHub using the Marketplace. This way you can easily distribute and/or rollout your applications then.
 
 ## Report an Issue
 :::tip Your help is needed!

@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 02/02/2023 by CommandComplianceTest -->
+<!-- Generated: 06/02/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -8702,7 +8702,8 @@ Loads and executes the persisted pipeline and returns its result in the output.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified.
+`key` | String | false | null | Deprecated. Use path instead. The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified.
+`path` | String | true | null | The path of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified.
 `name` | String | false | null | DEPRECATED. Use param key instead. The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified.
 `vars` | String | false | null | A variables map to be put on this pipeline. Note: Any var in this map will overwrite the var in the target pipeline vars scope.
 `headers` | String | false | null | A headers map to be put on this pipeline. Note: Any header in this map will overwrite the header in the target pipeline headers scope.
@@ -8718,6 +8719,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - pipeline.run:  
       key: <value>  
+      path: <value>  
       name: <value>  
       vars: <value>  
       headers: <value>  
@@ -8733,12 +8735,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.run?key=<value>&name=<value>&vars=<value>&headers=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/pipeline.run?key=<value>&path=<value>&name=<value>&vars=<value>&headers=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.run key=<value> name=<value> vars=<value> headers=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command pipeline.run key=<value> path=<value> name=<value> vars=<value> headers=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8806,8 +8808,9 @@ Calculates and verifies the checksum of a property attachment. Calculating the c
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | false | null | The key of the property containing the attachments.
-`uuid` | String | false | null | The uuid of the property containing the attachments. If this is given, key param is ignored.
+`key` | String | false | null | Depreacted. Use path instead. The key of the property containing the attachments.
+`path` | String | false | null | The path of the property containing the attachments.
+`uuid` | String | false | null | The uuid of the property containing the attachments. If this is given, path param is ignored.
 `name` | String | false | null | The name of the attachment to be checked. 
 `checksum` | String | false | null | The checksum to be used for verification. If not given, no verification is done, but checksum of attachment is calculated and stored anyhow.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -8822,6 +8825,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.checksum:  
       key: <value>  
+      path: <value>  
       uuid: <value>  
       name: <value>  
       checksum: <value>  
@@ -8837,12 +8841,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.checksum?key=<value>&uuid=<value>&name=<value>&checksum=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.checksum?key=<value>&path=<value>&uuid=<value>&name=<value>&checksum=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.checksum key=<value> uuid=<value> name=<value> checksum=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.attachment.checksum key=<value> path=<value> uuid=<value> name=<value> checksum=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8861,7 +8865,8 @@ Returns the content (data) of a chunk of an attachment in the output as input st
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property this attachment belongs to.
+`key` | String | true | null | Deprecated. Use path instead. The key of the property this attachment belongs to.
+`path` | String | true | null | The path of the property this attachment belongs to.
 `name` | String | true | null | The name of the attachment this chunk belongs to.
 `index` | String | false | 0 | The index of the chunk to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -8876,6 +8881,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.chunk.content:  
       key: <value>  
+      path: <value>  
       name: <value>  
       index: <value>  
       id: <value>  
@@ -8890,12 +8896,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.chunk.content?key=<value>&name=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.chunk.content?key=<value>&path=<value>&name=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.chunk.content key=<value> name=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.attachment.chunk.content key=<value> path=<value> name=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8914,7 +8920,8 @@ Returns the metadata of an chunk of an attachment. Throws error in case property
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property this attachment belongs to.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property this attachment belongs to.
+`path` | String | true | null | The path of the property this attachment belongs to.
 `name` | String | true | null | The name of the attachment this chunk belongs to.
 `index` | String | false | 0 | The index of the chunk to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -8929,6 +8936,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.chunk.get:  
       key: <value>  
+      path: <value>  
       name: <value>  
       index: <value>  
       id: <value>  
@@ -8943,12 +8951,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.chunk.get?key=<value>&name=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.chunk.get?key=<value>&path=<value>&name=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.chunk.get key=<value> name=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.attachment.chunk.get key=<value> path=<value> name=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8967,7 +8975,8 @@ Adds a chunk of data to the given attachment. Note: A chunk may not be bigger th
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property this attachment belongs to.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property this attachment belongs to.
+`path` | String | true | null | The path of the property this attachment belongs to.
 `name` | String | true | null | The name of the attachment this chunk belongs to.
 `index` | String | false | null | The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment.
 `content` | String | false | null | The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead.
@@ -8982,6 +8991,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.chunk.put:  
       key: <value>  
+      path: <value>  
       name: <value>  
       index: <value>  
       content: <value>  
@@ -8996,12 +9006,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.chunk.put?key=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.attachment.chunk.put?key=<value>&path=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.chunk.put key=<value> name=<value> index=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.attachment.chunk.put key=<value> path=<value> name=<value> index=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9020,7 +9030,8 @@ Returns the content of an property attachment as a byte stream content object in
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property this attachment belongs to.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property this attachment belongs to.
+`path` | String | true | null | The path of the property this attachment belongs to.
 `name` | String | false | null | The name of the attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9034,6 +9045,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.content:  
       key: <value>  
+      path: <value>  
       name: <value>  
       id: <value>  
       if: <value>  
@@ -9047,12 +9059,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.content?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.content?key=<value>&path=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.content key=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.attachment.content key=<value> path=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9071,7 +9083,8 @@ Removes an attachment and its content from a property.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property containing the attachment.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property containing the attachment.
+`path` | String | true | null | The path of the property containing the attachment.
 `name` | String | true | null | The name of the attachment to be deleted.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9084,6 +9097,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.delete:  
       key: <value>  
+      path: <value>  
       name: <value>  
       id: <value>  
       if: <value>  
@@ -9096,12 +9110,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.delete?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.attachment.delete?key=<value>&path=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.delete key=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.attachment.delete key=<value> path=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9120,7 +9134,8 @@ Returns an attachment of a property (without content).
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property this attachment belongs to.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property this attachment belongs to.
+`path` | String | true | null | The path of the property this attachment belongs to.
 `name` | String | false | null | The name of the attachment to return.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9134,6 +9149,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.get:  
       key: <value>  
+      path: <value>  
       name: <value>  
       id: <value>  
       if: <value>  
@@ -9147,12 +9163,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.get?key=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.get?key=<value>&path=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.get key=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.attachment.get key=<value> path=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9171,7 +9187,8 @@ Lists all attachments of a given property. The content is not part of this list.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property to list its attachments for.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property to list its attachments for.
+`path` | String | true | null | The path of the property to list its attachments for.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9184,6 +9201,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.list:  
       key: <value>  
+      path: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -9196,12 +9214,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.list?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.list?key=<value>&path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.list key=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.attachment.list key=<value> path=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9220,7 +9238,8 @@ Adds one ore more attachments to a property. Overwrites / updates any existing a
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | false | null | The key of the property containing the attachments.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property containing the attachments.
+`path` | String | false | null | The path of the property containing the attachments.
 `uuid` | String | false | null | The uuid of the property containing the attachments. If this is given, key param is ignored.
 `name` | String | false | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
 `content` | String | false | null | The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false.
@@ -9237,6 +9256,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.put:  
       key: <value>  
+      path: <value>  
       uuid: <value>  
       name: <value>  
       content: <value>  
@@ -9253,12 +9273,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put?key=<value>&uuid=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.put?key=<value>&path=<value>&uuid=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put key=<value> uuid=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.attachment.put key=<value> path=<value> uuid=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9277,7 +9297,8 @@ Sets property attachment to be symlink to resource referenced by uri.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property this attachment belongs to.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property this attachment belongs to.
+`path` | String | true | null | The path of the property this attachment belongs to.
 `name` | String | true | null | The name of the attachment.
 `uri` | String | true | null | The uri of resource to point symlink to.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -9291,6 +9312,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.attachment.put.uri:  
       key: <value>  
+      path: <value>  
       name: <value>  
       uri: <value>  
       id: <value>  
@@ -9304,12 +9326,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put.uri?key=<value>&name=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.attachment.put.uri?key=<value>&path=<value>&name=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put.uri key=<value> name=<value> uri=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.attachment.put.uri key=<value> path=<value> name=<value> uri=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9328,7 +9350,8 @@ Copies a property from one key to another. If target property already exists, ov
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The origin path key of the property.Otherwise a new entry is created.
+`key` | String | false | null | Deprecated. Use path instead. The origin key of the property.Otherwise a new entry is created.
+`path` | String | false | null | The origin path of the property.Otherwise a new entry is created.
 `to` | String | true | null | The target key to copy the property to. If a property with this key already exists, it will be overwritten.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9341,6 +9364,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.copy:  
       key: <value>  
+      path: <value>  
       to: <value>  
       id: <value>  
       if: <value>  
@@ -9353,12 +9377,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.copy?key=<value>&to=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.copy?key=<value>&path=<value>&to=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.copy key=<value> to=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.copy key=<value> path=<value> to=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9377,7 +9401,7 @@ Deletes one or more existing properties matching the given search pattern. Use t
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`pattern` | String | true | null | The path key pattern of the properties to delete. All matching properties will be deleted!
+`pattern` | String | true | null | The path pattern of the properties to delete. All matching properties will be deleted!
 `trashBin` | String | false | false | In case this parameter is set to true, the property wont be removed but moved to the trash bin instead (= flagged with trash lock).
 `trashBinTimeToLive` | String | false | null | The time in millis after the property must be removed from bin and fully deleted. If set to null or empty, the system defaults will apply for final deleting trashed properties. This is typically a value between 30 and 90 days.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -9428,7 +9452,8 @@ Checks whether a given property exists and returns the boolean result in the bod
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The path key of the property to check for. 
+`key` | String | false | null | Deprecated. Use path instead. The path key of the property to check for. 
+`path` | String | true | null | The path of the property to check for. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9441,6 +9466,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.exists:  
       key: <value>  
+      path: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -9453,12 +9479,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.exists?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.exists?key=<value>&path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.exists key=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.exists key=<value> path=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9477,7 +9503,8 @@ Returns the property with given key.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | false | null | The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or key is mandatory.
+`key` | String | false | null | Deprecated. Use path instead. The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or path is mandatory.
+`path` | String | false | null | The relative or absolute (with namespace) property path. If uuid is given, this parameter is ignored. One of of uuid or path is mandatory.
 `uuid` | String | false | null | The uuid of the property. If this parameter is given, parameter key is ignored. On of uuid or key is mandatory.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9491,6 +9518,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.get:  
       key: <value>  
+      path: <value>  
       uuid: <value>  
       id: <value>  
       if: <value>  
@@ -9504,12 +9532,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.get?key=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.get?key=<value>&path=<value>&uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.get key=<value> uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.get key=<value> path=<value> uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9528,7 +9556,7 @@ Imports properties given as JSON document in the body into the property store.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`strategy` | String | false | skip | Defines what to do if a property with same key already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. 
+`strategy` | String | false | skip | Defines what to do if a property with same path already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9559,106 +9587,6 @@ http://host/api/v3/command/property.import?strategy=<value>&id=<value>&if=<value
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command property.import strategy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## property.keys.children ``v1``
-----------   
-Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.keys.children:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`pattern` | String | true | null | The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. 
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - property.keys.children:  
-      pattern: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/property.keys.children?pattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command property.keys.children pattern=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## property.keys ``v1``
-----------   
-Returns all property keys for a given pattern.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.keys:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`pattern` | String | true | null | The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. 
-`includeTrashed` | String | false | false | Include also properties moved to trash bin in the search?
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - property.keys:  
-      pattern: <value>  
-      includeTrashed: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/property.keys?pattern=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command property.keys pattern=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9730,7 +9658,8 @@ Creates a lock on a given property. In case someone tries to change or delete a 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property to lock.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property to lock.
+`path` | String | true | null | The path of the property to lock.
 `type` | String | false | global | The type of the lock for which range the lock is exclusive. One of: `user`, `role`, `group`, `namespace`, `global` or 'trash'. If null, empty or different from the types mentioned here, the lock will be global by default.
 `ttl` | String | false | null | The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after a some minutes. Writing to the property instead works immediately after the `ttl` has been expired. 
 `uuid` | String | false | null | In case the lock is of type `user`, this parameter must contain the uuid of the user this lock is exclusive to. This parameter is mandatory in case this is a user exclusive lock.
@@ -9747,6 +9676,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.lock.create:  
       key: <value>  
+      path: <value>  
       type: <value>  
       ttl: <value>  
       uuid: <value>  
@@ -9763,12 +9693,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.lock.create?key=<value>&type=<value>&ttl=<value>&uuid=<value>&name=<value>&details=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.lock.create?key=<value>&path=<value>&type=<value>&ttl=<value>&uuid=<value>&name=<value>&details=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.lock.create key=<value> type=<value> ttl=<value> uuid=<value> name=<value> details=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.lock.create key=<value> path=<value> type=<value> ttl=<value> uuid=<value> name=<value> details=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9787,7 +9717,8 @@ Returns the lock tag for a given property. In case there is no lock for this pro
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property to return the lock tag for.
+`key` | String | true | null | Deprecated. Use path instead. The key of the property to return the lock tag for.
+`path` | String | true | null | The path of the property to return the lock tag for.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9799,6 +9730,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.lock.get:  
       key: <value>  
+      path: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -9810,12 +9742,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.lock.get?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.lock.get?key=<value>&path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.lock.get key=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.lock.get key=<value> path=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9834,7 +9766,8 @@ Removes a lock from a given property.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property to remove the lock from.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property to remove the lock from.
+`path` | String | true | null | The path of the property to remove the lock from.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9846,6 +9779,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.lock.remove:  
       key: <value>  
+      path: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -9857,12 +9791,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.lock.remove?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.lock.remove?key=<value>&path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.lock.remove key=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.lock.remove key=<value> path=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9881,7 +9815,8 @@ Moves a property from one key to another.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The origin path key of the property.Otherwise a new entry is created.
+`key` | String | false | null | The origin path key of the property.Otherwise a new entry is created.
+`path` | String | true | null | Deprecated. Use path instead. The origin path key of the property.Otherwise a new entry is created.
 `to` | String | true | null | The target key to move the property to. If a property with this key already exists, an exception is thrown.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9894,6 +9829,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.move:  
       key: <value>  
+      path: <value>  
       to: <value>  
       id: <value>  
       if: <value>  
@@ -9906,12 +9842,114 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.move?key=<value>&to=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.move?key=<value>&path=<value>&to=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.move key=<value> to=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.move key=<value> path=<value> to=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## property.path.children ``v1``
+----------   
+Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.path.children:v1)
+
+**Alias:** command:property.keys.children:v1   
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`pattern` | String | true | null | The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. 
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.path.children:  
+      pattern: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.path.children?pattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.path.children pattern=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## property.path.list ``v1``
+----------   
+Returns all property paths for a given pattern.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.path.list:v1)
+
+**Alias:** command: property.keys:v1   
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`pattern` | String | true | null | The key pattern of the properties to search for. Also supports path pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. 
+`includeTrashed` | String | false | false | Include also properties moved to trash bin in the search?
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - property.path.list:  
+      pattern: <value>  
+      includeTrashed: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/property.path.list?pattern=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command property.path.list pattern=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9930,7 +9968,8 @@ Saves the value of a property. The property schema must exist in advance (no new
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created.
+`key` | String | false | null | Deprecated. Use path instead. The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created.
+`path` | String | true | null | The path of the property to save. If property with this path already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created.
 `value` | String | false | null | The value of the property. May be null or empty.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9943,6 +9982,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.put:  
       key: <value>  
+      path: <value>  
       value: <value>  
       id: <value>  
       if: <value>  
@@ -9955,12 +9995,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.put?key=<value>&value=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.put?key=<value>&path=<value>&value=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.put key=<value> value=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.put key=<value> path=<value> value=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10040,8 +10080,8 @@ Deletes any existing property schema and its assigned value matching the given p
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The exact path key of the property to delete. If property with this key doesnt exist, nothing happens.
-`pattern` | String | true | null | The path key pattern of the properties to delete. All matching properties will be deleted!
+`key` | String | true | null | Deprecated. Use pattern instead. The exact path key of the property to delete. If property with this key doesnt exist, nothing happens.
+`pattern` | String | true | null | The path key pattern of the single property or the properties to delete. All matching properties will be deleted!
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -10089,7 +10129,8 @@ Creates or updates a property schema. This command is intended for provisioning,
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The path key of the property to save. If property with key already exists, it will be updated. Otherwise a new entry is created.
+`key` | String | false | null | Deprecated. Use path instead. The path key of the property to save. If property with key already exists, it will be updated. Otherwise, a new entry is created.
+`path` | String | true | null | The path key of the property to save. If property with key already exists, it will be updated. Otherwise a new entry is created.
 `defaultValue` | String | false | null | The default value of the property. May be null.
 `value` | String | false | null | The value of the property as a preset. May be null.
 `type` | String | false | STRING | The type of the property. One of: STRING, BOOL, INT, LONG, DECIMAL, JSON. This param is considered only in case a new property is created.
@@ -10111,6 +10152,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.schema.put:  
       key: <value>  
+      path: <value>  
       defaultValue: <value>  
       value: <value>  
       type: <value>  
@@ -10132,12 +10174,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.put?key=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.put key=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10156,7 +10198,8 @@ Returns all properties of given search criteria.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`keyFilter` | String | true | null | They key pattern to pre-select the properties to search in.
+`keyFilter` | String | false | null | Deprecated. USe path instead. They key pattern to pre-select the properties to search in.
+`pathFilter` | String | true | null | They path pattern to pre-select the properties to search in.
 `valueFilter` | String | false | null | The search filter to search inside the value of the properties. This value is case in-sensitive.
 `typeFilter` | String | false | null | The type of the property. Will find any properties containing this type. This value is case in-sensitive.
 `offset` | Integer | false | null | The 0-based offset of the search result to return. If not set, no offset is used.
@@ -10176,6 +10219,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.search:  
       keyFilter: <value>  
+      pathFilter: <value>  
       valueFilter: <value>  
       typeFilter: <value>  
       offset: <value>  
@@ -10195,12 +10239,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.search?keyFilter=<value>&valueFilter=<value>&typeFilter=<value>&offset=<value>&page=<value>&maxResults=<value>&info=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.search?keyFilter=<value>&pathFilter=<value>&valueFilter=<value>&typeFilter=<value>&offset=<value>&page=<value>&maxResults=<value>&info=<value>&includeTrashed=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.search keyFilter=<value> valueFilter=<value> typeFilter=<value> offset=<value> page=<value> maxResults=<value> info=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.search keyFilter=<value> pathFilter=<value> valueFilter=<value> typeFilter=<value> offset=<value> page=<value> maxResults=<value> info=<value> includeTrashed=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10280,7 +10324,8 @@ Returns all tags for a given property in the body as JSON: {name1:value1, name2:
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The path key of the property to list the tags for.
+`key` | String | false | null | Deprecated. Use path instead. The path key of the property to list the tags for.
+`path` | String | true | null | The path of the property to list the tags for.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -10293,6 +10338,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.tag.list:  
       key: <value>  
+      path: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -10305,12 +10351,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.tag.list?key=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.tag.list?key=<value>&path=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.tag.list key=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.tag.list key=<value> path=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10329,7 +10375,8 @@ Adds a tag to an existing property. Overwrites any existing one.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The path key of the property to add the tag to.
+`key` | String | false | null | Deprecated. Use path instead. The path key of the property to add the tag to.
+`path` | String | true | null | The path of the property to add the tag to.
 `tags` | String | false | null | A list of multiple tags to add to the property. Must a be a name-value pair list separated by comma. For example: name1:value1, name2:value2. If no tags are set, nothing happens.
 `name` | String | false | null | The name of a single tag to add.
 `value` | String | false | null | The value of a single tag to add. Only used in case tag name is not null.
@@ -10344,6 +10391,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.tag.put:  
       key: <value>  
+      path: <value>  
       tags: <value>  
       name: <value>  
       value: <value>  
@@ -10358,12 +10406,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.tag.put?key=<value>&tags=<value>&name=<value>&value=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.tag.put?key=<value>&path=<value>&tags=<value>&name=<value>&value=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.tag.put key=<value> tags=<value> name=<value> value=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.tag.put key=<value> path=<value> tags=<value> name=<value> value=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10439,7 +10487,8 @@ Returns the value of a given property.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key of the property to be returned.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property to be returned.
+`path` | String | true | null | The path of the property to be returned.
 `includeUuidField` | String | false | null | If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -10453,6 +10502,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.value.get:  
       key: <value>  
+      path: <value>  
       includeUuidField: <value>  
       id: <value>  
       if: <value>  
@@ -10466,12 +10516,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.get?key=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.value.get?key=<value>&path=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.get key=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.value.get key=<value> path=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10543,7 +10593,8 @@ Saves a list of property values by iterating over this list and storing each val
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`baseKey` | String | true | null | The base path key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property.
+`baseKey` | String | true | null | Deprecated. Use basePath instead. The base key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property.
+`basePath` | String | true | null | The base path (= folder) of the properties to save. At the end of this path, the primary path will be appended for each value in the list in order to save it in its property.
 `primaryKeyField` | String | false | null | The field name inside each value item which contains the primary key. Can be a string constant or a PEL. If it is a PEL, will be evaluated for each item in the list separately. The PEL has access to variables: headers (= headers of the pipeline), vars (= pipeline variables), body (= body of the pipeline), value (= the current iteration item value about to be saved).
 `iterItemName` | String | false | value | Changes the name of the iteration item value, provided for  primaryKeyField
 `ignoreUuidField` | String | false | null | If this parameter contains a non-empty value, and a property value is a JSON type, tries to remove the uuid field with given name, so it is not stored to database. If this parameter is set, but the JSON field doesn't exist or the property value is not a JSON, nothing happens.
@@ -10560,6 +10611,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.value.list.put:  
       baseKey: <value>  
+      basePath: <value>  
       primaryKeyField: <value>  
       iterItemName: <value>  
       ignoreUuidField: <value>  
@@ -10576,12 +10628,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.list.put?baseKey=<value>&primaryKeyField=<value>&iterItemName=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/property.value.list.put?baseKey=<value>&basePath=<value>&primaryKeyField=<value>&iterItemName=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.list.put baseKey=<value> primaryKeyField=<value> iterItemName=<value> ignoreUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command property.value.list.put baseKey=<value> basePath=<value> primaryKeyField=<value> iterItemName=<value> ignoreUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10600,7 +10652,8 @@ Saves the value of a property. The property schema must exist in advance.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The path key of the property to save the value to.
+`key` | String | false | null | Deprecated. Use path instead. The key of the property to save the value to.
+`path` | String | true | null | The path key of the property to save the value to.
 `value` | String | false | null | The value of the property to save. May be null or empty.
 `ignoreUuidField` | String | false | null | If this parameter contains a non-empty value, and the property value is a JSON type, tries to remove the uuid field with given name, so it is not stored to database. If this parameter is set but the JSON field doesn't exist or the property value is not a JSON, nothing happens.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -10614,6 +10667,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - property.value.put:  
       key: <value>  
+      path: <value>  
       value: <value>  
       ignoreUuidField: <value>  
       id: <value>  
@@ -10627,12 +10681,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.put?key=<value>&value=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.value.put?key=<value>&path=<value>&value=<value>&ignoreUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.put key=<value> value=<value> ignoreUuidField=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.value.put key=<value> path=<value> value=<value> ignoreUuidField=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

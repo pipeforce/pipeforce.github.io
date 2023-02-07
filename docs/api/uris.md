@@ -81,7 +81,7 @@ This example will return you the full property (metdata + value) of the given pr
 ```json
 {
     "checksum": "sha-256=38334e50687bc68125e3b66121311a0bd1b848b8fa36c85dfe189d84313c5582",
-    "key": "/pipeforce/ns/global/app/myapp/config/app",
+    "path": "/pipeforce/ns/global/app/myapp/config/app",
     "uuid": "cc059f6e-fa6a-4ad8-bc51-04a85e33b965",
     "locked": false,
     "trashed": false,
@@ -202,7 +202,7 @@ Output: HELLO WORLD!
 This custom URI points to a property in the property store.
 
 ```
-$uri:property:[KEY PATH OF THE PROPERTY]
+$uri:property:[PATH OF THE PROPERTY]
 ```
 
 Example:
@@ -226,7 +226,7 @@ As you might already know, a property has a structure like this:
 ```json
 {
 
-    "key": "/unique/path/of/the/property",
+    "path": "/unique/path/of/the/property",
     "uuid": "unique id",
     "type": "mime type of this property",
     "created": createdTimeStampInMillis,
@@ -278,7 +278,7 @@ Let's assume we have a property in the property store like this:
 
 ```json
 {
-    "key": "path/to/person",
+    "path": "path/to/person",
     "type": "application/json",
     "value": {
         "name": "Max Master",

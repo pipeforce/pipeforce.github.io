@@ -6384,7 +6384,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
+                "description" : "Deprecated. Use path instead. The key of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the pipeline in the property store to load and executed. Can be relative inside current namespace or qualified."
               },
               "name" : {
                 "type" : "string",
@@ -6419,7 +6423,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.app.config" : {
             "type" : "object",
@@ -6462,11 +6466,15 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property containing the attachments."
+                "description" : "Depreacted. Use path instead. The key of the property containing the attachments."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property containing the attachments."
               },
               "uuid" : {
                 "type" : "string",
-                "description" : "The uuid of the property containing the attachments. If this is given, key param is ignored."
+                "description" : "The uuid of the property containing the attachments. If this is given, path param is ignored."
               },
               "name" : {
                 "type" : "string",
@@ -6507,7 +6515,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property this attachment belongs to."
+                "description" : "Deprecated. Use path instead. The key of the property this attachment belongs to."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property this attachment belongs to."
               },
               "name" : {
                 "type" : "string",
@@ -6539,7 +6551,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key", "name" ]
+            "required" : [ "key", "path", "name" ]
           },
           "property.attachment.chunk.get" : {
             "type" : "object",
@@ -6549,7 +6561,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property this attachment belongs to."
+                "description" : "Deprecated. Use path instead. The key of the property this attachment belongs to."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property this attachment belongs to."
               },
               "name" : {
                 "type" : "string",
@@ -6581,7 +6597,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key", "name" ]
+            "required" : [ "path", "name" ]
           },
           "property.attachment.chunk.put" : {
             "type" : "object",
@@ -6591,7 +6607,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property this attachment belongs to."
+                "description" : "Deprecated. Use path instead. The key of the property this attachment belongs to."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property this attachment belongs to."
               },
               "name" : {
                 "type" : "string",
@@ -6622,7 +6642,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key", "name" ]
+            "required" : [ "path", "name" ]
           },
           "property.attachment.content" : {
             "type" : "object",
@@ -6632,7 +6652,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property this attachment belongs to."
+                "description" : "Deprecated. Use path instead. The key of the property this attachment belongs to."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property this attachment belongs to."
               },
               "name" : {
                 "type" : "string",
@@ -6659,7 +6683,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.attachment.delete" : {
             "type" : "object",
@@ -6669,7 +6693,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property containing the attachment."
+                "description" : "Deprecated. Use path instead. The key of the property containing the attachment."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property containing the attachment."
               },
               "name" : {
                 "type" : "string",
@@ -6692,7 +6720,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key", "name" ]
+            "required" : [ "path", "name" ]
           },
           "property.attachment.get" : {
             "type" : "object",
@@ -6702,7 +6730,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property this attachment belongs to."
+                "description" : "Deprecated. Use path instead. The key of the property this attachment belongs to."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property this attachment belongs to."
               },
               "name" : {
                 "type" : "string",
@@ -6729,7 +6761,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.attachment.list" : {
             "type" : "object",
@@ -6739,7 +6771,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property to list its attachments for."
+                "description" : "Deprecated. Use path instead. The key of the property to list its attachments for."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to list its attachments for."
               },
               "id" : {
                 "type" : "string",
@@ -6762,7 +6798,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.attachment.put" : {
             "type" : "object",
@@ -6772,7 +6808,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property containing the attachments."
+                "description" : "Deprecated. Use path instead. The key of the property containing the attachments."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property containing the attachments."
               },
               "uuid" : {
                 "type" : "string",
@@ -6821,7 +6861,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property this attachment belongs to."
+                "description" : "Deprecated. Use path instead. The key of the property this attachment belongs to."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property this attachment belongs to."
               },
               "name" : {
                 "type" : "string",
@@ -6848,7 +6892,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key", "name", "uri" ]
+            "required" : [ "path", "name", "uri" ]
           },
           "property.copy" : {
             "type" : "object",
@@ -6858,7 +6902,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The origin path key of the property.Otherwise a new entry is created."
+                "description" : "Deprecated. Use path instead. The origin key of the property.Otherwise a new entry is created."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The origin path of the property.Otherwise a new entry is created."
               },
               "to" : {
                 "type" : "string",
@@ -6881,7 +6929,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key", "to" ]
+            "required" : [ "to" ]
           },
           "property.delete" : {
             "type" : "object",
@@ -6891,7 +6939,7 @@
             "properties" : {
               "pattern" : {
                 "type" : "string",
-                "description" : "The path key pattern of the properties to delete. All matching properties will be deleted!"
+                "description" : "The path pattern of the properties to delete. All matching properties will be deleted!"
               },
               "trashBin" : {
                 "type" : "string",
@@ -6929,7 +6977,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The path key of the property to check for. "
+                "description" : "Deprecated. Use path instead. The path key of the property to check for. "
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to check for. "
               },
               "id" : {
                 "type" : "string",
@@ -6952,7 +7004,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.get" : {
             "type" : "object",
@@ -6962,7 +7014,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or key is mandatory."
+                "description" : "Deprecated. Use path instead. The relative or absolute (with namespace) property key. If uuid is given, this parameter is ignored. One of of uuid or path is mandatory."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The relative or absolute (with namespace) property path. If uuid is given, this parameter is ignored. One of of uuid or path is mandatory."
               },
               "uuid" : {
                 "type" : "string",
@@ -6999,7 +7055,7 @@
             "properties" : {
               "strategy" : {
                 "type" : "string",
-                "description" : "Defines what to do if a property with same key already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. ",
+                "description" : "Defines what to do if a property with same path already exists. Possible values are: update = Update existing fields of the property from the import values. rollback = Do not import at all. Also all other properties wont be imported in this case. skip = Skip the already existing entry but log it. ",
                 "default" : "skip"
               },
               "id" : {
@@ -7024,77 +7080,6 @@
               }
             },
             "required" : [ ]
-          },
-          "property.keys.children" : {
-            "type" : "object",
-            "description" : "Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "pattern" : {
-                "type" : "string",
-                "description" : "The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. "
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "pattern" ]
-          },
-          "property.keys" : {
-            "type" : "object",
-            "description" : "Returns all property keys for a given pattern.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "pattern" : {
-                "type" : "string",
-                "description" : "The key pattern of the properties to search for. Also supports key pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. "
-              },
-              "includeTrashed" : {
-                "type" : "string",
-                "description" : "Include also properties moved to trash bin in the search?",
-                "default" : "false"
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "pattern" ]
           },
           "property.list" : {
             "type" : "object",
@@ -7146,7 +7131,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property to lock."
+                "description" : "Deprecated. Use path instead. The key of the property to lock."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to lock."
               },
               "type" : {
                 "type" : "string",
@@ -7186,7 +7175,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.lock.get" : {
             "type" : "object",
@@ -7196,7 +7185,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property to return the lock tag for."
+                "description" : "Deprecated. Use path instead. The key of the property to return the lock tag for."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to return the lock tag for."
               },
               "id" : {
                 "type" : "string",
@@ -7215,7 +7208,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "key", "path" ]
           },
           "property.lock.remove" : {
             "type" : "object",
@@ -7225,7 +7218,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property to remove the lock from."
+                "description" : "Deprecated. Use path instead. The key of the property to remove the lock from."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to remove the lock from."
               },
               "id" : {
                 "type" : "string",
@@ -7244,7 +7241,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.move" : {
             "type" : "object",
@@ -7255,6 +7252,10 @@
               "key" : {
                 "type" : "string",
                 "description" : "The origin path key of the property.Otherwise a new entry is created."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "Deprecated. Use path instead. The origin path key of the property.Otherwise a new entry is created."
               },
               "to" : {
                 "type" : "string",
@@ -7277,7 +7278,78 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key", "to" ]
+            "required" : [ "path", "to" ]
+          },
+          "property.path.children" : {
+            "type" : "object",
+            "description" : "Returns all property child keys for a given parent key. For any child 'folder', returns / at the very end.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "pattern" : {
+                "type" : "string",
+                "description" : "The key pattern of the parent property or properties. Can be a static suffix like my/parent/path or my/parent/path/ or a pattern like my/parent/path/*.  Nested patterns like my/*/path/* are not supported. "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "pattern" ]
+          },
+          "property.path.list" : {
+            "type" : "object",
+            "description" : "Returns all property paths for a given pattern.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "pattern" : {
+                "type" : "string",
+                "description" : "The key pattern of the properties to search for. Also supports path pattern matching whereas * matches a single part inside a directory in the key and ** everything. For example '/pipeforce/namespace/user/**' would return all properties of all users in the given namespace. Also sub levels of this path. To avoid sub-leveling use the * instead: '/pipeforce/namespace/user/*'. This would return /pipeforce/namespace/user/max' but not /pipeforce/namespace/user/max/contracts'. "
+              },
+              "includeTrashed" : {
+                "type" : "string",
+                "description" : "Include also properties moved to trash bin in the search?",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "pattern" ]
           },
           "property.put" : {
             "type" : "object",
@@ -7287,7 +7359,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
+                "description" : "Deprecated. Use path instead. The path key of the property to save. If property with key already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to save. If property with this path already exists, the existing property will be loaded and updated instead. Otherwise a new entry is created."
               },
               "value" : {
                 "type" : "string",
@@ -7310,7 +7386,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.query" : {
             "type" : "object",
@@ -7378,11 +7454,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The exact path key of the property to delete. If property with this key doesnt exist, nothing happens."
+                "description" : "Deprecated. Use pattern instead. The exact path key of the property to delete. If property with this key doesnt exist, nothing happens."
               },
               "pattern" : {
                 "type" : "string",
-                "description" : "The path key pattern of the properties to delete. All matching properties will be deleted!"
+                "description" : "The path key pattern of the single property or the properties to delete. All matching properties will be deleted!"
               },
               "id" : {
                 "type" : "string",
@@ -7410,6 +7486,10 @@
             "outputType" : "JsonNode",
             "properties" : {
               "key" : {
+                "type" : "string",
+                "description" : "Deprecated. Use path instead. The path key of the property to save. If property with key already exists, it will be updated. Otherwise, a new entry is created."
+              },
+              "path" : {
                 "type" : "string",
                 "description" : "The path key of the property to save. If property with key already exists, it will be updated. Otherwise a new entry is created."
               },
@@ -7473,7 +7553,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.search" : {
             "type" : "object",
@@ -7483,7 +7563,11 @@
             "properties" : {
               "keyFilter" : {
                 "type" : "string",
-                "description" : "They key pattern to pre-select the properties to search in."
+                "description" : "Deprecated. USe path instead. They key pattern to pre-select the properties to search in."
+              },
+              "pathFilter" : {
+                "type" : "string",
+                "description" : "They path pattern to pre-select the properties to search in."
               },
               "valueFilter" : {
                 "type" : "string",
@@ -7537,7 +7621,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "keyFilter" ]
+            "required" : [ "pathFilter" ]
           },
           "property.send.delivery" : {
             "type" : "object",
@@ -7604,7 +7688,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The path key of the property to list the tags for."
+                "description" : "Deprecated. Use path instead. The path key of the property to list the tags for."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to list the tags for."
               },
               "id" : {
                 "type" : "string",
@@ -7627,7 +7715,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.tag.put" : {
             "type" : "object",
@@ -7637,7 +7725,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The path key of the property to add the tag to."
+                "description" : "Deprecated. Use path instead. The path key of the property to add the tag to."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to add the tag to."
               },
               "tags" : {
                 "type" : "string",
@@ -7668,7 +7760,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.value.expression" : {
             "type" : "object",
@@ -7728,7 +7820,11 @@
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "The key of the property to be returned."
+                "description" : "Deprecated. Use path instead. The key of the property to be returned."
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the property to be returned."
               },
               "includeUuidField" : {
                 "type" : "string",
@@ -7755,7 +7851,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "property.value.list" : {
             "type" : "object",
@@ -7806,7 +7902,11 @@
             "properties" : {
               "baseKey" : {
                 "type" : "string",
-                "description" : "The base path key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property."
+                "description" : "Deprecated. Use basePath instead. The base key (= folder) of the properties to save. At the end of this key path, the primary key will be appended for each value in the list in order to save it in its property."
+              },
+              "basePath" : {
+                "type" : "string",
+                "description" : "The base path (= folder) of the properties to save. At the end of this path, the primary path will be appended for each value in the list in order to save it in its property."
               },
               "primaryKeyField" : {
                 "type" : "string",
@@ -7846,7 +7946,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "baseKey" ]
+            "required" : [ "baseKey", "basePath" ]
           },
           "property.value.put" : {
             "type" : "object",
@@ -7855,6 +7955,10 @@
             "outputType" : "JsonNode",
             "properties" : {
               "key" : {
+                "type" : "string",
+                "description" : "Deprecated. Use path instead. The key of the property to save the value to."
+              },
+              "path" : {
                 "type" : "string",
                 "description" : "The path key of the property to save the value to."
               },
@@ -7883,7 +7987,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ "path" ]
           },
           "provision" : {
             "type" : "object",
