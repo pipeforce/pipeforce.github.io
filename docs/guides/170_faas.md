@@ -567,13 +567,12 @@ def function():
 
 def test_function_is_hello():
     result = function()
-    assert result == "Hello"
+    assert result == "Hello", "I expect Hello here"
 
 
 def test_function_is_world():
     result = function()
-    assert result == "World"
-
+    assert result == "World", "This probably will fail"
 
 if __name__ == "__main__":
     test_function_is_hello()
