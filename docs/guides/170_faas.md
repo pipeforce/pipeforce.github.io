@@ -585,7 +585,7 @@ As you can see, we added two test functions here. Each of it starts with prefix 
 python hello.py
 ```
 
-Instead of calling each test function inside the `__main__` advice (which is sometimes the only possible way in case you cannot install additional packages), we recommend to execute a unit testing framework like `pytest` for example in order to pick-up and execute all of your test functions automatically for you:
+Instead of calling each test function inside the `__main__` advice (which is sometimes the only possible way in case you cannot install additional packages), we recommend to execute a unit testing framework like [`pytest`](https://docs.pytest.org/) for example in order to pick-up and execute all of your test functions automatically for you:
 
 ```
 pip install pytest

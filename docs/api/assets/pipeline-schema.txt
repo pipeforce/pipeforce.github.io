@@ -2633,6 +2633,159 @@
             },
             "required" : [ "to", "path" ]
           },
+          "drive.storage.copy" : {
+            "type" : "object",
+            "description" : "Reads a file from drive and copy to other location.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "path" : {
+                "type" : "string",
+                "description" : "The path of the file to be read from Drive."
+              },
+              "target" : {
+                "type" : "string",
+                "description" : "The path of the file to be move from Drive."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "path", "target" ]
+          },
+          "drive.storage.download" : {
+            "type" : "object",
+            "description" : "Reads a file from local drive and copy to NextCloud drive.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "bucketId" : {
+                "type" : "string",
+                "description" : "The path of the file to be read from Drive."
+              },
+              "objectId" : {
+                "type" : "string",
+                "description" : "The file name to be download from the Drive."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "bucketId", "objectId" ]
+          },
+          "drive.storage.upload.chunk" : {
+            "type" : "object",
+            "description" : "Reads a file from local drive and copy to NextCloud drive.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "key" : {
+                "type" : "string",
+                "description" : "The key of the property this attachment belongs to."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the attachment this chunk belongs to."
+              },
+              "index" : {
+                "type" : "string",
+                "description" : "The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "key", "name" ]
+          },
+          "drive.storage.upload.chunk.manual" : {
+            "type" : "object",
+            "description" : "Reads a file from local drive and copy to NextCloud drive.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
+          "drive.storage.upload" : {
+            "type" : "object",
+            "description" : "Reads a file from local drive and copy to NextCloud drive.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
           "drive.tag" : {
             "type" : "object",
             "description" : "Adds or removes a WebDAV tag to a resource on drive.",
@@ -3761,7 +3914,7 @@
               "app" : {
                 "type" : "string",
                 "description" : "The app which contains the i18n messages.",
-                "default" : "common"
+                "default" : "io.pipeforce.common"
               },
               "context" : {
                 "type" : "string",
@@ -6830,6 +6983,10 @@
                 "type" : "string",
                 "description" : "The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set."
               },
+              "length" : {
+                "type" : "string",
+                "description" : "The length of the attachment."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -8671,6 +8828,10 @@
               "content" : {
                 "type" : "string",
                 "description" : "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false."
+              },
+              "length" : {
+                "type" : "string",
+                "description" : "The length of the attachment."
               },
               "id" : {
                 "type" : "string",

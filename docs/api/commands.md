@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 06/02/2023 by CommandComplianceTest -->
+<!-- Generated: 08/02/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -3670,6 +3670,245 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## drive.storage.copy ``v1``
+----------   
+Reads a file from drive and copy to other location.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.storage.copy:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`path` | String | true | null | The path of the file to be read from Drive.
+`target` | String | true | null | The path of the file to be move from Drive.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.storage.copy:  
+      path: <value>  
+      target: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.storage.copy?path=<value>&target=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.storage.copy path=<value> target=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## drive.storage.download ``v1``
+----------   
+Reads a file from local drive and copy to NextCloud drive.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.storage.download:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`bucketId` | String | true | null | The path of the file to be read from Drive.
+`objectId` | String | true | null | The file name to be download from the Drive.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.storage.download:  
+      bucketId: <value>  
+      objectId: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.storage.download?bucketId=<value>&objectId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.storage.download bucketId=<value> objectId=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## drive.storage.upload.chunk ``v1``
+----------   
+Reads a file from local drive and copy to NextCloud drive.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.storage.upload.chunk:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | The key of the property this attachment belongs to.
+`name` | String | true | null | The name of the attachment this chunk belongs to.
+`index` | String | false | null | The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.storage.upload.chunk:  
+      key: <value>  
+      name: <value>  
+      index: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.storage.upload.chunk?key=<value>&name=<value>&index=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.storage.upload.chunk key=<value> name=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## drive.storage.upload.chunk.manual ``v1``
+----------   
+Reads a file from local drive and copy to NextCloud drive.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.storage.upload.chunk.manual:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.storage.upload.chunk.manual:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.storage.upload.chunk.manual?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.storage.upload.chunk.manual id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## drive.storage.upload ``v1``
+----------   
+Reads a file from local drive and copy to NextCloud drive.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=drive.storage.upload:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - drive.storage.upload:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/drive.storage.upload?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command drive.storage.upload id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## drive.tag ``v1``
 ----------   
 Adds or removes a WebDAV tag to a resource on drive.
@@ -5252,7 +5491,7 @@ Returns the i18n messages of given app, context and locale.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`app` | String | false | common | The app which contains the i18n messages.
+`app` | String | false | io.pipeforce.common | The app which contains the i18n messages.
 `context` | String | false | default | The context of the i18n messages.
 `locale` | String | false | en | The locale of the i18n message. For example: en, de, fr and so on.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -9244,6 +9483,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
 `content` | String | false | null | The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false.
 `contentType` | String | false | null | The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set.
+`length` | String | false | null | The length of the attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9261,6 +9501,7 @@ pipeline:
       name: <value>  
       content: <value>  
       contentType: <value>  
+      length: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -9273,12 +9514,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put?key=<value>&path=<value>&uuid=<value>&name=<value>&content=<value>&contentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.attachment.put?key=<value>&path=<value>&uuid=<value>&name=<value>&content=<value>&contentType=<value>&length=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put key=<value> path=<value> uuid=<value> name=<value> content=<value> contentType=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.attachment.put key=<value> path=<value> uuid=<value> name=<value> content=<value> contentType=<value> length=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11700,6 +11941,7 @@ Name | Type | Required | Default | Description
 `name` | String | false | null | The name of the attachment to be created. If an attachment with this name already exists, updates the existing one.
 `contentType` | String | false | null | The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set.
 `content` | String | false | null | The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false.
+`length` | String | false | null | The length of the attachment.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11715,6 +11957,7 @@ pipeline:
       name: <value>  
       contentType: <value>  
       content: <value>  
+      length: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -11727,12 +11970,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.attachment.put?outboxUuid=<value>&name=<value>&contentType=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
+http://host/api/v3/command/secure.transfer.outbox.attachment.put?outboxUuid=<value>&name=<value>&contentType=<value>&content=<value>&length=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.attachment.put outboxUuid=<value> name=<value> contentType=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
+pi command secure.transfer.outbox.attachment.put outboxUuid=<value> name=<value> contentType=<value> content=<value> length=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
