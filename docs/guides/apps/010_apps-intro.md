@@ -8,7 +8,7 @@ slug: /apps
 
 ## What is an App?
 
-In PIPEFORCE, an app groups together resources like scripts, templates, configurations and others to solve a certain business task. Any pipeline, form or workflow etc. is part of exactly one app.
+An app in PIPEFORCE is like an app for mobile phones. Such an app groups together resources like scripts, templates, configurations and others to solve a certain business task. Any pipeline, form or workflow etc. is part of exactly one app. 
 
 An app can be shared with others on the marketplace.
 
@@ -16,23 +16,39 @@ Also see [this tutorial](../docs/tutorials/create-app) to learn how to create an
 
 For each app, certain access rules can be specified. Apps can be installed, uninstalled, exported and imported. Furthermore, it is also possible to use staging and versioning for apps. They can be developed online using the workbench or offline using source code files and the [CLI](../../guides/cli). You can think of apps also like “plug-ins” for PIPEFORCE.
 
-## App properties
-Typically, all properties (resources) of an app reside in the property store under the key path 
+## App structure
+Typically, all properties (resources) of an app reside in the property store and having a property path with a prefix like this: 
 
 ```
-global/app/<NAME>/<RESOURCE_PATH>
+global/app/<NAME>
 ```
 
-The key of an app property always starts with prefix `global/app`, followed by the name of the app `<NAME>`, followed by the path of the resource inside the app. For example:
+The path always starts with prefix `global/app`, followed by the name of the app `<NAME>`, wheras `<NAME>` must be a fully qualified, unique name.
+
+### Qualified App naming
+
+In order to avoid a naming clash with other apps from other users which could probably have the same naming as your app, as best practise, you should give the app always a name which follows the reversed domain name package conventions from the [Java package specification](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html):
+
+1. The app name is written in lower case and may not contain any space or special character.
+1. Use the reversed internet domain name of your company, project or organisation to begin the app name. For example: `com.logabit.myapp` or `org.myproject.myapp`.
+1.  Built-in apps from PIPEFORCE always start with prefix `io.pipeforce.` for example: `io.pipeforce.common`. 
+2.  Note: The internet domain names must be valid ones if you want your apps to become trusted in the marketplace.
+
+Here is an example of a property path to a resource inside an app with fully qualified name:
+
 ```
-global/app/myapp/data/helloworld
+global/app/com.logabit.myapp/data/helloworld
 ```
 
-Inside of an app path, there is a certain "folder" structure at app level which defines the main resource types of an app. The typical folder structure looks like this:
+
+### App folders
+
+
+Inside of an app path, there is a certain "folder" structure at app level which defines the main resource types of an app. The typical folder structure looks like this (the folders could vary, depending on your setup):
 
 ![](../../img/grafik-20201022-181638.png)
 
-### form
+### `form`
 
 This folder contains all form configuration properties for any form of the app, whereas the name of the property is the name of the form. For example:
 
@@ -41,7 +57,7 @@ global/app/myApp/form/createUser
 global/app/myApp/form/deleteUser
 ```
 
-### list
+### `list`
 
 This folder contains all list configuration properties for any list of the app, whereas the name of the property is the name of the list. For example:
 
@@ -50,11 +66,11 @@ global/app/myApp/list/users
 global/app/myApp/list/employees
 ```
 
-### object
+### `object`
 
 This folder contains any application model (schema) and its instances (if there are any).
 
-#### schema
+#### `schema`
 
 The schema of an object is stored in a property having this path:
 
@@ -98,7 +114,7 @@ The schema property typically contains as value a JSON schema, which describes t
 
 See the JSON schema specification for a description how to define JSON schema documents: [https://json-schema.org/](https://json-schema.org/)
 
-#### instance
+#### `instance`
 
 In case there are object instances based on a schema, they should be typically stored inside this path structure:
 
@@ -129,7 +145,7 @@ Each instance property will contain as value the data of the object instance whi
 }
 ```
 
-### pipeline
+### `pipeline`
 
 This folder contains all pipeline configurations for the given app. A pipeline can be seen as the business logic part of an application.
 
@@ -152,7 +168,7 @@ pipeline:
       subject: "A new employee was addded!"
 ```
 
-### script
+### `script`
 
 Inside of the optional script folder, scripts can be placed which can contain more complex business logic if required. By default, such scripts are written in JavaScript. Optionally also Python or Groovy are available (ask [support@pipeforce.io](mailto:support@pipeforce.io) if required). For example:
 
@@ -181,7 +197,7 @@ pipeline:
       path: "global/app/myApp/script/helloworld"
 ```
 
-### test
+### `test`
 
 This folder typically contains pipelines for tests only. Whenever necessary, PIPEFORCE automatically executes the test pipelines inside this folder to make sure the app is working as expected. Therefore you have to make sure that these tests can be executed at any time and are fully reentrant (once a test has been finished it can be executed again as often as necessary).
 
@@ -199,7 +215,7 @@ pipeline:
       assertTrue(false)
 ```
 
-### workflow
+### `workflow`
 
 This folder contains any BPMN workflow files defining a business process.
 
@@ -209,27 +225,17 @@ For example:
 global/app/myApp/workflow/approveNewEmployee
 ```
 
-## App development workspace
+## App development
 
-In its simple case you can manage all properties of an app in the property store with the `property.*` commands and the CLI using `pi pipeline`.
+In its simple case you can manage all properties of an app in the property store with the `property.*` commands and the CLI using `pi pipeline` or using the online workbench.
 
-But if you want to develop complex apps with forms, pipelines or workflows inside, we recommend you to use a local development & customization workspace. This workspace contains the properties of such an app stored as files inside your local path `$USER_HOME/pipeforce/app/myapp`. Any file created inside the myapp folder can then easily be uploaded to the property store with a single command line call using the CLI:
+But if you want to develop complex apps with forms, pipelines or workflows inside, we recommend you to use a local development & customization workspace. This workspace contains the properties of such an app stored as files inside a local folder. Any file created inside this folder can then easily be uploaded to the property store with a single command line call using the CLI. For example:
 
 ```bash
-pi publish src/global/app/myapp
+pi publish
 ```
 
-This CLI command scans your local `myapp` folder and uploads only those resources which have been changed since the last upload or have been created since then.
-
-See here how to setup such a customization workspace: [Local Low-Code Workspace](cli)
-
-See here for a getting started guide how to setup the CLI and use the local workspace: [Command Line Interface (CLI)](cli).
-
-## Working with VS Code
-
-We recommend you to work with the Visual Studio Code editor to manage your local resources in the customization editor.
-
-Learn more about installing VS Code for this here: [Visual Studio Code](../tutorials/localworkspace)
+This CLI command scans your local folder and uploads only those resources which have been changed since the last upload or have been created since then. See here how to setup the CLI and how to create a local worskspace: [Local Low-Code Workspace](cli)
 
 ## Report an Issue
 :::tip Your help is needed!

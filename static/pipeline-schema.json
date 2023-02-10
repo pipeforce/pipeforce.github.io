@@ -257,6 +257,65 @@
             },
             "required" : [ ]
           },
+          "app.resource.get" : {
+            "type" : "object",
+            "description" : "Returns resources from inside a given apps resource folder in the property store.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "app" : {
+                "type" : "string",
+                "description" : "The name of the app to load the resource from"
+              },
+              "path" : {
+                "type" : "string",
+                "description" : "The path relative to the app's resource folder of the resource to be returned."
+              },
+              "github" : {
+                "type" : "string",
+                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+              },
+              "branch" : {
+                "type" : "string",
+                "description" : "The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given."
+              },
+              "runTests" : {
+                "type" : "boolean",
+                "description" : "Run the tests of the app after installation?",
+                "default" : "false"
+              },
+              "async" : {
+                "type" : "boolean",
+                "description" : "Run the installation async?",
+                "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ "app", "path" ]
+          },
           "app.uninstall" : {
             "type" : "object",
             "description" : "Uninstalls the given app.",

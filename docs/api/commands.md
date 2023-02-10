@@ -444,6 +444,67 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## app.resource.get ``v1``
+----------   
+Returns resources from inside a given apps resource folder in the property store.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.resource.get:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`app` | String | true | null | The name of the app to load the resource from
+`path` | String | true | null | The path relative to the app's resource folder of the resource to be returned.
+`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead.
+`branch` | String | false | null | The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given.
+`runTests` | Boolean | false | false | Run the tests of the app after installation?
+`async` | Boolean | false | true | Run the installation async?
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - app.resource.get:  
+      app: <value>  
+      path: <value>  
+      github: <value>  
+      branch: <value>  
+      runTests: <value>  
+      async: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      credentials: <value>  
+      secret: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/app.resource.get?app=<value>&path=<value>&github=<value>&branch=<value>&runTests=<value>&async=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command app.resource.get app=<value> path=<value> github=<value> branch=<value> runTests=<value> async=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## app.uninstall ``v1``
 ----------   
 Uninstalls the given app.
