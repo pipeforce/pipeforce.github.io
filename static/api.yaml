@@ -172,6 +172,156 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/app.config.get:
+    get:
+      parameters:
+      - name: "app"
+        in: "query"
+        required: false
+        description: "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead."
+        schema:
+          type: "string"
+      - name: "github"
+        in: "query"
+        required: false
+        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+        schema:
+          type: "string"
+      - name: "branch"
+        in: "query"
+        required: false
+        description: "The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given."
+        schema:
+          type: "string"
+      - name: "runTests"
+        in: "query"
+        required: false
+        description: "Run the tests of the app after installation?"
+        schema:
+          type: "boolean"
+      - name: "async"
+        in: "query"
+        required: false
+        description: "Run the installation async?"
+        schema:
+          type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "credentials"
+        in: "query"
+        required: false
+        description: "DEPRECATED. Use param secret instead. "
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        schema:
+          type: "string"
+      description: "Returns the configuration of an app or a list of apps. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "app"
+        in: "query"
+        required: false
+        description: "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead."
+        schema:
+          type: "string"
+      - name: "github"
+        in: "query"
+        required: false
+        description: "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+        schema:
+          type: "string"
+      - name: "branch"
+        in: "query"
+        required: false
+        description: "The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given."
+        schema:
+          type: "string"
+      - name: "runTests"
+        in: "query"
+        required: false
+        description: "Run the tests of the app after installation?"
+        schema:
+          type: "boolean"
+      - name: "async"
+        in: "query"
+        required: false
+        description: "Run the installation async?"
+        schema:
+          type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "credentials"
+        in: "query"
+        required: false
+        description: "DEPRECATED. Use param secret instead. "
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/app.install:
     get:
       parameters:
@@ -607,7 +757,7 @@ paths:
         description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
         schema:
           type: "string"
-      description: "Returns resources from inside a given apps resource folder in the property store. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns resources from inside a given app resource folder of the property store. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -6013,6 +6163,24 @@ paths:
   /api/v3/command/document.understand:
     get:
       parameters:
+      - name: "provider"
+        in: "query"
+        required: false
+        description: "The name of the provider to process document."
+        schema:
+          type: "string"
+      - name: "config"
+        in: "query"
+        required: false
+        description: "The config json to process document"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "The name of the secret in secret store."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -6080,6 +6248,24 @@ paths:
                 - type: "object"
     post:
       parameters:
+      - name: "provider"
+        in: "query"
+        required: false
+        description: "The name of the provider to process document."
+        schema:
+          type: "string"
+      - name: "config"
+        in: "query"
+        required: false
+        description: "The config json to process document"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: false
+        description: "The name of the secret in secret store."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -6873,8 +7059,8 @@ paths:
       parameters:
       - name: "path"
         in: "query"
-        required: true
-        description: "The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file."
+        required: false
+        description: "The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file. If null or empty, the name of the content object is use as path."
         schema:
           type: "string"
       - name: "namingStrategy"
@@ -6928,8 +7114,8 @@ paths:
       parameters:
       - name: "path"
         in: "query"
-        required: true
-        description: "The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file."
+        required: false
+        description: "The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file. If null or empty, the name of the content object is use as path."
         schema:
           type: "string"
       - name: "namingStrategy"
@@ -7164,420 +7350,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/drive.storage.copy:
-    get:
-      parameters:
-      - name: "path"
-        in: "query"
-        required: true
-        description: "The path of the file to be read from Drive."
-        schema:
-          type: "string"
-      - name: "target"
-        in: "query"
-        required: true
-        description: "The path of the file to be move from Drive."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "Reads a file from drive and copy to other location. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "path"
-        in: "query"
-        required: true
-        description: "The path of the file to be read from Drive."
-        schema:
-          type: "string"
-      - name: "target"
-        in: "query"
-        required: true
-        description: "The path of the file to be move from Drive."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/drive.storage.download:
-    get:
-      parameters:
-      - name: "bucketId"
-        in: "query"
-        required: true
-        description: "The path of the file to be read from Drive."
-        schema:
-          type: "string"
-      - name: "objectId"
-        in: "query"
-        required: true
-        description: "The file name to be download from the Drive."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "Reads a file from local drive and copy to NextCloud drive. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "bucketId"
-        in: "query"
-        required: true
-        description: "The path of the file to be read from Drive."
-        schema:
-          type: "string"
-      - name: "objectId"
-        in: "query"
-        required: true
-        description: "The file name to be download from the Drive."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/drive.storage.upload.chunk:
-    get:
-      parameters:
-      - name: "key"
-        in: "query"
-        required: true
-        description: "The key of the property this attachment belongs to."
-        schema:
-          type: "string"
-      - name: "name"
-        in: "query"
-        required: true
-        description: "The name of the attachment this chunk belongs to."
-        schema:
-          type: "string"
-      - name: "index"
-        in: "query"
-        required: false
-        description: "The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "Reads a file from local drive and copy to NextCloud drive. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "key"
-        in: "query"
-        required: true
-        description: "The key of the property this attachment belongs to."
-        schema:
-          type: "string"
-      - name: "name"
-        in: "query"
-        required: true
-        description: "The name of the attachment this chunk belongs to."
-        schema:
-          type: "string"
-      - name: "index"
-        in: "query"
-        required: false
-        description: "The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/drive.storage.upload.chunk.manual:
-    get:
-      parameters:
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "Reads a file from local drive and copy to NextCloud drive. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/drive.storage.upload:
-    get:
-      parameters:
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "Reads a file from local drive and copy to NextCloud drive. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
       tags:
@@ -17416,6 +17188,348 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/pinboard.item.delete:
+    get:
+      parameters:
+      - name: "uuid"
+        in: "query"
+        required: false
+        description: "The uuid of the pinboard item to delete."
+        schema:
+          type: "string"
+      - name: "value"
+        in: "query"
+        required: false
+        description: "The value of the pinboard item to delete."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deletes a pinboard item of currently logged-in user. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "uuid"
+        in: "query"
+        required: false
+        description: "The uuid of the pinboard item to delete."
+        schema:
+          type: "string"
+      - name: "value"
+        in: "query"
+        required: false
+        description: "The value of the pinboard item to delete."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/pinboard.item.get:
+    get:
+      parameters:
+      - name: "uuid"
+        in: "query"
+        required: false
+        description: "The uuid of the pinboard item to return. If not given, all pinboard items of currently logged-in user will be returned, ordered by order value."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Lists all pinboard items or returns a concrete one by uuid. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "uuid"
+        in: "query"
+        required: false
+        description: "The uuid of the pinboard item to return. If not given, all pinboard items of currently logged-in user will be returned, ordered by order value."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/pinboard.item.put:
+    get:
+      parameters:
+      - name: "uuid"
+        in: "query"
+        required: false
+        description: "The uuid of the pinboard item to update. If not given, a new one will be created."
+        schema:
+          type: "string"
+      - name: "value"
+        in: "query"
+        required: true
+        description: "The pinboard value."
+        schema:
+          type: "string"
+      - name: "order"
+        in: "query"
+        required: false
+        description: "The order of the item in the pinboard as int value. ASC."
+        schema:
+          type: "string"
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the pinboard item."
+        schema:
+          type: "string"
+      - name: "icon"
+        in: "query"
+        required: false
+        description: "The icon of the pinboard item. If null, a default icon will be used."
+        schema:
+          type: "string"
+      - name: "color"
+        in: "query"
+        required: false
+        description: "The color of the icon. If null, the default color will be used."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Creates a new pinboard item or updates an existing one. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "uuid"
+        in: "query"
+        required: false
+        description: "The uuid of the pinboard item to update. If not given, a new one will be created."
+        schema:
+          type: "string"
+      - name: "value"
+        in: "query"
+        required: true
+        description: "The pinboard value."
+        schema:
+          type: "string"
+      - name: "order"
+        in: "query"
+        required: false
+        description: "The order of the item in the pinboard as int value. ASC."
+        schema:
+          type: "string"
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the pinboard item."
+        schema:
+          type: "string"
+      - name: "icon"
+        in: "query"
+        required: false
+        description: "The icon of the pinboard item. If null, a default icon will be used."
+        schema:
+          type: "string"
+      - name: "color"
+        in: "query"
+        required: false
+        description: "The color of the icon. If null, the default color will be used."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/pipeline.debug.status:
     get:
       parameters:
@@ -18427,6 +18541,12 @@ paths:
         description: "The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead."
         schema:
           type: "string"
+      - name: "storageId"
+        in: "query"
+        required: false
+        description: "The id of the storage to be used in the backend to store the binary data of the attachment. Possible values: database, drive."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -18449,6 +18569,12 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       description: "Adds a chunk of data to the given attachment. Note: A chunk may not be bigger than 10MB. Otherwise, it gets rejected from the backend. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -18494,6 +18620,12 @@ paths:
         description: "The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead."
         schema:
           type: "string"
+      - name: "storageId"
+        in: "query"
+        required: false
+        description: "The id of the storage to be used in the backend to store the binary data of the attachment. Possible values: database, drive."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -18516,6 +18648,12 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       tags:
@@ -18970,31 +19108,37 @@ paths:
       - name: "uuid"
         in: "query"
         required: false
-        description: "The uuid of the property containing the attachments. If this is given, key param is ignored."
+        description: "The uuid of the property containing the attachments. If this is given, path param is ignored."
         schema:
           type: "string"
       - name: "name"
         in: "query"
         required: false
-        description: "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one."
+        description: "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one. This parameter is not required in case the input is a content object or a content collection."
         schema:
           type: "string"
       - name: "content"
         in: "query"
         required: false
-        description: "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false."
+        description: "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all (also not from the body), set this value to: false."
         schema:
           type: "string"
       - name: "contentType"
         in: "query"
         required: false
-        description: "The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set."
+        description: "The content type to be used for the attachment. This parameter is optional in case the input is a content object or a content collection."
         schema:
           type: "string"
       - name: "length"
         in: "query"
         required: false
-        description: "The length of the attachment."
+        description: "The length of the attachment. This parameter is not required in case the input is a content object or content collection."
+        schema:
+          type: "string"
+      - name: "storageId"
+        in: "query"
+        required: false
+        description: "The id of the storage to be used in the backend to store the binary data of the attachment. Possible values: database, drive."
         schema:
           type: "string"
       - name: "id"
@@ -19021,13 +19165,19 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
       - name: "output"
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Adds one ore more attachments to a property. Overwrites / updates any existing attachments with same name. In order to add an attachment without any data, use the params of this command to specify it.In case there is a content object in the body, and it has no name assigned, its data will be added as chunk to this attachment.In case there is a content object in the body, and it has a name, a new attachment will be created using this name and the data from this content object added as chunk.The same applies to a list of content objects in a content collection. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Creates and adds attachments to a property. Optionally with binary payload data. Overwrites / updates any existing attachments with same name. The attachments can be added in three ways: A) A single content object or a collection of content objects is given in input, then its payload and metadata is used to create the attachment(s). B) Data different to a content object is given in the input. Then this data will be used as the payload for the attachment. C) Input is null or empty. Then an empty attachment without any payload will be created. In case B) and C) the additional parameters name, contentType and length are mandatory. In case A) The parameters name, contentType and length are optional and will be used as fallback value in case a content object is them missing.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -19055,31 +19205,37 @@ paths:
       - name: "uuid"
         in: "query"
         required: false
-        description: "The uuid of the property containing the attachments. If this is given, key param is ignored."
+        description: "The uuid of the property containing the attachments. If this is given, path param is ignored."
         schema:
           type: "string"
       - name: "name"
         in: "query"
         required: false
-        description: "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one."
+        description: "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one. This parameter is not required in case the input is a content object or a content collection."
         schema:
           type: "string"
       - name: "content"
         in: "query"
         required: false
-        description: "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false."
+        description: "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all (also not from the body), set this value to: false."
         schema:
           type: "string"
       - name: "contentType"
         in: "query"
         required: false
-        description: "The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set."
+        description: "The content type to be used for the attachment. This parameter is optional in case the input is a content object or a content collection."
         schema:
           type: "string"
       - name: "length"
         in: "query"
         required: false
-        description: "The length of the attachment."
+        description: "The length of the attachment. This parameter is not required in case the input is a content object or content collection."
+        schema:
+          type: "string"
+      - name: "storageId"
+        in: "query"
+        required: false
+        description: "The id of the storage to be used in the backend to store the binary data of the attachment. Possible values: database, drive."
         schema:
           type: "string"
       - name: "id"
@@ -19104,6 +19260,12 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       - name: "output"
@@ -23866,7 +24028,7 @@ paths:
       - name: "content"
         in: "query"
         required: false
-        description: "The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead."
+        description: "The content to be added to the chunk. If this parameter is null or empty, the input will be used as content instead."
         schema:
           type: "string"
       - name: "id"
@@ -23891,6 +24053,12 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       description: "Adds a chunk of data to an existing secure transfer attachment given by outboxUuid and name parameter. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -23927,7 +24095,7 @@ paths:
       - name: "content"
         in: "query"
         required: false
-        description: "The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead."
+        description: "The content to be added to the chunk. If this parameter is null or empty, the input will be used as content instead."
         schema:
           type: "string"
       - name: "id"
@@ -23952,6 +24120,12 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       tags:
@@ -28213,6 +28387,18 @@ paths:
         description: "The format of the resulting test report. Possible values: json (default), junit"
         schema:
           type: "string"
+      - name: "dryRun"
+        in: "query"
+        required: false
+        description: "If true, this command will return a simulated failed test report without executing real tests. This is mainly for development and integration tasks in order to make sure such integrations work as expected."
+        schema:
+          type: "string"
+      - name: "returnStatus500IfFailed"
+        in: "query"
+        required: false
+        description: "In case this command was executed via HTTP and a test run has been failed or has an error, should the response return the HTTP status code 500 (Internal Server Error)?"
+        schema:
+          type: "string"
       - name: "functionExcludePattern"
         in: "query"
         required: false
@@ -28272,6 +28458,18 @@ paths:
         in: "query"
         required: false
         description: "The format of the resulting test report. Possible values: json (default), junit"
+        schema:
+          type: "string"
+      - name: "dryRun"
+        in: "query"
+        required: false
+        description: "If true, this command will return a simulated failed test report without executing real tests. This is mainly for development and integration tasks in order to make sure such integrations work as expected."
+        schema:
+          type: "string"
+      - name: "returnStatus500IfFailed"
+        in: "query"
+        required: false
+        description: "In case this command was executed via HTTP and a test run has been failed or has an error, should the response return the HTTP status code 500 (Internal Server Error)?"
         schema:
           type: "string"
       - name: "functionExcludePattern"

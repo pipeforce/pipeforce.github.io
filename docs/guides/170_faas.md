@@ -32,19 +32,21 @@ The first step is to declare and deploy the function.
 
 The easiest way is to let PIPEFORCE manage the deployment of function scripts for you.
 
-To do so, create a new property at `global/app/myapp/function/helloworld` with mime type `application/python` (the mime parameter `type=script` is optional). Whereas `myapp` must be replaced by the name of your app and `helloworld` must be replaced by the name of the Python script you would like to create.
+To do so, simply create a new script property inside the `function` folder of your app. For example: `global/app/myapp/function/helloworld`. Set the mime type of the property to `application/python; type=script`. 
 
-The value of this property must be a valid Python script with a single function with name `function` in it:
+Then, place your Python code inside the script property.  Make sure you place all of your code always inside a function like this:
 
 ```python
 def function():
   return "Hello World"
 ```
 
-After you have saved this property in the property editor, it automatically gets deployed to the FaaS backend using the app name and the script name as the module name of the function to be called later. In this example this would be `myapp.helloworld`. This is also true in case you edit or rename the property. If you delete the property, it will also be undeployed from the FaaS backend automatically for you.
+A function with name `function` is considered as the default function and will get picked-up automatically in case no concrete function name was specified. More about this later.
+
+After you have saved this property in the property editor, it automatically gets deployed to the FaaS backend. This is also true in case you edit or rename the property. If you delete the property, it will also automatically be undeployed from the FaaS backend for you.
 
 :::tip Note
-In case a function is called using the command `function.run` and the function could not be found in the FaaS backend (for example because the backend did auto-rescale), it will be tried to auto-install this script from the property store. Therefore, you should store the script code always in the property store. More information can be found in the section about executing a function below.
+In case a function is called using the command `function.run` and the function could not be found in the FaaS backend (for example because the backend did auto-rescale), it will be automatically tried to install this script from the property store. Therefore, you should store the script code always in the property store. More information can be found in the section about executing a function below.
 :::
 
 #### Skip auto-deployment
@@ -67,7 +69,7 @@ Alternatively, you can use the command `function.put` in order to declare and de
 ```yaml
 pipeline:
   - function.put:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       code: |
         def function():
           return "Hello World!"
@@ -78,16 +80,16 @@ For parameter `code` you can also set a custom uri pointing to the script to be 
 ```yaml
 pipeline:
   - function.put:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       code: "$uri:property:global/app/myapp/function/hello"
 ```
 
 :::caution Note
-Make sure to always define a module prefix to your function name like `myapp.` which will specify to which app the function script belongs to. By default functions without this prefix will be rejected.
+Make sure to always define an app prefix to your function name like `myapp:` which will specify to which app the function script belongs to. By default functions without this prefix will be rejected.
 :::
 
 :::warning
-Be aware that scripts deployed manually using `function.put` must also be managed by yourself. In case the FaaS container in the backend automatically re-scales, it could be that your functions deployed there are gone. So you have to re-deploy them also manually. Therefore, if possible, instead of doing a manual deployment using `function.put` **prefer to save your scripts in the property store and let PIPEFORCE automatically manage the deployment for you**.
+Be aware that scripts deployed manually using `function.put` must also be fully managed manually. In case the FaaS container in the backend automatically re-scales, it could be that your functions deployed there are gone. So you have to re-deploy them also manually. Therefore, if possible, instead of doing a manual deployment using `function.put` **prefer to save your scripts in the property store and let PIPEFORCE automatically manage the deployment for you**.
 :::
 
 ### Undeploy a function
@@ -97,7 +99,7 @@ In order to undeploy a function, you can use the command `function.delete`. For 
 ```yaml
 pipeline:
   - function.delete:
-      name: "myapp.utils"
+      name: "myapp:utils"
 ```
 
 ## Execute a function
@@ -107,8 +109,12 @@ Once a function has been deployed, it can be called from inside any pipeline usi
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
 ```
+
+The name must always be in format `APP_NAME:SCRIPT_PATH` whereas `APP_NAME` must be replaced by the name of the app, the function
+belongs to and `SCRIPT_PATH` must be replaced by the dot-based path of the script inside the `function` folder. For example for a name
+of `io.pipeforce.myapp:utils.date` one would assume that the script resides in this property path: `global/app/io.pipeforce.myapp/function/utils/date`.
 
 The result of such a call is always a JSON in the PIPEFORCE result format, which looks like this:
 
@@ -129,14 +135,32 @@ The result of such a call is always a JSON in the PIPEFORCE result format, which
 
 You can then use the returned value for further processing inside your pipeline.
 
+### Execute via util
+
 Another option to execute a function is using the util `@function.run(name, args)`. It is similar to the command `function.run`. For example:
 
 ```yaml
 pipeline:
   - set.var:
       name: "resultFromFunction"
-      value: "#{@function.run('myapp.helloworld')}"
+      value: "#{@function.run('myapp:helloworld')}"
 ```
+
+### Function as Command
+
+The third option to execute a function is by calling it similar to a command directly or in a pipeline. For example:
+
+```yaml
+pipeline:
+  - myapp:myscript:myfunction:
+      someArg: "some Value"
+```
+
+This will call the function `myfunction()` inside the script `myscipt` located in the `function` folder of app `myapp`. All parameters (except the command default parameters) passed here will be passed as arguments to the function. In this example, there is a function `myfunction(someArg)` expected.
+
+:::caution 
+The function path must always be fully qualified. Meaning, it must consist always of the three parts `appName:scriptPath:functionName`.
+:::
 
 ### Auto deploy on execution
 
@@ -145,18 +169,19 @@ In case `function.run` is called and the function was not found in the FaaS back
 The schema to find the property for a given function is like this:
 
 ```
-<appName>.<functionPath>
+<appName>:<functionPath>
 ```
 
-1. First part of the name (the part before the first period `.`) is the app name.
-2. Second part of the name (after the first period `.`) is the sub path inside the `/function` folder. Any period `.` will be replaced by a forward slash `/`.
-3. Any implicit function name will be ignored (everything starting from the colon `:` if exists).
+1. First part of the name (the part before the first colon `:`) is the app name.
+2. Second part of the name (after the first colon `:`) is the sub path inside the `/function` folder. Any period `.` will be replaced by a forward slash `/`.
+3. Any implicit function name will be ignored (everything starting from the second colon `:` if exists).
 
 Here are some example mappings from function script name to function properties in the property store:
 
-- `myapp.util.hello` -> `global/app/myapp/function/util/hello`
-- `myapp.util.hello:my_func` -> `global/app/myapp/function/util/hello`
-- `hello` = Invalid, since no app part exists.
+- `myapp:util.hello` -> `global/app/myapp/function/util/hello`
+- `myapp:util.hello:my_func` -> `global/app/myapp/function/util/hello`
+- `io.pipeforce.myapp:foo` -> `global/app/io.pipeforce.myapp/function/foo`
+- `hello` = Invalid, since no app name part exists.
 
 ## Passing arguments
 
@@ -164,7 +189,7 @@ You can also pass arguments to a function. These arguments must be passed as a J
 
 ### JSON object argument
 
-Let's assume you have a function like this deployed under name `myapp.hello`:
+Let's assume you have a function like this deployed under name `myapp:helloworld`:
 
 ```python
 def function(firstName, lastName):
@@ -176,7 +201,7 @@ The arguments can be passed to the function as JSON object by using the paramete
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       args: {"firstName": "Sabrina", "lastName": "Smith"}
 ```
 
@@ -185,7 +210,7 @@ Or like this in full YAML:
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       args:
         firstName: "Sabrina"
         lastName: "Smith"
@@ -196,7 +221,7 @@ In this case the name of an argument of the function will be mappped to the name
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       args: {"lastName": "Smith", "firstName": "Sabrina"}
 ```
 #### Dynamic arguments
@@ -213,7 +238,7 @@ See the official Python documentation about `**kwargs` for more details.
 
 Another option to pass arguments to a function is by using a JSON array.
 
-Let's assume again you have a function like this deployed under name `myapp.hello`:
+Let's assume again you have a function like this deployed under name `myapp:hello`:
 
 ```python
 def function(firstName, lastName):
@@ -224,7 +249,7 @@ Then, you can call this function with arguments using a JSON array like this:
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       args: ["Sabrina", "Smith"]
 ```
 
@@ -233,7 +258,7 @@ Or like this in full YAML:
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       args: 
         - "Sabrina"
         - "Smith"
@@ -255,7 +280,7 @@ See the official Python documentation about `*args` for more details.
 
 It is also possible to pass a byte array to a function. This is handy in case you would like to send binary data or single arguments in an easy way.
 
-Let's assume you have a function like this deployed under name `myapp.hello`:
+Let's assume you have a function like this deployed under name `myapp:helloworld`:
 
 ```python
 def function(my_data):
@@ -267,7 +292,7 @@ You can pass for example a text string to this function as a byte array, by usin
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       args: "This is a simple text"
 ```
 
@@ -289,7 +314,7 @@ Example:
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
       args: []
 ```
 
@@ -300,7 +325,7 @@ It is also possible to pass a custom URI to the `args` parameter of command `fun
 ```yaml
 pipeline:
   - function.run:
-      name: "yourapp.helloworld"
+      name: "yourapp:helloworld"
       args: "$uri:property:global/app/myapp/data/myjsonargs"
 ```
 
@@ -308,7 +333,7 @@ The given URI will be resolved and it's content will be passed to the function b
 
 ## Use a custom function name
 
-By default the name of the function inside the script must be `function`, for example, lets assume you have this function script deployed under name `myapp.helloworld`:
+By default the name of the function inside the script must be `function`, for example, lets assume you have this function script deployed under name `myapp:helloworld`:
 
 ```python
 def function():
@@ -320,14 +345,14 @@ In order to call this function, you can execute the command `function.run` like 
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld"
+      name: "myapp:helloworld"
 ```
 
-This call will load the script `helloworld` and will implicitely call the function `function()` inside of it.
+This call will load the script `helloworld` and will implicitely call the function `function()` inside of it (since no function name is given).
 
 In case you have function names inside your script with names differently to `function`, then you need to specify them by passing the suffix `:my_function_name` to the `name` parameter of the `function.run` command, whereas `my_function_name` must be replaced with the name of the function you'd like to call.
 
-Let's assume, you have a script deployed under name `myapp.helloworld` with a custom function name in it like this:
+Let's assume, you have a script deployed under name `myapp:helloworld` with a custom function name in it like this:
 
 ```python
 def say_hello():
@@ -339,10 +364,10 @@ Then, you can call this function using this:
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.helloworld:say_hello"
+      name: "myapp:helloworld:say_hello"
 ```
 
-For sure it is also possible to have multiple functions with different names inside a single script. Let's see this example script deployed under `myapp.utils`:
+For sure it is also possible to have multiple functions with different names inside a single script. Let's see this example script deployed under `myapp:utils`:
 
 ```python
 def calc():
@@ -360,7 +385,7 @@ In order to call the specific function `hello`, you can use this command call:
 ```yaml
 pipeline:
   - function.run:
-      name: "myapp.utils:hello"
+      name: "myapp:utils:hello"
 ```
 
 In case the sufix is missing, the default function name `function` will be expected to exist inside the code.
@@ -388,7 +413,7 @@ You can call this function from inside your pipeline as usual:
 ```yaml
 pipeline:
   - function.run:
-      name: myapp.myfunction:hello
+      name: myapp:myfunction:hello
 ```
 
 Note: We did not specify any args in the `function.run` command since the `pipeforce` argument will be automatically set by the FaaS service.
@@ -412,7 +437,7 @@ This will return a list of all functions with additional metadata. For example:
     "statusCode": 200,
     "value": [
         {
-            "name": "function1",
+            "name": "myapp:function1",
             "size": 100,
             "created": 1.6742085685755234E9,
             "modified": 1.6742085685755234E9,
@@ -421,7 +446,7 @@ This will return a list of all functions with additional metadata. For example:
             "statusMessage": ""
         },
         {
-            "name": "function2",
+            "name": "myapp:function2",
             "size": 52,
             "created": 1.6742124433455272E9,
             "modified": 1.6742124433455272E9,
@@ -430,7 +455,7 @@ This will return a list of all functions with additional metadata. For example:
             "statusMessage": ""
         },
         {
-            "name": "common.function3",
+            "name": "common:function3",
             "size": 60,
             "created": 1.6742906565813148E9,
             "modified": 1.6742906565813148E9,
@@ -451,7 +476,7 @@ For performance reasons `function.get` without any parameters will return a list
 ```yaml
 pipeline:
   - function.get:
-      name: "myfunction"
+      name: "myapp:myfunction"
 ```
 Which will return the information about the function like this example:
 
@@ -462,7 +487,7 @@ Which will return the information about the function like this example:
     "value": {
         "type": "object",
         "data": {
-            "name": "myfunction",
+            "name": "myapp:myfunction",
             "size": 60,
             "created": 1.6742906565813148E9,
             "modified": 1.6742906565813148E9,
