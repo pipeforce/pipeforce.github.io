@@ -120,6 +120,61 @@
             },
             "required" : [ ]
           },
+          "app.config.get" : {
+            "type" : "object",
+            "description" : "Returns the configuration of an app or a list of apps.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "app" : {
+                "type" : "string",
+                "description" : "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead."
+              },
+              "github" : {
+                "type" : "string",
+                "description" : "A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead."
+              },
+              "branch" : {
+                "type" : "string",
+                "description" : "The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given."
+              },
+              "runTests" : {
+                "type" : "boolean",
+                "description" : "Run the tests of the app after installation?",
+                "default" : "false"
+              },
+              "async" : {
+                "type" : "boolean",
+                "description" : "Run the installation async?",
+                "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "credentials" : {
+                "type" : "string",
+                "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              }
+            },
+            "required" : [ ]
+          },
           "app.install" : {
             "type" : "object",
             "description" : "Installs an app into the property store. The app can be located on GitHub or can be provided as zip file content in the body. If app is located in a private GitHub repo, the param secret must be set or the default secret github-default-readonly must exist which will be used as fallback in case no secret is set as param here.",
@@ -259,7 +314,7 @@
           },
           "app.resource.get" : {
             "type" : "object",
-            "description" : "Returns resources from inside a given apps resource folder in the property store.",
+            "description" : "Returns resources from inside a given app resource folder of the property store.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -2274,6 +2329,18 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "provider" : {
+                "type" : "string",
+                "description" : "The name of the provider to process document."
+              },
+              "config" : {
+                "type" : "string",
+                "description" : "The config json to process document"
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "The name of the secret in secret store."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -2591,7 +2658,7 @@
             "properties" : {
               "path" : {
                 "type" : "string",
-                "description" : "The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file."
+                "description" : "The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file. If null or empty, the name of the content object is use as path."
               },
               "namingStrategy" : {
                 "type" : "string",
@@ -2619,7 +2686,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "path" ]
+            "required" : [ ]
           },
           "drive.share" : {
             "type" : "object",
@@ -2691,159 +2758,6 @@
               }
             },
             "required" : [ "to", "path" ]
-          },
-          "drive.storage.copy" : {
-            "type" : "object",
-            "description" : "Reads a file from drive and copy to other location.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "path" : {
-                "type" : "string",
-                "description" : "The path of the file to be read from Drive."
-              },
-              "target" : {
-                "type" : "string",
-                "description" : "The path of the file to be move from Drive."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              }
-            },
-            "required" : [ "path", "target" ]
-          },
-          "drive.storage.download" : {
-            "type" : "object",
-            "description" : "Reads a file from local drive and copy to NextCloud drive.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "bucketId" : {
-                "type" : "string",
-                "description" : "The path of the file to be read from Drive."
-              },
-              "objectId" : {
-                "type" : "string",
-                "description" : "The file name to be download from the Drive."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              }
-            },
-            "required" : [ "bucketId", "objectId" ]
-          },
-          "drive.storage.upload.chunk" : {
-            "type" : "object",
-            "description" : "Reads a file from local drive and copy to NextCloud drive.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "key" : {
-                "type" : "string",
-                "description" : "The key of the property this attachment belongs to."
-              },
-              "name" : {
-                "type" : "string",
-                "description" : "The name of the attachment this chunk belongs to."
-              },
-              "index" : {
-                "type" : "string",
-                "description" : "The index of the chunk. If given, the content of the chunk at given index is replaced with the new content. If null or empty, a new chunk is added to the attachment."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              }
-            },
-            "required" : [ "key", "name" ]
-          },
-          "drive.storage.upload.chunk.manual" : {
-            "type" : "object",
-            "description" : "Reads a file from local drive and copy to NextCloud drive.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              }
-            },
-            "required" : [ ]
-          },
-          "drive.storage.upload" : {
-            "type" : "object",
-            "description" : "Reads a file from local drive and copy to NextCloud drive.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              }
-            },
-            "required" : [ ]
           },
           "drive.tag" : {
             "type" : "object",
@@ -6456,6 +6370,129 @@
             },
             "required" : [ ]
           },
+          "pinboard.item.delete" : {
+            "type" : "object",
+            "description" : "Deletes a pinboard item of currently logged-in user.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the pinboard item to delete."
+              },
+              "value" : {
+                "type" : "string",
+                "description" : "The value of the pinboard item to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "pinboard.item.get" : {
+            "type" : "object",
+            "description" : "Lists all pinboard items or returns a concrete one by uuid.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the pinboard item to return. If not given, all pinboard items of currently logged-in user will be returned, ordered by order value."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "pinboard.item.put" : {
+            "type" : "object",
+            "description" : "Creates a new pinboard item or updates an existing one.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the pinboard item to update. If not given, a new one will be created."
+              },
+              "value" : {
+                "type" : "string",
+                "description" : "The pinboard value."
+              },
+              "order" : {
+                "type" : "string",
+                "description" : "The order of the item in the pinboard as int value. ASC."
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the pinboard item."
+              },
+              "icon" : {
+                "type" : "string",
+                "description" : "The icon of the pinboard item. If null, a default icon will be used."
+              },
+              "color" : {
+                "type" : "string",
+                "description" : "The color of the icon. If null, the default color will be used."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "value", "name" ]
+          },
           "pipeline.debug.status" : {
             "type" : "object",
             "description" : "Returns the status of a running debugging session.",
@@ -6837,6 +6874,11 @@
                 "type" : "string",
                 "description" : "The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead."
               },
+              "storageId" : {
+                "type" : "string",
+                "description" : "The id of the storage to be used in the backend to store the binary data of the attachment. Possible values: database, drive.",
+                "default" : "database"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6852,6 +6894,10 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
               }
             },
             "required" : [ "path", "name" ]
@@ -7014,7 +7060,7 @@
           },
           "property.attachment.put" : {
             "type" : "object",
-            "description" : "Adds one ore more attachments to a property. Overwrites / updates any existing attachments with same name. In order to add an attachment without any data, use the params of this command to specify it.In case there is a content object in the body, and it has no name assigned, its data will be added as chunk to this attachment.In case there is a content object in the body, and it has a name, a new attachment will be created using this name and the data from this content object added as chunk.The same applies to a list of content objects in a content collection.",
+            "description" : "Creates and adds attachments to a property. Optionally with binary payload data. Overwrites / updates any existing attachments with same name. The attachments can be added in three ways: A) A single content object or a collection of content objects is given in input, then its payload and metadata is used to create the attachment(s). B) Data different to a content object is given in the input. Then this data will be used as the payload for the attachment. C) Input is null or empty. Then an empty attachment without any payload will be created. In case B) and C) the additional parameters name, contentType and length are mandatory. In case A) The parameters name, contentType and length are optional and will be used as fallback value in case a content object is them missing. ",
             "inputType" : "Byte[]",
             "outputType" : "Void",
             "properties" : {
@@ -7028,23 +7074,28 @@
               },
               "uuid" : {
                 "type" : "string",
-                "description" : "The uuid of the property containing the attachments. If this is given, key param is ignored."
+                "description" : "The uuid of the property containing the attachments. If this is given, path param is ignored."
               },
               "name" : {
                 "type" : "string",
-                "description" : "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one."
+                "description" : "The name of the attachment to be created. If an attachment with this name already exists, updates the existing one. This parameter is not required in case the input is a content object or a content collection."
               },
               "content" : {
                 "type" : "string",
-                "description" : "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all, set this value to: false."
+                "description" : "The content to add. If null, the data in the body will be added. In case you would like to explicitly set no content at all (also not from the body), set this value to: false."
               },
               "contentType" : {
                 "type" : "string",
-                "description" : "The content type to be used for this attachment. In case there is a single content object, this value has precedence over the contentType of the content object, if there is any. In case there are multiple content objects, their contentType do have precedence, if set."
+                "description" : "The content type to be used for the attachment. This parameter is optional in case the input is a content object or a content collection."
               },
               "length" : {
                 "type" : "string",
-                "description" : "The length of the attachment."
+                "description" : "The length of the attachment. This parameter is not required in case the input is a content object or content collection."
+              },
+              "storageId" : {
+                "type" : "string",
+                "description" : "The id of the storage to be used in the backend to store the binary data of the attachment. Possible values: database, drive.",
+                "default" : "database"
               },
               "id" : {
                 "type" : "string",
@@ -7061,6 +7112,10 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
               },
               "output" : {
                 "type" : "string",
@@ -8812,7 +8867,7 @@
               },
               "content" : {
                 "type" : "string",
-                "description" : "The content to be added to the chunk. If this parameter is null or empty, the body will be used as content instead."
+                "description" : "The content to be added to the chunk. If this parameter is null or empty, the input will be used as content instead."
               },
               "id" : {
                 "type" : "string",
@@ -8829,6 +8884,10 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
               }
             },
             "required" : [ "name" ]
@@ -10392,6 +10451,16 @@
                 "type" : "string",
                 "description" : "The format of the resulting test report. Possible values: json (default), junit",
                 "default" : "json"
+              },
+              "dryRun" : {
+                "type" : "string",
+                "description" : "If true, this command will return a simulated failed test report without executing real tests. This is mainly for development and integration tasks in order to make sure such integrations work as expected.",
+                "default" : "false"
+              },
+              "returnStatus500IfFailed" : {
+                "type" : "string",
+                "description" : "In case this command was executed via HTTP and a test run has been failed or has an error, should the response return the HTTP status code 500 (Internal Server Error)?",
+                "default" : "false"
               },
               "functionExcludePattern" : {
                 "type" : "string",
