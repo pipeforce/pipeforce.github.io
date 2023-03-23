@@ -4,7 +4,7 @@ sidebar_label: 17. Python Functions
 
 # Python Functions as a Service
 
-<p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0 (BETA)</p>
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0</p>
 
 PIPEFORCE has an advanced mechanism to execute [Python](https://www.python.org/doc/) functions as part of a pipeline execution. This way you can use the full power of this popular scripting language inside your pipelines.
 

@@ -5,11 +5,11 @@ sidebar_label: Getting Started
 
 # Getting Started
 
-**For standard processes, there is commodity software off the shelf. For everything beyond: PIPEFORCE.**
+**Integrate your Systems + Automate your Business.**
 
-PIPEFORCE is an enterprise-grade business process automation and application integration platform. It is built entirely cloud-native and runs inside a container orchestration environment like Kubernetes using microservices and messaging. Designed ground-up that way. 
+PIPEFORCE is an enterprise-grade business process automation and application integration platform. It is available as a hosted version (iPaaS) or can be run On-Premises. It is built entirely cloud-native and runs inside Kubernetes using microservices and messaging. Designed ground-up that way. 
 
-It covers all aspects to create and integrate new age best-of-breed enterprise solutions. It helps to develop, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation and testing with full life-cycle management. Everything on a single platform which offers low-code and custom microservice development.
+It covers all aspects to create best-of-breed enterprise solutions for your new age enterprise. It helps to develop, deploy and operate digital services, workflow apps, and data mappings across the entire journey from planning and discussion to implementation and testing with full life-cycle management. Everything on a single turnkey platform which offers low-code and custom microservice development:
 
 ![](img/pipeforce-overview.png)
 
@@ -25,27 +25,16 @@ PIPEFORCE helps you to:
 - document workflows
 - train processes with users
 
-within your company. Its an open platform which supports you for example to:
+All of this on a single platform running on Kubernetes.
 
-- integrate (connect) different Systems and APIs with standardized connectors and pipelines
-- do data migration, transformation, cleansing and enrichment using [enterprise integration patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/)
-- build business apps using a forms and lists framework
-- design, discuss and implement standardized BPMN workflows using an online designer
-- automate tasks und flows using the built-in toolings or connect to external RPA toolings such as UIPath
-- define a clear model for separation of people's responsbilities 
-- define a clear development and deployment model 
+We at PIPEFORCE believe that the digital success of new age enterprises lies in the ability to scale the development of digital solutions. And the key to this is our mission: Make digital business automation easy.
 
-All of this on a single platform and in a fraction of time.
+We think that Low Code / No Code platforms are important here and must seamless work together with workflow automation and application development and integration on a central platform. Our goal is to give your employees digital superpower in their fields of expertise. The platform brings these experts closer together, so that they can make the best possible contribution to the digital goals of your company.
 
-We at PIPEFORCE believe that the digital success of new age enterprises lies in the ability to scale the development of digital solutions. We think that Low Code / No Code platforms are important here, but they won't solve all aspects. Instead, our goal is to give your employees digital superpower in their fields. The platform brings the experts closer together, so they can build business solutions to empower their company to cover the challenges of the digital age in a way and speed, that no others can do.
+PIPEFORCE helps enterprises to achieve **digital superpower** by clearly separating the swimlanes of expertise but defining clear interfaces between the different roles so that they can work together very effectively to reach the same goals:
 
-PIPEFORCE helps enterprises to achieve **digital superpower** by clearly separating the responsibilities and defining the interfaces between:
+![](img/pipeforce-worklevels.png)
 
-- User
-- Admin
-- Low Code Developer
-- Professional Developer
-- DevOp
 
 This documentation is mainly for Low Coders and Professional Developers. If you are looking for user or admin manuals, please refer to the [Support pages](https://logabit.atlassian.net/servicedesk/customer/portals).
 

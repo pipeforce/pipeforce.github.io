@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 12/03/2023 by CommandComplianceTest -->
+<!-- Generated: 23/03/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -1876,6 +1876,106 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## data.decrypt ``v1``
+----------   
+Decrypts the data previously encrypted using the command data.encrypt in the body using AES-256 in CBC mode by default. Puts the decrypted data into the output.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.decrypt:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`password` | String | true | null | The password to decrypt the body with. The PBKDF2 algorithm will be applied to this password before using it as decryption key.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - data.decrypt:  
+      password: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/data.decrypt?password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command data.decrypt password=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## data.encrypt ``v1``
+----------   
+Encrypts the data in the body using AES-256 in CBC mode by default and puts the encrypted datainto the output.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=data.encrypt:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`password` | String | true | null | The password to encrypt the body with. The PBKDF2 algorithm will be applied to this password before using it as encryption key.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - data.encrypt:  
+      password: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/data.encrypt?password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command data.encrypt password=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## data.enrich ``v1``
 ----------   
 Enriches a given data object by applying a given PEL expression on it.
@@ -2295,57 +2395,6 @@ http://host/api/v3/command/datetime.zones?id=<value>&if=<value>&onError=<value>&
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command datetime.zones id=<value> if=<value> onError=<value> eval=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## decrypt ``v1``
-----------   
-Decrypts the data in the body using the defined encryption parameter. Puts the encrypted data back to the body.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=decrypt:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`password` | String | true | null | The password to decrypt the body with.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - decrypt:  
-      password: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      input: <value>  
-      output: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/decrypt?password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command decrypt password=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -3897,55 +3946,6 @@ http://host/api/v3/command/drive.upload.chunked?action=<value>&uuid=<value>&path
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command drive.upload.chunked action=<value> uuid=<value> path=<value> index=<value> id=<value> if=<value> onError=<value> eval=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## encrypt ``v1``
-----------   
-Encrypts the data in the body using the defined encryption parameter and puts the encrypted datain the output.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=encrypt:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`password` | String | true | null | The password to encrypt the body with.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - encrypt:  
-      password: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/encrypt?password=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command encrypt password=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10434,6 +10434,7 @@ Name | Type | Required | Default | Description
 `existStrategy` | String | false | update | In case a property with given key already exists, uses one of these strategies: update = The property is updated/overwritten by the new data. skip = The property is skipped. Nothing is changed in persistence layer. error = An error is thrown in case property already exists.
 `attachments` | String | false | null | The attachments to be added to this property. Can be a uri or a PEL. Overwrites existing ones.
 `tags` | String | false | null | The initial tags to add to this property. Can be a comma separated list of name value pairs, like this name1:value1, name2:value2.
+`encrypted` | Boolean | false | false | Should the value of this property be stored encrypted? If this is set to true, every time before the property value is saved, it will be auto-encrypted using the default access key. This way you can make sure that the sensitive value is always saved in encrypted format at database layer (at rest). This increases security, but also has some drawbacks. For example: JSON queries are no longer possible then. Auto-decryption is not done for lists. You have to decrypt an encrypted value explicitly by calling property.get. Event payloads for encrypted properties are also sent encrypted only. For example for property.updated event, the payload will be the encrypted value of origin and target.
 `finalAction` | String | false | null | What should happen with this property finally when pipeline execution has been finished? Available actions: 'persist' (writes the latest state to DB), 'remove' (removes the latest state from DB), null (nothing happens = default)
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -10456,6 +10457,7 @@ pipeline:
       existStrategy: <value>  
       attachments: <value>  
       tags: <value>  
+      encrypted: <value>  
       finalAction: <value>  
       id: <value>  
       if: <value>  
@@ -10469,12 +10471,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&encrypted=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> finalAction=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> encrypted=<value> finalAction=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10784,6 +10786,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `key` | String | false | null | Deprecated. Use path instead. The key of the property to be returned.
 `path` | String | true | null | The path of the property to be returned.
+`decrypt` | String | false | false | Should the value be auto-decrypted in case it is encrypted? Note: This is only possible, if the value was encrypted using the default encryption. In case this property was not encrypted, nothing happens by setting this to true.
 `includeUuidField` | String | false | null | If the resulting property value is a JSON object, adds the property uuid at first level of the JSON using this value as the key name. Overwrites any existing entry with same name. If this parameter is null or empty, no entry will be added (default). If property is not a JSON, ignores this parameter.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -10798,6 +10801,7 @@ pipeline:
   - property.value.get:  
       key: <value>  
       path: <value>  
+      decrypt: <value>  
       includeUuidField: <value>  
       id: <value>  
       if: <value>  
@@ -10811,12 +10815,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.value.get?key=<value>&path=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.value.get?key=<value>&path=<value>&decrypt=<value>&includeUuidField=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.value.get key=<value> path=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.value.get key=<value> path=<value> decrypt=<value> includeUuidField=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
