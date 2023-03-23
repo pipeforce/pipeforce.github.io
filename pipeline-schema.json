@@ -1312,6 +1312,76 @@
             },
             "required" : [ "uri" ]
           },
+          "data.decrypt" : {
+            "type" : "object",
+            "description" : "Decrypts the data previously encrypted using the command data.encrypt in the body using AES-256 in CBC mode by default. Puts the decrypted data into the output.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "password" : {
+                "type" : "string",
+                "description" : "The password to decrypt the body with. The PBKDF2 algorithm will be applied to this password before using it as decryption key."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "password" ]
+          },
+          "data.encrypt" : {
+            "type" : "object",
+            "description" : "Encrypts the data in the body using AES-256 in CBC mode by default and puts the encrypted datainto the output.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "password" : {
+                "type" : "string",
+                "description" : "The password to encrypt the body with. The PBKDF2 algorithm will be applied to this password before using it as encryption key."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "password" ]
+          },
           "data.enrich" : {
             "type" : "object",
             "description" : "Enriches a given data object by applying a given PEL expression on it.",
@@ -1645,43 +1715,6 @@
               }
             },
             "required" : [ ]
-          },
-          "decrypt" : {
-            "type" : "object",
-            "description" : "Decrypts the data in the body using the defined encryption parameter. Puts the encrypted data back to the body.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "password" : {
-                "type" : "string",
-                "description" : "The password to decrypt the body with."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "input" : {
-                "type" : "string",
-                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "password" ]
           },
           "delivery.attachment.add" : {
             "type" : "object",
@@ -2840,39 +2873,6 @@
               }
             },
             "required" : [ "action" ]
-          },
-          "encrypt" : {
-            "type" : "object",
-            "description" : "Encrypts the data in the body using the defined encryption parameter and puts the encrypted datain the output.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "password" : {
-                "type" : "string",
-                "description" : "The password to encrypt the body with."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "password" ]
           },
           "error" : {
             "type" : "object",
@@ -7799,6 +7799,11 @@
                 "type" : "string",
                 "description" : "The initial tags to add to this property. Can be a comma separated list of name value pairs, like this name1:value1, name2:value2."
               },
+              "encrypted" : {
+                "type" : "boolean",
+                "description" : "Should the value of this property be stored encrypted? If this is set to true, every time before the property value is saved, it will be auto-encrypted using the default access key. This way you can make sure that the sensitive value is always saved in encrypted format at database layer (at rest). This increases security, but also has some drawbacks. For example: JSON queries are no longer possible then. Auto-decryption is not done for lists. You have to decrypt an encrypted value explicitly by calling property.get. Event payloads for encrypted properties are also sent encrypted only. For example for property.updated event, the payload will be the encrypted value of origin and target.",
+                "default" : "false"
+              },
               "finalAction" : {
                 "type" : "string",
                 "description" : "What should happen with this property finally when pipeline execution has been finished? Available actions: 'persist' (writes the latest state to DB), 'remove' (removes the latest state from DB), null (nothing happens = default)"
@@ -8096,6 +8101,11 @@
               "path" : {
                 "type" : "string",
                 "description" : "The path of the property to be returned."
+              },
+              "decrypt" : {
+                "type" : "string",
+                "description" : "Should the value be auto-decrypted in case it is encrypted? Note: This is only possible, if the value was encrypted using the default encryption. In case this property was not encrypted, nothing happens by setting this to true.",
+                "default" : "false"
               },
               "includeUuidField" : {
                 "type" : "string",
