@@ -9,14 +9,6 @@ The crypto engines of PIPEFORCE allow to encrypt and decrypt data very effective
 
 If you're using PIPEFORCE as a cloud service, a random secure keystore is automatically provided to your instance. This keystore is generated in an encrypted wallet oustide the PIPEFORCE cloud and is never persisted somewhere else. The keystore will also take part on key rotations which will take place in order to change the keys from time to time. So all setup for you by default in a most secure way.
 
-:::note Zero Knowledge
-If you would like to, you can provide your own keystore. In this case, please contact the support so they will provide you with instructions how you can add your own keystore at runtime.
-If you provide your own keystore, the system switches to zero knowledge. Meaning, the PIPEFORCE support team has no possibility to access your encrypted data even if it is stored in the cloud. But this also means from that time on, you have to manage these keys for yourself. The instance will no longer
-be part of recurring key rotations done for all keystores managed by PIPEFORCE and if you lost your keystore, you can no longer access your data. 
-:::
-
-In case an error occurs during execution of a command, the execution of the command and/or the according pipeline stops by default and an error message is sent back to the caller. You have different options to adjust this default behaviour.
-
 ## Auto-encrypting properties
 
 In order to store property values only in encrypted format in the property store, you have to set the parameter `encrypted` to `true` when you create the property schema using the command `property.schema.put`. For example:
