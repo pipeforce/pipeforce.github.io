@@ -48,9 +48,9 @@ Then you have to setup the credentials for your test.
 
 In case your tests must run inside of PIPEFORCE, you have to setup the BrowserStack credentials as scretes there.
 
-To do so, login to the PIPEFORCE portal and create a new secret `test-browserstack-username` of type `secret-text` and paste your `BROWSERSTACK_USERNAME` as value (you can find it in your BrowserStack account).
+To do so, login to the PIPEFORCE portal and create a new secret `PIPEFORCE_TEST_BROWSERSTACK_USERNAME` of type `secret-text` and paste your `BROWSERSTACK_USERNAME` as value (you can find it in your BrowserStack account).
 
-Create another secret with name `test-browserstack-access-key` and of type `secret-text` and paste your `BROWSERSTACK_ACCESS_KEY` as value (you can find it in your BrowserStack account as well).
+Create another secret with name `PIPEFORCE_TEST_BROWSERSTACK_ACCESS_KEY` and of type `secret-text` and paste your `BROWSERSTACK_ACCESS_KEY` as value (you can find it in your BrowserStack account as well).
 
 #### As environment variables
 
