@@ -20038,7 +20038,7 @@ paths:
       - name: "ttl"
         in: "query"
         required: false
-        description: "The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after a some minutes. Writing to the property instead works immediately after the `ttl` has been expired. "
+        description: "The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after some minutes. Writing to the property instead works immediately after the `ttl` has been expired. "
         schema:
           type: "string"
       - name: "uuid"
@@ -20117,7 +20117,7 @@ paths:
       - name: "ttl"
         in: "query"
         required: false
-        description: "The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after a some minutes. Writing to the property instead works immediately after the `ttl` has been expired. "
+        description: "The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after some minutes. Writing to the property instead works immediately after the `ttl` has been expired. "
         schema:
           type: "string"
       - name: "uuid"
@@ -21067,6 +21067,12 @@ paths:
         description: "What should happen with this property finally when pipeline execution has been finished? Available actions: 'persist' (writes the latest state to DB), 'remove' (removes the latest state from DB), null (nothing happens = default)"
         schema:
           type: "string"
+      - name: "retentionStrategy"
+        in: "query"
+        required: false
+        description: "The retention strategy is used to decide delete property and it's data, there are two types of strategy (0,1) that decides the deletion.0 = Deletes chunks objects and data from storage if any (keeps property + attachment metadata) 1 = Deletes all (property, attachments, chunks from DB, binary data from storage if any) "
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -21180,6 +21186,12 @@ paths:
         in: "query"
         required: false
         description: "What should happen with this property finally when pipeline execution has been finished? Available actions: 'persist' (writes the latest state to DB), 'remove' (removes the latest state from DB), null (nothing happens = default)"
+        schema:
+          type: "string"
+      - name: "retentionStrategy"
+        in: "query"
+        required: false
+        description: "The retention strategy is used to decide delete property and it's data, there are two types of strategy (0,1) that decides the deletion.0 = Deletes chunks objects and data from storage if any (keeps property + attachment metadata) 1 = Deletes all (property, attachments, chunks from DB, binary data from storage if any) "
         schema:
           type: "string"
       - name: "id"
@@ -24877,6 +24889,12 @@ paths:
         description: "If true, notifies sender when recipients have downloaded delivery."
         schema:
           type: "string"
+      - name: "retentionStrategy"
+        in: "query"
+        required: false
+        description: "The retention strategy is used to decide delete property and it's data, there are two types of strategy (0,1) that decides the deletion.0 = Deletes chunks objects and data from storage if any (keeps property + attachment metadata) 1 = Deletes all (property, attachments, chunks from DB, binary data from storage if any)"
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -24960,6 +24978,12 @@ paths:
         in: "query"
         required: false
         description: "If true, notifies sender when recipients have downloaded delivery."
+        schema:
+          type: "string"
+      - name: "retentionStrategy"
+        in: "query"
+        required: false
+        description: "The retention strategy is used to decide delete property and it's data, there are two types of strategy (0,1) that decides the deletion.0 = Deletes chunks objects and data from storage if any (keeps property + attachment metadata) 1 = Deletes all (property, attachments, chunks from DB, binary data from storage if any)"
         schema:
           type: "string"
       - name: "id"

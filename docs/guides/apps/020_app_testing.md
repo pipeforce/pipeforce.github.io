@@ -40,9 +40,23 @@ PIPEFORCE has built-in support for the UI testing service [BrowserStack](https:/
 
 In order to use this service, you have to create a (paid) BrowserStack account first.
 
-Then login to the PIPEFORCE portal and create a new secret `test-browserstack-username` of type `secret-text` and paste your `BROWSERSTACK_USERNAME` as value (you can find it in your BrowserStack account).
+### Setup credentials
+
+Then you have to setup the credentials for your test. 
+
+#### As PIPEFORCE secret
+
+In case your tests must run inside of PIPEFORCE, you have to setup the BrowserStack credentials as scretes there.
+
+To do so, login to the PIPEFORCE portal and create a new secret `test-browserstack-username` of type `secret-text` and paste your `BROWSERSTACK_USERNAME` as value (you can find it in your BrowserStack account).
 
 Create another secret with name `test-browserstack-access-key` and of type `secret-text` and paste your `BROWSERSTACK_ACCESS_KEY` as value (you can find it in your BrowserStack account as well).
+
+#### As environment variables
+
+In case you would like to execute the tests locally in your IDE before you deploy and execute them to PIPEFORCE, you have to set the credentials as these environment variables: `PIPEFORCE_TEST_BROWSERSTACK_USERNAME` and `PIPEFORCE_TEST_BROWSERSTACK_ACCESS_KEY` locally.
+
+### Write a test script
 
 Now, you can write functions with BrowserStack tests. Here is an example:
 
@@ -67,9 +81,11 @@ def test_portal_login(pipeforce: PipeforceClient):
 
 ```
 
+Make sure that the test function always starts with prefix `test_` since only in this case it will be picked-up and executed automatically.
+
 Note that the `selenium` and `pipeforce_sdk` packages are already part of the FaaS backend. So no need for you to install them via `on_requirements`.
 
-In this example test function you can see that at first a `BrowserStackTest` class is created. This encapsulates all login and setup steps for you.
+In this example you can see that at first a `BrowserStackTest` class is created. This encapsulates all login and setup steps for you.
 
 Then the Selenium driver is retrieved and a the current portal URL is loaded.
 

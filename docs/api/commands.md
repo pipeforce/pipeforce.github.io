@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 23/03/2023 by CommandComplianceTest -->
+<!-- Generated: 31/03/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -9956,7 +9956,7 @@ Name | Type | Required | Default | Description
 `key` | String | false | null | Deprecated. Use path instead. The key of the property to lock.
 `path` | String | true | null | The path of the property to lock.
 `type` | String | false | global | The type of the lock for which range the lock is exclusive. One of: `user`, `role`, `group`, `namespace`, `global` or 'trash'. If null, empty or different from the types mentioned here, the lock will be global by default.
-`ttl` | String | false | null | The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after a some minutes. Writing to the property instead works immediately after the `ttl` has been expired. 
+`ttl` | String | false | null | The time-to-live of the lock in milliseconds. After this amount of time, the lock will be automatically removed or the property will be deleted if lock is of type `trash`. If this value is null or empty, the lock is not limited to a time-to-live and must be removed manually. Note: The lock cleanup job will run any few minutes, so if `ttl` of a lock has been set to a few milliseconds or seconds it can be, that it is fully removed from the metadata returned by reading a property only after some minutes. Writing to the property instead works immediately after the `ttl` has been expired. 
 `uuid` | String | false | null | In case the lock is of type `user`, this parameter must contain the uuid of the user this lock is exclusive to. This parameter is mandatory in case this is a user exclusive lock.
 `name` | String | false | null | In case the lock is of type `role` or `group`, this parameter is mandatory and defines the name of the role or group, this lock is exclusive to. In case the type of the lock is `namespace`, this parameter is optional. If given, this name is used as namespace to create the lock for, otherwise the current namespace of the instance is used. In case the type of the lock is `global`, this parameter will be ignored.
 `details` | String | false | null | Some optional data to be set on the lock.
@@ -10436,6 +10436,7 @@ Name | Type | Required | Default | Description
 `tags` | String | false | null | The initial tags to add to this property. Can be a comma separated list of name value pairs, like this name1:value1, name2:value2.
 `encrypted` | Boolean | false | false | Should the value of this property be stored encrypted? If this is set to true, every time before the property value is saved, it will be auto-encrypted using the default access key. This way you can make sure that the sensitive value is always saved in encrypted format at database layer (at rest). This increases security, but also has some drawbacks. For example: JSON queries are no longer possible then. Auto-decryption is not done for lists. You have to decrypt an encrypted value explicitly by calling property.get. Event payloads for encrypted properties are also sent encrypted only. For example for property.updated event, the payload will be the encrypted value of origin and target.
 `finalAction` | String | false | null | What should happen with this property finally when pipeline execution has been finished? Available actions: 'persist' (writes the latest state to DB), 'remove' (removes the latest state from DB), null (nothing happens = default)
+`retentionStrategy` | String | false | null | The retention strategy is used to decide delete property and it's data, there are two types of strategy (0,1) that decides the deletion.0 = Deletes chunks objects and data from storage if any (keeps property + attachment metadata) 1 = Deletes all (property, attachments, chunks from DB, binary data from storage if any) 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -10459,6 +10460,7 @@ pipeline:
       tags: <value>  
       encrypted: <value>  
       finalAction: <value>  
+      retentionStrategy: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -10471,12 +10473,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&encrypted=<value>&finalAction=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&encrypted=<value>&finalAction=<value>&retentionStrategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> encrypted=<value> finalAction=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> encrypted=<value> finalAction=<value> retentionStrategy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12312,6 +12314,7 @@ Name | Type | Required | Default | Description
 `recipients` | String | false | null | A comma separated list of email recipients or null (in order to add it later). Also PEL is supported here.
 `expiresOn` | String | false | null | Delete the transfer attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted.
 `notifySender` | String | false | true | If true, notifies sender when recipients have downloaded delivery.
+`retentionStrategy` | String | false | null | The retention strategy is used to decide delete property and it's data, there are two types of strategy (0,1) that decides the deletion.0 = Deletes chunks objects and data from storage if any (keeps property + attachment metadata) 1 = Deletes all (property, attachments, chunks from DB, binary data from storage if any)
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -12330,6 +12333,7 @@ pipeline:
       recipients: <value>  
       expiresOn: <value>  
       notifySender: <value>  
+      retentionStrategy: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -12342,12 +12346,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.put?outboxUuid=<value>&subject=<value>&message=<value>&locale=<value>&recipients=<value>&expiresOn=<value>&notifySender=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secure.transfer.outbox.put?outboxUuid=<value>&subject=<value>&message=<value>&locale=<value>&recipients=<value>&expiresOn=<value>&notifySender=<value>&retentionStrategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.put outboxUuid=<value> subject=<value> message=<value> locale=<value> recipients=<value> expiresOn=<value> notifySender=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secure.transfer.outbox.put outboxUuid=<value> subject=<value> message=<value> locale=<value> recipients=<value> expiresOn=<value> notifySender=<value> retentionStrategy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
