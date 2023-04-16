@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 31/03/2023 10:58:30 by CommandComplianceTest -->
+<!-- Generated: 15/04/2023 15:09:47 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -172,6 +172,118 @@ uri | ``string`` | The uri to be used for the content object
 #### Example  
 ```  
 @content.newContent(uri)  
+```  
+
+### fromBase64(base64String)   
+Wraps the given base64 string into a content object   
+
+#### Returns  
+``icontent`` - The content object.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+base64String | ``string`` | The base64 string. 
+
+
+#### Example  
+```  
+@content.fromBase64(base64String)  
+```  
+
+### fromBase64(base64String,name)   
+Wraps the given base64 string into a content object   
+
+#### Returns  
+``icontent`` - The content object.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+base64String | ``string`` | The base64 string. 
+name | ``string`` | The name of the content object (= file name) 
+
+
+#### Example  
+```  
+@content.fromBase64(base64String,name)  
+```  
+
+### fromBase64(base64String,name,contentType)   
+Wraps the given base64 string into a content object   
+
+#### Returns  
+``icontent`` - The content object.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+base64String | ``string`` | The base64 string. 
+name | ``string`` | The name of the content object (= file name) 
+contentType | ``string`` | The content type of the base64 encoded string (when converted back). 
+
+
+#### Example  
+```  
+@content.fromBase64(base64String,name,contentType)  
+```  
+
+### from(object,contentType,contentEncoding,name)   
+Tries to convert the given object to a content object which can be used
+to persist the data.   
+
+#### Returns  
+``icontent`` - The content object.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+object | ``object`` | The object to convert. 
+contentType | ``string`` | The content type to be set on the content object. 
+contentEncoding | ``string`` | The encoding to be set on the content object. 
+name | ``string`` | The name to be set on the content object. 
+
+
+#### Example  
+```  
+@content.from(object,contentType,contentEncoding,name)  
+```  
+
+### from(object,name)   
+Tries to convert the given object to a content object which can be used
+to persist the data.   
+
+#### Returns  
+``icontent`` - The content object.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+object | ``object`` | The object to convert. 
+name | ``string`` | The name to be set on the content object. 
+
+
+#### Example  
+```  
+@content.from(object,name)  
+```  
+
+### from(object)   
+Tries to convert the given object to a content object which can be used
+to persist the data.   
+
+#### Returns  
+``icontent`` - The content object.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+object | ``object`` | The object to convert. 
+
+
+#### Example  
+```  
+@content.from(object)  
 ```  
 
  
@@ -485,6 +597,23 @@ decimalSymbol | ``string`` | The decimal symbol to be used. Can be a comma , a d
 #### Example  
 ```  
 @convert.toDecimalString(value,decimalSymbol)  
+```  
+
+### toByteArray(object)   
+Converts the given object to a byte array.   
+
+#### Returns  
+``byte[]`` - The byte array.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+object | ``object`` | The object to convert. 
+
+
+#### Example  
+```  
+@convert.toByteArray(object)  
 ```  
 
  

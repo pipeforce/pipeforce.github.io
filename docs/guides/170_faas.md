@@ -1,5 +1,5 @@
 ---
-sidebar_label: 17. Python Functions
+sidebar_label: 18. Python Functions
 ---
 
 # Python Functions as a Service

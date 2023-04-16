@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 31/03/2023 by CommandComplianceTest -->
+<!-- Generated: 15/04/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -3729,7 +3729,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## drive.save ``v1``
 ----------   
-Saves the content of the body to one or more files in Drive. The content of the body can be a single pipeline resource or a pipeline resource collection. 
+Saves the content of the body to Drive. The content of the body can be a content object (= single file) or a content collection (= folder of files).In case the body is not a content object, it will be tried to convert it to such a content object.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=drive.save:v1)
 
@@ -3740,13 +3740,14 @@ Saves the content of the body to one or more files in Drive. The content of the 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`path` | String | false | null | The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file. If null or empty, the name of the content object is use as path.
-`namingStrategy` | String | false | null | If defined, applies the given naming strategy to the name of the resource. If null or empty, no name strategy is applied.
-`cleanupBody` | String | false | true | If true, deletes the content from the body after the content was saved to drive (default). Note: In case the body content is a stream, this stream will be empty even if this was set to false since streams can be processed only once and was processed by writing its data to drive here.
+`path` | String | false | null | The path of the file to be saved in drive. If a content collection is in the body, this is the path of the base folder where to store these files recursively. Otherwise, it is expected to be the full path to a single file. If null or empty, the name of the content object is used as path. If content object has also no path set, an exception is thrown.
+`namingStrategy` | String | false | null | If defined, applies the given naming strategy to the name of the resource. If null or empty, no naming strategy is applied.
+`cleanupBody` | String | false | false | If true, deletes the content from the body after it was saved to drive (default). Note: In case the body content is a stream, this stream will be empty even if this was set to false since streams can be processed only once and was already processed by writing its data to drive here.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
 
 **Pipeline example:**  
@@ -3760,6 +3761,7 @@ pipeline:
       if: <value>  
       onError: <value>  
       eval: <value>  
+      input: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -3767,12 +3769,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanupBody=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/drive.save?path=<value>&namingStrategy=<value>&cleanupBody=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command drive.save path=<value> namingStrategy=<value> cleanupBody=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12795,7 +12797,7 @@ Name | Type | Required | Default | Description
 `port` | Integer | false | null | The port the running service accepts requests.
 `ingress` | Boolean | false | null | Expose the given port of the service to the internet? The service is then reachable via HTTPS using the url https://[serviceName]-[namespace].pipeforce.net.
 `imagePullSecret` | String | false | null | The optional name of the registry secret to be used in case it is a private registry.
-`env` | String | false | null | Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'.
+`env` | String | false | null | Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName' or webhook references like '$uri:webhook:eventKey' which will be resolved and passed to the container.
 `command` | String | false | null | The list of command to execute on the service container.
 `args` | String | false | null | The list of args to be passed on to the service container.
 `replicas` | String | false | 1 | The number of stateless replicas (= scaling instances) of this service to be started in parallel in the cluster by default.

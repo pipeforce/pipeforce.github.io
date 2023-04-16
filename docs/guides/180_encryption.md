@@ -1,4 +1,4 @@
-# 18. Encryption
+# 19. Encryption
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0</p>
 
