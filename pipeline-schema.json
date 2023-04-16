@@ -2685,22 +2685,22 @@
           },
           "drive.save" : {
             "type" : "object",
-            "description" : "Saves the content of the body to one or more files in Drive. The content of the body can be a single pipeline resource or a pipeline resource collection. ",
+            "description" : "Saves the content of the body to Drive. The content of the body can be a content object (= single file) or a content collection (= folder of files).In case the body is not a content object, it will be tried to convert it to such a content object.",
             "inputType" : "Byte",
             "outputType" : "Byte",
             "properties" : {
               "path" : {
                 "type" : "string",
-                "description" : "The path of the file to be saved. If multiple files are in the body, this is the path of the base folder where to store these files. Otherwise it is expected to be the full path to a single file. If null or empty, the name of the content object is use as path."
+                "description" : "The path of the file to be saved in drive. If a content collection is in the body, this is the path of the base folder where to store these files recursively. Otherwise, it is expected to be the full path to a single file. If null or empty, the name of the content object is used as path. If content object has also no path set, an exception is thrown."
               },
               "namingStrategy" : {
                 "type" : "string",
-                "description" : "If defined, applies the given naming strategy to the name of the resource. If null or empty, no name strategy is applied."
+                "description" : "If defined, applies the given naming strategy to the name of the resource. If null or empty, no naming strategy is applied."
               },
               "cleanupBody" : {
                 "type" : "string",
-                "description" : "If true, deletes the content from the body after the content was saved to drive (default). Note: In case the body content is a stream, this stream will be empty even if this was set to false since streams can be processed only once and was processed by writing its data to drive here.",
-                "default" : "true"
+                "description" : "If true, deletes the content from the body after it was saved to drive (default). Note: In case the body content is a stream, this stream will be empty even if this was set to false since streams can be processed only once and was already processed by writing its data to drive here.",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
@@ -2717,6 +2717,10 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
               }
             },
             "required" : [ ]
@@ -9565,7 +9569,7 @@
               },
               "env" : {
                 "type" : "string",
-                "description" : "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName', '$uri:webhook:token:keyToResolve'."
+                "description" : "Map of environment variables to be applied to the service container. Can contain 'secret-text' secret references with value like '$uri:secret:secretTextName' or webhook references like '$uri:webhook:eventKey' which will be resolved and passed to the container."
               },
               "command" : {
                 "type" : "string",
