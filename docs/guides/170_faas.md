@@ -51,10 +51,11 @@ In case a function is called using the command `function.run` and the function c
 
 #### Skip auto-deployment
 
-In some situations you dont want to auto-deploy a function script from inside the `/function` property folder. To do so, add the keyword `pipeforce-faas:auto-deploy=false` (without any whitespaces) in the header comments. For example:
+In some situations you dont want to auto-deploy a function script from inside the `/function` property folder. To do so, add the  `faasConfig:` header in the top line comments of the script. For example:
 
 ```python
-# pipeforce-faas:auto-deploy=false
+# faasConfig:
+#   autoDeploy: false
 
 def function():
   return "Hello World"
@@ -330,6 +331,54 @@ pipeline:
 ```
 
 The given URI will be resolved and it's content will be passed to the function by applying the rules mentioned above.
+
+## Passing secrets and env variables
+
+You can also pass environment variables and secrets to a function. For security and performance reasons, this can only be done on deployment on the function script. 
+
+### env
+In order to set environment variables on the Python FaaS service, define the keyword `faasConfig:` in the comment in the script head, follwed by a YAML style listing of the `env` variables required to be passed along to the Python script service. Example:
+
+```python
+# faasConfig:
+#   env:
+#     MY_ENV1: someValue1
+#     MY_ENV2: someValue2
+
+import os
+
+def function():
+  return "MY_ENV1 = " + os.environ["MY_ENV1"]
+```
+
+On deployment of the script, the faasConfig will be parsed and the given env variables will be additionally deployed to the Python FaaS service.
+
+:::info Note
+Once the environment variables have been passed by a script this way, they will be visible to all other scripts in the same Python FaaS service! 
+This is also true for secrets passed as environment variables.
+:::
+
+### secret
+
+If you would like to pass secrets from the secret store this way, you can use the uri prefix `$uri:secret:` in order to point to the secret to be passed. Here is an example:
+
+```python
+# faasConfig:
+#   env:
+#     PIPEFORCE_TEST_SECRET: $uri:secret:PIPEFORCE_TEST_SECRET:defaultSecretText
+
+def function():
+  return "Hello World" 
+```
+
+On deployment, the secret `PIPEFORCE_TEST_SECRET` will be looked-up in the secret store and then passed along as value of the env variable. In case no such secret exists in the secret store, the value `defaultSecretText` will be set instead as fallback. This is optional. If no default value is set and also no secret exists, an exception will be raised instead and deployment will fail.
+
+The secret can then be accessed like any other env variable inside the script.
+
+:::warning Note
+For security reasons only secrets starting with prefix `PIPEFORCE_TEST_` and `PIPEFORCE_SHARED_` can be passed this way. Any other secret cannot be passed to the function service. In this case an exception will be raised on deployment.
+:::
+
 
 ## Use a custom function name
 

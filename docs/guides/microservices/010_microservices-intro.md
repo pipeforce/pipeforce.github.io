@@ -103,10 +103,20 @@ pipeline:
       name: myservice
       image: myimage
       env:
-        MY_SECRET_ENV: "$uri:secret:mysecret"
+        MY_SECRET_ENV: "$uri:secret:MY_SECRET"
 ```
 
-On startup of the service, the secret will be read from the secret store and passed to the container. This way it is not required to store the secret in code.
+On startup of the service, the secret with name `MY_SECRET` will be read from the secret store and passed to the container as environment variable `MY_SECRET_ENV`. This way it is not required to store the secret in code.
+
+:::caution
+Since the secret is stored in the environment variable in plain text, make sure to pass secrets only along to trustworthy microservices which belong to your stack!
+:::
+
+You can also define a default value for a secret. In case the secret could not be found in the secret store, the given default value will be used and passed as ENV variable value instead:
+
+```
+$uri:secret:MY_SECRET:someDefaultValue
+```
 
 ## Logging a microservice
 
