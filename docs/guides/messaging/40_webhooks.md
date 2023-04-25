@@ -76,9 +76,9 @@ Finally, the Webhook gets listed and you can get its token from the list:
 
 ![](../../img/portal-webhook-listing.png)
 
-## Trigger a Webhook
+## Calling a Webhook
 
-After you have setup the Webhook successfully, it can be triggered (called) from the outside. To do so, send a GET or POST HTTP request to the webhook url which was returned when you created it:
+After you have setup the Webhook successfully, it can be triggered (called) from external. To do so, send a GET or POST HTTP request to the webhook url which was returned when you created it. For example:
 
 `https://hub-try.pipeforce.org/api/v3/command/webhook.receive?token=abcdef`
 
@@ -86,14 +86,54 @@ After you have setup the Webhook successfully, it can be triggered (called) from
 In order to secure the **token** in your url, you should always prefer a **HTTPS** connection between the two systems (which is by default always the case in PIPEFORCE), and send the `token` parameter in the body of a **POST** request, or as **HTTP Header** instead of a request parameter. PIPEFORCE supports all three methods. But it depends on the caller of the webhook, whether it is capable of supporting this.
 :::
 
+### Async (non-blocking)
+
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0</p>
+
+Calling a webhook is by default executed async. This means a webhook call like this will start the execution of the webhook but will not wait for a response of it. Instead, the call will immediately responds with a `correlationId` like this example shows:
+
+```json
+{
+    "correlationId": "254d7d80-4530-431a-a0cc-c606e8faa406",
+    "status": "running",
+    "statusCode": 200,
+    "created": 1682349730659
+}
+```
+
+You can use this `correlationId` for polling in order to wait for the webhook to be finished, using the command `async.fetch`. Example:
+
+```
+curl 'https://hub-try.pipeforce.org/api/v3/command/async.get?correlationId=254d7d80-4530-431a-a0cc-c606e8faa406'
+```
+
+In case the webhook execution has been finished, this call will return the result in the body. Otherwise, an HTTP status code `204` (No Content) is returned. Make sure the time between two polling calls using `async.fetch` is >= 2 seconds.
+
+For more details about async calling see: [Async Command](/docs/guides/commands_pipelines/55_async_command.md)
+
+### Sync (blocking)
+
+<p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0</p>
+
+In case you would like to block the webhook call and wait for the response in the same request, you can set the parameter `wait` to `true`. This will block and wait until the response from webhook comes back. This will only work for short running webhooks. For longer running webhooks, this could lead in a gateway timeout in case it blocks too long.
+
+```
+curl 'https://hub-try.pipeforce.org/api/v3/command/async.get?correlationId=254d7d80-4530-431a-a0cc-c606e8faa406&wait=true'
+```
+
+For more details about async calling see: [Async Command](/docs/guides/commands_pipelines/55_async_command.md)
+
+
 ## Link a Webhook to a Pipeline
 
 After you have successfully setup the webhook, any time the webhook url is triggered (called) from the outside, a new message is produced inside PIPEFORCE, which can then be consumed by any pipeline. To do so, use the [`event.listen`](/docs/api/commands#eventlisten-v1) or [`message.receive`](/docs/api/commands#messagereceive-v1) command to listen for such new event messages. Here’s an example which sends an email whenever a new lead was created using a webhook with the `eventKey` =`webhook.lead.created`:
 
 ```yaml
 pipeline:
+
  - event.listen:
      eventKey: webhook.lead.created
+
  - mail:
      to: name@company.tld
      subject: "New lead was created!"
@@ -105,15 +145,17 @@ The input body of the [`event.listen`](/docs/api/commands#eventlisten-v1) comman
 In case the sender has sent some payload in the body of the webhook request, this payload is made available for you by default as base64 encoded string in the `origin` field of the event. To access this data, you have to convert this value as shown in this example:
 
 ```
-#{@convert.fromBase64(body.payload)}
+#{@convert.fromBase64(body.payload.origin)}
 ```
 
 In case the payload is a serializable format like a string or a JSON document for example, you can set `payloadHandling` to `raw` for the webhook. In this case, it is not needed to convert the payload from base64, so you can use it directly:
 
 ```yaml
 pipeline:
+
  - event.listen:
      eventKey: webhook.lead.created
+
  - mail:
      to: name@company.tld
      subject: "New lead was created!"
@@ -123,10 +165,39 @@ pipeline:
 For security reasons, by default, the webhook pipeline is executed with very limited `anonymousUser` privileges. So, make sure that you use only commands in your pipeline which can be executed by this user. In case you need more privileges, you can use the [`iam.run.as`](/docs/api/commands#iamrunas-v1) command to switch to the privileges of the given user before executing the command. See the IAM portal for the permissions (or roles) of a given user. Also see [Groups, Roles, and Permissions](/docs/guides/security/permissions) for more details on user privileges / permissions.
 
 :::caution Some words about security and webhooks
-
 Since a Webhook triggers the execution of pipelines, they can be very powerful. This power also comes with **additional responsibility** for you, the app developer. Make sure you have sufficient security testings in place, and you have secured your webhook pipelines accordingly.
-
 :::
+
+## Complete async Webhook
+
+By default all webhooks are executed asynchronousily: The webhook call triggers an event internally and then returns immediatelly to the caller. The caller can use blocking (`wait: true`) or polling in case he expects a response.
+
+In order to mark a webhook execution pipeline to be finished, an return a response to the waiting caller, you have to complete the webhook executing using the command `async.complete`. For example:
+
+```yaml
+pipeline:
+
+ - event.listen:
+     eventKey: webhook.lead.created
+
+ - mail:
+     to: name@company.tld
+     subject: "New lead was created!"
+     body: "#{body.payload}"
+
+ - async.complete:
+     correlationId: "#{body.correlationId}"
+     input: "Email successfully sent!"
+```
+
+As you can see in the example above, the pipeline execution will also complete an async tasks with given `correlationId`. This id is automatically provided to the webhook event object. Additionally you can specify the return value using the `input` parameter. If not given, the value from the body will be used as result value.
+
+:::tip Note
+Completing such a webhook pipeline using `async.complete` is optional, but you should consider it as best practise since otherwise, the caller would wait for response which is never coming. 
+:::
+
+For more details about completing async calls, see [Async Command](/docs/guides/commands_pipelines/55_async_command.md).
+
 
 ## Show existing Webhooks
 

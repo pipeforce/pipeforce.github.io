@@ -884,11 +884,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## async.get ``v1``
+## async.fetch ``v1``
 ----------   
 Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, HTTP status code 204 (No Content) is returned. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). And after this result was returned, any subsequent call will return a 404 (Not found) HTTP status code. 404 is also returned in case an async task with given correlation id doesn't exist.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=async.get:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=async.fetch:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -908,7 +908,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - async.get:  
+  - async.fetch:  
       correlationId: <value>  
       id: <value>  
       if: <value>  
@@ -922,12 +922,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/async.get?correlationId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/async.fetch?correlationId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command async.get correlationId=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command async.fetch correlationId=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4356,7 +4356,8 @@ Listening for events works like this: Add this command at the very first in your
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`key` | String | true | null | The key to listen for.
+`key` | String | false | null | Deprecated. Use eventKey instead.
+`eventKey` | String | false | null | The key to listen for.
 `filter` | String | false | null | DEPRECATED: Use parameter `selector` instead. An optional PEL to execute the pipeline only in case the filter applies.
 `selector` | String | false | null | Selects the message to be passed to this listener. Can be a PEL or a selector expression. Note: For performance reasons, using the body payload for filtering is not allowed here and will throw an exception. Use headers for filtering instead. If this parameter is set, filter will be ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -4370,6 +4371,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - event.listen:  
       key: <value>  
+      eventKey: <value>  
       filter: <value>  
       selector: <value>  
       id: <value>  
@@ -4383,12 +4385,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/event.listen?key=<value>&filter=<value>&selector=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/event.listen?key=<value>&eventKey=<value>&filter=<value>&selector=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command event.listen key=<value> filter=<value> selector=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command event.listen key=<value> eventKey=<value> filter=<value> selector=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10749,6 +10751,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -10773,6 +10776,7 @@ pipeline:
       if: <value>  
       onError: <value>  
       eval: <value>  
+      input: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -10781,12 +10785,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&encrypted=<value>&finalAction=<value>&retentionStrategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&encrypted=<value>&finalAction=<value>&retentionStrategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> encrypted=<value> finalAction=<value> retentionStrategy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> encrypted=<value> finalAction=<value> retentionStrategy=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -15200,6 +15204,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`wait` | String | false | false | If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details.
 
 
 **Pipeline example:**  
@@ -15212,6 +15217,7 @@ pipeline:
       if: <value>  
       onError: <value>  
       eval: <value>  
+      wait: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -15219,12 +15225,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&wait=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.receive uuid=<value> token=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command webhook.receive uuid=<value> token=<value> id=<value> if=<value> onError=<value> eval=<value> wait=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

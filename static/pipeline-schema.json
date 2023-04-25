@@ -624,7 +624,7 @@
             },
             "required" : [ "correlationId" ]
           },
-          "async.get" : {
+          "async.fetch" : {
             "type" : "object",
             "description" : "Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, HTTP status code 204 (No Content) is returned. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). And after this result was returned, any subsequent call will return a 404 (Not found) HTTP status code. 404 is also returned in case an async task with given correlation id doesn't exist.",
             "inputType" : "JsonNode",
@@ -3147,6 +3147,10 @@
             "properties" : {
               "key" : {
                 "type" : "string",
+                "description" : "Deprecated. Use eventKey instead."
+              },
+              "eventKey" : {
+                "type" : "string",
                 "description" : "The key to listen for."
               },
               "filter" : {
@@ -3174,7 +3178,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "key" ]
+            "required" : [ ]
           },
           "event.mapping.get" : {
             "type" : "object",
@@ -8055,6 +8059,10 @@
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -11474,6 +11482,11 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "wait" : {
+                "type" : "string",
+                "description" : "If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details.",
+                "default" : "false"
               }
             },
             "required" : [ "token" ]
