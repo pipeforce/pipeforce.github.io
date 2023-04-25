@@ -334,7 +334,13 @@ The given URI will be resolved and it's content will be passed to the function b
 
 ## Passing secrets and env variables
 
-You can also pass environment variables and secrets to a function. For security and performance reasons, this can only be done on deployment on the function script. 
+By default it is not good practise to add "hardcoded" environment variables or secrets in your source code since in this case they will become part of your repo in your version control system like GitHub so everyone with access to your sources can see these values.
+
+Instead, it is better to store environment variables in an extra configuration store like the [property store](/docs/propertystore) and secrets encrypted in the [secret store](docs/guides/security/secrets). 
+
+Then, you can configure your scripts so these environment variables and secrets will be automatically passed to it whenever requried at runtime. 
+
+For security and performance reasons, this can only be done on deployment on the function script. 
 
 ### env
 In order to set environment variables on the Python FaaS service, define the keyword `faasConfig:` in the comment in the script head, follwed by a YAML style listing of the `env` variables required to be passed along to the Python script service. Example:
