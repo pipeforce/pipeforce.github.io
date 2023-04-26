@@ -15,6 +15,10 @@ Since version `9.0` of PIPEFORCE, these new features have been introduced in ord
  - You can now list, get, complete and cancel async tasks remotely via command endpoints.
  - Long-polling support in order to poll for an async task to be finished
 
+With this you can start an async task and come back later in order to poll for its finished state and to fetch the computation result:
+
+![](../../img/async-polling-sequence.png)
+
 ## Start a command async
 
 See the commands documentation in order to find out, which commands support async execution. Commands which support async execution will be executed in async by default. So no special configuration required.
@@ -35,44 +39,6 @@ When a command runs in async mode, it will create an async task, register this t
 ```
 
  Async tasks can be listed, fetched, completed or cancelled using the `correlationId` and one of the appropriate commands, explained as follows.
-
-
-## Listing async tasks: `async.list`
-
-In order to list all active async tasks registered in the backend queue, you can use the command `async.list`. Example:
-```yaml
-pipeline:
-  - async.list
-```
-
-This command will return you a JSON array with information about all async tasks in `running` or `finished` state. Here is an example:
-
-```json
-[
-    {
-        "correlationId": "254d7d80-4530-431a-a0cc-c606e8faa406",
-        "status": "running",
-        "statusCode": 200,
-        "created": 1682349730659
-    },
-    {
-        "correlationId": "a5dd7d81-3520-791a-c3fc-a706e8faa000",
-        "status": "finished",
-        "statusCode": 200,
-        "created": 16823497312345
-    }
-]
-```
-
-If a task is in `running` state, this means it is still executing or it has been finished but no result has been set so far. So it is not ready to be fetched. 
-
-If a task is in state `finished` it means its execution has been finished **and** the final result has been provided, but the result was not fetched so far.
-
-Once the result of an async task has been fetched (returned) by the caller, the async task will be removed from this list.
-
-:::caution
-Do not use this listing of tasks for polling since this is not optimized for this. Calling the command `async.list` too high-frequently will result in a blocking by the backend for some minutes. Use the command `async.fetch` for polling instead. 
-:::
 
 ## Polling async task: `async.fetch`
 
@@ -162,7 +128,7 @@ Calling `async.complete` several times for the same `correlationId` has no effec
 
 ### Via message `async.complete.id`
 
-Another option to complete an async task is by sending a message to the queue `pipeforce_async_response` via the default exchange `pipeforce.default.topic` with a routing key of this format:
+Another option to complete an async task is by sending a message to the PIPEFORCE default exchange `pipeforce.default.topic` with a routing key of this format:
 
 ```
 async.complete.<CORRELATION_ID>
@@ -201,7 +167,7 @@ Calling `async.cancel` several times for the same `correlationId` has no effect 
 
 ### Via message `async.cancel.id`
 
-Similar to completing an async task, another option to cancel an async task is by sending a message to the queue `pipeforce_async_response` via the default exchange `pipeforce.default.topic` with a routing key of this format:
+Similar to completing an async task, another option to cancel an async task is by sending a message to the PIPEFORCE default exchange `pipeforce.default.topic` with a routing key of this format:
 
 ```
 async.cancel.<CORRELATION_ID>
@@ -210,7 +176,7 @@ Whereas `<CORRELATION_ID>` must be replaced by the correlation id from the async
 
 This is especially handy in case you have a microservice which is working mainly in async mode.
 
-The body of the message will be used as the response value to the async call.
+The body of the message will be used as the response value to the async call and must be a character array.
 
 This will immediately remove the async task from the backend queue. Any subsequent call of `async.fetch` will result in a `404` (Not found).
 
@@ -218,9 +184,46 @@ This will immediately remove the async task from the backend queue. Any subseque
 Sending the message  `async.cancel.<CORRELATION_ID>` several times for the same `correlationId` has no effect since only the first message wins. Any subsequent such message will simply be ignored (bot no error is thrown).
 :::
 
+## Listing async tasks: `async.list`
+
+In order to list all active async tasks registered in the backend queue, you can use the command `async.list`. Example:
+```yaml
+pipeline:
+  - async.list
+```
+
+This command will return you a JSON array with information about all async tasks in `running` or `finished` state. Here is an example:
+
+```json
+[
+    {
+        "correlationId": "254d7d80-4530-431a-a0cc-c606e8faa406",
+        "status": "running",
+        "statusCode": 200,
+        "created": 1682349730659
+    },
+    {
+        "correlationId": "a5dd7d81-3520-791a-c3fc-a706e8faa000",
+        "status": "finished",
+        "statusCode": 200,
+        "created": 16823497312345
+    }
+]
+```
+
+If a task is in `running` state, this means it is still executing or it has been finished but no result has been set so far. So it is not ready to be fetched. 
+
+If a task is in state `finished` it means its execution has been finished **and** the final result has been provided, but the result was not fetched so far.
+
+Once the result of an async task has been fetched (returned) by the caller, the async task will be removed from this list.
+
+:::caution
+Do not use this listing of tasks for polling since this is not optimized for this. Calling the command `async.list` too high-frequently will result in a blocking by the backend for some minutes. Use the command `async.fetch` for polling instead. 
+:::
+
 ## Async task timeout (experimental)
 
-Once an async task has been started, it will by default run a certain amount of time before it will be automatically cancelled, assuming the task cannot be finished and/or the caller has died. The concrete timout after an async task will be cancelled depends on the command or user context it is being used in.
+Once an async task has been started, it will by default run a certain amount of time before it will be automatically cancelled, assuming the task cannot be finished and/or the caller has died and therefore cannot fetch it. The concrete timout after an async task will be cancelled depends on the command or user context it is being used in.
 
 In order to avoid a timeout and to prolong the max. execution time, you have to send a "keep alive ping" every minute to the backend in order to signal that there is still interest in the result. This way the async task will not be cancelled in case it still is not finished after the timeout. Example:
 
