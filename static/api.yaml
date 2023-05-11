@@ -16279,6 +16279,12 @@ paths:
         description: "The password of the email inbox."
         schema:
           type: "string"
+      - name: "newMailsOnly"
+        in: "query"
+        required: false
+        description: "Download only new mails since last processing? If true, the state of last fetch will be kept in property store. Any new fetch will be checked with this state and email will be downloaded only if not processed yet."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -16350,6 +16356,12 @@ paths:
         in: "query"
         required: true
         description: "The password of the email inbox."
+        schema:
+          type: "string"
+      - name: "newMailsOnly"
+        in: "query"
+        required: false
+        description: "Download only new mails since last processing? If true, the state of last fetch will be kept in property store. Any new fetch will be checked with this state and email will be downloaded only if not processed yet."
         schema:
           type: "string"
       - name: "id"
@@ -24268,13 +24280,13 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.inbox.auth:
+  /api/v3/command/secretsend.inbox.auth:
     get:
       parameters:
       - name: "outboxUuid"
         in: "query"
         required: true
-        description: "The uuid of the secure transfer outbox, the user needs access to."
+        description: "The uuid of the secret send outbox, the user needs access to."
         schema:
           type: "string"
       - name: "recipientEmail"
@@ -24341,7 +24353,7 @@ paths:
       - name: "outboxUuid"
         in: "query"
         required: true
-        description: "The uuid of the secure transfer outbox, the user needs access to."
+        description: "The uuid of the secret send outbox, the user needs access to."
         schema:
           type: "string"
       - name: "recipientEmail"
@@ -24394,7 +24406,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.inbox.download:
+  /api/v3/command/secretsend.inbox.download:
     get:
       parameters:
       - name: "outboxUuid"
@@ -24508,7 +24520,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.inbox.get:
+  /api/v3/command/secretsend.inbox.get:
     get:
       parameters:
       - name: "inboxUuid"
@@ -24598,7 +24610,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.inbox.list:
+  /api/v3/command/secretsend.inbox.list:
     get:
       parameters:
       - name: "recipientEmail"
@@ -24688,7 +24700,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.attachment.chunk.put:
+  /api/v3/command/secretsend.outbox.attachment.chunk.put:
     get:
       parameters:
       - name: "outboxUuid"
@@ -24745,7 +24757,7 @@ paths:
         description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
-      description: "Adds a chunk of data to an existing secure transfer attachment given by outboxUuid and name parameter. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Adds a chunk of data to an existing secret send attachment given by outboxUuid and name parameter. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -24814,7 +24826,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.attachment.delete:
+  /api/v3/command/secretsend.outbox.attachment.delete:
     get:
       parameters:
       - name: "outboxUuid"
@@ -24853,7 +24865,7 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
-      description: "Deletes an attachment from an secure transfer outbox. Including its content! Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Deletes an attachment from an secret send outbox. Including its content! Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -24904,7 +24916,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.attachment.put:
+  /api/v3/command/secretsend.outbox.attachment.put:
     get:
       parameters:
       - name: "outboxUuid"
@@ -24967,7 +24979,7 @@ paths:
         description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
-      description: "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.outbox.attachment.chunk.put. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Creates a new attachment and adds it to the given secret send outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secretsend.outbox.attachment.chunk.put. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -25042,7 +25054,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.delete:
+  /api/v3/command/secretsend.outbox.delete:
     get:
       parameters:
       - name: "outboxUuid"
@@ -25132,7 +25144,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.finalize:
+  /api/v3/command/secretsend.outbox.finalize:
     get:
       parameters:
       - name: "outboxUuid"
@@ -25177,7 +25189,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Finalizes a given secure transfer outbox: Creates inboxes for each recipient and sends notification email to each by default. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Finalizes a given secret send outbox: Creates inboxes for each recipient and sends notification email to each by default. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -25234,7 +25246,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.get:
+  /api/v3/command/secretsend.outbox.get:
     get:
       parameters:
       - name: "outboxUuid"
@@ -25324,7 +25336,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.list:
+  /api/v3/command/secretsend.outbox.list:
     get:
       parameters:
       - name: "id"
@@ -25402,7 +25414,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.preview:
+  /api/v3/command/secretsend.outbox.preview:
     get:
       parameters:
       - name: "outboxUuid"
@@ -25492,7 +25504,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.put:
+  /api/v3/command/secretsend.outbox.put:
     get:
       parameters:
       - name: "outboxUuid"
@@ -25516,7 +25528,7 @@ paths:
       - name: "locale"
         in: "query"
         required: false
-        description: "The locale to be used for this secure transfer system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used."
+        description: "The locale to be used for this secret send system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used."
         schema:
           type: "string"
       - name: "recipients"
@@ -25573,7 +25585,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Creates or updates a PIPEFORCE Secure Transfer with DRAFT status and saves it. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Creates or updates a PIPEFORCE Secret Send with DRAFT status and saves it. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -25607,7 +25619,7 @@ paths:
       - name: "locale"
         in: "query"
         required: false
-        description: "The locale to be used for this secure transfer system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used."
+        description: "The locale to be used for this secret send system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used."
         schema:
           type: "string"
       - name: "recipients"
@@ -25666,7 +25678,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.recipient.delete:
+  /api/v3/command/secretsend.outbox.recipient.delete:
     get:
       parameters:
       - name: "outboxUuid"
@@ -25711,7 +25723,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Removes a recipient from a given secure transfer outbox. Note: This is only possible in case this transfer is in status DRAFT. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Removes a recipient from a given secret send outbox. Note: This is only possible in case this transfer is in status DRAFT. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -25768,7 +25780,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.recipient.email.send:
+  /api/v3/command/secretsend.outbox.recipient.email.send:
     get:
       parameters:
       - name: "outboxUuid"
@@ -25813,7 +25825,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "(Re-) sends the secure transfer notification email to the recipient. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "(Re-) sends the secret send notification email to the recipient. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -25870,7 +25882,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/secure.transfer.outbox.recipient.put:
+  /api/v3/command/secretsend.outbox.recipient.put:
     get:
       parameters:
       - name: "outboxUuid"
@@ -25933,7 +25945,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Adds a new recipient to a secure transfer. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Adds a new recipient to a secret send. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -33054,6 +33066,108 @@ paths:
         in: "query"
         required: false
         description: "The id of the process definition."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/workflow.variabes.get:
+    get:
+      parameters:
+      - name: "processInstanceId"
+        in: "query"
+        required: true
+        description: "The process instance id."
+        schema:
+          type: "string"
+      - name: "parseJsonString"
+        in: "query"
+        required: false
+        description: "Tests if a workflow variable contains a JSON string and if so, converts this JSON string into a JSON object and sets it as value for the variable in the output JSON."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns the variables of a given process instance from the workflow engine as JSON whereas the name of the variable becomes the JSON attribute name and the value of the variable becomes the JSON attribute value. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "processInstanceId"
+        in: "query"
+        required: true
+        description: "The process instance id."
+        schema:
+          type: "string"
+      - name: "parseJsonString"
+        in: "query"
+        required: false
+        description: "Tests if a workflow variable contains a JSON string and if so, converts this JSON string into a JSON object and sets it as value for the variable in the output JSON."
         schema:
           type: "string"
       - name: "id"

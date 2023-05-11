@@ -6044,6 +6044,11 @@
                 "type" : "string",
                 "description" : "The password of the email inbox."
               },
+              "newMailsOnly" : {
+                "type" : "string",
+                "description" : "Download only new mails since last processing? If true, the state of last fetch will be kept in property store. Any new fetch will be checked with this state and email will be downloaded only if not processed yet.",
+                "default" : "false"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -8944,7 +8949,7 @@
             },
             "required" : [ "format", "name", "secret" ]
           },
-          "secure.transfer.inbox.auth" : {
+          "secretsend.inbox.auth" : {
             "type" : "object",
             "description" : "Creates and verifies a magic link download token to access a given inbox transfer.",
             "inputType" : "JsonNode",
@@ -8952,7 +8957,7 @@
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
-                "description" : "The uuid of the secure transfer outbox, the user needs access to."
+                "description" : "The uuid of the secret send outbox, the user needs access to."
               },
               "recipientEmail" : {
                 "type" : "string",
@@ -8989,7 +8994,7 @@
             },
             "required" : [ "outboxUuid", "recipientEmail" ]
           },
-          "secure.transfer.inbox.download" : {
+          "secretsend.inbox.download" : {
             "type" : "object",
             "description" : "Downloads the content of an attachment or a group of attachments.",
             "inputType" : "JsonNode",
@@ -9030,7 +9035,7 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.inbox.get" : {
+          "secretsend.inbox.get" : {
             "type" : "object",
             "description" : "Returns an inbox transfer by uuid.",
             "inputType" : "JsonNode",
@@ -9063,7 +9068,7 @@
             },
             "required" : [ "inboxUuid" ]
           },
-          "secure.transfer.inbox.list" : {
+          "secretsend.inbox.list" : {
             "type" : "object",
             "description" : "Lists all inbox transfers targeted to a given recipient.",
             "inputType" : "JsonNode",
@@ -9096,9 +9101,9 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.outbox.attachment.chunk.put" : {
+          "secretsend.outbox.attachment.chunk.put" : {
             "type" : "object",
-            "description" : "Adds a chunk of data to an existing secure transfer attachment given by outboxUuid and name parameter.",
+            "description" : "Adds a chunk of data to an existing secret send attachment given by outboxUuid and name parameter.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9141,9 +9146,9 @@
             },
             "required" : [ "name" ]
           },
-          "secure.transfer.outbox.attachment.delete" : {
+          "secretsend.outbox.attachment.delete" : {
             "type" : "object",
-            "description" : "Deletes an attachment from an secure transfer outbox. Including its content!",
+            "description" : "Deletes an attachment from an secret send outbox. Including its content!",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9174,9 +9179,9 @@
             },
             "required" : [ "outboxUuid", "name" ]
           },
-          "secure.transfer.outbox.attachment.put" : {
+          "secretsend.outbox.attachment.put" : {
             "type" : "object",
-            "description" : "Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.outbox.attachment.chunk.put.",
+            "description" : "Creates a new attachment and adds it to the given secret send outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secretsend.outbox.attachment.chunk.put.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9223,7 +9228,7 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.outbox.delete" : {
+          "secretsend.outbox.delete" : {
             "type" : "object",
             "description" : "Deletes an outbox transfer.",
             "inputType" : "JsonNode",
@@ -9256,9 +9261,9 @@
             },
             "required" : [ "outboxUuid" ]
           },
-          "secure.transfer.outbox.finalize" : {
+          "secretsend.outbox.finalize" : {
             "type" : "object",
-            "description" : "Finalizes a given secure transfer outbox: Creates inboxes for each recipient and sends notification email to each by default.",
+            "description" : "Finalizes a given secret send outbox: Creates inboxes for each recipient and sends notification email to each by default.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9294,7 +9299,7 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.outbox.get" : {
+          "secretsend.outbox.get" : {
             "type" : "object",
             "description" : "Returns the outbox by given uuid.",
             "inputType" : "JsonNode",
@@ -9327,7 +9332,7 @@
             },
             "required" : [ "outboxUuid" ]
           },
-          "secure.transfer.outbox.list" : {
+          "secretsend.outbox.list" : {
             "type" : "object",
             "description" : "Lists all outbox transfer items created by the currently logged-in user.",
             "inputType" : "JsonNode",
@@ -9356,7 +9361,7 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.outbox.preview" : {
+          "secretsend.outbox.preview" : {
             "type" : "object",
             "description" : "Returns the preview for a given outbox, if supported by security settings.",
             "inputType" : "JsonNode",
@@ -9389,9 +9394,9 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.outbox.put" : {
+          "secretsend.outbox.put" : {
             "type" : "object",
-            "description" : "Creates or updates a PIPEFORCE Secure Transfer with DRAFT status and saves it.",
+            "description" : "Creates or updates a PIPEFORCE Secret Send with DRAFT status and saves it.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9409,7 +9414,7 @@
               },
               "locale" : {
                 "type" : "string",
-                "description" : "The locale to be used for this secure transfer system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used."
+                "description" : "The locale to be used for this secret send system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used."
               },
               "recipients" : {
                 "type" : "string",
@@ -9452,9 +9457,9 @@
             },
             "required" : [ ]
           },
-          "secure.transfer.outbox.recipient.delete" : {
+          "secretsend.outbox.recipient.delete" : {
             "type" : "object",
-            "description" : "Removes a recipient from a given secure transfer outbox. Note: This is only possible in case this transfer is in status DRAFT.",
+            "description" : "Removes a recipient from a given secret send outbox. Note: This is only possible in case this transfer is in status DRAFT.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9489,9 +9494,9 @@
             },
             "required" : [ "outboxUuid", "recipientEmail" ]
           },
-          "secure.transfer.outbox.recipient.email.send" : {
+          "secretsend.outbox.recipient.email.send" : {
             "type" : "object",
-            "description" : "(Re-) sends the secure transfer notification email to the recipient.",
+            "description" : "(Re-) sends the secret send notification email to the recipient.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -9526,9 +9531,9 @@
             },
             "required" : [ "outboxUuid", "recipientEmail" ]
           },
-          "secure.transfer.outbox.recipient.put" : {
+          "secretsend.outbox.recipient.put" : {
             "type" : "object",
-            "description" : "Adds a new recipient to a secure transfer. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported.",
+            "description" : "Adds a new recipient to a secret send. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -12161,6 +12166,44 @@
               }
             },
             "required" : [ ]
+          },
+          "workflow.variabes.get" : {
+            "type" : "object",
+            "description" : "Returns the variables of a given process instance from the workflow engine as JSON whereas the name of the variable becomes the JSON attribute name and the value of the variable becomes the JSON attribute value.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "processInstanceId" : {
+                "type" : "string",
+                "description" : "The process instance id."
+              },
+              "parseJsonString" : {
+                "type" : "string",
+                "description" : "Tests if a workflow variable contains a JSON string and if so, converts this JSON string into a JSON object and sets it as value for the variable in the output JSON.",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "processInstanceId" ]
           },
           "zip" : {
             "type" : "object",

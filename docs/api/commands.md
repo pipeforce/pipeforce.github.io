@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 25/04/2023 by CommandComplianceTest -->
+<!-- Generated: 11/05/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -8226,6 +8226,7 @@ Name | Type | Required | Default | Description
 `port` | Integer | true | null | The port of the email host.
 `inboxUsername` | String | true | null | The username of the email inbox.
 `inboxPassword` | String | true | null | The password of the email inbox.
+`newMailsOnly` | String | false | false | Download only new mails since last processing? If true, the state of last fetch will be kept in property store. Any new fetch will be checked with this state and email will be downloaded only if not processed yet.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -8242,6 +8243,7 @@ pipeline:
       port: <value>  
       inboxUsername: <value>  
       inboxPassword: <value>  
+      newMailsOnly: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -8254,12 +8256,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/mail.fetch?protocol=<value>&host=<value>&port=<value>&inboxUsername=<value>&inboxPassword=<value>&newMailsOnly=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command mail.fetch protocol=<value> host=<value> port=<value> inboxUsername=<value> inboxPassword=<value> newMailsOnly=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11981,13 +11983,12 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## secure.transfer.inbox.auth ``v1``
+## secretsend.inbox.auth ``v1``
 ----------   
 Creates and verifies a magic link download token to access a given inbox transfer.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.auth:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.inbox.auth:v1)
 
-**Alias:** command:secretsend.inbox.auth:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -11995,7 +11996,7 @@ Creates and verifies a magic link download token to access a given inbox transfe
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`outboxUuid` | String | true | null | The uuid of the secure transfer outbox, the user needs access to.
+`outboxUuid` | String | true | null | The uuid of the secret send outbox, the user needs access to.
 `recipientEmail` | String | true | null | The email of the recipient to create the token for.
 `cookieToken` | String | false | null | In order to improve security, set a cookie value in your browser (client) and make sure on second call of this command, the cookie token is read from client and put into this command. This way you can make sure, that the client which sends the magic token is the same as theone who initially requested it. This token is optional.
 `magicToken` | String | false | null | The magic token, sent to the recipient (via email) after he requested it.
@@ -12009,7 +12010,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.inbox.auth:  
+  - secretsend.inbox.auth:  
       outboxUuid: <value>  
       recipientEmail: <value>  
       cookieToken: <value>  
@@ -12026,24 +12027,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.inbox.auth?outboxUuid=<value>&recipientEmail=<value>&cookieToken=<value>&magicToken=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.inbox.auth?outboxUuid=<value>&recipientEmail=<value>&cookieToken=<value>&magicToken=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.inbox.auth outboxUuid=<value> recipientEmail=<value> cookieToken=<value> magicToken=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.inbox.auth outboxUuid=<value> recipientEmail=<value> cookieToken=<value> magicToken=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.inbox.download ``v1``
+## secretsend.inbox.download ``v1``
 ----------   
 Downloads the content of an attachment or a group of attachments.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.download:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.inbox.download:v1)
 
-**Alias:** command:secretsend.inbox.download:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12064,7 +12064,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.inbox.download:  
+  - secretsend.inbox.download:  
       outboxUuid: <value>  
       inboxUuid: <value>  
       filenames: <value>  
@@ -12080,24 +12080,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.inbox.download?outboxUuid=<value>&inboxUuid=<value>&filenames=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.inbox.download?outboxUuid=<value>&inboxUuid=<value>&filenames=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.inbox.download outboxUuid=<value> inboxUuid=<value> filenames=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.inbox.download outboxUuid=<value> inboxUuid=<value> filenames=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.inbox.get ``v1``
+## secretsend.inbox.get ``v1``
 ----------   
 Returns an inbox transfer by uuid.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.get:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.inbox.get:v1)
 
-**Alias:** command:secretsend.inbox.get:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12116,7 +12115,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.inbox.get:  
+  - secretsend.inbox.get:  
       inboxUuid: <value>  
       id: <value>  
       if: <value>  
@@ -12130,24 +12129,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.inbox.get?inboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.inbox.get?inboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.inbox.get inboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.inbox.get inboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.inbox.list ``v1``
+## secretsend.inbox.list ``v1``
 ----------   
 Lists all inbox transfers targeted to a given recipient.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.inbox.list:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.inbox.list:v1)
 
-**Alias:** command:secretsend.inbox.list:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12166,7 +12164,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.inbox.list:  
+  - secretsend.inbox.list:  
       recipientEmail: <value>  
       id: <value>  
       if: <value>  
@@ -12180,24 +12178,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.inbox.list?recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.inbox.list?recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.inbox.list recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.inbox.list recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.attachment.chunk.put ``v1``
+## secretsend.outbox.attachment.chunk.put ``v1``
 ----------   
-Adds a chunk of data to an existing secure transfer attachment given by outboxUuid and name parameter.
+Adds a chunk of data to an existing secret send attachment given by outboxUuid and name parameter.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.chunk.put:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.attachment.chunk.put:v1)
 
-**Alias:** command:secretsend.outbox.attachment.chunk.put:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12219,7 +12216,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.attachment.chunk.put:  
+  - secretsend.outbox.attachment.chunk.put:  
       outboxUuid: <value>  
       name: <value>  
       index: <value>  
@@ -12236,24 +12233,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.attachment.chunk.put?outboxUuid=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
+http://host/api/v3/command/secretsend.outbox.attachment.chunk.put?outboxUuid=<value>&name=<value>&index=<value>&content=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.attachment.chunk.put outboxUuid=<value> name=<value> index=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
+pi command secretsend.outbox.attachment.chunk.put outboxUuid=<value> name=<value> index=<value> content=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.attachment.delete ``v1``
+## secretsend.outbox.attachment.delete ``v1``
 ----------   
-Deletes an attachment from an secure transfer outbox. Including its content!
+Deletes an attachment from an secret send outbox. Including its content!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.delete:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.attachment.delete:v1)
 
-**Alias:** command:secretsend.outbox.attachment.delete:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12272,7 +12268,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.attachment.delete:  
+  - secretsend.outbox.attachment.delete:  
       outboxUuid: <value>  
       name: <value>  
       id: <value>  
@@ -12286,24 +12282,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.attachment.delete?outboxUuid=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/secretsend.outbox.attachment.delete?outboxUuid=<value>&name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.attachment.delete outboxUuid=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command secretsend.outbox.attachment.delete outboxUuid=<value> name=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.attachment.put ``v1``
+## secretsend.outbox.attachment.put ``v1``
 ----------   
-Creates a new attachment and adds it to the given secure transfer outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secure.transfer.outbox.attachment.chunk.put.
+Creates a new attachment and adds it to the given secret send outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secretsend.outbox.attachment.chunk.put.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.attachment.put:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.attachment.put:v1)
 
-**Alias:** command:secretsend.outbox.attachment.put:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12326,7 +12321,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.attachment.put:  
+  - secretsend.outbox.attachment.put:  
       outboxUuid: <value>  
       name: <value>  
       contentType: <value>  
@@ -12344,24 +12339,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.attachment.put?outboxUuid=<value>&name=<value>&contentType=<value>&content=<value>&length=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
+http://host/api/v3/command/secretsend.outbox.attachment.put?outboxUuid=<value>&name=<value>&contentType=<value>&content=<value>&length=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.attachment.put outboxUuid=<value> name=<value> contentType=<value> content=<value> length=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
+pi command secretsend.outbox.attachment.put outboxUuid=<value> name=<value> contentType=<value> content=<value> length=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.delete ``v1``
+## secretsend.outbox.delete ``v1``
 ----------   
 Deletes an outbox transfer.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.delete:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.delete:v1)
 
-**Alias:** command:secretsend.outbox.delete:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12380,7 +12374,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.delete:  
+  - secretsend.outbox.delete:  
       outboxUuid: <value>  
       id: <value>  
       if: <value>  
@@ -12394,24 +12388,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.delete?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.delete?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.delete outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.delete outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.finalize ``v1``
+## secretsend.outbox.finalize ``v1``
 ----------   
-Finalizes a given secure transfer outbox: Creates inboxes for each recipient and sends notification email to each by default.
+Finalizes a given secret send outbox: Creates inboxes for each recipient and sends notification email to each by default.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.finalize:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.finalize:v1)
 
-**Alias:** command:secretsend.outbox.finalize:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12431,7 +12424,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.finalize:  
+  - secretsend.outbox.finalize:  
       outboxUuid: <value>  
       sendEmails: <value>  
       id: <value>  
@@ -12446,24 +12439,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.finalize?outboxUuid=<value>&sendEmails=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.finalize?outboxUuid=<value>&sendEmails=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.finalize outboxUuid=<value> sendEmails=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.finalize outboxUuid=<value> sendEmails=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.get ``v1``
+## secretsend.outbox.get ``v1``
 ----------   
 Returns the outbox by given uuid.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.get:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.get:v1)
 
-**Alias:** command:secretsend.outbox.get:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12482,7 +12474,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.get:  
+  - secretsend.outbox.get:  
       outboxUuid: <value>  
       id: <value>  
       if: <value>  
@@ -12496,24 +12488,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.get?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.get?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.get outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.get outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.list ``v1``
+## secretsend.outbox.list ``v1``
 ----------   
 Lists all outbox transfer items created by the currently logged-in user.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.list:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.list:v1)
 
-**Alias:** command:secretsend.outbox.list:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12531,7 +12522,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.list:  
+  - secretsend.outbox.list:  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -12544,24 +12535,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.preview ``v1``
+## secretsend.outbox.preview ``v1``
 ----------   
 Returns the preview for a given outbox, if supported by security settings.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.preview:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.preview:v1)
 
-**Alias:** command:secretsend.outbox.preview:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12580,7 +12570,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.preview:  
+  - secretsend.outbox.preview:  
       outboxUuid: <value>  
       id: <value>  
       if: <value>  
@@ -12594,24 +12584,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.preview?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.preview?outboxUuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.preview outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.preview outboxUuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.put ``v1``
+## secretsend.outbox.put ``v1``
 ----------   
-Creates or updates a PIPEFORCE Secure Transfer with DRAFT status and saves it.
+Creates or updates a PIPEFORCE Secret Send with DRAFT status and saves it.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.put:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.put:v1)
 
-**Alias:** command:secretsend.outbox.put:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12622,7 +12611,7 @@ Name | Type | Required | Default | Description
 `outboxUuid` | String | false | null | The uuid of the transfer in the outbox to update. If null or empty, a new one will be created.
 `subject` | String | false | null | The subject of the transfer or null (in order to set it later).
 `message` | String | false | null | The message of the transfer or null (in order to set it later)
-`locale` | String | false | null | The locale to be used for this secure transfer system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used.
+`locale` | String | false | null | The locale to be used for this secret send system message and number formats (examples: de_DE, de, en_US, ...). If null, the system default one will be used.
 `recipients` | String | false | null | A comma separated list of email recipients or null (in order to add it later). Also PEL is supported here.
 `expiresOn` | String | false | null | Delete the transfer attachments after this date and time given as unix timestamp in millis. If null, empty, 0 or negative, delivery will never be deleted.
 `notifySender` | String | false | true | If true, notifies sender when recipients have downloaded delivery.
@@ -12637,7 +12626,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.put:  
+  - secretsend.outbox.put:  
       outboxUuid: <value>  
       subject: <value>  
       message: <value>  
@@ -12658,24 +12647,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.put?outboxUuid=<value>&subject=<value>&message=<value>&locale=<value>&recipients=<value>&expiresOn=<value>&notifySender=<value>&retentionStrategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.put?outboxUuid=<value>&subject=<value>&message=<value>&locale=<value>&recipients=<value>&expiresOn=<value>&notifySender=<value>&retentionStrategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.put outboxUuid=<value> subject=<value> message=<value> locale=<value> recipients=<value> expiresOn=<value> notifySender=<value> retentionStrategy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.put outboxUuid=<value> subject=<value> message=<value> locale=<value> recipients=<value> expiresOn=<value> notifySender=<value> retentionStrategy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.recipient.delete ``v1``
+## secretsend.outbox.recipient.delete ``v1``
 ----------   
-Removes a recipient from a given secure transfer outbox. Note: This is only possible in case this transfer is in status DRAFT.
+Removes a recipient from a given secret send outbox. Note: This is only possible in case this transfer is in status DRAFT.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.delete:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.recipient.delete:v1)
 
-**Alias:** command:secretsend.outbox.recipient.delete:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12695,7 +12683,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.recipient.delete:  
+  - secretsend.outbox.recipient.delete:  
       outboxUuid: <value>  
       recipientEmail: <value>  
       id: <value>  
@@ -12710,24 +12698,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.recipient.delete?outboxUuid=<value>&recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.recipient.delete?outboxUuid=<value>&recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.recipient.delete outboxUuid=<value> recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.recipient.delete outboxUuid=<value> recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.recipient.email.send ``v1``
+## secretsend.outbox.recipient.email.send ``v1``
 ----------   
-(Re-) sends the secure transfer notification email to the recipient.
+(Re-) sends the secret send notification email to the recipient.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.email.send:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.recipient.email.send:v1)
 
-**Alias:** command:secretsend.outbox.recipient.email.send:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12747,7 +12734,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.recipient.email.send:  
+  - secretsend.outbox.recipient.email.send:  
       outboxUuid: <value>  
       recipientEmail: <value>  
       id: <value>  
@@ -12762,24 +12749,23 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.recipient.email.send?outboxUuid=<value>&recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.recipient.email.send?outboxUuid=<value>&recipientEmail=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.recipient.email.send outboxUuid=<value> recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.recipient.email.send outboxUuid=<value> recipientEmail=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## secure.transfer.outbox.recipient.put ``v1``
+## secretsend.outbox.recipient.put ``v1``
 ----------   
-Adds a new recipient to a secure transfer. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported.
+Adds a new recipient to a secret send. If a recipient with given email already exists, nothing happens. Updating an existing recipient is not yet supported.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=secure.transfer.outbox.recipient.put:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=secretsend.outbox.recipient.put:v1)
 
-**Alias:** command:secretsend.outbox.recipient.put:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -12802,7 +12788,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - secure.transfer.outbox.recipient.put:  
+  - secretsend.outbox.recipient.put:  
       outboxUuid: <value>  
       recipientEmail: <value>  
       recipientLocale: <value>  
@@ -12820,12 +12806,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secure.transfer.outbox.recipient.put?outboxUuid=<value>&recipientEmail=<value>&recipientLocale=<value>&sendEmail=<value>&enabled=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/secretsend.outbox.recipient.put?outboxUuid=<value>&recipientEmail=<value>&recipientLocale=<value>&sendEmail=<value>&enabled=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secure.transfer.outbox.recipient.put outboxUuid=<value> recipientEmail=<value> recipientLocale=<value> sendEmail=<value> enabled=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command secretsend.outbox.recipient.put outboxUuid=<value> recipientEmail=<value> recipientLocale=<value> sendEmail=<value> enabled=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -16128,6 +16114,57 @@ http://host/api/v3/command/workflow.users?processDefinitionId=<value>&id=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command workflow.users processDefinitionId=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## workflow.variabes.get ``v1``
+----------   
+Returns the variables of a given process instance from the workflow engine as JSON whereas the name of the variable becomes the JSON attribute name and the value of the variable becomes the JSON attribute value.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.variabes.get:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`processInstanceId` | String | true | null | The process instance id.
+`parseJsonString` | String | false | false | Tests if a workflow variable contains a JSON string and if so, converts this JSON string into a JSON object and sets it as value for the variable in the output JSON.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.variabes.get:  
+      processInstanceId: <value>  
+      parseJsonString: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.variabes.get?processInstanceId=<value>&parseJsonString=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.variabes.get processInstanceId=<value> parseJsonString=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
