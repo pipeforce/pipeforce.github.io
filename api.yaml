@@ -1483,7 +1483,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Completes a running async task. The input to the command will be set as completion result to the task. In case task with given correlation id doesn't exist or was already finished, nothing happens. So calling completion multiple times has not effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command async.result.get instead. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Completes a running async task. The input to the command will be set as completion result to the task. In case task with given correlation id doesn't exist or was already finished, nothing happens. So calling completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command async.fetch instead. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -1540,13 +1540,19 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/async.fetch:
+  /api/v3/command/async.get:
     get:
       parameters:
       - name: "correlationId"
         in: "query"
         required: true
-        description: "The correlationId of the async job those result to lookup."
+        description: "The correlationId of the async job to return."
+        schema:
+          type: "string"
+      - name: "includeChildren"
+        in: "query"
+        required: false
+        description: "Should the children tasks be included in the view (max 1 level)."
         schema:
           type: "string"
       - name: "id"
@@ -1579,7 +1585,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, HTTP status code 204 (No Content) is returned. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). And after this result was returned, any subsequent call will return a 404 (Not found) HTTP status code. 404 is also returned in case an async task with given correlation id doesn't exist. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns the information for a given async task WITHOUT changing its state. Cannot be used for polling! Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -1595,7 +1601,13 @@ paths:
       - name: "correlationId"
         in: "query"
         required: true
-        description: "The correlationId of the async job those result to lookup."
+        description: "The correlationId of the async job to return."
+        schema:
+          type: "string"
+      - name: "includeChildren"
+        in: "query"
+        required: false
+        description: "Should the children tasks be included in the view (max 1 level)."
         schema:
           type: "string"
       - name: "id"
@@ -1633,6 +1645,12 @@ paths:
   /api/v3/command/async.list:
     get:
       parameters:
+      - name: "status"
+        in: "query"
+        required: false
+        description: "Returns all async tasks with given status. If null or empty, all tasks in any status will be returned."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -1676,6 +1694,12 @@ paths:
                 - type: "object"
     post:
       parameters:
+      - name: "status"
+        in: "query"
+        required: false
+        description: "Returns all async tasks with given status. If null or empty, all tasks in any status will be returned."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -1798,6 +1822,108 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/async.poll:
+    get:
+      parameters:
+      - name: "correlationId"
+        in: "query"
+        required: true
+        description: "The correlationId of the async job those result to lookup."
+        schema:
+          type: "string"
+      - name: "redirect"
+        in: "query"
+        required: false
+        description: "Should a HTTP 429 redirect header be sent in case another poll is required?"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, a HTTP redirect is send so the client calls again this endpoint. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). The task with its result will be kept in cache for certain amount of time (depends on server settings) and then removed. After this, any subsequent call will return a 410 (Gone) HTTP status code. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "correlationId"
+        in: "query"
+        required: true
+        description: "The correlationId of the async job those result to lookup."
+        schema:
+          type: "string"
+      - name: "redirect"
+        in: "query"
+        required: false
+        description: "Should a HTTP 429 redirect header be sent in case another poll is required?"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/async.start:
     get:
       parameters:
@@ -1805,6 +1931,30 @@ paths:
         in: "query"
         required: false
         description: "How long should the test task sleep in ms?"
+        schema:
+          type: "string"
+      - name: "testFinalStatus"
+        in: "query"
+        required: false
+        description: "Test result status?"
+        schema:
+          type: "string"
+      - name: "maxExecutionTime"
+        in: "query"
+        required: false
+        description: "How long should the test task max run before it gets cancelled?"
+        schema:
+          type: "string"
+      - name: "maxCachingTime"
+        in: "query"
+        required: false
+        description: "How long should the test task max be cached before it gets removed?"
+        schema:
+          type: "string"
+      - name: "pollResetEnabled"
+        in: "query"
+        required: false
+        description: "Should the number of polls be reset on every cleanup?"
         schema:
           type: "string"
       - name: "id"
@@ -1854,6 +2004,30 @@ paths:
         in: "query"
         required: false
         description: "How long should the test task sleep in ms?"
+        schema:
+          type: "string"
+      - name: "testFinalStatus"
+        in: "query"
+        required: false
+        description: "Test result status?"
+        schema:
+          type: "string"
+      - name: "maxExecutionTime"
+        in: "query"
+        required: false
+        description: "How long should the test task max run before it gets cancelled?"
+        schema:
+          type: "string"
+      - name: "maxCachingTime"
+        in: "query"
+        required: false
+        description: "How long should the test task max be cached before it gets removed?"
+        schema:
+          type: "string"
+      - name: "pollResetEnabled"
+        in: "query"
+        required: false
+        description: "Should the number of polls be reset on every cleanup?"
         schema:
           type: "string"
       - name: "id"
@@ -2094,108 +2268,6 @@ paths:
         in: "query"
         required: false
         description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/bean:
-    get:
-      parameters:
-      - name: "name"
-        in: "query"
-        required: false
-        description: "The name of the bean."
-        schema:
-          type: "string"
-      - name: "method"
-        in: "query"
-        required: false
-        description: "The method name of the bean to be executed."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Executes a method on a Spring bean. Is only available for support users. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "name"
-        in: "query"
-        required: false
-        description: "The name of the bean."
-        schema:
-          type: "string"
-      - name: "method"
-        in: "query"
-        required: false
-        description: "The method name of the bean to be executed."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
       - name: "output"
@@ -16153,7 +16225,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Fetches new emails from given mail inbox and uploads them into a drive folder. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Fetches new emails from given mail inbox and uploads them into a drive folder. Note: This command is for demo purposes only and not intended for production use. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -16315,7 +16387,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Fetches new emails from given mail inbox and returns them as JSON in the output. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Fetches new emails from given mail inbox and returns them as JSON in the output. Note: This command is for demo purposes only and not intended for production use. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -16621,7 +16693,7 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
-      description: " Protects any subsequent pipe commands: Pipeline is only executed \n in case the caller has verified that he is the owner of given \n email address. To do so, a magic link (verification link) is sent \n to his email account. Only if the user clicks on this link within \n a certain amount of time (default is 10min), the subsequent pipe \n commands are executed. From a technical point of view this is done \n by putting the current state of the message into a cache which deletes \n any entries older than 10min. Then, the email with the key to this \n cache entry (=challenge) is send to the user. If the user clicks on \n this link, the message is loaded from the cache using the challenge as \n the key. If the user clicked within 10min, the entry is here, can be \n loaded and the message execution can be resumed. Otherwise if the user \n clicks after 10min on the link, no more entry in it. Execution fails. \n User has to re-request the link. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: " Protects any subsequent pipe commands: Pipeline is only executed \n in case the caller has verified that he is the owner of given \n email address. To do so, a magic link (verification link) is sent \n to his email account. Only if the user clicks on this link within \n a certain amount of time (default is 10min), the subsequent pipe \n commands are executed. From a technical point of view this is done \n by putting the current state of the message into a cache which deletes \n any entries older than 10min. Then, the email with the key to this \n cache entry (=challenge) is send to the user. If the user clicks on \n this link, the message is loaded from the cache using the challenge as \n the key. If the user clicked within 10min, the entry is here, can be \n loaded and the message execution can be resumed. Otherwise if the user \n clicks after 10min on the link, no more entry in it. Execution fails. \n User has to re-request the link. Note: This command is for demo purposes only and not intended for production use. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -21757,6 +21829,12 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
+      - name: "wait"
+        in: "query"
+        required: false
+        description: "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. "
+        schema:
+          type: "string"
       description: "Creates or updates a property schema. This command is intended for provisioning, admin and service tasks. Also consider property.put instead. Returns a result JSON indicating the result of the command which usually is one of: create, update or skip. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
@@ -21882,6 +21960,12 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "wait"
+        in: "query"
+        required: false
+        description: "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. "
         schema:
           type: "string"
       tags:
@@ -23377,7 +23461,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Resolves a given PIPEFORCE uri to its content and returns it. For example $uri:property:global/app/myapp/pipeline/foo will return the full property of the pipeline foo. Also see: https://docs.pipeforce.org/docs/api/uris Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Resolves a given PIPEFORCE uri to its content and returns it. For example $uri:property:global/app/myapp/mydata will return the value of the mydata property. Also see: https://docs.pipeforce.org/docs/api/uris Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -28426,6 +28510,72 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/stats:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Returns basic status information about the hub service. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/switch:
     get:
       parameters:
@@ -29101,6 +29251,12 @@ paths:
         description: "If true, this command will return a simulated failed test report without executing real tests. This is mainly for development and integration tasks in order to make sure such integrations work as expected."
         schema:
           type: "string"
+      - name: "dryRunSleep"
+        in: "query"
+        required: false
+        description: "The time to sleep in ms before the dryRun starts. This is mainly for testing purposes only."
+        schema:
+          type: "string"
       - name: "returnStatus500IfFailed"
         in: "query"
         required: false
@@ -29146,7 +29302,7 @@ paths:
       - name: "wait"
         in: "query"
         required: false
-        description: "If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details."
+        description: "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. "
         schema:
           type: "string"
       description: "Runs all test scripts defined by given pattern. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -29186,6 +29342,12 @@ paths:
         description: "If true, this command will return a simulated failed test report without executing real tests. This is mainly for development and integration tasks in order to make sure such integrations work as expected."
         schema:
           type: "string"
+      - name: "dryRunSleep"
+        in: "query"
+        required: false
+        description: "The time to sleep in ms before the dryRun starts. This is mainly for testing purposes only."
+        schema:
+          type: "string"
       - name: "returnStatus500IfFailed"
         in: "query"
         required: false
@@ -29231,7 +29393,7 @@ paths:
       - name: "wait"
         in: "query"
         required: false
-        description: "If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details."
+        description: "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. "
         schema:
           type: "string"
       tags:
@@ -31186,7 +31348,7 @@ paths:
       - name: "wait"
         in: "query"
         required: false
-        description: "If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details."
+        description: "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. "
         schema:
           type: "string"
       description: "Runs a webhook identified by its uuid. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -31241,7 +31403,7 @@ paths:
       - name: "wait"
         in: "query"
         required: false
-        description: "If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details."
+        description: "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. "
         schema:
           type: "string"
       tags:
@@ -33100,7 +33262,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/workflow.variabes.get:
+  /api/v3/command/workflow.variables.get:
     get:
       parameters:
       - name: "processInstanceId"
