@@ -589,7 +589,7 @@
           },
           "async.complete" : {
             "type" : "object",
-            "description" : "Completes a running async task. The input to the command will be set as completion result to the task. In case task with given correlation id doesn't exist or was already finished, nothing happens. So calling completion multiple times has not effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command async.result.get instead.",
+            "description" : "Completes a running async task. The input to the command will be set as completion result to the task. In case task with given correlation id doesn't exist or was already finished, nothing happens. So calling completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command async.fetch instead.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -624,15 +624,20 @@
             },
             "required" : [ "correlationId" ]
           },
-          "async.fetch" : {
+          "async.get" : {
             "type" : "object",
-            "description" : "Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, HTTP status code 204 (No Content) is returned. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). And after this result was returned, any subsequent call will return a 404 (Not found) HTTP status code. 404 is also returned in case an async task with given correlation id doesn't exist.",
+            "description" : "Returns the information for a given async task WITHOUT changing its state. Cannot be used for polling!",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "correlationId" : {
                 "type" : "string",
-                "description" : "The correlationId of the async job those result to lookup."
+                "description" : "The correlationId of the async job to return."
+              },
+              "includeChildren" : {
+                "type" : "string",
+                "description" : "Should the children tasks be included in the view (max 1 level).",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
@@ -663,6 +668,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "status" : {
+                "type" : "string",
+                "description" : "Returns all async tasks with given status. If null or empty, all tasks in any status will be returned."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -719,6 +728,44 @@
             },
             "required" : [ "correlationId" ]
           },
+          "async.poll" : {
+            "type" : "object",
+            "description" : "Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, a HTTP redirect is send so the client calls again this endpoint. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). The task with its result will be kept in cache for certain amount of time (depends on server settings) and then removed. After this, any subsequent call will return a 410 (Gone) HTTP status code.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "correlationId" : {
+                "type" : "string",
+                "description" : "The correlationId of the async job those result to lookup."
+              },
+              "redirect" : {
+                "type" : "string",
+                "description" : "Should a HTTP 429 redirect header be sent in case another poll is required?",
+                "default" : "true"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "correlationId" ]
+          },
           "async.start" : {
             "type" : "object",
             "description" : "Starts a new async task and adds it to the collection of async tasks. The task will wait the given amount of time before it will be finished. This is mainly for testing purposes.",
@@ -729,6 +776,26 @@
                 "type" : "string",
                 "description" : "How long should the test task sleep in ms?",
                 "default" : "60000"
+              },
+              "testFinalStatus" : {
+                "type" : "string",
+                "description" : "Test result status?",
+                "default" : "finished"
+              },
+              "maxExecutionTime" : {
+                "type" : "string",
+                "description" : "How long should the test task max run before it gets cancelled?",
+                "default" : "5000"
+              },
+              "maxCachingTime" : {
+                "type" : "string",
+                "description" : "How long should the test task max be cached before it gets removed?",
+                "default" : "30000"
+              },
+              "pollResetEnabled" : {
+                "type" : "string",
+                "description" : "Should the number of polls be reset on every cleanup?",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -824,43 +891,6 @@
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ ]
-          },
-          "bean" : {
-            "type" : "object",
-            "description" : "Executes a method on a Spring bean. Is only available for support users.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "name" : {
-                "type" : "string",
-                "description" : "The name of the bean."
-              },
-              "method" : {
-                "type" : "string",
-                "description" : "The method name of the bean to be executed."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               },
               "output" : {
                 "type" : "string",
@@ -5957,7 +5987,7 @@
           },
           "mail.dump" : {
             "type" : "object",
-            "description" : "Fetches new emails from given mail inbox and uploads them into a drive folder.",
+            "description" : "Fetches new emails from given mail inbox and uploads them into a drive folder. Note: This command is for demo purposes only and not intended for production use.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -6019,7 +6049,7 @@
           },
           "mail.fetch" : {
             "type" : "object",
-            "description" : "Fetches new emails from given mail inbox and returns them as JSON in the output.",
+            "description" : "Fetches new emails from given mail inbox and returns them as JSON in the output. Note: This command is for demo purposes only and not intended for production use.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -6138,7 +6168,7 @@
           },
           "mail.verify" : {
             "type" : "object",
-            "description" : " Protects any subsequent pipe commands: Pipeline is only executed \n in case the caller has verified that he is the owner of given \n email address. To do so, a magic link (verification link) is sent \n to his email account. Only if the user clicks on this link within \n a certain amount of time (default is 10min), the subsequent pipe \n commands are executed. From a technical point of view this is done \n by putting the current state of the message into a cache which deletes \n any entries older than 10min. Then, the email with the key to this \n cache entry (=challenge) is send to the user. If the user clicks on \n this link, the message is loaded from the cache using the challenge as \n the key. If the user clicked within 10min, the entry is here, can be \n loaded and the message execution can be resumed. Otherwise if the user \n clicks after 10min on the link, no more entry in it. Execution fails. \n User has to re-request the link.",
+            "description" : " Protects any subsequent pipe commands: Pipeline is only executed \n in case the caller has verified that he is the owner of given \n email address. To do so, a magic link (verification link) is sent \n to his email account. Only if the user clicks on this link within \n a certain amount of time (default is 10min), the subsequent pipe \n commands are executed. From a technical point of view this is done \n by putting the current state of the message into a cache which deletes \n any entries older than 10min. Then, the email with the key to this \n cache entry (=challenge) is send to the user. If the user clicks on \n this link, the message is loaded from the cache using the challenge as \n the key. If the user clicked within 10min, the entry is here, can be \n loaded and the message execution can be resumed. Otherwise if the user \n clicks after 10min on the link, no more entry in it. Execution fails. \n User has to re-request the link. Note: This command is for demo purposes only and not intended for production use.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -8071,6 +8101,11 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              },
+              "wait" : {
+                "type" : "string",
+                "description" : "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. ",
+                "default" : "false"
               }
             },
             "required" : [ "path" ]
@@ -8603,7 +8638,7 @@
           },
           "resolve" : {
             "type" : "object",
-            "description" : "Resolves a given PIPEFORCE uri to its content and returns it. For example $uri:property:global/app/myapp/pipeline/foo will return the full property of the pipeline foo. Also see: https://docs.pipeforce.org/docs/api/uris",
+            "description" : "Resolves a given PIPEFORCE uri to its content and returns it. For example $uri:property:global/app/myapp/mydata will return the value of the mydata property. Also see: https://docs.pipeforce.org/docs/api/uris",
             "inputType" : "Byte",
             "outputType" : "Byte",
             "properties" : {
@@ -10454,6 +10489,31 @@
             },
             "required" : [ ]
           },
+          "stats" : {
+            "type" : "object",
+            "description" : "Returns basic status information about the hub service.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
           "switch" : {
             "type" : "object",
             "description" : "Evaluates each switch statement. Takes the value part of the first match and writes it to the given output. If no output is given, writes it to the body. Any param key will be the selection expression which needs to evaluate to a boolean true or false and any value will be the selected value.",
@@ -10715,6 +10775,10 @@
                 "description" : "If true, this command will return a simulated failed test report without executing real tests. This is mainly for development and integration tasks in order to make sure such integrations work as expected.",
                 "default" : "false"
               },
+              "dryRunSleep" : {
+                "type" : "string",
+                "description" : "The time to sleep in ms before the dryRun starts. This is mainly for testing purposes only."
+              },
               "returnStatus500IfFailed" : {
                 "type" : "string",
                 "description" : "In case this command was executed via HTTP and a test run has been failed or has an error, should the response return the HTTP status code 500 (Internal Server Error)? This is only valid if the command was executed in sync way.",
@@ -10747,7 +10811,7 @@
               },
               "wait" : {
                 "type" : "string",
-                "description" : "If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details.",
+                "description" : "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. ",
                 "default" : "false"
               }
             },
@@ -11490,7 +11554,7 @@
               },
               "wait" : {
                 "type" : "string",
-                "description" : "If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details.",
+                "description" : "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. ",
                 "default" : "false"
               }
             },
@@ -12167,7 +12231,7 @@
             },
             "required" : [ ]
           },
-          "workflow.variabes.get" : {
+          "workflow.variables.get" : {
             "type" : "object",
             "description" : "Returns the variables of a given process instance from the workflow engine as JSON whereas the name of the variable becomes the JSON attribute name and the value of the variable becomes the JSON attribute value.",
             "inputType" : "JsonNode",

@@ -40,15 +40,15 @@ When a command runs in async mode, it will create an async task, register this t
 
  Async tasks can be listed, fetched, completed or cancelled using the `correlationId` and one of the appropriate commands, explained as follows.
 
-## Polling async task: `async.fetch`
+## Polling async task: `async.poll`
 
 Once an async task has been started, it can be polled in intervalls to check if it has been finished and to return its computation result. This concept is also called long-polling.
 
-For this, you can use the command `async.fetch` with the `correlationId` as parameter and call it in intervals. Example:
+For this, you can use the command `async.poll` with the `correlationId` as parameter and call it in intervals. Example:
 
 ```yaml
 pipeline:
-  - async.fetch:
+  - async.poll:
       correlationId: 254d7d80-4530-431a-a0cc-c606e8faa406
 ```
 
@@ -56,14 +56,15 @@ This command will behave like this:
 
 ### Async task not finished
 
-If the async task is not finished yet (still in `running` state) it will return the HTTP status code `204` (No Content) and in the body, a result JSON will be placed with the `statusCode` attribute set to `204`. Example response body:
+If the async task is not finished yet (still in `running` state) it will return the HTTP status code `301` (Moved) with a redirect to the same command with given `correlationId` so any HTTP client which automatically follows redirects will request for a new poll automatically in a loop. This will be repeated until the task has been finished and the poll request was successful.
+
+In case you would like to implement the re-poll requests manually, then you can set the parameter `redirect: false`. In this case, the command `async.poll` wont respond with a redirect. Instead it returns the current task status so you can do a re-poll based on this result.
 
 ```json
 {
   "correlationId": "96ce80ba-c43c-48f3-b772-a3bd822634d3",
   "status": "running",
-  "statusCode": 204,
-  "statusMessage": "No Content",
+  "statusCode": 202,
   "created": 1682438759158
 }
 ```
@@ -82,9 +83,11 @@ If the async task is finished, the computation value of the task will be returne
 }
 ```
 
-### Async task already fetched
+### Async task gone
 
-In case the result of an async task was already fetched by a previous call of `async.fetch`, the HTTP status code `404` (Not Found) will be returned in header and in the attribute `statusCode` of result JSON. Example response body:
+After an async task has been finished, it will be kept for a few seconds in the async task cache in order to give the poller the chance to catch the result. How long it is kept in this cache, depends on the backend configuration.
+
+After the task was removed from the cache, any poll for it will result in a `404` (Not Found) HTTP status in the response and in the attribute `statusCode` of result JSON. Example response body:
 
 ```json
 {
@@ -98,7 +101,7 @@ In case the result of an async task was already fetched by a previous call of `a
 ### Polling frequency
 
 :::caution
-The first polling call using `async.fetch` can be executed immediately after starting the task. The time between any subsequet polling calls must be >= 2 seconds. If called in intervals < 2 seconds a punishment time of 2 seconds will be added for each call up to 10 minutes. This means after the task has been finished, it will wait this additional time before it returns. 
+The first polling call using `async.poll` can be executed immediately after starting the task. The time between any subsequet polling calls must be >= 3 seconds. If called in intervals > 3 seconds, a HTTP status `429` (Too Many Requests) will be returned.
 :::
 
 ## Complete a task
@@ -120,13 +123,13 @@ pipeline:
 
 You can optionally specify the result value to be returned to the caller / poller of the task using the `input` parameter or by placing it at the body of the pipeline.
 
-Once the command `async.complete` was called, the async task will change its state to `finished` and the given result will be set as the computation result. The next polling call of `async.fetch` will return this result value and finally removes the async task from the backend queue.
+Once the command `async.complete` was called, the async task will change its state to `finished` and the given result will be set as the computation result. The next polling call of `async.poll` will return this result value and finally removes the async task from the backend cache after a while.
 
 :::info
 Calling `async.complete` several times for the same `correlationId` has no effect since only the first caller wins. Any subsequent such calls will simply be ignored (bot no error is thrown).
 :::
 
-### Via message `async.complete.id`
+### Via message `async.complete.ID`
 
 Another option to complete an async task is by sending a message to the PIPEFORCE default exchange `pipeforce.default.topic` with a routing key of this format:
 
@@ -139,7 +142,7 @@ This is especially handy in case you have a microservice which is working mainly
 
 The body of the message will be used as the response value to the async call.
 
-Once the message `async.complete.<CORRELATION_ID>` was send, the async task will change its state to `finished` and the given message body will be set as the computation result. The next polling call of `async.fetch` will return this result value and finally removes the async task from the backend queue.
+Once the message `async.complete.<CORRELATION_ID>` was send, the async task will change its state to `finished` and the given message body will be set as the computation result. The next polling call of `async.poll` will return this result value and finally removes the async task from the backend cache after a while.
 
 :::info
 Sending the message  `async.complete.<CORRELATION_ID>` several times for the same `correlationId` has no effect since only the first message wins. Any subsequent such message will simply be ignored (bot no error is thrown).
@@ -159,7 +162,7 @@ pipeline:
       correlationId: 254d7d80-4530-431a-a0cc-c606e8faa406
 ```
 
-This will immediately remove the async task from the backend queue. Any subsequent call of `async.fetch` will result in a `404` (Not found).
+This will cancel the task run and switches the task state to `cancelled`. The next polling call of `async.poll` will return this the task with this status and finally removes the async task from the backend cache after a while.
 
 :::info
 Calling `async.cancel` several times for the same `correlationId` has no effect since only the first caller wins. Any subsequent such calls will simply be ignored (bot no error is thrown).
@@ -178,7 +181,7 @@ This is especially handy in case you have a microservice which is working mainly
 
 The body of the message will be used as the response value to the async call and must be a character array.
 
-This will immediately remove the async task from the backend queue. Any subsequent call of `async.fetch` will result in a `404` (Not found).
+This will cancel the task run and switches the task state to `cancelled`. The next polling call of `async.poll` will return this the task with this status and finally removes the async task from the backend cache after a while.
 
 :::info
 Sending the message  `async.cancel.<CORRELATION_ID>` several times for the same `correlationId` has no effect since only the first message wins. Any subsequent such message will simply be ignored (bot no error is thrown).
@@ -187,12 +190,13 @@ Sending the message  `async.cancel.<CORRELATION_ID>` several times for the same 
 ## Listing async tasks: `async.list`
 
 In order to list all active async tasks registered in the backend queue, you can use the command `async.list`. Example:
+
 ```yaml
 pipeline:
   - async.list
 ```
 
-This command will return you a JSON array with information about all async tasks in `running` or `finished` state. Here is an example:
+This command will return you a JSON array with information about all async tasks. Here is an example:
 
 ```json
 [
@@ -213,15 +217,23 @@ This command will return you a JSON array with information about all async tasks
 
 If a task is in `running` state, this means it is still executing or it has been finished but no result has been set so far. So it is not ready to be fetched. 
 
-If a task is in state `finished` it means its execution has been finished **and** the final result has been provided, but the result was not fetched so far.
+If a task is in state `finished` it means its execution has been finished **and** the final result has been provided.
 
-Once the result of an async task has been fetched (returned) by the caller, the async task will be removed from this list.
+If a task is in state `error` it means its execution caused some error. The error message can be found in the optional field  `statusMessage`.
 
 :::caution
-Do not use this listing of tasks for polling since this is not optimized for this. Calling the command `async.list` too high-frequently will result in a blocking by the backend for some minutes. Use the command `async.fetch` for polling instead. 
+Do not use this listing of tasks for polling since this is not optimized for this. Calling the command `async.list` too high-frequently will result in a blocking by the backend for some minutes. Use the command `async.poll` for polling instead. 
 :::
 
-## Async task timeout (experimental)
+In case you would like to list tasks only in a given state, you can use the parmeter `status` parameter. Here is an example for listing only tasks in `error` state:
+
+```yaml
+pipeline:
+  - async.list:
+      state: error
+```
+
+## Keep-Alive ping (experimental)
 
 Once an async task has been started, it will by default run a certain amount of time before it will be automatically cancelled, assuming the task cannot be finished and/or the caller has died and therefore cannot fetch it. The concrete timout after an async task will be cancelled depends on the command or user context it is being used in.
 

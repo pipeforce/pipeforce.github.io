@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 11/05/2023 by CommandComplianceTest -->
+<!-- Generated: 17/05/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -835,7 +835,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## async.complete ``v1``
 ----------   
-Completes a running async task. The input to the command will be set as completion result to the task. In case task with given correlation id doesn't exist or was already finished, nothing happens. So calling completion multiple times has not effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command async.result.get instead.
+Completes a running async task. The input to the command will be set as completion result to the task. In case task with given correlation id doesn't exist or was already finished, nothing happens. So calling completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command async.fetch instead.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=async.complete:v1)
 
@@ -884,11 +884,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## async.fetch ``v1``
+## async.get ``v1``
 ----------   
-Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, HTTP status code 204 (No Content) is returned. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). And after this result was returned, any subsequent call will return a 404 (Not found) HTTP status code. 404 is also returned in case an async task with given correlation id doesn't exist.
+Returns the information for a given async task WITHOUT changing its state. Cannot be used for polling!
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=async.fetch:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=async.get:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -897,7 +897,8 @@ Checks whether an async task has been finished and returns the result if any. Th
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`correlationId` | String | true | null | The correlationId of the async job those result to lookup.
+`correlationId` | String | true | null | The correlationId of the async job to return.
+`includeChildren` | String | false | false | Should the children tasks be included in the view (max 1 level).
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -908,8 +909,9 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - async.fetch:  
+  - async.get:  
       correlationId: <value>  
+      includeChildren: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -922,12 +924,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/async.fetch?correlationId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/async.get?correlationId=<value>&includeChildren=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command async.fetch correlationId=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command async.get correlationId=<value> includeChildren=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -946,6 +948,7 @@ Returns all existing async tasks and their states (without result values, if the
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
+`status` | String | false | null | Returns all async tasks with given status. If null or empty, all tasks in any status will be returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -957,6 +960,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - async.list:  
+      status: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -969,12 +973,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/async.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/async.list?status=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command async.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command async.list status=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1029,6 +1033,57 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## async.poll ``v1``
+----------   
+Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, a HTTP redirect is send so the client calls again this endpoint. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). The task with its result will be kept in cache for certain amount of time (depends on server settings) and then removed. After this, any subsequent call will return a 410 (Gone) HTTP status code.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=async.poll:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`correlationId` | String | true | null | The correlationId of the async job those result to lookup.
+`redirect` | String | false | true | Should a HTTP 429 redirect header be sent in case another poll is required?
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - async.poll:  
+      correlationId: <value>  
+      redirect: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/async.poll?correlationId=<value>&redirect=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command async.poll correlationId=<value> redirect=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## async.start ``v1``
 ----------   
 Starts a new async task and adds it to the collection of async tasks. The task will wait the given amount of time before it will be finished. This is mainly for testing purposes.
@@ -1043,6 +1098,10 @@ Starts a new async task and adds it to the collection of async tasks. The task w
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `testSleep` | String | false | 60000 | How long should the test task sleep in ms?
+`testFinalStatus` | String | false | finished | Test result status?
+`maxExecutionTime` | String | false | 5000 | How long should the test task max run before it gets cancelled?
+`maxCachingTime` | String | false | 30000 | How long should the test task max be cached before it gets removed?
+`pollResetEnabled` | String | false | true | Should the number of polls be reset on every cleanup?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -1055,6 +1114,10 @@ Name | Type | Required | Default | Description
 pipeline:  
   - async.start:  
       testSleep: <value>  
+      testFinalStatus: <value>  
+      maxExecutionTime: <value>  
+      maxCachingTime: <value>  
+      pollResetEnabled: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -1067,12 +1130,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/async.start?testSleep=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/async.start?testSleep=<value>&testFinalStatus=<value>&maxExecutionTime=<value>&maxCachingTime=<value>&pollResetEnabled=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command async.start testSleep=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command async.start testSleep=<value> testFinalStatus=<value> maxExecutionTime=<value> maxCachingTime=<value> pollResetEnabled=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1177,57 +1240,6 @@ http://host/api/v3/command/barcode.read?id=<value>&if=<value>&onError=<value>&ev
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command barcode.read id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## bean ``v1``
-----------   
-Executes a method on a Spring bean. Is only available for support users.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=bean:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`name` | String | false | null | The name of the bean.
-`method` | String | false | null | The method name of the bean to be executed.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - bean:  
-      name: <value>  
-      method: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/bean?name=<value>&method=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command bean name=<value> method=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8147,7 +8159,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## mail.dump ``v1``
 ----------   
-Fetches new emails from given mail inbox and uploads them into a drive folder.
+Fetches new emails from given mail inbox and uploads them into a drive folder. Note: This command is for demo purposes only and not intended for production use.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.dump:v1)
 
@@ -8210,7 +8222,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## mail.fetch ``v1``
 ----------   
-Fetches new emails from given mail inbox and returns them as JSON in the output.
+Fetches new emails from given mail inbox and returns them as JSON in the output. Note: This command is for demo purposes only and not intended for production use.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.fetch:v1)
 
@@ -8346,7 +8358,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
  the key. If the user clicked within 10min, the entry is here, can be   
  loaded and the message execution can be resumed. Otherwise if the user   
  clicks after 10min on the link, no more entry in it. Execution fails.   
- User has to re-request the link.
+ User has to re-request the link. Note: This command is for demo purposes only and not intended for production use.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.verify:v1)
 
@@ -10755,6 +10767,7 @@ Name | Type | Required | Default | Description
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+`wait` | String | false | false | If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. 
 
 
 **Pipeline example:**  
@@ -10780,6 +10793,7 @@ pipeline:
       eval: <value>  
       input: <value>  
       output: <value>  
+      wait: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -10787,12 +10801,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&encrypted=<value>&finalAction=<value>&retentionStrategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/property.schema.put?key=<value>&path=<value>&defaultValue=<value>&value=<value>&type=<value>&ttl=<value>&evalValue=<value>&existStrategy=<value>&attachments=<value>&tags=<value>&encrypted=<value>&finalAction=<value>&retentionStrategy=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&wait=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> encrypted=<value> finalAction=<value> retentionStrategy=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command property.schema.put key=<value> path=<value> defaultValue=<value> value=<value> type=<value> ttl=<value> evalValue=<value> existStrategy=<value> attachments=<value> tags=<value> encrypted=<value> finalAction=<value> retentionStrategy=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> wait=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11454,7 +11468,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## resolve ``v1``
 ----------   
-Resolves a given PIPEFORCE uri to its content and returns it. For example $uri:property:global/app/myapp/pipeline/foo will return the full property of the pipeline foo. Also see: https://docs.pipeforce.org/docs/api/uris
+Resolves a given PIPEFORCE uri to its content and returns it. For example $uri:property:global/app/myapp/mydata will return the value of the mydata property. Also see: https://docs.pipeforce.org/docs/api/uris
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=resolve:v1)
 
@@ -13864,6 +13878,51 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## stats ``v1``
+----------   
+Returns basic status information about the hub service.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=stats:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - stats:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/stats?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command stats id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## switch ``v1``
 ----------   
 Evaluates each switch statement. Takes the value part of the first match and writes it to the given output. If no output is given, writes it to the body. Any param key will be the selection expression which needs to evaluate to a boolean true or false and any value will be the selected value.
@@ -14193,6 +14252,7 @@ Name | Type | Required | Default | Description
 `functionIncludePattern` | String | false | functionName.startsWith('test_') | A PE which defines the test functions to be included. The selected method name is provided as variable: functionName.
 `reportFormat` | String | false | json | The format of the resulting test report. Possible values: json (default), junit
 `dryRun` | String | false | false | If true, this command will return a simulated failed test report without executing real tests. This is mainly for development and integration tasks in order to make sure such integrations work as expected.
+`dryRunSleep` | String | false | null | The time to sleep in ms before the dryRun starts. This is mainly for testing purposes only.
 `returnStatus500IfFailed` | String | false | false | In case this command was executed via HTTP and a test run has been failed or has an error, should the response return the HTTP status code 500 (Internal Server Error)? This is only valid if the command was executed in sync way.
 `functionExcludePattern` | String | false | functionName.endsWith('IT') | A PE which defines the test functions to be excluded from the list of included test functions. The function method name is provided as variable: functionName. By default all test functions, ending in IT will be ignored.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -14200,7 +14260,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`wait` | String | false | false | If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details.
+`wait` | String | false | false | If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. 
 
 
 **Pipeline example:**  
@@ -14211,6 +14271,7 @@ pipeline:
       functionIncludePattern: <value>  
       reportFormat: <value>  
       dryRun: <value>  
+      dryRunSleep: <value>  
       returnStatus500IfFailed: <value>  
       functionExcludePattern: <value>  
       id: <value>  
@@ -14226,12 +14287,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/test.run?locations=<value>&functionIncludePattern=<value>&reportFormat=<value>&dryRun=<value>&returnStatus500IfFailed=<value>&functionExcludePattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&wait=<value>  
+http://host/api/v3/command/test.run?locations=<value>&functionIncludePattern=<value>&reportFormat=<value>&dryRun=<value>&dryRunSleep=<value>&returnStatus500IfFailed=<value>&functionExcludePattern=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&wait=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command test.run locations=<value> functionIncludePattern=<value> reportFormat=<value> dryRun=<value> returnStatus500IfFailed=<value> functionExcludePattern=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> wait=<value>  
+pi command test.run locations=<value> functionIncludePattern=<value> reportFormat=<value> dryRun=<value> dryRunSleep=<value> returnStatus500IfFailed=<value> functionExcludePattern=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> wait=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -15190,7 +15251,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`wait` | String | false | false | If set to true, the command will wait until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for non-long running tasks. If a task is long running ~ > 1 min, then this will not work since a timeout will close the connection and no response is possible. For long running tasks, you can use polling instead, to receive the result. See command async.result.get for details.
+`wait` | String | false | false | If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. 
 
 
 **Pipeline example:**  
@@ -16119,11 +16180,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## workflow.variabes.get ``v1``
+## workflow.variables.get ``v1``
 ----------   
 Returns the variables of a given process instance from the workflow engine as JSON whereas the name of the variable becomes the JSON attribute name and the value of the variable becomes the JSON attribute value.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.variabes.get:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.variables.get:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -16144,7 +16205,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - workflow.variabes.get:  
+  - workflow.variables.get:  
       processInstanceId: <value>  
       parseJsonString: <value>  
       id: <value>  
@@ -16159,12 +16220,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.variabes.get?processInstanceId=<value>&parseJsonString=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/workflow.variables.get?processInstanceId=<value>&parseJsonString=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.variabes.get processInstanceId=<value> parseJsonString=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command workflow.variables.get processInstanceId=<value> parseJsonString=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
