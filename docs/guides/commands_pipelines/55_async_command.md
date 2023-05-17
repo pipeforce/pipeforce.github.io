@@ -87,13 +87,13 @@ If the async task is finished, the computation value of the task will be returne
 
 After an async task has been finished, it will be kept for a few seconds in the async task cache in order to give the poller the chance to catch the result. How long it is kept in this cache, depends on the backend configuration.
 
-After the task was removed from the cache, any poll for it will result in a `404` (Not Found) HTTP status in the response and in the attribute `statusCode` of result JSON. Example response body:
+After the task was removed from the cache, any poll for it will result in a `410` (Gone) HTTP status in the response and in the attribute `statusCode` of result JSON. Example response body:
 
 ```json
 {
   "correlationId": "96ce80ba-c43c-48f3-b772-a3bd822634d3",
-  "statusCode": 404,
-  "statusMessage": "Not Found",
+  "statusCode": 410,
+  "statusMessage": "Gone",
   "created": 1682438759158
 }
 ```
@@ -168,7 +168,7 @@ This will cancel the task run and switches the task state to `cancelled`. The ne
 Calling `async.cancel` several times for the same `correlationId` has no effect since only the first caller wins. Any subsequent such calls will simply be ignored (bot no error is thrown).
 :::
 
-### Via message `async.cancel.id`
+### Via message `async.cancel.ID`
 
 Similar to completing an async task, another option to cancel an async task is by sending a message to the PIPEFORCE default exchange `pipeforce.default.topic` with a routing key of this format:
 
