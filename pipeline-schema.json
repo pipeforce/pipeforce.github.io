@@ -3614,6 +3614,130 @@
             },
             "required" : [ "name" ]
           },
+          "gateway.endpoint.delete" : {
+            "type" : "object",
+            "description" : "Deletes an endpoint configuration.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the endpoint to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "uuid" ]
+          },
+          "gateway.endpoint.get" : {
+            "type" : "object",
+            "description" : "Returns an endpoint configuration.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the endpoint to return."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "uuid" ]
+          },
+          "gateway.endpoint.list" : {
+            "type" : "object",
+            "description" : "Lists all existing endpoint configurations.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "gateway.endpoint.put" : {
+            "type" : "object",
+            "description" : "Adds a new endpoint configuration. Expects the config as JSON in the input. In case no uuid is given, a new entry is created.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "header.set" : {
             "type" : "object",
             "description" : "DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2",
