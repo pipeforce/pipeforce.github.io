@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 17/05/2023 by CommandComplianceTest -->
+<!-- Generated: 23/05/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -4997,6 +4997,198 @@ http://host/api/v3/command/function.run?name=<value>&args=<value>&id=<value>&if=
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command function.run name=<value> args=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## gateway.endpoint.delete ``v1``
+----------   
+Deletes an endpoint configuration.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=gateway.endpoint.delete:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`uuid` | String | true | null | The uuid of the endpoint to delete.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - gateway.endpoint.delete:  
+      uuid: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/gateway.endpoint.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command gateway.endpoint.delete uuid=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## gateway.endpoint.get ``v1``
+----------   
+Returns an endpoint configuration.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=gateway.endpoint.get:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`uuid` | String | true | null | The uuid of the endpoint to return.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - gateway.endpoint.get:  
+      uuid: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/gateway.endpoint.get?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command gateway.endpoint.get uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## gateway.endpoint.list ``v1``
+----------   
+Lists all existing endpoint configurations.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=gateway.endpoint.list:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - gateway.endpoint.list:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/gateway.endpoint.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command gateway.endpoint.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## gateway.endpoint.put ``v1``
+----------   
+Adds a new endpoint configuration. Expects the config as JSON in the input. In case no uuid is given, a new entry is created.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=gateway.endpoint.put:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - gateway.endpoint.put:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/gateway.endpoint.put?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command gateway.endpoint.put id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
