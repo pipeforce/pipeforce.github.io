@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 23/05/2023 by CommandComplianceTest -->
+<!-- Generated: 30/05/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -5020,6 +5020,7 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -5031,6 +5032,7 @@ pipeline:
       if: <value>  
       onError: <value>  
       eval: <value>  
+      output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5038,12 +5040,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/gateway.endpoint.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/gateway.endpoint.delete?uuid=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command gateway.endpoint.delete uuid=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command gateway.endpoint.delete uuid=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5158,6 +5160,16 @@ Adds a new endpoint configuration. Expects the config as JSON in the input. In c
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
+`uuid` | String | false | null | The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any.
+`methods` | String | false | null | A list of HTTP methods to allow. If this list contains *, all methods are allowed. This will overwrite the value of the input JSON if there is any.
+`enabled` | String | false | null | Enables or disables this endpoint temporarily. This will overwrite the value of the input JSON if there is any.
+`mocked` | String | false | null | Mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any.
+`weight` | String | false | null | The weighting of this entry. In case a path matches two entries, the one with higher wight value will win.
+`pattern` | String | false | null | The wildcard pattern, the incoming request path must match in order to get called. This will overwrite the value of the input JSON if there is any.
+`target` | String | false | null | The target uri to be executed in case the request matches. This will overwrite the value of the input JSON if there is any.
+`authenticate` | String | false | null | Is authentication needed for this endpoint? In this case, the Authorization header must exist and must contain a valid authentication token or credentials. This will overwrite the value of the input JSON if there is any.
+`roles` | String | false | null | The authenticated user must be assigned to at least one of the roles from this list. If null or empty, no authorization check is done after successful authentication. Authentication is mandatory to be enabled for this. This will overwrite the value of the input JSON if there is any.
+`groups` | String | false | null | The authenticated user must be member to at least one of the groups from this list. If null or empty, no authorization check is done after successful authentication. Authentication is mandatory to be enabled for this. This will overwrite the value of the input JSON if there is any.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -5170,6 +5182,16 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - gateway.endpoint.put:  
+      uuid: <value>  
+      methods: <value>  
+      enabled: <value>  
+      mocked: <value>  
+      weight: <value>  
+      pattern: <value>  
+      target: <value>  
+      authenticate: <value>  
+      roles: <value>  
+      groups: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -5183,12 +5205,106 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/gateway.endpoint.put?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/gateway.endpoint.put?uuid=<value>&methods=<value>&enabled=<value>&mocked=<value>&weight=<value>&pattern=<value>&target=<value>&authenticate=<value>&roles=<value>&groups=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command gateway.endpoint.put id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command gateway.endpoint.put uuid=<value> methods=<value> enabled=<value> mocked=<value> weight=<value> pattern=<value> target=<value> authenticate=<value> roles=<value> groups=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## gateway.group.list ``v1``
+----------   
+Lists all groups allowed to be assigned to endpoints.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=gateway.group.list:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - gateway.group.list:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/gateway.group.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command gateway.group.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## gateway.role.list ``v1``
+----------   
+Lists all roles allowed to be assigned to endpoints.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=gateway.role.list:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - gateway.role.list:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/gateway.role.list?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command gateway.role.list id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

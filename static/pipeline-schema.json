@@ -3639,6 +3639,10 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uuid" ]
@@ -3711,6 +3715,46 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "uuid" : {
+                "type" : "string",
+                "description" : "The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any."
+              },
+              "methods" : {
+                "type" : "string",
+                "description" : "A list of HTTP methods to allow. If this list contains *, all methods are allowed. This will overwrite the value of the input JSON if there is any."
+              },
+              "enabled" : {
+                "type" : "string",
+                "description" : "Enables or disables this endpoint temporarily. This will overwrite the value of the input JSON if there is any."
+              },
+              "mocked" : {
+                "type" : "string",
+                "description" : "Mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any."
+              },
+              "weight" : {
+                "type" : "string",
+                "description" : "The weighting of this entry. In case a path matches two entries, the one with higher wight value will win."
+              },
+              "pattern" : {
+                "type" : "string",
+                "description" : "The wildcard pattern, the incoming request path must match in order to get called. This will overwrite the value of the input JSON if there is any."
+              },
+              "target" : {
+                "type" : "string",
+                "description" : "The target uri to be executed in case the request matches. This will overwrite the value of the input JSON if there is any."
+              },
+              "authenticate" : {
+                "type" : "string",
+                "description" : "Is authentication needed for this endpoint? In this case, the Authorization header must exist and must contain a valid authentication token or credentials. This will overwrite the value of the input JSON if there is any."
+              },
+              "roles" : {
+                "type" : "string",
+                "description" : "The authenticated user must be assigned to at least one of the roles from this list. If null or empty, no authorization check is done after successful authentication. Authentication is mandatory to be enabled for this. This will overwrite the value of the input JSON if there is any."
+              },
+              "groups" : {
+                "type" : "string",
+                "description" : "The authenticated user must be member to at least one of the groups from this list. If null or empty, no authorization check is done after successful authentication. Authentication is mandatory to be enabled for this. This will overwrite the value of the input JSON if there is any."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -3730,6 +3774,64 @@
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "gateway.group.list" : {
+            "type" : "object",
+            "description" : "Lists all groups allowed to be assigned to endpoints.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "gateway.role.list" : {
+            "type" : "object",
+            "description" : "Lists all roles allowed to be assigned to endpoints.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               },
               "output" : {
                 "type" : "string",
