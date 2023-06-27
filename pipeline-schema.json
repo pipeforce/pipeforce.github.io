@@ -550,276 +550,6 @@
             },
             "required" : [ "processInstanceId" ]
           },
-          "async.cancel" : {
-            "type" : "object",
-            "description" : "Cancels a running async task. If task doesn't exist or was already finished or cancelled, nothing happens. Will return information about the cancelled task if there was any.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "correlationId" : {
-                "type" : "string",
-                "description" : "The correlationId of the async task to be cancelled."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "input" : {
-                "type" : "string",
-                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "correlationId" ]
-          },
-          "async.complete" : {
-            "type" : "object",
-            "description" : "Completes a running async task. The input to the command will be set as completion result to the task. In case task with given correlation id doesn't exist or was already finished, nothing happens. So calling completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command async.fetch instead.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "correlationId" : {
-                "type" : "string",
-                "description" : "The correlationId of the async task to be completed."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "input" : {
-                "type" : "string",
-                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "correlationId" ]
-          },
-          "async.get" : {
-            "type" : "object",
-            "description" : "Returns the information for a given async task WITHOUT changing its state. Cannot be used for polling!",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "correlationId" : {
-                "type" : "string",
-                "description" : "The correlationId of the async job to return."
-              },
-              "includeChildren" : {
-                "type" : "string",
-                "description" : "Should the children tasks be included in the view (max 1 level).",
-                "default" : "false"
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "correlationId" ]
-          },
-          "async.list" : {
-            "type" : "object",
-            "description" : "Returns all existing async tasks and their states (without result values, if there are any).",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "status" : {
-                "type" : "string",
-                "description" : "Returns all async tasks with given status. If null or empty, all tasks in any status will be returned."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ ]
-          },
-          "async.ping" : {
-            "type" : "object",
-            "description" : "Sends a ping to the async task in order to prolong its execution time.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "correlationId" : {
-                "type" : "string",
-                "description" : "The correlationId of the async job those result to lookup."
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "correlationId" ]
-          },
-          "async.poll" : {
-            "type" : "object",
-            "description" : "Checks whether an async task has been finished and returns the result if any. This can be used for polling. As long as the async task is still running so no result exists so far, a HTTP redirect is send so the client calls again this endpoint. Once the async task is finished, the result will be returned with HTTP status code 200 (OK). The task with its result will be kept in cache for certain amount of time (depends on server settings) and then removed. After this, any subsequent call will return a 410 (Gone) HTTP status code.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "correlationId" : {
-                "type" : "string",
-                "description" : "The correlationId of the async job those result to lookup."
-              },
-              "redirect" : {
-                "type" : "string",
-                "description" : "Should a HTTP 429 redirect header be sent in case another poll is required?",
-                "default" : "true"
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ "correlationId" ]
-          },
-          "async.start" : {
-            "type" : "object",
-            "description" : "Starts a new async task and adds it to the collection of async tasks. The task will wait the given amount of time before it will be finished. This is mainly for testing purposes.",
-            "inputType" : "JsonNode",
-            "outputType" : "JsonNode",
-            "properties" : {
-              "testSleep" : {
-                "type" : "string",
-                "description" : "How long should the test task sleep in ms?",
-                "default" : "60000"
-              },
-              "testFinalStatus" : {
-                "type" : "string",
-                "description" : "Test result status?",
-                "default" : "finished"
-              },
-              "maxExecutionTime" : {
-                "type" : "string",
-                "description" : "How long should the test task max run before it gets cancelled?",
-                "default" : "5000"
-              },
-              "maxCachingTime" : {
-                "type" : "string",
-                "description" : "How long should the test task max be cached before it gets removed?",
-                "default" : "30000"
-              },
-              "pollResetEnabled" : {
-                "type" : "string",
-                "description" : "Should the number of polls be reset on every cleanup?",
-                "default" : "true"
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The optional id of this command, unique within the pipeline."
-              },
-              "if" : {
-                "type" : "string",
-                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-              },
-              "onError" : {
-                "type" : "string",
-                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-              },
-              "eval" : {
-                "type" : "string",
-                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "output" : {
-                "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              }
-            },
-            "required" : [ ]
-          },
           "barcode.create" : {
             "type" : "object",
             "description" : "Creates a barcode from a dynamic format.",
@@ -1203,14 +933,14 @@
           },
           "cache.put" : {
             "type" : "object",
-            "description" : "Saves the given value under given key into a central cache.\nIf no value param is given, uses the body as cache value.\nThe max time to live of each entry is 120 min. The min time to live is 5 min. Default is 5 min.",
+            "description" : "Saves the given value under given key into a central cache.\nIf no value param is given, uses the body as cache value.\n",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
               "timeToLive" : {
                 "type" : "number",
-                "description" : "The min. time to live for this cache entry in minutes. If not set or negative, will be set to default = 5 min. If value is bigger than 120, will be limited to 120 (2 hours). If value is smaller than 5, will be extended to 5.",
-                "default" : "5"
+                "description" : "The min. time to live for this cache entry in millis.",
+                "default" : "10000"
               },
               "key" : {
                 "type" : "string",
@@ -3726,6 +3456,10 @@
               "enabled" : {
                 "type" : "string",
                 "description" : "Enables or disables this endpoint temporarily. This will overwrite the value of the input JSON if there is any."
+              },
+              "polling" : {
+                "type" : "string",
+                "description" : "In case this endpoints is an async target, should a polling redirect be applied to the request so it polls for the result until has been processed or timed out?"
               },
               "mocked" : {
                 "type" : "string",
@@ -8327,11 +8061,6 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              },
-              "wait" : {
-                "type" : "string",
-                "description" : "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. ",
-                "default" : "false"
               }
             },
             "required" : [ "path" ]
@@ -8610,7 +8339,7 @@
               "decrypt" : {
                 "type" : "string",
                 "description" : "Should the value be auto-decrypted in case it is encrypted? Note: This is only possible, if the value was encrypted using the default encryption. In case this property was not encrypted, nothing happens by setting this to true.",
-                "default" : "false"
+                "default" : "true"
               },
               "includeUuidField" : {
                 "type" : "string",
@@ -8960,6 +8689,175 @@
               }
             },
             "required" : [ "path" ]
+          },
+          "result.complete" : {
+            "type" : "object",
+            "description" : "Completes a processing result. The input to the command will be set as completion value to the result. In case result with given id doesn't exist or was already completed, nothing happens. So calling this completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command result.poll instead.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "correlationId" : {
+                "type" : "string",
+                "description" : "The id of the result to be completed."
+              },
+              "value" : {
+                "type" : "string",
+                "description" : "The optional value to be set on the result."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "correlationId" ]
+          },
+          "result.delete" : {
+            "type" : "object",
+            "description" : "Cancels and deletes a processing result. If result doesn't exist or was already cancelled, nothing happens. Will return information about the cancelled task if there was any.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "correlationId" : {
+                "type" : "string",
+                "description" : "The id of the result to be cancelled."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "correlationId" ]
+          },
+          "result.get" : {
+            "type" : "object",
+            "description" : "Returns a result from the cache but without the result value. If the result value is required, use polling instead.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "correlationId" : {
+                "type" : "string",
+                "description" : "The id of the result to return."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "correlationId" ]
+          },
+          "result.list" : {
+            "type" : "object",
+            "description" : "Returns all existing results  (without result values) from cache.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "status" : {
+                "type" : "string",
+                "description" : "Returns all results matching this status. If null or empty, all results in any status will be returned."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "result.put" : {
+            "type" : "object",
+            "description" : "Creates a result new result and registers it in the cache. ",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
           },
           "rpa.website.close" : {
             "type" : "object",
@@ -9694,6 +9592,11 @@
               "retentionStrategy" : {
                 "type" : "string",
                 "description" : "The retention strategy is used to decide delete property and it's data, there are two types of strategy (0,1) that decides the deletion.0 = Deletes chunks objects and data from storage if any (keeps property + attachment metadata) 1 = Deletes all (property, attachments, chunks from DB, binary data from storage if any)"
+              },
+              "notifySenderEmailReceipt" : {
+                "type" : "string",
+                "description" : "If true, notifies receipt email to the sender when mail has been sent to recipients",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -10977,7 +10880,7 @@
           },
           "test.run" : {
             "type" : "object",
-            "description" : "Runs all test scripts defined by given pattern.",
+            "description" : "Runs all test scripts defined by given pattern asynchronously.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -11005,11 +10908,6 @@
                 "type" : "string",
                 "description" : "The time to sleep in ms before the dryRun starts. This is mainly for testing purposes only."
               },
-              "returnStatus500IfFailed" : {
-                "type" : "string",
-                "description" : "In case this command was executed via HTTP and a test run has been failed or has an error, should the response return the HTTP status code 500 (Internal Server Error)? This is only valid if the command was executed in sync way.",
-                "default" : "false"
-              },
               "functionExcludePattern" : {
                 "type" : "string",
                 "description" : "A PE which defines the test functions to be excluded from the list of included test functions. The function method name is provided as variable: functionName. By default all test functions, ending in IT will be ignored.",
@@ -11034,11 +10932,6 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              },
-              "wait" : {
-                "type" : "string",
-                "description" : "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. ",
-                "default" : "false"
               }
             },
             "required" : [ ]
@@ -11777,11 +11670,6 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "wait" : {
-                "type" : "string",
-                "description" : "If set to true, the command will wait (by default max. 30 sec.) until the async task has been finished and then returns the result in the response (so makes the command de-facto a sync call). This works only for tasks running no longer than 30 sec. If this command is running for longer than 30 sec., the command will return with a correlationId so the result must be polled instead. ",
-                "default" : "false"
               }
             },
             "required" : [ "token" ]
