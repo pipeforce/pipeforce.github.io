@@ -1,3 +1,6 @@
+---
+slug: /apigateway
+---
 # API Gateway
 
 <p class="theme-doc-version-badge badge badge--secondary">Since Version: 9.0</p>
@@ -29,7 +32,7 @@ The core features and goals of the API Gateway are:
 
 ## Create and edit endpoint
 
-In order to create a new API endpoint, loggin to the PIPEFORCE portal and go to the Endpoints section. Here, all existing endpoints will be listed. Click on ADD ENDPOINT in order to open the editor to create a new endpoint:
+In order to create a new API endpoint, log-in to the PIPEFORCE portal and go to the Endpoints section. Here, all existing endpoints will be listed. Click on ADD ENDPOINT in order to open the editor to create a new endpoint:
 
 ![](../img/gateway-endpoint-create.png)
 
