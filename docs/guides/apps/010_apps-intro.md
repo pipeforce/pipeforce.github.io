@@ -167,6 +167,14 @@ pipeline:
       to: hr@company.de
       subject: "A new employee was addded!"
 ```
+### `setup`
+
+This optional folder can contain pipelines. These pipelines will be executed in case the app will be installed using the `app.install` command.
+
+This is handy in case you would like to do some preparation on setup phase of an app.
+
+Note: The pipelines in this folder wont be auto-executed on save in the web UI or publish using the CLI. 
+
 
 ### `script`
 
