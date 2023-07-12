@@ -3834,6 +3834,10 @@
               "credentials" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -3891,6 +3895,10 @@
               "credentials" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -3948,6 +3956,10 @@
               "credentials" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -4005,6 +4017,10 @@
               "credentials" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -4062,6 +4078,10 @@
               "credentials" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               }
             },
             "required" : [ ]
@@ -5451,11 +5471,11 @@
             "properties" : {
               "schedule" : {
                 "type" : "string",
-                "description" : "A schedule string which configures the execution of the job. Can be one of: EVERY_2_MIN, EVERY_5_MIN, EVERY_15_MIN, EVERY_30_MIN, EVERY_45_MIN, HOURLY, DAILY, WEEKLY, MONTHLY. Furthermore in development stage also EVERY_1_MIN is allowed. Throws an exception in production stage."
+                "description" : "A schedule string which configures the execution of the job. Can be one of: EVERY_5_MIN, EVERY_15_MIN, EVERY_30_MIN, EVERY_45_MIN, HOURLY, DAILY, WEEKLY, MONTHLY. Furthermore in development stage also EVERY_1_MIN is allowed. Throws an exception in production stage."
               },
               "stop" : {
                 "type" : "string",
-                "description" : "Deprecated. Use the command stop.stop instead. If this param is set, all other params are ignored. It contains the id of the job to be canceled."
+                "description" : "Deprecated. Use the command job.stop instead. If this param is set, all other params are ignored. It contains the id of the job to be canceled."
               },
               "id" : {
                 "type" : "string",
@@ -8465,7 +8485,7 @@
           },
           "property.value.put" : {
             "type" : "object",
-            "description" : "Saves the value of a property. The property schema must exist in advance.",
+            "description" : "Saves the value of a property. The property must exist in advance. This command does not allow to change the metadata of a property. If you need to change this, use property.put instead.",
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
@@ -10250,6 +10270,10 @@
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
               },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -10302,6 +10326,10 @@
               "credentials" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "output" : {
                 "type" : "string",
@@ -10361,6 +10389,10 @@
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
               },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -10413,6 +10445,10 @@
               "credentials" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "output" : {
                 "type" : "string",
@@ -10471,6 +10507,10 @@
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
               },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
+              },
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
@@ -10524,6 +10564,10 @@
               "credentials" : {
                 "type" : "string",
                 "description" : "DEPRECATED. Use param secret instead. "
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
               },
               "input" : {
                 "type" : "string",
@@ -10985,6 +11029,132 @@
               }
             },
             "required" : [ "resource" ]
+          },
+          "tracing.operations" : {
+            "type" : "object",
+            "description" : "Returns a list of all operation names tracked in tracing data of a given service.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "service" : {
+                "type" : "string",
+                "description" : "The service to search for operations.",
+                "default" : "hub"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "tracing.search" : {
+            "type" : "object",
+            "description" : "Searches the distributed trace logs for matches.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "service" : {
+                "type" : "string",
+                "description" : "The service to search for distributed traces.",
+                "default" : "hub"
+              },
+              "maxDuration" : {
+                "type" : "string",
+                "description" : "The filter for max duration of traces to be returned (ms, s, m, h). Example: 12s"
+              },
+              "minDuration" : {
+                "type" : "string",
+                "description" : "The filter for min duration of traces to be returned (ms, s, m, h). Example: 5ms"
+              },
+              "start" : {
+                "type" : "string",
+                "description" : "The time to start tracing search in unix timestamp millis. TODO: Also support lookback times like: -2d (= 2 days before current time)."
+              },
+              "end" : {
+                "type" : "string",
+                "description" : "The time to end tracing search in unix timestamp millis. TODO: Also support lookback times like: -2d (= 2 days before current time)."
+              },
+              "operation" : {
+                "type" : "string",
+                "description" : "The operation to apply as filter. If null or empty, all operations will be returned."
+              },
+              "tags" : {
+                "type" : "string",
+                "description" : "The tracing tags (attributes) to filter for as JSON / map whereas key is the tag name and value is the tag value. All tags are AND connected."
+              },
+              "limit" : {
+                "type" : "string",
+                "description" : "The number of traces to return per call. Maximum is 1500.",
+                "default" : "20"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "tracing.services" : {
+            "type" : "object",
+            "description" : "Returns a list of all available services covered in distributed tracing.",
+            "inputType" : "JsonNode",
+            "outputType" : "JsonNode",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
           },
           "transform" : {
             "type" : "object",
