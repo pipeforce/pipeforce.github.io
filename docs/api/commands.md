@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 04/07/2023 by CommandComplianceTest -->
+<!-- Generated: 11/07/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -5309,6 +5309,7 @@ Name | Type | Required | Default | Description
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -5327,6 +5328,7 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
+      secret: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5334,12 +5336,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.delete?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.delete?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.delete url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
+pi command http.delete url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5370,6 +5372,7 @@ Name | Type | Required | Default | Description
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -5388,6 +5391,7 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
+      secret: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5395,12 +5399,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.get?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.get?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.get url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
+pi command http.get url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5431,6 +5435,7 @@ Name | Type | Required | Default | Description
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -5449,6 +5454,7 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
+      secret: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5456,12 +5462,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.patch?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.patch?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.patch url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
+pi command http.patch url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5492,6 +5498,7 @@ Name | Type | Required | Default | Description
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -5510,6 +5517,7 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
+      secret: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5517,12 +5525,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.post?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.post?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.post url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
+pi command http.post url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5553,6 +5561,7 @@ Name | Type | Required | Default | Description
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 
 
 **Pipeline example:**  
@@ -5571,6 +5580,7 @@ pipeline:
       input: <value>  
       output: <value>  
       credentials: <value>  
+      secret: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -5578,12 +5588,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>  
+http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.put url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value>  
+pi command http.put url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7419,8 +7429,8 @@ Schedules any subsequent commands of the current pipeline and executes it at the
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`schedule` | String | true | null | A schedule string which configures the execution of the job. Can be one of: EVERY_2_MIN, EVERY_5_MIN, EVERY_15_MIN, EVERY_30_MIN, EVERY_45_MIN, HOURLY, DAILY, WEEKLY, MONTHLY. Furthermore in development stage also EVERY_1_MIN is allowed. Throws an exception in production stage.
-`stop` | String | false | null | Deprecated. Use the command stop.stop instead. If this param is set, all other params are ignored. It contains the id of the job to be canceled.
+`schedule` | String | true | null | A schedule string which configures the execution of the job. Can be one of: EVERY_5_MIN, EVERY_15_MIN, EVERY_30_MIN, EVERY_45_MIN, HOURLY, DAILY, WEEKLY, MONTHLY. Furthermore in development stage also EVERY_1_MIN is allowed. Throws an exception in production stage.
+`stop` | String | false | null | Deprecated. Use the command job.stop instead. If this param is set, all other params are ignored. It contains the id of the job to be canceled.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -11219,7 +11229,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## property.value.put ``v1``
 ----------   
-Saves the value of a property. The property schema must exist in advance.
+Saves the value of a property. The property must exist in advance. This command does not allow to change the metadata of a property. If you need to change this, use property.put instead.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.value.put:v1)
 
@@ -13635,6 +13645,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -13652,6 +13663,7 @@ pipeline:
       onError: <value>  
       eval: <value>  
       credentials: <value>  
+      secret: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -13660,12 +13672,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.delete?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
+pi command sftp.delete path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -13694,6 +13706,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -13711,6 +13724,7 @@ pipeline:
       onError: <value>  
       eval: <value>  
       credentials: <value>  
+      secret: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -13719,12 +13733,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.download?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
+pi command sftp.download path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -13754,6 +13768,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -13772,6 +13787,7 @@ pipeline:
       onError: <value>  
       eval: <value>  
       credentials: <value>  
+      secret: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -13780,12 +13796,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.list?path=<value>&filter=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.list?path=<value>&filter=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.list path=<value> filter=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
+pi command sftp.list path=<value> filter=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -13814,6 +13830,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -13831,6 +13848,7 @@ pipeline:
       onError: <value>  
       eval: <value>  
       credentials: <value>  
+      secret: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -13839,12 +13857,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.mkdir?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
+pi command sftp.mkdir path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -13874,6 +13892,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
@@ -13892,6 +13911,7 @@ pipeline:
       onError: <value>  
       eval: <value>  
       credentials: <value>  
+      secret: <value>  
       output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -13900,12 +13920,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&output=<value>  
+http://host/api/v3/command/sftp.rename?fromPath=<value>&toPath=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> output=<value>  
+pi command sftp.rename fromPath=<value> toPath=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -13934,6 +13954,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
 
 
@@ -13951,6 +13972,7 @@ pipeline:
       onError: <value>  
       eval: <value>  
       credentials: <value>  
+      secret: <value>  
       input: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
@@ -13959,12 +13981,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&input=<value>  
+http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<value>&host=<value>&port=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>&input=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> input=<value>  
+pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value> input=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -14544,6 +14566,165 @@ http://host/api/v3/command/theme?clearCache=<value>&resource=<value>&name=<value
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command theme clearCache=<value> resource=<value> name=<value> contentType=<value> ref=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## tracing.operations ``v1``
+----------   
+Returns a list of all operation names tracked in tracing data of a given service.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=tracing.operations:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`service` | String | false | hub | The service to search for operations.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - tracing.operations:  
+      service: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/tracing.operations?service=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command tracing.operations service=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## tracing.search ``v1``
+----------   
+Searches the distributed trace logs for matches.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=tracing.search:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`service` | String | false | hub | The service to search for distributed traces.
+`maxDuration` | String | false | null | The filter for max duration of traces to be returned (ms, s, m, h). Example: 12s
+`minDuration` | String | false | null | The filter for min duration of traces to be returned (ms, s, m, h). Example: 5ms
+`start` | String | false | null | The time to start tracing search in unix timestamp millis. TODO: Also support lookback times like: -2d (= 2 days before current time).
+`end` | String | false | null | The time to end tracing search in unix timestamp millis. TODO: Also support lookback times like: -2d (= 2 days before current time).
+`operation` | String | false | null | The operation to apply as filter. If null or empty, all operations will be returned.
+`tags` | String | false | null | The tracing tags (attributes) to filter for as JSON / map whereas key is the tag name and value is the tag value. All tags are AND connected.
+`limit` | String | false | 20 | The number of traces to return per call. Maximum is 1500.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - tracing.search:  
+      service: <value>  
+      maxDuration: <value>  
+      minDuration: <value>  
+      start: <value>  
+      end: <value>  
+      operation: <value>  
+      tags: <value>  
+      limit: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/tracing.search?service=<value>&maxDuration=<value>&minDuration=<value>&start=<value>&end=<value>&operation=<value>&tags=<value>&limit=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command tracing.search service=<value> maxDuration=<value> minDuration=<value> start=<value> end=<value> operation=<value> tags=<value> limit=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## tracing.services ``v1``
+----------   
+Returns a list of all available services covered in distributed tracing.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=tracing.services:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - tracing.services:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/tracing.services?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command tracing.services id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
