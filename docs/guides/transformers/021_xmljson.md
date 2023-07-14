@@ -1,4 +1,4 @@
-# XML to JSON Transformer
+# XML - JSON Transformer
 
 The transformer command `transform.xml.json` expects a XML document or string which complies with the [W3C XML](https://www.w3.org/TR/xml/) standard in the body or as `input` parameter of the command and converts it to a JSON document which can then be used for further processing.
 

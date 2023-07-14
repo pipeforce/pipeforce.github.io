@@ -1,4 +1,4 @@
-# CSV to JSON Transformer
+# CSV - JSON Transformer
 
 The transformer command `transform.csv.json` expects a CSV file which complies with the [RFC4189](https://datatracker.ietf.org/doc/html/rfc4180) standard in the body or as `input` parameter of the command and converts it to a JSON document which can then be used for further processing.
 

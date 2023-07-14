@@ -4,29 +4,29 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Automate Processes',
-    image: '/img/app-presentation-01-image-02.png',
-    description: (
-      <>
-       Digitize, automate and optimize business processes. PIPEFORCE comes with triggers, jobs, workflows, built-in dashboards and <a href="/docs/commands_pipelines">more...</a>
-      </>
-    ),
-  },
-  {
-    title: 'Integrate Data',
+    title: 'Integrate.',
     image: '/img/app-presentation-01-image-03.png',
     description: (
       <>
-        Connect systems and exchange data. PIPEFORCE comes with connectors, messaging queues, data transformation, data mapping and <a href="/docs/guides/transformers/basics">more...</a> 
+        Connect systems and data. <br/>PIPEFORCE comes with connectors, messaging queues, data pipelines and <a href="/docs/guides/transformers/basics">more...</a> 
       </>
     ),
   },
   {
-    title: 'Develop Applications',
+    title: 'Automate.',
+    image: '/img/app-presentation-01-image-02.png',
+    description: (
+      <>
+       Digitize and automate business processes. <br/>PIPEFORCE comes with triggers, workflows, forms, lists and <a href="/docs/commands_pipelines">more...</a>
+      </>
+    ),
+  },
+  {
+    title: 'Monitor.',
     image: '/img/app-presentation-01-image-04.png',
     description: (
       <>
-        Develop applications and share them on the marketplace. PIPEFORCE comes with forms, lists, key-value store, monitoring and <a href="/docs/apps">more...</a>
+        Monitor and analyze data. <br/>PIPEFORCE has integrated distributed tracing across services, reportings and <a href="/docs/apps">more...</a>
       </>
     ),
   },

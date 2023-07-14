@@ -2,9 +2,9 @@
 
 Usually you will work with JSON documents in your pipeline most of the time.
 
-But sometimes you need to load such JSON documents from resources like the cloud, remote endpoints, files or streams before you can use them. The pointer to such a resource is called a **content reference**. 
+But sometimes you need to load such JSON documents from resources like the cloud, remote endpoints, files or streams before you can use them. Or you have to load other data types like images, PDFs or similar. The pointer to all of such resources is called a **content reference**. 
 
-Before the data can be used, it must be read from the content reference. Then, it can be parsed to JSON for example, copied or otherwise used.
+Before this data can be used, it must be read from the content reference bytewise. Then, it can be parsed to JSON for example, copied or otherwise used.
 
 ![](../img/content-reference.png)
 
