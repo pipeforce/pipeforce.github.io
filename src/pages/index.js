@@ -29,9 +29,9 @@ function HomepageHeader() {
         </div>
       </div> */}
 
-        <span className={styles.message}>Next generation <b>Cloud Native</b> <br/>Integration and Automation Platform.</span>
+        <span className={styles.message}><b>Integration</b> and <b>Automation</b> Platform.</span>
         <br /><br />
-        <p className="hero__subtitle">Develop and operate message-driven business apps using a modern framework. </p>
+        <p className="hero__subtitle">Develop and operate message-driven business apps using a cloud native framework. </p>
         <br />
         <div className={styles.buttons}>
           <Link
