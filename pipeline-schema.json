@@ -11515,6 +11515,10 @@
             "inputType" : "JsonNode",
             "outputType" : "JsonNode",
             "properties" : {
+              "rules" : {
+                "type" : "string",
+                "description" : "The conversion rules to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'goessner', the rules defined by Stefan Goessner will be applied. See: https://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."

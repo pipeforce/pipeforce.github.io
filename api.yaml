@@ -31315,6 +31315,12 @@ paths:
   /api/v3/command/transform.xml.json:
     get:
       parameters:
+      - name: "rules"
+        in: "query"
+        required: false
+        description: "The conversion rules to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'goessner', the rules defined by Stefan Goessner will be applied. See: https://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html"
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -31364,6 +31370,12 @@ paths:
                 - type: "object"
     post:
       parameters:
+      - name: "rules"
+        in: "query"
+        required: false
+        description: "The conversion rules to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'goessner', the rules defined by Stefan Goessner will be applied. See: https://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html"
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
