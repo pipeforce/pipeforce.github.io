@@ -6504,16 +6504,12 @@
             },
             "required" : [ ]
           },
-          "pdf.merge" : {
+          "pdf.from.doc" : {
             "type" : "object",
-            "description" : "Takes collection of pdfs that is expected in the body (as pipeline resource) and converts it into single pdf document.",
+            "description" : "This command is used to convert Word (.doc) to PDF.",
             "inputType" : "Byte",
             "outputType" : "Byte",
             "properties" : {
-              "name" : {
-                "type" : "string",
-                "description" : "The name of resulting document content."
-              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6529,6 +6525,109 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "pdf.from.docx" : {
+            "type" : "object",
+            "description" : "This command is used to convert Word(.docx) to PDF.",
+            "inputType" : "Byte",
+            "outputType" : "Byte",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "pdf.from.png" : {
+            "type" : "object",
+            "description" : "This command is used to convert PNG to PDF.",
+            "inputType" : "Byte",
+            "outputType" : "Byte",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "pdf.merge" : {
+            "type" : "object",
+            "description" : "This command is used to merge PDFs.",
+            "inputType" : "Byte",
+            "outputType" : "Byte",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
               },
               "output" : {
                 "type" : "string",
@@ -6547,12 +6646,12 @@
                 "type" : "string",
                 "description" : "The text to write on the PDF file. It is required to either enter text or image."
               },
-              "textSize" : {
+              "fontSize" : {
                 "type" : "string",
                 "description" : "The size of the font.",
                 "default" : "18"
               },
-              "textColor" : {
+              "fontColor" : {
                 "type" : "string",
                 "description" : "The color of the font like GREEN, RED. YELLOW, aso.",
                 "default" : "BLUE"
@@ -6561,37 +6660,48 @@
                 "type" : "string",
                 "description" : "The image to write on the pdf file. One of param text or image is required. The image must be a content uri an existing content object in the message or a built-in stamp name like APPROVED for example."
               },
-              "pages" : {
-                "type" : "string",
-                "description" : "The pages to put the stamp on or use 'ALL' for all pages.",
-                "default" : "0"
-              },
-              "position" : {
-                "type" : "string",
-                "description" : "The x,y coordinates of the overlay to write. Must be 2 comma separated float values, e.g.: 123,123. Note: Top right corner within an A4 page is 612,792. Alternatively, relative positioning is possible by using one of: CENTER, TOP_RIGHT, TOP_LEFT aso.Alternatively, value PARAGRAPH activate paragraph positioning. All PARAGRAPH positioned stamps will not overlap each other.",
-                "default" : "TOP_RIGHT"
-              },
-              "layer" : {
-                "type" : "string",
-                "description" : "The name of the layer to be created for the stamp. If null or empty, no layer is created. The stamp is added then directly to the page without any layer."
-              },
               "opacity" : {
                 "type" : "number",
                 "description" : "Amount of opacity that should be applied (Must be a value between >= 0.0 and <= 1.0, 0.0 means no opacity, 1.0 means invisible.)"
               },
-              "degree" : {
+              "rotation" : {
                 "type" : "number",
-                "description" : "Specifies how many degress the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0"
+                "description" : "Specifies how many degrees the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0"
               },
-              "margin" : {
+              "top_margin" : {
                 "type" : "string",
-                "description" : "Considers page margin when applying stamp. Can be a single value or a comma separated list of 4 entries forsetting margin in this order: [top, right, down, left]",
+                "description" : "Considers page top margin when applying stamp",
                 "default" : "20"
               },
-              "lineNo" : {
-                "type" : "number",
-                "description" : "Enforces that text is written at a specific line",
-                "default" : "0"
+              "bottom_margin" : {
+                "type" : "string",
+                "description" : "Considers page bottom margin when applying stamp.",
+                "default" : "20"
+              },
+              "left_margin" : {
+                "type" : "string",
+                "description" : "Considers page left margin when applying stamp.",
+                "default" : "20"
+              },
+              "right_margin" : {
+                "type" : "string",
+                "description" : "Considers page right margin when applying stamp.",
+                "default" : "20"
+              },
+              "font_family" : {
+                "type" : "string",
+                "description" : "Considers page right margin when applying stamp.",
+                "default" : "20"
+              },
+              "width" : {
+                "type" : "string",
+                "description" : "Considers page right margin when applying stamp.",
+                "default" : "50"
+              },
+              "height" : {
+                "type" : "string",
+                "description" : "Considers page right margin when applying stamp.",
+                "default" : "50"
               },
               "id" : {
                 "type" : "string",
@@ -6608,6 +6718,43 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
+          "pdf.to.png" : {
+            "type" : "object",
+            "description" : "This command is used to convert PDF to PNG.",
+            "inputType" : "Byte",
+            "outputType" : "Byte",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "input" : {
+                "type" : "string",
+                "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
               },
               "output" : {
                 "type" : "string",

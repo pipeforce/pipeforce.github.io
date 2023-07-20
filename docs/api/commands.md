@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 13/07/2023 by CommandComplianceTest -->
+<!-- Generated: 19/07/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -8785,6 +8785,153 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## pdf.from.doc ``v1``
+----------   
+This command is used to convert Word (.doc) to PDF.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.from.doc:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.from.doc:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.from.doc?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.from.doc id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## pdf.from.docx ``v1``
+----------   
+This command is used to convert Word(.docx) to PDF.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.from.docx:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.from.docx:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.from.docx?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.from.docx id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## pdf.from.png ``v1``
+----------   
+This command is used to convert PNG to PDF.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.from.png:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.from.png:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.from.png?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.from.png id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## pdf.merge ``v1``
 ----------   
 Takes collection of pdfs that is expected in the body (as pipeline resource) and converts it into single pdf document.
@@ -8829,6 +8976,53 @@ http://host/api/v3/command/pdf.merge?name=<value>&id=<value>&if=<value>&onError=
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command pdf.merge name=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## pdf.merge ``v2``
+----------   
+This command is used to merge PDFs.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.merge:v2)
+
+**Version:** ``v2``  
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.merge::v2  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.merge?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.merge id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8898,6 +9092,128 @@ http://host/api/v3/command/pdf.stamp?text=<value>&textSize=<value>&textColor=<va
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command pdf.stamp text=<value> textSize=<value> textColor=<value> image=<value> pages=<value> position=<value> layer=<value> opacity=<value> degree=<value> margin=<value> lineNo=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## pdf.stamp ``v2``
+----------   
+Writes both text or images to a pdf file under a specific layer. It expects the word pdf file as a pipeline resource in the body and transforms the result back also as a pipeline resource in the body.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.stamp:v2)
+
+**Version:** ``v2``  
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`text` | String | false | null | The text to write on the PDF file. It is required to either enter text or image.
+`fontSize` | String | false | 18 | The size of the font.
+`fontColor` | String | false | BLUE | The color of the font like GREEN, RED. YELLOW, aso.
+`image` | String | false | null | The image to write on the pdf file. One of param text or image is required. The image must be a content uri an existing content object in the message or a built-in stamp name like APPROVED for example.
+`opacity` | Float | false | null | Amount of opacity that should be applied (Must be a value between >= 0.0 and <= 1.0, 0.0 means no opacity, 1.0 means invisible.)
+`rotation` | Integer | false | null | Specifies how many degrees the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0
+`top_margin` | Collection | false | 20 | Considers page top margin when applying stamp
+`bottom_margin` | Collection | false | 20 | Considers page bottom margin when applying stamp.
+`left_margin` | Collection | false | 20 | Considers page left margin when applying stamp.
+`right_margin` | Collection | false | 20 | Considers page right margin when applying stamp.
+`font_family` | Collection | false | 20 | Considers page right margin when applying stamp.
+`width` | Collection | false | 50 | Considers page right margin when applying stamp.
+`height` | Collection | false | 50 | Considers page right margin when applying stamp.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.stamp::v2  
+      text: <value>  
+      fontSize: <value>  
+      fontColor: <value>  
+      image: <value>  
+      opacity: <value>  
+      rotation: <value>  
+      top_margin: <value>  
+      bottom_margin: <value>  
+      left_margin: <value>  
+      right_margin: <value>  
+      font_family: <value>  
+      width: <value>  
+      height: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.stamp?text=<value>&fontSize=<value>&fontColor=<value>&image=<value>&opacity=<value>&rotation=<value>&top_margin=<value>&bottom_margin=<value>&left_margin=<value>&right_margin=<value>&font_family=<value>&width=<value>&height=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.stamp text=<value> fontSize=<value> fontColor=<value> image=<value> opacity=<value> rotation=<value> top_margin=<value> bottom_margin=<value> left_margin=<value> right_margin=<value> font_family=<value> width=<value> height=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## pdf.to.png ``v1``
+----------   
+This command is used to convert PDF to PNG.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pdf.to.png:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``Raw``  
+**Output body type:** ``Raw``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pdf.to.png:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pdf.to.png?id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pdf.to.png id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

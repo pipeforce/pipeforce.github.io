@@ -6,29 +6,6 @@ In its basic form, a [Pipeline](/docs/commands_pipelines#pipeline) is executed a
 
 Sometimes, it is necessary to change this linear flow dynamically, depending on given conditions. PIPEFORCE offers different toolings to controll the flow inside a pipeline dynamically. Most of these toolings are also implemented as commands and therefore can be used like any other commands.
 
-## Trigger
-
-A trigger is an external action which causes a pipeline to be executed. Depending on the input data of a trigger, the execution flow of a pipeline could vary.
-
-These triggers are the common ones in PIPEFORCE:
-
-### Job
-Triggers a pipeline as a job which must be executed after a certain amount of time. For more details see [Jobs](/docs/guides/jobs).
-
-### Message 
-Triggers a pipeline in case a message of interest is on the message queue / bus. For more details see [Message](/docs/messaging).
-
-### Event 
-Triggers a pipeline in case an internal event of interest has occured. Events are quite similar to messages, except that their origin is always the hub backend. For more details see [Events](/docs/guides/messaging/events). Common event examples are:
-
-- `property.created` = A new property has been created in the [Property Store](/docs/propertystore).
-- `property.deleted` = A new property has been deleted from the [Property Store](/docs/propertystore).
-- `iam.bruteforce.detected` = A potential brute force attack has been detected. 
-- See [Events Reference](/docs/api/events) for more events.
-
-### Webhook
-Triggers a pipeline in case an external system sends a request to one of the custom webhook endpoints. For more details see [Webhhooks](/docs/guides/messaging/webhooks).
-
 ## If, Else
 
 In some situations it is handy to disable the execution of a command depending on a given condition.

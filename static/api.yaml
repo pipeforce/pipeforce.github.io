@@ -17578,15 +17578,9 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/pdf.merge:
+  /api/v3/command/pdf.from.doc:
     get:
       parameters:
-      - name: "name"
-        in: "query"
-        required: false
-        description: "The name of resulting document content."
-        schema:
-          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -17611,13 +17605,19 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
       - name: "output"
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Takes collection of pdfs that is expected in the body (as pipeline resource) and converts it into single pdf document. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "This command is used to convert Word (.doc) to PDF. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -17630,12 +17630,6 @@ paths:
                 - type: "object"
     post:
       parameters:
-      - name: "name"
-        in: "query"
-        required: false
-        description: "The name of resulting document content."
-        schema:
-          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -17658,6 +17652,282 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/pdf.from.docx:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "This command is used to convert Word(.docx) to PDF. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/pdf.from.png:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "This command is used to convert PNG to PDF. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/pdf.merge:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "This command is used to merge PDFs. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       - name: "output"
@@ -17677,13 +17947,13 @@ paths:
         description: "The text to write on the PDF file. It is required to either enter text or image."
         schema:
           type: "string"
-      - name: "textSize"
+      - name: "fontSize"
         in: "query"
         required: false
         description: "The size of the font."
         schema:
           type: "string"
-      - name: "textColor"
+      - name: "fontColor"
         in: "query"
         required: false
         description: "The color of the font like GREEN, RED. YELLOW, aso."
@@ -17695,48 +17965,60 @@ paths:
         description: "The image to write on the pdf file. One of param text or image is required. The image must be a content uri an existing content object in the message or a built-in stamp name like APPROVED for example."
         schema:
           type: "string"
-      - name: "pages"
-        in: "query"
-        required: false
-        description: "The pages to put the stamp on or use 'ALL' for all pages."
-        schema:
-          type: "string"
-      - name: "position"
-        in: "query"
-        required: false
-        description: "The x,y coordinates of the overlay to write. Must be 2 comma separated float values, e.g.: 123,123. Note: Top right corner within an A4 page is 612,792. Alternatively, relative positioning is possible by using one of: CENTER, TOP_RIGHT, TOP_LEFT aso.Alternatively, value PARAGRAPH activate paragraph positioning. All PARAGRAPH positioned stamps will not overlap each other."
-        schema:
-          type: "string"
-      - name: "layer"
-        in: "query"
-        required: false
-        description: "The name of the layer to be created for the stamp. If null or empty, no layer is created. The stamp is added then directly to the page without any layer."
-        schema:
-          type: "string"
       - name: "opacity"
         in: "query"
         required: false
         description: "Amount of opacity that should be applied (Must be a value between >= 0.0 and <= 1.0, 0.0 means no opacity, 1.0 means invisible.)"
         schema:
           type: "number"
-      - name: "degree"
+      - name: "rotation"
         in: "query"
         required: false
-        description: "Specifies how many degress the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0"
+        description: "Specifies how many degrees the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0"
         schema:
           type: "number"
-      - name: "margin"
+      - name: "top_margin"
         in: "query"
         required: false
-        description: "Considers page margin when applying stamp. Can be a single value or a comma separated list of 4 entries forsetting margin in this order: [top, right, down, left]"
+        description: "Considers page top margin when applying stamp"
         schema:
           type: "string"
-      - name: "lineNo"
+      - name: "bottom_margin"
         in: "query"
         required: false
-        description: "Enforces that text is written at a specific line"
+        description: "Considers page bottom margin when applying stamp."
         schema:
-          type: "number"
+          type: "string"
+      - name: "left_margin"
+        in: "query"
+        required: false
+        description: "Considers page left margin when applying stamp."
+        schema:
+          type: "string"
+      - name: "right_margin"
+        in: "query"
+        required: false
+        description: "Considers page right margin when applying stamp."
+        schema:
+          type: "string"
+      - name: "font_family"
+        in: "query"
+        required: false
+        description: "Considers page right margin when applying stamp."
+        schema:
+          type: "string"
+      - name: "width"
+        in: "query"
+        required: false
+        description: "Considers page right margin when applying stamp."
+        schema:
+          type: "string"
+      - name: "height"
+        in: "query"
+        required: false
+        description: "Considers page right margin when applying stamp."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -17759,6 +18041,12 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       - name: "output"
@@ -17786,13 +18074,13 @@ paths:
         description: "The text to write on the PDF file. It is required to either enter text or image."
         schema:
           type: "string"
-      - name: "textSize"
+      - name: "fontSize"
         in: "query"
         required: false
         description: "The size of the font."
         schema:
           type: "string"
-      - name: "textColor"
+      - name: "fontColor"
         in: "query"
         required: false
         description: "The color of the font like GREEN, RED. YELLOW, aso."
@@ -17804,48 +18092,60 @@ paths:
         description: "The image to write on the pdf file. One of param text or image is required. The image must be a content uri an existing content object in the message or a built-in stamp name like APPROVED for example."
         schema:
           type: "string"
-      - name: "pages"
-        in: "query"
-        required: false
-        description: "The pages to put the stamp on or use 'ALL' for all pages."
-        schema:
-          type: "string"
-      - name: "position"
-        in: "query"
-        required: false
-        description: "The x,y coordinates of the overlay to write. Must be 2 comma separated float values, e.g.: 123,123. Note: Top right corner within an A4 page is 612,792. Alternatively, relative positioning is possible by using one of: CENTER, TOP_RIGHT, TOP_LEFT aso.Alternatively, value PARAGRAPH activate paragraph positioning. All PARAGRAPH positioned stamps will not overlap each other."
-        schema:
-          type: "string"
-      - name: "layer"
-        in: "query"
-        required: false
-        description: "The name of the layer to be created for the stamp. If null or empty, no layer is created. The stamp is added then directly to the page without any layer."
-        schema:
-          type: "string"
       - name: "opacity"
         in: "query"
         required: false
         description: "Amount of opacity that should be applied (Must be a value between >= 0.0 and <= 1.0, 0.0 means no opacity, 1.0 means invisible.)"
         schema:
           type: "number"
-      - name: "degree"
+      - name: "rotation"
         in: "query"
         required: false
-        description: "Specifies how many degress the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0"
+        description: "Specifies how many degrees the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0"
         schema:
           type: "number"
-      - name: "margin"
+      - name: "top_margin"
         in: "query"
         required: false
-        description: "Considers page margin when applying stamp. Can be a single value or a comma separated list of 4 entries forsetting margin in this order: [top, right, down, left]"
+        description: "Considers page top margin when applying stamp"
         schema:
           type: "string"
-      - name: "lineNo"
+      - name: "bottom_margin"
         in: "query"
         required: false
-        description: "Enforces that text is written at a specific line"
+        description: "Considers page bottom margin when applying stamp."
         schema:
-          type: "number"
+          type: "string"
+      - name: "left_margin"
+        in: "query"
+        required: false
+        description: "Considers page left margin when applying stamp."
+        schema:
+          type: "string"
+      - name: "right_margin"
+        in: "query"
+        required: false
+        description: "Considers page right margin when applying stamp."
+        schema:
+          type: "string"
+      - name: "font_family"
+        in: "query"
+        required: false
+        description: "Considers page right margin when applying stamp."
+        schema:
+          type: "string"
+      - name: "width"
+        in: "query"
+        required: false
+        description: "Considers page right margin when applying stamp."
+        schema:
+          type: "string"
+      - name: "height"
+        in: "query"
+        required: false
+        description: "Considers page right margin when applying stamp."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -17868,6 +18168,102 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
+  /api/v3/command/pdf.to.png:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "This command is used to convert PDF to PNG. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "input"
+        in: "query"
+        required: false
+        description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
       - name: "output"
