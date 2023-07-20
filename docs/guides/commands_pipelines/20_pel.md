@@ -12,7 +12,15 @@ The Pipeline Expression Language is optional. You do not need it for basic tasks
 
 ## Basics
 
-Typically a PE starts with `#{` and ends with `}`. Here is a simple example of a PE, placed inside the value of a command parameter:
+Typically a PE starts with `${` and ends with `}`. Here is a simple example of a PE, placed inside the value of a command parameter:
+
+```yaml
+pipeline:
+  - log:
+      message: ${1 + 1}
+```
+
+Optionally, you can also use `#{` to start a PE, but this must be placed inside quotes `"` and `"`:
 
 ```yaml
 pipeline:
@@ -26,12 +34,17 @@ Output:
 2
 ```
 
+:::tip Note
+The PE prefix `#{` is only meant as an alternative in case `${` cannot be used in some situations. Using `${` should be preferred whenever possible.
+:::
+
+
 A PE can be placed in the value part of pipeline headers and values, in parameter values of most commands and in the body of a pipeline. It uses *late binding*: It will be executed only in case the according entry (header, variable, command parameter, ...) is referenced somewhere. It also supports interpolation in order to use the PEL like a template language inside a text string. So string concatenation can be done like this:
 
 ```yaml
 pipeline:
   - log:
-      message: "Result: #{1 + 1}"
+      message: "Result: ${1 + 1}"
 ```
 
 Output:
@@ -46,7 +59,7 @@ Inside a Pipeline Expression, you can access the values of the pipeline scopes l
 Let's assume, you have defined a variable `counter` and you would like to access this counter in your expression, then you could write an expression like this:
 
 ```
-#{vars.counter}
+${vars.counter}
 ```
 
 Here is an example of a pipeline which uses this expression and outputs the value of `counter` to the body:
@@ -57,7 +70,7 @@ vars:
 
 pipeline:
   - body.set:
-      value: "The counter is: #{vars.counter}"
+      value: "The counter is: ${vars.counter}"
 ```
 
 This will result in an output like this:
@@ -74,7 +87,7 @@ headers:
 
 pipeline:
   - body.set:
-      value: "The type is: #{headers.contentType}"
+      value: "The type is: ${headers.contentType}"
 ```
 
 This will result in an output like this:
@@ -92,7 +105,7 @@ The type is: text/plain
 ```yaml
 pipeline:
   - log:
-      message: "#{2 == 1}"
+      message: "${2 == 1}"
 ```
 
 Output:
@@ -108,7 +121,7 @@ false
 ```yaml
 pipeline:
   - log:
-      message: "#{2 != 1}"
+      message: ${2 != 1}
 ```
 
 Output:
@@ -124,7 +137,7 @@ true
 ```yaml
 pipeline:
   - log:
-      message: "#{1 < 5}"
+      message: ${1 < 5}
 ```
 
 Output:
@@ -138,7 +151,7 @@ true
 ```yaml
 pipeline:
   - log:
-      message: "#{0.5 < 1}"
+      message: ${0.5 < 1}
 ```
 
 Output:
@@ -154,7 +167,7 @@ true
 ```yaml
 pipeline:
   - log:
-      message: "#{1 <= 5}"
+      message: #{1 <= 5}
 ```
 
 Output:
@@ -170,7 +183,7 @@ true
 ```yaml
 pipeline:
   - log:
-      message: "#{1 > 5}"
+      message: ${1 > 5}
 ```
 
 Output:
@@ -186,7 +199,7 @@ false
 ```yaml
 pipeline:
   - log:
-      message: "#{5 >= 5}"
+      message: ${5 >= 5}
 ```
 
 Output:
@@ -202,7 +215,7 @@ true
 ```yaml
 pipeline:
   - log:
-      message: "#{'Adam' < 'Zacharias'}"
+      message: ${'Adam' < 'Zacharias'}
 ```
 
 Output:
@@ -218,7 +231,7 @@ true
 ```yaml
 pipeline:
   - log:
-      message: "#{'5.0067' matches '^-?\\d+(\\.\\d{2})?$'}"
+      message: ${'5.0067' matches '^-?\\d+(\\.\\d{2})?$'}
 ```
 
 Output:
@@ -236,7 +249,7 @@ false
 ```yaml
 pipeline:
   - log:
-      message: "#{true and false}"
+      message: ${true and false}
 ```
 
 Output:
@@ -252,7 +265,7 @@ false
 ```yaml
 pipeline:
   - log:
-      message: "#{true or false}"
+      message: #{true or false}
 ```
 
 Output:
@@ -268,7 +281,7 @@ true
 ```yaml
 pipeline:
   - log:
-      message: "#{!true}"
+      message: ${!true}
 ```
 
 Output:
@@ -281,7 +294,7 @@ false
 ```yaml
 pipeline:
   - log:
-      message: "#{not true}"
+      message: ${not true}
 ```
 
 Output:
@@ -299,7 +312,7 @@ false
 ```yaml
 pipeline:
   - log:
-      message: "#{1 + 1}"
+      message: ${1 + 1}
 ```
 
 Output:
@@ -313,7 +326,7 @@ Output:
 ```yaml
 pipeline:
   - log:
-      message: "#{10 - 1}"
+      message: ${10 - 1}
 ```
 
 Output:
@@ -327,7 +340,7 @@ Output:
 ```yaml
 pipeline:
   - log:
-      message: "#{25 - 5 + 10}"
+      message: ${25 - 5 + 10}
 ```
 
 Output:
@@ -341,7 +354,7 @@ Output:
 ```yaml
 pipeline:
   - log:
-      message: "#{'Hello ' + 'World!'}"
+      message: ${'Hello ' + 'World!'}
 ```
 
 Output:
@@ -357,7 +370,7 @@ Hello World!
 ```yaml
 pipeline:
   - log:
-      message: "#{3 * 5}"
+      message: ${3 * 5}
 ```
 
 Output:
@@ -371,7 +384,7 @@ Output:
 ```yaml
 pipeline:
   - log:
-      message: "#{-1 * 5}"
+      message: ${-1 * 5}
 ```
 
 Output:
@@ -385,7 +398,7 @@ Output:
 ```yaml
 pipeline:
   - log:
-      message: "#{20 / 5}"
+      message: ${20 / 5}
 ```
 
 Output:
@@ -399,7 +412,7 @@ Output:
 ```yaml
 pipeline:
   - log:
-      message: "#{7 % 4}"
+      message: ${7 % 4}
 ```
 
 Output:
@@ -413,7 +426,7 @@ Output:
 ```yaml
 pipeline:
   - log:
-      message: "#{5 + 4 - 1 * 2}"
+      message: ${5 + 4 - 1 * 2}
 ```
 
 Output:
@@ -427,7 +440,7 @@ Output:
 ```yaml
 pipeline:
   - log:
-      message: "#{(5 + 4 - 1) * 2}"
+      message: ${(5 + 4 - 1) * 2}
 ```
 
 Output:
@@ -444,9 +457,9 @@ Output:
 pipeline:
   - set:
       value: "1"
-      output: "#{vars.counter}"
+      output: ${vars.counter}
   - log:
-      message: "#{vars.counter}"
+      message: ${vars.counter}
 ```
 
 Output:
@@ -462,10 +475,10 @@ vars:
   counter: 12
 pipeline:
   - set:
-      value: "#{vars.counter + 1}"
-      output: "#{vars.counter}"
+      value: ${vars.counter + 1}
+      output: ${vars.counter}
   - log:
-      message: "#{vars.counter}"
+      message: ${vars.counter}
 ```
 
 Output:
@@ -482,10 +495,10 @@ Output:
 
 ```yaml
 vars:
-  numbers: "#{{}}"
+  numbers: ${{}}
 pipeline:
   - log:
-      message: "#{vars.numbers}"
+      message: ${vars.numbers}
 ```
 
 Output:
@@ -498,10 +511,10 @@ Output:
 
 ```yaml
 vars:
-  numbers: "#{{1, 2, 4}}"
+  numbers: ${{1, 2, 4}}
 pipeline:
   - log:
-      message: "#{vars.numbers}"
+      message: ${vars.numbers}
 ```
 
 Output:
@@ -514,10 +527,10 @@ Output:
 
 ```yaml
 vars:
-  scores: "#{{ {1, 3}, {5, 8} }}"
+  scores: ${{ {1, 3}, {5, 8} }}
 pipeline:
   - log:
-      message: "#{vars.scores}"
+      message: ${vars.scores}
 ```
 
 Output:
@@ -532,10 +545,10 @@ Output:
 
 ```yaml
 vars:
-  numbers: "#{{1, 2, 4}}"
+  numbers: #{{1, 2, 4}}
 pipeline:
   - log:
-      message: "#{vars.numbers[1]}"
+      message: #{vars.numbers[1]}
 ```
 
 Output:
@@ -550,10 +563,10 @@ Output:
 
 ```yaml
 vars:
-  persons: "#{ {:} }"
+  persons: ${ {:} }
 pipeline:
   - log:
-      message: "#{vars.persons}"
+      message: ${vars.persons}
 ```
 
 Output:
@@ -566,10 +579,10 @@ Output:
 
 ```yaml
 vars:
-  persons: "#{ {hanna:'burger', max:'hotdog', julie:'salad'} }"
+  persons: ${ {hanna:'burger', max:'hotdog', julie:'salad'} }
 pipeline:
   - log:
-      message: "#{vars.persons}"
+      message: ${vars.persons}
 ```
 
 Output:
@@ -582,10 +595,10 @@ Output:
 
 ```yaml
 vars:
-  persons: "#{ {:} }"
+  persons: ${ {:} }
 pipeline:
   - log:
-      message: "#{vars.persons['Hanna'] = 23}"
+      message: ${vars.persons['Hanna'] = 23}
 ```
 
 Output:
@@ -600,10 +613,10 @@ Output:
 
 ```yaml
 vars:
-  persons: "#{ {hanna:'burger', max:'hotdog', julie:'salad'} }"
+  persons: ${ {hanna:'burger', max:'hotdog', julie:'salad'} }
 pipeline:
   - log:
-      message: "#{vars.persons['max']}"
+      message: ${vars.persons['max']}
 ```
 
 Output:
@@ -633,13 +646,13 @@ A PE can point to values inside an object (or nested data structure), like this 
 You can navigate any structured object available inside a vars or body scope using the dot operator. For example:
 
 ```
-#{person.name}
+${person.name}
 ```
 
 To access a list/array, you can use the index operator \[\]:
 
 ```
-#{person.hobbies[0]}
+${person.hobbies[0]}
 ```
 
 ### Example 
@@ -661,7 +674,7 @@ See the official YAML documentation about how to deal with multi-line values. He
 ```yaml
 # Set inline map as initial body value
 vars: 
-   data: '#{ 
+   data: '${ 
       {
         person: {
           name: "Bart Simpson",
@@ -678,9 +691,9 @@ pipeline:
   # Set in the body a multiline string
   - set.body:
       value: | 
-        Name:  #{vars.data.person.name}
-        Age:   #{vars.data.person.age}
-        Hobby: #{vars.data.person.hobbies[0]}
+        Name:  ${vars.data.person.name}
+        Age:   ${vars.data.person.age}
+        Hobby: ${vars.data.person.hobbies[0]}
 ```
 
 Formatted output:
@@ -700,7 +713,7 @@ vars:
   data: null
 pipeline:
   set.body:
-    value: "#{vars.data.name}"
+    value: ${vars.data.name}
 ```
 
 This will throw an exception since the object `data` is `null` and therfore the property `name` cannot be loaded.
@@ -712,7 +725,7 @@ vars:
   data: null
 pipeline:
   set.body:
-    value: "#{vars.data?.name}"
+    value: ${vars.data?.name}
 ```
 
 It is also possible to use this operator on nested properties:
@@ -722,7 +735,7 @@ vars:
   data: null
 pipeline:
   set.body:
-    value: "#{vars.data?.deep?.deeper?.value}"
+    value: ${vars.data?.deep?.deeper?.value}
 ```
 
 This example will also put `null` into the body instead of throwing a `NullPointerException`.
@@ -781,7 +794,7 @@ Then, we can select a subset of the entries using a selection like this:
 ```yaml
 pipeline:
   - log:
-      message: "#{body.?[person.name == 'Maggie Simpson']}"
+      message: ${body.?[person.name == 'Maggie Simpson']}
 ```
 
 Output would be a **sublist** with the entries matching the criteria:
@@ -806,7 +819,7 @@ Here is the same example but with the data set embedded into the pipeline in the
 
 ```yaml
 vars: 
-   data: '#{{
+   data: '${{
         {
           person: {
             name: "Bart Simpson",
@@ -832,7 +845,7 @@ vars:
       }}'
 pipeline:
   - log:
-      message: "#{vars.data.?[person.name == 'Maggie Simpson']}"
+      message: ${vars.data.?[person.name == 'Maggie Simpson']}
 ```
 
 ### Projection Expression `.!`
@@ -885,7 +898,7 @@ Then, we can select properties from this collection like this:
 ```yaml
 pipeline:
   - log:
-      message: "#{body.![person.name]}"
+      message: #{body.![person.name]}
 ```
 
 Output:
@@ -898,7 +911,7 @@ And here the example with embedded data set in the vars scope:
 
 ```yaml
 vars: 
-   data: '#{{
+   data: '${{
         {
           person: {
             name: "Bart Simpson",
@@ -924,7 +937,7 @@ vars:
       }}'
 pipeline:
   - log:
-      message: "#{vars.data.![person.name]}"
+      message: ${vars.data.![person.name]}
 ```
 
 ## Ternary Operator (If-Then-Else)
@@ -933,7 +946,7 @@ The ternary operator can be used to define an if-then-else condition in your exp
 ```yaml
 pipeline:
   - set.body:
-      value: "#{10 > 100 ? 'condition is true' : 'condition is false'}"
+      value: ${10 > 100 ? 'condition is true' : 'condition is false'}
 ```
 
 This example would output `condition is false` in the body. As you can see, the part left of the question mark `?` defines the condition to be evaluated. If this condition evaluates to `true`, then the part left of the colon `:` is executed. Otherwise the right part:

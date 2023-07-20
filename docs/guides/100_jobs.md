@@ -53,7 +53,7 @@ mode, never in production.
 
 There are different fixed schedules available:
 
-- `EVERY_2_MIN` - Runs every 2 minutes (Enterprise hosting only).
+- `EVERY_2_MIN` - Deprecated: Since version 9.0 this will always fallback to `EVERY_5_MIN`. 
 - `EVERY_5_MIN` - Runs every 5 minutes (Enterprise hosting only).
 - `EVERY_15_MIN` - Runs every 15 minutes.
 - `EVERY_30_MIN` - Runs every 30 minutes.
