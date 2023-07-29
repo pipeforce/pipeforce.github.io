@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 19/07/2023 by CommandComplianceTest -->
+<!-- Generated: 28/07/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -1525,12 +1525,13 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## pipe.schema.v7 ``v1``
+## pipeline.schema ``v1``
 ----------   
-Returns the V7 compliant JSON schema for all built-in pipes.
+Returns the V7 compliant JSON schema for all built-in pipeline commands.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema.v7:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.schema:v1)
 
+**Alias:** command.pipe.schema.v7   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -1548,7 +1549,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - pipe.schema.v7:  
+  - pipeline.schema:  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -1561,12 +1562,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipe.schema.v7?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/pipeline.schema?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipe.schema.v7 id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command pipeline.schema id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2145,7 +2146,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## data.mapping ``v1``
 ----------   
-Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required.
+Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required. In case input is an iterable (list) and iterable is set to true then all rules will apply to each entry in the list. In case no output is given, a new target list is created to hold all newly mapped values.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=data.mapping:v1)
 
@@ -2157,6 +2158,7 @@ Converts from one data structure into a another by applying simple mapping rules
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `rules` | String | false | null | A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -> outputPEL1. Multiple rules are separated by a comma directly followed by a new line.
+`iterate` | String | false | null | In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -2170,6 +2172,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - data.mapping:  
       rules: <value>  
+      iterate: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -2183,12 +2186,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.mapping?rules=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.mapping?rules=<value>&iterate=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.mapping rules=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command data.mapping rules=<value> iterate=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9632,6 +9635,53 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## pipeline.schema.get ``v1``
+----------   
+Returns the V7 compliant JSON schema for a pipeline and all built-in commands.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.schema.get:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - pipeline.schema.get:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/pipeline.schema.get?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command pipeline.schema.get id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## property.app.config ``v1``
 ----------   
 Returns all config resources from apps the current user has access to (role CAN_APP_ is assigned) as a list into the output.
@@ -10541,12 +10591,13 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## property.lock.create ``v1``
+## property.lock.put ``v1``
 ----------   
 Creates a lock on a given property. In case someone tries to change or delete a locked property without being part of the exclusive guild, an exception is thrown.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.lock.create:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.lock.put:v1)
 
+**Alias:** command:property.lock.create:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -10570,7 +10621,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - property.lock.create:  
+  - property.lock.put:  
       key: <value>  
       path: <value>  
       type: <value>  
@@ -10589,12 +10640,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.lock.create?key=<value>&path=<value>&type=<value>&ttl=<value>&uuid=<value>&name=<value>&details=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.lock.put?key=<value>&path=<value>&type=<value>&ttl=<value>&uuid=<value>&name=<value>&details=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.lock.create key=<value> path=<value> type=<value> ttl=<value> uuid=<value> name=<value> details=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.lock.put key=<value> path=<value> type=<value> ttl=<value> uuid=<value> name=<value> details=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -12269,53 +12320,6 @@ http://host/api/v3/command/rpa.website.scrap?xpath=<value>&id=<value>&if=<value>
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command rpa.website.scrap xpath=<value> id=<value> if=<value> onError=<value> eval=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## schema.pipeline ``v1``
-----------   
-Returns the V7 compliant JSON schema for all built-in pipes.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=schema.pipeline:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - schema.pipeline:  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-      output: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/schema.pipeline?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command schema.pipeline id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -15180,7 +15184,7 @@ This transformer uses the FreeMarker template engine for its transformation.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`template` | String | false | null | The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template.
+`template` | String | false | null | The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a static template string or a qualified uri or a (for example $uri:property:/my/template/path) pointing to the template. Pipeline expressions are not supported here since they would conflict with the template variables.
 `model` | String | false | null | The model to be placed into the template scope. If null, the message is used as model so you can access vars and body the same way as you would do in the pipeline.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.

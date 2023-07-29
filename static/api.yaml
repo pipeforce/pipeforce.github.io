@@ -2722,7 +2722,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/pipe.schema.v7:
+  /api/v3/command/pipeline.schema:
     get:
       parameters:
       - name: "id"
@@ -2755,7 +2755,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Returns the V7 compliant JSON schema for all built-in pipes. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns the V7 compliant JSON schema for all built-in pipeline commands. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -3991,6 +3991,12 @@ paths:
         description: "A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -> outputPEL1. Multiple rules are separated by a comma directly followed by a new line."
         schema:
           type: "string"
+      - name: "iterate"
+        in: "query"
+        required: false
+        description: "In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -4027,7 +4033,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required. In case input is an iterable (list) and iterable is set to true then all rules will apply to each entry in the list. In case no output is given, a new target list is created to hold all newly mapped values. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -4044,6 +4050,12 @@ paths:
         in: "query"
         required: false
         description: "A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -> outputPEL1. Multiple rules are separated by a comma directly followed by a new line."
+        schema:
+          type: "string"
+      - name: "iterate"
+        in: "query"
+        required: false
+        description: "In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead."
         schema:
           type: "string"
       - name: "id"
@@ -19114,6 +19126,84 @@ paths:
           type: "string"
       tags:
       - "Commands API"
+  /api/v3/command/pipeline.schema.get:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns the V7 compliant JSON schema for a pipeline and all built-in commands. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      tags:
+      - "Commands API"
   /api/v3/command/property.app.config:
     get:
       parameters:
@@ -21100,7 +21190,7 @@ paths:
           type: "string"
       tags:
       - "Commands API"
-  /api/v3/command/property.lock.create:
+  /api/v3/command/property.lock.put:
     get:
       parameters:
       - name: "key"
@@ -24726,84 +24816,6 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      tags:
-      - "Commands API"
-  /api/v3/command/schema.pipeline:
-    get:
-      parameters:
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      description: "Returns the V7 compliant JSON schema for all built-in pipes. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "output"
-        in: "query"
-        required: false
-        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
       tags:
@@ -31072,7 +31084,7 @@ paths:
       - name: "template"
         in: "query"
         required: false
-        description: "The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template."
+        description: "The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a static template string or a qualified uri or a (for example $uri:property:/my/template/path) pointing to the template. Pipeline expressions are not supported here since they would conflict with the template variables."
         schema:
           type: "string"
       - name: "model"
@@ -31127,7 +31139,7 @@ paths:
       - name: "template"
         in: "query"
         required: false
-        description: "The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a PE, a static string or a qualified uri (for example uri:classpath:/my/template/path) pointing to the template."
+        description: "The template to be used for the transformation. If null, the template is expected in the body. Otherwise this param value is used. It can be a static template string or a qualified uri or a (for example $uri:property:/my/template/path) pointing to the template. Pipeline expressions are not supported here since they would conflict with the template variables."
         schema:
           type: "string"
       - name: "model"

@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 19/07/2023 11:22:46 by CommandComplianceTest -->
+<!-- Generated: 28/07/2023 21:16:45 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -881,7 +881,7 @@ and formats it finally to a string output using the given output format pattern.
 Name | Type | Description
 --- | --- | ---
 dateTimeString | ``string`` | The date-time string as input. 
-outputFormat | ``string`` | The output format pattern. 
+outputFormat | ``string`` | The output format pattern. Must comply with                       https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html. 
 
 
 #### Example  
@@ -899,8 +899,8 @@ Converts a given date string using the given inputFormat and converts it to the 
 Name | Type | Description
 --- | --- | ---
 inputDate | ``string`` | The input date string. 
-inputFormat | ``string`` | The input format pattern. 
-outputFormat | ``string`` | The output format pattern. 
+inputFormat | ``string`` | The input format pattern. Must comply with                     https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html. 
+outputFormat | ``string`` | The output format pattern. Must comply with                     https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html. 
 
 
 #### Example  
@@ -919,7 +919,7 @@ For example: An input date of "2030-01-10T20:00:00Z" with format of "dd.MM.yyyy"
 Name | Type | Description
 --- | --- | ---
 iso8601Date | ``string`` | The ISO-8061 formatted date to convert. 
-format | ``string`` | The format pattern. 
+format | ``string`` | The format pattern. Must comply with                    https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html. 
 
 
 #### Example  
@@ -937,7 +937,7 @@ Converts a given unix timestamp to a formatted date time string and returns it.
 Name | Type | Description
 --- | --- | ---
 timestamp | ``long`` | The unix timestamp in millis to format. 
-format | ``string`` | The format pattern. 
+format | ``string`` | The format pattern. Must comply with                  https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html. 
 
 
 #### Example  
