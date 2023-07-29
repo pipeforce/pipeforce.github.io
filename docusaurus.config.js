@@ -61,8 +61,7 @@ const config = {
             type: 'docsVersionDropdown',
           },**/
           {
-            type: 'doc',
-            docId: 'intro',
+            href: 'https://logabit.atlassian.net/wiki/spaces/PA/pages/2543353860',
             position: 'left',
             label: 'Documentation',
           },
@@ -79,15 +78,19 @@ const config = {
             label: 'Commands',
           },
           {
+            type: 'doc',
+            docId: 'api/commands',
+            position: 'left',
+            label: 'Reference API Docs',
+          },
+          {
             href: 'http://docs.pipeforce.io/api.html',
             position: 'left',
             label: 'HTTP API',
           },
           /**{to: '/blog', label: 'News', position: 'left'},**/
           {
-            type: 'doc',
-            docId: 'downloads',
-            position: 'right',
+            href: 'https://logabit.atlassian.net/wiki/spaces/PA/pages/2548400545',
             label: 'Downloads',
           },
           {
@@ -96,14 +99,6 @@ const config = {
             label: 'Support',
           },
         ],
-      },
-      announcementBar: {
-        id: 'support_us',
-        content:
-          'We are hiring Developers. <a target="_blank" rel="noopener noreferrer" href="https://germantechjobs.de/jobs/LOGABIT-GmbH-Fullstack-Open-Source-Entwickler-mwd">Apply now!</a>',
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
-        isCloseable: false,
       },
       footer: {
         style: 'dark',
