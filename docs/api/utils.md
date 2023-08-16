@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 28/07/2023 21:16:45 by CommandComplianceTest -->
+<!-- Generated: 15/08/2023 21:09:51 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -775,6 +775,25 @@ attribute | ``string`` | The attribute name to search for.
 #### Example  
 ```  
 @data.has(data,attribute)  
+```  
+
+### get(data,attribute)   
+Returns the value of the given data attribute or null in case it doesn't exist.
+This way an additional attribute non-existent check can be avoided.   
+
+#### Returns  
+``object`` - The value from given data with given attribute name.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to read the value from. 
+attribute | ``string`` | The attribute name to read from the data. 
+
+
+#### Example  
+```  
+@data.get(data,attribute)  
 ```  
 
 ### emptyObject()   

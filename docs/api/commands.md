@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 28/07/2023 by CommandComplianceTest -->
+<!-- Generated: 15/08/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -503,6 +503,63 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## app.name.list ``v1``
+----------   
+Returns the names of all installed global apps. This command is optimized for best performance. So prefer to use it instead of reading properties or property paths with pattern matching.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=app.name.list:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`github` | String | false | null | A GitHub repository path (owner/reponame) to download the app resources from. For example acme/myproject. If no credentials are given, the github-default secret will be used if exists. Otherwise, repo is expected to be a public one. If this parameter is missing, the app sources are expected in the body as zip file content instead.
+`branch` | String | false | null | The GitHub repo branch, commit or tag reference to be used. If null or empty, the default branch of the GitHub repo will be used. This parameter will be ignored in case no value for github is given.
+`runTests` | Boolean | false | false | Run the tests of the app after installation?
+`async` | Boolean | false | true | Run the installation async?
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
+`secret` | String | false | null | Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - app.name.list:  
+      github: <value>  
+      branch: <value>  
+      runTests: <value>  
+      async: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      credentials: <value>  
+      secret: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/app.name.list?github=<value>&branch=<value>&runTests=<value>&async=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>&secret=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command app.name.list github=<value> branch=<value> runTests=<value> async=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## app.resource.get ``v1``
 ----------   
 Returns resources from inside a given app resource folder of the property store.
@@ -684,6 +741,8 @@ Evaluates a given PEL conditions and throws an error in case a condition is inva
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `true` | String | false | null | A PE which must evaluate to true.
+`expect` | String | false | null | The value to be expected.
+`actual` | String | false | null | The actual value to be compared with the expect value. If both values do not match, the assert fails.
 `false` | String | false | null | A PE which must evaluate to false.
 `body.equals` | String | false | null | The value of this param is compared to the body. If different, exception is thrown. Can be a PE.
 `equals` | String | false | null | Compares the result of param value with this. If not equal, throws exception. Can be a PE.
@@ -700,6 +759,8 @@ Name | Type | Required | Default | Description
 pipeline:  
   - assert:  
       true: <value>  
+      expect: <value>  
+      actual: <value>  
       false: <value>  
       body.equals: <value>  
       equals: <value>  
@@ -716,12 +777,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/assert?true=<value>&false=<value>&body.equals=<value>&equals=<value>&value=<value>&message=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/assert?true=<value>&expect=<value>&actual=<value>&false=<value>&body.equals=<value>&equals=<value>&value=<value>&message=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command assert true=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command assert true=<value> expect=<value> actual=<value> false=<value> body.equals=<value> equals=<value> value=<value> message=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -777,6 +838,57 @@ http://host/api/v3/command/workflow.assert?hasPassed=<value>&hasNotPassed=<value
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command workflow.assert hasPassed=<value> hasNotPassed=<value> processFinished=<value> throwException=<value> processInstanceId=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## audit.log ``v1``
+----------   
+Logs an audit step. Audit logs are treated differently since they need to be archived in some cases for compliance reasons.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=audit.log:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`message` | String | true | null | The message to log. Can be a string or a pipe expression. If null or empty, the full pipe message will be logged.
+`principal` | String | false | null | The optional information about the principal (user, system, account, ...) who initiated this. If null or empty, the info of the currently logged-in principal is used instead.
+`level` | String | false | INFO | By default all audit log entries are created with INFO level. For very sensitive or problematic actions, this can be increased to WARN or ERROR.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - audit.log:  
+      message: <value>  
+      principal: <value>  
+      level: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/audit.log?message=<value>&principal=<value>&level=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command audit.log message=<value> principal=<value> level=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -975,6 +1087,56 @@ http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command body.filter properties=<value> removeKey=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## body.set ``v1``
+----------   
+Sets a value in the body. Overwrites any existing value in the body. The value to be set can be a constant or an expression.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=body.set:v1)
+
+**Alias:** command:set.body:v1,command:body:v1   
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`value` | String | false | null | A string or an expression to be used as the value to be set. If missing, null is set.
+`format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - body.set:  
+      value: <value>  
+      format: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/body.set?value=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command body.set value=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -1476,11 +1638,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## pipe.schema ``v1``
+## command.schema ``v1``
 ----------   
-Returns the JSON schema for all built-in pipes.
+Returns the JSON schema for all built-in commands.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=pipe.schema:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=command.schema:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -1489,7 +1651,7 @@ Returns the JSON schema for all built-in pipes.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`pipe` | String | false | null | The specific pipe name to fetch schema from. If set, only the schema for this specific pipe is returned.
+`command` | String | false | null | The specific command name to fetch schema from. If set, only the schema for this specific command is returned.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -1500,8 +1662,8 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - pipe.schema:  
-      pipe: <value>  
+  - command.schema:  
+      command: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -1514,12 +1676,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipe.schema?pipe=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/command.schema?command=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipe.schema pipe=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command command.schema command=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2311,6 +2473,7 @@ Returns all official IANA time-zone names supported by this PIPEFORCE instance: 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=datetime.zones:v1)
 
+**Alias:** command:datetime.zone.list:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -3919,6 +4082,7 @@ This command stops the execution of the current pipeline and returns an error to
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `message` | String | true | null | The error message to return to the caller.
+`type` | String | false | null | The type string to set for this exception.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -3930,6 +4094,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - error:  
       message: <value>  
+      type: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -3941,12 +4106,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/error?message=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/error?message=<value>&type=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command error message=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command error message=<value> type=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4152,6 +4317,102 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## except ``v1``
+----------   
+In case an exception happens in a command, the pipeline execution will go to the first except command it finds (it will skip all other commands) after it. If the conditions on this except command match, the body of the except command will be executed. This means all commands after the except command will be executed until end of the pipeline or except.end was found whatever is first. 
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=except:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`type` | String | false | null | The type of the exception to match. Can be a single exception of a list of exception types.
+`responseStatusCode` | String | false | null | In case this exception was raised because of a call of an external HTTP endpoint, the HTTP status code returned by this external service can be matched here.
+`drop` | String | false | true | Should the exception be dropped after it was processed by this command or re-thrown?
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - except:  
+      type: <value>  
+      responseStatusCode: <value>  
+      drop: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/except?type=<value>&responseStatusCode=<value>&drop=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command except type=<value> responseStatusCode=<value> drop=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## except.end ``v1``
+----------   
+Indicates the end of an except block. 
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=except.end:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - except.end:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/except.end?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command except.end id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## exit ``v1``
 ----------   
 Exits the current pipeline flow and returns the current body state to the caller.
@@ -4213,6 +4474,7 @@ Any command placed after this finally command will be executed even if the pipel
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `do` | String | false | null | An optional PE to execute finally.
+`drop` | String | false | false | If set to true, catches and drops any existing exception and does not re-throw it. This is useful in case the exceptions will be handled by the finally block or should be dropped at all.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -4224,6 +4486,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - finally:  
       do: <value>  
+      drop: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -4235,12 +4498,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/finally?do=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/finally?do=<value>&drop=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command finally do=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command finally do=<value> drop=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4260,7 +4523,7 @@ Splits a given set of data and repeats the subsequent commands for each entry in
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`in` | String | false | null | Default parameter which points to a list of items to be iterated over. Each iteration item is placed under `vars.loop.[as].item` and `vars.[as]` whereas `[as]` will be replaced by the name given by the `as` parameter.
+`in` | String | false | null | This parameter points to a list of items to be iterated over. Each iteration item is placed under `vars.loop.[as].item` and `vars.[as]` whereas `[as]` will be replaced by the name given by the `as` parameter.
 `loopName` | String | false | loop | *Deprecated.* Use parameter `as` instead. This parameter is only here for downwards compatibility and will be removed in one of the next releases. If `as` parameter is null or empty, this parameter gets checked. And if not null or empty,  it will change the default loop context name in the vars scope from `vars.loop` to `vars.[loopName]`, so you can access the current iteration item using `vars.[loopName].item`.
 `as` | String | false | null | For each iteration/split, puts the current iteration item into the vars scope under this name. If this parameter is null or empty, the item wont be additionally exposed to vars scope. Additionally puts the current loop context under the variable name `vars.loop.NAME.item` whereas `NAME` is the value of this `as` parameter. For example, if you set `as` to `myitem`, then you can access the item using the path `vars.loop.myitem.item` or `vars.myitem`.The loop context contains these objects for each iteration: `item` = The current iteration item. In case the iteration input is a map or a JSON, you can access the key of the item using `item.key` and the value using `item.value`.`index` = The current 0-based iteration index. `even` = A boolean value whether current iteration index is even or not. This is useful for example for layouting.
 `item` | String | false | null | *Deprecated*. Contains an optional expression which will be evaluated for each iteration to extract or prepare the iteration item. The result of this expression will be placed as iteration item.
@@ -5304,7 +5567,11 @@ Name | Type | Required | Default | Description
 `service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
-`forceContentType` | String | false | null | The value to optionally overwrite content-type header of response and affect response processing.
+`forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
+`includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
+`includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -5324,6 +5591,10 @@ pipeline:
       headers: <value>  
       body: <value>  
       forceContentType: <value>  
+      includeResponse: <value>  
+      includeRequest: <value>  
+      ignoreErrorStatus: <value>  
+      passthru: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -5339,12 +5610,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.delete?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
+http://host/api/v3/command/http.delete?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&includeResponse=<value>&includeRequest=<value>&ignoreErrorStatus=<value>&passthru=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.delete url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
+pi command http.delete url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> includeResponse=<value> includeRequest=<value> ignoreErrorStatus=<value> passthru=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5352,7 +5623,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## http.get ``v1``
 ----------   
-Executes a GET HTTP call to the given url.Returns the result from the server in the message body.
+Executes a GET HTTP call to the given url.Returns the result from the server in the message body or wrapped in the response JSON format depending on its configuration.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=http.get:v1)
 
@@ -5367,7 +5638,11 @@ Name | Type | Required | Default | Description
 `service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
-`forceContentType` | String | false | null | The value to optionally overwrite content-type header of response and affect response processing.
+`forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
+`includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
+`includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -5387,6 +5662,10 @@ pipeline:
       headers: <value>  
       body: <value>  
       forceContentType: <value>  
+      includeResponse: <value>  
+      includeRequest: <value>  
+      ignoreErrorStatus: <value>  
+      passthru: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -5402,12 +5681,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.get?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
+http://host/api/v3/command/http.get?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&includeResponse=<value>&includeRequest=<value>&ignoreErrorStatus=<value>&passthru=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.get url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
+pi command http.get url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> includeResponse=<value> includeRequest=<value> ignoreErrorStatus=<value> passthru=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5430,7 +5709,11 @@ Name | Type | Required | Default | Description
 `service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
-`forceContentType` | String | false | null | The value to optionally overwrite content-type header of response and affect response processing.
+`forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
+`includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
+`includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -5450,6 +5733,10 @@ pipeline:
       headers: <value>  
       body: <value>  
       forceContentType: <value>  
+      includeResponse: <value>  
+      includeRequest: <value>  
+      ignoreErrorStatus: <value>  
+      passthru: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -5465,12 +5752,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.patch?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
+http://host/api/v3/command/http.patch?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&includeResponse=<value>&includeRequest=<value>&ignoreErrorStatus=<value>&passthru=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.patch url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
+pi command http.patch url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> includeResponse=<value> includeRequest=<value> ignoreErrorStatus=<value> passthru=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5493,7 +5780,11 @@ Name | Type | Required | Default | Description
 `service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
-`forceContentType` | String | false | null | The value to optionally overwrite content-type header of response and affect response processing.
+`forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
+`includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
+`includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -5513,6 +5804,10 @@ pipeline:
       headers: <value>  
       body: <value>  
       forceContentType: <value>  
+      includeResponse: <value>  
+      includeRequest: <value>  
+      ignoreErrorStatus: <value>  
+      passthru: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -5528,12 +5823,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.post?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
+http://host/api/v3/command/http.post?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&includeResponse=<value>&includeRequest=<value>&ignoreErrorStatus=<value>&passthru=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.post url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
+pi command http.post url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> includeResponse=<value> includeRequest=<value> ignoreErrorStatus=<value> passthru=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5556,7 +5851,11 @@ Name | Type | Required | Default | Description
 `service` | String | false | null | The name of the internal service to be called. If this parameter is given, it will prefix the url parameter, if exists. This parameter can also contain the internal port information separated by a colon like serviceName:port. If no port is given, it will be looked-up automatically.
 `headers` | String | false | null | A list of headers to append to the request. Can be a PEL pointing to a map or a list of name-value pair strings name:value or a comma separated string like: name1:value1, name2:value2.
 `body` | String | false | null | The value to be set in the body of the request (if it supports a body). If this param is missing, the value from the input parameter is used. If this value is null, no body is used.
-`forceContentType` | String | false | null | The value to optionally overwrite content-type header of response and affect response processing.
+`forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
+`includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
+`includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -5576,6 +5875,10 @@ pipeline:
       headers: <value>  
       body: <value>  
       forceContentType: <value>  
+      includeResponse: <value>  
+      includeRequest: <value>  
+      ignoreErrorStatus: <value>  
+      passthru: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -5591,23 +5894,24 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
+http://host/api/v3/command/http.put?url=<value>&service=<value>&headers=<value>&body=<value>&forceContentType=<value>&includeResponse=<value>&includeRequest=<value>&ignoreErrorStatus=<value>&passthru=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>&credentials=<value>&secret=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.put url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
+pi command http.put url=<value> service=<value> headers=<value> body=<value> forceContentType=<value> includeResponse=<value> includeRequest=<value> ignoreErrorStatus=<value> passthru=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value> credentials=<value> secret=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
   
 
-## http.response ``v1``
+## http.response.set ``v1``
 ----------   
 Prepares the HTTP response in case this pipeline is executed in an HTTP request context. In case the pipeline is not running inside an HTTP request context, nothing happens in executing this command. Note: In case the pipeline was initiated by an HTTP request, you can access the request headers using the headers scope: headers.request.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=http.response:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=http.response.set:v1)
 
+**Alias:** command:http.response:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -5615,8 +5919,8 @@ Prepares the HTTP response in case this pipeline is executed in an HTTP request 
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`status` | String | false | null | The status code to be set
-`headers` | String | false | null | The headers to be add. 
+`statusCode` | String | false | null | The HTTP status code to be set on the HTTP response.
+`headers` | String | false | null | The HTTP headers to be add as JSON or name-value pairs. 
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -5626,8 +5930,8 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - http.response:  
-      status: <value>  
+  - http.response.set:  
+      statusCode: <value>  
       headers: <value>  
       id: <value>  
       if: <value>  
@@ -5640,12 +5944,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/http.response?status=<value>&headers=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/http.response.set?statusCode=<value>&headers=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command http.response status=<value> headers=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command http.response.set statusCode=<value> headers=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7671,6 +7975,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `message` | String | true | null | The message to log. Can be a string or a pipe expression. If null or empty, the full pipe message will be logged.
 `level` | String | false | INFO | The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used.
+`suffix` | String | false | true | Suffix log output with persisted pipeline path if any.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -7683,6 +7988,7 @@ pipeline:
   - log:  
       message: <value>  
       level: <value>  
+      suffix: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -7694,12 +8000,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/log?message=<value>&level=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/log?message=<value>&level=<value>&suffix=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command log message=<value> level=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command log message=<value> level=<value> suffix=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7927,6 +8233,7 @@ Returns all PIPEFORCE services for those logging is allowed / enabled.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=log.services:v1)
 
+**Alias:** command:log.service.list:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -8249,7 +8556,7 @@ Sends the given message as email. The message's subject and body will be used fo
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.send:v1)
 
-**Alias:** pipe.command.mail   
+**Alias:** command:mail:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -8326,7 +8633,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.verify:v1)
 
-**Alias:** pipe.command.email.verify   
+**Alias:** command:email.verify:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -9102,7 +9409,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## pdf.stamp ``v2``
 ----------   
-Writes both text or images to a pdf file under a specific layer. It expects the word pdf file as a pipeline resource in the body and transforms the result back also as a pipeline resource in the body.
+Writes both text or images to a pdf file under a specific layer. It expects the pdf file as a pipeline resource in the body and transforms the result back also as a pipeline resource in the body.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pdf.stamp:v2)
 
@@ -9115,7 +9422,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `text` | String | false | null | The text to write on the PDF file. It is required to either enter text or image.
 `fontSize` | String | false | 18 | The size of the font.
-`fontColor` | String | false | BLUE | The color of the font like GREEN, RED. YELLOW, aso.
+`fontColor` | String | false | #FF0000/BLUE | The hex code color of the font like #FF0000, #0000FF
 `image` | String | false | null | The image to write on the pdf file. One of param text or image is required. The image must be a content uri an existing content object in the message or a built-in stamp name like APPROVED for example.
 `opacity` | Float | false | null | Amount of opacity that should be applied (Must be a value between >= 0.0 and <= 1.0, 0.0 means no opacity, 1.0 means invisible.)
 `rotation` | Integer | false | null | Specifies how many degrees the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0
@@ -9123,9 +9430,9 @@ Name | Type | Required | Default | Description
 `bottom_margin` | Collection | false | 20 | Considers page bottom margin when applying stamp.
 `left_margin` | Collection | false | 20 | Considers page left margin when applying stamp.
 `right_margin` | Collection | false | 20 | Considers page right margin when applying stamp.
-`font_family` | Collection | false | 20 | Considers page right margin when applying stamp.
-`width` | Collection | false | 50 | Considers page right margin when applying stamp.
-`height` | Collection | false | 50 | Considers page right margin when applying stamp.
+`font_family` | Collection | false | 20 | Considers font style that we can apply to stamp.
+`width` | Collection | false | 50 | Considers width of the text when applying stamp.
+`height` | Collection | false | 50 | Considers height of the text when applying stamp.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9641,6 +9948,7 @@ Returns the V7 compliant JSON schema for a pipeline and all built-in commands.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=pipeline.schema.get:v1)
 
+**Alias:** command:schema.pipeline:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -10230,11 +10538,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## property.attachment.put.uri ``v1``
+## attachment.put.uri ``v1``
 ----------   
 Sets property attachment to be symlink to resource referenced by uri.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put.uri:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=attachment.put.uri:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``Void``  
@@ -10256,7 +10564,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - property.attachment.put.uri:  
+  - attachment.put.uri:  
       key: <value>  
       path: <value>  
       name: <value>  
@@ -10272,12 +10580,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/property.attachment.put.uri?key=<value>&path=<value>&name=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/attachment.put.uri?key=<value>&path=<value>&name=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command property.attachment.put.uri key=<value> path=<value> name=<value> uri=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command attachment.put.uri key=<value> path=<value> name=<value> uri=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10856,7 +11164,7 @@ Returns all property paths for a given pattern.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=property.path.list:v1)
 
-**Alias:** command: property.keys:v1   
+**Alias:** command:property.keys:v1   
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
 **Output body type:** ``JsonNode``  
@@ -13518,11 +13826,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## service.job.status ``v1``
+## service.job.statu ``v1``
 ----------   
 Returns the status of a service job in the cluster.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.status:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.statu:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -13542,7 +13850,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - service.job.status:  
+  - service.job.statu:  
       name: <value>  
       id: <value>  
       if: <value>  
@@ -13556,12 +13864,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.job.status?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
+http://host/api/v3/command/service.job.statu?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.job.status name=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
+pi command service.job.statu name=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -13787,55 +14095,6 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## set.body ``v1``
-----------   
-Sets a value in the body. Overwrites any existing value in the body. The value to be set can be a constant or an expression.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=set.body:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`value` | String | true | null | A string or an expression to be used as the value to be set.
-`format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - set.body:  
-      value: <value>  
-      format: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/set.body?value=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command set.body value=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
 ## set ``v1``
 ----------   
 Sets a value in the pipe message. The value to be set can be a constant or an expression.
@@ -13886,57 +14145,6 @@ http://host/api/v3/command/set?value=<value>&to=<value>&mapping=<value>&id=<valu
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command set value=<value> to=<value> mapping=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> input=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## set.var ``v1``
-----------   
-Sets a value in the vars scope. Overwrites any existing var in the vars scope. The value to be set can be a constant or an expression.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=set.var:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`key` | String | true | null | A string or an expression to be used as key of the var to be set.
-`value` | String | true | null | A string or an expression to be used as the value to be set.
-`format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - set.var:  
-      key: <value>  
-      value: <value>  
-      format: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/set.var?key=<value>&value=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command set.var key=<value> value=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -14307,6 +14515,177 @@ http://host/api/v3/command/sftp.upload?path=<value>&username=<value>&password=<v
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command sftp.upload path=<value> username=<value> password=<value> host=<value> port=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value> secret=<value> input=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## sharepoint.document.get ``v1``
+----------   
+To download file from sharepoint.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=sharepoint.document.get:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`secret` | String | false | null | This is the name of secret that has been setup in Secret module (the secret must contain client_id, client_secret)
+`site` | String | false | null | This is the name of site in sharepoint where user want to upload file in the site folder.
+`path` | String | false | null | This path contains the folder path in sharepoint site where user want to upload file
+`tenantId` | String | false | null | Tenant Id of the sharepoint site
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sharepoint.document.get:  
+      secret: <value>  
+      site: <value>  
+      path: <value>  
+      tenantId: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sharepoint.document.get?secret=<value>&site=<value>&path=<value>&tenantId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sharepoint.document.get secret=<value> site=<value> path=<value> tenantId=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## sharepoint.document.put ``v1``
+----------   
+To upload file to sharepoint.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=sharepoint.document.put:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`secret` | String | false | null | This is the name of secret that has been setup in Secret module (the secret must contain client_id, client_secret)
+`site` | String | false | null | This is the name of site in sharepoint where user want to upload file in the site folder.
+`path` | String | false | null | This path contains the folder path in sharepoint site where user want to upload file
+`tenantId` | String | false | null | Tenant Id of the sharepoint site
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sharepoint.document.put:  
+      secret: <value>  
+      site: <value>  
+      path: <value>  
+      tenantId: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sharepoint.document.put?secret=<value>&site=<value>&path=<value>&tenantId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sharepoint.document.put secret=<value> site=<value> path=<value> tenantId=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## sharepoint.mkdir ``v1``
+----------   
+To upload file to sharepoint.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=sharepoint.mkdir:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`secret` | String | false | null | This is the name of secret that has been setup in Secret module (the secret must contain client_id, client_secret)
+`site` | String | false | null | This is the name of site in sharepoint where user want to upload file in the site folder.
+`path` | String | false | null | This path contains the folder path in sharepoint site where user want to upload file
+`tenantId` | String | false | null | Tenant Id of the sharepoint site
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - sharepoint.mkdir:  
+      secret: <value>  
+      site: <value>  
+      path: <value>  
+      tenantId: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      input: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/sharepoint.mkdir?secret=<value>&site=<value>&path=<value>&tenantId=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command sharepoint.mkdir secret=<value> site=<value> path=<value> tenantId=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -15115,7 +15494,7 @@ Takes a CSV document in the body and converts it to a JSON. The CSV document mus
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=transform.csv.json:v1)
 
-**Alias:** pipe.command.transform.csv2json   
+**Alias:** command:transform.csv2json:v1   
 **Version:** ``v1``  
 **Input body type:** ``Raw``  
 **Output body type:** ``Raw``  
@@ -15571,7 +15950,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## translate ``v1``
 ----------   
-Translates the given text to the given target language. Expects the input by default in the body and writes the result by default back to the body.
+Translates the given text to the given target language. Expects the input by default in the body and writes the result by default back to the body. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=translate:v1)
 
@@ -15583,6 +15962,7 @@ Translates the given text to the given target language. Expects the input by def
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `text` | String | true | null | The text to be translated.
+`secret` | String | false | null | The secret text to be used. Expects the translate service API token and url stored in the secret store under this name. The entry must be a JSON like this {'restUrl':'', 'apiKey':''}.
 `targetLanguage` | String | false | EN | The target language to transform the text to. Supported values: DE, EN, FR, IT, JA, ES, NL, PL, PT, RU, ZH
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -15599,6 +15979,7 @@ Name | Type | Required | Default | Description
 pipeline:  
   - translate:  
       text: <value>  
+      secret: <value>  
       targetLanguage: <value>  
       id: <value>  
       if: <value>  
@@ -15615,12 +15996,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/translate?text=<value>&targetLanguage=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
+http://host/api/v3/command/translate?text=<value>&secret=<value>&targetLanguage=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&apiKey=<value>&restUrl=<value>&filter=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command translate text=<value> targetLanguage=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
+pi command translate text=<value> secret=<value> targetLanguage=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> apiKey=<value> restUrl=<value> filter=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -15724,6 +16105,58 @@ http://host/api/v3/command/json.validate?schema=<value>&version=<value>&throwExc
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command json.validate schema=<value> version=<value> throwException=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## var.set ``v1``
+----------   
+Sets a value in the vars scope. Overwrites any existing var in the vars scope. The value to be set can be a constant or an expression.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=var.set:v1)
+
+**Alias:** command:set.var:v1,command:var:v1   
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`key` | String | true | null | A string or an expression to be used as key of the var to be set.
+`value` | String | true | null | A string or an expression to be used as the value to be set.
+`format` | String | false | auto | Converts a string value to the given target format if possible. If set to 'auto' tries to detect the target format by inspecting the value string. If set to 'none' doesnt apply any conversion.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - var.set:  
+      key: <value>  
+      value: <value>  
+      format: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/var.set?key=<value>&value=<value>&format=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command var.set key=<value> value=<value> format=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
