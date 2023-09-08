@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 15/08/2023 21:09:51 by CommandComplianceTest -->
+<!-- Generated: 07/09/2023 18:26:01 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -1830,6 +1830,32 @@ json | ``object`` | The JSON object to be converted to a string.
 @json.stringify(json)  
 ```  
 
+### object()   
+Creates a new, empty JSON object (as map) and returns it.   
+
+#### Returns  
+``map`` - A new JSON node (as map)  
+
+
+
+#### Example  
+```  
+@json.object()  
+```  
+
+### array()   
+Creates a new, empty JSON array (as list) and returns it.   
+
+#### Returns  
+``list`` - A new JSON array (as list)  
+
+
+
+#### Example  
+```  
+@json.array()  
+```  
+
  
 ## `@list` 
 ----------  
@@ -2211,6 +2237,24 @@ text | ``object`` | The text to convert.
 #### Example  
 ```  
 @text.upperCase(text)  
+```  
+
+### lastIndexOf(text,needle)   
+Returns the index of last occurrence of needle in the given text.   
+
+#### Returns  
+``int`` - The index of needle inside text or -1 in case it was not found or input was null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``object`` | The text to search for occurrence. 
+needle | ``object`` | The text to search for. 
+
+
+#### Example  
+```  
+@text.lastIndexOf(text,needle)  
 ```  
 
 ### lastIndexOf(text,needle,offset)   

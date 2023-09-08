@@ -70,6 +70,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -102,6 +103,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -134,6 +136,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "app" : {
                 "type" : "string",
@@ -192,6 +195,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "overwrite" : {
                 "type" : "boolean",
@@ -251,6 +255,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "sort" : {
                 "type" : "string",
@@ -335,6 +340,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "github" : {
                 "type" : "string",
@@ -389,6 +395,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "app" : {
                 "type" : "string",
@@ -451,6 +458,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "appKey" : {
                 "type" : "string",
@@ -487,6 +495,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "github" : {
                 "type" : "string",
@@ -541,6 +550,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "true",
+            "x-alias" : [ ],
             "properties" : {
               "true" : {
                 "type" : "string",
@@ -601,6 +611,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "hasPassed" : {
                 "type" : "string",
@@ -650,6 +661,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "message",
+            "x-alias" : [ ],
             "properties" : {
               "message" : {
                 "type" : "string",
@@ -691,6 +703,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "text",
+            "x-alias" : [ ],
             "properties" : {
               "text" : {
                 "type" : "string",
@@ -740,6 +753,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -776,6 +790,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -804,6 +819,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "properties" : {
                 "type" : "string",
@@ -841,6 +857,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "value",
+            "x-alias" : [ "command:set.body:v1", "command:body:v1" ],
             "properties" : {
               "value" : {
                 "type" : "string",
@@ -878,6 +895,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "maxTokens" : {
                 "type" : "number",
@@ -928,6 +946,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "capabilities" : {
                 "type" : "string",
@@ -964,6 +983,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "key",
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -996,6 +1016,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "key",
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -1042,6 +1063,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "key",
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -1078,6 +1100,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -1110,6 +1133,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -1142,6 +1166,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "timeToLive" : {
                 "type" : "number",
@@ -1183,6 +1208,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "uri",
+            "x-alias" : [ ],
             "properties" : {
               "uri" : {
                 "type" : "string",
@@ -1223,6 +1249,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -1251,6 +1278,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "command" : {
                 "type" : "string",
@@ -1287,6 +1315,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command.pipe.schema.v7" ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -1319,6 +1348,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "group" : {
                 "type" : "string",
@@ -1364,6 +1394,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -1400,6 +1431,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -1432,6 +1464,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -1480,6 +1513,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uri" : {
                 "type" : "string",
@@ -1516,6 +1550,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "password" : {
                 "type" : "string",
@@ -1556,6 +1591,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "password" : {
                 "type" : "string",
@@ -1592,6 +1628,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "do" : {
                 "type" : "string",
@@ -1632,6 +1669,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "exclude" : {
                 "type" : "string",
@@ -1677,6 +1715,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "listA" : {
                 "type" : "string",
@@ -1744,6 +1783,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "maxLength" : {
                 "type" : "string",
@@ -1781,9 +1821,10 @@
             "description" : "Converts from one data structure into a another by applying simple mapping rules. Auto-creates nested elements if required. In case input is an iterable (list) and iterable is set to true then all rules will apply to each entry in the list. In case no output is given, a new target list is created to hold all newly mapped values.",
             "x-inputType" : "JsonNode",
             "x-outputType" : "JsonNode",
-            "x-icon" : "play_circle_outline",
+            "x-icon" : "signpost",
             "x-iconColor" : "",
             "x-defaultParameter" : "rules",
+            "x-alias" : [ ],
             "properties" : {
               "rules" : {
                 "type" : "string",
@@ -1828,6 +1869,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "iterate" : {
                 "type" : "string",
@@ -1886,6 +1928,7 @@
             "x-icon" : "calendar_month",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "format" : {
                 "type" : "string",
@@ -1922,6 +1965,7 @@
             "x-icon" : "watch_later",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:datetime.zone.list:v1" ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -1954,6 +1998,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2003,6 +2048,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "subject" : {
                 "type" : "string",
@@ -2066,6 +2112,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2098,6 +2145,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2134,6 +2182,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2170,6 +2219,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2210,6 +2260,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -2242,6 +2293,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -2270,6 +2322,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2306,6 +2359,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2342,6 +2396,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -2374,6 +2429,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2418,6 +2474,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2458,6 +2515,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "deliveryUuid" : {
                 "type" : "string",
@@ -2525,6 +2583,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -2553,6 +2612,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -2585,6 +2645,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "signerEmail" : {
                 "type" : "string",
@@ -2645,6 +2706,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "provider" : {
                 "type" : "string",
@@ -2705,6 +2767,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -2745,6 +2808,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -2781,6 +2845,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -2813,6 +2878,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -2849,6 +2915,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -2885,6 +2952,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -2922,6 +2990,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -2958,6 +3027,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "path",
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -2999,6 +3069,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "path",
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -3044,6 +3115,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "to" : {
                 "type" : "string",
@@ -3118,6 +3190,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -3162,6 +3235,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "action" : {
                 "type" : "string",
@@ -3206,6 +3280,7 @@
             "x-icon" : "report_problem",
             "x-iconColor" : "",
             "x-defaultParameter" : "message",
+            "x-alias" : [ ],
             "properties" : {
               "message" : {
                 "type" : "string",
@@ -3242,6 +3317,7 @@
             "x-icon" : "functions",
             "x-iconColor" : "",
             "x-defaultParameter" : "expr",
+            "x-alias" : [ ],
             "properties" : {
               "expr" : {
                 "type" : "string",
@@ -3274,6 +3350,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -3318,6 +3395,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -3350,6 +3428,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -3395,6 +3474,7 @@
             "x-icon" : "report_problem",
             "x-iconColor" : "",
             "x-defaultParameter" : "type",
+            "x-alias" : [ ],
             "properties" : {
               "type" : {
                 "type" : "string",
@@ -3436,6 +3516,7 @@
             "x-icon" : "report_problem",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -3464,6 +3545,7 @@
             "x-icon" : "logout",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "if" : {
                 "type" : "string",
@@ -3493,6 +3575,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "do" : {
                 "type" : "string",
@@ -3530,6 +3613,7 @@
             "x-icon" : "auto_mode",
             "x-iconColor" : "",
             "x-defaultParameter" : "in",
+            "x-alias" : [ "command:split:v1" ],
             "properties" : {
               "in" : {
                 "type" : "string",
@@ -3579,6 +3663,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:split.end:v1" ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -3607,6 +3692,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -3639,6 +3725,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -3671,6 +3758,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -3707,6 +3795,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -3743,6 +3832,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -3788,6 +3878,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -3832,6 +3923,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -3868,6 +3960,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -3904,6 +3997,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -3936,6 +4030,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -4016,6 +4111,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -4048,6 +4144,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -4080,6 +4177,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -4100,6 +4198,39 @@
             },
             "required" : [ ]
           },
+          "hello.world" : {
+            "type" : "object",
+            "description" : "This command simply returns the greeting Hello <XYZ as an Input> by <logged in person>.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The person name to greet."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "name" ]
+          },
           "htmlunit.website.form.find" : {
             "type" : "object",
             "description" : "Searches for a form on the page and sets is as vars.form model in PEL. If param 'select' is given, uses this PEL to find the form object. Otherwise tries to detect the form automatically by searching the page and using the first form found. Note: The pipe is BETA and not intended to be used in production!",
@@ -4108,6 +4239,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "select" : {
                 "type" : "string",
@@ -4140,6 +4272,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "value" : {
                 "type" : "string",
@@ -4176,6 +4309,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "select" : {
                 "type" : "string",
@@ -4208,6 +4342,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "select" : {
                 "type" : "string",
@@ -4240,6 +4375,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -4272,6 +4408,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "xpath" : {
                 "type" : "string",
@@ -4308,6 +4445,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "url",
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -4393,6 +4531,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "url",
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -4478,6 +4617,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "url",
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -4563,6 +4703,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "url",
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -4648,6 +4789,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "url",
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -4733,6 +4875,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:http.response:v1" ],
             "properties" : {
               "statusCode" : {
                 "type" : "string",
@@ -4769,6 +4912,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "app" : {
                 "type" : "string",
@@ -4816,6 +4960,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "username" : {
                 "type" : "string",
@@ -4856,6 +5001,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -4884,6 +5030,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "accessToken" : {
                 "type" : "string",
@@ -4932,6 +5079,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "username" : {
                 "type" : "string",
@@ -4972,6 +5120,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "username" : {
                 "type" : "string",
@@ -5012,6 +5161,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -5040,6 +5190,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "groupUuid" : {
                 "type" : "string",
@@ -5084,6 +5235,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -5128,6 +5280,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -5164,6 +5317,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "filter" : {
                 "type" : "string",
@@ -5214,6 +5368,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "max" : {
                 "type" : "number",
@@ -5260,6 +5415,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -5314,6 +5470,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "groupName" : {
                 "type" : "string",
@@ -5368,6 +5525,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -5400,6 +5558,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "roleName" : {
                 "type" : "string",
@@ -5440,6 +5599,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -5484,6 +5644,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "roleName" : {
                 "type" : "string",
@@ -5534,6 +5695,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "username",
+            "x-alias" : [ ],
             "properties" : {
               "username" : {
                 "type" : "string",
@@ -5571,6 +5733,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "type" : {
                 "type" : "string",
@@ -5621,6 +5784,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "username" : {
                 "type" : "string",
@@ -5661,6 +5825,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "refreshToken" : {
                 "type" : "string",
@@ -5693,6 +5858,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "refreshToken" : {
                 "type" : "string",
@@ -5729,6 +5895,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -5773,6 +5940,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "userUuid" : {
                 "type" : "string",
@@ -5817,6 +5985,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -5881,6 +6050,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -5917,6 +6087,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "username" : {
                 "type" : "string",
@@ -5957,6 +6128,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "username" : {
                 "type" : "string",
@@ -6011,6 +6183,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "includeGroups" : {
                 "type" : "boolean",
@@ -6065,6 +6238,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "username" : {
                 "type" : "string",
@@ -6119,6 +6293,7 @@
             "x-icon" : "alt_route",
             "x-iconColor" : "",
             "x-defaultParameter" : "true",
+            "x-alias" : [ ],
             "properties" : {
               "true" : {
                 "type" : "string",
@@ -6159,6 +6334,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -6187,6 +6363,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -6215,6 +6392,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "schedule" : {
                 "type" : "string",
@@ -6251,6 +6429,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -6279,6 +6458,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "pipelineKey" : {
                 "type" : "string",
@@ -6311,6 +6491,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "pipelineKey" : {
                 "type" : "string",
@@ -6343,6 +6524,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "query" : {
                 "type" : "string",
@@ -6373,16 +6555,17 @@
           },
           "log" : {
             "type" : "object",
-            "description" : "Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body.",
+            "description" : "Logs the given input message without changing it.",
             "x-inputType" : "JsonNode",
             "x-outputType" : "JsonNode",
-            "x-icon" : "barefoot",
+            "x-icon" : "dvr",
             "x-iconColor" : "",
             "x-defaultParameter" : "message",
+            "x-alias" : [ ],
             "properties" : {
               "message" : {
                 "type" : "string",
-                "description" : "(default) The message to log. Can be a string or a pipe expression. If null or empty, the full pipe message will be logged."
+                "description" : "(default) The message to log. Can be a string or a pipeline expression. If null or empty, the current pipeline message will be logged."
               },
               "level" : {
                 "type" : "string",
@@ -6391,7 +6574,7 @@
               },
               "suffix" : {
                 "type" : "string",
-                "description" : "Suffix log output with persisted pipeline path if any.",
+                "description" : "Suffix log message with path of persisted pipeline path if any. This simplifies searching in logs later.",
                 "default" : "true"
               },
               "id" : {
@@ -6421,6 +6604,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "service" : {
                 "type" : "string",
@@ -6468,6 +6652,7 @@
             "x-icon" : "list",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "auditId" : {
                 "type" : "string",
@@ -6514,6 +6699,7 @@
             "x-icon" : "list",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "interpolate" : {
                 "type" : "string",
@@ -6551,6 +6737,7 @@
             "x-icon" : "search",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "service" : {
                 "type" : "string",
@@ -6612,6 +6799,7 @@
             "x-icon" : "list",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:log.service.list:v1" ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -6644,6 +6832,7 @@
             "x-icon" : "list",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -6676,6 +6865,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "do",
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -6724,6 +6914,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "name",
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -6764,6 +6955,7 @@
             "x-icon" : "download",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "protocol" : {
                 "type" : "string",
@@ -6829,6 +7021,7 @@
             "x-icon" : "inbox",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "protocol" : {
                 "type" : "string",
@@ -6887,6 +7080,7 @@
             "x-icon" : "email",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:mail:v1" ],
             "properties" : {
               "to" : {
                 "type" : "string",
@@ -6954,6 +7148,7 @@
             "x-icon" : "mark_email_read",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:email.verify:v1" ],
             "properties" : {
               "email" : {
                 "type" : "string",
@@ -6998,6 +7193,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "reverse" : {
                 "type" : "boolean",
@@ -7031,6 +7227,7 @@
             "x-icon" : "memory",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -7055,7 +7252,208 @@
             },
             "required" : [ ]
           },
-          "message.info.queue.get" : {
+          "message.binding.delete" : {
+            "type" : "object",
+            "description" : "Deletes a binding.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "playlist_remove",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "properties" : {
+              "destinationName" : {
+                "type" : "string",
+                "description" : "The name of the destination of the binding to remove."
+              },
+              "destinationType" : {
+                "type" : "string",
+                "description" : "The type of the destination of the binding to remove. One of queue or exchange."
+              },
+              "exchange" : {
+                "type" : "string",
+                "description" : "The exchange involved in this binding to remove."
+              },
+              "routingKey" : {
+                "type" : "string",
+                "description" : "The routing key to be used for the binding to remove."
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "Custom args to be passed to the binding to remove."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "destinationName", "destinationType", "exchange", "routingKey" ]
+          },
+          "message.binding.put" : {
+            "type" : "object",
+            "description" : "Creates a new binding. Returns the binding info as JSON.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "playlist_add",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "properties" : {
+              "destinationName" : {
+                "type" : "string",
+                "description" : "The name of the destination of the binding."
+              },
+              "destinationType" : {
+                "type" : "string",
+                "description" : "The type of the destination of the binding. One of queue or exchange.",
+                "default" : "queue"
+              },
+              "exchange" : {
+                "type" : "string",
+                "description" : "The exchange involved in this binding.",
+                "default" : "pipeforce.default.topic"
+              },
+              "routingKey" : {
+                "type" : "string",
+                "description" : "The routing key to be used for the binding"
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "Custom args to be passed to the binding creation."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "destinationName", "routingKey" ]
+          },
+          "message.exchange.delete" : {
+            "type" : "object",
+            "description" : "Deletes an exchange.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "playlist_remove",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the exchange to delete."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "message.exchange.put" : {
+            "type" : "object",
+            "description" : "Creates an exchange.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "playlist_add",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the exchange to create."
+              },
+              "type" : {
+                "type" : "string",
+                "description" : "The type of the exchange like topic, fanout, direct, headers, system or a custom one starting with x-",
+                "default" : "topic"
+              },
+              "durable" : {
+                "type" : "string",
+                "description" : "If true, exchange will survive server restart",
+                "default" : "true"
+              },
+              "autodelete" : {
+                "type" : "string",
+                "description" : "Delete the exchange if now longer in use?",
+                "default" : "false"
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "Optional args to the exchange."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "message.queue.get" : {
             "type" : "object",
             "description" : "Returns details about a message queue.",
             "x-inputType" : "JsonNode",
@@ -7063,10 +7461,11 @@
             "x-icon" : "info_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
-              "queueName" : {
+              "name" : {
                 "type" : "string",
-                "description" : "The name of the queue."
+                "description" : "The name of the queue to return."
               },
               "id" : {
                 "type" : "string",
@@ -7085,7 +7484,105 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "queueName" ]
+            "required" : [ "name" ]
+          },
+          "message.queue.delete" : {
+            "type" : "object",
+            "description" : "Deletes a queue.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "playlist_remove",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the queue to delete."
+              },
+              "unused" : {
+                "type" : "string",
+                "description" : "Delete only if not is use?",
+                "default" : "false"
+              },
+              "empty" : {
+                "type" : "string",
+                "description" : "Delete only if empty?",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "message.queue.put" : {
+            "type" : "object",
+            "description" : "Creates or updates a queue. Returns the queue info as JSON.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "playlist_add",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the queue."
+              },
+              "durable" : {
+                "type" : "string",
+                "description" : "Is it an exclusive queue?",
+                "default" : "false"
+              },
+              "autodelete" : {
+                "type" : "string",
+                "description" : "Should the server delete the queue if it is no longer in use?",
+                "default" : "false"
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "Custom args to be passed to the queue creation."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
           },
           "message.receive" : {
             "type" : "object",
@@ -7095,6 +7592,7 @@
             "x-icon" : "hearing",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -7157,6 +7655,7 @@
             "x-icon" : "forward_to_inbox",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -7211,6 +7710,7 @@
             "x-icon" : "chat",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -7247,6 +7747,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "enabled" : {
                 "type" : "string",
@@ -7297,6 +7798,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "pages" : {
                 "type" : "string",
@@ -7339,6 +7841,7 @@
             "x-icon" : "picture_as_pdf",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -7375,6 +7878,7 @@
             "x-icon" : "picture_as_pdf",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -7411,6 +7915,7 @@
             "x-icon" : "picture_as_pdf",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -7447,6 +7952,7 @@
             "x-icon" : "merge",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -7483,6 +7989,7 @@
             "x-icon" : "approval",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "text" : {
                 "type" : "string",
@@ -7580,6 +8087,7 @@
             "x-icon" : "image",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -7616,6 +8124,7 @@
             "x-icon" : "delete",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -7656,6 +8165,7 @@
             "x-icon" : "pin",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -7692,6 +8202,7 @@
             "x-icon" : "pin",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -7748,6 +8259,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "sessionId" : {
                 "type" : "string",
@@ -7788,6 +8300,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -7820,6 +8333,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -7856,6 +8370,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -7892,6 +8407,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:pipeline.start:v1" ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -7944,6 +8460,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:schema.pipeline:v1" ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -7976,6 +8493,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "appNames" : {
                 "type" : "string",
@@ -8012,6 +8530,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8064,6 +8583,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8113,6 +8633,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8162,6 +8683,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8219,6 +8741,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8263,6 +8786,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8303,6 +8827,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8347,6 +8872,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8387,6 +8913,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8456,6 +8983,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8500,6 +9028,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8540,6 +9069,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "pattern" : {
                 "type" : "string",
@@ -8581,6 +9111,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8621,6 +9152,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "path",
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8665,6 +9197,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "strategy" : {
                 "type" : "string",
@@ -8702,6 +9235,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "pattern",
+            "x-alias" : [ ],
             "properties" : {
               "pattern" : {
                 "type" : "string",
@@ -8747,6 +9281,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:property.lock.create:v1" ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8804,6 +9339,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8840,6 +9376,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8876,6 +9413,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -8916,6 +9454,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:property.keys.children:v1" ],
             "properties" : {
               "pattern" : {
                 "type" : "string",
@@ -8952,6 +9491,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:property.keys:v1" ],
             "properties" : {
               "pattern" : {
                 "type" : "string",
@@ -8993,6 +9533,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -9033,6 +9574,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "dialect" : {
                 "type" : "string",
@@ -9094,6 +9636,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -9130,6 +9673,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -9222,6 +9766,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "keyFilter" : {
                 "type" : "string",
@@ -9293,6 +9838,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -9353,6 +9899,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -9393,6 +9940,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -9441,6 +9989,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "select" : {
                 "type" : "string",
@@ -9494,6 +10043,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "path",
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -9543,6 +10093,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "pattern" : {
                 "type" : "string",
@@ -9587,6 +10138,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "baseKey" : {
                 "type" : "string",
@@ -9644,6 +10196,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -9688,6 +10241,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "module" : {
                 "type" : "string",
@@ -9724,6 +10278,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -9752,6 +10307,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -9784,6 +10340,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uri" : {
                 "type" : "string",
@@ -9820,6 +10377,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -9860,6 +10418,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -9892,6 +10451,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "correlationId" : {
                 "type" : "string",
@@ -9932,6 +10492,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "correlationId" : {
                 "type" : "string",
@@ -9972,6 +10533,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "correlationId" : {
                 "type" : "string",
@@ -10008,6 +10570,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "status" : {
                 "type" : "string",
@@ -10044,6 +10607,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -10076,6 +10640,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -10104,6 +10669,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -10136,6 +10702,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "xpath" : {
                 "type" : "string",
@@ -10168,6 +10735,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -10200,6 +10768,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -10232,6 +10801,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -10273,6 +10843,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "format" : {
                 "type" : "string",
@@ -10317,6 +10888,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10365,6 +10937,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10409,6 +10982,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "inboxUuid" : {
                 "type" : "string",
@@ -10445,6 +11019,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "recipientEmail" : {
                 "type" : "string",
@@ -10481,6 +11056,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10529,6 +11105,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10565,6 +11142,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10617,6 +11195,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10653,6 +11232,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10694,6 +11274,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10730,6 +11311,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -10762,6 +11344,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10798,6 +11381,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10869,6 +11453,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10909,6 +11494,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -10949,6 +11535,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "outboxUuid" : {
                 "type" : "string",
@@ -11002,6 +11589,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -11034,6 +11622,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -11070,6 +11659,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -11136,6 +11726,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -11172,6 +11763,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -11208,6 +11800,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -11286,6 +11879,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -11327,6 +11921,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -11368,6 +11963,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "value",
+            "x-alias" : [ ],
             "properties" : {
               "value" : {
                 "type" : "string",
@@ -11416,6 +12012,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -11476,6 +12073,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -11536,6 +12134,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -11601,6 +12200,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -11661,6 +12261,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "fromPath" : {
                 "type" : "string",
@@ -11725,6 +12326,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -11786,6 +12388,7 @@
             "x-icon" : "cloud_download",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "secret" : {
                 "type" : "string",
@@ -11838,6 +12441,7 @@
             "x-icon" : "cloud_upload",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "secret" : {
                 "type" : "string",
@@ -11882,7 +12486,7 @@
             },
             "required" : [ ]
           },
-          "sharepoint.mkdir" : {
+          "sharepoint.document.mkdir" : {
             "type" : "object",
             "description" : "To upload file to sharepoint.",
             "x-inputType" : "JsonNode",
@@ -11890,6 +12494,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "secret" : {
                 "type" : "string",
@@ -11942,6 +12547,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "url" : {
                 "type" : "string",
@@ -11978,6 +12584,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "query" : {
                 "type" : "string",
@@ -12034,6 +12641,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -12062,6 +12670,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -12094,6 +12703,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -12138,6 +12748,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -12182,6 +12793,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -12218,6 +12830,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -12271,6 +12884,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -12315,6 +12929,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "locations" : {
                 "type" : "string",
@@ -12376,6 +12991,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "clearCache" : {
                 "type" : "boolean",
@@ -12429,6 +13045,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "service" : {
                 "type" : "string",
@@ -12466,6 +13083,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "service" : {
                 "type" : "string",
@@ -12532,6 +13150,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -12564,6 +13183,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "iterate" : {
                 "type" : "string",
@@ -12622,6 +13242,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:transform.csv2json:v1" ],
             "properties" : {
               "delimiter" : {
                 "type" : "string",
@@ -12688,6 +13309,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "template" : {
                 "type" : "string",
@@ -12728,6 +13350,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -12760,6 +13383,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -12796,6 +13420,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "dpi" : {
                 "type" : "string",
@@ -12832,6 +13457,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "dpi" : {
                 "type" : "string",
@@ -12868,6 +13494,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "path" : {
                 "type" : "string",
@@ -12904,6 +13531,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "model" : {
                 "type" : "string",
@@ -12944,6 +13572,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "rules" : {
                 "type" : "string",
@@ -12984,6 +13613,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "text" : {
                 "type" : "string",
@@ -13041,6 +13671,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "id" : {
                 "type" : "string",
@@ -13073,6 +13704,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ "command:validate.json:v1" ],
             "properties" : {
               "schema" : {
                 "type" : "string",
@@ -13122,11 +13754,12 @@
             "x-outputType" : "JsonNode",
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
-            "x-defaultParameter" : "key",
+            "x-defaultParameter" : null,
+            "x-alias" : [ "command:set.var:v1", "command:var:v1" ],
             "properties" : {
               "key" : {
                 "type" : "string",
-                "description" : "(default) A string or an expression to be used as key of the var to be set."
+                "description" : "A string or an expression to be used as key of the var to be set."
               },
               "value" : {
                 "type" : "string",
@@ -13156,6 +13789,39 @@
             },
             "required" : [ "key", "value" ]
           },
+          "vars" : {
+            "type" : "object",
+            "description" : "This command allows to set multiple variables in one command. It can create new variables in the vars scope or overwrite existing ones. ",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : "set",
+            "x-alias" : [ ],
+            "properties" : {
+              "set" : {
+                "type" : "string",
+                "description" : "(default) A list of key-value pairs to be evaluated in order to set variables."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "set" ]
+          },
           "wait" : {
             "type" : "object",
             "description" : "Waits a certain amount of time with next execution.",
@@ -13164,6 +13830,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : "ms",
+            "x-alias" : [ ],
             "properties" : {
               "ms" : {
                 "type" : "string",
@@ -13197,6 +13864,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -13229,6 +13897,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -13265,6 +13934,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "eventKey" : {
                 "type" : "string",
@@ -13319,6 +13989,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "uuid" : {
                 "type" : "string",
@@ -13355,6 +14026,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "token" : {
                 "type" : "string",
@@ -13387,6 +14059,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -13431,6 +14104,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -13467,6 +14141,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "processInstanceId" : {
                 "type" : "string",
@@ -13511,6 +14186,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "processInstanceBusinessKey" : {
                 "type" : "string",
@@ -13547,6 +14223,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "dueBefore" : {
                 "type" : "string",
@@ -13600,6 +14277,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "workflowModel" : {
                 "type" : "string",
@@ -13660,6 +14338,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "processInstanceId" : {
                 "type" : "string",
@@ -13696,6 +14375,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "processInstanceId" : {
                 "type" : "string",
@@ -13736,6 +14416,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "mappings" : {
                 "type" : "string",
@@ -13772,6 +14453,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "dueBefore" : {
                 "type" : "string",
@@ -13820,6 +14502,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "dueBefore" : {
                 "type" : "string",
@@ -13868,6 +14551,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "key" : {
                 "type" : "string",
@@ -13920,6 +14604,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "taskId" : {
                 "type" : "string",
@@ -13928,6 +14613,10 @@
               "variables" : {
                 "type" : "string",
                 "description" : "A map of variables to be passed to the task. Can be null."
+              },
+              "claim" : {
+                "type" : "string",
+                "description" : "A boolean flag to define if to claim task by current user before completion. Default is true."
               },
               "id" : {
                 "type" : "string",
@@ -13960,6 +14649,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "dueBefore" : {
                 "type" : "string",
@@ -14008,6 +14698,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",
@@ -14041,6 +14732,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "processDefinitionId" : {
                 "type" : "string",
@@ -14077,6 +14769,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "processInstanceId" : {
                 "type" : "string",
@@ -14118,6 +14811,7 @@
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
             "x-defaultParameter" : null,
+            "x-alias" : [ ],
             "properties" : {
               "name" : {
                 "type" : "string",

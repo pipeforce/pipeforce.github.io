@@ -10302,6 +10302,85 @@ paths:
       description: "DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2 Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
+  /api/v3/command/hello.world:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The person name to greet."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "This command simply returns the greeting Hello <XYZ as an Input> by <logged in person>. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The person name to greet."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "This command simply returns the greeting Hello <XYZ as an Input> by <logged in person>. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
   /api/v3/command/htmlunit.website.form.find:
     get:
       parameters:
@@ -16113,7 +16192,7 @@ paths:
       - name: "message"
         in: "query"
         required: true
-        description: "(default) The message to log. Can be a string or a pipe expression. If null or empty, the full pipe message will be logged."
+        description: "(default) The message to log. Can be a string or a pipeline expression. If null or empty, the current pipeline message will be logged."
         schema:
           type: "string"
       - name: "level"
@@ -16125,7 +16204,7 @@ paths:
       - name: "suffix"
         in: "query"
         required: false
-        description: "Suffix log output with persisted pipeline path if any."
+        description: "Suffix log message with path of persisted pipeline path if any. This simplifies searching in logs later."
         schema:
           type: "string"
       - name: "id"
@@ -16152,7 +16231,7 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
-      description: "Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Logs the given input message without changing it. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -16168,7 +16247,7 @@ paths:
       - name: "message"
         in: "query"
         required: true
-        description: "(default) The message to log. Can be a string or a pipe expression. If null or empty, the full pipe message will be logged."
+        description: "(default) The message to log. Can be a string or a pipeline expression. If null or empty, the current pipeline message will be logged."
         schema:
           type: "string"
       - name: "level"
@@ -16180,7 +16259,7 @@ paths:
       - name: "suffix"
         in: "query"
         required: false
-        description: "Suffix log output with persisted pipeline path if any."
+        description: "Suffix log message with path of persisted pipeline path if any. This simplifies searching in logs later."
         schema:
           type: "string"
       - name: "id"
@@ -16207,7 +16286,7 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
-      description: "Logs the given input message without changing it. Sets the log message in the body in case body is empty. Doesn't overwrite any existing content in the body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Logs the given input message without changing it. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/log.list:
@@ -17856,13 +17935,521 @@ paths:
       description: "Shows the current system info like memory consumption. Available for system, support and developer users only. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
-  /api/v3/command/message.info.queue.get:
+  /api/v3/command/message.binding.delete:
     get:
       parameters:
-      - name: "queueName"
+      - name: "destinationName"
         in: "query"
         required: true
-        description: "The name of the queue."
+        description: "The name of the destination of the binding to remove."
+        schema:
+          type: "string"
+      - name: "destinationType"
+        in: "query"
+        required: true
+        description: "The type of the destination of the binding to remove. One of queue or exchange."
+        schema:
+          type: "string"
+      - name: "exchange"
+        in: "query"
+        required: true
+        description: "The exchange involved in this binding to remove."
+        schema:
+          type: "string"
+      - name: "routingKey"
+        in: "query"
+        required: true
+        description: "The routing key to be used for the binding to remove."
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "Custom args to be passed to the binding to remove."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deletes a binding. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "destinationName"
+        in: "query"
+        required: true
+        description: "The name of the destination of the binding to remove."
+        schema:
+          type: "string"
+      - name: "destinationType"
+        in: "query"
+        required: true
+        description: "The type of the destination of the binding to remove. One of queue or exchange."
+        schema:
+          type: "string"
+      - name: "exchange"
+        in: "query"
+        required: true
+        description: "The exchange involved in this binding to remove."
+        schema:
+          type: "string"
+      - name: "routingKey"
+        in: "query"
+        required: true
+        description: "The routing key to be used for the binding to remove."
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "Custom args to be passed to the binding to remove."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deletes a binding. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/message.binding.put:
+    get:
+      parameters:
+      - name: "destinationName"
+        in: "query"
+        required: true
+        description: "The name of the destination of the binding."
+        schema:
+          type: "string"
+      - name: "destinationType"
+        in: "query"
+        required: false
+        description: "The type of the destination of the binding. One of queue or exchange."
+        schema:
+          type: "string"
+      - name: "exchange"
+        in: "query"
+        required: false
+        description: "The exchange involved in this binding."
+        schema:
+          type: "string"
+      - name: "routingKey"
+        in: "query"
+        required: true
+        description: "The routing key to be used for the binding"
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "Custom args to be passed to the binding creation."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Creates a new binding. Returns the binding info as JSON. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "destinationName"
+        in: "query"
+        required: true
+        description: "The name of the destination of the binding."
+        schema:
+          type: "string"
+      - name: "destinationType"
+        in: "query"
+        required: false
+        description: "The type of the destination of the binding. One of queue or exchange."
+        schema:
+          type: "string"
+      - name: "exchange"
+        in: "query"
+        required: false
+        description: "The exchange involved in this binding."
+        schema:
+          type: "string"
+      - name: "routingKey"
+        in: "query"
+        required: true
+        description: "The routing key to be used for the binding"
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "Custom args to be passed to the binding creation."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Creates a new binding. Returns the binding info as JSON. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/message.exchange.delete:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the exchange to delete."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deletes an exchange. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the exchange to delete."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deletes an exchange. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/message.exchange.put:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the exchange to create."
+        schema:
+          type: "string"
+      - name: "type"
+        in: "query"
+        required: false
+        description: "The type of the exchange like topic, fanout, direct, headers, system or a custom one starting with x-"
+        schema:
+          type: "string"
+      - name: "durable"
+        in: "query"
+        required: false
+        description: "If true, exchange will survive server restart"
+        schema:
+          type: "string"
+      - name: "autodelete"
+        in: "query"
+        required: false
+        description: "Delete the exchange if now longer in use?"
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "Optional args to the exchange."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Creates an exchange. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the exchange to create."
+        schema:
+          type: "string"
+      - name: "type"
+        in: "query"
+        required: false
+        description: "The type of the exchange like topic, fanout, direct, headers, system or a custom one starting with x-"
+        schema:
+          type: "string"
+      - name: "durable"
+        in: "query"
+        required: false
+        description: "If true, exchange will survive server restart"
+        schema:
+          type: "string"
+      - name: "autodelete"
+        in: "query"
+        required: false
+        description: "Delete the exchange if now longer in use?"
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "Optional args to the exchange."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Creates an exchange. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/message.queue.get:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the queue to return."
         schema:
           type: "string"
       - name: "id"
@@ -17902,10 +18489,10 @@ paths:
                 - type: "object"
     post:
       parameters:
-      - name: "queueName"
+      - name: "name"
         in: "query"
         required: true
-        description: "The name of the queue."
+        description: "The name of the queue to return."
         schema:
           type: "string"
       - name: "id"
@@ -17933,6 +18520,248 @@ paths:
         schema:
           type: "string"
       description: "Returns details about a message queue. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/message.queue.delete:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the queue to delete."
+        schema:
+          type: "string"
+      - name: "unused"
+        in: "query"
+        required: false
+        description: "Delete only if not is use?"
+        schema:
+          type: "string"
+      - name: "empty"
+        in: "query"
+        required: false
+        description: "Delete only if empty?"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deletes a queue. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the queue to delete."
+        schema:
+          type: "string"
+      - name: "unused"
+        in: "query"
+        required: false
+        description: "Delete only if not is use?"
+        schema:
+          type: "string"
+      - name: "empty"
+        in: "query"
+        required: false
+        description: "Delete only if empty?"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Deletes a queue. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/message.queue.put:
+    get:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the queue."
+        schema:
+          type: "string"
+      - name: "durable"
+        in: "query"
+        required: false
+        description: "Is it an exclusive queue?"
+        schema:
+          type: "string"
+      - name: "autodelete"
+        in: "query"
+        required: false
+        description: "Should the server delete the queue if it is no longer in use?"
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "Custom args to be passed to the queue creation."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Creates or updates a queue. Returns the queue info as JSON. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        description: "The name of the queue."
+        schema:
+          type: "string"
+      - name: "durable"
+        in: "query"
+        required: false
+        description: "Is it an exclusive queue?"
+        schema:
+          type: "string"
+      - name: "autodelete"
+        in: "query"
+        required: false
+        description: "Should the server delete the queue if it is no longer in use?"
+        schema:
+          type: "string"
+      - name: "args"
+        in: "query"
+        required: false
+        description: "Custom args to be passed to the queue creation."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Creates or updates a queue. Returns the queue info as JSON. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/message.receive:
@@ -30348,7 +31177,7 @@ paths:
       description: "To upload file to sharepoint. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
-  /api/v3/command/sharepoint.mkdir:
+  /api/v3/command/sharepoint.document.mkdir:
     get:
       parameters:
       - name: "secret"
@@ -33502,7 +34331,7 @@ paths:
       - name: "key"
         in: "query"
         required: true
-        description: "(default) A string or an expression to be used as key of the var to be set."
+        description: "A string or an expression to be used as key of the var to be set."
         schema:
           type: "string"
       - name: "value"
@@ -33557,7 +34386,7 @@ paths:
       - name: "key"
         in: "query"
         required: true
-        description: "(default) A string or an expression to be used as key of the var to be set."
+        description: "A string or an expression to be used as key of the var to be set."
         schema:
           type: "string"
       - name: "value"
@@ -33597,6 +34426,85 @@ paths:
         schema:
           type: "string"
       description: "Sets a value in the vars scope. Overwrites any existing var in the vars scope. The value to be set can be a constant or an expression. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/vars:
+    get:
+      parameters:
+      - name: "set"
+        in: "query"
+        required: true
+        description: "(default) A list of key-value pairs to be evaluated in order to set variables."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "This command allows to set multiple variables in one command. It can create new variables in the vars scope or overwrite existing ones.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "set"
+        in: "query"
+        required: true
+        description: "(default) A list of key-value pairs to be evaluated in order to set variables."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "This command allows to set multiple variables in one command. It can create new variables in the vars scope or overwrite existing ones.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/wait:
@@ -35564,6 +36472,12 @@ paths:
         description: "A map of variables to be passed to the task. Can be null."
         schema:
           type: "string"
+      - name: "claim"
+        in: "query"
+        required: false
+        description: "A boolean flag to define if to claim task by current user before completion. Default is true."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -35617,6 +36531,12 @@ paths:
         in: "query"
         required: false
         description: "A map of variables to be passed to the task. Can be null."
+        schema:
+          type: "string"
+      - name: "claim"
+        in: "query"
+        required: false
+        description: "A boolean flag to define if to claim task by current user before completion. Default is true."
         schema:
           type: "string"
       - name: "id"
