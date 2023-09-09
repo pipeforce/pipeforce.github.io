@@ -7303,7 +7303,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "destinationName", "destinationType", "exchange", "routingKey" ]
+            "required" : [ "destinationName" ]
           },
           "message.binding.put" : {
             "type" : "object",
@@ -11718,7 +11718,7 @@
             },
             "required" : [ ]
           },
-          "service.job.statu" : {
+          "service.job.status" : {
             "type" : "object",
             "description" : "Returns the status of a service job in the cluster.",
             "x-inputType" : "JsonNode",

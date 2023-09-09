@@ -73,7 +73,7 @@ In order to show this app also to other users (and therefore move to **productio
     
 4.  Select tab `Role Mappings`.
     
-5.  In the `Available Roles` list, select the role `CAN_APP_YOURAPP` (replace `YOURAPP` by the app name you used in section 1), and click `Add selected`. Note that the role name is with prefix `CAN_APP_` and with suffix as upper case of your app name by convention: So for example if you named your app `myapp` then the role for the app is `CAN_APP_MYAPP`. This role was automatically created for you. A role can also be seen as a permission to view and execute your app.
+5.  In the `Available Roles` list, select the role `CAN_APP_YOURAPP` (replace `YOURAPP` by the app name you used in section 1). This role will typically be created by the install pipeline of your app. If this role doesn't exist yet, create it first. Then click `Add selected`. Note that the role name is with prefix `CAN_APP_` and with suffix as upper case of your app name by convention: So for example if you named your app `myapp` then the role for the app is `CAN_APP_MYAPP`. This role was automatically created for you. A role can also be seen as a permission to view and execute your app.
     
 6.  After this role was added to the user or group, these users can now see and execute your app.
     

@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 07/09/2023 by CommandComplianceTest -->
+<!-- Generated: 09/09/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -2319,7 +2319,7 @@ Converts from one data structure into a another by applying simple mapping rules
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`rules` | String | false | null | A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -> outputPEL1. Multiple rules are separated by a comma directly followed by a new line.
+`rules` | String | false | null | A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -&#62 outputPEL1. Multiple rules are separated by a comma directly followed by a new line.
 `iterate` | String | false | null | In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -5266,7 +5266,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## hello.world ``v1``
 ----------   
-This command simply returns the greeting Hello <XYZ as an Input> by <logged in person>.
+This command simply returns the greeting Hello &#60XYZ as an Input&#62 by &#60logged in person&#62.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=hello.world:v1)
 
@@ -5617,7 +5617,7 @@ Name | Type | Required | Default | Description
 `forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
 `includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
 `includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
-`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code &#62= 400.
 `passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -5688,7 +5688,7 @@ Name | Type | Required | Default | Description
 `forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
 `includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
 `includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
-`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code &#62= 400.
 `passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -5759,7 +5759,7 @@ Name | Type | Required | Default | Description
 `forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
 `includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
 `includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
-`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code &#62= 400.
 `passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -5830,7 +5830,7 @@ Name | Type | Required | Default | Description
 `forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
 `includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
 `includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
-`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code &#62= 400.
 `passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -5901,7 +5901,7 @@ Name | Type | Required | Default | Description
 `forceContentType` | String | false | application/json;type=response | If this parameter is set to null or empty, the responsethe body from the response is returned in the same format as it is defined by the HTTP response Content-Type header. This can be overwritten by setting an explicit Content-Type here. When set, it will be tried to convert the response body to this content-type first and return it as this type then.
 `includeResponse` | String | false | false | If true, writes the HTTP response including headers and status code as JSON in the output.
 `includeRequest` | String | false | false | If true, includes the HTTP request as JSON in the output.
-`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code >= 400.
+`ignoreErrorStatus` | String | false | false | If true, any error status code from response will be ignored and no exception will be thrown. Otherwise, an exception will be thrown in case the request returns with status code &#62= 400.
 `passthru` | String | false | false | If true, the response will be passed 1:1 to the caller of the pipeline without any changes. Status errors wont be handled and also no auto-conversion of body data will be applied. Note: It is not intended to alter the response in any kind when in passThru-mode.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -8836,9 +8836,9 @@ Deletes a binding.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `destinationName` | String | true | null | The name of the destination of the binding to remove.
-`destinationType` | String | true | null | The type of the destination of the binding to remove. One of queue or exchange.
-`exchange` | String | true | null | The exchange involved in this binding to remove.
-`routingKey` | String | true | null | The routing key to be used for the binding to remove.
+`destinationType` | String | false | null | The type of the destination of the binding to remove. One of queue or exchange.
+`exchange` | String | false | null | The exchange involved in this binding to remove.
+`routingKey` | String | false | null | The routing key to be used for the binding to remove.
 `args` | String | false | null | Custom args to be passed to the binding to remove.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9735,8 +9735,8 @@ Name | Type | Required | Default | Description
 `pages` | String | false | 0 | The pages to put the stamp on or use 'ALL' for all pages.
 `position` | String | false | TOP_RIGHT | The x,y coordinates of the overlay to write. Must be 2 comma separated float values, e.g.: 123,123. Note: Top right corner within an A4 page is 612,792. Alternatively, relative positioning is possible by using one of: CENTER, TOP_RIGHT, TOP_LEFT aso.Alternatively, value PARAGRAPH activate paragraph positioning. All PARAGRAPH positioned stamps will not overlap each other.
 `layer` | String | false | null | The name of the layer to be created for the stamp. If null or empty, no layer is created. The stamp is added then directly to the page without any layer.
-`opacity` | Float | false | null | Amount of opacity that should be applied (Must be a value between >= 0.0 and <= 1.0, 0.0 means no opacity, 1.0 means invisible.)
-`degree` | Float | false | null | Specifies how many degress the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0
+`opacity` | Float | false | null | Amount of opacity that should be applied (Must be a value between &#62= 0.0 and &#60= 1.0, 0.0 means no opacity, 1.0 means invisible.)
+`degree` | Float | false | null | Specifies how many degress the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between &#62= -180.0 and &#60= 180.0
 `margin` | Collection | false | 20 | Considers page margin when applying stamp. Can be a single value or a comma separated list of 4 entries forsetting margin in this order: [top, right, down, left]
 `lineNo` | Integer | false | 0 | Enforces that text is written at a specific line
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -9801,8 +9801,8 @@ Name | Type | Required | Default | Description
 `fontSize` | String | false | 18 | The size of the font.
 `fontColor` | String | false | #FF0000/BLUE | The hex code color of the font like #FF0000, #0000FF
 `image` | String | false | null | The image to write on the pdf file. One of param text or image is required. The image must be a content uri an existing content object in the message or a built-in stamp name like APPROVED for example.
-`opacity` | Float | false | null | Amount of opacity that should be applied (Must be a value between >= 0.0 and <= 1.0, 0.0 means no opacity, 1.0 means invisible.)
-`rotation` | Integer | false | null | Specifies how many degrees the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between >= -180.0 and <= 180.0
+`opacity` | Float | false | null | Amount of opacity that should be applied (Must be a value between &#62= 0.0 and &#60= 1.0, 0.0 means no opacity, 1.0 means invisible.)
+`rotation` | Integer | false | null | Specifies how many degrees the element should be rotated. Negative degree means rotated below x-axis, positive degree means above. Must be a value between &#62= -180.0 and &#60= 180.0
 `top_margin` | Collection | false | 20 | Considers page top margin when applying stamp
 `bottom_margin` | Collection | false | 20 | Considers page bottom margin when applying stamp.
 `left_margin` | Collection | false | 20 | Considers page left margin when applying stamp.
@@ -11842,7 +11842,7 @@ Name | Type | Required | Default | Description
 `typeFilter` | String | false | null | The type of the property. Will find any properties containing this type. This value is case in-sensitive.
 `offset` | Integer | false | null | The 0-based offset of the search result to return. If not set, no offset is used.
 `page` | Integer | false | null | The 1-based index of the page to return. Does the offset calculation automatically. If this param is given, offset will be ignored.
-`maxResults` | Integer | false | 30 | The number of results to return. Note: The maximum is 100 results per call because of performance reasons. In case there are more results, use the offset and pagination to retrieve them. If this parameter is set to a value > 100 it will be reset to 100.
+`maxResults` | Integer | false | 30 | The number of results to return. Note: The maximum is 100 results per call because of performance reasons. In case there are more results, use the offset and pagination to retrieve them. If this parameter is set to a value &#62 100 it will be reset to 100.
 `info` | Boolean | false | false | If set to true, the result will also include information about the request. This is useful for example for pagination.
 `includeTrashed` | Boolean | false | false | Include the properties moved to trash bin in the search?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -12070,7 +12070,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `select` | String | false | null | Specifies the attributes of each entity to return in the result set. For example person.firstName here would return a list of first names in the result in case the property has an (JSON) object as value which contains such a field. Can be null or set to '*' to return all fields.
 `from` | String | true | null | Specifies the properties to be loaded for the search. Can be a relative or absolute property wildcard key path. For example: 'global/object/invoice/*
-`where` | String | false | null | Specifies a selection filter to return only the properties those values match the given where filter. For example: invoice.amount > 50 would select only those properties having a field invoice.amount with value bigger than 50. If null, no where filter is applied and all properties values will be selected.
+`where` | String | false | null | Specifies a selection filter to return only the properties those values match the given where filter. For example: invoice.amount &#62 50 would select only those properties having a field invoice.amount with value bigger than 50. If null, no where filter is applied and all properties values will be selected.
 `aggregate` | String | false | null | Defines an expression to be applied on the final result. For example to count all values or to transform them. If null or empty, no aggregation will be applied.
 `includeTrashed` | String | false | false | Should properties moved to trash bin included in this search?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -14203,11 +14203,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## service.job.statu ``v1``
+## service.job.status ``v1``
 ----------   
 Returns the status of a service job in the cluster.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.statu:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=service.job.status:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``JsonNode``  
@@ -14227,7 +14227,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - service.job.statu:  
+  - service.job.status:  
       name: <value>  
       id: <value>  
       if: <value>  
@@ -14241,12 +14241,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/service.job.statu?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
+http://host/api/v3/command/service.job.status?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command service.job.statu name=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
+pi command service.job.status name=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -17471,7 +17471,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 ----------   
 Starts a new instance of a process in the workflow engine.   
 The given pipe message will be serialized to JSON and  
-put as variable <code>pipeJson</code> into context of the   
+put as variable &#60code&#62pipeJson&#60/code&#62 into context of the   
 process (process variables).  
 Returns the input message unchanged.
 

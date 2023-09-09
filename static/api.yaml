@@ -17946,19 +17946,19 @@ paths:
           type: "string"
       - name: "destinationType"
         in: "query"
-        required: true
+        required: false
         description: "The type of the destination of the binding to remove. One of queue or exchange."
         schema:
           type: "string"
       - name: "exchange"
         in: "query"
-        required: true
+        required: false
         description: "The exchange involved in this binding to remove."
         schema:
           type: "string"
       - name: "routingKey"
         in: "query"
-        required: true
+        required: false
         description: "The routing key to be used for the binding to remove."
         schema:
           type: "string"
@@ -18019,19 +18019,19 @@ paths:
           type: "string"
       - name: "destinationType"
         in: "query"
-        required: true
+        required: false
         description: "The type of the destination of the binding to remove. One of queue or exchange."
         schema:
           type: "string"
       - name: "exchange"
         in: "query"
-        required: true
+        required: false
         description: "The exchange involved in this binding to remove."
         schema:
           type: "string"
       - name: "routingKey"
         in: "query"
-        required: true
+        required: false
         description: "The routing key to be used for the binding to remove."
         schema:
           type: "string"
@@ -29171,7 +29171,7 @@ paths:
       description: "Starts a new service job in the cluster. The job runs async. Use service.job.status and service.job.logs to check the result of the job. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
-  /api/v3/command/service.job.statu:
+  /api/v3/command/service.job.status:
     get:
       parameters:
       - name: "name"
