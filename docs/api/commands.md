@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 09/09/2023 by CommandComplianceTest -->
+<!-- Generated: 15/09/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -1192,55 +1192,6 @@ http://host/api/v3/command/bot.prompt?maxTokens=<value>&secret=<value>&engine=<v
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command bot.prompt maxTokens=<value> secret=<value> engine=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
-## browserstack ``v1``
-----------   
-Runs a selenium test remotely in browserstack.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=browserstack:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`capabilities` | String | true | null | The selenium capabilities
-`remoteWebDriverUrl` | String | true | null | The url of the remote selenium service
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - browserstack:  
-      capabilities: <value>  
-      remoteWebDriverUrl: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/browserstack?capabilities=<value>&remoteWebDriverUrl=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command browserstack capabilities=<value> remoteWebDriverUrl=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -5264,53 +5215,6 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## hello.world ``v1``
-----------   
-This command simply returns the greeting Hello &#60XYZ as an Input&#62 by &#60logged in person&#62.
-
-[Try online.](https://try.pipeforce.org/#/commandform?command=hello.world:v1)
-
-**Version:** ``v1``  
-**Input body type:** ``JsonNode``  
-**Output body type:** ``JsonNode``  
-**Parameters:** 
-
-Name | Type | Required | Default | Description
---- | --- | --- | --- | ---
-`name` | String | true | null | The person name to greet.
-`id` | String | false | null | The optional id of this command, unique within the pipeline.
-`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
-`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
-`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-
-
-**Pipeline example:**  
-```yaml  
-pipeline:  
-  - hello.world:  
-      name: <value>  
-      id: <value>  
-      if: <value>  
-      onError: <value>  
-      eval: <value>  
-```  
-Since ``v1`` is the default version for commands, it is not required to specify it. 
-
-Learn more: [Pipeline](/docs/commands_pipelines). 
-
-**URL example:**  
-```yaml  
-http://host/api/v3/command/hello.world?name=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
-```  
-
-**Command Line Interface (CLI) example:**  
-```bash  
-pi command hello.world name=<value> id=<value> if=<value> onError=<value> eval=<value>  
-```  
-Learn more: [Command Line Interface (CLI)](/docs/cli). 
-
-  
-
 ## htmlunit.website.form.find ``v1``
 ----------   
 Searches for a form on the page and sets is as vars.form model in PEL. If param 'select' is given, uses this PEL to find the form object. Otherwise tries to detect the form automatically by searching the page and using the first form found. Note: The pipe is BETA and not intended to be used in production!
@@ -8599,7 +8503,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## mail.send ``v1``
 ----------   
-Sends the given message as email. The message's subject and body will be used for in the email accordingly.
+Sends the given message as email. The message's subject and body will be used in the email accordingly.
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=mail.send:v1)
 
@@ -12626,7 +12530,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## result.complete ``v1``
 ----------   
-Completes a processing result. The input to the command will be set as completion value to the result. In case result with given id doesn't exist or was already completed, nothing happens. So calling this completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command result.poll instead.
+Completes a processing result. The input to the command will be set as completion value to the result. In case result with given id doesn't exist or was already completed, nothing happens. So calling this completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=result.complete:v1)
 
@@ -17543,7 +17447,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `taskId` | String | true | null | The id (not name!) of the task to complete.
 `variables` | String | false | null | A map of variables to be passed to the task. Can be null.
-`claim` | String | false | null | A boolean flag to define if to claim task by current user before completion. Default is true.
+`claim` | String | false | null | A username to define if to claim task by specified user before completion. Default is null, when claim is not needed.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.

@@ -2206,97 +2206,6 @@ paths:
       description: "Sends a prompt to a bot endpoint and returns the answer. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
-  /api/v3/command/browserstack:
-    get:
-      parameters:
-      - name: "capabilities"
-        in: "query"
-        required: true
-        description: "The selenium capabilities"
-        schema:
-          type: "string"
-      - name: "remoteWebDriverUrl"
-        in: "query"
-        required: true
-        description: "The url of the remote selenium service"
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "Runs a selenium test remotely in browserstack. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "capabilities"
-        in: "query"
-        required: true
-        description: "The selenium capabilities"
-        schema:
-          type: "string"
-      - name: "remoteWebDriverUrl"
-        in: "query"
-        required: true
-        description: "The url of the remote selenium service"
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "Runs a selenium test remotely in browserstack. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
   /api/v3/command/cache.clear:
     get:
       parameters:
@@ -10302,85 +10211,6 @@ paths:
       description: "DEPRECATED. Use the set command instead. Sets any parameter value as header. For example header.set?key1=value1&key2=value2 would become the headers: key1: value1 and key2: value2 Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
-  /api/v3/command/hello.world:
-    get:
-      parameters:
-      - name: "name"
-        in: "query"
-        required: true
-        description: "The person name to greet."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "This command simply returns the greeting Hello <XYZ as an Input> by <logged in person>. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
-      responses:
-        "200":
-          description: "default response"
-          content:
-            '*/*':
-              schema:
-                oneOf:
-                - type: "object"
-    post:
-      parameters:
-      - name: "name"
-        in: "query"
-        required: true
-        description: "The person name to greet."
-        schema:
-          type: "string"
-      - name: "id"
-        in: "query"
-        required: false
-        description: "The optional id of this command, unique within the pipeline."
-        schema:
-          type: "string"
-      - name: "if"
-        in: "query"
-        required: false
-        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
-        schema:
-          type: "string"
-      - name: "onError"
-        in: "query"
-        required: false
-        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
-        schema:
-          type: "string"
-      - name: "eval"
-        in: "query"
-        required: false
-        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      description: "This command simply returns the greeting Hello <XYZ as an Input> by <logged in person>. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
-      tags:
-      - "Commands API"
   /api/v3/command/htmlunit.website.form.find:
     get:
       parameters:
@@ -17568,7 +17398,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Sends the given message as email. The message's subject and body will be used for in the email accordingly. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Sends the given message as email. The message's subject and body will be used in the email accordingly. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -17659,7 +17489,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Sends the given message as email. The message's subject and body will be used for in the email accordingly. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Sends the given message as email. The message's subject and body will be used in the email accordingly. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/mail.verify:
@@ -26035,7 +25865,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Completes a processing result. The input to the command will be set as completion value to the result. In case result with given id doesn't exist or was already completed, nothing happens. So calling this completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command result.poll instead. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Completes a processing result. The input to the command will be set as completion value to the result. In case result with given id doesn't exist or was already completed, nothing happens. So calling this completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -26090,7 +25920,7 @@ paths:
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
-      description: "Completes a processing result. The input to the command will be set as completion value to the result. In case result with given id doesn't exist or was already completed, nothing happens. So calling this completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here. Use command result.poll instead. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Completes a processing result. The input to the command will be set as completion value to the result. In case result with given id doesn't exist or was already completed, nothing happens. So calling this completion multiple times has no effect. First one wins. Also using this for polling (by checking for non-existing exception) will not work for performance and security reasons here.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/result.delete:
@@ -36475,7 +36305,7 @@ paths:
       - name: "claim"
         in: "query"
         required: false
-        description: "A boolean flag to define if to claim task by current user before completion. Default is true."
+        description: "A username to define if to claim task by specified user before completion. Default is null, when claim is not needed."
         schema:
           type: "string"
       - name: "id"
@@ -36536,7 +36366,7 @@ paths:
       - name: "claim"
         in: "query"
         required: false
-        description: "A boolean flag to define if to claim task by current user before completion. Default is true."
+        description: "A username to define if to claim task by specified user before completion. Default is null, when claim is not needed."
         schema:
           type: "string"
       - name: "id"
