@@ -174,13 +174,13 @@ paths:
       description: "Returns the OpenAPI documentation of PEL utils. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
-  /api/v3/command/app.config.get:
+  /api/v3/command/app.config.find:
     get:
       parameters:
       - name: "app"
         in: "query"
         required: false
-        description: "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead."
+        description: "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead. If not found, empty JSON is returned."
         schema:
           type: "string"
       - name: "github"
@@ -243,7 +243,7 @@ paths:
         description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
         schema:
           type: "string"
-      description: "Returns the configuration of an app or a list of apps. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns the configuration of an app or a list of apps the currently logged-in user is allowed to see. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -259,7 +259,7 @@ paths:
       - name: "app"
         in: "query"
         required: false
-        description: "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead."
+        description: "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead. If not found, empty JSON is returned."
         schema:
           type: "string"
       - name: "github"
@@ -322,7 +322,7 @@ paths:
         description: "Refers to the name of a stored secret entry to be used by this command. If not null, all other credentials parameters are ignored if there exists any."
         schema:
           type: "string"
-      description: "Returns the configuration of an app or a list of apps. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Returns the configuration of an app or a list of apps the currently logged-in user is allowed to see. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/app.install:
@@ -3092,7 +3092,7 @@ paths:
       description: "Returns the V7 compliant JSON schema for all built-in pipeline commands. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
-  /api/v3/command/config.get:
+  /api/v3/command/config.find:
     get:
       parameters:
       - name: "group"
@@ -9393,13 +9393,19 @@ paths:
       - name: "name"
         in: "query"
         required: true
-        description: "The name of the function to run."
+        description: "(default) The name of the function to run."
         schema:
           type: "string"
       - name: "args"
         in: "query"
         required: false
         description: "The arguments to be passed to the function. Must be serializable to JSON. Can also be a custom uri starting with $uri: pointing to a document which is a JSON document or can be converted to a JSON. "
+        schema:
+          type: "string"
+      - name: "evalArgs"
+        in: "query"
+        required: false
+        description: "Search the args param value recursively for PEL expressions and parse them?"
         schema:
           type: "string"
       - name: "id"
@@ -9454,13 +9460,19 @@ paths:
       - name: "name"
         in: "query"
         required: true
-        description: "The name of the function to run."
+        description: "(default) The name of the function to run."
         schema:
           type: "string"
       - name: "args"
         in: "query"
         required: false
         description: "The arguments to be passed to the function. Must be serializable to JSON. Can also be a custom uri starting with $uri: pointing to a document which is a JSON document or can be converted to a JSON. "
+        schema:
+          type: "string"
+      - name: "evalArgs"
+        in: "query"
+        required: false
+        description: "Search the args param value recursively for PEL expressions and parse them?"
         schema:
           type: "string"
       - name: "id"
@@ -15609,6 +15621,610 @@ paths:
       description: "Defines the end of an `if` command. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
+  /api/v3/command/imap.delete:
+    get:
+      parameters:
+      - name: "folder"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, Folder from where we want to delete the mails. Default value is INBOX."
+        schema:
+          type: "string"
+      - name: "from"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, filter mails by provided sender."
+        schema:
+          type: "string"
+      - name: "unreadOnly"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, true to get unread mails only. Default value will be false."
+        schema:
+          type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. "
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "Email address(as a username) of the mailbox."
+        schema:
+          type: "string"
+      - name: "authToken"
+        in: "query"
+        required: true
+        description: "Authorisation token collected from the Office365."
+        schema:
+          type: "string"
+      description: "Deletes the selected mails by the given filter parameters, e.g. delete mails for the filters unreadOnly, folder, sender. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "folder"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, Folder from where we want to delete the mails. Default value is INBOX."
+        schema:
+          type: "string"
+      - name: "from"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, filter mails by provided sender."
+        schema:
+          type: "string"
+      - name: "unreadOnly"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, true to get unread mails only. Default value will be false."
+        schema:
+          type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. "
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "Email address(as a username) of the mailbox."
+        schema:
+          type: "string"
+      - name: "authToken"
+        in: "query"
+        required: true
+        description: "Authorisation token collected from the Office365."
+        schema:
+          type: "string"
+      description: "Deletes the selected mails by the given filter parameters, e.g. delete mails for the filters unreadOnly, folder, sender. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/imap.get:
+    get:
+      parameters:
+      - name: "folder"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, search mails from particular given folder. Default value will be INBOX."
+        schema:
+          type: "string"
+      - name: "from"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, filter mails by provided sender."
+        schema:
+          type: "string"
+      - name: "unreadOnly"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, true to get unread mails only. Default value will be false."
+        schema:
+          type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. "
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "Email address(as a username) of the mailbox."
+        schema:
+          type: "string"
+      - name: "authToken"
+        in: "query"
+        required: true
+        description: "Authorisation token collected from the Office365."
+        schema:
+          type: "string"
+      description: "Searches the mails and returns all the mails retrieved using the given criteria. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "folder"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, search mails from particular given folder. Default value will be INBOX."
+        schema:
+          type: "string"
+      - name: "from"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, filter mails by provided sender."
+        schema:
+          type: "string"
+      - name: "unreadOnly"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, true to get unread mails only. Default value will be false."
+        schema:
+          type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. "
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "Email address(as a username) of the mailbox."
+        schema:
+          type: "string"
+      - name: "authToken"
+        in: "query"
+        required: true
+        description: "Authorisation token collected from the Office365."
+        schema:
+          type: "string"
+      description: "Searches the mails and returns all the mails retrieved using the given criteria. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/imap.mkdir:
+    get:
+      parameters:
+      - name: "destinationFolder"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, creates a folder inside the given folder. Default value is INBOX."
+        schema:
+          type: "string"
+      - name: "folderName"
+        in: "query"
+        required: true
+        description: "Folder name to create a folder inside a destination folder."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. "
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "Email address(as a username) of the mailbox."
+        schema:
+          type: "string"
+      - name: "authToken"
+        in: "query"
+        required: true
+        description: "Authorisation token collected from the Office365."
+        schema:
+          type: "string"
+      description: "Creates the folder as a sibling of INBOX or inside INBOX or any other folder and returns the status. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "destinationFolder"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, creates a folder inside the given folder. Default value is INBOX."
+        schema:
+          type: "string"
+      - name: "folderName"
+        in: "query"
+        required: true
+        description: "Folder name to create a folder inside a destination folder."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. "
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "Email address(as a username) of the mailbox."
+        schema:
+          type: "string"
+      - name: "authToken"
+        in: "query"
+        required: true
+        description: "Authorisation token collected from the Office365."
+        schema:
+          type: "string"
+      description: "Creates the folder as a sibling of INBOX or inside INBOX or any other folder and returns the status. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/imap.move:
+    get:
+      parameters:
+      - name: "sourceFolder"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, Source folder from where we want to move the mails. Default value is INBOX."
+        schema:
+          type: "string"
+      - name: "destinationFolder"
+        in: "query"
+        required: true
+        description: "Targeted folder for the mails to move."
+        schema:
+          type: "string"
+      - name: "from"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, filter mails by provided sender."
+        schema:
+          type: "string"
+      - name: "unreadOnly"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, true to get unread mails only. Default value will be false."
+        schema:
+          type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. "
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "Email address(as a username) of the mailbox."
+        schema:
+          type: "string"
+      - name: "authToken"
+        in: "query"
+        required: true
+        description: "Authorisation token collected from the Office365."
+        schema:
+          type: "string"
+      description: "Moves the selected mails by the given filter parameters to the provided mailbox folder. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "sourceFolder"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, Source folder from where we want to move the mails. Default value is INBOX."
+        schema:
+          type: "string"
+      - name: "destinationFolder"
+        in: "query"
+        required: true
+        description: "Targeted folder for the mails to move."
+        schema:
+          type: "string"
+      - name: "from"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, filter mails by provided sender."
+        schema:
+          type: "string"
+      - name: "unreadOnly"
+        in: "query"
+        required: false
+        description: "Optional filter parameter, true to get unread mails only. Default value will be false."
+        schema:
+          type: "boolean"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. "
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "Email address(as a username) of the mailbox."
+        schema:
+          type: "string"
+      - name: "authToken"
+        in: "query"
+        required: true
+        description: "Authorisation token collected from the Office365."
+        schema:
+          type: "string"
+      description: "Moves the selected mails by the given filter parameters to the provided mailbox folder. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
   /api/v3/command/job:
     get:
       parameters:
@@ -18778,6 +19394,12 @@ paths:
         description: "The payload to be send in the message. If parameter is missing, the message body will be used as payload."
         schema:
           type: "string"
+      - name: "evalPayload"
+        in: "query"
+        required: false
+        description: "Search the payload param value recursively for PEL expressions and parse them?"
+        schema:
+          type: "string"
       - name: "headers"
         in: "query"
         required: false
@@ -18849,6 +19471,12 @@ paths:
         in: "query"
         required: false
         description: "The payload to be send in the message. If parameter is missing, the message body will be used as payload."
+        schema:
+          type: "string"
+      - name: "evalPayload"
+        in: "query"
+        required: false
+        description: "Search the payload param value recursively for PEL expressions and parse them?"
         schema:
           type: "string"
       - name: "headers"
@@ -34893,6 +35521,85 @@ paths:
         schema:
           type: "string"
       description: "Returns the receive logs of the given webhook. Note: This command is currently experimental and returns just dummy data. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/workflow.definition.find:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns all workflow definition properties from the property store, the currently logged-in user is allowed to see. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns all workflow definition properties from the property store, the currently logged-in user is allowed to see. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/workflow.deploy:

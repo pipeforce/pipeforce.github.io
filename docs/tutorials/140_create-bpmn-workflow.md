@@ -437,23 +437,17 @@ In your trigger pipeline, you can directly add the values you would like to defi
 
 ```yaml
 pipeline:
-
   - event.listen:
       key: "property.created"
-      filter: "#{body.payload.target.key.contains('global/app/YOUR_APP/object/vacationrequest/v1/instance')}"
-
-  - set.var:
-      key: "formData"
-      value: "#{@property.lazy(body.payload.target.key)}"
-
+      filter: "#{body.payload.target.path.contains('global/app/YOUR_APP/object/vacationrequest/v1/instance')}"
+  - set:
+      output: "#{vars.formData}"
+      value: "#{@property.lazy(body.payload.target.path)}"
+      
   - workflow.start:
       key: "YOUR_APP_vacation-request"
-      workflowModelInstanceKey: "#{body.payload.target.key}"
-      variables: "#{{
-        'vacationStartDate': @date.parseToInstant(vars.formData['vacationStartDate']),
-        'vacationEndDate': @date.parseToInstant(vars.formData['vacationEndDate']),
-        'requester': @user.email()
-        }}"
+      workflowModelInstanceKey: "#{body.payload.target.path}"
+      variables: "#{{ 'vacationStartDate': @date.parseToInstant(vars.formData['vacationStartDate']), 'vacationEndDate': @date.parseToInstant(vars.formData['vacationEndDate']), 'requester': @user.email()}}"
 ```
 
 As you can see at the bottom of the pipeline, in addition to the `vacation start date` and the `vacation end date`, you have now defined a new process variable `requester`, and matched the email of the user who started the workflow to this variable.

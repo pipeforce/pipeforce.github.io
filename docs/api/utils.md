@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 15/09/2023 08:24:33 by CommandComplianceTest -->
+<!-- Generated: 26/09/2023 17:21:11 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -820,6 +820,24 @@ Returns a new empty list.
 #### Example  
 ```  
 @data.emptyList()  
+```  
+
+### keys(data)   
+Returns the keys of the given object. Which could be a JSON object for example.
+If the object doesn't have a key, returns empty list.   
+
+#### Returns  
+``list<string>`` - The list of key of this object.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | A key value structure. 
+
+
+#### Example  
+```  
+@data.keys(data)  
 ```  
 
  
