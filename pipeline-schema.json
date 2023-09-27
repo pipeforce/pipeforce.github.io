@@ -130,9 +130,9 @@
             },
             "required" : [ ]
           },
-          "app.config.get" : {
+          "app.config.find" : {
             "type" : "object",
-            "description" : "Returns the configuration of an app or a list of apps.",
+            "description" : "Returns the configuration of an app or a list of apps the currently logged-in user is allowed to see.",
             "x-inputType" : "JsonNode",
             "x-outputType" : "JsonNode",
             "x-icon" : "play_circle_outline",
@@ -143,7 +143,7 @@
             "properties" : {
               "app" : {
                 "type" : "string",
-                "description" : "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead."
+                "description" : "The name of the app to load the config from. If null or empty, the config of all apps will be returned instead. If not found, empty JSON is returned."
               },
               "github" : {
                 "type" : "string",
@@ -1331,7 +1331,7 @@
             },
             "required" : [ ]
           },
-          "config.get" : {
+          "config.find" : {
             "type" : "object",
             "description" : "Returns all admin config settings for a given group from the backend as a JSON in this format: {configKey:{value:someValue, canOverwrite:true|false}}. The attribute canOverwrite is only available if param includePermission is set.",
             "x-inputType" : "JsonNode",
@@ -3929,17 +3929,22 @@
             "x-outputType" : "JsonNode",
             "x-icon" : "play_circle_outline",
             "x-iconColor" : "",
-            "x-defaultParameter" : null,
+            "x-defaultParameter" : "name",
             "x-alias" : [ ],
             "x-trigger" : false,
             "properties" : {
               "name" : {
                 "type" : "string",
-                "description" : "The name of the function to run."
+                "description" : "(default) The name of the function to run."
               },
               "args" : {
                 "type" : "string",
                 "description" : "The arguments to be passed to the function. Must be serializable to JSON. Can also be a custom uri starting with $uri: pointing to a document which is a JSON document or can be converted to a JSON. "
+              },
+              "evalArgs" : {
+                "type" : "string",
+                "description" : "Search the args param value recursively for PEL expressions and parse them?",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -6457,6 +6462,245 @@
             },
             "required" : [ ]
           },
+          "imap.delete" : {
+            "type" : "object",
+            "description" : "Deletes the selected mails by the given filter parameters, e.g. delete mails for the filters unreadOnly, folder, sender.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "mail",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "folder" : {
+                "type" : "string",
+                "description" : "Optional filter parameter, Folder from where we want to delete the mails. Default value is INBOX.",
+                "default" : "INBOX"
+              },
+              "from" : {
+                "type" : "string",
+                "description" : "Optional filter parameter, filter mails by provided sender."
+              },
+              "unreadOnly" : {
+                "type" : "boolean",
+                "description" : "Optional filter parameter, true to get unread mails only. Default value will be false.",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              },
+              "host" : {
+                "type" : "string",
+                "description" : "Host for the mailbox. E.g. "
+              },
+              "username" : {
+                "type" : "string",
+                "description" : "Email address(as a username) of the mailbox."
+              },
+              "authToken" : {
+                "type" : "string",
+                "description" : "Authorisation token collected from the Office365."
+              }
+            },
+            "required" : [ "host", "username", "authToken" ]
+          },
+          "imap.get" : {
+            "type" : "object",
+            "description" : "Searches the mails and returns all the mails retrieved using the given criteria.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "mail",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "folder" : {
+                "type" : "string",
+                "description" : "Optional filter parameter, search mails from particular given folder. Default value will be INBOX.",
+                "default" : "INBOX"
+              },
+              "from" : {
+                "type" : "string",
+                "description" : "Optional filter parameter, filter mails by provided sender."
+              },
+              "unreadOnly" : {
+                "type" : "boolean",
+                "description" : "Optional filter parameter, true to get unread mails only. Default value will be false.",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              },
+              "host" : {
+                "type" : "string",
+                "description" : "Host for the mailbox. E.g. "
+              },
+              "username" : {
+                "type" : "string",
+                "description" : "Email address(as a username) of the mailbox."
+              },
+              "authToken" : {
+                "type" : "string",
+                "description" : "Authorisation token collected from the Office365."
+              }
+            },
+            "required" : [ "host", "username", "authToken" ]
+          },
+          "imap.mkdir" : {
+            "type" : "object",
+            "description" : "Creates the folder as a sibling of INBOX or inside INBOX or any other folder and returns the status.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "mail",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "destinationFolder" : {
+                "type" : "string",
+                "description" : "Optional filter parameter, creates a folder inside the given folder. Default value is INBOX.",
+                "default" : "INBOX"
+              },
+              "folderName" : {
+                "type" : "string",
+                "description" : "Folder name to create a folder inside a destination folder."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              },
+              "host" : {
+                "type" : "string",
+                "description" : "Host for the mailbox. E.g. "
+              },
+              "username" : {
+                "type" : "string",
+                "description" : "Email address(as a username) of the mailbox."
+              },
+              "authToken" : {
+                "type" : "string",
+                "description" : "Authorisation token collected from the Office365."
+              }
+            },
+            "required" : [ "folderName", "host", "username", "authToken" ]
+          },
+          "imap.move" : {
+            "type" : "object",
+            "description" : "Moves the selected mails by the given filter parameters to the provided mailbox folder.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "mail",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "sourceFolder" : {
+                "type" : "string",
+                "description" : "Optional filter parameter, Source folder from where we want to move the mails. Default value is INBOX.",
+                "default" : "INBOX"
+              },
+              "destinationFolder" : {
+                "type" : "string",
+                "description" : "Targeted folder for the mails to move."
+              },
+              "from" : {
+                "type" : "string",
+                "description" : "Optional filter parameter, filter mails by provided sender."
+              },
+              "unreadOnly" : {
+                "type" : "boolean",
+                "description" : "Optional filter parameter, true to get unread mails only. Default value will be false.",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              },
+              "host" : {
+                "type" : "string",
+                "description" : "Host for the mailbox. E.g. "
+              },
+              "username" : {
+                "type" : "string",
+                "description" : "Email address(as a username) of the mailbox."
+              },
+              "authToken" : {
+                "type" : "string",
+                "description" : "Authorisation token collected from the Office365."
+              }
+            },
+            "required" : [ "destinationFolder", "host", "username", "authToken" ]
+          },
           "job" : {
             "type" : "object",
             "description" : "Schedules any subsequent commands of the current pipeline and executes it at the scheduled times.",
@@ -7770,6 +8014,11 @@
               "payload" : {
                 "type" : "string",
                 "description" : "The payload to be send in the message. If parameter is missing, the message body will be used as payload."
+              },
+              "evalPayload" : {
+                "type" : "string",
+                "description" : "Search the payload param value recursively for PEL expressions and parse them?",
+                "default" : "true"
               },
               "headers" : {
                 "type" : "string",
@@ -14293,6 +14542,40 @@
               }
             },
             "required" : [ "token" ]
+          },
+          "workflow.definition.find" : {
+            "type" : "object",
+            "description" : "Returns all workflow definition properties from the property store, the currently logged-in user is allowed to see.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
           },
           "workflow.deploy" : {
             "type" : "object",
