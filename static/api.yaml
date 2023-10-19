@@ -1988,6 +1988,243 @@ paths:
       description: "DEPRECATED. Converts the input body to JSON and then filters the input body and removes any properties not matching the given filter. Throws exception if input body cannot be converted to JSON.Does nothing, if input body is null or empty. If the first level of the body is a list, appliesthe filter to each element inside the list. This command can be used for example to filter outsensitive information or to shrink a big result set for performance reasons. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
+  /api/v3/command/body.peek:
+    get:
+      parameters:
+      - name: "var"
+        in: "query"
+        required: false
+        description: "(default) The name of the variable to peek from."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Sets the most recent entry of the bodyStack as body. Doesn't remove it from the stack. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "var"
+        in: "query"
+        required: false
+        description: "(default) The name of the variable to peek from."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Sets the most recent entry of the bodyStack as body. Doesn't remove it from the stack. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/body.pop:
+    get:
+      parameters:
+      - name: "var"
+        in: "query"
+        required: false
+        description: "(default) The name of the variable to pop from."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Removes the most recent entry of the bodyStack and sets it to the body. (pops from stack and sets to body), If no entry is left in body stack, null is set to body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "var"
+        in: "query"
+        required: false
+        description: "(default) The name of the variable to pop from."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Removes the most recent entry of the bodyStack and sets it to the body. (pops from stack and sets to body), If no entry is left in body stack, null is set to body. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/body.push:
+    get:
+      parameters:
+      - name: "var"
+        in: "query"
+        required: false
+        description: "(default) The name of the variable to create the body stack under and push the value to. If a list under this variable doesn't exist yet, it will be created."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Sets the current value of the body to a location defined by a PEL. This is handy in case you would like to simply save the body before next command overwrites it.If target is given, it is a PEL which will be executed in order to store the body value to this location. In case the target parameter is missing, the body will be pushed to a variable of name bodyStack. If this variable exists, it is assumed to be a list where the body value can be added at its end. if this variable doesn't exist, it will be created as a stack (list). Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "var"
+        in: "query"
+        required: false
+        description: "(default) The name of the variable to create the body stack under and push the value to. If a list under this variable doesn't exist yet, it will be created."
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Sets the current value of the body to a location defined by a PEL. This is handy in case you would like to simply save the body before next command overwrites it.If target is given, it is a PEL which will be executed in order to store the body value to this location. In case the target parameter is missing, the body will be pushed to a variable of name bodyStack. If this variable exists, it is assumed to be a list where the body value can be added at its end. if this variable doesn't exist, it will be created as a stack (list). Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
   /api/v3/command/body.set:
     get:
       parameters:
@@ -4300,6 +4537,12 @@ paths:
         description: "In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead."
         schema:
           type: "string"
+      - name: "ignoreEmptyItems"
+        in: "query"
+        required: false
+        description: "In case iterate is set to true and an iteration item is an empty JSON, should it be ignored in the output?"
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -4359,6 +4602,12 @@ paths:
         in: "query"
         required: false
         description: "In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead."
+        schema:
+          type: "string"
+      - name: "ignoreEmptyItems"
+        in: "query"
+        required: false
+        description: "In case iterate is set to true and an iteration item is an empty JSON, should it be ignored in the output?"
         schema:
           type: "string"
       - name: "id"
@@ -8028,7 +8277,7 @@ paths:
       - name: "expr"
         in: "query"
         required: true
-        description: "(default) The pipeline expression to be executed."
+        description: "(default) The pipeline expression to be executed. Can be a single pel string or a list of expression strings."
         schema:
           type: "string"
       - name: "id"
@@ -8071,7 +8320,7 @@ paths:
       - name: "expr"
         in: "query"
         required: true
-        description: "(default) The pipeline expression to be executed."
+        description: "(default) The pipeline expression to be executed. Can be a single pel string or a list of expression strings."
         schema:
           type: "string"
       - name: "id"
@@ -9781,7 +10030,7 @@ paths:
       - name: "uuid"
         in: "query"
         required: false
-        description: "The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any."
+        description: "The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any or create a new entry if missing."
         schema:
           type: "string"
       - name: "methods"
@@ -9805,7 +10054,7 @@ paths:
       - name: "mocked"
         in: "query"
         required: false
-        description: "Mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any."
+        description: "If given, mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any."
         schema:
           type: "string"
       - name: "weight"
@@ -9816,13 +10065,13 @@ paths:
           type: "string"
       - name: "pattern"
         in: "query"
-        required: false
+        required: true
         description: "The wildcard pattern, the incoming request path must match in order to get called. This will overwrite the value of the input JSON if there is any."
         schema:
           type: "string"
       - name: "target"
         in: "query"
-        required: false
+        required: true
         description: "The target uri to be executed in case the request matches. This will overwrite the value of the input JSON if there is any."
         schema:
           type: "string"
@@ -9896,7 +10145,7 @@ paths:
       - name: "uuid"
         in: "query"
         required: false
-        description: "The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any."
+        description: "The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any or create a new entry if missing."
         schema:
           type: "string"
       - name: "methods"
@@ -9920,7 +10169,7 @@ paths:
       - name: "mocked"
         in: "query"
         required: false
-        description: "Mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any."
+        description: "If given, mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any."
         schema:
           type: "string"
       - name: "weight"
@@ -9931,13 +10180,13 @@ paths:
           type: "string"
       - name: "pattern"
         in: "query"
-        required: false
+        required: true
         description: "The wildcard pattern, the incoming request path must match in order to get called. This will overwrite the value of the input JSON if there is any."
         schema:
           type: "string"
       - name: "target"
         in: "query"
-        required: false
+        required: true
         description: "The target uri to be executed in case the request matches. This will overwrite the value of the input JSON if there is any."
         schema:
           type: "string"
@@ -15642,6 +15891,18 @@ paths:
         description: "Optional filter parameter, true to get unread mails only. Default value will be false."
         schema:
           type: "boolean"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. outlook.office365.com"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: true
+        description: "Secret, which contains the imap credentials and config json."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -15670,24 +15931,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      - name: "host"
-        in: "query"
-        required: true
-        description: "Host for the mailbox. E.g. "
-        schema:
-          type: "string"
-      - name: "username"
-        in: "query"
-        required: true
-        description: "Email address(as a username) of the mailbox."
-        schema:
-          type: "string"
-      - name: "authToken"
-        in: "query"
-        required: true
-        description: "Authorisation token collected from the Office365."
         schema:
           type: "string"
       description: "Deletes the selected mails by the given filter parameters, e.g. delete mails for the filters unreadOnly, folder, sender. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -15721,6 +15964,18 @@ paths:
         description: "Optional filter parameter, true to get unread mails only. Default value will be false."
         schema:
           type: "boolean"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. outlook.office365.com"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: true
+        description: "Secret, which contains the imap credentials and config json."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -15749,24 +16004,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      - name: "host"
-        in: "query"
-        required: true
-        description: "Host for the mailbox. E.g. "
-        schema:
-          type: "string"
-      - name: "username"
-        in: "query"
-        required: true
-        description: "Email address(as a username) of the mailbox."
-        schema:
-          type: "string"
-      - name: "authToken"
-        in: "query"
-        required: true
-        description: "Authorisation token collected from the Office365."
         schema:
           type: "string"
       description: "Deletes the selected mails by the given filter parameters, e.g. delete mails for the filters unreadOnly, folder, sender. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -15793,6 +16030,18 @@ paths:
         description: "Optional filter parameter, true to get unread mails only. Default value will be false."
         schema:
           type: "boolean"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. outlook.office365.com"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: true
+        description: "Secret, which contains the imap credentials and config json."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -15821,24 +16070,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      - name: "host"
-        in: "query"
-        required: true
-        description: "Host for the mailbox. E.g. "
-        schema:
-          type: "string"
-      - name: "username"
-        in: "query"
-        required: true
-        description: "Email address(as a username) of the mailbox."
-        schema:
-          type: "string"
-      - name: "authToken"
-        in: "query"
-        required: true
-        description: "Authorisation token collected from the Office365."
         schema:
           type: "string"
       description: "Searches the mails and returns all the mails retrieved using the given criteria. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -15872,6 +16103,18 @@ paths:
         description: "Optional filter parameter, true to get unread mails only. Default value will be false."
         schema:
           type: "boolean"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. outlook.office365.com"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: true
+        description: "Secret, which contains the imap credentials and config json."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -15900,24 +16143,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      - name: "host"
-        in: "query"
-        required: true
-        description: "Host for the mailbox. E.g. "
-        schema:
-          type: "string"
-      - name: "username"
-        in: "query"
-        required: true
-        description: "Email address(as a username) of the mailbox."
-        schema:
-          type: "string"
-      - name: "authToken"
-        in: "query"
-        required: true
-        description: "Authorisation token collected from the Office365."
         schema:
           type: "string"
       description: "Searches the mails and returns all the mails retrieved using the given criteria. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -15938,6 +16163,18 @@ paths:
         description: "Folder name to create a folder inside a destination folder."
         schema:
           type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. outlook.office365.com"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: true
+        description: "Secret, which contains the imap credentials and config json."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -15966,24 +16203,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      - name: "host"
-        in: "query"
-        required: true
-        description: "Host for the mailbox. E.g. "
-        schema:
-          type: "string"
-      - name: "username"
-        in: "query"
-        required: true
-        description: "Email address(as a username) of the mailbox."
-        schema:
-          type: "string"
-      - name: "authToken"
-        in: "query"
-        required: true
-        description: "Authorisation token collected from the Office365."
         schema:
           type: "string"
       description: "Creates the folder as a sibling of INBOX or inside INBOX or any other folder and returns the status. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -16011,6 +16230,18 @@ paths:
         description: "Folder name to create a folder inside a destination folder."
         schema:
           type: "string"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. outlook.office365.com"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: true
+        description: "Secret, which contains the imap credentials and config json."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -16039,24 +16270,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      - name: "host"
-        in: "query"
-        required: true
-        description: "Host for the mailbox. E.g. "
-        schema:
-          type: "string"
-      - name: "username"
-        in: "query"
-        required: true
-        description: "Email address(as a username) of the mailbox."
-        schema:
-          type: "string"
-      - name: "authToken"
-        in: "query"
-        required: true
-        description: "Authorisation token collected from the Office365."
         schema:
           type: "string"
       description: "Creates the folder as a sibling of INBOX or inside INBOX or any other folder and returns the status. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -16089,6 +16302,18 @@ paths:
         description: "Optional filter parameter, true to get unread mails only. Default value will be false."
         schema:
           type: "boolean"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. outlook.office365.com"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: true
+        description: "Secret, which contains the imap credentials and config json."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -16117,24 +16342,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      - name: "host"
-        in: "query"
-        required: true
-        description: "Host for the mailbox. E.g. "
-        schema:
-          type: "string"
-      - name: "username"
-        in: "query"
-        required: true
-        description: "Email address(as a username) of the mailbox."
-        schema:
-          type: "string"
-      - name: "authToken"
-        in: "query"
-        required: true
-        description: "Authorisation token collected from the Office365."
         schema:
           type: "string"
       description: "Moves the selected mails by the given filter parameters to the provided mailbox folder. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -16174,6 +16381,18 @@ paths:
         description: "Optional filter parameter, true to get unread mails only. Default value will be false."
         schema:
           type: "boolean"
+      - name: "host"
+        in: "query"
+        required: true
+        description: "Host for the mailbox. E.g. outlook.office365.com"
+        schema:
+          type: "string"
+      - name: "secret"
+        in: "query"
+        required: true
+        description: "Secret, which contains the imap credentials and config json."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -16202,24 +16421,6 @@ paths:
         in: "query"
         required: false
         description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-        schema:
-          type: "string"
-      - name: "host"
-        in: "query"
-        required: true
-        description: "Host for the mailbox. E.g. "
-        schema:
-          type: "string"
-      - name: "username"
-        in: "query"
-        required: true
-        description: "Email address(as a username) of the mailbox."
-        schema:
-          type: "string"
-      - name: "authToken"
-        in: "query"
-        required: true
-        description: "Authorisation token collected from the Office365."
         schema:
           type: "string"
       description: "Moves the selected mails by the given filter parameters to the provided mailbox folder. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -20904,7 +21105,13 @@ paths:
       - name: "pipelineKey"
         in: "query"
         required: false
-        description: "The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
+        description: "(Deprecated, use pipelinePath instead) The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
+        schema:
+          type: "string"
+      - name: "pipelinePath"
+        in: "query"
+        required: false
+        description: "The property path of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
         schema:
           type: "string"
       - name: "id"
@@ -20959,7 +21166,13 @@ paths:
       - name: "pipelineKey"
         in: "query"
         required: false
-        description: "The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
+        description: "(Deprecated, use pipelinePath instead) The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
+        schema:
+          type: "string"
+      - name: "pipelinePath"
+        in: "query"
+        required: false
+        description: "The property path of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
         schema:
           type: "string"
       - name: "id"
@@ -22732,7 +22945,7 @@ paths:
       description: "Creates and adds attachments to a property. Optionally with binary payload data. Overwrites / updates any existing attachments with same name. The attachments can be added in three ways: A) A single content object or a collection of content objects is given in input, then its payload and metadata is used to create the attachment(s). B) Data different to a content object is given in the input. Then this data will be used as the payload for the attachment. C) Input is null or empty. Then an empty attachment without any payload will be created. In case B) and C) the additional parameters name, contentType and length are mandatory. In case A) The parameters name, contentType and length are optional and will be used as fallback value in case a content object is them missing.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
-  /api/v3/command/attachment.put.uri:
+  /api/v3/command/property.attachment.put.uri:
     get:
       parameters:
       - name: "key"
@@ -28221,6 +28434,12 @@ paths:
         description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
         schema:
           type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
       description: "Creates a new attachment and adds it to the given secret send outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secretsend.outbox.attachment.chunk.put. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
@@ -28292,6 +28511,12 @@ paths:
         in: "query"
         required: false
         description: "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
         schema:
           type: "string"
       description: "Creates a new attachment and adds it to the given secret send outbox. The content of the attachment is expected to be referenced in the content param or - if empty - in the body. It's also possible to add the content later using the command secretsend.outbox.attachment.chunk.put. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -35620,7 +35845,13 @@ paths:
       - name: "propertyKey"
         in: "query"
         required: false
-        description: "The optional key of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this propertyKey is missing, the BPMN is expected to be in the body."
+        description: "DEPRECATED. Use propertyPath instead."
+        schema:
+          type: "string"
+      - name: "propertyPath"
+        in: "query"
+        required: false
+        description: "The optional path of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this param is missing, the BPMN is expected to be in the body."
         schema:
           type: "string"
       - name: "id"
@@ -35681,7 +35912,13 @@ paths:
       - name: "propertyKey"
         in: "query"
         required: false
-        description: "The optional key of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this propertyKey is missing, the BPMN is expected to be in the body."
+        description: "DEPRECATED. Use propertyPath instead."
+        schema:
+          type: "string"
+      - name: "propertyPath"
+        in: "query"
+        required: false
+        description: "The optional path of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this param is missing, the BPMN is expected to be in the body."
         schema:
           type: "string"
       - name: "id"
@@ -35813,7 +36050,7 @@ paths:
       parameters:
       - name: "processInstanceId"
         in: "query"
-        required: true
+        required: false
         description: "The processInstanceId which refers to the process to be notified by this event. One of businessKey or processInstanceId must be given."
         schema:
           type: "string"
@@ -35827,6 +36064,12 @@ paths:
         in: "query"
         required: true
         description: "The name of this message. It is used to find the endpoint to be triggered in the workflow."
+        schema:
+          type: "string"
+      - name: "variables"
+        in: "query"
+        required: false
+        description: "The process variables to apply on message target."
         schema:
           type: "string"
       - name: "id"
@@ -35874,7 +36117,7 @@ paths:
       parameters:
       - name: "processInstanceId"
         in: "query"
-        required: true
+        required: false
         description: "The processInstanceId which refers to the process to be notified by this event. One of businessKey or processInstanceId must be given."
         schema:
           type: "string"
@@ -35888,6 +36131,12 @@ paths:
         in: "query"
         required: true
         description: "The name of this message. It is used to find the endpoint to be triggered in the workflow."
+        schema:
+          type: "string"
+      - name: "variables"
+        in: "query"
+        required: false
+        description: "The process variables to apply on message target."
         schema:
           type: "string"
       - name: "id"
@@ -36992,6 +37241,109 @@ paths:
         schema:
           type: "string"
       description: "Starts a new instance of a process in the workflow engine. \nThe given pipe message will be serialized to JSON and\nput as variable <code>pipeJson</code> into context of the \nprocess (process variables).\nReturns the input message unchanged. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/workflow.task.claim:
+    get:
+      parameters:
+      - name: "taskId"
+        in: "query"
+        required: true
+        description: "The id (not name!) of the task to claim."
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "The username of the user to claim the task for"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Claims a given task to a given user. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "taskId"
+        in: "query"
+        required: true
+        description: "The id (not name!) of the task to claim."
+        schema:
+          type: "string"
+      - name: "username"
+        in: "query"
+        required: true
+        description: "The username of the user to claim the task for"
+        schema:
+          type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Claims a given task to a given user. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/workflow.task.complete:

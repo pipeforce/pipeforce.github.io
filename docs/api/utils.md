@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 26/09/2023 17:21:11 by CommandComplianceTest -->
+<!-- Generated: 19/10/2023 06:39:18 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -2048,6 +2048,23 @@ Creates a new empty list.
 #### Example  
 ```  
 @list.create()  
+```  
+
+### copy(list)   
+Creates a flat copy of given list and returns it as new list.   
+
+#### Returns  
+``list`` - A new, modifiable list with items copied over from given list.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+list | ``collection`` | The list to create a flat copy from. 
+
+
+#### Example  
+```  
+@list.copy(list)  
 ```  
 
  

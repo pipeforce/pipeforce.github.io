@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 26/09/2023 by CommandComplianceTest -->
+<!-- Generated: 19/10/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -1087,6 +1087,147 @@ http://host/api/v3/command/body.filter?properties=<value>&removeKey=<value>&id=<
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command body.filter properties=<value> removeKey=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## body.peek ``v1``
+----------   
+Sets the most recent entry of the bodyStack as body. Doesn't remove it from the stack.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=body.peek:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`var` | String | false | bodyStack | The name of the variable to peek from.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - body.peek:  
+      var: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/body.peek?var=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command body.peek var=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## body.pop ``v1``
+----------   
+Removes the most recent entry of the bodyStack and sets it to the body. (pops from stack and sets to body), If no entry is left in body stack, null is set to body.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=body.pop:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`var` | String | false | bodyStack | The name of the variable to pop from.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - body.pop:  
+      var: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/body.pop?var=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command body.pop var=<value> id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## body.push ``v1``
+----------   
+Sets the current value of the body to a location defined by a PEL. This is handy in case you would like to simply save the body before next command overwrites it.If target is given, it is a PEL which will be executed in order to store the body value to this location. In case the target parameter is missing, the body will be pushed to a variable of name bodyStack. If this variable exists, it is assumed to be a list where the body value can be added at its end. if this variable doesn't exist, it will be created as a stack (list).
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=body.push:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`var` | String | false | bodyStack | The name of the variable to create the body stack under and push the value to. If a list under this variable doesn't exist yet, it will be created.
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - body.push:  
+      var: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/body.push?var=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command body.push var=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -2272,6 +2413,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `rules` | String | false | null | A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -&#62 outputPEL1. Multiple rules are separated by a comma directly followed by a new line.
 `iterate` | String | false | null | In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead.
+`ignoreEmptyItems` | String | false | false | In case iterate is set to true and an iteration item is an empty JSON, should it be ignored in the output?
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -2286,6 +2428,7 @@ pipeline:
   - data.mapping:  
       rules: <value>  
       iterate: <value>  
+      ignoreEmptyItems: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -2299,12 +2442,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/data.mapping?rules=<value>&iterate=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/data.mapping?rules=<value>&iterate=<value>&ignoreEmptyItems=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command data.mapping rules=<value> iterate=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command data.mapping rules=<value> iterate=<value> ignoreEmptyItems=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -4081,7 +4224,7 @@ Executes a given pipeline expression with the message as context.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`expr` | String | true | null | The pipeline expression to be executed.
+`expr` | String | true | null | The pipeline expression to be executed. Can be a single pel string or a list of expression strings.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -5020,15 +5163,15 @@ Adds a new endpoint configuration. Expects the config as JSON in the input. In c
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`uuid` | String | false | null | The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any.
-`methods` | String | false | null | A list of HTTP methods to allow. If this list contains *, all methods are allowed. This will overwrite the value of the input JSON if there is any.
-`enabled` | String | false | null | Enables or disables this endpoint temporarily. This will overwrite the value of the input JSON if there is any.
-`polling` | String | false | null | In case this endpoints is an async target, should a polling redirect be applied to the request so it polls for the result until has been processed or timed out?
-`mocked` | String | false | null | Mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any.
-`weight` | String | false | null | The weighting of this entry. In case a path matches two entries, the one with higher wight value will win.
-`pattern` | String | false | null | The wildcard pattern, the incoming request path must match in order to get called. This will overwrite the value of the input JSON if there is any.
-`target` | String | false | null | The target uri to be executed in case the request matches. This will overwrite the value of the input JSON if there is any.
-`authenticate` | String | false | null | Is authentication needed for this endpoint? In this case, the Authorization header must exist and must contain a valid authentication token or credentials. This will overwrite the value of the input JSON if there is any.
+`uuid` | String | false | null | The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any or create a new entry if missing.
+`methods` | String | false | * | A list of HTTP methods to allow. If this list contains *, all methods are allowed. This will overwrite the value of the input JSON if there is any.
+`enabled` | String | false | true | Enables or disables this endpoint temporarily. This will overwrite the value of the input JSON if there is any.
+`polling` | String | false | false | In case this endpoints is an async target, should a polling redirect be applied to the request so it polls for the result until has been processed or timed out?
+`mocked` | String | false | null | If given, mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any.
+`weight` | String | false | 0 | The weighting of this entry. In case a path matches two entries, the one with higher wight value will win.
+`pattern` | String | true | null | The wildcard pattern, the incoming request path must match in order to get called. This will overwrite the value of the input JSON if there is any.
+`target` | String | true | null | The target uri to be executed in case the request matches. This will overwrite the value of the input JSON if there is any.
+`authenticate` | String | false | false | Is authentication needed for this endpoint? In this case, the Authorization header must exist and must contain a valid authentication token or credentials. This will overwrite the value of the input JSON if there is any.
 `roles` | String | false | null | The authenticated user must be assigned to at least one of the roles from this list. If null or empty, no authorization check is done after successful authentication. Authentication is mandatory to be enabled for this. This will overwrite the value of the input JSON if there is any.
 `groups` | String | false | null | The authenticated user must be member to at least one of the groups from this list. If null or empty, no authorization check is done after successful authentication. Authentication is mandatory to be enabled for this. This will overwrite the value of the input JSON if there is any.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
@@ -7692,14 +7835,13 @@ Name | Type | Required | Default | Description
 `folder` | String | false | INBOX | Optional filter parameter, Folder from where we want to delete the mails. Default value is INBOX.
 `from` | String | false | null | Optional filter parameter, filter mails by provided sender.
 `unreadOnly` | Boolean | false | false | Optional filter parameter, true to get unread mails only. Default value will be false.
+`host` | String | true | null | Host for the mailbox. E.g. outlook.office365.com
+`secret` | String | true | null | Secret, which contains the imap credentials and config json.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`host` | String | true | null | Host for the mailbox. E.g. 
-`username` | String | true | null | Email address(as a username) of the mailbox.
-`authToken` | String | true | null | Authorisation token collected from the Office365.
 
 
 **Pipeline example:**  
@@ -7709,14 +7851,13 @@ pipeline:
       folder: <value>  
       from: <value>  
       unreadOnly: <value>  
+      host: <value>  
+      secret: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
       eval: <value>  
       output: <value>  
-      host: <value>  
-      username: <value>  
-      authToken: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7724,12 +7865,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/imap.delete?folder=<value>&from=<value>&unreadOnly=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&host=<value>&username=<value>&authToken=<value>  
+http://host/api/v3/command/imap.delete?folder=<value>&from=<value>&unreadOnly=<value>&host=<value>&secret=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command imap.delete folder=<value> from=<value> unreadOnly=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> host=<value> username=<value> authToken=<value>  
+pi command imap.delete folder=<value> from=<value> unreadOnly=<value> host=<value> secret=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7751,14 +7892,13 @@ Name | Type | Required | Default | Description
 `folder` | String | false | INBOX | Optional filter parameter, search mails from particular given folder. Default value will be INBOX.
 `from` | String | false | null | Optional filter parameter, filter mails by provided sender.
 `unreadOnly` | Boolean | false | false | Optional filter parameter, true to get unread mails only. Default value will be false.
+`host` | String | true | null | Host for the mailbox. E.g. outlook.office365.com
+`secret` | String | true | null | Secret, which contains the imap credentials and config json.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`host` | String | true | null | Host for the mailbox. E.g. 
-`username` | String | true | null | Email address(as a username) of the mailbox.
-`authToken` | String | true | null | Authorisation token collected from the Office365.
 
 
 **Pipeline example:**  
@@ -7768,14 +7908,13 @@ pipeline:
       folder: <value>  
       from: <value>  
       unreadOnly: <value>  
+      host: <value>  
+      secret: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
       eval: <value>  
       output: <value>  
-      host: <value>  
-      username: <value>  
-      authToken: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7783,12 +7922,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/imap.get?folder=<value>&from=<value>&unreadOnly=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&host=<value>&username=<value>&authToken=<value>  
+http://host/api/v3/command/imap.get?folder=<value>&from=<value>&unreadOnly=<value>&host=<value>&secret=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command imap.get folder=<value> from=<value> unreadOnly=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> host=<value> username=<value> authToken=<value>  
+pi command imap.get folder=<value> from=<value> unreadOnly=<value> host=<value> secret=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7809,14 +7948,13 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `destinationFolder` | String | false | INBOX | Optional filter parameter, creates a folder inside the given folder. Default value is INBOX.
 `folderName` | String | true | null | Folder name to create a folder inside a destination folder.
+`host` | String | true | null | Host for the mailbox. E.g. outlook.office365.com
+`secret` | String | true | null | Secret, which contains the imap credentials and config json.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`host` | String | true | null | Host for the mailbox. E.g. 
-`username` | String | true | null | Email address(as a username) of the mailbox.
-`authToken` | String | true | null | Authorisation token collected from the Office365.
 
 
 **Pipeline example:**  
@@ -7825,14 +7963,13 @@ pipeline:
   - imap.mkdir:  
       destinationFolder: <value>  
       folderName: <value>  
+      host: <value>  
+      secret: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
       eval: <value>  
       output: <value>  
-      host: <value>  
-      username: <value>  
-      authToken: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7840,12 +7977,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/imap.mkdir?destinationFolder=<value>&folderName=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&host=<value>&username=<value>&authToken=<value>  
+http://host/api/v3/command/imap.mkdir?destinationFolder=<value>&folderName=<value>&host=<value>&secret=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command imap.mkdir destinationFolder=<value> folderName=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> host=<value> username=<value> authToken=<value>  
+pi command imap.mkdir destinationFolder=<value> folderName=<value> host=<value> secret=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -7868,14 +8005,13 @@ Name | Type | Required | Default | Description
 `destinationFolder` | String | true | null | Targeted folder for the mails to move.
 `from` | String | false | null | Optional filter parameter, filter mails by provided sender.
 `unreadOnly` | Boolean | false | false | Optional filter parameter, true to get unread mails only. Default value will be false.
+`host` | String | true | null | Host for the mailbox. E.g. outlook.office365.com
+`secret` | String | true | null | Secret, which contains the imap credentials and config json.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
-`host` | String | true | null | Host for the mailbox. E.g. 
-`username` | String | true | null | Email address(as a username) of the mailbox.
-`authToken` | String | true | null | Authorisation token collected from the Office365.
 
 
 **Pipeline example:**  
@@ -7886,14 +8022,13 @@ pipeline:
       destinationFolder: <value>  
       from: <value>  
       unreadOnly: <value>  
+      host: <value>  
+      secret: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
       eval: <value>  
       output: <value>  
-      host: <value>  
-      username: <value>  
-      authToken: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -7901,12 +8036,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/imap.move?sourceFolder=<value>&destinationFolder=<value>&from=<value>&unreadOnly=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>&host=<value>&username=<value>&authToken=<value>  
+http://host/api/v3/command/imap.move?sourceFolder=<value>&destinationFolder=<value>&from=<value>&unreadOnly=<value>&host=<value>&secret=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command imap.move sourceFolder=<value> destinationFolder=<value> from=<value> unreadOnly=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value> host=<value> username=<value> authToken=<value>  
+pi command imap.move sourceFolder=<value> destinationFolder=<value> from=<value> unreadOnly=<value> host=<value> secret=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -10223,7 +10358,8 @@ Returns the status of a running debugging session.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `sessionId` | String | false | null | The debug session id. If null or empty, a new debugging session is created.
-`pipelineKey` | String | false | null | The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set.
+`pipelineKey` | String | false | null | (Deprecated, use pipelinePath instead) The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set.
+`pipelinePath` | String | false | null | The property path of the pipeline to monitor. Required only on first call. Ignored if sessionId is set.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -10237,6 +10373,7 @@ pipeline:
   - pipeline.debug.status:  
       sessionId: <value>  
       pipelineKey: <value>  
+      pipelinePath: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -10249,12 +10386,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/pipeline.debug.status?sessionId=<value>&pipelineKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/pipeline.debug.status?sessionId=<value>&pipelineKey=<value>&pipelinePath=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command pipeline.debug.status sessionId=<value> pipelineKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command pipeline.debug.status sessionId=<value> pipelineKey=<value> pipelinePath=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -11059,11 +11196,11 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
-## attachment.put.uri ``v1``
+## property.attachment.put.uri ``v1``
 ----------   
 Sets property attachment to be symlink to resource referenced by uri.
 
-[Try online.](https://try.pipeforce.org/#/commandform?command=attachment.put.uri:v1)
+[Try online.](https://try.pipeforce.org/#/commandform?command=property.attachment.put.uri:v1)
 
 **Version:** ``v1``  
 **Input body type:** ``Void``  
@@ -11085,7 +11222,7 @@ Name | Type | Required | Default | Description
 **Pipeline example:**  
 ```yaml  
 pipeline:  
-  - attachment.put.uri:  
+  - property.attachment.put.uri:  
       key: <value>  
       path: <value>  
       name: <value>  
@@ -11101,12 +11238,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/attachment.put.uri?key=<value>&path=<value>&name=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/property.attachment.put.uri?key=<value>&path=<value>&name=<value>&uri=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command attachment.put.uri key=<value> path=<value> name=<value> uri=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command property.attachment.put.uri key=<value> path=<value> name=<value> uri=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -13685,6 +13822,7 @@ Name | Type | Required | Default | Description
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
 `input` | String | false | null | Defines where to read the input from as PEL. If this param is missing, the input will be read from the body.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
 
 
 **Pipeline example:**  
@@ -13701,6 +13839,7 @@ pipeline:
       onError: <value>  
       eval: <value>  
       input: <value>  
+      output: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -13708,12 +13847,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/secretsend.outbox.attachment.put?outboxUuid=<value>&name=<value>&contentType=<value>&content=<value>&length=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>  
+http://host/api/v3/command/secretsend.outbox.attachment.put?outboxUuid=<value>&name=<value>&contentType=<value>&content=<value>&length=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command secretsend.outbox.attachment.put outboxUuid=<value> name=<value> contentType=<value> content=<value> length=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value>  
+pi command secretsend.outbox.attachment.put outboxUuid=<value> name=<value> contentType=<value> content=<value> length=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -17088,7 +17227,8 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `name` | String | true | null | The name to deploy the workflow under.
 `appId` | String | false | null | The appId to be used to prefix the process name with: appId_workflowname. If null or empty no prefix is appended.
-`propertyKey` | String | false | null | The optional key of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this propertyKey is missing, the BPMN is expected to be in the body.
+`propertyKey` | String | false | null | DEPRECATED. Use propertyPath instead.
+`propertyPath` | String | false | null | The optional path of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this param is missing, the BPMN is expected to be in the body.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -17103,6 +17243,7 @@ pipeline:
       name: <value>  
       appId: <value>  
       propertyKey: <value>  
+      propertyPath: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -17115,12 +17256,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/workflow.deploy?name=<value>&appId=<value>&propertyKey=<value>&propertyPath=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command workflow.deploy name=<value> appId=<value> propertyKey=<value> propertyPath=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -17192,9 +17333,10 @@ the current pipe message will be used as input.
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`processInstanceId` | String | true | null | The processInstanceId which refers to the process to be notified by this event. One of businessKey or processInstanceId must be given.
+`processInstanceId` | String | false | null | The processInstanceId which refers to the process to be notified by this event. One of businessKey or processInstanceId must be given.
 `businessKey` | String | false | null | The business key of the process which needs to be informed by the event. One of businessKey or processInstanceId must be given.
 `messageName` | String | true | null | The name of this message. It is used to find the endpoint to be triggered in the workflow.
+`variables` | String | false | null | The process variables to apply on message target.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -17209,6 +17351,7 @@ pipeline:
       processInstanceId: <value>  
       businessKey: <value>  
       messageName: <value>  
+      variables: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -17221,12 +17364,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=<value>&messageName=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+http://host/api/v3/command/workflow.event?processInstanceId=<value>&businessKey=<value>&messageName=<value>&variables=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+pi command workflow.event processInstanceId=<value> businessKey=<value> messageName=<value> variables=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -17714,6 +17857,57 @@ http://host/api/v3/command/workflow.start?key=<value>&businessKey=<value>&variab
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command workflow.start key=<value> businessKey=<value> variables=<value> workflowModelInstanceKey=<value> workflowStartedBy=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## workflow.task.claim ``v1``
+----------   
+Claims a given task to a given user.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=workflow.task.claim:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`taskId` | String | true | null | The id (not name!) of the task to claim.
+`username` | String | true | null | The username of the user to claim the task for
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - workflow.task.claim:  
+      taskId: <value>  
+      username: <value>  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/workflow.task.claim?taskId=<value>&username=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command workflow.task.claim taskId=<value> username=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
