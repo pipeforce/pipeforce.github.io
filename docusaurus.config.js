@@ -66,27 +66,14 @@ const config = {
             label: 'Documentation',
           },
           {
-            type: 'doc',
-            docId: 'tutorials/basics',
+            href: 'https://logabit.atlassian.net/wiki/display/PA/customcontent/list/ac%3Acom.mute.confluence.plugins.lms%3Acourse-type',
             position: 'left',
             label: 'Tutorials',
           },
           {
-            type: 'doc',
-            docId: 'api/commands',
-            position: 'left',
-            label: 'Commands',
-          },
-          {
-            type: 'doc',
-            docId: 'api/commands',
-            position: 'left',
-            label: 'Reference API Docs',
-          },
-          {
             href: 'http://docs.pipeforce.io/api.html',
             position: 'left',
-            label: 'HTTP API',
+            label: 'API',
           },
           /**{to: '/blog', label: 'News', position: 'left'},**/
           {
@@ -108,11 +95,11 @@ const config = {
             items: [
               {
                 label: 'Tutorials',
-                to: '/docs/tutorials/basics',
+                href: 'https://logabit.atlassian.net/wiki/display/PA/customcontent/list/ac%3Acom.mute.confluence.plugins.lms%3Acourse-type',
               },
               {
                 label: 'FAQ',
-                to: '/docs/faq',
+                href: 'https://logabit.atlassian.net/wiki/spaces/PA/pages/2548400531/FAQ',
               },
             ],
           },

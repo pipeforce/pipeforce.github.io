@@ -130,6 +130,40 @@
             },
             "required" : [ ]
           },
+          "apidoc.pipeforce" : {
+            "type" : "object",
+            "description" : "Returns the OpenAPI documentation of all default PIPEFORCE hub endpoints as YAML.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "app.config.find" : {
             "type" : "object",
             "description" : "Returns the configuration of an app or a list of apps the currently logged-in user is allowed to see.",
@@ -487,10 +521,6 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "credentials" : {
-                "type" : "string",
-                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -6991,7 +7021,7 @@
               },
               "level" : {
                 "type" : "string",
-                "description" : "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used.",
+                "description" : "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR.\nIf null or empty, INFO will be used.\n",
                 "default" : "INFO"
               },
               "suffix" : {
@@ -7688,6 +7718,36 @@
             },
             "required" : [ ]
           },
+          "message.ack" : {
+            "type" : "object",
+            "description" : "Acks message for pipeline initiated by message.receive with autoack=false.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "hearing",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
           "message.binding.delete" : {
             "type" : "object",
             "description" : "Deletes a binding.",
@@ -7797,6 +7857,36 @@
               }
             },
             "required" : [ "destinationName", "routingKey" ]
+          },
+          "message.drop" : {
+            "type" : "object",
+            "description" : "Drops message without redelivery for pipeline initiated by message.receive with autoack=false.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "hearing",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
           },
           "message.exchange.delete" : {
             "type" : "object",
@@ -7926,6 +8016,36 @@
               }
             },
             "required" : [ "name" ]
+          },
+          "message.nack" : {
+            "type" : "object",
+            "description" : "Nacks message with redelivery for pipeline initiated by message.receive with autoack=false.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "hearing",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
           },
           "message.queue.delete" : {
             "type" : "object",
@@ -8071,6 +8191,11 @@
               "maxBatchItems" : {
                 "type" : "string",
                 "description" : "Collects the amount of messages up to the given number of maxBatchItems and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. If this parameter is used together with `maxBatchSize` the one which matches first is considered."
+              },
+              "autoack" : {
+                "type" : "string",
+                "description" : "The acknowledge mode to be used. If false, pipes message.ack, message.nack and/or message.drop are expected in pipeline. I pipeline does not aknowledge by its own, message.ack is called after successful pipeline execution, or message.nack on any errors. manual mode can be used only when none of maxBatchSize and maxBatchItems are used.",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -14162,9 +14287,9 @@
             "x-alias" : [ ],
             "x-trigger" : false,
             "properties" : {
-              "rules" : {
+              "scheme" : {
                 "type" : "string",
-                "description" : "The conversion rules to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'goessner', the rules defined by Stefan Goessner will be applied. See: https://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html"
+                "description" : "The conversion scheme to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'jackson', the rules defined by XML Jackson will be applied."
               },
               "id" : {
                 "type" : "string",
@@ -14580,7 +14705,7 @@
           },
           "webhook.receive" : {
             "type" : "object",
-            "description" : "Runs a webhook identified by its uuid.",
+            "description" : "Runs a webhook identified by its uuid (token). The webhook is called async. Enable redirects in your client, set pollingRedirectEnabled:true and follow the 503 redirect if you need to retrieve the final result. In case the webhook with given token doesn't exist, nothing happens for security reasons. There is no feedback whether a webhook exists or not. A status code of 200 or 503 is returned by default. ",
             "x-inputType" : "JsonNode",
             "x-outputType" : "JsonNode",
             "x-icon" : "play_circle_outline",
@@ -14596,6 +14721,11 @@
               "token" : {
                 "type" : "string",
                 "description" : "The unique token of the webhook. Can passed as request param or as header (recommended) to call the webhook from outside."
+              },
+              "pollingRedirectEnabled" : {
+                "type" : "string",
+                "description" : "Should the response contain a 503 status (redirect) in case the webhook result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener.",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",

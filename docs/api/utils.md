@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 19/10/2023 06:39:18 by CommandComplianceTest -->
+<!-- Generated: 30/10/2023 17:08:40 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -760,7 +760,10 @@ data | ``object`` | The data structure to check.
 ```  
 
 ### has(data,attribute)   
-Checks whether given data object has an attribute, member or getter with given name.   
+Checks whether given data object has an attribute, member or getter with given name.
+Also supports property path syntax for recursive search on given data object.
+Whereas each property name must be separated by a dot.
+For example: person.firstName   
 
 #### Returns  
 ``boolean`` - true in case the data object has given attribute.  

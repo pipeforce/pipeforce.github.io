@@ -29,9 +29,9 @@ function HomepageHeader() {
         </div>
       </div> */}
 
-        <span className={styles.message}><b>Integration</b> and <b>Automation</b> Platform.</span>
+        <span className={styles.message}>Open <b>Integration</b> and <b>Automation</b> Platform.</span>
         <br /><br />
-        <p className="hero__subtitle">Develop and operate message-driven business apps using a cloud native framework. </p>
+        <p className="hero__subtitle">Develop and operate message-driven business solutions using cloud native and AI. </p>
         <br />
         <div className={styles.buttons}>
           <Link
@@ -42,7 +42,7 @@ function HomepageHeader() {
           &nbsp; &nbsp; 
           <Link
             className="button button--primary-light button--lg"
-            to="https://try.pipeforce.org">
+            to="https://pipeforce.io/jetzt-testen/">
             Try Now!
           </Link>
         </div>

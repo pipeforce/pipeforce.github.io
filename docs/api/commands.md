@@ -4,7 +4,7 @@ sidebar_label: Commands
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY! IT IS AUTO-GENERATED. CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 19/10/2023 by CommandComplianceTest -->
+<!-- Generated: 30/10/2023 by CommandComplianceTest -->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -310,6 +310,53 @@ http://host/api/v3/command/apidoc.pel.utils?id=<value>&if=<value>&onError=<value
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command apidoc.pel.utils id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## apidoc.pipeforce ``v1``
+----------   
+Returns the OpenAPI documentation of all default PIPEFORCE hub endpoints as YAML.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=apidoc.pipeforce:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+`output` | String | false | null | Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - apidoc.pipeforce:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+      output: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/apidoc.pipeforce?id=<value>&if=<value>&onError=<value>&eval=<value>&output=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command apidoc.pipeforce id=<value> if=<value> onError=<value> eval=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -639,7 +686,6 @@ Name | Type | Required | Default | Description
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
 `eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
-`credentials` | String | false | null | DEPRECATED. Use param secret instead. 
 
 
 **Pipeline example:**  
@@ -651,7 +697,6 @@ pipeline:
       if: <value>  
       onError: <value>  
       eval: <value>  
-      credentials: <value>  
 ```  
 Since ``v1`` is the default version for commands, it is not required to specify it. 
 
@@ -659,12 +704,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/app.uninstall?appKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&credentials=<value>  
+http://host/api/v3/command/app.uninstall?appKey=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command app.uninstall appKey=<value> id=<value> if=<value> onError=<value> eval=<value> credentials=<value>  
+pi command app.uninstall appKey=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -8298,7 +8343,9 @@ Logs the given input message without changing it.
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `message` | String | true | null | The message to log. Can be a string or a pipeline expression. If null or empty, the current pipeline message will be logged.
-`level` | String | false | INFO | The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used.
+`level` | String | false | INFO | The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR.
+If null or empty, INFO will be used.
+
 `suffix` | String | false | true | Suffix log message with path of persisted pipeline path if any. This simplifies searching in logs later.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
@@ -9099,6 +9146,51 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## message.ack ``v1``
+----------   
+Acks message for pipeline initiated by message.receive with autoack=false.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.ack:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - message.ack:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/message.ack?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command message.ack id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## message.binding.delete ``v1``
 ----------   
 Deletes a binding.
@@ -9208,6 +9300,51 @@ http://host/api/v3/command/message.binding.put?destinationName=<value>&destinati
 **Command Line Interface (CLI) example:**  
 ```bash  
 pi command message.binding.put destinationName=<value> destinationType=<value> exchange=<value> routingKey=<value> args=<value> id=<value> if=<value> onError=<value> eval=<value> output=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
+## message.drop ``v1``
+----------   
+Drops message without redelivery for pipeline initiated by message.receive with autoack=false.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.drop:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - message.drop:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/message.drop?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command message.drop id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -9366,6 +9503,51 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
   
 
+## message.nack ``v1``
+----------   
+Nacks message with redelivery for pipeline initiated by message.receive with autoack=false.
+
+[Try online.](https://try.pipeforce.org/#/commandform?command=message.nack:v1)
+
+**Version:** ``v1``  
+**Input body type:** ``JsonNode``  
+**Output body type:** ``JsonNode``  
+**Parameters:** 
+
+Name | Type | Required | Default | Description
+--- | --- | --- | --- | ---
+`id` | String | false | null | The optional id of this command, unique within the pipeline.
+`if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
+`onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
+`eval` | String | false | null | An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations.
+
+
+**Pipeline example:**  
+```yaml  
+pipeline:  
+  - message.nack:  
+      id: <value>  
+      if: <value>  
+      onError: <value>  
+      eval: <value>  
+```  
+Since ``v1`` is the default version for commands, it is not required to specify it. 
+
+Learn more: [Pipeline](/docs/commands_pipelines). 
+
+**URL example:**  
+```yaml  
+http://host/api/v3/command/message.nack?id=<value>&if=<value>&onError=<value>&eval=<value>  
+```  
+
+**Command Line Interface (CLI) example:**  
+```bash  
+pi command message.nack id=<value> if=<value> onError=<value> eval=<value>  
+```  
+Learn more: [Command Line Interface (CLI)](/docs/cli). 
+
+  
+
 ## message.queue.delete ``v1``
 ----------   
 Deletes a queue.
@@ -9497,6 +9679,7 @@ Name | Type | Required | Default | Description
 `managed` | String | false | null | DEPRECATED. Use param manageQueue instead.
 `maxBatchSize` | String | false | null | Collects messages up to the given maxBatchSize in bytes and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. Maximum value can be 200KB (204800). If this parameter is used together with `maxBatchItems` the one which matches first is considered.
 `maxBatchItems` | String | false | null | Collects the amount of messages up to the given number of maxBatchItems and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. If this parameter is used together with `maxBatchSize` the one which matches first is considered.
+`autoack` | String | false | true | The acknowledge mode to be used. If false, pipes message.ack, message.nack and/or message.drop are expected in pipeline. I pipeline does not aknowledge by its own, message.ack is called after successful pipeline execution, or message.nack on any errors. manual mode can be used only when none of maxBatchSize and maxBatchItems are used.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -9515,6 +9698,7 @@ pipeline:
       managed: <value>  
       maxBatchSize: <value>  
       maxBatchItems: <value>  
+      autoack: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -9526,12 +9710,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&deleteQueue=<value>&manageQueue=<value>&managed=<value>&maxBatchSize=<value>&maxBatchItems=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/message.receive?key=<value>&exchange=<value>&queue=<value>&deleteQueue=<value>&manageQueue=<value>&managed=<value>&maxBatchSize=<value>&maxBatchItems=<value>&autoack=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command message.receive key=<value> exchange=<value> queue=<value> deleteQueue=<value> manageQueue=<value> managed=<value> maxBatchSize=<value> maxBatchItems=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command message.receive key=<value> exchange=<value> queue=<value> deleteQueue=<value> manageQueue=<value> managed=<value> maxBatchSize=<value> maxBatchItems=<value> autoack=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -16570,7 +16754,7 @@ Takes an XML document or XML string in the body and converts it to a JSON. By de
 
 Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
-`rules` | String | false | null | The conversion rules to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'goessner', the rules defined by Stefan Goessner will be applied. See: https://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html
+`scheme` | String | false | null | The conversion scheme to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'jackson', the rules defined by XML Jackson will be applied.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -16583,7 +16767,7 @@ Name | Type | Required | Default | Description
 ```yaml  
 pipeline:  
   - transform.xml.json:  
-      rules: <value>  
+      scheme: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -16597,12 +16781,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/transform.xml.json?rules=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
+http://host/api/v3/command/transform.xml.json?scheme=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>&input=<value>&output=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command transform.xml.json rules=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
+pi command transform.xml.json scheme=<value> id=<value> if=<value> onError=<value> eval=<value> input=<value> output=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 
@@ -17071,7 +17255,7 @@ Learn more: [Command Line Interface (CLI)](/docs/cli).
 
 ## webhook.receive ``v1``
 ----------   
-Runs a webhook identified by its uuid.
+Runs a webhook identified by its uuid (token). The webhook is called async. Enable redirects in your client, set pollingRedirectEnabled:true and follow the 503 redirect if you need to retrieve the final result. In case the webhook with given token doesn't exist, nothing happens for security reasons. There is no feedback whether a webhook exists or not. A status code of 200 or 503 is returned by default. 
 
 [Try online.](https://try.pipeforce.org/#/commandform?command=webhook.receive:v1)
 
@@ -17084,6 +17268,7 @@ Name | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 `uuid` | String | false | null | The uuid of the webhook (deprecated, use token instead).
 `token` | String | true | null | The unique token of the webhook. Can passed as request param or as header (recommended) to call the webhook from outside.
+`pollingRedirectEnabled` | String | false | false | Should the response contain a 503 status (redirect) in case the webhook result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener.
 `id` | String | false | null | The optional id of this command, unique within the pipeline.
 `if` | String | false | null | Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled.
 `onError` | String | false | null | Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name.
@@ -17096,6 +17281,7 @@ pipeline:
   - webhook.receive:  
       uuid: <value>  
       token: <value>  
+      pollingRedirectEnabled: <value>  
       id: <value>  
       if: <value>  
       onError: <value>  
@@ -17107,12 +17293,12 @@ Learn more: [Pipeline](/docs/commands_pipelines).
 
 **URL example:**  
 ```yaml  
-http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
+http://host/api/v3/command/webhook.receive?uuid=<value>&token=<value>&pollingRedirectEnabled=<value>&id=<value>&if=<value>&onError=<value>&eval=<value>  
 ```  
 
 **Command Line Interface (CLI) example:**  
 ```bash  
-pi command webhook.receive uuid=<value> token=<value> id=<value> if=<value> onError=<value> eval=<value>  
+pi command webhook.receive uuid=<value> token=<value> pollingRedirectEnabled=<value> id=<value> if=<value> onError=<value> eval=<value>  
 ```  
 Learn more: [Command Line Interface (CLI)](/docs/cli). 
 

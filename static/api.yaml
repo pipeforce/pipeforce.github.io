@@ -174,6 +174,85 @@ paths:
       description: "Returns the OpenAPI documentation of PEL utils. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
+  /api/v3/command/apidoc.pipeforce:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns the OpenAPI documentation of all default PIPEFORCE hub endpoints as YAML. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      - name: "output"
+        in: "query"
+        required: false
+        description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+        schema:
+          type: "string"
+      description: "Returns the OpenAPI documentation of all default PIPEFORCE hub endpoints as YAML. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
   /api/v3/command/app.config.find:
     get:
       parameters:
@@ -1022,12 +1101,6 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
-      - name: "credentials"
-        in: "query"
-        required: false
-        description: "DEPRECATED. Use param secret instead. "
-        schema:
-          type: "string"
       description: "Uninstalls the given app. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
@@ -1069,12 +1142,6 @@ paths:
         in: "query"
         required: false
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-        schema:
-          type: "string"
-      - name: "credentials"
-        in: "query"
-        required: false
-        description: "DEPRECATED. Use param secret instead. "
         schema:
           type: "string"
       description: "Uninstalls the given app. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
@@ -16845,7 +16912,7 @@ paths:
       - name: "level"
         in: "query"
         required: false
-        description: "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used."
+        description: "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR.\nIf null or empty, INFO will be used.\n"
         schema:
           type: "string"
       - name: "suffix"
@@ -16900,7 +16967,7 @@ paths:
       - name: "level"
         in: "query"
         required: false
-        description: "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used."
+        description: "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR.\nIf null or empty, INFO will be used.\n"
         schema:
           type: "string"
       - name: "suffix"
@@ -18582,6 +18649,73 @@ paths:
       description: "Shows the current system info like memory consumption. Available for system, support and developer users only. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
+  /api/v3/command/message.ack:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Acks message for pipeline initiated by message.receive with autoack=false. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Acks message for pipeline initiated by message.receive with autoack=false. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
   /api/v3/command/message.binding.delete:
     get:
       parameters:
@@ -18858,6 +18992,73 @@ paths:
         schema:
           type: "string"
       description: "Creates a new binding. Returns the binding info as JSON. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+  /api/v3/command/message.drop:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Drops message without redelivery for pipeline initiated by message.receive with autoack=false. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Drops message without redelivery for pipeline initiated by message.receive with autoack=false. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/message.exchange.delete:
@@ -19169,6 +19370,73 @@ paths:
       description: "Returns details about a message queue. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
+  /api/v3/command/message.nack:
+    get:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Nacks message with redelivery for pipeline initiated by message.receive with autoack=false. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
+      responses:
+        "200":
+          description: "default response"
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: "object"
+    post:
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        description: "The optional id of this command, unique within the pipeline."
+        schema:
+          type: "string"
+      - name: "if"
+        in: "query"
+        required: false
+        description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+        schema:
+          type: "string"
+      - name: "onError"
+        in: "query"
+        required: false
+        description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+        schema:
+          type: "string"
+      - name: "eval"
+        in: "query"
+        required: false
+        description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+        schema:
+          type: "string"
+      description: "Nacks message with redelivery for pipeline initiated by message.receive with autoack=false. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      tags:
+      - "Commands API"
   /api/v3/command/message.queue.delete:
     get:
       parameters:
@@ -19462,6 +19730,12 @@ paths:
         description: "Collects the amount of messages up to the given number of maxBatchItems and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. If this parameter is used together with `maxBatchSize` the one which matches first is considered."
         schema:
           type: "string"
+      - name: "autoack"
+        in: "query"
+        required: false
+        description: "The acknowledge mode to be used. If false, pipes message.ack, message.nack and/or message.drop are expected in pipeline. I pipeline does not aknowledge by its own, message.ack is called after successful pipeline execution, or message.nack on any errors. manual mode can be used only when none of maxBatchSize and maxBatchItems are used."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -19545,6 +19819,12 @@ paths:
         in: "query"
         required: false
         description: "Collects the amount of messages up to the given number of maxBatchItems and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. If this parameter is used together with `maxBatchSize` the one which matches first is considered."
+        schema:
+          type: "string"
+      - name: "autoack"
+        in: "query"
+        required: false
+        description: "The acknowledge mode to be used. If false, pipes message.ack, message.nack and/or message.drop are expected in pipeline. I pipeline does not aknowledge by its own, message.ack is called after successful pipeline execution, or message.nack on any errors. manual mode can be used only when none of maxBatchSize and maxBatchItems are used."
         schema:
           type: "string"
       - name: "id"
@@ -34551,10 +34831,10 @@ paths:
   /api/v3/command/transform.xml.json:
     get:
       parameters:
-      - name: "rules"
+      - name: "scheme"
         in: "query"
         required: false
-        description: "The conversion rules to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'goessner', the rules defined by Stefan Goessner will be applied. See: https://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html"
+        description: "The conversion scheme to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'jackson', the rules defined by XML Jackson will be applied."
         schema:
           type: "string"
       - name: "id"
@@ -34606,10 +34886,10 @@ paths:
                 - type: "object"
     post:
       parameters:
-      - name: "rules"
+      - name: "scheme"
         in: "query"
         required: false
-        description: "The conversion rules to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'goessner', the rules defined by Stefan Goessner will be applied. See: https://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html"
+        description: "The conversion scheme to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'jackson', the rules defined by XML Jackson will be applied."
         schema:
           type: "string"
       - name: "id"
@@ -35593,6 +35873,12 @@ paths:
         description: "The unique token of the webhook. Can passed as request param or as header (recommended) to call the webhook from outside."
         schema:
           type: "string"
+      - name: "pollingRedirectEnabled"
+        in: "query"
+        required: false
+        description: "Should the response contain a 503 status (redirect) in case the webhook result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -35617,7 +35903,7 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
-      description: "Runs a webhook identified by its uuid. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Runs a webhook identified by its uuid (token). The webhook is called async. Enable redirects in your client, set pollingRedirectEnabled:true and follow the 503 redirect if you need to retrieve the final result. In case the webhook with given token doesn't exist, nothing happens for security reasons. There is no feedback whether a webhook exists or not. A status code of 200 or 503 is returned by default.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
       responses:
@@ -35642,6 +35928,12 @@ paths:
         description: "The unique token of the webhook. Can passed as request param or as header (recommended) to call the webhook from outside."
         schema:
           type: "string"
+      - name: "pollingRedirectEnabled"
+        in: "query"
+        required: false
+        description: "Should the response contain a 503 status (redirect) in case the webhook result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener."
+        schema:
+          type: "string"
       - name: "id"
         in: "query"
         required: false
@@ -35666,7 +35958,7 @@ paths:
         description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
         schema:
           type: "string"
-      description: "Runs a webhook identified by its uuid. Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
+      description: "Runs a webhook identified by its uuid (token). The webhook is called async. Enable redirects in your client, set pollingRedirectEnabled:true and follow the 503 redirect if you need to retrieve the final result. In case the webhook with given token doesn't exist, nothing happens for security reasons. There is no feedback whether a webhook exists or not. A status code of 200 or 503 is returned by default.  Learn more about [Commands & Pipelines](http://docs.pipeforce.io/docs/commands_pipelines) and the [HTTP API](http://docs.pipeforce.io/docs/guides/commands_pipelines/http_api)."
       tags:
       - "Commands API"
   /api/v3/command/webhook.receive.logs:
