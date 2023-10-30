@@ -18,12 +18,12 @@
     window.onload = function () {
 
       const ui = SwaggerUIBundle({ 
-        url: "api.yaml",
+        url:"https://hub-main.pipeforce.dev/api/v3/command/apidoc.pipeforce",
         dom_id: "#docs",
         deepLinking: true,
         docExpansion: "list",
-        //filter: true,
-        tryItOutEnabled: false
+        filter: true,
+        supportedSubmitMethods: []
       })
 
     }

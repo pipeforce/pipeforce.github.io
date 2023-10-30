@@ -130,6 +130,40 @@
             },
             "required" : [ ]
           },
+          "apidoc.pipeforce" : {
+            "type" : "object",
+            "description" : "Returns the OpenAPI documentation of all default PIPEFORCE hub endpoints as YAML.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ ]
+          },
           "app.config.find" : {
             "type" : "object",
             "description" : "Returns the configuration of an app or a list of apps the currently logged-in user is allowed to see.",
@@ -487,10 +521,6 @@
               "eval" : {
                 "type" : "string",
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
-              },
-              "credentials" : {
-                "type" : "string",
-                "description" : "DEPRECATED. Use param secret instead. "
               }
             },
             "required" : [ ]
@@ -845,6 +875,111 @@
                 "type" : "boolean",
                 "description" : "Can only be applied, if the result is a list and contains elements with a single property each. For example: [{name: foo}, {name: bar}]. If set to true, removes the key from the property and converts the result to a simple list like: [foo, bar]. If the result is not a list or elements in the list contain more than one property, this param is ignored.",
                 "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
+          "body.peek" : {
+            "type" : "object",
+            "description" : "Sets the most recent entry of the bodyStack as body. Doesn't remove it from the stack.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : "var",
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "var" : {
+                "type" : "string",
+                "description" : "(default) The name of the variable to peek from.",
+                "default" : "bodyStack"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
+          "body.pop" : {
+            "type" : "object",
+            "description" : "Removes the most recent entry of the bodyStack and sets it to the body. (pops from stack and sets to body), If no entry is left in body stack, null is set to body.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : "var",
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "var" : {
+                "type" : "string",
+                "description" : "(default) The name of the variable to pop from.",
+                "default" : "bodyStack"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
+          "body.push" : {
+            "type" : "object",
+            "description" : "Sets the current value of the body to a location defined by a PEL. This is handy in case you would like to simply save the body before next command overwrites it.If target is given, it is a PEL which will be executed in order to store the body value to this location. In case the target parameter is missing, the body will be pushed to a variable of name bodyStack. If this variable exists, it is assumed to be a list where the body value can be added at its end. if this variable doesn't exist, it will be created as a stack (list).",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : "var",
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "var" : {
+                "type" : "string",
+                "description" : "(default) The name of the variable to create the body stack under and push the value to. If a list under this variable doesn't exist yet, it will be created.",
+                "default" : "bodyStack"
               },
               "id" : {
                 "type" : "string",
@@ -1836,6 +1971,11 @@
               "iterate" : {
                 "type" : "string",
                 "description" : "In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead."
+              },
+              "ignoreEmptyItems" : {
+                "type" : "string",
+                "description" : "In case iterate is set to true and an iteration item is an empty JSON, should it be ignored in the output?",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
@@ -3359,7 +3499,7 @@
             "properties" : {
               "expr" : {
                 "type" : "string",
-                "description" : "(default) The pipeline expression to be executed."
+                "description" : "(default) The pipeline expression to be executed. Can be a single pel string or a list of expression strings."
               },
               "id" : {
                 "type" : "string",
@@ -4096,27 +4236,31 @@
             "properties" : {
               "uuid" : {
                 "type" : "string",
-                "description" : "The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any."
+                "description" : "The uuid of the endpoint to update. This will overwrite the value of the input JSON if there is any or create a new entry if missing."
               },
               "methods" : {
                 "type" : "string",
-                "description" : "A list of HTTP methods to allow. If this list contains *, all methods are allowed. This will overwrite the value of the input JSON if there is any."
+                "description" : "A list of HTTP methods to allow. If this list contains *, all methods are allowed. This will overwrite the value of the input JSON if there is any.",
+                "default" : "*"
               },
               "enabled" : {
                 "type" : "string",
-                "description" : "Enables or disables this endpoint temporarily. This will overwrite the value of the input JSON if there is any."
+                "description" : "Enables or disables this endpoint temporarily. This will overwrite the value of the input JSON if there is any.",
+                "default" : "true"
               },
               "polling" : {
                 "type" : "string",
-                "description" : "In case this endpoints is an async target, should a polling redirect be applied to the request so it polls for the result until has been processed or timed out?"
+                "description" : "In case this endpoints is an async target, should a polling redirect be applied to the request so it polls for the result until has been processed or timed out?",
+                "default" : "false"
               },
               "mocked" : {
                 "type" : "string",
-                "description" : "Mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any."
+                "description" : "If given, mocks this endpoint for testing (= doesn't forward to real endpoint). This will overwrite the value of the input JSON if there is any."
               },
               "weight" : {
                 "type" : "string",
-                "description" : "The weighting of this entry. In case a path matches two entries, the one with higher wight value will win."
+                "description" : "The weighting of this entry. In case a path matches two entries, the one with higher wight value will win.",
+                "default" : "0"
               },
               "pattern" : {
                 "type" : "string",
@@ -4128,7 +4272,8 @@
               },
               "authenticate" : {
                 "type" : "string",
-                "description" : "Is authentication needed for this endpoint? In this case, the Authorization header must exist and must contain a valid authentication token or credentials. This will overwrite the value of the input JSON if there is any."
+                "description" : "Is authentication needed for this endpoint? In this case, the Authorization header must exist and must contain a valid authentication token or credentials. This will overwrite the value of the input JSON if there is any.",
+                "default" : "false"
               },
               "roles" : {
                 "type" : "string",
@@ -4163,7 +4308,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ ]
+            "required" : [ "pattern", "target" ]
           },
           "gateway.group.list" : {
             "type" : "object",
@@ -6487,6 +6632,14 @@
                 "description" : "Optional filter parameter, true to get unread mails only. Default value will be false.",
                 "default" : "false"
               },
+              "host" : {
+                "type" : "string",
+                "description" : "Host for the mailbox. E.g. outlook.office365.com"
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Secret, which contains the imap credentials and config json."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6506,21 +6659,9 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              },
-              "host" : {
-                "type" : "string",
-                "description" : "Host for the mailbox. E.g. "
-              },
-              "username" : {
-                "type" : "string",
-                "description" : "Email address(as a username) of the mailbox."
-              },
-              "authToken" : {
-                "type" : "string",
-                "description" : "Authorisation token collected from the Office365."
               }
             },
-            "required" : [ "host", "username", "authToken" ]
+            "required" : [ "host", "secret" ]
           },
           "imap.get" : {
             "type" : "object",
@@ -6547,6 +6688,14 @@
                 "description" : "Optional filter parameter, true to get unread mails only. Default value will be false.",
                 "default" : "false"
               },
+              "host" : {
+                "type" : "string",
+                "description" : "Host for the mailbox. E.g. outlook.office365.com"
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Secret, which contains the imap credentials and config json."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6566,21 +6715,9 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              },
-              "host" : {
-                "type" : "string",
-                "description" : "Host for the mailbox. E.g. "
-              },
-              "username" : {
-                "type" : "string",
-                "description" : "Email address(as a username) of the mailbox."
-              },
-              "authToken" : {
-                "type" : "string",
-                "description" : "Authorisation token collected from the Office365."
               }
             },
-            "required" : [ "host", "username", "authToken" ]
+            "required" : [ "host", "secret" ]
           },
           "imap.mkdir" : {
             "type" : "object",
@@ -6602,6 +6739,14 @@
                 "type" : "string",
                 "description" : "Folder name to create a folder inside a destination folder."
               },
+              "host" : {
+                "type" : "string",
+                "description" : "Host for the mailbox. E.g. outlook.office365.com"
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Secret, which contains the imap credentials and config json."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6621,21 +6766,9 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              },
-              "host" : {
-                "type" : "string",
-                "description" : "Host for the mailbox. E.g. "
-              },
-              "username" : {
-                "type" : "string",
-                "description" : "Email address(as a username) of the mailbox."
-              },
-              "authToken" : {
-                "type" : "string",
-                "description" : "Authorisation token collected from the Office365."
               }
             },
-            "required" : [ "folderName", "host", "username", "authToken" ]
+            "required" : [ "folderName", "host", "secret" ]
           },
           "imap.move" : {
             "type" : "object",
@@ -6666,6 +6799,14 @@
                 "description" : "Optional filter parameter, true to get unread mails only. Default value will be false.",
                 "default" : "false"
               },
+              "host" : {
+                "type" : "string",
+                "description" : "Host for the mailbox. E.g. outlook.office365.com"
+              },
+              "secret" : {
+                "type" : "string",
+                "description" : "Secret, which contains the imap credentials and config json."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -6685,21 +6826,9 @@
               "output" : {
                 "type" : "string",
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
-              },
-              "host" : {
-                "type" : "string",
-                "description" : "Host for the mailbox. E.g. "
-              },
-              "username" : {
-                "type" : "string",
-                "description" : "Email address(as a username) of the mailbox."
-              },
-              "authToken" : {
-                "type" : "string",
-                "description" : "Authorisation token collected from the Office365."
               }
             },
-            "required" : [ "destinationFolder", "host", "username", "authToken" ]
+            "required" : [ "destinationFolder", "host", "secret" ]
           },
           "job" : {
             "type" : "object",
@@ -6892,7 +7021,7 @@
               },
               "level" : {
                 "type" : "string",
-                "description" : "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR. If null or empty, INFO will be used.",
+                "description" : "The log level. Can be one of DEBUG, TRACE, INFO, WARN, ERROR.\nIf null or empty, INFO will be used.\n",
                 "default" : "INFO"
               },
               "suffix" : {
@@ -7589,6 +7718,36 @@
             },
             "required" : [ ]
           },
+          "message.ack" : {
+            "type" : "object",
+            "description" : "Acks message for pipeline initiated by message.receive with autoack=false.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "hearing",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
           "message.binding.delete" : {
             "type" : "object",
             "description" : "Deletes a binding.",
@@ -7698,6 +7857,36 @@
               }
             },
             "required" : [ "destinationName", "routingKey" ]
+          },
+          "message.drop" : {
+            "type" : "object",
+            "description" : "Drops message without redelivery for pipeline initiated by message.receive with autoack=false.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "hearing",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
           },
           "message.exchange.delete" : {
             "type" : "object",
@@ -7827,6 +8016,36 @@
               }
             },
             "required" : [ "name" ]
+          },
+          "message.nack" : {
+            "type" : "object",
+            "description" : "Nacks message with redelivery for pipeline initiated by message.receive with autoack=false.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "hearing",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
           },
           "message.queue.delete" : {
             "type" : "object",
@@ -7972,6 +8191,11 @@
               "maxBatchItems" : {
                 "type" : "string",
                 "description" : "Collects the amount of messages up to the given number of maxBatchItems and then processes this pipeline with all collected messages at once. All batched messages will be provided as array into the event body. If this parameter is null, empty or negative, no batching is used at all: Processes each message as single call. If this parameter is used together with `maxBatchSize` the one which matches first is considered."
+              },
+              "autoack" : {
+                "type" : "string",
+                "description" : "The acknowledge mode to be used. If false, pipes message.ack, message.nack and/or message.drop are expected in pipeline. I pipeline does not aknowledge by its own, message.ack is called after successful pipeline execution, or message.nack on any errors. manual mode can be used only when none of maxBatchSize and maxBatchItems are used.",
+                "default" : "true"
               },
               "id" : {
                 "type" : "string",
@@ -8631,7 +8855,11 @@
               },
               "pipelineKey" : {
                 "type" : "string",
-                "description" : "The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
+                "description" : "(Deprecated, use pipelinePath instead) The property key of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
+              },
+              "pipelinePath" : {
+                "type" : "string",
+                "description" : "The property path of the pipeline to monitor. Required only on first call. Ignored if sessionId is set."
               },
               "id" : {
                 "type" : "string",
@@ -9354,7 +9582,7 @@
             },
             "required" : [ ]
           },
-          "attachment.put.uri" : {
+          "property.attachment.put.uri" : {
             "type" : "object",
             "description" : "Sets property attachment to be symlink to resource referenced by uri.",
             "x-inputType" : "Void",
@@ -11613,6 +11841,10 @@
               "input" : {
                 "type" : "string",
                 "description" : "Defines where to read the input from as PEL. If this param is missing, the input will be read from the body."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14055,9 +14287,9 @@
             "x-alias" : [ ],
             "x-trigger" : false,
             "properties" : {
-              "rules" : {
+              "scheme" : {
                 "type" : "string",
-                "description" : "The conversion rules to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'goessner', the rules defined by Stefan Goessner will be applied. See: https://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html"
+                "description" : "The conversion scheme to be used. If null or empty, the default PIPEFORCE rules apply. If set to 'jackson', the rules defined by XML Jackson will be applied."
               },
               "id" : {
                 "type" : "string",
@@ -14473,7 +14705,7 @@
           },
           "webhook.receive" : {
             "type" : "object",
-            "description" : "Runs a webhook identified by its uuid.",
+            "description" : "Runs a webhook identified by its uuid (token). The webhook is called async. Enable redirects in your client, set pollingRedirectEnabled:true and follow the 503 redirect if you need to retrieve the final result. In case the webhook with given token doesn't exist, nothing happens for security reasons. There is no feedback whether a webhook exists or not. A status code of 200 or 503 is returned by default. ",
             "x-inputType" : "JsonNode",
             "x-outputType" : "JsonNode",
             "x-icon" : "play_circle_outline",
@@ -14489,6 +14721,11 @@
               "token" : {
                 "type" : "string",
                 "description" : "The unique token of the webhook. Can passed as request param or as header (recommended) to call the webhook from outside."
+              },
+              "pollingRedirectEnabled" : {
+                "type" : "string",
+                "description" : "Should the response contain a 503 status (redirect) in case the webhook result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener.",
+                "default" : "false"
               },
               "id" : {
                 "type" : "string",
@@ -14598,7 +14835,11 @@
               },
               "propertyKey" : {
                 "type" : "string",
-                "description" : "The optional key of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this propertyKey is missing, the BPMN is expected to be in the body."
+                "description" : "DEPRECATED. Use propertyPath instead."
+              },
+              "propertyPath" : {
+                "type" : "string",
+                "description" : "The optional path of a workflow property containing a BPMN as value. If this is given, name and appId will be extracted from this key in case these params are empty. If this param is missing, the BPMN is expected to be in the body."
               },
               "id" : {
                 "type" : "string",
@@ -14684,6 +14925,10 @@
                 "type" : "string",
                 "description" : "The name of this message. It is used to find the endpoint to be triggered in the workflow."
               },
+              "variables" : {
+                "type" : "string",
+                "description" : "The process variables to apply on message target."
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -14705,7 +14950,7 @@
                 "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
               }
             },
-            "required" : [ "processInstanceId", "messageName" ]
+            "required" : [ "messageName" ]
           },
           "workflow.find.processinstances" : {
             "type" : "object",
@@ -15133,6 +15378,48 @@
               }
             },
             "required" : [ "key" ]
+          },
+          "workflow.task.claim" : {
+            "type" : "object",
+            "description" : "Claims a given task to a given user.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "taskId" : {
+                "type" : "string",
+                "description" : "The id (not name!) of the task to claim."
+              },
+              "username" : {
+                "type" : "string",
+                "description" : "The username of the user to claim the task for"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "taskId", "username" ]
           },
           "workflow.task.complete" : {
             "type" : "object",
