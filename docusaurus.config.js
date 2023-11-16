@@ -71,7 +71,7 @@ const config = {
             label: 'Tutorials',
           },
           {
-            href: 'http://docs.pipeforce.io/api.html',
+            href: 'http://docs.pipeforce.org/api.html',
             position: 'left',
             label: 'API',
           },

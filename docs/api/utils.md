@@ -4,7 +4,7 @@ sidebar_label: Pipeline Utils
 ---
 
 <!-- DO NOT EDIT THIS PAGE MANUALLY IT IS AUTO-GENERATED! CHANGES WILL BE LOST ON NEXT AUTO-GENERATION. -->
-<!-- Generated: 30/10/2023 17:08:40 by CommandComplianceTest -->
+<!-- Generated: 14/11/2023 10:16:14 by CommandComplianceTest -->
 
 Reference documentation of Built-In [Pipeline Expression Language (PEL)](pel) Utils.  
 
@@ -826,8 +826,8 @@ Returns a new empty list.
 ```  
 
 ### keys(data)   
-Returns the keys of the given object. Which could be a JSON object for example.
-If the object doesn't have a key, returns empty list.   
+Returns the keys of the given object at root level. Which could be a JSON object for example.
+If the object doesn't have a key, returns empty list. Never null.   
 
 #### Returns  
 ``list<string>`` - The list of key of this object.  
@@ -841,6 +841,159 @@ data | ``object`` | A key value structure.
 #### Example  
 ```  
 @data.keys(data)  
+```  
+
+### type(data)   
+Returns the type of the given data object. Can be one of:
+<ul>
+    <li>OBJECT = A (JSON) object.</li>
+    <li>ARRAY = A (JSON) array.</li>
+    <li>STRING = A (JSON) string.</li>
+    <li>NUMBER = A (JSON) number.</li>
+    <li>BOOLEAN = A (JSON) boolean.</li>
+    <li>NULL = A (JSON) null.</li>
+</ul>   
+
+#### Returns  
+``string`` - The type of the data. Never null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to check the type for. 
+
+
+#### Example  
+```  
+@data.type(data)  
+```  
+
+### isType(data,type)   
+Checks whether the given data is of given type. Valid type keys are:
+<ul>
+    <li>OBJECT = A (JSON) object.</li>
+    <li>ARRAY = A (JSON) array.</li>
+    <li>STRING = A (JSON) string.</li>
+    <li>NUMBER = A (JSON) number.</li>
+    <li>BOOLEAN = A (JSON) boolean.</li>
+    <li>NULL = A (JSON) null.</li>
+</ul>   
+
+#### Returns  
+``boolean`` - True in case the given data is of given type.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to check for the type. 
+type | ``string`` | The type string to check for. 
+
+
+#### Example  
+```  
+@data.isType(data,type)  
+```  
+
+### isArray(data)   
+Checks if given data is an array.   
+
+#### Returns  
+``boolean`` - true, if data is an array.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to check for. 
+
+
+#### Example  
+```  
+@data.isArray(data)  
+```  
+
+### isBoolean(data)   
+Checks if given data is a boolean.   
+
+#### Returns  
+``boolean`` - true, if data is a boolean.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to check for. 
+
+
+#### Example  
+```  
+@data.isBoolean(data)  
+```  
+
+### isNumber(data)   
+Checks if given data is a number.   
+
+#### Returns  
+``boolean`` - true, if data is a number.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to check for. 
+
+
+#### Example  
+```  
+@data.isNumber(data)  
+```  
+
+### isObject(data)   
+Checks if given data is an object.   
+
+#### Returns  
+``boolean`` - true, if data is an object.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to check for. 
+
+
+#### Example  
+```  
+@data.isObject(data)  
+```  
+
+### isString(data)   
+Checks if given data is a string.   
+
+#### Returns  
+``boolean`` - true, if data is a string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to check for. 
+
+
+#### Example  
+```  
+@data.isString(data)  
+```  
+
+### isNull(data)   
+Checks if given data is null.   
+
+#### Returns  
+``boolean`` - true, if data is null.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+data | ``object`` | The data to check for. 
+
+
+#### Example  
+```  
+@data.isNull(data)  
 ```  
 
  
@@ -2022,6 +2175,24 @@ ignoreNulls | ``boolean`` | If true, null items will not be added.
 @list.add(list,element,ignoreNulls)  
 ```  
 
+### remove(list,index)   
+Removes the entry from the given list and shifts any subsequent element to the left.   
+
+#### Returns  
+void  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+list | ``object`` | The list to remove the element from. 
+index | ``int`` | The index of the item to remove. 
+
+
+#### Example  
+```  
+@list.remove(list,index)  
+```  
+
 ### contains(list,needles)   
 Searches the given list for the given needle.   
 
@@ -2252,6 +2423,47 @@ uri | ``string`` | The uri to be resolved.
 #### Example  
 ```  
 @resolve.uri(uri)  
+```  
+
+ 
+## `@script` 
+----------  
+Provides utility functions inside a pipeline expression execute inline scripts.  
+You can access the functions declared here in the PEL using <code>@script</code>  
+
+### groovy(script,args)   
+Evaluates the given groovy script.   
+
+#### Returns  
+``object`` - The evaluation result.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+script | ``string`` | The script to execute 
+args | ``object`` | The variables to be passed to the script as args. 
+
+
+#### Example  
+```  
+@script.groovy(script,args)  
+```  
+
+### groovy(script)   
+Evaluates the given groovy script.   
+
+#### Returns  
+``object`` - The evaluation result.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+script | ``string`` | The script to execute 
+
+
+#### Example  
+```  
+@script.groovy(script)  
 ```  
 
  
@@ -2619,6 +2831,126 @@ collection | ``object`` | The collection of items to concatenate.
 @text.commajoin(collection)  
 ```  
 
+### format(pattern,args)   
+Formats the given text using the given pattern and input args.   
+
+#### Returns  
+``string`` - The formatted string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+pattern | ``string`` | The format pattern to apply. Must be of the Formatter Syntax of Java.                See: https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html 
+args | ``object`` | The args to be passed to the format pattern. 
+
+
+#### Example  
+```  
+@text.format(pattern,args)  
+```  
+
+### leftPad(text,size)   
+Left pad a text with spaces (' ').
+The text is padded to the size of size.
+StringUtils.leftPad(null, *)   = null
+StringUtils.leftPad("", 3)     = "   "
+StringUtils.leftPad("bat", 3)  = "bat"
+StringUtils.leftPad("bat", 5)  = "  bat"
+StringUtils.leftPad("bat", 1)  = "bat"
+StringUtils.leftPad("bat", -1) = "bat"   
+
+#### Returns  
+``string`` - The padded string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``string`` | The text to add the padding. 
+size | ``int`` | The size to pad the text to. 
+
+
+#### Example  
+```  
+@text.leftPad(text,size)  
+```  
+
+### leftPad(text,size,padChar)   
+Left pad a text with a specified character.
+Pad to a size of size.
+StringUtils.leftPad(null, *, *)     = null
+StringUtils.leftPad("", 3, 'z')     = "zzz"
+StringUtils.leftPad("bat", 3, 'z')  = "bat"
+StringUtils.leftPad("bat", 5, 'z')  = "zzbat"
+StringUtils.leftPad("bat", 1, 'z')  = "bat"
+StringUtils.leftPad("bat", -1, 'z') = "bat"   
+
+#### Returns  
+``string`` - The padded string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``string`` | The text to add the padding. 
+size | ``int`` | The size to pad the text to. 
+padChar | ``char`` | The char to be used for padding. 
+
+
+#### Example  
+```  
+@text.leftPad(text,size,padChar)  
+```  
+
+### rightPad(text,size)   
+Right pad a text with spaces (' ').
+The test is padded to the size of size.
+StringUtils.rightPad(null, *)   = null
+StringUtils.rightPad("", 3)     = "   "
+StringUtils.rightPad("bat", 3)  = "bat"
+StringUtils.rightPad("bat", 5)  = "bat  "
+StringUtils.rightPad("bat", 1)  = "bat"
+StringUtils.rightPad("bat", -1) = "bat"   
+
+#### Returns  
+``string`` - The padded string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``string`` | The text to add the padding. 
+size | ``int`` | The size to pad the text to. 
+
+
+#### Example  
+```  
+@text.rightPad(text,size)  
+```  
+
+### rightPad(text,size,padChar)   
+Right pad a text with a specified character.
+The text is padded to the size of size.
+StringUtils.rightPad(null, *, *)     = null
+StringUtils.rightPad("", 3, 'z')     = "zzz"
+StringUtils.rightPad("bat", 3, 'z')  = "bat"
+StringUtils.rightPad("bat", 5, 'z')  = "batzz"
+StringUtils.rightPad("bat", 1, 'z')  = "bat"
+StringUtils.rightPad("bat", -1, 'z') = "bat"   
+
+#### Returns  
+``string`` - The padded string.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``string`` | The text to add the padding. 
+size | ``int`` | The size to pad the text to. 
+padChar | ``char`` | The char to be used for padding. 
+
+
+#### Example  
+```  
+@text.rightPad(text,size,padChar)  
+```  
+
 ### concatAndFormat(separator,collection,pel)   
 Similar to #concat(text1, Object...) but additionally applies the given PEL expression on
 each list entry before it gets concatenated. This is useful for example to convert each entry in
@@ -2825,6 +3157,25 @@ token | ``object`` | The token to split the text with.
 #### Example  
 ```  
 @text.split(text,token)  
+```  
+
+### replaceCharAt(text,pos,c)   
+Replaces the character at given position in the text and returns the new text.   
+
+#### Returns  
+``string`` - The new text with replaced char.  
+
+#### Parameters  
+Name | Type | Description
+--- | --- | ---
+text | ``string`` | The text to replace the char on. 
+pos | ``int`` | The position in the text to replace the char.             If negative or >= text length, the original text is returned without any replacement. 
+c | ``char`` | The new character. 
+
+
+#### Example  
+```  
+@text.replaceCharAt(text,pos,c)  
 ```  
 
 ### matches(text,regexp)   

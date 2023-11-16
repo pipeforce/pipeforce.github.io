@@ -91,7 +91,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -125,7 +125,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -159,7 +159,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -362,7 +362,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "secret" : {
                 "type" : "string",
@@ -598,7 +598,7 @@
               },
               "expect" : {
                 "type" : "string",
-                "description" : "The value to be expected."
+                "description" : "The value to be expected and to be compared with the actual value."
               },
               "actual" : {
                 "type" : "string",
@@ -783,7 +783,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -821,7 +821,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -1086,7 +1086,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -1168,7 +1168,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "key" ]
@@ -1206,7 +1206,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -1274,7 +1274,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -1359,7 +1359,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uri" ]
@@ -1427,7 +1427,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -1461,7 +1461,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -1508,7 +1508,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -1668,7 +1668,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uri" ]
@@ -1710,7 +1710,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "password" ]
@@ -1748,7 +1748,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "password" ]
@@ -1790,7 +1790,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "do" ]
@@ -1837,7 +1837,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "exclude" ]
@@ -1906,7 +1906,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "do" ]
@@ -1948,7 +1948,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -1969,8 +1969,17 @@
                 "description" : "(default) A list of mapping PEL rules to map from the input to the output data set. A rule has the format inputPEL1 -> outputPEL1. Multiple rules are separated by a comma directly followed by a new line."
               },
               "iterate" : {
-                "type" : "string",
+                "type" : "boolean",
                 "description" : "In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead."
+              },
+              "outputType" : {
+                "type" : "string",
+                "description" : "By default the type of the output element is detected automatically: If input is an object then output is also an object. If input is an array and iterate is set to true, then output is also an array. But sometimes it is necessary to map from an array to a final object, then you can set this to object. In this case, no new entry is created on output for each iteration. Instead it can be mapped to the same object."
+              },
+              "contextualize" : {
+                "type" : "boolean",
+                "description" : "If true, the input is wrapped into an mapping context model providing more context information.\nThis model will be provided to any mapping rule and contains these fields:\n<ul>\n<li>headers = The pipeline headers.</li>\n<li>vars = The pipeline variables.</li>\n<li>body = The pipeline body.</li>\n<li>item = The current item from the input for the mapping rule. If iteration is true,\nthis will change on each iteration loop to the next element.</li>\n</ul>\n",
+                "default" : "false"
               },
               "ignoreEmptyItems" : {
                 "type" : "string",
@@ -1999,7 +2008,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2059,7 +2068,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "template" ]
@@ -2097,7 +2106,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2131,7 +2140,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2182,7 +2191,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "deliveryUuid", "name" ]
@@ -2247,7 +2256,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2319,7 +2328,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -2357,7 +2366,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -2399,7 +2408,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -2433,7 +2442,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2501,7 +2510,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -2539,7 +2548,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -2573,7 +2582,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2619,7 +2628,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2661,7 +2670,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "deliveryUuid" ]
@@ -2730,7 +2739,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2794,7 +2803,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -2856,7 +2865,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "signerEmail" ]
@@ -2906,7 +2915,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "apiKey" : {
                 "type" : "string",
@@ -2960,7 +2969,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -3070,7 +3079,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -3108,7 +3117,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -3228,7 +3237,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -3351,7 +3360,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "to", "path" ]
@@ -3595,7 +3604,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -3900,7 +3909,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -3934,7 +3943,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -3972,7 +3981,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -4010,7 +4019,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -4057,7 +4066,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -4108,7 +4117,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -4146,7 +4155,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uuid" ]
@@ -4184,7 +4193,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uuid" ]
@@ -4218,7 +4227,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -4305,7 +4314,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "pattern", "target" ]
@@ -4339,7 +4348,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -4373,7 +4382,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -4694,7 +4703,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "credentials" : {
                 "type" : "string",
@@ -4781,7 +4790,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "credentials" : {
                 "type" : "string",
@@ -4868,7 +4877,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "credentials" : {
                 "type" : "string",
@@ -4955,7 +4964,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "credentials" : {
                 "type" : "string",
@@ -5042,7 +5051,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "credentials" : {
                 "type" : "string",
@@ -5137,7 +5146,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5179,7 +5188,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "username", "password" ]
@@ -5301,7 +5310,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5343,7 +5352,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5419,7 +5428,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "groupUuid", "roleNames", "groupName" ]
@@ -5465,7 +5474,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -5503,7 +5512,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uuid" ]
@@ -5555,7 +5564,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5603,7 +5612,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5659,7 +5668,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5715,7 +5724,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5749,7 +5758,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5791,7 +5800,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "roleName", "composites" ]
@@ -5837,7 +5846,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -5889,7 +5898,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -5980,7 +5989,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "type" ]
@@ -6022,7 +6031,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "username", "password" ]
@@ -6094,7 +6103,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "refreshToken" ]
@@ -6140,7 +6149,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uuid" ]
@@ -6186,7 +6195,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "userUuid", "username", "roleNames" ]
@@ -6252,7 +6261,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name", "email" ]
@@ -6290,7 +6299,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uuid" ]
@@ -6332,7 +6341,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -6388,7 +6397,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -6444,7 +6453,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -6500,7 +6509,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -6658,7 +6667,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "host", "secret" ]
@@ -6714,7 +6723,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "host", "secret" ]
@@ -6765,7 +6774,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "folderName", "host", "secret" ]
@@ -6825,7 +6834,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "destinationFolder", "host", "secret" ]
@@ -6999,7 +7008,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7092,7 +7101,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7140,7 +7149,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7179,7 +7188,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7242,7 +7251,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7276,7 +7285,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7310,7 +7319,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7360,7 +7369,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7402,7 +7411,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7469,7 +7478,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "host", "port", "inboxUsername", "inboxPassword", "driveUsername", "drivePassword" ]
@@ -7529,7 +7538,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "host", "port", "inboxUsername", "inboxPassword" ]
@@ -7598,7 +7607,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "to" ]
@@ -7713,7 +7722,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -7797,7 +7806,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "destinationName" ]
@@ -7853,7 +7862,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "destinationName", "routingKey" ]
@@ -7921,7 +7930,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -7978,14 +7987,14 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
           },
-          "message.queue.get" : {
+          "message.list" : {
             "type" : "object",
-            "description" : "Returns details about a message queue.",
+            "description" : "Returns all messages of a given queue.",
             "x-inputType" : "JsonNode",
             "x-outputType" : "JsonNode",
             "x-icon" : "info_outline",
@@ -7994,9 +8003,29 @@
             "x-alias" : [ ],
             "x-trigger" : false,
             "properties" : {
-              "name" : {
+              "count" : {
                 "type" : "string",
-                "description" : "The name of the queue to return."
+                "description" : "Number of messages to return in list. Max is 100.",
+                "default" : "10"
+              },
+              "truncate" : {
+                "type" : "string",
+                "description" : "Truncate returned messages this number of bytes. If empty or negative, all bytes are returned.",
+                "default" : "10000"
+              },
+              "encoding" : {
+                "type" : "string",
+                "description" : "The encoding to be used. One of auto or base64.",
+                "default" : "auto"
+              },
+              "ackmode" : {
+                "type" : "string",
+                "description" : "The ack mode to be used. One of: ack_requeue_true, reject_requeue_true, ack_requeue_false, reject_requeue_false",
+                "default" : "reject_requeue_true"
+              },
+              "queue" : {
+                "type" : "string",
+                "description" : "The name of the queue to return messages from."
               },
               "id" : {
                 "type" : "string",
@@ -8015,7 +8044,7 @@
                 "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
-            "required" : [ "name" ]
+            "required" : [ "queue" ]
           },
           "message.nack" : {
             "type" : "object",
@@ -8090,7 +8119,115 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "message.queue.find" : {
+            "type" : "object",
+            "description" : "Returns details for all message queues matching the given search filter.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "info_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ "command:message.admin.queue.find:v1" ],
+            "x-trigger" : false,
+            "properties" : {
+              "includeBindings" : {
+                "type" : "string",
+                "description" : "Include the bindings for each queue?",
+                "default" : "false"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ ]
+          },
+          "message.queue.get" : {
+            "type" : "object",
+            "description" : "Returns details about a message queue.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "info_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the queue to return."
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              }
+            },
+            "required" : [ "name" ]
+          },
+          "message.queue.purge" : {
+            "type" : "object",
+            "description" : "Purges the given queue.",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "info_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : null,
+            "x-alias" : [ "command:message.admin.queue.purge:v1" ],
+            "x-trigger" : false,
+            "properties" : {
+              "name" : {
+                "type" : "string",
+                "description" : "The name of the queue to purge."
+              },
+              "vhost" : {
+                "type" : "string",
+                "description" : "The vhost of the queue.",
+                "default" : "/"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
               }
             },
             "required" : [ "name" ]
@@ -8142,7 +8279,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -8406,7 +8543,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8444,7 +8581,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8482,7 +8619,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8520,7 +8657,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8558,7 +8695,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8657,7 +8794,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8695,7 +8832,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8737,7 +8874,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8775,7 +8912,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8833,7 +8970,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "value", "name" ]
@@ -8879,7 +9016,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8951,7 +9088,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -8989,7 +9126,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -9043,7 +9180,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -9077,7 +9214,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -9115,7 +9252,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -9169,7 +9306,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -9220,7 +9357,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "key", "path", "name" ]
@@ -9271,7 +9408,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path", "name" ]
@@ -9376,7 +9513,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -9464,7 +9601,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -9506,7 +9643,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -9577,7 +9714,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -9750,7 +9887,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -9796,7 +9933,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -9835,7 +9972,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -9882,7 +10019,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -10097,7 +10234,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "pattern" ]
@@ -10140,7 +10277,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "pattern" ]
@@ -10245,7 +10382,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "dialect", "from" ]
@@ -10377,7 +10514,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -10450,7 +10587,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "pathFilter" ]
@@ -10512,7 +10649,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "key", "subject", "recipients" ]
@@ -10554,7 +10691,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -10659,7 +10796,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "from" ]
@@ -10710,7 +10847,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -10756,7 +10893,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -10815,7 +10952,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "baseKey", "basePath" ]
@@ -11001,7 +11138,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uri" ]
@@ -11043,7 +11180,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "uri" ]
@@ -11119,7 +11256,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "correlationId" ]
@@ -11161,7 +11298,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "correlationId" ]
@@ -11199,7 +11336,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "correlationId" ]
@@ -11237,7 +11374,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -11271,7 +11408,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -11374,6 +11511,48 @@
             },
             "required" : [ "xpath" ]
           },
+          "script.groovy" : {
+            "type" : "object",
+            "description" : "Executes a groovy script.\nSee: https://groovy-lang.org/documentation.html\nThese default variables are always available inside the script:\nheaders, vars, body, request, response, context.\nNote: If output parameter is not defined, nothing is written to output or body.\n",
+            "x-inputType" : "JsonNode",
+            "x-outputType" : "JsonNode",
+            "x-icon" : "play_circle_outline",
+            "x-iconColor" : "",
+            "x-defaultParameter" : "code",
+            "x-alias" : [ ],
+            "x-trigger" : false,
+            "properties" : {
+              "code" : {
+                "type" : "string",
+                "description" : "(default) The Groovy script to be executed"
+              },
+              "args" : {
+                "type" : "string",
+                "description" : "        The additional args map to be passed to the script as name value pairs.\n        They can be accessed via args.name.\n"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The optional id of this command, unique within the pipeline."
+              },
+              "if" : {
+                "type" : "string",
+                "description" : "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+              },
+              "onError" : {
+                "type" : "string",
+                "description" : "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+              },
+              "eval" : {
+                "type" : "string",
+                "description" : "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+              },
+              "output" : {
+                "type" : "string",
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
+              }
+            },
+            "required" : [ "code" ]
+          },
           "script.run" : {
             "type" : "object",
             "description" : "Removed. This command is not longer supported. Consider to use function.run instead.",
@@ -11403,7 +11582,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -11480,7 +11659,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -11576,7 +11755,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "outboxUuid", "recipientEmail" ]
@@ -11622,7 +11801,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -11660,7 +11839,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "inboxUuid" ]
@@ -11698,7 +11877,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -11844,7 +12023,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -11882,7 +12061,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "outboxUuid" ]
@@ -11925,7 +12104,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -11963,7 +12142,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "outboxUuid" ]
@@ -11997,7 +12176,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -12035,7 +12214,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -12108,7 +12287,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -12150,7 +12329,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "outboxUuid", "recipientEmail" ]
@@ -12192,7 +12371,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "outboxUuid", "recipientEmail" ]
@@ -12247,7 +12426,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "outboxUuid", "recipientEmail" ]
@@ -12281,7 +12460,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -12675,7 +12854,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "input" : {
                 "type" : "string",
@@ -12741,7 +12920,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -12803,7 +12982,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -12870,7 +13049,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -12932,7 +13111,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "path" ]
@@ -12998,7 +13177,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13115,7 +13294,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13169,7 +13348,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13223,7 +13402,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13319,7 +13498,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13383,7 +13562,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13429,7 +13608,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -13475,7 +13654,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -13513,7 +13692,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13568,7 +13747,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -13614,7 +13793,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -13659,6 +13838,11 @@
                 "description" : "A PE which defines the test functions to be excluded from the list of included test functions. The function method name is provided as variable: functionName. By default all test functions, ending in IT will be ignored.",
                 "default" : "functionName.endsWith('IT')"
               },
+              "pollingRedirectEnabled" : {
+                "type" : "string",
+                "description" : "Should the response contain a 503 status (redirect) in case the result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. The test is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener.",
+                "default" : "true"
+              },
               "id" : {
                 "type" : "string",
                 "description" : "The optional id of this command, unique within the pipeline."
@@ -13677,7 +13861,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13732,7 +13916,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "resource" ]
@@ -13771,7 +13955,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13839,7 +14023,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13873,7 +14057,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -13933,7 +14117,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "template" ]
@@ -14001,7 +14185,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14043,7 +14227,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14077,7 +14261,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14115,7 +14299,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14153,7 +14337,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14191,7 +14375,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14229,7 +14413,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14271,7 +14455,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "model" ]
@@ -14313,7 +14497,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14360,7 +14544,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               },
               "apiKey" : {
                 "type" : "string",
@@ -14406,7 +14590,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14458,7 +14642,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14642,7 +14826,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14698,7 +14882,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "eventKey" ]
@@ -14724,7 +14908,7 @@
               },
               "pollingRedirectEnabled" : {
                 "type" : "string",
-                "description" : "Should the response contain a 503 status (redirect) in case the webhook result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener.",
+                "description" : "Should the response contain a 503 status (redirect) in case the result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener.",
                 "default" : "false"
               },
               "id" : {
@@ -14809,7 +14993,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14859,7 +15043,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "name" ]
@@ -14897,7 +15081,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -14947,7 +15131,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "messageName" ]
@@ -14985,7 +15169,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -15040,7 +15224,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "processInstanceId" ]
@@ -15220,7 +15404,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -15270,7 +15454,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -15320,7 +15504,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -15374,7 +15558,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "key" ]
@@ -15416,7 +15600,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "taskId", "username" ]
@@ -15462,7 +15646,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "taskId" ]
@@ -15512,7 +15696,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -15585,7 +15769,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]
@@ -15628,7 +15812,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ "processInstanceId" ]
@@ -15670,7 +15854,7 @@
               },
               "output" : {
                 "type" : "string",
-                "description" : "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+                "description" : "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
               }
             },
             "required" : [ ]

@@ -4,7 +4,7 @@ info:
   title: "PIPEFORCE API"
   version: "v3"
   description: |
-    Last update: 2023-10-30T16:08:40.087045Z
+    Last update: 2023-11-14T09:16:14.089895Z
     
     This lists all PIPEFORCE RESTful endpoints accessible via the hub service.<br/>
     As base path use `https://hub-namespace.pipeforce.net` and replace `namespace` by the namespace of your target PIPEFORCE instance.<br/>
@@ -389,7 +389,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -440,7 +440,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -491,7 +491,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -807,7 +807,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -1187,7 +1187,7 @@ paths:
           - name: expect
             in: "query"
             required: false
-            description: "The value to be expected."
+            description: "The value to be expected and to be compared with the actual value."
             schema:
               type: string
           - name: false
@@ -1380,7 +1380,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -1437,7 +1437,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -1834,7 +1834,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -1958,7 +1958,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2016,7 +2016,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2119,7 +2119,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2250,7 +2250,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2353,7 +2353,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2425,7 +2425,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2674,7 +2674,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2738,7 +2738,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2796,7 +2796,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2860,7 +2860,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -2931,7 +2931,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3037,7 +3037,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3101,7 +3101,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3117,17 +3117,25 @@ paths:
         ```yaml
         pipeline:
           - data.mapping:
+              contextualize: boolean
               ignoreEmptyItems: string
-              iterate: string
+              iterate: boolean
+              outputType: string
               rules: string
         ```
         <br/>
         cURL example (copy & paste to your terminal):
         ```bash
-        curl -X POST 'https://hub-namespace.pipeforce.net/api/v3/command/data.mapping?ignoreEmptyItems=string&iterate=string&rules=string' \
+        curl -X POST 'https://hub-namespace.pipeforce.net/api/v3/command/data.mapping?contextualize=boolean&ignoreEmptyItems=string&iterate=boolean&outputType=string&rules=string' \
         -u 'username:password' 
         ```
       parameters:
+          - name: contextualize
+            in: "query"
+            required: false
+            description: "If true, the input is wrapped into an mapping context model providing more context information.<br/>This model will be provided to any mapping rule and contains these fields:<br/><ul><br/><li>headers = The pipeline headers.</li><br/><li>vars = The pipeline variables.</li><br/><li>body = The pipeline body.</li><br/><li>item = The current item from the input for the mapping rule. If iteration is true,<br/>this will change on each iteration loop to the next element.</li><br/></ul>"
+            schema:
+              type: boolean
           - name: ignoreEmptyItems
             in: "query"
             required: false
@@ -3138,6 +3146,12 @@ paths:
             in: "query"
             required: false
             description: "In case the input is a list and all the mappings rules must be applied on each single item in the list by iterating them, set this flag to true. If input is not iterable but this is set to true, nothing happens and the single input item will be processed instead."
+            schema:
+              type: boolean
+          - name: outputType
+            in: "query"
+            required: false
+            description: "By default the type of the output element is detected automatically: If input is an object then output is also an object. If input is an array and iterate is set to true, then output is also an array. But sometimes it is necessary to map from an array to a final object, then you can set this to object. In this case, no new entry is created on output for each iteration. Instead it can be mapped to the same object."
             schema:
               type: string
           - name: rules
@@ -3179,7 +3193,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3271,7 +3285,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3329,7 +3343,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3380,7 +3394,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3459,7 +3473,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3559,7 +3573,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3669,7 +3683,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3727,7 +3741,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3792,7 +3806,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3843,7 +3857,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -3946,7 +3960,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4004,7 +4018,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4055,7 +4069,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4127,7 +4141,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4192,7 +4206,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4299,7 +4313,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4395,7 +4409,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4494,7 +4508,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4594,7 +4608,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4659,7 +4673,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4828,7 +4842,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -4886,7 +4900,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -5069,7 +5083,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -5262,7 +5276,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -5643,7 +5657,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6107,7 +6121,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6158,7 +6172,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6216,7 +6230,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6274,7 +6288,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6346,7 +6360,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6424,7 +6438,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6482,7 +6496,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6540,7 +6554,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6591,7 +6605,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6725,7 +6739,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6776,7 +6790,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -6827,7 +6841,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -7332,7 +7346,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -7466,7 +7480,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -7600,7 +7614,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -7734,7 +7748,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -7868,7 +7882,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -7999,7 +8013,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8064,7 +8078,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8254,7 +8268,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8319,7 +8333,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8436,7 +8450,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8508,7 +8522,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8566,7 +8580,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8645,7 +8659,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8717,7 +8731,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8803,7 +8817,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8889,7 +8903,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -8940,7 +8954,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9005,7 +9019,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9077,7 +9091,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9156,7 +9170,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9294,7 +9308,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9359,7 +9373,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9469,7 +9483,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9541,7 +9555,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9613,7 +9627,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9720,7 +9734,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9778,7 +9792,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9843,7 +9857,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -9929,7 +9943,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -10015,7 +10029,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -10101,7 +10115,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -10343,7 +10357,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -10429,7 +10443,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -10508,7 +10522,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -10601,7 +10615,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -10867,7 +10881,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -10945,7 +10959,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11083,7 +11097,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11155,7 +11169,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11213,7 +11227,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11313,7 +11327,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11364,7 +11378,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11415,7 +11429,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11494,7 +11508,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11559,7 +11573,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11666,7 +11680,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11759,7 +11773,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -11866,7 +11880,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -12042,7 +12056,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -12173,7 +12187,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -12259,7 +12273,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -12362,7 +12376,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -12448,7 +12462,87 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
+            schema:
+              type: string
+      tags:
+        - Command API - message
+  "/api/v3/command/message.list":
+    post:
+      summary: "Returns all messages of a given queue."
+      description: |
+        Returns all messages of a given queue. <br/><br/>
+        <a href='https://logabit.atlassian.net/wiki/search?text=message.list' target='_blank'>Search Academy for more details about: <b>message.list</b></a>.
+        <br/><br/>
+        Pipeline example (copy & paste to the low code playground):
+        ```yaml
+        pipeline:
+          - message.list:
+              ackmode: string
+              count: string
+              encoding: string
+              queue: string
+              truncate: string
+        ```
+        <br/>
+        cURL example (copy & paste to your terminal):
+        ```bash
+        curl -X POST 'https://hub-namespace.pipeforce.net/api/v3/command/message.list?ackmode=string&count=string&encoding=string&queue=string&truncate=string' \
+        -u 'username:password' 
+        ```
+      parameters:
+          - name: ackmode
+            in: "query"
+            required: false
+            description: "The ack mode to be used. One of: ack_requeue_true, reject_requeue_true, ack_requeue_false, reject_requeue_false"
+            schema:
+              type: string
+          - name: count
+            in: "query"
+            required: false
+            description: "Number of messages to return in list. Max is 100."
+            schema:
+              type: string
+          - name: encoding
+            in: "query"
+            required: false
+            description: "The encoding to be used. One of auto or base64."
+            schema:
+              type: string
+          - name: queue
+            in: "query"
+            required: true
+            description: "The name of the queue to return messages from."
+            schema:
+              type: string
+          - name: truncate
+            in: "query"
+            required: false
+            description: "Truncate returned messages this number of bytes. If empty or negative, all bytes are returned."
+            schema:
+              type: string
+          - name: eval
+            in: "query"
+            required: false
+            description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+            schema:
+              type: string
+          - name: id
+            in: "query"
+            required: false
+            description: "The optional id of this command, unique within the pipeline."
+            schema:
+              type: string
+          - name: if
+            in: "query"
+            required: false
+            description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+            schema:
+              type: string
+          - name: onError
+            in: "query"
+            required: false
+            description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
             schema:
               type: string
       tags:
@@ -12565,7 +12659,59 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
+            schema:
+              type: string
+      tags:
+        - Command API - message
+  "/api/v3/command/message.queue.find":
+    post:
+      summary: "Returns details for all message queues matching the given search filter."
+      description: |
+        Returns details for all message queues matching the given search filter. <br/><br/>
+        <a href='https://logabit.atlassian.net/wiki/search?text=message.queue.find' target='_blank'>Search Academy for more details about: <b>message.queue.find</b></a>.
+        <br/><br/>
+        Pipeline example (copy & paste to the low code playground):
+        ```yaml
+        pipeline:
+          - message.queue.find:
+              includeBindings: string
+        ```
+        <br/>
+        cURL example (copy & paste to your terminal):
+        ```bash
+        curl -X POST 'https://hub-namespace.pipeforce.net/api/v3/command/message.queue.find?includeBindings=string' \
+        -u 'username:password' 
+        ```
+      parameters:
+          - name: includeBindings
+            in: "query"
+            required: false
+            description: "Include the bindings for each queue?"
+            schema:
+              type: string
+          - name: eval
+            in: "query"
+            required: false
+            description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+            schema:
+              type: string
+          - name: id
+            in: "query"
+            required: false
+            description: "The optional id of this command, unique within the pipeline."
+            schema:
+              type: string
+          - name: if
+            in: "query"
+            required: false
+            description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+            schema:
+              type: string
+          - name: onError
+            in: "query"
+            required: false
+            description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
             schema:
               type: string
       tags:
@@ -12594,6 +12740,65 @@ paths:
             in: "query"
             required: true
             description: "The name of the queue to return."
+            schema:
+              type: string
+          - name: eval
+            in: "query"
+            required: false
+            description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+            schema:
+              type: string
+          - name: id
+            in: "query"
+            required: false
+            description: "The optional id of this command, unique within the pipeline."
+            schema:
+              type: string
+          - name: if
+            in: "query"
+            required: false
+            description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+            schema:
+              type: string
+          - name: onError
+            in: "query"
+            required: false
+            description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+            schema:
+              type: string
+      tags:
+        - Command API - message
+  "/api/v3/command/message.queue.purge":
+    post:
+      summary: "Purges the given queue."
+      description: |
+        Purges the given queue. <br/><br/>
+        <a href='https://logabit.atlassian.net/wiki/search?text=message.queue.purge' target='_blank'>Search Academy for more details about: <b>message.queue.purge</b></a>.
+        <br/><br/>
+        Pipeline example (copy & paste to the low code playground):
+        ```yaml
+        pipeline:
+          - message.queue.purge:
+              name: string
+              vhost: string
+        ```
+        <br/>
+        cURL example (copy & paste to your terminal):
+        ```bash
+        curl -X POST 'https://hub-namespace.pipeforce.net/api/v3/command/message.queue.purge?name=string&vhost=string' \
+        -u 'username:password' 
+        ```
+      parameters:
+          - name: name
+            in: "query"
+            required: true
+            description: "The name of the queue to purge."
+            schema:
+              type: string
+          - name: vhost
+            in: "query"
+            required: false
+            description: "The vhost of the queue."
             schema:
               type: string
           - name: eval
@@ -12696,7 +12901,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13102,7 +13307,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13159,7 +13364,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13216,7 +13421,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13273,7 +13478,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13330,7 +13535,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13478,7 +13683,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13535,7 +13740,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13600,7 +13805,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13658,7 +13863,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13751,7 +13956,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13823,7 +14028,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13933,7 +14138,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -13991,7 +14196,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14077,7 +14282,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14128,7 +14333,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14179,7 +14384,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14237,7 +14442,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14323,7 +14528,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14402,7 +14607,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14481,7 +14686,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14646,7 +14851,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14784,7 +14989,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14849,7 +15054,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -14962,7 +15167,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -15232,7 +15437,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -15304,7 +15509,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -15362,7 +15567,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -15434,7 +15639,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -15770,7 +15975,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -15835,7 +16040,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16000,7 +16205,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16207,7 +16412,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16321,7 +16526,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16421,7 +16626,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16486,7 +16691,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16652,7 +16857,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16731,7 +16936,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16803,7 +17008,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -16895,7 +17100,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17182,7 +17387,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17247,7 +17452,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17364,7 +17569,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17428,7 +17633,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17486,7 +17691,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17544,7 +17749,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17595,7 +17800,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17749,6 +17954,71 @@ paths:
               type: string
       tags:
         - Command API - rpa
+  "/api/v3/command/script.groovy":
+    post:
+      summary: "Executes a groovy script.<br/>See: https://groovy-lang.org/documentation.html<br/>These default variables are always available inside the script:<br/>..."
+      description: |
+        Executes a groovy script.<br/>See: https://groovy-lang.org/documentation.html<br/>These default variables are always available inside the script:<br/>headers, vars, body, request, response, context.<br/>Note: If output parameter is not defined, nothing is written to output or body. <br/><br/>
+        <a href='https://logabit.atlassian.net/wiki/search?text=script.groovy' target='_blank'>Search Academy for more details about: <b>script.groovy</b></a>.
+        <br/><br/>
+        Pipeline example (copy & paste to the low code playground):
+        ```yaml
+        pipeline:
+          - script.groovy:
+              args: string
+              code: string
+        ```
+        <br/>
+        cURL example (copy & paste to your terminal):
+        ```bash
+        curl -X POST 'https://hub-namespace.pipeforce.net/api/v3/command/script.groovy?args=string&code=string' \
+        -u 'username:password' 
+        ```
+      parameters:
+          - name: args
+            in: "query"
+            required: false
+            description: "The additional args map to be passed to the script as name value pairs.<br/>        They can be accessed via args.name."
+            schema:
+              type: string
+          - name: code
+            in: "query"
+            required: true
+            description: "(default) The Groovy script to be executed"
+            schema:
+              type: string
+          - name: eval
+            in: "query"
+            required: false
+            description: "An expression which is evaluated finally, after this command has been executed. This can be used for cleanup-tasks or to simplify data transformations."
+            schema:
+              type: string
+          - name: id
+            in: "query"
+            required: false
+            description: "The optional id of this command, unique within the pipeline."
+            schema:
+              type: string
+          - name: if
+            in: "query"
+            required: false
+            description: "Is the command enabled (if=true)? Can be a static boolean value of a PE to be evaluated. If this value is set to false, negative number, null or empty string, the command is disabled and will be skipped when defined in a pipeline. By default it is set to true = command is enabled."
+            schema:
+              type: string
+          - name: onError
+            in: "query"
+            required: false
+            description: "Defines the action in case an error happens. Default is 'THROW': Stops execution and throws the error to the caller. This parameter has precedence over the optional header with same name."
+            schema:
+              type: string
+          - name: output
+            in: "query"
+            required: false
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
+            schema:
+              type: string
+      tags:
+        - Command API - script
   "/api/v3/command/script.run":
     post:
       summary: "Removed. This command is not longer supported. Consider to use function.run instead."
@@ -17795,7 +18065,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -17912,7 +18182,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18064,7 +18334,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18136,7 +18406,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18194,7 +18464,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18252,7 +18522,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18482,7 +18752,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18540,7 +18810,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18605,7 +18875,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18663,7 +18933,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18714,7 +18984,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18772,7 +19042,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18886,7 +19156,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -18951,7 +19221,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -19016,7 +19286,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -19102,7 +19372,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -19153,7 +19423,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -19777,7 +20047,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -19877,7 +20147,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -19977,7 +20247,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20084,7 +20354,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20184,7 +20454,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20291,7 +20561,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20476,7 +20746,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20561,7 +20831,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20646,7 +20916,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20791,7 +21061,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20887,7 +21157,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -20958,7 +21228,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21029,7 +21299,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21086,7 +21356,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21171,7 +21441,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21242,7 +21512,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21263,12 +21533,13 @@ paths:
               functionExcludePattern: string
               functionIncludePattern: string
               locations: string
+              pollingRedirectEnabled: string
               reportFormat: string
         ```
         <br/>
         cURL example (copy & paste to your terminal):
         ```bash
-        curl -X POST 'https://hub-namespace.pipeforce.net/api/v3/command/test.run?dryRun=string&dryRunSleep=string&functionExcludePattern=string&functionIncludePattern=string&locations=string&reportFormat=string' \
+        curl -X POST 'https://hub-namespace.pipeforce.net/api/v3/command/test.run?dryRun=string&dryRunSleep=string&functionExcludePattern=string&functionIncludePattern=string&locations=string&pollingRedirectEnabled=string&reportFormat=string' \
         -u 'username:password' 
         ```
       parameters:
@@ -21300,6 +21571,12 @@ paths:
             in: "query"
             required: false
             description: "A single or a list of location patterns, selecting all test scripts in the property store to be selected for test runs."
+            schema:
+              type: string
+          - name: pollingRedirectEnabled
+            in: "query"
+            required: false
+            description: "Should the response contain a 503 status (redirect) in case the result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. The test is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener."
             schema:
               type: string
           - name: reportFormat
@@ -21335,7 +21612,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21421,7 +21698,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21479,7 +21756,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21586,7 +21863,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21637,7 +21914,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21729,7 +22006,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21828,7 +22105,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21893,7 +22170,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -21944,7 +22221,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22001,7 +22278,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22059,7 +22336,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22117,7 +22394,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22175,7 +22452,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22240,7 +22517,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22304,7 +22581,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22397,7 +22674,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22448,7 +22725,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22728,7 +23005,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22814,7 +23091,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -22844,7 +23121,7 @@ paths:
           - name: pollingRedirectEnabled
             in: "query"
             required: false
-            description: "Should the response contain a 503 status (redirect) in case the webhook result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener."
+            description: "Should the response contain a 503 status (redirect) in case the result is not finished yet so a long polling is possible? If true, the 503 status is returned to the caller with a target url. If caller client follows this redirect, it can long poll on the target url for the final result. Otherwise a 200 is returned without any result. Note: The process is ALWAYS started async in the backend. So if a final result is expected, it must be retrieved always using long polling or a message listener."
             schema:
               type: string
           - name: token
@@ -23063,7 +23340,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23142,7 +23419,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23200,7 +23477,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23279,7 +23556,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23337,7 +23614,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23423,7 +23700,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23582,7 +23859,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23793,7 +24070,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23858,7 +24135,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -23930,7 +24207,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -24009,7 +24286,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -24088,7 +24365,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -24167,7 +24444,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -24277,7 +24554,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -24342,7 +24619,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
@@ -24407,7 +24684,7 @@ paths:
           - name: output
             in: "query"
             required: false
-            description: "Defines a PEL where to write the result of this command. If null or empty, then the result is written to the body."
+            description: "Defines a PEL where to write the result of this command. If not state otherwise in the command description: If null or empty, then the result is written to the body."
             schema:
               type: string
       tags:
